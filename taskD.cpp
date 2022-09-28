@@ -7,13 +7,15 @@ using namespace std;
 int main(int argc, char **argv)
 {
     int x;
-    int z = pow(3, asin(int(x)));
     int result;
 
     double pi = 2 * acos(0.0);
 
     cout << "Enter x: " << endl;
     cin >> x;
+
+    // Calculate z which equals to arcsin(x) to the power of 3
+    int z = pow(3, asin(x));
 
     if (z > 0.5)
     {
