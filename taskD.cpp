@@ -8,7 +8,7 @@ int main(int argc, char **argv)
     double x, z, f;
     z = pow(3, asin(x));
 
-    cout << "Enter x: " << endl;
+    cout << "Enter X: " << endl;
     cin >> x;
 
     if (z > -0.5)

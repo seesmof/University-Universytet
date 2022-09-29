@@ -12,6 +12,7 @@ int main()
     cin >> x;
     cout << "Enter Y value: " << endl;
     cin >> y;
+
     if (x >= y)
     {
         cout << x - y << endl;
