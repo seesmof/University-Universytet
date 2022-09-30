@@ -26,4 +26,8 @@ int main(int argc, char **argv)
         cout << "B = " << abs(b) << endl;
         cout << "C = " << abs(c) << endl;
     }
+
+    return 0;
 }
+
+// 1.3.2.1 б)
