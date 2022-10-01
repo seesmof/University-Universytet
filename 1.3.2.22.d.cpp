@@ -6,6 +6,7 @@ using namespace std;
 int main(int argc, char **argv)
 {
     double x, z, f;
+    double pi = atan(1) * 4;
     z = pow(asin(x), 3);
 
     cout << "Enter X: " << endl;
@@ -17,7 +18,7 @@ int main(int argc, char **argv)
     }
     else if (z >= -0.5 && z <= 0.001)
     {
-        f = pow(sin(z), 3) - sin(z / 3);
+        f = pow(sin(z), 3) - sin(z / 3 * pi);
     }
     else if (z > 0.001)
     {
