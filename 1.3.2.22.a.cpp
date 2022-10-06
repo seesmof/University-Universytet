@@ -12,12 +12,13 @@ int main(int argc, char **argv)
     cin >> a;
 
     a1 = a * a;
+    // 2 ступінь
     a2 = a * a1;
+    // 3 ступінь
     a3 = a1 * a2;
+    // 5 ступінь
 
     cout << "Your number to the power of 5 = " << a3 << endl;
 
     return 0;
-}
-
-// 1.3.2.22 a)
+} // 1.3.2.22 a)

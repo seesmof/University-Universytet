@@ -6,7 +6,7 @@ using namespace std;
 int main(int argc, char **argv)
 {
     double x, z, f;
-    double pi = atan(1) * 4;
+    const double pi = atan(1) * 4;
     z = pow(asin(x), 3);
 
     cout << "Enter X: " << endl;
@@ -28,6 +28,4 @@ int main(int argc, char **argv)
     cout << "The result is: " << f << endl;
 
     return 0;
-}
-
-// 1.3.2.22 г)
+} // 1.3.2.22 г)
