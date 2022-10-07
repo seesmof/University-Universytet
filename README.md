@@ -1,9 +1,4 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img src="./img/logo.png" alt="Project logo" width="100"></a>
-</p>
-
-<h3 align="center">University Projects</h3>
+<h2 align="center">University C++ Projects</h2>
 
 <div align="center">
 
@@ -16,49 +11,34 @@
 
 ---
 
-<p align="center"> Folder with projects for University
-    <br>
-</p>
-
 ## 📝 Table of Contents
 
 - [📝 Table of Contents](#-table-of-contents)
 - [🧐 About <a name = "about"></a>](#-about-)
-- [✨ Projects <a name = "projects"></a>](#-projects-)
+- [📂 Folders Structure <a name = "built_using"></a>](#-folders-structure-)
 - [⛏️ Built Using <a name = "built_using"></a>](#️-built-using-)
 - [✍️ Authors <a name = "authors"></a>](#️-authors-)
-- [🎉 Acknowledgements <a name = "acknowledgement"></a>](#-acknowledgements-)
 
 ## 🧐 About <a name = "about"></a>
 
-Folder with projects for University. Mainly all of them will be made with C++ or C since those two languages are the main stack.
+Repository with all of my projects from a university. For a while most of them will be written on C++ only, later, most likely, I will introduce some C# / C / maybe even JavaScript. Projects are organized by folders, so it is easier to navigate through.
 
-## ✨ Projects <a name = "projects"></a>
+## 📂 Folders Structure <a name = "built_using"></a>
 
-![Project Code Preview](./img/taskB.png)
-
----
-
-![Project Code Preview](./img/taskD.png)
-
----
-
-![Project Code Preview](./img/taskB_one.png)
-
----
+- Lab One
+  - App One
+  - App Two
+  - App Three
+  - App Four
+  - Practice App One
+- Lab Two (in progress)
+  - App One
+  - App Two
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [C++](https://www.w3schools.com/cpp/default.asp) - Programming Language
-- [C](https://www.w3schools.com/c/) - Programming Language
+- [C++](https://cplusplus.com/) - Programming language
 
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@seesmof](https://github.com/seesmof) - Development
-- [Національний Університет "Запорізька політехніка"](https://zp.edu.ua/) - Projects and Teaching
-- [Кафедра Програмних засобів](https://pz.zp.ua/) - Projects and Teaching
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- [Національний Університет "Запорізька політехніка"](https://zp.edu.ua/) - for great educational programs and projects
-- [Кафедра Програмних засобів](https://pz.zp.ua/) - for great educational programs and projects
