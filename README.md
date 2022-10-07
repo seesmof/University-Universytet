@@ -1,4 +1,4 @@
-<h2 align="center">University C++ Projects</h2>
+<h1 align="center">University C++ Projects</h1>
 
 <div align="center">
 
