@@ -25,15 +25,22 @@ Repository with all of my projects from a university. For a while most of them w
 
 ## 📂 Folders Structure <a name = "built_using"></a>
 
-- Lab One
-  - App One
-  - App Two
-  - App Three
-  - App Four
-  - Practice App One
-- Lab Two (in progress)
-  - App One
-  - App Two
+- App
+  - Lab One
+    - Task A
+    - Task B
+    - Task C
+    - Task D
+      - Example One
+  - Lab Two
+    - Task A
+    - Task B
+    - Task C
+    - Task D
+      - Example One
+      - Example Two
+- Temp
+  - Temporary projects or tests
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
