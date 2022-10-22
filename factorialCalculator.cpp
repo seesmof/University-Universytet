@@ -1,6 +1,8 @@
+// include necessary libraries
 #include <iostream>
 using namespace std;
 
+// declare main function
 int main(int argc, char **argv)
 {
     // declare a variable for holding user inputed number
@@ -20,7 +22,8 @@ int main(int argc, char **argv)
     }
 
     // output the factorial of the number
-    cout << num << " factorial is " << factorial << endl;
+    cout << num << "! is " << factorial << endl;
 
+    // end of main function
     return 0;
 }

@@ -32,6 +32,6 @@ int main(int argc, char **argv)
     // output result
     cout << "The sum of all inputs is " << result << endl;
 
-    // return 0
-    return 0;
+    // end main function
+    system("pause");
 }

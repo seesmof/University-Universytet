@@ -39,6 +39,6 @@ int main(int argc, char **argv)
     // output result
     cout << "The sum is " << sum << endl;
 
-    // return 0;
-    return 0;
+    // end main function
+    system("pause");
 }
