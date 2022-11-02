@@ -7,31 +7,40 @@ int main(int argc, char **argv)
 {
     // output program intro
     cout << endl;
-    cout << "************************* Task C ********************************" << endl
+    cout << "************************* Task D ********************************" << endl
          << endl;
 
     // ask user to input array size
     int n, m;
-    cout << "Enter the size of an array (n * m): ";
+    cout << "Enter matrix size (n * m): ";
     cin >> n >> m;
-    int arr[n][m];
     cout << endl;
+
+    int matrixA[n][m];
+    int matrixB[n][m];
     srand(time(NULL));
 
-    // create function to fill in the array and calculate a number of odd elements in each row
-    for (int i = 0, count = 0; i < n; i++)
+    // create function to fill and output array
+    for (int i = 0; i < n; i++)
     {
-        count = 0; // reset counter on each row
-        for (int j = 0, n = 1; j < m; j++, n++)
+        for (int j = 0; j < m; j++)
         {
-            arr[i][j] = rand() % 10;
-            if (arr[i][j] % 3 == 0) // if element can be divided by 3 with no remainder => count it as odd
-            {
-                count++;
-            }
+            matrixA[i][j] = rand() % 10;
+            cout << matrixA[i][j] << " ";
+            matrixB[j][i] = matrixA[i][j];
         }
-        // output number of odd elements
-        cout << "Number of odd elements in a row is " << count << endl;
+        cout << endl;
+    }
+    cout << endl;
+
+    // create function to output a result matrix
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cout << matrixB[i][j] << " ";
+        }
+        cout << endl;
     }
 
     // output program outro

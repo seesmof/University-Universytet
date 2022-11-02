@@ -1,41 +1,26 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
 using namespace std;
 
-int main(int argc, char **argv)
+int main()
 {
-    int f, n, count = 0;
-    double minus = 0.0;
-    int *sum = new int[f];
-    cout << "Enter array size: ";
-    cin >> f;
-    for (int i = 0; i < f; i++)
+    int n, m;
+    cin >> n >> m;
+    int **a;
+    a = new int *[n];
+    for (int i = 0; i < n; i++)
+        a[i] = new int[m];
+    for (int i = 0; i < n; i++)
+        for (int j = 0; i < m; j++)
+            cin >> a[i][j];
+    for (int i = 0; i < m; i++)
     {
-        cout << "Enter element number " << i + 1 << ": ";
-        cin >> sum[i];
-        if (sum[i] < 0)
-        {
-            minus += abs(sum[i]);
-            count++;
-        }
+        for (int j = 0; j < m; j++)
+            cout << a[i][j] << " ";
+        cout << endl;
     }
-    if (count > 0)
-    {
-        minus /= count;
-        cout << "Average of negatives = " << minus << endl;
-    }
-    for (int i = 0; i < f; i++)
-    {
-        if (abs(sum[i]) > minus)
-        {
-            n += sum[i];
-        }
-    }
-    cout << "Average = " << n << endl;
-    if (n < minus)
-    {
-        cout << "Invalid" << endl;
-    }
-
+    for (int i = 0; i < n; i++)
+        delete[] a[i];
+    delete[] a;
     return 0;
 }
