@@ -7,10 +7,11 @@ using namespace std;
 int main(int argc, char **argv)
 {
     // output program intro
-    cout << endl;
-    cout << "****************************** Task A *************************************" << endl
+    cout << endl
+         << "****************************** Task A *************************************" << endl
          << endl;
 
+    // srand(time(NULL));
     // declare variable for storing array size and ask user to input it
     int n;
     cout << "Enter matrix size N: ";
@@ -21,13 +22,14 @@ int main(int argc, char **argv)
     int localArr[n];
 
     // create a function that will ask user to input each element of the array
-    cout << endl;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
             cout << "Enter matrix element: ";
             cin >> arr[i][j];
+
+            // arr[i][j] = rand() % 10;
         }
     }
 
@@ -225,8 +227,9 @@ int main(int argc, char **argv)
     cout << "The least value of those local maximums is " << minFromLocalMax << endl;
 
     // output project outro
-    cout << endl;
-    cout << "***************************************************************************" << endl;
+    cout << endl
+         << "***************************************************************************" << endl
+         << endl;
 
     // end main function
     return 0;
