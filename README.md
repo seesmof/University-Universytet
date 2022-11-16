@@ -39,6 +39,21 @@ Repository with all of my projects from a university. For a while most of them w
     - Task D
       - Example One
       - Example Two
+  - Lab Three
+    - Task A
+    - Task B
+    - Task C
+    - Task D
+      - Example One
+      - Example Two
+  - Lab Four
+    - Task A
+    - Task B
+    - Task C
+      - Example One
+  - Control One
+    - Task A
+    - Task B
 - Temp
   - Temporary projects or tests
 
