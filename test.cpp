@@ -1,48 +1,28 @@
 // include necessary libraries
 #include <iostream>
+#include <unistd.h>
+#include <string>
 using namespace std;
 
-// This function receives text and shift and
-// returns the encrypted text
-string encrypt(string text, int s)
-{
-     string result = "";
+long double factorialCalculator(int);
 
-     // traverse text
-     for (int i = 0; i < text.length(); i++)
-     {
-          // apply transformation to each character
-          // Encrypt Uppercase letters
-          if (isupper(text[i]))
-               result += char(int(text[i] + s - 65) % 26 + 65);
-
-          // Encrypt Lowercase letters
-          else
-               result += char(int(text[i] + s - 97) % 26 + 97);
-     }
-
-     // Return the resulting string
-     return result;
-}
 // declare main function
 int main(int argc, char **argv)
 {
      // output program intro
      cout << endl;
-     cout << "****************************** Test Task *************************************" << endl
+     cout << "******************************************************************************" << endl
           << endl;
 
-     string text;
-     cout << "Enter text: ";
-     getline(cin, text);
-
-     int s;
-     cout << "Enter a key: ";
-     cin >> s;
-
-     cout << "Text : " << text;
-     cout << "\nShift: " << s;
-     cout << "\nCipher: " << encrypt(text, s);
+     int k;
+     cout << "Enter a number: ";
+     cin >> k;
+     long double f;
+     for (int i = 1; i <= k; i++)
+     {
+          f = factorialCalculator(i);
+          cout << i << "! is " << f << endl;
+     }
 
      // output project outro
      cout << endl;
@@ -51,4 +31,16 @@ int main(int argc, char **argv)
 
      // end main function
      return 0;
+}
+
+long double factorialCalculator(int n)
+{
+     if (n == 1)
+     {
+          return 1;
+     }
+     else
+     {
+          return factorialCalculator(n - 1) * n;
+     }
 }

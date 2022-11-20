@@ -11,8 +11,8 @@ string doCeasar(int, string);
 int main(int argc, char **argv)
 {
     // output program intro
-    cout << endl
-         << "****************************** Task B *************************************" << endl
+    system("cls");
+    cout << "****************************** Task B *************************************" << endl
          << endl;
 
     // creater necessary variables

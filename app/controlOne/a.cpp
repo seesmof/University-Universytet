@@ -7,11 +7,11 @@ using namespace std;
 int main(int argc, char **argv)
 {
     // output program intro
-    cout << endl
-         << "****************************** Task A *************************************" << endl
+    system("cls");
+    cout << "****************************** Task A *************************************" << endl
          << endl;
 
-    // srand(time(NULL));
+    srand(time(NULL));
     // declare variable for storing array size and ask user to input it
     int n;
     cout << "Enter matrix size N: ";
@@ -26,10 +26,10 @@ int main(int argc, char **argv)
     {
         for (int j = 0; j < n; j++)
         {
-            cout << "Enter matrix element: ";
-            cin >> arr[i][j];
+            // cout << "Enter matrix element: ";
+            // cin >> arr[i][j];
 
-            // arr[i][j] = rand() % 10;
+            arr[i][j] = rand() % 10;
         }
     }
 
