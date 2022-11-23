@@ -2,9 +2,16 @@
 #include <iostream>
 #include <unistd.h>
 #include <string>
+#include <vector>
+#include <iomanip>
 using namespace std;
 
-long double factorialCalculator(int);
+void mySwap(int &v1, int &v2)
+{
+     int temp = v2;
+     v2 = v1;
+     v1 = temp;
+}
 
 // declare main function
 int main(int argc, char **argv)
@@ -14,15 +21,9 @@ int main(int argc, char **argv)
      cout << "******************************************************************************" << endl
           << endl;
 
-     int k;
-     cout << "Enter a number: ";
-     cin >> k;
-     long double f;
-     for (int i = 1; i <= k; i++)
-     {
-          f = factorialCalculator(i);
-          cout << i << "! is " << f << endl;
-     }
+     int a = 1, b = 2;
+     mySwap(a, b);
+     cout << a << " " << b << endl;
 
      // output project outro
      cout << endl;
@@ -31,16 +32,4 @@ int main(int argc, char **argv)
 
      // end main function
      return 0;
-}
-
-long double factorialCalculator(int n)
-{
-     if (n == 1)
-     {
-          return 1;
-     }
-     else
-     {
-          return factorialCalculator(n - 1) * n;
-     }
 }

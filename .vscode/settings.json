@@ -6,6 +6,7 @@
     "cmath": "cpp",
     "random": "cpp",
     "new": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "*.tcc": "cpp"
   }
 }

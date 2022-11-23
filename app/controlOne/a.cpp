@@ -26,8 +26,8 @@ int main(int argc, char **argv)
     {
         for (int j = 0; j < n; j++)
         {
-            // cout << "Enter matrix element: ";
-            // cin >> arr[i][j];
+            cout << "Enter matrix element: ";
+            cin >> arr[i][j];
 
             arr[i][j] = rand() % 10;
         }

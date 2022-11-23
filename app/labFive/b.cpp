@@ -51,6 +51,7 @@ int findGCD(int a, int b)
      // if the remainder of division is 0 => return second number
      if (a == 0)
           return b;
+     // else return function with b % a and a as arguments
      return findGCD(b % a, a);
 }
 
