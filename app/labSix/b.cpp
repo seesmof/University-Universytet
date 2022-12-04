@@ -1,6 +1,5 @@
 // include necessary libraries
 #include <iostream>
-#include <stdlib.h>
 #include <string>
 using namespace std;
 
@@ -36,7 +35,6 @@ void studentSearch(int n, futureStudent *student);
 int main(int argc, char **argv)
 {
      // output program intro
-     system("cls");
      cout << "****************************** Task B *************************************" << endl
           << endl;
 
@@ -96,6 +94,7 @@ int main(int argc, char **argv)
           {
                cout << "Enter an age: ";
                cin >> student[i].age;
+               cout << "Congratulations! The change was successful made." << endl;
                break;
           }
           // if school GPA is chosen => execute the following statement
@@ -103,6 +102,7 @@ int main(int argc, char **argv)
           {
                cout << "Enter a school GPA: ";
                cin >> student[i].schoolGPA;
+               cout << "Congratulations! The change was successful made." << endl;
                break;
           }
           // if NMT result is chosen => execute the following statement
@@ -110,6 +110,7 @@ int main(int argc, char **argv)
           {
                cout << "Enter a NMT result: ";
                cin >> student[i].resultNMT[0] >> student[i].resultNMT[1] >> student[i].resultNMT[2];
+               cout << "Congratulations! The change was successful made." << endl;
                break;
           }
           // if university is chosen => execute the following statement
@@ -117,6 +118,7 @@ int main(int argc, char **argv)
           {
                cout << "Enter a university: ";
                cin >> student[i].universityName;
+               cout << "Congratulations! The change was successful made." << endl;
                break;
           }
           // if specialization is chosen => execute the following statement
@@ -124,6 +126,7 @@ int main(int argc, char **argv)
           {
                cout << "Enter a specialization: ";
                cin >> student[i].specialization;
+               cout << "Congratulations! The change was successful made." << endl;
                break;
           }
           // add an exception if none of the above statements were executed
@@ -132,10 +135,10 @@ int main(int argc, char **argv)
                break;
           }
           }
-     }
 
-     // call a function for student search
-     studentSearch(n, student);
+          // call a function for student search
+          studentSearch(n, student);
+     }
 
      // output project outro
      cout << endl
@@ -216,7 +219,7 @@ void studentInput(int n, futureStudent *student)
           // ask user to enter student's ПІБ
           cout << endl;
           cout << i + 1 << "." << subCount << " Enter student's PIB: ";
-          cin >> student[i].P >> student[i].I >> student[i].B;
+          cin >> (student + i)->P >> student[i].I >> student[i].B;
           // create 3 functions for converting first lowercase letters of students name to uppercase
           if (islower(student[i].P[0]))
           {

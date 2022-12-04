@@ -1,35 +1,41 @@
-// include necessary libraries
-#include <iostream>
-#include <unistd.h>
-#include <string>
-#include <vector>
-#include <iomanip>
+#include <bits/stdc++.h>
 using namespace std;
 
-void mySwap(int &v1, int &v2)
+int findMinFromArr(int n, vector<int> &v)
 {
-     int temp = v2;
-     v2 = v1;
-     v1 = temp;
+     if (n == 1)
+          return v[0];
+     else
+          return min(v[n - 1], findMinFromArr(n - 1, v));
 }
 
-// declare main function
-int main(int argc, char **argv)
+int main()
 {
-     // output program intro
-     cout << endl;
-     cout << "******************************************************************************" << endl
+     srand(time(NULL));
+     cout << endl
+          << "/////////////////////////////////////////////////////////////" << endl
           << endl;
-
-     int a = 1, b = 2;
-     mySwap(a, b);
-     cout << a << " " << b << endl;
-
-     // output project outro
+     ///////////////////////////////////////////////////////////////////////////////
+     int n;
+     cout << "Enter arr size: ";
+     cin >> n;
+     vector<int> arr(n);
+     cout << endl
+          << "Your array is " << endl;
+     for (int i = 0; i < n; i++)
+     {
+          arr[i] = rand() % 100 + 10;
+          if (i == 0)
+               cout << arr[i];
+          else
+               cout << setw(4) << arr[i];
+     }
      cout << endl;
-     cout << "******************************************************************************" << endl
+     cout << endl
+          << "Minimal element from array is " << findMinFromArr(n, arr) << endl;
+     ///////////////////////////////////////////////////////////////////////////////
+     cout << endl
+          << "/////////////////////////////////////////////////////////////" << endl
           << endl;
-
-     // end main function
      return 0;
 }

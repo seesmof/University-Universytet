@@ -12,7 +12,6 @@ int findGCD(int, int);
 int main(int argc, char **argv)
 {
      // output program intro
-     system("cls");
      cout << endl
           << "****************************** Task B *************************************" << endl
           << endl;

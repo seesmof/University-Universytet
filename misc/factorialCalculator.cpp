@@ -1,9 +1,9 @@
 // include necessary libraries
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 // declare main function
-int main(int argc, char **argv)
+int main()
 {
     // declare a variable for holding user inputed number
     int num;

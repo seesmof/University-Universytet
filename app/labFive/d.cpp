@@ -9,7 +9,6 @@ double rec(int);
 int main(int argc, char **argv)
 {
      // output program intro
-     system("cls");
      cout << "****************************** Task D *************************************" << endl
           << endl;
 

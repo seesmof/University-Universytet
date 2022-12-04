@@ -1,7 +1,5 @@
 // include necessary libraries
-#include <iostream>
-#include <string>
-#include <stdlib.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 // declare function prototypes
@@ -11,8 +9,8 @@ string doCeasar(int, string);
 int main(int argc, char **argv)
 {
     // output program intro
-    system("cls");
-    cout << "****************************** Task B *************************************" << endl
+    cout << endl
+         << "/////////////////////////////////////////////////////////////" << endl
          << endl;
 
     // creater necessary variables
@@ -84,7 +82,7 @@ int main(int argc, char **argv)
 
     // output project outro
     cout << endl
-         << "***************************************************************************" << endl
+         << "/////////////////////////////////////////////////////////////" << endl
          << endl;
 
     // end main function

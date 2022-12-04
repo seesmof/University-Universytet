@@ -16,7 +16,7 @@ int main(int argc, char **argv)
         cin >> x;
         if (x > 1 || x < -1)
         {
-            cout << "Invalid bitch." << endl;
+            cout << "Invalid." << endl;
         }
     } while (x > 1 || x < -1);
     cout << "Enter E: ";
