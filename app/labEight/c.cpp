@@ -2,6 +2,93 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// function prototypes //
+string fileNameInput();
+void generateRandFile(int, const string &);
+int countLines(const string &);
+string randString(int);
+void resFileGenerator();
+/////////////////////////
+
+// declare main function
+int main()
+{
+    // declare local variables //
+    srand(time(NULL));
+    char userDecision;
+    string inFileName, outFileName;
+    int numOfLets = rand() % (10 - 2 + 1) + 2;
+    /////////////////////////////
+
+    // project intro
+    cout << endl
+         << "/////////////////////////////////////////////////////////////" << endl
+         << endl
+         << "Welcome! This program will manipulate binary files." << endl
+         << endl
+         << "/////////////////////////////////////////////////////////////" << endl
+         << endl;
+    char doContinue;
+    do
+    {
+        //////////////////////////////////////////////////////////////////////////////////
+        cout << "Do you have a file to read from? (Y | N): ";
+        cin >> userDecision;
+        cin.ignore();
+
+        if (userDecision == 'N' || userDecision == 'n')
+        {
+            cout << "Would you like to generate one? (Y | N): ";
+            cin >> userDecision;
+            cin.ignore();
+
+            if (userDecision == 'N' || userDecision == 'n')
+            {
+                cout << endl
+                     << "Thanks for using this program." << endl
+                     << endl
+                     << "/////////////////////////////////////////////////////////////" << endl
+                     << endl;
+                break;
+            }
+
+            cout << "How many letters do you want your file name to be?: ";
+            cin >> numOfLets;
+            int numOfNums;
+            cout << "How many numbers to generate? (min 4): ";
+            cin >> numOfNums;
+
+            inFileName = randString(numOfLets);
+            generateRandFile(numOfNums, inFileName);
+            isReadable(inFileName);
+        }
+        //////////////////////////////////////////////////////////////////////////////////
+        cout << endl
+             << endl
+             << "/////////////////////////////////////////////////////////////" << endl
+             << endl
+             << "Would you like to continue program execution? (Y | N): ";
+        cin >> doContinue;
+        if (doContinue == 'N' || doContinue == 'n')
+        {
+            cout << endl
+                 << "Thanks for using this program." << endl
+                 << endl
+                 << "/////////////////////////////////////////////////////////////" << endl
+                 << endl;
+            break;
+        }
+        else
+        {
+            cout << endl
+                 << "/////////////////////////////////////////////////////////////" << endl
+                 << endl;
+            continue;
+        }
+    } while (doContinue = 'Y' || doContinue == 'y');
+    return 0;
+}
+
 // create a function that will take file name from user
 string fileNameInput()
 {
@@ -80,13 +167,12 @@ void generateRandFile(int n, const string &fileName)
     // create a for loop
     for (int i = 0; i < n; i++)
     {
-        int randTemp;
-        do
+        int range = 10 - (-10) + 1;
+        int randTemp = rand() % range + (-10);
+        if (randTemp == 0)
         {
-            int randTemp = rand() % 10 - 10;
-
-        } while (randTemp != 0);
-        cout << randTemp << endl;
+            randTemp += rand() % 10 + 1;
+        }
         // output that buffer to file
         file << randTemp << endl;
     }
@@ -150,7 +236,7 @@ void isReadable(const string &fileName)
         cout << "ERROR: Could not open file " << fileName;
 }
 
-void result()
+void resFileGenerator()
 {
     // variables
 
@@ -161,82 +247,4 @@ void result()
     // if found < 0, pushback to negative, else pushback to positive
 
     // output all to result file
-}
-
-// declare main function
-int main()
-{
-    // declare local variables
-    srand(time(NULL));
-    char userDecision;
-    string inFileName, outFileName;
-    int numOfLets = rand() % (10 - 2 + 1) + 2;
-
-    // project intro
-    cout << endl
-         << "/////////////////////////////////////////////////////////////" << endl
-         << endl
-         << "Welcome! This program will manipulate binary files." << endl
-         << endl
-         << "/////////////////////////////////////////////////////////////" << endl
-         << endl;
-    char doContinue;
-    do
-    {
-        //////////////////////////////////////////////////////////////////////////////////
-        cout << "Do you have a file to read from? (Y | N): ";
-        cin >> userDecision;
-        cin.ignore();
-
-        if (userDecision == 'N' || userDecision == 'n')
-        {
-            cout << "Would you like to generate one? (Y | N): ";
-            cin >> userDecision;
-            cin.ignore();
-
-            if (userDecision == 'N' || userDecision == 'n')
-            {
-                cout << endl
-                     << "Thanks for using this program." << endl
-                     << endl
-                     << "/////////////////////////////////////////////////////////////" << endl
-                     << endl;
-                break;
-            }
-
-            cout << "How many letters do you want your file name to be?: ";
-            cin >> numOfLets;
-            int numOfNums;
-            cout << "How many numbers to generate? (min 4): ";
-            cin >> numOfNums;
-
-            inFileName = randString(numOfLets);
-            generateRandFile(numOfNums, inFileName);
-            isReadable(inFileName);
-        }
-        //////////////////////////////////////////////////////////////////////////////////
-        cout << endl
-             << endl
-             << "/////////////////////////////////////////////////////////////" << endl
-             << endl
-             << "Would you like to continue program execution? (Y | N): ";
-        cin >> doContinue;
-        if (doContinue == 'N' || doContinue == 'n')
-        {
-            cout << endl
-                 << "Thanks for using this program." << endl
-                 << endl
-                 << "/////////////////////////////////////////////////////////////" << endl
-                 << endl;
-            break;
-        }
-        else
-        {
-            cout << endl
-                 << "/////////////////////////////////////////////////////////////" << endl
-                 << endl;
-            continue;
-        }
-    } while (doContinue = 'Y' || doContinue == 'y');
-    return 0;
 }

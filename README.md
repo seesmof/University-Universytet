@@ -14,14 +14,14 @@
 ## 📝 Table of Contents
 
 - [📝 Table of Contents](#-table-of-contents)
-- [🧐 About <a name = "about"></a>](#-about-)
-- [📂 Folders Structure <a name = "built_using"></a>](#-folders-structure-)
-- [⛏️ Built Using <a name = "built_using"></a>](#️-built-using-)
-- [✍️ Authors <a name = "authors"></a>](#️-authors-)
+- [🧐 About ](#-about-)
+- [📂 Folders Structure ](#-folders-structure-)
+- [⛏️ Built Using ](#️-built-using-)
+- [✍️ Authors ](#️-authors-)
 
 ## 🧐 About <a name = "about"></a>
 
-Repository with all of my projects from a university. For a while most of them will be written on C++ only, later, most likely, I will introduce some C# / C / maybe even JavaScript. Projects are organized by folders, so it is easier to navigate through.
+Personal repository with all the C++ projects from period one, year one.
 
 ## 📂 Folders Structure <a name = "built_using"></a>
 
@@ -31,31 +31,43 @@ Repository with all of my projects from a university. For a while most of them w
     - Task B
     - Task C
     - Task D
-      - Example One
   - Lab Two
     - Task A
     - Task B
     - Task C
     - Task D
-      - Example One
-      - Example Two
   - Lab Three
     - Task A
     - Task B
     - Task C
     - Task D
-      - Example One
-      - Example Two
   - Lab Four
     - Task A
     - Task B
     - Task C
-      - Example One
   - Control One
     - Task A
     - Task B
-- Temp
-  - Temporary projects or tests
+  - Lab Five
+    - Task A
+    - Task B
+    - Task C
+    - Task D
+  - Lab Six
+    - Task A
+    - Task B
+  - Lab Seven
+    - Task A
+    - Task B
+  - Lab Eight
+    - Task A
+    - Task B
+    - Task C
+    - Task D
+- Miscellaneous Files
+  - School Examples
+  - Example Projects
+- Test Files
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 

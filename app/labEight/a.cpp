@@ -2,6 +2,161 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// function prototypes //
+string fileNameInput();
+void generateBinaryFile(int, const string &);
+string randString(int);
+void filesCompare(const string &, const string &, const string &, int);
+int countLines(const string &);
+void isReadable(const string &);
+/////////////////////////
+
+// declare main function
+int main()
+{
+     // declare local variables //
+     srand(time(NULL));
+     char userDecision;
+     string fileNameHolder, fileOne, fileTwo, fileResult;
+     int numberOfElements, numberOfLetters = rand() % 10;
+     vector<int> lineCountVec(2);
+     /////////////////////////////
+
+     // project intro
+     cout << endl
+          << "/////////////////////////////////////////////////////////////" << endl
+          << endl
+          << "Welcome! This program will manipulate binary files." << endl
+          << endl
+          << "/////////////////////////////////////////////////////////////" << endl
+          << endl;
+     char doContinue;
+     do
+     {
+          //////////////////////////////////////////////////////////////////////////////////
+
+          // ask user whether they have files to read from
+          cout << "Do you have a file to read from? (Y | N) ";
+          cin >> userDecision;
+
+          // if they answer no
+          if (userDecision == 'N' || userDecision == 'n')
+          {
+               // ask if they would like to generate those
+               cout << "Would you like to create a binary file with random numbers? (Y | N) ";
+               cin >> userDecision;
+
+               // if they answer no
+               if (userDecision == 'N' || userDecision == 'n')
+                    // stop program execution
+                    return 0;
+
+               // repeat for two files
+               for (int i = 0; i < 2; i++)
+               {
+                    // output file number
+                    cout << endl
+                         << "Generating file " << i + 1 << endl;
+
+                    // declare local variables
+                    numberOfElements = 0, numberOfLetters = 0;
+
+                    // ask user how many elements to generate
+                    cout << "How many elements to generate? ";
+                    cin >> numberOfElements;
+                    // ask user how many letters the file name will consist of
+                    cout << "Number of letters in a file name: ";
+                    cin >> numberOfLetters;
+
+                    // call function to generate random file name with given number of letters and assign the result to file name holder
+                    fileNameHolder = randString(numberOfLetters);
+                    // if we are generating file one
+                    if (i == 0)
+                         // assign file name holder to file one name
+                         fileOne = fileNameHolder;
+                    else
+                         // else assign file name holder to file two name
+                         fileTwo = fileNameHolder;
+
+                    // generate the file itself by calling the corresponding function
+                    generateBinaryFile(numberOfElements, fileNameHolder);
+               }
+          }
+          // if they answer !no
+          else
+          {
+               // repeat two times for two files
+               cout << endl;
+               for (int i = 0; i < 2; i++)
+               {
+                    // output file number
+                    cout << i + 1 << ". ";
+                    // file name holder is inputted by user using a corresponding function
+                    fileNameHolder = fileNameInput();
+
+                    // if we are generating file one
+                    if (i == 0)
+                         // assign file name holder to file name one
+                         fileOne = fileNameHolder;
+                    else
+                         // else assign file name holder to file name two
+                         fileTwo = fileNameHolder;
+                    cout << endl;
+               }
+          }
+
+          // regardless of choice, repeat twice
+          for (int i = 0; i < 2; i++)
+          {
+               // if we are working with file one, then count the number of lines in it
+               if (i == 0)
+                    lineCountVec[i] = countLines(fileOne);
+               else
+                    // else count number of lines in file two
+                    lineCountVec[i] = countLines(fileTwo);
+
+               // determine which one has less lines and assign it to number of lines that the resulting file will have
+               if (lineCountVec[0] < lineCountVec[1])
+                    numberOfElements = lineCountVec[0];
+               else
+                    numberOfElements = lineCountVec[1];
+          }
+
+          // generate the name of resulting file using a random letters count
+          fileResult = randString(numberOfLetters);
+          // compare those two files using a corresponding function
+          filesCompare(fileOne, fileTwo, fileResult, numberOfElements);
+          fstream resFile(fileResult.c_str(), ios::binary | ios::in);
+
+          isReadable(fileResult);
+
+          //////////////////////////////////////////////////////////////////////////////////
+          cout << endl
+               << endl
+               << "/////////////////////////////////////////////////////////////" << endl
+               << endl
+               << "Would you like to continue program execution? (Y | N): ";
+          cin >> doContinue;
+          if (doContinue == 'N' || doContinue == 'n')
+          {
+               cout << endl
+                    << "Thanks for using this program." << endl
+                    << endl
+                    << "/////////////////////////////////////////////////////////////" << endl
+                    << endl;
+               break;
+          }
+          else
+          {
+               cout << endl
+                    << "/////////////////////////////////////////////////////////////" << endl
+                    << endl;
+               continue;
+          }
+     } while (doContinue = 'Y' || doContinue == 'y');
+     return 0;
+}
+
 // create a function that will take file name from user
 string fileNameInput()
 {
@@ -177,149 +332,4 @@ void isReadable(const string &fileName)
      else
           // if not, output failure message
           cout << "ERROR: Could not open file " << fileName;
-}
-
-// declare main function
-int main()
-{
-     // declare local variables
-     srand(time(NULL));
-     char userDecision;
-     string fileNameHolder, fileOne, fileTwo, fileResult;
-     int numberOfElements, numberOfLetters = rand() % 10;
-     vector<int> lineCountVec(2);
-
-     // project intro
-     cout << endl
-          << "/////////////////////////////////////////////////////////////" << endl
-          << endl
-          << "Welcome! This program will manipulate binary files." << endl
-          << endl
-          << "/////////////////////////////////////////////////////////////" << endl
-          << endl;
-     char doContinue;
-     do
-     {
-          //////////////////////////////////////////////////////////////////////////////////
-
-          // ask user whether they have files to read from
-          cout << "Do you have a file to read from? (Y | N) ";
-          cin >> userDecision;
-
-          // if they answer no
-          if (userDecision == 'N' || userDecision == 'n')
-          {
-               // ask if they would like to generate those
-               cout << "Would you like to create a binary file with random numbers? (Y | N) ";
-               cin >> userDecision;
-
-               // if they answer no
-               if (userDecision == 'N' || userDecision == 'n')
-                    // stop program execution
-                    return 0;
-
-               // repeat for two files
-               for (int i = 0; i < 2; i++)
-               {
-                    // output file number
-                    cout << endl
-                         << "Generating file " << i + 1 << endl;
-
-                    // declare local variables
-                    numberOfElements = 0, numberOfLetters = 0;
-
-                    // ask user how many elements to generate
-                    cout << "How many elements to generate? ";
-                    cin >> numberOfElements;
-                    // ask user how many letters the file name will consist of
-                    cout << "Number of letters in a file name: ";
-                    cin >> numberOfLetters;
-
-                    // call function to generate random file name with given number of letters and assign the result to file name holder
-                    fileNameHolder = randString(numberOfLetters);
-                    // if we are generating file one
-                    if (i == 0)
-                         // assign file name holder to file one name
-                         fileOne = fileNameHolder;
-                    else
-                         // else assign file name holder to file two name
-                         fileTwo = fileNameHolder;
-
-                    // generate the file itself by calling the corresponding function
-                    generateBinaryFile(numberOfElements, fileNameHolder);
-               }
-          }
-          // if they answer !no
-          else
-          {
-               // repeat two times for two files
-               cout << endl;
-               for (int i = 0; i < 2; i++)
-               {
-                    // output file number
-                    cout << i + 1 << ". ";
-                    // file name holder is inputted by user using a corresponding function
-                    fileNameHolder = fileNameInput();
-
-                    // if we are generating file one
-                    if (i == 0)
-                         // assign file name holder to file name one
-                         fileOne = fileNameHolder;
-                    else
-                         // else assign file name holder to file name two
-                         fileTwo = fileNameHolder;
-                    cout << endl;
-               }
-          }
-
-          // regardless of choice, repeat twice
-          for (int i = 0; i < 2; i++)
-          {
-               // if we are working with file one, then count the number of lines in it
-               if (i == 0)
-                    lineCountVec[i] = countLines(fileOne);
-               else
-                    // else count number of lines in file two
-                    lineCountVec[i] = countLines(fileTwo);
-
-               // determine which one has less lines and assign it to number of lines that the resulting file will have
-               if (lineCountVec[0] < lineCountVec[1])
-                    numberOfElements = lineCountVec[0];
-               else
-                    numberOfElements = lineCountVec[1];
-          }
-
-          // generate the name of resulting file using a random letters count
-          fileResult = randString(numberOfLetters);
-          // compare those two files using a corresponding function
-          filesCompare(fileOne, fileTwo, fileResult, numberOfElements);
-          fstream resFile(fileResult.c_str(), ios::binary | ios::in);
-
-          isReadable(fileResult);
-
-          //////////////////////////////////////////////////////////////////////////////////
-          cout << endl
-               << endl
-               << "/////////////////////////////////////////////////////////////" << endl
-               << endl
-               << "Would you like to continue program execution? (Y | N): ";
-          cin >> doContinue;
-          if (doContinue == 'N' || doContinue == 'n')
-          {
-               cout << endl
-                    << "Thanks for using this program." << endl
-                    << endl
-                    << "/////////////////////////////////////////////////////////////" << endl
-                    << endl;
-               break;
-          }
-          else
-          {
-               cout << endl
-                    << "/////////////////////////////////////////////////////////////" << endl
-                    << endl;
-               continue;
-          }
-     } while (doContinue = 'Y' || doContinue == 'y');
-     return 0;
 }

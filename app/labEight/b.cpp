@@ -2,6 +2,68 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// function prototypes //
+string fileNameInput();
+string randString(int);
+int countLines(const string &);
+void isReadable(const string &);
+int stringFinder(const string &, const string &);
+/////////////////////////
+
+// declare main function
+int main()
+{
+    // declare local variables //
+    srand(time(NULL));
+    char userDecision;
+    /////////////////////////////
+
+    // project intro
+    cout << endl
+         << "/////////////////////////////////////////////////////////////" << endl
+         << endl
+         << "Welcome! This program will look for string in a file." << endl
+         << endl
+         << "/////////////////////////////////////////////////////////////" << endl
+         << endl;
+    char doContinue;
+    do
+    {
+        //////////////////////////////////////////////////////////////////////////////////
+        string fileName = fileNameInput();
+
+        string input;
+        cout << "Input a text you want to look for: ";
+        getline(cin, input);
+
+        stringFinder(fileName, input);
+        //////////////////////////////////////////////////////////////////////////////////
+        cout << endl
+             << endl
+             << "/////////////////////////////////////////////////////////////" << endl
+             << endl
+             << "Would you like to continue program execution? (Y | N): ";
+        cin >> doContinue;
+        if (doContinue == 'N' || doContinue == 'n')
+        {
+            cout << endl
+                 << "Thanks for using this program." << endl
+                 << endl
+                 << "/////////////////////////////////////////////////////////////" << endl
+                 << endl;
+            break;
+        }
+        else
+        {
+            cout << endl
+                 << "/////////////////////////////////////////////////////////////" << endl
+                 << endl;
+            continue;
+        }
+    } while (doContinue = 'Y' || doContinue == 'y');
+    return 0;
+}
+
 // create a function that will take file name from user
 string fileNameInput()
 {
@@ -128,57 +190,4 @@ int stringFinder(const string &file, const string &in)
     }
 
     return res;
-}
-
-// declare main function
-int main()
-{
-    // declare local variables
-    srand(time(NULL));
-    char userDecision;
-
-    // project intro
-    cout << endl
-         << "/////////////////////////////////////////////////////////////" << endl
-         << endl
-         << "Welcome! This program will look for string in a file." << endl
-         << endl
-         << "/////////////////////////////////////////////////////////////" << endl
-         << endl;
-    char doContinue;
-    do
-    {
-        //////////////////////////////////////////////////////////////////////////////////
-        string fileName = fileNameInput();
-
-        string input;
-        cout << "Input a text you want to look for: ";
-        getline(cin, input);
-
-        stringFinder(fileName, input);
-        //////////////////////////////////////////////////////////////////////////////////
-        cout << endl
-             << endl
-             << "/////////////////////////////////////////////////////////////" << endl
-             << endl
-             << "Would you like to continue program execution? (Y | N): ";
-        cin >> doContinue;
-        if (doContinue == 'N' || doContinue == 'n')
-        {
-            cout << endl
-                 << "Thanks for using this program." << endl
-                 << endl
-                 << "/////////////////////////////////////////////////////////////" << endl
-                 << endl;
-            break;
-        }
-        else
-        {
-            cout << endl
-                 << "/////////////////////////////////////////////////////////////" << endl
-                 << endl;
-            continue;
-        }
-    } while (doContinue = 'Y' || doContinue == 'y');
-    return 0;
 }
