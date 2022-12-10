@@ -19,6 +19,7 @@ void decimalToBin(int n)
     // output the result
     for (int s = i - 1; s >= 0; s--)
         cout << binArr[s];
+    cout << endl;
 }
 
 // declare main function
@@ -34,6 +35,7 @@ int main()
     cout << "Enter a number you want to convert to binary: ";
     cin >> n;
     // call a function to convert the number to binary
+    cout << "The " << n << " in binary is ";
     decimalToBin(n);
 
     cout << endl

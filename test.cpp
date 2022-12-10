@@ -1,41 +1,80 @@
+// include necessary libraries
 #include <bits/stdc++.h>
 using namespace std;
 
-int findMinFromArr(int n, vector<int> &v)
+// create a function that will generate random string
+string randString(int ch)
 {
-     if (n == 1)
-          return v[0];
-     else
-          return min(v[n - 1], findMinFromArr(n - 1, v));
+     // declare max array length
+     const int maxArrSize = 25;
+     // declare possible characters
+     char possibleCharactersArr[maxArrSize] = {'a', 'b', 'c', 'd', 'e', 'f', 'g',
+                                               'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                                               'o', 'p', 'q', 'r', 's', 't', 'u',
+                                               'v', 'w', 'x', 'y'};
+     // declare result string
+     string result = "";
+     // create for loop
+     for (int i = 0; i < ch; i++)
+          // add random character from an earlier declared set to the string
+          result += possibleCharactersArr[rand() % maxArrSize];
+
+     // return result
+     return result;
 }
 
+// declare main function
 int main()
 {
      srand(time(NULL));
+     char doContinue;
+
+     // project intro
      cout << endl
           << "/////////////////////////////////////////////////////////////" << endl
+          << endl
+          << "Welcome! This program will " << endl
+          << endl
+          << "/////////////////////////////////////////////////////////////" << endl
           << endl;
-     ///////////////////////////////////////////////////////////////////////////////
-     int n;
-     cout << "Enter arr size: ";
-     cin >> n;
-     vector<int> arr(n);
-     cout << endl
-          << "Your array is " << endl;
-     for (int i = 0; i < n; i++)
+     do
      {
-          arr[i] = rand() % 100 + 10;
-          if (i == 0)
-               cout << arr[i];
+          //////////////////////////////////////////////////////////////////////////////////
+          int t;
+          cout << "Execute for: ";
+          cin >> t;
+          while (t--)
+          {
+               int holder = rand() % 100;
+               string temp = randString(holder);
+               cout << temp << endl
+                    << endl;
+          }
+          //////////////////////////////////////////////////////////////////////////////////
+          cout << endl
+               << endl
+               << "/////////////////////////////////////////////////////////////" << endl
+               << endl
+               << "Would you like to continue program execution? (Y | N): ";
+          cin >> doContinue;
+          if (doContinue == 'N' || doContinue == 'n')
+          {
+               cout << endl
+                    << "Thanks for using this program." << endl
+                    << endl
+                    << "/////////////////////////////////////////////////////////////" << endl
+                    << endl;
+               break;
+          }
           else
-               cout << setw(4) << arr[i];
-     }
-     cout << endl;
-     cout << endl
-          << "Minimal element from array is " << findMinFromArr(n, arr) << endl;
-     ///////////////////////////////////////////////////////////////////////////////
-     cout << endl
-          << "/////////////////////////////////////////////////////////////" << endl
-          << endl;
+          {
+               cout << endl
+                    << "/////////////////////////////////////////////////////////////" << endl
+                    << endl;
+               continue;
+          }
+     } while (doContinue = 'Y' || doContinue == 'y');
+
+     // end main function
      return 0;
 }

@@ -102,25 +102,29 @@ int main()
     uint64 t;
     cin >> t;
     cin.ignore();
-    for (int i = 0; i < t; ++i)
+    while (t--)
     {
         /////////////////////////////////////////////////////////////
-        int c, x;
-        cin >> c;
-        for (long double j = 1; j <= c; ++j)
+        int n;
+        cin >> n;
+        vector<int> x(n);
+        for (int j = 0; j < n; j++)
         {
-            if ((j * j + pow(j, 0.5)) == c)
-            {
-                cout << setprecision(6);
-                cout << fixed << j << endl;
-                break;
-            }
-            else
-            {
-                cout << "-1" << endl;
-                break;
-            }
+            x[j] = rand() % n;
+            cout << x[j] << " ";
         }
+        cout << endl
+             << "reversing array..." << endl;
+        vector<int> reversed(n);
+        int j = 0;
+        for (int k = n - 1; k >= 0; k--)
+        {
+            reversed[j] = x[k];
+            cout << reversed[j] << " ";
+            j++;
+        }
+        cout << endl
+             << endl;
         /////////////////////////////////////////////////////////////
     }
     return 0;
