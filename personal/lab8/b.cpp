@@ -4,10 +4,8 @@ using namespace std;
 
 // function prototypes //
 string fileNameInput();
-string randString(int);
-int countLines(const string &);
-void isReadable(const string &);
-int stringFinder(const string &, const string &);
+bool isReadable(const string &);
+void cStringFinder(const string &, const string &);
 /////////////////////////
 
 // declare main function
@@ -16,6 +14,7 @@ int main()
     // declare local variables //
     srand(time(NULL));
     char userDecision;
+    int randomNumOfLetters = rand() % 10;
     /////////////////////////////
 
     // project intro
@@ -30,16 +29,22 @@ int main()
     do
     {
         //////////////////////////////////////////////////////////////////////////////////
-        string fileName = fileNameInput();
+        string inputFileName = fileNameInput();
 
+        if (!isReadable(inputFileName))
+        {
+            cout << "ERROR: Could not read from " << inputFileName << endl;
+            break; // break out of loop
+        }
+
+        cout << endl;
         string input;
         cout << "Input a text you want to look for: ";
         getline(cin, input);
 
-        stringFinder(fileName, input);
+        cStringFinder(input, inputFileName);
         //////////////////////////////////////////////////////////////////////////////////
         cout << endl
-             << endl
              << "/////////////////////////////////////////////////////////////" << endl
              << endl
              << "Would you like to continue program execution? (Y | N): ";
@@ -62,6 +67,56 @@ int main()
         }
     } while (doContinue = 'Y' || doContinue == 'y');
     return 0;
+}
+
+void cStringFinder(const string &in, const string &iFileName)
+{
+    // declare local variables
+    const int MAX_LINE = 2048; // max number of characters in line
+    char bufLine[MAX_LINE];    // buffer to hold current line
+    vector<string> lines;      // vector to store all the lines
+    int foundOnLine = 0;       // integer to hold line where given substring was found
+    FILE *iFile;               // file itself
+
+    // open given file for reading
+    iFile = fopen(iFileName.c_str(), "r");
+
+    // add all file lines to string vector using fgets function
+    while (fgets(bufLine, MAX_LINE, iFile))
+        lines.push_back(bufLine);
+    fclose(iFile); // close file
+    // number of lines equals to size of string vector
+    int numOfLines = lines.size();
+
+    // create for loop to look for string at each line
+    for (int i = 0; i < numOfLines; i++)
+    {
+        // declare variable that will look for in substring in each file line
+        size_t find = lines[i].find(in);
+        // if found not on end of line
+        if (find != string::npos)
+        {
+            // assign iterator value to variable, declared before
+            foundOnLine = i + 1;
+            break; // break out of loop
+        }
+    }
+
+    cout << endl;
+    // if string was found
+    if (!(foundOnLine == 0))
+    {
+        // output success message
+        cout << "\"" << in << "\" was found on line " << foundOnLine << "." << endl;
+        return; // end function
+    }
+    // if string was not found
+    else
+    {
+        // output error message
+        cout << "\"" << in << "\" was never found in " << iFileName << "." << endl;
+        return; // end function
+    }
 }
 
 // create a function that will take file name from user
@@ -122,72 +177,20 @@ string fileNameInput()
     return input;
 }
 
-// create a function that will generate random string
-string randString(int ch)
-{
-    // declare max array length
-    const int maxArrSize = 25;
-    // declare possible characters
-    char possibleCharactersArr[maxArrSize] = {'a', 'b', 'c', 'd', 'e', 'f', 'g',
-                                              'h', 'i', 'j', 'k', 'l', 'm', 'n',
-                                              'o', 'p', 'q', 'r', 's', 't', 'u',
-                                              'v', 'w', 'x', 'y'};
-    // declare result string
-    string result = "";
-    // create for loop
-    for (int i = 0; i < ch; i++)
-        // add random character from an earlier declared set to the string
-        result += possibleCharactersArr[rand() % maxArrSize];
-
-    // add file extension to result
-    result += ".bin";
-    // return result
-    return result;
-}
-
-// declare function that will count lines in file
-int countLines(const string &a)
-{
-    // declare local variables
-    int count = 0;
-    string line;
-    ifstream aFile(a.c_str(), ios::in | ios::binary);
-
-    // while we can get a line from the file
-    while (getline(aFile, line))
-        // increment count
-        count++;
-    // return number of lines
-    return count; // end function
-}
-
 // declare function to check whether a file is readable
-void isReadable(const string &fileName)
+bool isReadable(const string &fileName)
 {
     // declare local variables for reading a file
-    fstream file(fileName, ios::in | ios::out);
+    fstream file(fileName.c_str(), ios::in | ios::out);
+    bool ans;
 
     // if result file is successfully opened
     if (file.good())
-        // output successs message
-        cout << fileName << " is working properly.";
+        // set answer to true
+        ans = true;
     else
-        // if not, output failure message
-        cout << "ERROR: Could not open file " << fileName;
-}
-
-int stringFinder(const string &file, const string &in)
-{
-    vector<int> foundLines;
-    fstream aFile(file.c_str(), ios::in);
-    int res;
-
-    string line, result;
-    int linesCount = 0;
-    while (getline(aFile, line))
-    {
-        result += line;
-    }
-
-    return res;
+        // set answer to false
+        ans = false;
+    // return answer
+    return ans;
 }

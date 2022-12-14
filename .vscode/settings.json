@@ -49,6 +49,7 @@
     "typeinfo": "cpp",
     "cstring": "cpp",
     "fstream": "cpp",
-    "condition_variable": "cpp"
+    "condition_variable": "cpp",
+    "complex": "cpp"
   }
 }

@@ -5,9 +5,9 @@ using namespace std;
 // function prototypes //
 string fileNameInput();
 void generateRandFile(int, const string &);
-int countLines(const string &);
 string randString(int);
-void resFileGenerator();
+bool isReadable(const string &);
+void resFileGenerator(const string &, const string &);
 /////////////////////////
 
 // declare main function
@@ -17,14 +17,14 @@ int main()
     srand(time(NULL));
     char userDecision;
     string inFileName, outFileName;
-    int numOfLets = rand() % (10 - 2 + 1) + 2;
+    int numOfLets = rand() % 10 + 2;
     /////////////////////////////
 
     // project intro
     cout << endl
          << "/////////////////////////////////////////////////////////////" << endl
          << endl
-         << "Welcome! This program will manipulate binary files." << endl
+         << "Welcome! This program will sort out numbers in file." << endl
          << endl
          << "/////////////////////////////////////////////////////////////" << endl
          << endl;
@@ -32,18 +32,26 @@ int main()
     do
     {
         //////////////////////////////////////////////////////////////////////////////////
+
+        // ask user if they have a file to read from
         cout << "Do you have a file to read from? (Y | N): ";
         cin >> userDecision;
         cin.ignore();
 
+        // if they don't have a file
         if (userDecision == 'N' || userDecision == 'n')
         {
+            // ask if they would want to generate it
+            cout << endl;
             cout << "Would you like to generate one? (Y | N): ";
             cin >> userDecision;
+            cout << endl;
             cin.ignore();
 
+            // if the answer is no
             if (userDecision == 'N' || userDecision == 'n')
             {
+                // end program
                 cout << endl
                      << "Thanks for using this program." << endl
                      << endl
@@ -52,16 +60,53 @@ int main()
                 break;
             }
 
+            // ask user how many letters to put in file name
             cout << "How many letters do you want your file name to be?: ";
             cin >> numOfLets;
             int numOfNums;
-            cout << "How many numbers to generate? (min 4): ";
-            cin >> numOfNums;
+            // create do while loop
+            do
+            {
+                // ask user how many elements a file will contain
+                cout << "How many numbers to generate? (4+): ";
+                cin >> numOfNums;
+                cin.ignore();
 
+                // if the number is less than 4
+                if (numOfNums < 4)
+                {
+                    // ask to enter again
+                    cout << endl
+                         << "Please enter a number that is or more than 4." << endl;
+                    continue; // continue to next iteration
+                }
+            } while (numOfNums < 4); // do until they don't enter number more than 4
+
+            // generate the input file name with given amount of letters
             inFileName = randString(numOfLets);
+            // call a function that will generate the input file
             generateRandFile(numOfNums, inFileName);
-            isReadable(inFileName);
+            // check if the file is readable by calling a corresponding function
+            if (!isReadable(inFileName))
+                // output error if the file is not readable
+                cout << "There were some problems generating the file " << inFileName << "." << endl;
+            else
+                // output success message if the file is readable
+                cout << "The file " << inFileName << " was successfully generated." << endl;
         }
+        // if they do haev a file
+        else
+        {
+            // ask for a file name calling a corresponding function
+            cout << endl;
+            inFileName = fileNameInput();
+        }
+
+        // generate output file name calling a corresponding function
+        outFileName = randString(numOfLets);
+        // call a function to create an output file
+        resFileGenerator(inFileName, outFileName);
+
         //////////////////////////////////////////////////////////////////////////////////
         cout << endl
              << endl
@@ -205,46 +250,104 @@ string randString(int ch)
     return result;
 }
 
-// declare function that will count lines in file
-int countLines(const string &a)
-{
-    // declare local variables
-    int count = 0;
-    string line;
-    ifstream aFile(a.c_str(), ios::in | ios::binary);
-
-    // while we can get a line from the file
-    while (getline(aFile, line))
-        // increment count
-        count++;
-    // return number of lines
-    return count; // end function
-}
-
 // declare function to check whether a file is readable
-void isReadable(const string &fileName)
+bool isReadable(const string &fileName)
 {
     // declare local variables for reading a file
-    fstream file(fileName, ios::in | ios::out);
+    fstream file(fileName.c_str(), ios::in | ios::out);
+    bool ans;
 
     // if result file is successfully opened
     if (file.good())
-        // output successs message
-        cout << fileName << " is working properly.";
+        // set answer to true
+        ans = true;
     else
-        // if not, output failure message
-        cout << "ERROR: Could not open file " << fileName;
+        // set answer to false
+        ans = false;
+    // return answer
+    return ans;
 }
 
-void resFileGenerator()
+void resFileGenerator(const string &fileName, const string &resFile)
 {
-    // variables
+    // start function
+    cout << endl;
+    // declare local variables
+    vector<int> negative;
+    vector<int> positive;
+    ifstream inFile(fileName.c_str(), ios::in);
+    ofstream outFile(resFile.c_str(), ios::out);
 
-    // two vectors - one for negative and one for positive
+    // declare variables for reading lines from input file
+    string line;
+    int n = 0;
+    int pos = 0, neg = 0;
+    // while we can read lines from input file
+    while (getline(inFile, line))
+    {
+        // if given line, converted to integer, is less than 0
+        if (stoi(line) < 0)
+        {
+            // add it to negative array
+            negative.push_back(stoi(line));
 
-    // for loop through lines
+            // add increments
+            n++;
+            neg++;
+        }
+        // if given line, converted to integer, is greater than 0
+        else
+        {
+            // add it to positive array
+            positive.push_back(stoi(line));
 
-    // if found < 0, pushback to negative, else pushback to positive
+            // add increments
+            n++;
+            pos++;
+        }
+    }
+    // check if file is not readable using a corresponding function
+    if (!isReadable(fileName))
+        // output error message if not readable
+        cout << "There were some problems reading " << fileName << endl;
+    else
+        // output success message if readable
+        cout << "Reading from " << fileName << " ended successfully." << endl;
 
-    // output all to result file
+    // determine final counter by selecting the lesser counter
+    int until = 0;
+    if (pos > neg)
+        until = neg;
+    else
+        until = pos;
+    // if counter is not even
+    if (!(until % 2 == 0))
+        // subtract remainder from division by two from it
+        until -= (until % 2);
+
+    // create for loop to write the results to the output file
+    for (int i = 0; i < until; i += 2)
+    {
+        // determine poistive pair
+        int pos1 = positive[i];
+        int pos2 = positive[i + 1];
+        // write it to the output file
+        outFile << pos1 << " " << pos2 << endl;
+
+        // determine negative pair
+        int neg1 = negative[i];
+        int neg2 = negative[i + 1];
+        // write it to the output file
+        outFile << neg1 << " " << neg2 << endl;
+    }
+
+    // check if output file is readable using a corresponding function
+    if (!isReadable(resFile))
+        // output error if not
+        cout << "There were some problems writing to " << resFile;
+    else
+        // output success if is
+        cout << "Writing to " << resFile << " ended successfully.";
+    // end function
+    return;
 }

@@ -270,6 +270,37 @@ string randString(int ch)
      return result;
 }
 
+// declare function that will count lines in file
+int countLines(const string &a)
+{
+     // declare local variables
+     int count = 0;
+     string line;
+     ifstream aFile(a.c_str(), ios::in | ios::binary);
+
+     // while we can get a line from the file
+     while (getline(aFile, line))
+          // increment count
+          count++;
+     // return number of lines
+     return count; // end function
+}
+
+// declare function to check whether a file is readable
+void isReadable(const string &fileName)
+{
+     // declare local variables for reading a file
+     fstream file(fileName, ios::in | ios::out);
+
+     // if result file is successfully opened
+     if (file.good())
+          // output successs message
+          cout << fileName << " is working properly.";
+     else
+          // if not, output failure message
+          cout << "ERROR: Could not open file " << fileName;
+}
+
 // create a function for comparing two files and generating the result
 void filesCompare(const string &a, const string &b, const string &r, int n)
 {
@@ -301,35 +332,4 @@ void filesCompare(const string &a, const string &b, const string &r, int n)
 
      // end function
      return;
-}
-
-// declare function that will count lines in file
-int countLines(const string &a)
-{
-     // declare local variables
-     int count = 0;
-     string line;
-     ifstream aFile(a.c_str(), ios::in | ios::binary);
-
-     // while we can get a line from the file
-     while (getline(aFile, line))
-          // increment count
-          count++;
-     // return number of lines
-     return count; // end function
-}
-
-// declare function to check whether a file is readable
-void isReadable(const string &fileName)
-{
-     // declare local variables for reading a file
-     fstream file(fileName, ios::in | ios::out);
-
-     // if result file is successfully opened
-     if (file.good())
-          // output successs message
-          cout << fileName << " is working properly.";
-     else
-          // if not, output failure message
-          cout << "ERROR: Could not open file " << fileName;
 }

@@ -25,22 +25,57 @@ void decimalToBin(int n)
 // declare main function
 int main()
 {
+    // declare local variables //
+    srand(time(NULL));
+    char doContinue;
+
+    /////////////////////////////
+
+    // project intro
     cout << endl
          << "/////////////////////////////////////////////////////////////" << endl
-         << endl;
-
-    // declare a local variable for storing the input
-    int n;
-    // ask user to input the number he wants to convert
-    cout << "Enter a number you want to convert to binary: ";
-    cin >> n;
-    // call a function to convert the number to binary
-    cout << "The " << n << " in binary is ";
-    decimalToBin(n);
-
-    cout << endl
+         << endl
+         << "Welcome! This program will convert decimal to binary" << endl
+         << endl
          << "/////////////////////////////////////////////////////////////" << endl
          << endl;
-    //  end main function
+    do
+    {
+        //////////////////////////////////////////////////////////////////////////////////
+        // declare a local variable for storing the input
+        int n;
+        // ask user to input the number he wants to convert
+        cout << "Enter a number you want to convert to binary: ";
+        cin >> n;
+
+        cout << endl;
+        // call a function to convert the number to binary
+        cout << "The " << n << " in binary is ";
+        decimalToBin(n);
+        //////////////////////////////////////////////////////////////////////////////////
+        cout << endl
+             << "/////////////////////////////////////////////////////////////" << endl
+             << endl
+             << "Would you like to continue program execution? (Y | N): ";
+        cin >> doContinue;
+        if (doContinue == 'N' || doContinue == 'n')
+        {
+            cout << endl
+                 << "Thanks for using this program." << endl
+                 << endl
+                 << "/////////////////////////////////////////////////////////////" << endl
+                 << endl;
+            break;
+        }
+        else
+        {
+            cout << endl
+                 << "/////////////////////////////////////////////////////////////" << endl
+                 << endl;
+            continue;
+        }
+    } while (doContinue = 'Y' || doContinue == 'y');
+
+    // end main function
     return 0;
 }
