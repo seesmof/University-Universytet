@@ -308,7 +308,7 @@ void filesCompare(const string &a, const string &b, const string &r, int n)
      fstream rFile(r.c_str(), ios::out | ios::binary);
      ifstream aFile(a.c_str(), ios::in | ios::binary);
      ifstream bFile(b.c_str(), ios::in | ios::binary);
-     string res;
+     int res;
      string lineA, lineB, lineR;
 
      // create a for loop
@@ -321,10 +321,10 @@ void filesCompare(const string &a, const string &b, const string &r, int n)
           // if when converted to int line one > line two
           if (stoi(lineA.c_str()) > stoi(lineB.c_str()))
                // add it to buffer
-               res = lineA;
+               res = stoi(lineA.c_str());
           else
                // else add line two to buffer
-               res = lineB;
+               res = stoi(lineB.c_str());
 
           // output buffer to result file
           rFile << res << endl;

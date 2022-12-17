@@ -279,17 +279,18 @@ void resFileGenerator(const string &fileName, const string &resFile)
     ofstream outFile(resFile.c_str(), ios::out);
 
     // declare variables for reading lines from input file
-    string line;
+    int line;
     int n = 0;
     int pos = 0, neg = 0;
     // while we can read lines from input file
-    while (getline(inFile, line))
+    while (!inFile.eof())
     {
+        inFile >> line;
         // if given line, converted to integer, is less than 0
-        if (stoi(line) < 0)
+        if (line < 0)
         {
             // add it to negative array
-            negative.push_back(stoi(line));
+            negative.push_back(line);
 
             // add increments
             n++;
@@ -299,7 +300,7 @@ void resFileGenerator(const string &fileName, const string &resFile)
         else
         {
             // add it to positive array
-            positive.push_back(stoi(line));
+            positive.push_back(line);
 
             // add increments
             n++;
