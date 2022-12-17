@@ -2,25 +2,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// function prototypes //
+// ~ function prototypes //
 string fileNameInput();
 void generateBinaryFile(int, const string &);
 string randString(int);
 void filesCompare(const string &, const string &, const string &, int);
 int countLines(const string &);
 void isReadable(const string &);
-/////////////////////////
+///////////////////////////
 
 // declare main function
 int main()
 {
-     // declare local variables //
+     // ~ declares local variables //
      srand(time(NULL));
      char userDecision;
      string fileNameHolder, fileOne, fileTwo, fileResult;
      int numberOfElements, numberOfLetters = rand() % 10;
      vector<int> lineCountVec(2);
-     /////////////////////////////
+     ////////////////////////////////
 
      // project intro
      cout << endl
@@ -35,11 +35,11 @@ int main()
      {
           //////////////////////////////////////////////////////////////////////////////////
 
-          // ask user whether they have files to read from
+          // ~ ask user whether they have files to read from
           cout << "Do you have a file to read from? (Y | N) ";
           cin >> userDecision;
 
-          // if they answer no
+          // if answer is no
           if (userDecision == 'N' || userDecision == 'n')
           {
                // ask if they would like to generate those
@@ -157,7 +157,7 @@ int main()
      return 0;
 }
 
-// create a function that will take file name from user
+// Function that will take file name from user
 string fileNameInput()
 {
      // declare local variables
@@ -211,7 +211,7 @@ string fileNameInput()
           }
      }
 
-     // return the result string
+     // /Function
      return input;
 }
 

@@ -6,52 +6,38 @@ using namespace std;
 
 /////////////////////////
 
-// declare main function
+// func main start
 int main()
 {
      // declare local variables //
      srand(time(NULL));
      char doContinue;
-
+     int userDecision;
      /////////////////////////////
 
      // project intro
-     cout << endl
-          << "/////////////////////////////////////////////////////////////" << endl
-          << endl
-          << "Welcome! This program will " << endl
-          << endl
-          << "/////////////////////////////////////////////////////////////" << endl
-          << endl;
+     cout << "\n/////////////////////////////////////////////////////////////\n"
+          << "\nWelcome! This program will \n"
+          << "\n/////////////////////////////////////////////////////////////\n\n";
      do
      {
           //////////////////////////////////////////////////////////////////////////////////
 
           //////////////////////////////////////////////////////////////////////////////////
-          cout << endl
-               << endl
-               << "/////////////////////////////////////////////////////////////" << endl
-               << endl
-               << "Would you like to continue program execution? (Y | N): ";
+          cout << "\n/////////////////////////////////////////////////////////////\n"
+               << "\nWould you like to continue program execution? (Y | N): ";
           cin >> doContinue;
-          if (doContinue == 'N' || doContinue == 'n')
+          if (doContinue == 'Y' || doContinue == 'y')
           {
-               cout << endl
-                    << "Thanks for using this program." << endl
-                    << endl
-                    << "/////////////////////////////////////////////////////////////" << endl
-                    << endl;
-               break;
-          }
-          else
-          {
-               cout << endl
-                    << "/////////////////////////////////////////////////////////////" << endl
-                    << endl;
+               cout << "\n/////////////////////////////////////////////////////////////\n\n";
                continue;
           }
+          else
+               break;
      } while (doContinue = 'Y' || doContinue == 'y');
 
-     // end main function
+     // func main end
+     cout << "\nThanks for using this program\n"
+          << "\n/////////////////////////////////////////////////////////////\n\n";
      return 0;
 }
