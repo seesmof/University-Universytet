@@ -3,13 +3,34 @@ using namespace std;
 
 int main()
 {
-    cout << "===============================================" << endl;
-    cout << "         Thank you for your order!" << endl;
-    cout << "===============================================" << endl
-         << endl;
-    cout << "Order Details" << endl
-         << endl;
+    enum shape
+    {
+        Circle,
+        Square,
+        Triangle
+    };
+    shape out;
+    int in;
+    cout << "Enter a shape: ";
+    cin >> in;
+    switch (in)
+    {
+    case 0:
+    {
+        cout << "Circle" << endl;
+        break;
+    }
+    case 1:
+    {
+        cout << "Square" << endl;
+        break;
+    }
+    case 2:
+    {
+        cout << "Triangle" << endl;
+        break;
+    }
+    }
 
-    cout << endl
-         << "===============================================" << endl;
+    return 0;
 }

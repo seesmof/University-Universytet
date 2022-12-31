@@ -50,6 +50,12 @@
     "cstring": "cpp",
     "fstream": "cpp",
     "condition_variable": "cpp",
-    "complex": "cpp"
+    "complex": "cpp",
+    "bitset": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "stacktrace": "cpp",
+    "regex": "cpp",
+    "valarray": "cpp"
   }
 }
