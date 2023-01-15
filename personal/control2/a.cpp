@@ -7,78 +7,14 @@ string getFileName();
 void fillVector(int, int, string, vector<vector<int>> &);
 void fillVector(int, int, vector<vector<int>> &);
 void outputVector(int, int, vector<vector<int>> &);
+void playLive(int, int, vector<vector<int>> &, int, int);
 ostream &BOLD(ostream &);
 ostream &UNBOLD(ostream &);
 ostream &RED(ostream &);
 ostream &UNRED(ostream &);
+ostream &GREEN(ostream &);
+ostream &UNGREEN(ostream &);
 /////////////////////////
-
-void getResult(int n, int m, vector<vector<int>> &a, int x, int y)
-{
-    const int startingPointN = 0, startingPointM = m - 1;
-    x -= 1;
-    y -= 1;
-    int currentPosN = startingPointN, currentPosM = startingPointM;
-
-    do
-    {
-        bool moveLeft = false;
-        int leftI = currentPosN, leftJ = currentPosM - 1;
-        int downI = currentPosN + 1, downJ = currentPosM;
-        int left, down;
-
-        cout << "\nCurrent position is displayed in bold, legal moves are displayed in red\n";
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < m; j++)
-            {
-                if (i == currentPosN && j == currentPosM)
-                    cout << BOLD << a[i][j] << UNBOLD << " ";
-                else if (i == leftI && j == leftJ)
-                {
-                    cout << RED << a[i][j] << UNRED << " ";
-                    left = a[i][j];
-                }
-                else if (i == downI && j == downJ)
-                {
-                    cout << RED << a[i][j] << UNRED << " ";
-                    down = a[i][j];
-                }
-                else
-                    cout << a[i][j] << " ";
-            }
-            cout << endl;
-        }
-        if (left <= down)
-            moveLeft = true;
-        else
-            moveLeft = false;
-
-        if (!moveLeft)
-        {
-            cout << "Your next move should be down\n";
-        }
-        else
-        {
-            cout << "Your next move should be left\n";
-        }
-
-        char move;
-        cout << "\nYour move is (L / D): ";
-        cin >> move;
-
-        if (move == 'l' || move == 'L')
-        {
-            currentPosM -= 1;
-            continue;
-        }
-        else
-        {
-            currentPosN += 1;
-            continue;
-        }
-    } while (currentPosN != y && currentPosM != x);
-}
 
 // func main start
 int main()
@@ -96,6 +32,10 @@ int main()
     do
     {
         //////////////////////////////////////////////////////////////////////////////////
+        string inFileName;
+        int rows, cols;
+        vector<vector<int>> matrixVector;
+
         cout << BOLD << "Would you like to enter field data from file or from command line?\n"
              << UNBOLD;
         cout << "1. Enter from file\n";
@@ -104,9 +44,6 @@ int main()
         cin >> userDecision;
         cout << endl;
 
-        string inFileName;
-        int rows, cols;
-        vector<vector<int>> matrixVector;
         if (userDecision == 1)
         {
             inFileName = getFileName();
@@ -135,11 +72,25 @@ int main()
         cout << "Input: ";
         cin >> userDecision;
 
-        int resX, resY;
-        cout << "\nEnter finish point coordinates (X Y): ";
-        cin >> resX >> resY;
+        int resI, resJ;
+        do
+        {
+            cout << "\nEnter finish point coordinates (X Y): ";
+            cin >> resI >> resJ;
 
-        getResult(rows, cols, matrixVector, resX, resY);
+            if (resI > rows || resJ > cols)
+            {
+                cout << RED << "\nERROR: Such point does not exist. Try again\n"
+                     << UNRED;
+                continue;
+            }
+            else
+                break;
+        } while (resI > rows || resJ > cols);
+        resI -= 1;
+        resJ -= 1;
+
+        playLive(rows, cols, matrixVector, resI, resJ);
         //////////////////////////////////////////////////////////////////////////////////
         cout << "\n/////////////////////////////////////////////////////////////\n"
              << "\nWould you like to continue program execution? (Y | N): ";
@@ -157,6 +108,133 @@ int main()
     cout << "\nThanks for using this program\n"
          << "\n/////////////////////////////////////////////////////////////\n\n";
     return 0;
+}
+
+// for playing the game
+void playLive(int n, int m, vector<vector<int>> &a, int destI, int destJ)
+{
+    const int startingPosI = 0, startingPosJ = m - 1;
+    int currentPosI = startingPosI, currentPosJ = startingPosJ;
+    bool doWin = false;
+    int score = a[currentPosI][currentPosJ];
+
+    cout << "\nNOTE: Current position is displayed in " << BOLD << "bold" << UNBOLD << ", legal moves in " << RED << "red" << UNRED << " and destination in " << GREEN << "green.\n\n"
+         << UNGREEN;
+    cout << "Before we begin, please make an importnat choice\n";
+    char doUseAutopilot;
+    cout << "Would you like to play the game on autopilot? (Y / N): ";
+    cin >> doUseAutopilot;
+    cout << endl;
+    do
+    {
+        char whereMove = 'l';
+        int leftI = currentPosI, leftJ = currentPosJ - 1;
+        int downI = currentPosI + 1, downJ = currentPosJ;
+        int left, down;
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                if (i == currentPosI && j == currentPosJ)
+                    cout << BOLD << a[i][j] << UNBOLD << " ";
+                else if (i == leftI && j == leftJ)
+                {
+                    cout << RED << a[i][j] << UNRED << " ";
+                    left = a[i][j];
+                }
+                else if (i == downI && j == downJ)
+                {
+                    cout << RED << a[i][j] << UNRED << " ";
+                    down = a[i][j];
+                }
+                else if (i == destI && j == destJ)
+                    cout << GREEN << a[i][j] << UNGREEN << " ";
+                else
+                    cout << a[i][j] << " ";
+            }
+            cout << endl;
+        }
+
+        if (currentPosI == destI && currentPosJ == destJ)
+        {
+            doWin = true;
+            cout << BOLD << "\nCongatulations! You won!" << UNBOLD << endl;
+            cout << "Your total score is " << score << endl;
+            break;
+        }
+
+        if (destJ == startingPosJ)
+        {
+            whereMove = 'd';
+        }
+        else if (destI == startingPosI)
+        {
+            whereMove = 'l';
+        }
+        else
+        {
+            if (currentPosJ == destJ)
+                whereMove = 'd';
+            else if (currentPosI == destI)
+                whereMove = 'l';
+            else if (left >= down)
+                whereMove = 'l';
+            else
+                whereMove = 'd';
+        }
+
+        if (doUseAutopilot == 'y' || doUseAutopilot == 'Y')
+        {
+            this_thread::sleep_for(chrono::seconds(2));
+            if (whereMove == 'l' || whereMove == 'L')
+            {
+                cout << "\nYour next move is " << BOLD << "left" << UNBOLD << endl
+                     << endl;
+                score += left;
+                currentPosJ -= 1;
+                continue;
+            }
+            else
+            {
+                cout << "\nYour next move is " << BOLD << "down" << UNBOLD << endl
+                     << endl;
+                score += down;
+                currentPosI += 1;
+                continue;
+            }
+        }
+        else
+        {
+            if (whereMove == 'l' || whereMove == 'L')
+                cout << "\nYour next move should be " << BOLD << "left" << UNBOLD << endl
+                     << endl;
+            else
+                cout << "\nYour next move should be " << BOLD << "down" << UNBOLD << endl
+                     << endl;
+
+            char move;
+            cout << "Your next move is? (L / D): ";
+            cin >> move;
+            cout << endl;
+
+            if (move == 'L' || move == 'l')
+            {
+                score += left;
+                currentPosJ -= 1;
+                continue;
+            }
+            else
+            {
+                score += down;
+                currentPosI += 1;
+                continue;
+            }
+        }
+    } while (!doWin);
+
+    // end function execution
+    return;
 }
 
 // for outputting 2D matrix
@@ -179,7 +257,8 @@ void outputVector(int n, int m, vector<vector<int>> &a)
 // for entering matrix by hand
 void fillVector(int n, int m, vector<vector<int>> &a)
 {
-    int userDecision;
+    int userDecision; // for storing user decision
+    // ask user would they like to generate or enter matrix
     cout << BOLD << "\nWould you like to enter or generate a matrix?\n"
          << UNBOLD;
     cout << "1. Enter matrix by yourself\n";
@@ -189,7 +268,6 @@ void fillVector(int n, int m, vector<vector<int>> &a)
     cout << endl;
 
     int element; // for storing current element
-
     // create loop for iterating over the matrix
     for (int i = 0; i < n; i++)
     {
@@ -322,6 +400,16 @@ ostream &RED(ostream &os)
 
 // to change text back to normal
 ostream &UNRED(ostream &os)
+{
+    return os << "\033[0m";
+}
+
+ostream &GREEN(ostream &os)
+{
+    return os << "\033[1;32m";
+}
+
+ostream &UNGREEN(ostream &os)
 {
     return os << "\033[0m";
 }

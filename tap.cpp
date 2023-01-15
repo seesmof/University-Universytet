@@ -1,60 +1,67 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
-// Function to find the maximum points from given matrix
-int maxPoints(vector<vector<int>> matrix, int row, int col)
+const int dx[] = {1, 0, -1, 0}, dy[] = {0, 1, 0, -1}; // possible movements in x and y directions
+
+vector<vector<int>> shortestPath(vector<vector<int>> &grid, int startX, int startY, int endX, int endY)
 {
-    // Base case: If the starting point is the finish point, return its value
-    if (row == 0 && col == 0)
-        return matrix[row][col];
-
-    // If the starting point is not the finish point, then recursively calculate the maximum points from each direction (left and down) and return the maximum of them.
-    if (row > 0 && col > 0)
+    int n = grid.size(), m = grid[0].size();
+    vector<vector<int>> dist(n, vector<int>(m, -1)); // initialize distance to -1
+    queue<pair<int, int>> q;
+    dist[startX][startY] = 0;
+    q.push({startX, startY});
+    while (!q.empty())
     {
-        int left = maxPoints(matrix, row - 1, col); // Maximum points from left direction
-        int down = maxPoints(matrix, row, col - 1); // Maximum points from down direction
-
-        return max(left + matrix[row][col], down + matrix[row][col]); // Return maximum of both directions.
+        auto [x, y] = q.front();
+        q.pop();
+        for (int i = 0; i < 4; i++)
+        {
+            int a = x + dx[i], b = y + dy[i];
+            if (a >= 0 && a < n && b >= 0 && b < m && grid[a][b] == 0 && dist[a][b] == -1)
+            {
+                dist[a][b] = dist[x][y] + 1;
+                q.push({a, b});
+            }
+        }
     }
-    else if (row > 0)
-    { // If only left direction is available.
-
-        return maxPoints(matrix, row - 1, col) + matrix[row][col];
-    }
-    else if (col > 0)
-    { // If only down direction is available.
-
-        return maxPoints(matrix, row, col - 1) + matrix[row][col];
-    }
-    else
-    { // No direction is available.
-
-        return 0;
-    }
+    return dist;
 }
 
-// Driver code to test above function.
 int main()
 {
-    // 3x3 Matrix with points in each cell.
-    vector<vector<int>> matrix;
-    for (int i = 0; i < 3; i++)
+    srand((unsigned)time(NULL));
+    int i, j;
+    cout << "Enter size of grid (N M): ";
+    cin >> i >> j;
+    vector<vector<int>> grid;
+
+    cout << "\nYour initial matrix: \n";
+    for (int k = 0; k < i; k++)
     {
         vector<int> row;
-        for (int j = 0; j < 3; j++)
+        for (int m = 0; m < j; m++)
         {
             int element = rand() % 10;
             row.push_back(element);
             cout << element << " ";
         }
-        matrix.push_back(row);
+        grid.push_back(row);
         cout << endl;
     }
 
-    int row, col;
-    cout << "\nEnter finish point (Row Col): ";
-    cin >> row >> col;
-    cout << "Maximum Points: " << maxPoints(matrix, row, col);
-    return 0;
+    int sI = 0, sJ = j - 1;
+    int eI, eJ;
+    cout << "Enter ending point coordinates (Y X): ";
+    cin >> eI >> eJ;
+    vector<vector<int>> res = shortestPath(grid, 0, 0, eJ, eI);
+
+    cout << "\nResulting matrix: \n";
+    for (int k = 0; k < i; k++)
+    {
+        for (int m = 0; m < j; m++)
+        {
+            cout << res[k][m] << " ";
+        }
+        cout << endl;
+    }
 }
