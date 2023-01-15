@@ -2,6 +2,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+class Email
+{
+private:
+    string senderEmail;      // Sender's email address
+    string recipientEmail;   // Recipient's email address
+    time_t dateTimeSent;     // Date and time of sending
+    string messageHeader;    // Message header (subject, etc.)
+    int messageSize;         // Message size in bytes
+    string messageShortText; // Short text of the message (first few lines)
+    bool statusRead;         // Status - read or not
+
+public:
+    Email(string senderEmail, string recipientEmail, time_t dateTimeSent, string messageHeader, int messageSize, string messageShortText);
+
+    void setSenderEmail(string senderEmail);           // Set sender's email address
+    void setRecipientEmail(string recipientEmail);     // Set recipient's email address
+    void setDateTimeSent(time_t dateTimeSent);         // Set date and time of sending
+    void setMessageHeader(string messageHeader);       // Set message header (subject, etc.)
+    void setMessageSize(int messageSize);              // Set message size in bytes
+    void setMessageShortText(string messageShortText); // Set short text of the message (first few lines)
+
+    string getSenderEmail();      // Get sender's email address
+    string getRecipientEmail();   // Get recipient's email address
+    time_t getDateTimeSent();     // Get date and time of sending
+    string getMessageHeader();    // Get message header (subject, etc.)
+    int getMessageSize();         // Get message size in bytes
+    string getMessageShortText(); // Get short text of the message (first few lines)
+
+    bool isRead(); // Check if the status is read or not
+
+    void sendMessage(); // Send the formatted email.
+};
+
 struct letterData
 {
     string senderEmail;
