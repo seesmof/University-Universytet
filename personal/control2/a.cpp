@@ -4,10 +4,12 @@ using namespace std;
 
 // function prototypes //
 string getFileName();
+string generateRandomString(int);
 void fillVector(int, int, string, vector<vector<int>> &);
 void fillVector(int, int, vector<vector<int>> &);
 void outputVector(int, int, vector<vector<int>> &);
-void playLive(int, int, vector<vector<int>> &, int, int);
+void getGameResults(int, int, vector<vector<int>> &, int, int);
+void getGameResults(int, int, vector<vector<int>> &, int, int, const string &);
 ostream &BOLD(ostream &);
 ostream &UNBOLD(ostream &);
 ostream &RED(ostream &);
@@ -16,6 +18,12 @@ ostream &GREEN(ostream &);
 ostream &UNGREEN(ostream &);
 /////////////////////////
 
+// Declare struct with coordinates for easier access
+struct Coordinate
+{
+    int I, J;
+};
+
 // func main start
 int main()
 {
@@ -23,6 +31,9 @@ int main()
     srand(time(NULL));
     char doContinue;
     int userDecision;
+    string inFileName, outFileName;
+    Coordinate matrixSize;
+    vector<vector<int>> matrixVector;
     /////////////////////////////
 
     // project intro
@@ -32,65 +43,131 @@ int main()
     do
     {
         //////////////////////////////////////////////////////////////////////////////////
-        string inFileName;
-        int rows, cols;
-        vector<vector<int>> matrixVector;
 
+        // Ask user how they want to get the matrix to console
         cout << BOLD << "Would you like to enter field data from file or from command line?\n"
              << UNBOLD;
         cout << "1. Enter from file\n";
-        cout << "2. Enter from command line\n";
-        cout << "Input: ";
+        cout << "2. Get from command line\n";
+        cout << "3. Exit\n";
+        cout << "Choice: ";
         cin >> userDecision;
         cout << endl;
 
+        // If user chose to enter the matrix from file
         if (userDecision == 1)
         {
+            // ask user to enter file name using a corresponding function
             inFileName = getFileName();
 
+            // Ask user to enter the number of rows and columns of the matrix
             cout << "\nEnter number of rows and columns in matrix (R C): ";
-            cin >> rows >> cols;
+            cin >> matrixSize.I >> matrixSize.J;
 
-            fillVector(rows, cols, inFileName, matrixVector);
+            // Call a function to fill in the matrix from the input file
+            fillVector(matrixSize.I, matrixSize.J, inFileName, matrixVector);
+
+            // Output the matrix to the screen using a corresponding function
             cout << "\nYour array is: \n";
-            outputVector(rows, cols, matrixVector);
+            outputVector(matrixSize.I, matrixSize.J, matrixVector);
         }
-        else
+        // If user chose to get matrix from command line
+        else if (userDecision == 2)
         {
+            // Ask user to enter the number of rows and columns of the matrix
             cout << "Enter number of rows and columns in matrix (R C): ";
-            cin >> rows >> cols;
+            cin >> matrixSize.I >> matrixSize.J;
 
-            fillVector(rows, cols, matrixVector);
+            // Call a function to either manually fill in or randomly generate matrix
+            fillVector(matrixSize.I, matrixSize.J, matrixVector);
+
+            // Output the resulting matrix to the screen
             cout << "\nYour array is: \n";
-            outputVector(rows, cols, matrixVector);
+            outputVector(matrixSize.I, matrixSize.J, matrixVector);
         }
+        // If user entered anything else
+        else
+            break; // stop program execution
 
+        // declare local variables for storing finish point coordinates
+        Coordinate finishPoint;
+
+        // Create a do while loop and execute it until the values entered are within the field range
+        do
+        {
+            // Ask user to enter finish point coordinates
+            cout << "\nEnter finish point coordinates (Row Col): ";
+            cin >> finishPoint.I >> finishPoint.J;
+
+            // If given coordinates are exceeding the field range
+            if (finishPoint.I > matrixSize.I || finishPoint.J > matrixSize.J)
+            {
+                // Output error message
+                cout << RED << "\nERROR: Such point does not exist. Try again\n"
+                     << UNRED;
+                continue; // jump to next iteration
+            }
+            // If given coordinates are within the field range
+            else
+                break; // jump out of the loop
+        } while (finishPoint.I > matrixSize.I || finishPoint.J > matrixSize.J);
+
+        // Decrement the coordinates to correctly manipulate them in the field
+        finishPoint.I -= 1;
+        finishPoint.J -= 1;
+
+        // Ask user if they would like to play the game live or just get the results
         cout << BOLD << "\nWould you like to play the game here or just get the answer?\n"
              << UNBOLD;
         cout << "1. Play live\n";
         cout << "2. Get the answer\n";
-        cout << "Input: ";
+        cout << "3. Exit\n";
+        cout << "Choice: ";
         cin >> userDecision;
 
-        int resI, resJ;
-        do
+        // If user chose to play live
+        if (userDecision == 1)
+            // Execute the corresponding function that will play the game in console
+            getGameResults(matrixSize.I, matrixSize.J, matrixVector, finishPoint.I, finishPoint.J);
+        else if (userDecision == 2)
         {
-            cout << "\nEnter finish point coordinates (X Y): ";
-            cin >> resI >> resJ;
+            // Ask user if they want to enter or generate a file name
+            cout << BOLD << "\nWould you like to enter or randomly generate an output file name?\n"
+                 << UNBOLD;
+            cout << "1. Enter the file name\n";
+            cout << "2. Randomly generate an output file name\n";
+            cout << "3. Exit\n";
+            cout << "Choice: ";
+            cin >> userDecision;
 
-            if (resI > rows || resJ > cols)
+            // If user chose to enter a file name by themselves
+            if (userDecision == 1)
             {
-                cout << RED << "\nERROR: Such point does not exist. Try again\n"
-                     << UNRED;
-                continue;
+                // ask user to enter a file name using the corresponding function
+                cout << endl;
+                outFileName = getFileName();
             }
-            else
-                break;
-        } while (resI > rows || resJ > cols);
-        resI -= 1;
-        resJ -= 1;
+            // If user chose to generate a random file name
+            else if (userDecision == 2)
+            {
+                int numOfLetters; // for storing number of letters
+                // Ask user to enter a number of letters in the file name
+                cout << "\nEnter the number of letters you want in file name: ";
+                cin >> numOfLetters;
 
-        playLive(rows, cols, matrixVector, resI, resJ);
+                // Generate a random file name using the corresponding function
+                outFileName = generateRandomString(numOfLetters);
+            }
+            // If use entered anything else
+            else
+                break; // stop program execution
+
+            getGameResults(matrixSize.I, matrixSize.J, matrixVector, finishPoint.I, finishPoint.J, outFileName);
+        }
+        // If use entered anything else
+        else
+            break; // stop program execution
+
         //////////////////////////////////////////////////////////////////////////////////
         cout << "\n/////////////////////////////////////////////////////////////\n"
              << "\nWould you like to continue program execution? (Y | N): ";
@@ -110,305 +187,552 @@ int main()
     return 0;
 }
 
-// for playing the game
-void playLive(int n, int m, vector<vector<int>> &a, int destI, int destJ)
+// For playing the game inside console in live mode
+void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int finishPosJ)
 {
-    const int startingPosI = 0, startingPosJ = m - 1;
-    int currentPosI = startingPosI, currentPosJ = startingPosJ;
-    bool doWin = false;
-    int score = a[currentPosI][currentPosJ];
+    // Declare local variables
+    const int STARTING_POSITION_I = 0, STARTING_POSITION_J = m - 1;           // for holding the starting position
+    int currentPosI = STARTING_POSITION_I, currentPosJ = STARTING_POSITION_J; // for holding the current position
+    bool doWin = false;                                                       // for checking if the game is won or not
+    int score = a[currentPosI][currentPosJ];                                  // for holding the score with initial value of the current position
+    string oFileName;                                                         // in case the program needs to use the file
+    vector<char> answers;                                                     // for holding the answers
 
+    // Outputting a note to the console, utilizing the stilizational functions
     cout << "\nNOTE: Current position is displayed in " << BOLD << "bold" << UNBOLD << ", legal moves in " << RED << "red" << UNRED << " and destination in " << GREEN << "green.\n\n"
          << UNGREEN;
+
+    // Ask user to make some decisions
     cout << "Before we begin, please make an importnat choice\n";
-    char doUseAutopilot;
+    char doUseAutopilot; // for holding the answer
+    char doOutputToFile; // for holding the answer
+
+    // Ask user if they want to use the autopilot
     cout << "Would you like to play the game on autopilot? (Y / N): ";
     cin >> doUseAutopilot;
+
+    // Ask user if they want to output the results of the game to a file
+    cout << "Would you like output the results to the file? (Y / N): ";
+    cin >> doOutputToFile;
     cout << endl;
+
+    // Start do while loop and execute it until the game is over
     do
     {
-        char whereMove = 'l';
-        int leftI = currentPosI, leftJ = currentPosJ - 1;
-        int downI = currentPosI + 1, downJ = currentPosJ;
-        int left, down;
+        // Declare local variables necessary for the game
+        char nextMoveHolder = 'l';                              // for holding the answer regarding the next move
+        int leftPosI = currentPosI, leftPosJ = currentPosJ - 1; // for holding left move position
+        int downPosI = currentPosI + 1, downPosJ = currentPosJ; // for holding down move position
+        int leftPosValue, downPosValue;                         // for holding left and down move values
 
+        // Creating for loops for outputting the board
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < m; j++)
             {
-                if (i == currentPosI && j == currentPosJ)
-                    cout << BOLD << a[i][j] << UNBOLD << " ";
-                else if (i == leftI && j == leftJ)
+                // Creating conditions for outputting the right elements
+                if (i == currentPosI && j == currentPosJ)     // if element is in current position
+                    cout << BOLD << a[i][j] << UNBOLD << " "; // output it in bold
+                else if (i == leftPosI && j == leftPosJ)      // if element is to the left of the current position
                 {
-                    cout << RED << a[i][j] << UNRED << " ";
-                    left = a[i][j];
+                    cout << RED << a[i][j] << UNRED << " "; // output it in red
+                    leftPosValue = a[i][j];                 // assign its value to left holder
                 }
-                else if (i == downI && j == downJ)
+                else if (i == downPosI && j == downPosJ) // if element is below the current position
                 {
-                    cout << RED << a[i][j] << UNRED << " ";
-                    down = a[i][j];
+                    cout << RED << a[i][j] << UNRED << " "; // output it in red
+                    downPosValue = a[i][j];                 // assign its value to down holder
                 }
-                else if (i == destI && j == destJ)
-                    cout << GREEN << a[i][j] << UNGREEN << " ";
-                else
-                    cout << a[i][j] << " ";
+                else if (i == finishPosI && j == finishPosJ)    // if element is in the destination position
+                    cout << GREEN << a[i][j] << UNGREEN << " "; // output it in green
+                else                                            // if element is any other element
+                    cout << a[i][j] << " ";                     // output it
             }
             cout << endl;
         }
 
-        if (currentPosI == destI && currentPosJ == destJ)
+        // Creating conditions for checking if the user won or lost the game
+
+        // If current position is the same as the finish position
+        if (currentPosI == finishPosI && currentPosJ == finishPosJ)
         {
-            doWin = true;
-            cout << BOLD << "\nCongatulations! You won!" << UNBOLD << endl;
+            doWin = true; // change win state to true
+            // Output win message to screen
+            cout << GREEN << "\nCongatulations! You won the game\n"
+                 << UNGREEN;
             cout << "Your total score is " << score << endl;
-            break;
+            break; // stop program execution
+        }
+        // If user has either exceeded the limits or made a move in wrong direction
+        else if ((finishPosJ == STARTING_POSITION_J && currentPosJ < finishPosJ) || (finishPosI == STARTING_POSITION_I && currentPosI > finishPosI) || (currentPosJ < finishPosJ) || (currentPosI > finishPosI))
+        {
+            doWin = false; // change win state to false
+            // Output lose message to screen
+            cout << RED << "\nYou lost the game. Please try again later\n"
+                 << UNRED;
+            break; // stop program execution
         }
 
-        if (destJ == startingPosJ)
-        {
-            whereMove = 'd';
-        }
-        else if (destI == startingPosI)
-        {
-            whereMove = 'l';
-        }
+        // Creating condition for calculating the next move
+        if (finishPosJ == STARTING_POSITION_J)      // if finish point is at the same column as starting position
+            nextMoveHolder = 'd';                   // next move will always be down
+        else if (finishPosI == STARTING_POSITION_I) // if finish point is at the same row as starting position
+            nextMoveHolder = 'l';                   // next move will always be left
         else
         {
-            if (currentPosJ == destJ)
-                whereMove = 'd';
-            else if (currentPosI == destI)
-                whereMove = 'l';
-            else if (left >= down)
-                whereMove = 'l';
-            else
-                whereMove = 'd';
-        }
+            if (currentPosJ == finishPosJ)      // if current position is at the same column as finish point
+                nextMoveHolder = 'd';           // next move is down
+            else if (currentPosI == finishPosI) // if current position is at the same row as finish point
+                nextMoveHolder = 'l';           // next move is left
 
+            // If non of those are met, then choose the one with the most points
+            else if (leftPosValue >= downPosValue) // if left position value is greater or equal to down position value
+                nextMoveHolder = 'l';              // next move is left
+            else
+                nextMoveHolder = 'd'; // next move is down
+        }
+        answers.push_back(nextMoveHolder);
+
+        // After calculating the next move, move on to playing the game itself
+
+        // If user chose to use autopilot
         if (doUseAutopilot == 'y' || doUseAutopilot == 'Y')
         {
+            // create a delay of 2 seconds for user to be able to track the game state
             this_thread::sleep_for(chrono::seconds(2));
-            if (whereMove == 'l' || whereMove == 'L')
+
+            // If calculated next move is to the left
+            if (nextMoveHolder == 'l' || nextMoveHolder == 'L')
             {
+                // output prompt with a corresponding message
                 cout << "\nYour next move is " << BOLD << "left" << UNBOLD << endl
                      << endl;
-                score += left;
+                // add left position value to global score
+                score += leftPosValue;
+                // move current position to the left and move over to the next iteration
                 currentPosJ -= 1;
                 continue;
             }
+            // In any other case
             else
             {
+                // output prompt with a corresponding message
                 cout << "\nYour next move is " << BOLD << "down" << UNBOLD << endl
                      << endl;
-                score += down;
+                //  add down position value to global score
+                score += downPosValue;
+                // move current position down and move over to the next iteration
                 currentPosI += 1;
                 continue;
             }
         }
+        // If user didn't choose to use the autopilot
         else
         {
-            if (whereMove == 'l' || whereMove == 'L')
-                cout << "\nYour next move should be " << BOLD << "left" << UNBOLD << endl
-                     << endl;
+            // Creating conditions that will check the next calculated move and output corresponding text to user as a hint
+            if (nextMoveHolder == 'l' || nextMoveHolder == 'L')
+                cout << "\nYour next move should be " << BOLD << "left\n"
+                     << UNBOLD;
             else
-                cout << "\nYour next move should be " << BOLD << "down" << UNBOLD << endl
-                     << endl;
+                cout << "\nYour next move should be " << BOLD << "down\n"
+                     << UNBOLD;
 
+            // Ultimately the decision itself is to be made by user only
             char move;
             cout << "Your next move is? (L / D): ";
             cin >> move;
-            cout << endl;
 
+            // If user decided to move to the left
             if (move == 'L' || move == 'l')
             {
-                score += left;
+                // output a message with a correspoding text
+                cout << "Made a move to the left\n\n";
+                // add left move value to general score
+                score += leftPosValue;
+                // change current position and continue
                 currentPosJ -= 1;
                 continue;
             }
-            else
+            // If user decided to move down
+            else if (move == 'D' || move == 'd')
             {
-                score += down;
+                // output a message with a correspoding text
+                cout << "Made a move down\n\n";
+                // add down move value to general score
+                score += downPosValue;
+                // change current position and continue
                 currentPosI += 1;
                 continue;
             }
         }
     } while (!doWin);
 
-    // end function execution
+    if (doOutputToFile)
+    {
+        cout << endl;
+        oFileName = getFileName();
+        fstream oFile(oFileName.c_str(), ios::out);
+
+        if (!oFile.is_open())
+            cout << RED << "ERROR: Could not open file " << oFileName << UNRED << endl;
+
+        oFile << "======================================================\n";
+        oFile << "\t\t\tThank you for using this program\n";
+        oFile << "======================================================\n";
+        oFile << "\nYour matrix:\n";
+        // Creating for loops for outputting the board
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                oFile << a[i][j] << " "; // output matrix element
+            }
+            oFile << endl;
+        }
+        oFile << "\n======================================================\n";
+        oFile << "\nThe moves you should take to win it:\n";
+
+        for (int i = 0; i < answers.size(); i++)
+        {
+            if (answers[i] == 'l' || answers[i] == 'L')
+                oFile << "Move left\n";
+            else
+                oFile << "Move down\n";
+        }
+
+        oFile << "\n======================================================\n";
+        oFile << "\nThe game is won with " << answers.size() << " moves\n";
+        oFile << "The total score is " << score << " points\n";
+
+        if (oFile.good())
+            cout << GREEN << "\nSuccessfully generated " << oFileName << ".\n"
+                 << UNGREEN;
+
+        oFile.close();
+    }
+
+    // End function execution
     return;
 }
 
-// for outputting 2D matrix
+// For getting the game results outputted in a file
+void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int finishPosJ, const string &OUTPUT_FILENAME)
+{
+    // Declare local variables
+    const int STARTING_POSITION_I = 0, STARTING_POSITION_J = m - 1;           // for holding the starting position
+    int currentPosI = STARTING_POSITION_I, currentPosJ = STARTING_POSITION_J; // for holding the current position
+    bool doWin = false;                                                       // for checking if the game is won or not
+    int score = a[currentPosI][currentPosJ];                                  // for holding the score with initial value of the current position
+    fstream oFile(OUTPUT_FILENAME.c_str(), ios::out);                         // for writing output file
+    int iterator = 1;                                                         // for iterating over the matrix
+
+    // Create condition for checking if the file exists
+    if (!oFile.is_open())
+    {
+        // Output error message
+        cout << RED << "ERROR: Could not open file " << OUTPUT_FILENAME << UNRED << endl;
+        return; // end function execution
+    }
+    // If file exists
+    else
+    {
+        // Write relevant information
+        oFile << "======================================================\n";
+        oFile << "\t\t\tThank you for using this program\n";
+        oFile << "======================================================\n";
+        oFile << "\nYour matrix:\n";
+
+        // Creating for loops for outputting the board
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                oFile << a[i][j] << " "; // output matrix element
+            }
+            oFile << endl;
+        }
+
+        // Write necessary information
+        oFile << "\n======================================================\n";
+        oFile << "\nThe moves you should take to win it:\n";
+    }
+
+    // Start do while loop and execute it until the game is over
+    do
+    {
+        // Declare local variables necessary for the game
+        char nextMoveHolder = 'l';                              // for holding the answer regarding the next move
+        int leftPosI = currentPosI, leftPosJ = currentPosJ - 1; // for holding left move position
+        int downPosI = currentPosI + 1, downPosJ = currentPosJ; // for holding down move position
+        int leftPosValue, downPosValue;                         // for holding left and down move values
+
+        // Create for loops for assigning values
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                if (i == leftPosI && j == leftPosJ)      // if element is to the left of the current position
+                    leftPosValue = a[i][j];              // assign its value to left holder
+                else if (i == downPosI && j == downPosJ) // if element is below the current position
+                    downPosValue = a[i][j];              // assign its value to down holder
+            }
+        }
+
+        // If current position is the same as the finish position
+        if (currentPosI == finishPosI && currentPosJ == finishPosJ)
+        {
+            doWin = true; // change win state to true
+
+            // Write relevant information into a file
+            oFile << "\n======================================================\n";
+            oFile << "\nThe game is won with " << iterator - 1 << " moves\n";
+            oFile << "The total score is " << score << " points\n";
+            break; // break out of loop
+        }
+
+        // Creating condition for calculating the next move
+        if (finishPosJ == STARTING_POSITION_J)      // if finish point is at the same column as starting position
+            nextMoveHolder = 'd';                   // next move will always be down
+        else if (finishPosI == STARTING_POSITION_I) // if finish point is at the same row as starting position
+            nextMoveHolder = 'l';                   // next move will always be left
+        else
+        {
+            if (currentPosJ == finishPosJ)      // if current position is at the same column as finish point
+                nextMoveHolder = 'd';           // next move is down
+            else if (currentPosI == finishPosI) // if current position is at the same row as finish point
+                nextMoveHolder = 'l';           // next move is left
+
+            // If non of those are met, then choose the one with the most points
+            else if (leftPosValue >= downPosValue) // if left position value is greater or equal to down position value
+                nextMoveHolder = 'l';              // next move is left
+            else
+                nextMoveHolder = 'd'; // next move is down
+        }
+
+        // Create conditions for making a move
+
+        // If calculated next move is to the left
+        if (nextMoveHolder == 'l' || nextMoveHolder == 'L')
+        {
+            // Write a prompt with an answer
+            oFile << iterator << ". Move left\n";
+
+            // Add increments and move to the next iteration
+            score += leftPosValue;
+            currentPosJ -= 1;
+            ++iterator;
+            continue;
+        }
+        // In any other case
+        else
+        {
+            // Write a prompt with an answer
+            oFile << iterator << ". Move down\n";
+
+            // Add increments and move to the next iteration
+            score += downPosValue;
+            currentPosI += 1;
+            ++iterator;
+            continue;
+        }
+
+    } while (!doWin);
+
+    // Create condition to check if file opens properly
+    if (oFile.good())
+        cout << GREEN << "\nSuccessfully generated " << OUTPUT_FILENAME << ".\n"
+             << UNGREEN;
+
+    // Close file and end function execution
+    oFile.close();
+    return;
+}
+
+// For generating a random string of given length
+string generateRandomString(int length)
+{
+    // Declare local variables
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxy"; // characters pool to generate random string from
+    string randomString = "";                                            // random string result holder
+
+    // Generate a random character and add it to the string until it reaches the desired length
+    for (int i = 0; i < length; i++)
+    {
+        // Generate a random index between 0 and the size of our character pool
+        int index = rand() % chars.size();
+
+        // Add the character at that index to our string
+        randomString += chars[index];
+    }
+
+    return randomString + ".txt"; // Append ".txt" and return the generated string
+}
+
+// For outputting the matrix to the console
 void outputVector(int n, int m, vector<vector<int>> &a)
 {
-    // create for loop for iterating over an array
+    // Create for loops for iterating over the matrix
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
         {
-            // output each element
+            // Output each element of the matrix
             cout << a[i][j] << " ";
         }
         cout << endl;
     }
-    // end function
+
+    // End function execution
     return;
 }
 
-// for entering matrix by hand
+// For generating or entering the matrix from console
 void fillVector(int n, int m, vector<vector<int>> &a)
 {
+    // Declare local variables
     int userDecision; // for storing user decision
-    // ask user would they like to generate or enter matrix
+    int element;      // for storing current element
+
+    // Ask user would they like to generate or enter matrix
     cout << BOLD << "\nWould you like to enter or generate a matrix?\n"
          << UNBOLD;
     cout << "1. Enter matrix by yourself\n";
     cout << "2. Generate random matrix\n";
-    cout << "Input: ";
+    cout << "Choice: ";
     cin >> userDecision;
     cout << endl;
 
-    int element; // for storing current element
-    // create loop for iterating over the matrix
+    // Create for loop to iterate over the matrix and get each element
     for (int i = 0; i < n; i++)
     {
-        // declare vector for storing row elements
-        vector<int> row;
+        vector<int> row; // for holding current row elements
         for (int j = 0; j < m; j++)
         {
+            // If user chose to enter elements by themselves
             if (userDecision == 1)
             {
-                // ask user to enter an element
+                // Ask user to enter a current element
                 cout << "Enter element: ";
                 cin >> element;
             }
             else
-            {
+                // Generate a random element from 1 to 10
                 element = rand() % 10;
-            }
-            // push back element intro row array
+
+            // Add current element into the row array
             row.push_back(element);
         }
-        // add row array to general matrix
+
+        // Add row array to vector
         a.push_back(row);
     }
-    // end function
+
+    // End function execution
     return;
 }
 
-// for reading matrix from file
+// For reading matrix from a file
 void fillVector(int n, int m, string file, vector<vector<int>> &a)
 {
+    // Declare local variables
     int element;                      // for storing current element
     fstream f(file.c_str(), ios::in); // for reading file
 
-    // if file is not opened
+    // If file does not exist
     if (!f.is_open())
     {
-        // output error message
+        // Output error message
         cout << RED << "\nERROR: Could not open file " << file << endl
              << UNRED;
-        // stop function execution
-        return;
+        return; // stop program execution
     }
 
-    // create loop for iterating over the matrix
+    // Create for loop for getting each element of matrix from a file
     for (int i = 0; i < n; i++)
     {
-        // declare vector for storing row elements
-        vector<int> row;
+        vector<int> row; // for holding current row elements
         for (int j = 0; j < m; j++)
         {
-            // read element from file
+            // Read each element from file
             f >> element;
-            // push back element intro row array
+
+            // Add current element into a row array
             row.push_back(element);
         }
-        // add row array to general matrix
+
+        // Add current row to vector
         a.push_back(row);
     }
-    // close file and end function
+
+    // Close file and end function execution
     f.close();
     return;
 }
 
-// getting file name from user
+// For getting text file inputted from user
 string getFileName()
 {
+    // Declare local variables
     string fileName = "";         // for storing file name
-    bool isExtensionFound = true; // for getting file extension
-    bool doesFileExist = false;   // for knowing if file exists
+    bool isExtensionFound = true; // for tracking file extension
 
+    // Create do while loop for properly getting file name with extension
     do
     {
-        // do while no extension is found
-        do
-        {
-            // ask to enter file name
-            cout << "Enter file name: ";
-            cin >> fileName;
+        // Ask user to enter file name
+        cout << "Enter file name: ";
+        cin >> fileName;
 
-            // if extension is not found
-            if (fileName.find(".") == string::npos)
-            {
-                // output error message
-                isExtensionFound = false;
-                cout << RED << "\nERROR: File extension not found. Try again...\n\n"
-                     << UNRED;
-                // continue loop execution
-                continue;
-            }
-            else
-                break;
-        } while (isExtensionFound == false);
-
-        // check if file exists
-        fstream file(fileName.c_str());
-        // if not => output error
-        if (!file.good())
+        // Create condition to check if file extension is found
+        if (fileName.find(".") == string::npos)
         {
-            cout << RED << "\nERROR: Could not open file " << fileName << "\n\n"
+            // Execute if not found
+            isExtensionFound = false; // set tracker state to false
+            // Output error message
+            cout << RED << "\nERROR: File extension not found. Try again...\n\n"
                  << UNRED;
-            doesFileExist = false;
-            continue;
+            continue; // jump into next iteration
         }
-        // if yes => end loop
+        // If extension is found
         else
-            break;
-    } while (doesFileExist == false);
+            break; // jump out of loop
+    } while (isExtensionFound == false);
 
-    // return file name
+    // Return file name
     return fileName;
 }
 
-// making output text bold
+// For making text bold
 ostream &BOLD(ostream &os)
 {
     return os << "\e[1m";
 }
 
-// making output text normal
+// For changing text back to normal
 ostream &UNBOLD(ostream &os)
 {
     return os << "\e[0m";
 }
 
-// to make text red
+// For setting text color to red
 ostream &RED(ostream &os)
 {
     return os << "\033[1;31m";
 }
 
-// to change text back to normal
+// For changing text back to normal
 ostream &UNRED(ostream &os)
 {
     return os << "\033[0m";
 }
 
+// For setting text color to green
 ostream &GREEN(ostream &os)
 {
     return os << "\033[1;32m";
 }
 
+// For changing text back to normal
 ostream &UNGREEN(ostream &os)
 {
     return os << "\033[0m";
