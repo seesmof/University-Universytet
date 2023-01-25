@@ -5,7 +5,7 @@ using namespace std;
 // function prototypes //
 string getFileName();
 string generateRandomString(int);
-void fillVector(int, int, string, vector<vector<int>> &);
+void fillVector(int, int, const string &, vector<vector<int>> &);
 void fillVector(int, int, vector<vector<int>> &);
 void outputVector(int, int, vector<vector<int>> &);
 void getGameResults(int, int, vector<vector<int>> &, int, int);
@@ -54,15 +54,15 @@ int main()
         cin >> userDecision;
         cout << endl;
 
+        // Ask user to enter the number of rows and columns of the matrix
+        cout << "Enter number of rows and columns in matrix (Rows Cols): ";
+        cin >> matrixSize.I >> matrixSize.J;
+
         // If user chose to enter the matrix from file
         if (userDecision == 1)
         {
             // ask user to enter file name using a corresponding function
             inFileName = getFileName();
-
-            // Ask user to enter the number of rows and columns of the matrix
-            cout << "\nEnter number of rows and columns in matrix (R C): ";
-            cin >> matrixSize.I >> matrixSize.J;
 
             // Call a function to fill in the matrix from the input file
             fillVector(matrixSize.I, matrixSize.J, inFileName, matrixVector);
@@ -74,10 +74,6 @@ int main()
         // If user chose to get matrix from command line
         else if (userDecision == 2)
         {
-            // Ask user to enter the number of rows and columns of the matrix
-            cout << "Enter number of rows and columns in matrix (R C): ";
-            cin >> matrixSize.I >> matrixSize.J;
-
             // Call a function to either manually fill in or randomly generate matrix
             fillVector(matrixSize.I, matrixSize.J, matrixVector);
 
@@ -231,9 +227,11 @@ void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int fi
             for (int j = 0; j < m; j++)
             {
                 // Creating conditions for outputting the right elements
-                if (i == currentPosI && j == currentPosJ)     // if element is in current position
-                    cout << BOLD << a[i][j] << UNBOLD << " "; // output it in bold
-                else if (i == leftPosI && j == leftPosJ)      // if element is to the left of the current position
+                if (i == currentPosI && j == currentPosJ)       // if element is in current position
+                    cout << BOLD << a[i][j] << UNBOLD << " ";   // output it in bold
+                else if (i == finishPosI && j == finishPosJ)    // if element is in the destination position
+                    cout << GREEN << a[i][j] << UNGREEN << " "; // output it in green
+                else if (i == leftPosI && j == leftPosJ)        // if element is to the left of the current position
                 {
                     cout << RED << a[i][j] << UNRED << " "; // output it in red
                     leftPosValue = a[i][j];                 // assign its value to left holder
@@ -243,10 +241,8 @@ void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int fi
                     cout << RED << a[i][j] << UNRED << " "; // output it in red
                     downPosValue = a[i][j];                 // assign its value to down holder
                 }
-                else if (i == finishPosI && j == finishPosJ)    // if element is in the destination position
-                    cout << GREEN << a[i][j] << UNGREEN << " "; // output it in green
-                else                                            // if element is any other element
-                    cout << a[i][j] << " ";                     // output it
+                else                        // if element is any other element
+                    cout << a[i][j] << " "; // output it
             }
             cout << endl;
         }
@@ -367,7 +363,7 @@ void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int fi
         }
     } while (!doWin);
 
-    if (doOutputToFile)
+    if (doOutputToFile == 'y' || doOutputToFile == 'Y')
     {
         cout << endl;
         oFileName = getFileName();
@@ -548,6 +544,38 @@ void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int fi
     return;
 }
 
+// For getting text file inputted from user
+string getFileName()
+{
+    // Declare local variables
+    string fileName = "";         // for storing file name
+    bool isExtensionFound = true; // for tracking file extension
+
+    // Create do while loop for properly getting file name with extension
+    do
+    {
+        // Ask user to enter file name
+        cout << "Enter file name: ";
+        cin >> fileName;
+
+        // Create condition to check if file extension is found
+        if (fileName.find(".") == string::npos)
+        {
+            // Execute if not found
+            isExtensionFound = false; // set tracker state to false
+            // Output error message
+            cout << "\nERROR: File extension not found. Try again...\n\n";
+            continue; // jump into next iteration
+        }
+        // If extension is found
+        else
+            break; // jump out of loop
+    } while (isExtensionFound == false);
+
+    // Return file name
+    return fileName;
+}
+
 // For generating a random string of given length
 string generateRandomString(int length)
 {
@@ -632,17 +660,17 @@ void fillVector(int n, int m, vector<vector<int>> &a)
 }
 
 // For reading matrix from a file
-void fillVector(int n, int m, string file, vector<vector<int>> &a)
+void fillVector(int n, int m, const string &FILENAME, vector<vector<int>> &a)
 {
     // Declare local variables
-    int element;                      // for storing current element
-    fstream f(file.c_str(), ios::in); // for reading file
+    int element;                          // for storing current element
+    fstream f(FILENAME.c_str(), ios::in); // for reading file
 
     // If file does not exist
     if (!f.is_open())
     {
         // Output error message
-        cout << RED << "\nERROR: Could not open file " << file << endl
+        cout << RED << "\nERROR: Could not open file " << FILENAME << endl
              << UNRED;
         return; // stop program execution
     }
@@ -667,39 +695,6 @@ void fillVector(int n, int m, string file, vector<vector<int>> &a)
     // Close file and end function execution
     f.close();
     return;
-}
-
-// For getting text file inputted from user
-string getFileName()
-{
-    // Declare local variables
-    string fileName = "";         // for storing file name
-    bool isExtensionFound = true; // for tracking file extension
-
-    // Create do while loop for properly getting file name with extension
-    do
-    {
-        // Ask user to enter file name
-        cout << "Enter file name: ";
-        cin >> fileName;
-
-        // Create condition to check if file extension is found
-        if (fileName.find(".") == string::npos)
-        {
-            // Execute if not found
-            isExtensionFound = false; // set tracker state to false
-            // Output error message
-            cout << RED << "\nERROR: File extension not found. Try again...\n\n"
-                 << UNRED;
-            continue; // jump into next iteration
-        }
-        // If extension is found
-        else
-            break; // jump out of loop
-    } while (isExtensionFound == false);
-
-    // Return file name
-    return fileName;
 }
 
 // For making text bold
