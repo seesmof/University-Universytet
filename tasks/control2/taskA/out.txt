@@ -1,0 +1,21 @@
+======================================================
+			Thank you for using this program
+======================================================
+
+Your matrix:
+4 9 8 
+4 7 7 
+1 5 4 
+
+======================================================
+
+The moves you should take to win it:
+Move left
+Move down
+Move down
+Move left
+
+======================================================
+
+The game is won with 4 moves
+The total score is 33 points

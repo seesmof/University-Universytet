@@ -1,7 +1,6 @@
 // include necessary libraries
-#include <bits/stdc++.h>
-#include "strings.h"
-using namespace std;
+#include "../strings.h"
+#include "../algorithms.h"
 
 // declare struct for holding coordinates
 struct Coordinate

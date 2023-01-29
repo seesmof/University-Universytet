@@ -76,3 +76,24 @@ string generateRandomString(int length)
 
     return randomString + ".txt"; // Append ".txt" and return the generated string
 }
+
+// returns a vector containing only the unique elements from the input vector
+vector<string> getUniqueElements(vector<string> &inputVector)
+{
+    vector<string> uniqueElements;      // to store unique elements as strings
+    unordered_set<string> seenElements; // to store elements that have already been seen
+
+    // iterate through each element of the inputVector
+    for (string element : inputVector)
+    {
+        // check if the element is present in the seenElements container
+        if (seenElements.find(element) == seenElements.end())
+        {
+            uniqueElements.push_back(element); // add the element to uniqueElements vector
+            seenElements.insert(element);      // inserts the element into the seenElements set, if it is not already present
+        }
+    }
+
+    // return a vector containing only the unique elements from the original vector
+    return uniqueElements;
+}

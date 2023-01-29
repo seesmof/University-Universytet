@@ -1,10 +1,9 @@
 // include necessary libraries
-#include <bits/stdc++.h>
+#include "../../strings.h"
+#include "../../algorithms.h"
 using namespace std;
 
 // function prototypes //
-string getFileName();
-string generateRandomString(int);
 void fillVector(int, int, const string &, vector<vector<int>> &);
 void fillVector(int, int, vector<vector<int>> &);
 void outputVector(int, int, vector<vector<int>> &);
@@ -542,58 +541,6 @@ void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int fi
     // Close file and end function execution
     oFile.close();
     return;
-}
-
-// For getting text file inputted from user
-string getFileName()
-{
-    // Declare local variables
-    string fileName = "";         // for storing file name
-    bool isExtensionFound = true; // for tracking file extension
-
-    // Create do while loop for properly getting file name with extension
-    do
-    {
-        // Ask user to enter file name
-        cout << "Enter file name: ";
-        cin >> fileName;
-
-        // Create condition to check if file extension is found
-        if (fileName.find(".") == string::npos)
-        {
-            // Execute if not found
-            isExtensionFound = false; // set tracker state to false
-            // Output error message
-            cout << "\nERROR: File extension not found. Try again...\n\n";
-            continue; // jump into next iteration
-        }
-        // If extension is found
-        else
-            break; // jump out of loop
-    } while (isExtensionFound == false);
-
-    // Return file name
-    return fileName;
-}
-
-// For generating a random string of given length
-string generateRandomString(int length)
-{
-    // Declare local variables
-    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxy"; // characters pool to generate random string from
-    string randomString = "";                                            // random string result holder
-
-    // Generate a random character and add it to the string until it reaches the desired length
-    for (int i = 0; i < length; i++)
-    {
-        // Generate a random index between 0 and the size of our character pool
-        int index = rand() % chars.size();
-
-        // Add the character at that index to our string
-        randomString += chars[index];
-    }
-
-    return randomString + ".txt"; // Append ".txt" and return the generated string
 }
 
 // For outputting the matrix to the console
