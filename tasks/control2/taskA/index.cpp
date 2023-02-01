@@ -1,6 +1,5 @@
 // include necessary libraries
-#include "../../strings.h"
-#include "../../algorithms.h"
+#include "../../lib.h"
 using namespace std;
 
 // function prototypes //
@@ -9,12 +8,7 @@ void fillVector(int, int, vector<vector<int>> &);
 void outputVector(int, int, vector<vector<int>> &);
 void getGameResults(int, int, vector<vector<int>> &, int, int);
 void getGameResults(int, int, vector<vector<int>> &, int, int, const string &);
-ostream &BOLD(ostream &);
-ostream &UNBOLD(ostream &);
-ostream &RED(ostream &);
-ostream &UNRED(ostream &);
-ostream &GREEN(ostream &);
-ostream &UNGREEN(ostream &);
+int getMaxPoints(vector<vector<int>> &, int, int);
 /////////////////////////
 
 // Declare struct with coordinates for easier access
@@ -206,10 +200,21 @@ void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int fi
     cout << "Would you like to play the game on autopilot? (Y / N): ";
     cin >> doUseAutopilot;
 
+    if (doUseAutopilot == 'y' || doUseAutopilot == 'Y')
+    {
+        cout << GRAY << "\nKeep in mind that the path offered by this version of autopilot might not be optimal.\n\n"
+             << UNGRAY;
+    }
+
     // Ask user if they want to output the results of the game to a file
     cout << "Would you like output the results to the file? (Y / N): ";
     cin >> doOutputToFile;
     cout << endl;
+
+    int maxPoints = getMaxPoints(a, finishPosI, finishPosJ);
+    cout << YELLOW << "Maximum achieavable number of points: " << maxPoints << endl
+         << endl
+         << UNYELLOW;
 
     // Start do while loop and execute it until the game is over
     do
@@ -226,22 +231,21 @@ void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int fi
             for (int j = 0; j < m; j++)
             {
                 // Creating conditions for outputting the right elements
-                if (i == currentPosI && j == currentPosJ)       // if element is in current position
-                    cout << BOLD << a[i][j] << UNBOLD << " ";   // output it in bold
-                else if (i == finishPosI && j == finishPosJ)    // if element is in the destination position
-                    cout << GREEN << a[i][j] << UNGREEN << " "; // output it in green
-                else if (i == leftPosI && j == leftPosJ)        // if element is to the left of the current position
-                {
-                    cout << RED << a[i][j] << UNRED << " "; // output it in red
-                    leftPosValue = a[i][j];                 // assign its value to left holder
-                }
-                else if (i == downPosI && j == downPosJ) // if element is below the current position
-                {
-                    cout << RED << a[i][j] << UNRED << " "; // output it in red
-                    downPosValue = a[i][j];                 // assign its value to down holder
-                }
-                else                        // if element is any other element
-                    cout << a[i][j] << " "; // output it
+                if (i == currentPosI && j == currentPosJ)         // if element is in current position
+                    cout << YELLOW << a[i][j] << UNYELLOW << " "; // output it in bold
+                else if (i == finishPosI && j == finishPosJ)      // if element is in the destination position
+                    cout << GREEN << a[i][j] << UNGREEN << " ";   // output it in green
+                else if (i == leftPosI && j == leftPosJ)          // if element is to the left of the current position
+                    cout << RED << a[i][j] << UNRED << " ";       // output it in red
+                else if (i == downPosI && j == downPosJ)          // if element is below the current position
+                    cout << RED << a[i][j] << UNRED << " ";       // output it in red
+                else                                              // if element is any other element
+                    cout << a[i][j] << " ";                       // output it
+
+                if (i == leftPosI && j == leftPosJ)      // if element
+                    leftPosValue = a[i][j];              // assign its value to left holder
+                else if (i == downPosI && j == downPosJ) // if element
+                    downPosValue = a[i][j];              // assign its value to down holder
             }
             cout << endl;
         }
@@ -449,6 +453,8 @@ void getGameResults(int n, int m, vector<vector<int>> &a, int finishPosI, int fi
 
         // Write necessary information
         oFile << "\n======================================================\n";
+        int maxPoints = getMaxPoints(a, finishPosI, finishPosJ);
+        oFile << "\nMaximum achieavable number of points: " << maxPoints << endl;
         oFile << "\nThe moves you should take to win it:\n";
     }
 
@@ -644,38 +650,21 @@ void fillVector(int n, int m, const string &FILENAME, vector<vector<int>> &a)
     return;
 }
 
-// For making text bold
-ostream &BOLD(ostream &os)
+// for getting the maximum number of points from a field
+int getMaxPoints(vector<vector<int>> &matrixVector, int i, int j)
 {
-    return os << "\e[1m";
-}
+    // declare base cases
 
-// For changing text back to normal
-ostream &UNBOLD(ostream &os)
-{
-    return os << "\e[0m";
-}
+    // check if the border of a matrix is reached
+    if (j < 0 || i < 0)
+        // if so return
+        return 0;
+    // check if the specified point is within a matrix field
+    if (i >= matrixVector.size() || j >= matrixVector[0].size())
+        // if not return
+        return 0;
 
-// For setting text color to red
-ostream &RED(ostream &os)
-{
-    return os << "\033[1;31m";
-}
-
-// For changing text back to normal
-ostream &UNRED(ostream &os)
-{
-    return os << "\033[0m";
-}
-
-// For setting text color to green
-ostream &GREEN(ostream &os)
-{
-    return os << "\033[1;32m";
-}
-
-// For changing text back to normal
-ostream &UNGREEN(ostream &os)
-{
-    return os << "\033[0m";
+    // recursive call to determine the best path with a given point in both directions
+    return matrixVector[i][j] + max(getMaxPoints(matrixVector, i - 1, j),
+                                    getMaxPoints(matrixVector, i, j + 1));
 }

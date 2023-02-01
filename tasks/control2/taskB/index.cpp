@@ -1,5 +1,6 @@
 // include necessary libraries
 #include <bits/stdc++.h>
+#include "supplementary.h"
 #include "menu.h"
 using namespace std;
 
@@ -24,7 +25,8 @@ int main()
         //////////////////////////////////////////////////////////////////////////////////
 
         // take email address and input file from user
-        cout << "Before we begin, let us take some important steps\n\n";
+        cout << BOLD << "Before we begin, let us take some important steps\n\n"
+             << UNBOLD;
         inEmailAddress = getEmailAddress();
         inFileName = getFileName();
         fillVector(lettersVector, inFileName); // fill in the vector of struct using a corresponding function
@@ -35,7 +37,7 @@ int main()
             outputMenu(lettersVector, inEmailAddress);
 
             // after user have worked in a menu and returned here, ask them to continue or not
-            cout << "\nWould you like to return to menu? (Y / N): ";
+            cout << BOLD << "\nWould you like to return to menu? (Y / N): " << UNBOLD;
             cin >> doContinue;
 
             if (doContinue == 'Y' || doContinue == 'y')

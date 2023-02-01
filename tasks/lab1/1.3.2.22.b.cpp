@@ -1,7 +1,6 @@
 #include <string.h>
 #include <cmath>
 #include <iostream>
-
 using namespace std;
 
 int main()
@@ -27,4 +26,4 @@ int main()
     }
 
     return 0;
-} // 1.3.2.22 б)
+}

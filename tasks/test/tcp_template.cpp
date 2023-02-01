@@ -48,8 +48,6 @@ void dbg_out(Head H, Tail... T)
 
 void solve()
 {
-    ll i = 345363;
-    dbg(i);
 }
 
 int main()
