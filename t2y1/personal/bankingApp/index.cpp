@@ -2,11 +2,17 @@
 #include "../../../lib.h"
 using namespace std;
 
-ll userDecision;
+ll userDecision, INDEX;
+string USER_NAME, PIN;
+bool isLogedIn = false;
+string userFile = "users.txt";
+string balanceFile = "balance.txt";
+
 struct User
 {
     string userName;
     string password;
+    ll balance = 0;
 };
 
 // function prototypes //
@@ -14,6 +20,8 @@ void mainMenu();
 void authMenu(vector<User> &);
 void paymentsMenu();
 void getUsers(vector<User> &);
+void login(vector<User> &);
+void signUp(vector<User> &);
 /////////////////////////
 
 // func main start
@@ -38,6 +46,9 @@ int main()
 
         authMenu(userVector);
         cout << endl;
+
+        if (isLogedIn == false)
+            break;
 
         do
         {
@@ -74,26 +85,22 @@ int main()
 
 void getUsers(vector<User> &userVector)
 {
-    string fileName = "users.txt";
-    fstream file(fileName.c_str(), ios::in);
+    fstream file(userFile.c_str(), ios::in);
     vector<string> lines;
     string line;
 
     if (!file.is_open())
     {
-        cout << RED << "\nERROR: Couldn't open users data file " << fileName << endl
+        cout << RED << "\nERROR: Couldn't open users data file " << userFile << endl
              << UNRED;
         return;
     }
 
-    ll userCount = 1;
+    ll userCount = 0;
     while (getline(file, line))
     {
         if (line.empty())
-        {
             userCount++;
-            continue;
-        }
         else
             lines.pb(line);
     }
@@ -112,45 +119,170 @@ void authMenu(vector<User> &userVector)
          << UNBOLD;
     cout << "1. Login\n";
     cout << "2. Sign up\n";
-    cout << "3. Incognito\n";
-    cout << "4. Exit\n";
-    cout << GRAY << "\nPlease note that incognito mode has some limitations\n\n"
-         << UNGRAY;
+    cout << "3. Exit\n";
     cout << "Make a choice: ";
     cin >> userDecision;
     cout << endl;
 
     if (userDecision == 1)
     {
-        string userName, password;
-        cout << "Enter your username: ";
-        cin >> userName;
-        ll check = 0;
-        for (ll i = 0; i < userVector.size(); i++)
-        {
-            if (userVector[i].userName == userName)
-            {
-                check++;
-                break;
-            }
-        }
-        if (check == 0)
-        {
-            char doContinue;
-            cout << RED << "\nERROR: Could not find an account with username \"" << userName << "\"\n"
-                 << UNRED;
-            cout << "\nWould you like to sign up? (Y | N) ";
-            cin >> doContinue;
-        }
+        login(userVector);
     }
     else if (userDecision == 2)
     {
+        signUp(userVector);
     }
-    else if (userDecision == 3)
+
+    return;
+}
+
+void login(vector<User> &userVector)
+{
+    string userName, password;
+    cout << "Enter your username: ";
+    cin >> userName;
+
+    ll check = 0;
+    ll index;
+    for (ll i = 0; i < userVector.size(); i++)
     {
+        if (userVector[i].userName == userName)
+        {
+            check++;
+            index = i;
+            break;
+        }
+    }
+
+    if (check == 0)
+    {
+        char doContinue;
+        cout << RED << "\nERROR: Could not find an account with username \"" << userName << "\"\n"
+             << UNRED;
+        cout << "\nWould you like to sign up? (Y | N) ";
+        cin >> doContinue;
+        if (doContinue == 'y' || doContinue == 'Y')
+        {
+            signUp(userVector);
+            return;
+        }
+        else
+            return;
+    }
+
+    bool isPassCorrect = false;
+    ll triesCount = 0;
+    do
+    {
+        triesCount++;
+        if (triesCount > 3)
+        {
+            cout << RED << "\nERROR: Too many tries. Try again later...\n"
+                 << UNRED;
+            return;
+        }
+
+        cout << "Enter your password: ";
+        cin >> password;
+        cout << endl;
+
+        if (password != userVector[index].password)
+        {
+            cout << RED << "ERROR: Password \"" << password << "\" does not match your password. Please try again...\n\n"
+                 << UNRED;
+            continue;
+        }
+        else
+        {
+            isPassCorrect = true;
+            break;
+        }
+
+    } while (isPassCorrect == false);
+
+    USER_NAME = userName;
+    PIN = password;
+    INDEX = index;
+    isLogedIn = true;
+    cout << GREEN << "Welcome back, " << USER_NAME << endl
+         << UNGREEN;
+    cout << YELLOW << "Your current balance is $" << userVector[INDEX].balance << endl
+         << UNYELLOW;
+    return;
+}
+
+void signUp(vector<User> &userVector)
+{
+    cout << BOLD << "Thank you for choosing UnifyBank! We are glad to have you here\n"
+         << UNBOLD;
+    cout << "Let's register your account, which will not take more than 5 minutes and is absolutely free\n\n";
+    string userName, password;
+    cout << "Enter your username: ";
+    cin >> userName;
+
+    ll seenIndex = 0;
+    for (ll i = 0; i < userVector.size(); i++)
+    {
+        if (userVector[i].userName == userName)
+        {
+            seenIndex++;
+            break;
+        }
+    }
+
+    if (seenIndex > 0)
+    {
+        char doContinue;
+        cout << RED << "\nUser with such name already exists. Would you like to log in? (Y | N) " << UNRED;
+        cin >> doContinue;
+        if (doContinue == 'Y' || doContinue == 'y')
+        {
+            login(userVector);
+            return;
+        }
+    }
+
+    char doContinue;
+    cout << BOLD << "Would you like to generate a password? (Y | N) " << UNBOLD;
+    cin >> doContinue;
+    if (doContinue == 'y' || doContinue == 'Y')
+    {
+        password = generateRandomPassword(4);
     }
     else
+    {
+        cout << "Enter your password: ";
+        cin >> password;
+    }
+
+    PIN = password;
+    USER_NAME = userName;
+
+    User user;
+    user.userName = userName;
+    user.password = password;
+    userVector.pb(user);
+    isLogedIn = true;
+    INDEX = userVector.size() - 1;
+
+    fstream f(userFile.c_str(), ios::app | ios::out);
+    if (!f.is_open())
+    {
+        cout << RED << "\nERROR: Couldn't open user file " << userFile << "\n"
+             << UNRED;
         return;
+    }
+    f << endl;
+    f << USER_NAME << endl;
+    f << PIN << endl;
+
+    cout << GREEN << "\nWelcome, " << USER_NAME << endl
+         << UNGREEN;
+    cout << YELLOW << "Your current balance is $" << userVector[INDEX].balance << endl
+         << UNYELLOW;
+
+    f.close();
+    return;
 }
 
 void paymentsMenu()
@@ -176,6 +308,7 @@ void mainMenu()
     // for getting into payments section
     if (userDecision == 1)
     {
+        paymentsMenu();
     }
     // for getting into investments section
     else if (userDecision == 2)
