@@ -2,10 +2,6 @@
 #include "../../../lib.h"
 using namespace std;
 
-// function prototypes //
-
-/////////////////////////
-
 // func main start
 int main()
 {
