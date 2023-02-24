@@ -1,5 +1,13 @@
 {
   "python.analysis.typeCheckingMode": "basic",
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.py": "python",
+    "iostream": "cpp",
+    "new": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp"
+  }
 }
