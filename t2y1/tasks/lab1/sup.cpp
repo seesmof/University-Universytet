@@ -28,6 +28,9 @@ public:
     {
         return objectDescriptor;
     }
+
+    // create default destructor function
+    ~Delta() {}
 };
 
 // object creation function
