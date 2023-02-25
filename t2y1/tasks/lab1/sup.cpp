@@ -13,6 +13,7 @@ private:
 public:
     // create default constructor function
     Delta() : objectDescriptor(getNextDefaultDescriptor()) {}
+    Delta(const ll objectDescriptor) : objectDescriptor(objectDescriptor) {}
 
     // next identifier creator
     static ll getNextDefaultDescriptor()
@@ -33,9 +34,30 @@ public:
     ~Delta() {}
 };
 
+bool validateDescriptor(ll descriptorHolder, vector<unique_ptr<Delta>> &deltaObjectsVector)
+{
+    for (const auto &delta : deltaObjectsVector)
+    {
+        if (delta->getObjectDescriptor() == descriptorHolder)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 // object creation function
 void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
+    ll userDecision;
+    cout << BOLD << "\nHow would you like to add objects?\n"
+         << UNBOLD;
+    cout << "1. Enter manually\n";
+    cout << "2. Generate automatically\n";
+    cout << "3. Exit\n";
+    cin >> userDecision;
+    cout << endl;
+
     // ask user to enter number of delta objects to create
     ll objectsAmount;
     cout << "\nEnter an amount of objects to create: ";
@@ -49,11 +71,45 @@ void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
              << UNRED;
         return;
     }
-    cout << endl;
+
+    if (userDecision == 1)
+    {
+        cout << BOLD << "How would you like to get objects?\n"
+             << UNBOLD;
+        cout << "1. Enter one-by-one from keyboard\n";
+        cout << "2. Enter from file\n";
+        cout << "3. Exit\n";
+        cin >> userDecision;
+        cout << endl;
+
+        if (userDecision == 1)
+        {
+            // create objects
+            for (ll i = 0; i < objectsAmount; i++)
+            {
+                ll descriptorHolder;
+                cout << i + 1 << ". Enter: ";
+                cin >> descriptorHolder;
+
+                bool isUnique = validateDescriptor(descriptorHolder, deltaObjectsVector);
+
+                if (isUnique == false)
+                {
+                    cout << RED << "\nERROR: Object descriptor is not unique...\n\n"
+                         << UNRED;
+                    continue;
+                }
+                else
+                    deltaObjectsVector.push_back(make_unique<Delta>(descriptorHolder));
+            }
+        }
+    }
 
     // create specified amount of objects using a for loop
     for (ll i = 0; i < objectsAmount; i++)
+    {
         deltaObjectsVector.push_back(make_unique<Delta>());
+    }
 
     // end function execution
     return;
