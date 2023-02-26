@@ -16,7 +16,11 @@ int main()
     do
     {
         ///////////////////////////////////////
-
+        char input;
+        cout << "Enter: ";
+        cin >> input;
+        cout << char(tolower(input));
+        cin.ignore();
         ///////////////////////////////////////
 
         // ask user if they would like to continue execution of program
