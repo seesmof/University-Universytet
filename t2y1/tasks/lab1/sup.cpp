@@ -41,12 +41,25 @@ void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
     cout << "\nEnter an amount of objects to create: ";
     cin >> objectsAmount;
 
+    // if entered text is not an integer
+    if (cin.fail())
+    {
+        // output error
+        cout << RED << "\nERROR: Enter an integer...\n\n"
+             << UNRED;
+        // clear buffer
+        cin.clear();
+        cin.ignore();
+        // stop function execution
+        return;
+    }
     // if entered amount is less than one
-    if (objectsAmount < 1)
+    else if (objectsAmount < 1)
     {
         // output error and stop function
         cout << RED << "\nERROR: Invalid amount of objects...\n\n"
              << UNRED;
+        // stop function execution
         return;
     }
 
