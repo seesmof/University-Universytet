@@ -105,6 +105,20 @@ void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
         ll numToDelete = 0;
         cout << "\nEnter a number of object to delete: ";
         cin >> numToDelete;
+
+        // check if entered text is not an integer
+        if (cin.fail())
+        {
+            // output error
+            cout << RED << "\nERROR: Enter an integer...\n\n"
+                 << UNRED;
+            // clear buffer
+            cin.clear();
+            cin.ignore();
+            // stop function execution
+            return;
+        }
+
         // modify object number to fit in with indeces
         numToDelete--;
 

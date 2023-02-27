@@ -37,6 +37,19 @@ int main()
             cout << "\nEnter: ";
             cin >> userDecision;
 
+            // check if input is not an integer
+            if (cin.fail())
+            {
+                // output error
+                cout << RED << "\nERROR: Enter an integer...\n\n"
+                     << UNRED;
+                // clear buffer
+                cin.clear();
+                cin.ignore();
+                // stop function execution
+                return;
+            }
+
             // if user chose to add objects
             if (userDecision == 1)
             {
