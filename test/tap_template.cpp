@@ -1,5 +1,5 @@
 // include necessary libraries
-#include "../../../lib.h"
+#include "../lib.h"
 using namespace std;
 
 // func main start

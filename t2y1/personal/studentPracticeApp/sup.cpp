@@ -3,16 +3,50 @@
 #include "../../../lib.h"
 using namespace std;
 
-// delta class declaration
-class Delta
+// Stud class declaration
+class Stud
 {
 private:
-    // declare private members
-    ll objectDescriptor;
+    static ll studentNumber;
+    string studentName;
+    ll studentBirthYear;
 
 public:
     // create default constructor function
-    Delta() : objectDescriptor(getNextDefaultDescriptor()) {}
+    Stud()
+    {
+        ++studentNumber;
+        studentName = "UNKNOWN";
+        studentBirthYear = 0;
+    }
+
+    Stud(string inputStudentName, ll inputStudentBirthYear)
+    {
+        ++studentNumber;
+        studentName = inputStudentName;
+        studentBirthYear = inputStudentBirthYear;
+    }
+
+    ll getStudentNumber() const
+    {
+        return studentNumber;
+    }
+
+    string getStudentName() const
+    {
+        return studentName;
+    }
+
+    ll getStudentBirthYear() const
+    {
+        return studentBirthYear;
+    }
+
+    void getStudent()
+    {
+        cout << studentNumber << ". Name: " << studentName << endl;
+        cout << studentNumber << ". Birth Year: " << studentBirthYear << endl;
+    }
 
     // next identifier creator
     static ll getNextDefaultDescriptor()
@@ -23,20 +57,18 @@ public:
         return descriptorHolder++;
     }
 
-    // getter for object identifier
-    ll getObjectDescriptor() const
-    {
-        return objectDescriptor;
-    }
+    ll getObjectDescriptor() const;
 
     // create default destructor function
-    ~Delta() {}
+    ~Stud()
+    {
+    }
 };
 
 // object creation function
-void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void createObjects(vector<unique_ptr<Stud>> &StudObjectsVector)
 {
-    // ask user to enter number of delta objects to create
+    // ask user to enter number of Stud objects to create
     ll objectsAmount;
     cout << "\nEnter an amount of objects to create: ";
     cin >> objectsAmount;
@@ -65,33 +97,33 @@ void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 
     // create specified amount of objects using a for loop
     for (ll i = 0; i < objectsAmount; i++)
-        deltaObjectsVector.push_back(make_unique<Delta>());
+        StudObjectsVector.push_back(make_unique<Stud>());
 
     // end function execution
     return;
 }
 
 // printing objects function
-void printObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void printObjects(vector<unique_ptr<Stud>> &StudObjectsVector)
 {
     // get vector size
-    ll vectorSize = deltaObjectsVector.size();
+    ll vectorSize = StudObjectsVector.size();
 
     // output all objects with their identifiers using a for loop
     cout << BOLD << "\nYour objects (" << vectorSize << "): \n"
          << UNBOLD;
     for (ll i = 0; i < vectorSize; i++)
-        cout << i + 1 << ". Descriptor: " << deltaObjectsVector[i]->getObjectDescriptor() << endl;
+        cout << i + 1 << ". Descriptor: " << StudObjectsVector[i]->getObjectDescriptor() << endl;
 
     // end function execution
     return;
 }
 
 // object deletion function
-void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void deleteObjects(vector<unique_ptr<Stud>> &StudObjectsVector)
 {
     // check if vector is empty
-    if (deltaObjectsVector.size() == 0)
+    if (StudObjectsVector.size() == 0)
         // if so, output error message
         cout << GRAY << "\nNo objects to delete\n"
              << UNGRAY;
@@ -99,7 +131,7 @@ void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
     else
     {
         // print all objects to user
-        printObjects(deltaObjectsVector);
+        printObjects(StudObjectsVector);
 
         // prompt user to enter an object number to delete
         ll numToDelete = 0;
@@ -123,7 +155,7 @@ void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
         numToDelete--;
 
         // if the object number is out of range
-        if (numToDelete > deltaObjectsVector.size() - 1 || numToDelete < 0)
+        if (numToDelete > StudObjectsVector.size() - 1 || numToDelete < 0)
             // output error message
             cout << RED << "\nERROR: Invalid object number\n"
                  << UNRED;
@@ -132,11 +164,11 @@ void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
         {
             // output success message
             cout << GREEN << endl
-                 << deltaObjectsVector[numToDelete]->getObjectDescriptor() << " successfully deleted\n"
+                 << StudObjectsVector[numToDelete]->getObjectDescriptor() << " successfully deleted\n"
                  << UNGREEN;
 
             // erase object from vector
-            deltaObjectsVector.erase(deltaObjectsVector.begin() + numToDelete);
+            StudObjectsVector.erase(StudObjectsVector.begin() + numToDelete);
         }
     }
 

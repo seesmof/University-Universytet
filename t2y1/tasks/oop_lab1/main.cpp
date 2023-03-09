@@ -46,8 +46,8 @@ int main()
                 // clear buffer
                 cin.clear();
                 cin.ignore();
-                // stop function execution
-                return;
+                // break out of loop
+                break;
             }
 
             // if user chose to add objects
