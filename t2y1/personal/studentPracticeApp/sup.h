@@ -7,11 +7,20 @@ using namespace std;
 // delta class declaration
 class Stud;
 
-// object deletion function
-void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector);
+// for showing the main menu of the application
+void outputMenu(vector<unique_ptr<Stud>> &studentVector);
 
-// object creation function
-void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector);
+// object deletion function
+void deleteStudent(vector<unique_ptr<Stud>> &studentVector);
+
+// for editing student information
+void editStudent(vector<unique_ptr<Stud>> &studentVector);
 
 // printing objects function
-void printObjects(vector<unique_ptr<Delta>> &deltaObjectsVector);
+void showStudents(vector<unique_ptr<Stud>> &studentVector);
+
+// object creation function
+void addStudents(vector<unique_ptr<Stud>> &studentVector);
+
+// for calculating student age
+ll calculateStudentAge(unique_ptr<Stud> &StudentObject);

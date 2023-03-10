@@ -1,22 +1,14 @@
 #include "../lib.h"
 using namespace std;
 
-// Варіант 5. Створити динамічний клас Route на основі двозв’язного списку, де кожний елемент типа stop (зупинка). Клас повинен містити наступні операції:
-// add_stop() – додавання зупинки;
-// len_route() – розрахунок довжини маршруту;
-// time_route() – розрахувати час руху.
-
-class Route
-{
-private:
-    class Stop
-    {
-        friend class Route;
-        Stop *next;
-        Stop *prev;
-    };
-};
-
 int main()
 {
+    // create a time struct to get current year
+    time_t t = time(NULL);
+    struct tm *tm = localtime(&t);
+    // get student's birth year and current year
+    ll currentYear = tm->tm_year;
+    cout << currentYear << endl;
+
+    return 0;
 }

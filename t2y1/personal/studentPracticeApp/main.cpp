@@ -21,50 +21,16 @@ int main()
         ///////////////////////////////////////
 
         // for storing class object pointers
-        vector<unique_ptr<Stud>> deltaObjectsVector;
+        vector<unique_ptr<Stud>> studentVector;
         // for manipulating program flow
         char doReturnToMenu;
 
         do
         {
-            // output menu to user and prompt them to choose an option
-            cout << BOLD << "Choose an option from menu\n"
-                 << UNBOLD;
-            cout << "1. Add objects\n";
-            cout << "2. Delete objects\n";
-            cout << "3. Print objects\n";
-            cout << "4. Exit\n";
-            cout << "\nEnter: ";
-            cin >> userDecision;
-
-            // check if input is not an integer
-            if (cin.fail())
-            {
-                // output error
-                cout << RED << "\nERROR: Enter an integer...\n\n"
-                     << UNRED;
-                // clear buffer
-                cin.clear();
-                cin.ignore();
-                // break out of loop
-                break;
-            }
-
-            // if user chose to add objects
-            if (userDecision == 1)
-            {
-            }
-            // if user chose to delete objects
-            else if (userDecision == 2)
-            {
-            }
-            // if user chose to print objects
-            else if (userDecision == 3)
-            {
-            }
+            outputMenu(studentVector);
 
             // ask user if they would like to return to menu
-            cout << "\nWould you like to return to menu? (Y | N): ";
+            cout << "Would you like to return to menu? (Y | N): ";
             cin >> doReturnToMenu;
             // if so, continue loop execution
             if (doReturnToMenu == 'Y' || doReturnToMenu == 'y')

@@ -4,6 +4,15 @@
 #include "lib.cpp"
 using namespace std;
 
+// get number input from user and validate it
+ll getNum();
+
+// string splitting function
+vector<string> splitString(string str, char splitter);
+
+// validates an inputed name
+string validateName(string inputString);
+
 // implements the Quick Sort algorithm to sort the elements of the given vector in ascending order
 template <typename T>
 void quickSort(vector<T> &arr, int left, int right);

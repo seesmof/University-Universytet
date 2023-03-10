@@ -6,6 +6,7 @@ using namespace std;
 #define ll long long
 #define all(x) (x).begin(), (x).end()
 #define pb push_back
+#define eb emplace_back
 #define mp make_pair
 #define endl "\n"
 void dbg_out()
@@ -19,6 +20,129 @@ void dbg_out(Head H, Tail... T)
     dbg_out(T...);
 }
 #define dbg(...) cerr << "(" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
+
+// For making text bold
+ostream &BOLD(ostream &os)
+{
+    return os << "\e[1m";
+}
+
+// For changing text back to normal
+ostream &UNBOLD(ostream &os)
+{
+    return os << "\e[0m";
+}
+
+// For setting text color to red
+ostream &RED(ostream &os)
+{
+    return os << "\033[1;31m";
+}
+
+// For changing text back to normal
+ostream &UNRED(ostream &os)
+{
+    return os << "\033[0m";
+}
+
+// For setting text color to green
+ostream &GREEN(ostream &os)
+{
+    return os << "\033[1;32m";
+}
+
+// For changing text back to normal
+ostream &UNGREEN(ostream &os)
+{
+    return os << "\033[0m";
+}
+
+// For changing text color to gray
+ostream &GRAY(ostream &os)
+{
+    return os << "\033[1;30m";
+}
+
+// For changing text back to normal
+ostream &UNGRAY(ostream &os)
+{
+    return os << "\033[0m";
+}
+
+// For changing text color to yellow
+ostream &YELLOW(ostream &os)
+{
+    return os << "\033[1;33m";
+}
+
+// For changing text back to normal
+ostream &UNYELLOW(ostream &os)
+{
+    return os << "\033[0m";
+}
+
+// get number input from user and validate it
+ll getNum()
+{
+    // ask user to enter a number, the prompt can be specified before calling the function
+    ll input;
+    cin >> input;
+    // if entered text is not an integer
+    if (cin.fail())
+    {
+        // output error
+        cout << RED << "\nERROR: Enter an integer...\n\n"
+             << UNRED;
+        // clear buffer
+        cin.clear();
+        cin.ignore();
+        // stop function execution
+        return -1;
+    }
+    // else return number
+    return input;
+}
+
+// string splitting
+vector<string> splitString(string str, char splitter)
+{
+    vector<string> result;
+    string current = "";
+    for (int i = 0; i < str.size(); i++)
+    {
+        if (str[i] == splitter)
+        {
+            if (current != "")
+            {
+                result.push_back(current);
+                current = "";
+            }
+            continue;
+        }
+        current += str[i];
+    }
+    if (current.size() != 0)
+        result.push_back(current);
+    return result;
+}
+
+// validates an inputed name
+string validateName(string inputString)
+{
+    stringstream stringProcessor(inputString); // create a stringstream object from the inputted name
+    string wordHolder;
+    string resultHolder;
+
+    while (stringProcessor >> wordHolder)
+    { // loop through each word in the stringstream
+        if (!isupper(wordHolder[0]))
+        {                                           // check if the first letter of the word is not uppercase
+            wordHolder[0] = toupper(wordHolder[0]); // capitalize the first letter of the word
+        }
+        resultHolder += wordHolder + " "; // add the modified word to the new name
+    }
+    return resultHolder; // return the result of the validation
+}
 
 // implements the Quick Sort algorithm to sort the elements of the given vector in ascending order
 template <typename T>
@@ -287,64 +411,4 @@ vector<string> getUniqueVector(vector<string> &inputVector)
 
     // return a vector containing only the unique elements from the original vector
     return uniqueElements;
-}
-
-// For making text bold
-ostream &BOLD(ostream &os)
-{
-    return os << "\e[1m";
-}
-
-// For changing text back to normal
-ostream &UNBOLD(ostream &os)
-{
-    return os << "\e[0m";
-}
-
-// For setting text color to red
-ostream &RED(ostream &os)
-{
-    return os << "\033[1;31m";
-}
-
-// For changing text back to normal
-ostream &UNRED(ostream &os)
-{
-    return os << "\033[0m";
-}
-
-// For setting text color to green
-ostream &GREEN(ostream &os)
-{
-    return os << "\033[1;32m";
-}
-
-// For changing text back to normal
-ostream &UNGREEN(ostream &os)
-{
-    return os << "\033[0m";
-}
-
-// For changing text color to gray
-ostream &GRAY(ostream &os)
-{
-    return os << "\033[1;30m";
-}
-
-// For changing text back to normal
-ostream &UNGRAY(ostream &os)
-{
-    return os << "\033[0m";
-}
-
-// For changing text color to yellow
-ostream &YELLOW(ostream &os)
-{
-    return os << "\033[1;33m";
-}
-
-// For changing text back to normal
-ostream &UNYELLOW(ostream &os)
-{
-    return os << "\033[0m";
 }
