@@ -3,62 +3,205 @@
 #include "../../../lib.h"
 using namespace std;
 
-// delta class declaration
-class Delta
+// Створити динамічний клас Route на основі двозв’язного списку, де кожний елемент типа Stop (зупинка). Клас повинен містити наступні операції:
+// add_stop() – додавання зупинки;
+// len_route() – розрахунок довжини маршруту;
+// time_route() – розрахувати час руху.
+
+// define the Stop struct, which represents a stop on the route
+class Stop
 {
-private:
-    // declare private members
-    ll objectDescriptor;
-
 public:
-    // create default constructor function
-    Delta() : objectDescriptor(getNextDefaultDescriptor()) {}
-
-    // next identifier creator
-    static ll getNextDefaultDescriptor()
-    {
-        // use static variable for tracking identifier
-        static int descriptorHolder = 0;
-        // return it to user
-        return descriptorHolder++;
-    }
-
-    ll getObjectDescriptor() const;
-
-    // create default destructor function
-    ~Delta()
-    {
-    }
+    string stopName;             // name of the stop
+    double distanceFromPrevious; // distance from previous stop
+    Stop *previousStop;          // pointer to previous stop in route
+    Stop *nextStop;              // pointer to next stop in route
 };
 
-// getter for object identifier
-ll Delta::getObjectDescriptor() const
+// define the Route class, which represents a route composed of stops
+class Route
 {
-    return objectDescriptor;
-}
+private:
+    Stop *firstStop;      // pointer to first stop in route
+    Stop *lastStop;       // pointer to last stop in route
+    static ll stopsCount; // total number of stops in route
+public:
+    // constructor initializes empty route with head and tail set to nullptr
+    Route() : firstStop(nullptr), lastStop(nullptr) {}
 
-// object creation function
-void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
-{
-    // ask user to enter number of delta objects to create
-    ll objectsAmount;
-    cout << "\nEnter an amount of objects to create: ";
-    cin >> objectsAmount;
-
-    // if entered text is not an integer
-    if (cin.fail())
+    // declare desctructor that deletes all stops from the route
+    ~Route()
     {
-        // output error
-        cout << RED << "\nERROR: Enter an integer...\n\n"
-             << UNRED;
-        // clear buffer
-        cin.clear();
-        cin.ignore();
-        // stop function execution
+        // set temp stop to first one
+        Stop *currentStop = firstStop;
+        // till the end of the list
+        while (currentStop != nullptr)
+        {
+            // declare next stop and assign it the next stop value
+            Stop *nextStop = currentStop->nextStop;
+            // delete current stop
+            delete currentStop;
+            // move onto the next one
+            currentStop = nextStop;
+        }
+    }
+
+    // first stop getter
+    Stop *getFirstStop() const
+    {
+        return firstStop;
+    }
+
+    // last stop getter
+    Stop *getLastStop() const
+    {
+        return lastStop;
+    }
+
+    // for getting the amount of stops in the route
+    ll getStopsCount() const
+    {
+        // return the stops count
+        return stopsCount;
+    }
+
+    // adds a new stop with the given name and distance from previous stop to the end of the route
+    void add_stop(string inputStopName, double inputDistance)
+    {
+        // declare new stop
+        Stop *stopHolder = new Stop();
+        // assign data values to it
+        stopHolder->stopName = inputStopName;
+        stopHolder->distanceFromPrevious = inputDistance;
+
+        // check if the list is empty by checking if head element points to NULL
+        if (firstStop == nullptr)
+        {
+            // if so set our stop as a first by assigning it to both first and last
+            firstStop = stopHolder;
+            lastStop = stopHolder;
+        }
+        // if its not empty
+        else
+        {
+            // our previous stop is current last
+            stopHolder->previousStop = lastStop;
+            // current last stop's next stop is our stop
+            lastStop->nextStop = stopHolder;
+            // and our stop becomes last, because we add it to the end
+            lastStop = stopHolder;
+        }
+        stopsCount++;
+    }
+
+    // for deleting a stop based on its name
+    void delete_stop(string inputStopName)
+    {
+        // declare temp stop
+        Stop *stopHolder = firstStop;
+        // iterate over all stops
+        while (stopHolder != nullptr)
+        {
+            // check if we found the one with a correct name
+            if (stopHolder->stopName == inputStopName)
+            {
+                // check if its the first stop
+                if (stopHolder == firstStop)
+                    // if so assign first stop to our current next stop
+                    firstStop = stopHolder->nextStop;
+                // check if we have a stop ahead
+                if (stopHolder->nextStop != nullptr)
+                    // if so assign next stop's previous stop value to current previous stop
+                    stopHolder->nextStop->previousStop = stopHolder->previousStop;
+                // check if we have a stop behind us
+                if (stopHolder->previousStop != nullptr)
+                    // if so assign previous stop's next stop value to current next stop
+                    stopHolder->previousStop->nextStop = stopHolder->nextStop;
+                // delete the stop
+                delete stopHolder;
+                // stop function execution
+                return;
+            }
+            // if we haven't found the stop, continue to the next one
+            stopHolder = stopHolder->nextStop;
+        }
+    }
+
+    // for getting the length of a route
+    double len_route()
+    {
+        // for holding the resulting length
+        double totalLength = 0.0;
+        Stop *currentStopHolder = firstStop;
+        // iterate over all the stops
+        while (currentStopHolder != nullptr)
+        {
+            // add distance of each stop to total counter
+            totalLength += currentStopHolder->distanceFromPrevious;
+            // and continue
+            currentStopHolder = currentStopHolder->nextStop;
+        }
+        // return the resulting length
+        return totalLength;
+    }
+
+    // for getting the time it takes to traverse the route
+    double time_route()
+    {
+        // get route time by dividing the length by an average speed of 30km/h
+        double routeTime = len_route() / 30.0;
+        // return it
+        return routeTime;
+    }
+};
+// initialize the stops counter at 0
+ll Route::stopsCount = 0;
+
+// for showing all stops in a route
+void showRoute(Route &routeContainer)
+{
+    // get container size
+    ll routeSize = routeContainer.getStopsCount();
+    // check if the container is empty
+    if (routeSize == 0)
+    {
+        // if so output message
+        cout << GRAY << "No stops found yet...\n"
+             << UNGRAY;
+        // end function execution
         return;
     }
+    // output all objects with their identifiers using a for loop
+    cout << BOLD << "\nStops (" << routeSize << "): \n"
+         << UNBOLD;
+    ll counter = 1;
+    ll subCounter = 1;
+    // iterate over all stops
+    Stop *stopHolder = routeContainer.getFirstStop();
+    while (stopHolder != NULL)
+    {
+        // output student's name and age
+        cout << counter << "." << subCounter << ". Name: " << stopHolder->stopName << endl;
+        subCounter++;
+        cout << counter << "." << subCounter << ". Distance: " << stopHolder->distanceFromPrevious << " KM\n\n";
+
+        // continue
+        stopHolder = stopHolder->nextStop;
+        counter++;
+        subCounter = 1;
+    }
+    // end function execution
+    return;
+}
+
+// for adding stops to route container
+void addStop(Route &routeContainer)
+{
+    // ask user to enter number of stop objects to create
+    cout << "Enter an amount of stops to add: ";
+    ll objectsAmount = getNum();
     // if entered amount is less than one
-    else if (objectsAmount < 1)
+    if (objectsAmount < 1)
     {
         // output error and stop function
         cout << RED << "\nERROR: Invalid amount of objects...\n\n"
@@ -66,84 +209,135 @@ void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
         // stop function execution
         return;
     }
-
     // create specified amount of objects using a for loop
-    for (ll i = 0; i < objectsAmount; i++)
-        deltaObjectsVector.push_back(make_unique<Delta>());
+    cout << endl;
+    ll subCounter = 1;
+    for (ll counter = 1; counter <= objectsAmount; counter++)
+    {
+        // ask user to enter stop name
+        cin.ignore();
+        string stopName;
+        cout << counter << "." << subCounter << ". Enter stop name: ";
+        getline(cin, stopName);
+        // validate stop name and continue
+        stopName = validateName(stopName);
+        subCounter++;
 
+        // ask user to enter stop distance
+        cout << counter << "." << subCounter << ". Enter distance in KM: ";
+        // validate it as well
+        double distanceFromPreviousStop = getNum();
+
+        // add stop using the method and continue
+        routeContainer.add_stop(stopName, distanceFromPreviousStop);
+        subCounter = 1;
+        cout << endl;
+    }
     // end function execution
     return;
 }
 
-// printing objects function
-void printObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+// for deleting stops from container
+void deleteStop(Route &routeContainer)
 {
-    // get vector size
-    ll vectorSize = deltaObjectsVector.size();
-
-    // output all objects with their identifiers using a for loop
-    cout << BOLD << "\nYour objects (" << vectorSize << "): \n"
-         << UNBOLD;
-    for (ll i = 0; i < vectorSize; i++)
-        cout << i + 1 << ". Descriptor: " << deltaObjectsVector[i]->getObjectDescriptor() << endl;
-
-    // end function execution
-    return;
-}
-
-// object deletion function
-void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
-{
-    // check if vector is empty
-    if (deltaObjectsVector.size() == 0)
+    // check if container is empty
+    if (routeContainer.getStopsCount() == 0)
         // if so, output error message
-        cout << GRAY << "\nNo objects to delete\n"
+        cout << GRAY << "\nNo stops to delete...\n"
              << UNGRAY;
     // if not
     else
     {
         // print all objects to user
-        printObjects(deltaObjectsVector);
-
-        // prompt user to enter an object number to delete
-        ll numToDelete = 0;
-        cout << "\nEnter a number of object to delete: ";
-        cin >> numToDelete;
-
-        // check if entered text is not an integer
-        if (cin.fail())
-        {
-            // output error
-            cout << RED << "\nERROR: Enter an integer...\n\n"
-                 << UNRED;
-            // clear buffer
-            cin.clear();
-            cin.ignore();
-            // stop function execution
-            return;
-        }
-
-        // modify object number to fit in with indeces
-        numToDelete--;
-
-        // if the object number is out of range
-        if (numToDelete > deltaObjectsVector.size() - 1 || numToDelete < 0)
-            // output error message
-            cout << RED << "\nERROR: Invalid object number\n"
-                 << UNRED;
-        // if not
-        else
-        {
-            // output success message
-            cout << GREEN << endl
-                 << deltaObjectsVector[numToDelete]->getObjectDescriptor() << " successfully deleted\n"
-                 << UNGREEN;
-
-            // erase object from vector
-            deltaObjectsVector.erase(deltaObjectsVector.begin() + numToDelete);
-        }
+        cin.ignore();
+        showRoute(routeContainer);
+        // prompt user to enter stop name to delete
+        cout << "\nEnter a stop name to delete: ";
+        string inputStopName;
+        getline(cin, inputStopName);
+        // validate it
+        inputStopName = validateName(inputStopName);
+        // output success message
+        cout << GREEN << endl
+             << inputStopName << " successfully deleted\n"
+             << UNGREEN;
+        // erase object from container
+        routeContainer.delete_stop(inputStopName);
     }
+    // end function execution
+    return;
+}
 
+// for converting double time to correct format
+string convertTime(double timeInHours)
+{
+    // get total minutes count by converting to int and multiplying by 60
+    int totalMinutes = static_cast<int>(timeInHours * 60);
+    // get hours cound by dividing minutes by 60
+    int hours = totalMinutes / 60;
+    // get minutes count by getting modulo of total minutes by 60
+    int minutes = totalMinutes % 60;
+    // return string in correct format, utilize ternary operator
+    return to_string(hours) + ":" + (minutes < 10 ? "0" : "") + to_string(minutes);
+}
+
+// for showing the main menu of the application
+void outputMenu(Route &routeContainer)
+{
+    // output the menu
+    cout << BOLD << "Welcome! Choose some option from below\n"
+         << UNBOLD;
+    cout << "1. Show route\n";
+    cout << "2. Add stop\n";
+    cout << "3. Remove stop\n";
+    cout << "4. Show route length\n";
+    cout << "5. Show route time\n";
+    cout << "6. Exit\n";
+    // ask user to enter their choice
+    cout << "Enter: ";
+    // and validate it
+    ll userDecision = getNum();
+    cout << endl;
+
+    // if user chose to just show route
+    if (userDecision == 1)
+        // show it using the function
+        showRoute(routeContainer);
+    // if user chose to add stops to route
+    else if (userDecision == 2)
+    {
+        // show the route
+        showRoute(routeContainer);
+        // and let user add stops using the function
+        cout << endl;
+        addStop(routeContainer);
+    }
+    // if user chose to delete a stop
+    else if (userDecision == 3)
+        // delete it using the function
+        deleteStop(routeContainer);
+    // if user chose to show the route length
+    else if (userDecision == 4)
+    {
+        // show the route
+        showRoute(routeContainer);
+        // get route length using the method
+        double resultLenght = routeContainer.len_route();
+        // output the route length to user
+        cout << "Route length is " << resultLenght << " KM\n";
+    }
+    // if user chose to show the route length
+    else if (userDecision == 5)
+    {
+        // show the route
+        showRoute(routeContainer);
+        // get route length via the method
+        double resultTime = routeContainer.time_route();
+        // calculate the time in correct time format
+        string formattedTime = convertTime(resultTime);
+        // output the result
+        cout << "It takes around " << formattedTime << " to complete the route\n";
+    }
     // end function execution
     return;
 }

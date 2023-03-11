@@ -369,7 +369,7 @@ string generateRandomString(int length)
         randomString += chars[index];
     }
 
-    return randomString + ".txt"; // Append ".txt" and return the generated string
+    return randomString; // Append ".txt" and return the generated string
 }
 
 // For generating a random password of given length
