@@ -4,23 +4,15 @@
 #include "../../../lib.h"
 using namespace std;
 
-// delta class declaration
-class Stud;
+class Human;
+class Engineer;
 
-// for showing the main menu of the application
-void outputMenu(vector<unique_ptr<Stud>> &studentVector);
+void showPeople(vector<unique_ptr<Human>> &container);
 
-// object deletion function
-void deleteStudent(vector<unique_ptr<Stud>> &studentVector);
+void addPeople(vector<unique_ptr<Human>> &container);
 
-// for editing student information
-void editStudent(vector<unique_ptr<Stud>> &studentVector);
+void removePeople(vector<unique_ptr<Human>> &container);
 
-// printing objects function
-void showStudents(vector<unique_ptr<Stud>> &studentVector);
+void editPeople(vector<unique_ptr<Human>> &container);
 
-// object creation function
-void addStudents(vector<unique_ptr<Stud>> &studentVector);
-
-// for calculating student age
-ll calculateStudentAge(unique_ptr<Stud> &StudentObject);
+void outputMenu(vector<unique_ptr<Human>> &container);

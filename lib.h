@@ -7,9 +7,6 @@ using namespace std;
 // get number input from user and validate it
 ll getNum();
 
-// string splitting function
-vector<string> splitString(string str, char splitter);
-
 // validates an inputed name
 string validateName(string inputString);
 

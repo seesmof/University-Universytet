@@ -29,6 +29,37 @@ public:
     // constructor initializes empty route with head and tail set to nullptr
     Route() : firstStop(nullptr), lastStop(nullptr) {}
 
+    // copy constructor for the Route class
+    Route(const Route &otherRoute)
+    {
+        // create a new empty Route object
+        Route newRoute;
+
+        // traverse the original Route object from first to last Stop
+        Stop *currentStop = otherRoute.firstStop;
+        while (currentStop != nullptr)
+        {
+            // create a new Stop object with the same properties and add it to the new Route object
+            Stop *newStop = new Stop;
+            newStop->stopName = currentStop->stopName;
+            newStop->distanceFromPrevious = currentStop->distanceFromPrevious;
+            newStop->previousStop = newRoute.lastStop;
+            newStop->nextStop = nullptr;
+            if (newRoute.lastStop != nullptr)
+            {
+                newRoute.lastStop->nextStop = newStop;
+            }
+            else
+            {
+                newRoute.firstStop = newStop;
+            }
+            newRoute.lastStop = newStop;
+
+            // move onto the next Stop in the original Route object
+            currentStop = currentStop->nextStop;
+        }
+    }
+
     // declare desctructor that deletes all stops from the route
     ~Route()
     {
@@ -149,13 +180,27 @@ public:
     double time_route()
     {
         // get route time by dividing the length by an average speed of 30km/h
-        double routeTime = len_route() / 30.0;
+        double routeTime = len_route() / 50.0;
         // return it
         return routeTime;
     }
 };
+
 // initialize the stops counter at 0
 ll Route::stopsCount = 0;
+
+// for converting double time to correct format
+string convertTime(double timeInHours)
+{
+    // get total minutes count by converting to int and multiplying by 60
+    int totalMinutes = static_cast<int>(timeInHours * 60);
+    // get hours cound by dividing minutes by 60
+    int hours = totalMinutes / 60;
+    // get minutes count by getting modulo of total minutes by 60
+    int minutes = totalMinutes % 60;
+    // return string in correct format, utilize ternary operator
+    return to_string(hours) + ":" + (minutes < 10 ? "0" : "") + to_string(minutes);
+}
 
 // for showing all stops in a route
 void showRoute(Route &routeContainer)
@@ -172,24 +217,20 @@ void showRoute(Route &routeContainer)
         return;
     }
     // output all objects with their identifiers using a for loop
-    cout << BOLD << "\nStops (" << routeSize << "): \n"
+    cout << BOLD << "Stops (" << routeSize << "):\n\n"
          << UNBOLD;
     ll counter = 1;
-    ll subCounter = 1;
     // iterate over all stops
     Stop *stopHolder = routeContainer.getFirstStop();
     while (stopHolder != NULL)
     {
-        // output student's name and age
-        cout << counter << "." << subCounter << ". Name: " << stopHolder->stopName << endl;
-        subCounter++;
-        cout << counter << "." << subCounter << ". Distance: " << stopHolder->distanceFromPrevious << " KM\n\n";
-
+        cout << "(" << counter << ") " << stopHolder->stopName << "• " << stopHolder->distanceFromPrevious << " KM\n\n";
         // continue
         stopHolder = stopHolder->nextStop;
         counter++;
-        subCounter = 1;
     }
+    cout << "Total distance is " << routeContainer.len_route() << " KM\n";
+    cout << "Time it takes to complete the route is " << convertTime(routeContainer.time_route()) << endl;
     // end function execution
     return;
 }
@@ -211,26 +252,23 @@ void addStop(Route &routeContainer)
     }
     // create specified amount of objects using a for loop
     cout << endl;
-    ll subCounter = 1;
     for (ll counter = 1; counter <= objectsAmount; counter++)
     {
         // ask user to enter stop name
         cin.ignore();
         string stopName;
-        cout << counter << "." << subCounter << ". Enter stop name: ";
+        cout << "(" << counter << ") Stop Name: ";
         getline(cin, stopName);
         // validate stop name and continue
         stopName = validateName(stopName);
-        subCounter++;
 
         // ask user to enter stop distance
-        cout << counter << "." << subCounter << ". Enter distance in KM: ";
+        cout << "    Distance from Previous Stop (KM): ";
         // validate it as well
         double distanceFromPreviousStop = getNum();
 
         // add stop using the method and continue
         routeContainer.add_stop(stopName, distanceFromPreviousStop);
-        subCounter = 1;
         cout << endl;
     }
     // end function execution
@@ -266,19 +304,6 @@ void deleteStop(Route &routeContainer)
     }
     // end function execution
     return;
-}
-
-// for converting double time to correct format
-string convertTime(double timeInHours)
-{
-    // get total minutes count by converting to int and multiplying by 60
-    int totalMinutes = static_cast<int>(timeInHours * 60);
-    // get hours cound by dividing minutes by 60
-    int hours = totalMinutes / 60;
-    // get minutes count by getting modulo of total minutes by 60
-    int minutes = totalMinutes % 60;
-    // return string in correct format, utilize ternary operator
-    return to_string(hours) + ":" + (minutes < 10 ? "0" : "") + to_string(minutes);
 }
 
 // for showing the main menu of the application

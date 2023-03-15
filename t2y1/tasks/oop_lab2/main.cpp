@@ -14,7 +14,6 @@ int main()
     // declare local variables //
     srand(time(NULL));
     char doContinue;
-    ll userDecision;
     /////////////////////////////
 
     // project intro
