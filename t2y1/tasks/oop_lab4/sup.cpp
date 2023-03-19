@@ -259,8 +259,7 @@ void showRoute(Route &routeContainer, const string &FILE_NAME)
     oFile << "========================================\n";
 
     // output all objects with their identifiers using a for loop
-    oFile << BOLD << "\nStops (" << routeSize << "):\n\n"
-          << UNBOLD;
+    oFile << "\nStops (" << routeSize << "):\n\n";
     ll counter = 1;
     // iterate over all stops
     Stop *stopHolder = routeContainer.getFirstStop();
@@ -427,7 +426,8 @@ void outputMenu(Route &routeContainer)
     }
     else if (userDecision == 3)
     {
-        string inputFileName = getFileName();
+        string inputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
+        inputFileName += getFileName();
         // show the route
         showRoute(routeContainer);
         // and let user add stops using the function
@@ -462,7 +462,8 @@ void outputMenu(Route &routeContainer)
     }
     else if (userDecision == 7)
     {
-        string outputFileName = getFileName();
+        string outputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
+        outputFileName += getFileName();
         // show the route
         showRoute(routeContainer);
         // output the route to a file

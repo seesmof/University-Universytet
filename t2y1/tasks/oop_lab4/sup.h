@@ -19,8 +19,14 @@ void editStudent(vector<unique_ptr<Stud>> &studentVector);
 // printing objects function
 void showStudents(vector<unique_ptr<Stud>> &studentVector);
 
+// printing objects function
+void showStudents(vector<unique_ptr<Stud>> &studentVector, const string &FILE_NAME);
+
 // object creation function
 void addStudents(vector<unique_ptr<Stud>> &studentVector);
+
+// object creation function
+void addStudents(vector<unique_ptr<Stud>> &studentVector, const string &FILE_NAME);
 
 // for calculating student age
 ll calculateStudentAge(unique_ptr<Stud> &StudentObject);
