@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    ofstream ofs("./out.txt");
+    ofstream ofs("D:/repos/university/out.txt");
     if (ofs.is_open())
     {
         cout << "File must be opened\n";
