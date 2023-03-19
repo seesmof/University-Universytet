@@ -81,6 +81,26 @@ ostream &UNYELLOW(ostream &os)
     return os << "\033[0m";
 }
 
+void bad(const string &INPUT)
+{
+    // create a stringstream object to store the message
+    stringstream ss;
+    // add ANSI escape codes for red text
+    ss << "\033[1;31mERROR: " << INPUT << "\033[0m";
+    // output the message to cerr
+    cerr << ss.str() << endl;
+}
+
+void good(const string &INPUT)
+{
+    // create a stringstream object to store the message
+    stringstream ss;
+    // add ANSI escape codes for red text
+    ss << "\033[1;32mSUCCESS: " << INPUT << "\033[0m";
+    // output the message to cerr
+    cerr << ss.str() << endl;
+}
+
 // get number input from user and validate it
 ll getNum()
 {

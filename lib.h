@@ -4,6 +4,12 @@
 #include "lib.cpp"
 using namespace std;
 
+// for outputting error messages
+void bad(const string &INPUT);
+
+// for outputting success messages
+void good(const string &INPUT);
+
 // get number input from user and validate it
 ll getNum();
 
