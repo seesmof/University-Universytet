@@ -199,19 +199,21 @@ string convertTime(double timeInHours)
     return to_string(hours) + ":" + (minutes < 10 ? "0" : "") + to_string(minutes);
 }
 
-istream &insetup(istream &ifs)
+ostream &outsetup(ostream &os)
 {
-    ifs.setf(ios::scientific | ios::skipws | ios::hex);
-
-    return ifs;
+    os.precision(2);
+    os << fixed;        // sets float formatting to fixed
+    os << showpoint;    // shows trailing zeroes
+    os << setfill('-'); // sets fill character to '-'
+    os << setw(10);     // sets width to 10 characters
+    return os;
 }
 
-ostream &outsetup(ostream &ofs)
+istream &insetup(istream &is)
 {
-    ofs.fill(' ');
-    ofs << setw(4);
-
-    return ofs;
+    is >> noskipws; // disables skipping whitespace
+    is.tie(&cout);  // ties input stream to output stream
+    return is;
 }
 
 // for showing all stops in a route
