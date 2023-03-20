@@ -101,26 +101,16 @@ void good(const string &INPUT)
     cerr << ss.str() << endl;
 }
 
-// get number input from user and validate it
 ll getNum()
 {
-    // ask user to enter a number, the prompt can be specified before calling the function
-    ll input;
-    cin >> input;
-    // if entered text is not an integer
-    if (cin.fail())
+    ll number;
+    while (!(cin >> number))
     {
-        // output error
-        cout << RED << "\nERROR: Enter an integer...\n\n"
-             << UNRED;
-        // clear buffer
         cin.clear();
-        cin.ignore();
-        // stop function execution
-        return -1;
+        cin.ignore(256, '\n');
+        bad("Enter an integer");
     }
-    // else return number
-    return input;
+    return number;
 }
 
 // validates an inputed name
