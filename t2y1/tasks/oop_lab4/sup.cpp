@@ -226,8 +226,10 @@ void showRoute(Route &routeContainer)
         stopHolder = stopHolder->nextStop;
         counter++;
     }
+    // additionally show the length of the route and the time it takes to complete
     cout << "Total distance is " << routeContainer.len_route() << " KM\n";
     cout << "Time it takes to complete the route is " << convertTime(routeContainer.time_route()) << endl;
+
     // end function execution
     return;
 }
@@ -247,13 +249,17 @@ void showRoute(Route &routeContainer, const string &FILE_NAME)
         return;
     }
 
+    // declare file variable
     fstream oFile(FILE_NAME.c_str(), ios::out);
+    // and check if it cannot be opened
     if (!oFile.is_open())
     {
+        // if so output the error and stop function execution
         bad("Couldn't open file for writing");
         return;
     }
 
+    // output the upper side to the file
     oFile << "========================================\n";
     oFile << setw(30) << "Welcome on board!\n";
     oFile << "========================================\n";
@@ -265,17 +271,20 @@ void showRoute(Route &routeContainer, const string &FILE_NAME)
     Stop *stopHolder = routeContainer.getFirstStop();
     while (stopHolder != NULL)
     {
+        // output stops data to a file
         oFile << "(" << counter << ") " << stopHolder->stopName << "• " << stopHolder->distanceFromPrevious << " KM\n\n";
         // continue
         stopHolder = stopHolder->nextStop;
         counter++;
     }
 
+    // add the distance and the time it takes to complete the route to the end of the file
     oFile << "========================================\n";
     oFile << "\nTotal distance is " << routeContainer.len_route() << " KM\n";
     oFile << "Time it takes to complete the route is " << convertTime(routeContainer.time_route()) << endl;
 
-    // end function execution
+    // close file, output success message and end function execution
+    cout << endl;
     oFile.close();
     good("Data successfully added to the file");
     return;
@@ -322,25 +331,34 @@ void addStop(Route &routeContainer)
     return;
 }
 
-// for adding stops to route container
+// for adding stops to route container from a file
 void addStop(Route &routeContainer, const string &FILE_NAME)
 {
+    // declare file instance
     ifstream oFile(FILE_NAME.c_str());
+    // check if file cannot be opened
     if (!oFile.is_open())
     {
+        // if so output the error and stop function execution
         bad("Couldn't open file for writing");
         return;
     }
 
+    // declare variables for proecessing the lines of file
     vector<string> linesFromFile;
     string lineHolder;
     ll linesCounter = 1;
 
+    // get all file lines
     while (getline(oFile, lineHolder))
     {
+        // check if a line is empty which will indicate the new item
         if (lineHolder.empty())
+            // if it is increment the counter
             linesCounter++;
+        // if its not
         else
+            // add line to vector
             linesFromFile.pb(lineHolder);
     }
 
@@ -348,14 +366,15 @@ void addStop(Route &routeContainer, const string &FILE_NAME)
     cout << endl;
     for (ll counter = 0, subCounter = 0; counter < linesCounter; counter++, subCounter += 2)
     {
-        // ask user to enter stop name
+        // process stop name
         string stopName;
         stopName = linesFromFile[subCounter];
         // validate stop name and continue
         stopName = validateName(stopName);
 
-        // validate it as well
+        // process distance
         string distanceHolder = linesFromFile[subCounter + 1];
+        // convert it to double
         double distanceFromPreviousStop = stod(distanceHolder);
 
         // add stop using the method and continue
@@ -434,6 +453,7 @@ void outputMenu(Route &routeContainer)
     {
         string inputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
         inputFileName += getFileName();
+        cout << endl;
         // show the route
         showRoute(routeContainer);
         // and let user add stops using the function
