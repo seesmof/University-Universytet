@@ -4,13 +4,13 @@
 
 Stops (3):
 
-(1) Sfkdsjf • 20 KM
+(1) One • 30 KM
 
-(2) Sdfsjdkls • 30 KM
+(2) Two • 34 KM
 
-(3) Sdfldsjfslf • 80 KM
+(3) Three • 45 KM
 
 ========================================
 
-Total distance is 130 KM
-Time it takes to complete the route is 2:36
+Total distance is 109 KM
+Time it takes to complete the route is 2:10

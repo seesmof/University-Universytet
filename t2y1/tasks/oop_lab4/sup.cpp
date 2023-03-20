@@ -277,6 +277,7 @@ void showRoute(Route &routeContainer, const string &FILE_NAME)
 
     // end function execution
     oFile.close();
+    good("Data successfully added to the file");
     return;
 }
 
@@ -295,6 +296,7 @@ void addStop(Route &routeContainer)
         // stop function execution
         return;
     }
+
     // create specified amount of objects using a for loop
     cout << endl;
     for (ll counter = 1; counter <= objectsAmount; counter++)
@@ -335,22 +337,38 @@ void addStop(Route &routeContainer, const string &FILE_NAME)
         // stop function execution
         return;
     }
+
+    fstream oFile(FILE_NAME.c_str(), ios::out);
+    if (!oFile.is_open())
+    {
+        bad("Couldn't open file for writing");
+        return;
+    }
+
+    vector<string> linesFromFile;
+    string lineHolder;
+    ll linesCounter = 1;
+
+    while (getline(oFile, lineHolder))
+    {
+        if (lineHolder.empty())
+            linesCounter++;
+        else
+            linesFromFile.eb(lineHolder);
+    }
+
     // create specified amount of objects using a for loop
     cout << endl;
-    for (ll counter = 1; counter <= objectsAmount; counter++)
+    for (ll counter = 0, subCounter = 0; counter < linesCounter; counter++, subCounter += 3)
     {
         // ask user to enter stop name
-        cin.ignore();
         string stopName;
-        cout << "(" << counter << ") Stop Name: ";
-        getline(cin, stopName);
+        stopName = linesFromFile[counter];
         // validate stop name and continue
         stopName = validateName(stopName);
 
-        // ask user to enter stop distance
-        cout << "    Distance from Previous Stop (KM): ";
         // validate it as well
-        double distanceFromPreviousStop = getNum();
+        double distanceFromPreviousStop = linesFromFile[counter + 1];
 
         // add stop using the method and continue
         routeContainer.add_stop(stopName, distanceFromPreviousStop);
