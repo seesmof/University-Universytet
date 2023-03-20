@@ -359,7 +359,7 @@ void addStop(Route &routeContainer, const string &FILE_NAME)
 
     // create specified amount of objects using a for loop
     cout << endl;
-    for (ll counter = 0, subCounter = 0; counter < linesCounter; counter++, subCounter += 3)
+    for (ll counter = 0, subCounter = 0; counter < linesCounter; counter++, subCounter += 2)
     {
         // ask user to enter stop name
         string stopName;
@@ -368,7 +368,8 @@ void addStop(Route &routeContainer, const string &FILE_NAME)
         stopName = validateName(stopName);
 
         // validate it as well
-        double distanceFromPreviousStop = linesFromFile[counter + 1];
+        string distanceHolder = linesFromFile[counter + 1];
+        double distanceFromPreviousStop = stod(distanceHolder);
 
         // add stop using the method and continue
         routeContainer.add_stop(stopName, distanceFromPreviousStop);
