@@ -325,20 +325,7 @@ void addStop(Route &routeContainer)
 // for adding stops to route container
 void addStop(Route &routeContainer, const string &FILE_NAME)
 {
-    // ask user to enter number of stop objects to create
-    cout << "Enter an amount of stops to add: ";
-    ll objectsAmount = getNum();
-    // if entered amount is less than one
-    if (objectsAmount < 1)
-    {
-        // output error and stop function
-        cout << RED << "\nERROR: Invalid amount of objects...\n\n"
-             << UNRED;
-        // stop function execution
-        return;
-    }
-
-    fstream oFile(FILE_NAME.c_str(), ios::out);
+    ifstream oFile(FILE_NAME.c_str());
     if (!oFile.is_open())
     {
         bad("Couldn't open file for writing");
@@ -354,21 +341,22 @@ void addStop(Route &routeContainer, const string &FILE_NAME)
         if (lineHolder.empty())
             linesCounter++;
         else
-            linesFromFile.eb(lineHolder);
+            linesFromFile.pb(lineHolder);
     }
 
     // create specified amount of objects using a for loop
     cout << endl;
-    for (ll counter = 0, subCounter = 0; counter < linesCounter; counter++, subCounter += 2)
+    for (ll counter = 0, subCounter = 0; counter < linesCounter; counter++, subCounter += 3)
     {
+        cout << linesFromFile[subCounter] << linesFromFile[subCounter + 1] << endl;
         // ask user to enter stop name
         string stopName;
-        stopName = linesFromFile[counter];
+        stopName = linesFromFile[subCounter];
         // validate stop name and continue
         stopName = validateName(stopName);
 
         // validate it as well
-        string distanceHolder = linesFromFile[counter + 1];
+        string distanceHolder = linesFromFile[subCounter + 1];
         double distanceFromPreviousStop = stod(distanceHolder);
 
         // add stop using the method and continue
