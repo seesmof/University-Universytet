@@ -396,7 +396,7 @@ void addStop(Route &routeContainer, const string &FILE_NAME)
     }
 
     // end function execution
-    good(linesCounter + " stops successfully added!");
+    good("Stops successfully added");
     return;
 }
 
