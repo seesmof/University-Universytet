@@ -1,94 +1,35 @@
-#include "../lib.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
-class DynArray
+ostream &outsetup(ostream &os)
 {
-private:
-    unsigned int *arr;
-    int n;
-
-public:
-    DynArray(int count);
-    ~DynArray();
-    DynArray(const DynArray &obj);
-    void show();
-    void toFile();
-    void fromFile();
-};
-
-istream &insetup(istream &ifs)
-{
-    ifs.setf(ios::scientific | ios::skipws | ios::hex);
-    return ifs;
+    os.precision(2);
+    os << fixed;        // sets float formatting to fixed
+    os << showpoint;    // shows trailing zeroes
+    os << setfill('-'); // sets fill character to '-'
+    os << setw(10);     // sets width to 10 characters
+    return os;
 }
 
-ostream &outsetup(ostream &ofs)
+istream &insetup(istream &is)
 {
-    ofs.fill(' ');
-    ofs << setw(4);
-    return ofs;
+    is >> noskipws; // disables skipping whitespace
+    is.tie(&cout);  // ties input stream to output stream
+    return is;
 }
 
-DynArray::DynArray(int count)
+void myFunction()
 {
-    n = count;
-    arr = new unsigned int[n];
-    for (int i = 0; i < n; i++)
-        arr[i] = i;
-}
-
-DynArray::~DynArray() { delete[] arr; }
-
-DynArray::DynArray(const DynArray &obj)
-{
-    n = obj.n;
-    arr = new unsigned int[n];
-    for (int i = 0; i < n; i++)
-        arr[i] = obj.arr[i];
-}
-
-void DynArray::show()
-{
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-}
-
-void DynArray::toFile()
-{
-    ofstream ofs("1.txt");
-    if (ofs.is_open())
-    {
-        ofs << n << " ";
-        for (int i = 0; i < n; i++)
-        {
-            ofs << outsetup << arr[i] * 2 << " ";
-        }
-    }
-    ofs.close();
-}
-
-void DynArray::fromFile()
-{
-    ifstream ifs("1.txt");
-    if (ifs.is_open())
-    {
-        ifs >> n;
-        arr = new unsigned int[n];
-        for (int i = 0; i < n; i++)
-        {
-            ifs >> insetup >> arr[i];
-        }
-    }
-    ifs.close();
+    cout << outsetup << "This is some text" << endl;
+    double num;
+    cout << insetup << "Enter a number: ";
+    cin >> num;
+    cout << "You entered: " << num << endl;
 }
 
 int main()
 {
-    DynArray obj1(5);
-    obj1.show();
-    obj1.toFile();
-    obj1.fromFile();
-    obj1.show();
-    cin.get();
+    myFunction();
     return 0;
 }
