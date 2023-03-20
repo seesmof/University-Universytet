@@ -204,8 +204,8 @@ ostream &outsetup(ostream &os)
     os.precision(2);
     os << fixed;        // sets float formatting to fixed
     os << showpoint;    // shows trailing zeroes
-    os << setfill('-'); // sets fill character to '-'
-    os << setw(10);     // sets width to 10 characters
+    os << setfill('.'); // sets fill character to '-'
+    os << setw(4);      // sets width to 10 characters
     return os;
 }
 
