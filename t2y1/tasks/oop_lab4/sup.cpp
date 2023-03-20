@@ -199,6 +199,21 @@ string convertTime(double timeInHours)
     return to_string(hours) + ":" + (minutes < 10 ? "0" : "") + to_string(minutes);
 }
 
+istream &insetup(istream &ifs)
+{
+    ifs.setf(ios::scientific | ios::skipws | ios::hex);
+
+    return ifs;
+}
+
+ostream &outsetup(ostream &ofs)
+{
+    ofs.fill(' ');
+    ofs << setw(4);
+
+    return ofs;
+}
+
 // for showing all stops in a route
 void showRoute(Route &routeContainer)
 {
