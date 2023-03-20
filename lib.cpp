@@ -101,14 +101,22 @@ void good(const string &INPUT)
     cerr << ss.str() << endl;
 }
 
+// for getting nubmer input from user
 ll getNum()
 {
+    // declare variables for holding the input
     ll number;
+    // while user enters invalid input
     while (!(cin >> number))
     {
+        // clear buffer
         cin.clear();
+        // ignore new line char
         cin.ignore(256, '\n');
+        // output error message and continue
+        cout << endl;
         bad("Enter an integer");
+        cout << endl;
     }
     return number;
 }
