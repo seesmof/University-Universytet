@@ -451,7 +451,7 @@ void outputMenu(Route &routeContainer)
         showRoute(routeContainer);
         // and let user add stops using the function
         cout << endl;
-        addStop(routeContainer);
+        addStop(routeContainer, inputFileName);
     }
     // if user chose to delete a stop
     else if (userDecision == 4)
