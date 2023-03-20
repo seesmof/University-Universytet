@@ -81,6 +81,7 @@ ostream &UNYELLOW(ostream &os)
     return os << "\033[0m";
 }
 
+// for outputting error messages
 void bad(const string &INPUT)
 {
     // create a stringstream object to store the message
@@ -91,6 +92,7 @@ void bad(const string &INPUT)
     cerr << ss.str() << endl;
 }
 
+// for outputting success messages
 void good(const string &INPUT)
 {
     // create a stringstream object to store the message
