@@ -346,9 +346,8 @@ void addStop(Route &routeContainer, const string &FILE_NAME)
 
     // create specified amount of objects using a for loop
     cout << endl;
-    for (ll counter = 0, subCounter = 0; counter < linesCounter; counter++, subCounter += 3)
+    for (ll counter = 0, subCounter = 0; counter < linesCounter; counter++, subCounter += 2)
     {
-        cout << linesFromFile[subCounter] << linesFromFile[subCounter + 1] << endl;
         // ask user to enter stop name
         string stopName;
         stopName = linesFromFile[subCounter];

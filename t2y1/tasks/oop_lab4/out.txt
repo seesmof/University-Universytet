@@ -2,15 +2,19 @@
             Welcome on board!
 ========================================
 
-Stops (3):
+Stops (5):
 
-(1) One • 30 KM
+(1) Kyiv • 23 KM
 
-(2) Two • 34 KM
+(2) Bila Cerkva • 76 KM
 
-(3) Three • 45 KM
+(3) Bucha • 86 KM
+
+(4) Irpin • 76 KM
+
+(5) Hostomel • 45 KM
 
 ========================================
 
-Total distance is 109 KM
-Time it takes to complete the route is 2:10
+Total distance is 306 KM
+Time it takes to complete the route is 6:07
