@@ -363,7 +363,6 @@ void addStop(Route &routeContainer, const string &FILE_NAME)
     }
 
     // create specified amount of objects using a for loop
-    cout << endl;
     for (ll counter = 0, subCounter = 0; counter < linesCounter; counter++, subCounter += 2)
     {
         // process stop name
@@ -379,9 +378,10 @@ void addStop(Route &routeContainer, const string &FILE_NAME)
 
         // add stop using the method and continue
         routeContainer.add_stop(stopName, distanceFromPreviousStop);
-        cout << endl;
     }
+
     // end function execution
+    good(linesCounter + " stops successfully added!");
     return;
 }
 
@@ -422,14 +422,12 @@ void outputMenu(Route &routeContainer)
     // output the menu
     cout << BOLD << "Welcome! Choose some option from below\n"
          << UNBOLD;
-    cout << "1. Show route\n";
-    cout << "2. Add stop\n";
-    cout << "3. Add stops from file\n";
-    cout << "4. Remove stop\n";
-    cout << "5. Show route length\n";
-    cout << "6. Show route time\n";
-    cout << "7. Output to file\n";
-    cout << "8. Exit\n";
+    cout << "1. Output route\n";
+    cout << "2. Add stops\n";
+    cout << "3. Remove stops\n";
+    cout << "4. Show route length\n";
+    cout << "5. Show route time\n";
+    cout << "6. Exit\n";
     // ask user to enter their choice
     cout << "Enter: ";
     // and validate it
@@ -438,34 +436,75 @@ void outputMenu(Route &routeContainer)
 
     // if user chose to just show route
     if (userDecision == 1)
-        // show it using the function
-        showRoute(routeContainer);
+    {
+        // ask user where to output the route
+        cout << BOLD << "Where would you like to output the route?\n"
+             << UNBOLD;
+        cout << "1. Console\n";
+        cout << "2. File\n";
+        // validate input
+        cout << "Enter: ";
+        userDecision = getNum();
+        cout << endl;
+
+        // if user chose to output to console
+        if (userDecision == 1)
+        {
+            // show it using the function
+            showRoute(routeContainer);
+        }
+        // if user chose to output to a file
+        else
+        {
+            // declare file name holder with path
+            string outputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
+            // add the file name itself to the path
+            outputFileName += getFileName();
+            cout << endl;
+            // output the route to a file
+            showRoute(routeContainer, outputFileName);
+        }
+    }
     // if user chose to add stops to route
     else if (userDecision == 2)
     {
         // show the route
         showRoute(routeContainer);
-        // and let user add stops using the function
+        // ask user how they would like to add those stops
         cout << endl;
-        addStop(routeContainer);
-    }
-    else if (userDecision == 3)
-    {
-        string inputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
-        inputFileName += getFileName();
+        cout << BOLD << "How would you like to add stops?\n"
+             << UNBOLD;
+        cout << "1. From console\n";
+        cout << "2. From file\n";
+        // validate input
+        cout << "Enter: ";
+        userDecision = getNum();
         cout << endl;
-        // show the route
-        showRoute(routeContainer);
-        // and let user add stops using the function
-        cout << endl;
-        addStop(routeContainer, inputFileName);
+
+        // if user chose to add stops from console
+        if (userDecision == 1)
+        {
+            // call the function
+            addStop(routeContainer);
+        }
+        // if user chose to add stops from a file
+        else
+        {
+            // declare file path variable
+            string inputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
+            // and add filename itself to it
+            inputFileName += getFileName();
+            cout << endl;
+            // let user add stops using the function
+            addStop(routeContainer, inputFileName);
+        }
     }
     // if user chose to delete a stop
-    else if (userDecision == 4)
+    else if (userDecision == 3)
         // delete it using the function
         deleteStop(routeContainer);
     // if user chose to show the route length
-    else if (userDecision == 5)
+    else if (userDecision == 4)
     {
         // show the route
         showRoute(routeContainer);
@@ -475,7 +514,7 @@ void outputMenu(Route &routeContainer)
         cout << "Route length is " << resultLenght << " KM\n";
     }
     // if user chose to show the route length
-    else if (userDecision == 6)
+    else if (userDecision == 5)
     {
         // show the route
         showRoute(routeContainer);
@@ -485,15 +524,6 @@ void outputMenu(Route &routeContainer)
         string formattedTime = convertTime(resultTime);
         // output the result
         cout << "It takes around " << formattedTime << " to complete the route\n";
-    }
-    else if (userDecision == 7)
-    {
-        string outputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
-        outputFileName += getFileName();
-        // show the route
-        showRoute(routeContainer);
-        // output the route to a file
-        showRoute(routeContainer, outputFileName);
     }
     // end function execution
     return;
