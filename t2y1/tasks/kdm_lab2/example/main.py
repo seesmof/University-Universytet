@@ -1,34 +1,133 @@
-def placement_without_repetition(n, k):
+def placement_without_repetition(n, k, is_helper=False):
     result = []
-    helper(result, [], n, k)
-    print(result)
-
-
-def helper(result, temp, n, k):
-    if len(temp) == k:
-        result.append(temp.copy())
+    if not is_helper:
+        helper(result, [], n, k)
+        print(result)
     else:
-        for i in range(1, n+1):
-            if i not in temp:
+        if len(temp) == k:
+            result.append(temp.copy())
+        else:
+            for i in range(1, n+1):
+                if i not in temp:
+                    temp.append(i)
+                    helper(result, temp, n, k, True)
+                    temp.pop()
+
+
+def placement_with_repetition(n, k, is_helper=False):
+    result = []
+    if not is_helper:
+        helper(result, [], n, k)
+        print(result)
+    else:
+        if len(temp) == k:
+            result.append(temp.copy())
+        else:
+            for i in range(1, n+1):
                 temp.append(i)
-                helper(result, temp, n, k)
+                helper(result, temp, n, k, True)
                 temp.pop()
 
 
-def helper(result, temp, n, k):
-    if len(temp) == k:
-        result.append(temp.copy())
-    else:
-        for i in range(1, n+1):
-            temp.append(i)
-            helper(result, temp, n, k)
-            temp.pop()
-
-
-def placement_with_repetition(n, k):
+def combination_without_repetition(n, k, is_helper=False):
     result = []
-    helper(result, [], n, k)
-    print(result)
+    if not is_helper:
+        helper(result, [], n, k, 1)
+        print(result)
+    else:
+        if len(temp) == k:
+            result.append(temp.copy())
+        else:
+            for i in range(start, n+1):
+                temp.append(i)
+                helper(result, temp, n, k, i+1, True)
+                temp.pop()
+
+
+def combination_with_repetition(n, k, is_helper=False):
+    result = []
+    if not is_helper:
+        helper(result, [], n, k, 1)
+        print(result)
+    else:
+        if len(temp) == k:
+            result.append(temp.copy())
+        else:
+            for i in range(start, n+1):
+                temp.append(i)
+                helper(result, temp, n, k, i, True)
+                temp.pop()
+
+
+def permutations_ordinary(n, is_helper=False):
+    result = []
+    if not is_helper:
+        helper(result, [], [False]*n, n)
+        print(result)
+    else:
+        if len(temp) == n:
+            result.append(temp.copy())
+        else:
+            for i in range(1, n+1):
+                if not used[i-1]:
+                    temp.append(i)
+                    used[i-1] = True
+                    helper(result, temp, used, n, True)
+                    temp.pop()
+                    used[i-1] = False
+
+
+def permutations_with_repetition(n, args, is_helper=False):
+    result = []
+    if not is_helper:
+        helper(result, [], args, [0]*n, n)
+        print(result)
+    else:
+        if len(temp) == n:
+            result.append(temp.copy())
+        else:
+            for i in range(len(args)):
+                if count[i] < n:
+                    temp.append(args[i])
+                    count[i] += 1
+                    helper(result, temp, args, count, n, True)
+                    temp.pop()
+                    count[i] -= 1
+
+
+def helper(result, temp, *args, is_placement=False, is_combination=False, is_permutation=False):
+    if is_placement:
+        n, k = args
+        start = 1
+        if len(temp) == k:
+            result.append(temp.copy())
+        else:
+            for i in range(start, n+1):
+                if i not in temp:
+                    temp.append(i)
+                    helper(result, temp, n, k, True, False, False)
+                    temp.pop()
+    elif is_combination:
+        n, k, start = args
+        if len(temp) == k:
+            result.append(temp.copy())
+        else:
+            for i in range(start, n+1):
+                temp.append(i)
+                helper(result, temp, n, k, i+1, False, True, False)
+                temp.pop()
+    elif is_permutation:
+        n, used = args
+        if len(temp) == n:
+            result.append(temp.copy())
+        else:
+            for i in range(1, n+1):
+                if not used[i-1]:
+                    temp.append(i)
+                    used[i-1] = True
+                    helper(result, temp, used, n, False, False, True)
+                    temp.pop()
+                    used[i-1] = False
 
 
 def main():
