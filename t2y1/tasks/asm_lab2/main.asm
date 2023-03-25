@@ -1,53 +1,36 @@
-; Set up the data segment
-data segment
-    ; Define a string to hold the output
-    output db 80 dup('$')
-data ends
+.model small         ; Defines the memory model of the program (in this case, small)
+.stack 100h          ; Sets the size of the program stack to 256 bytes (100h in hexadecimal)
 
-; Set up the code segment
-code segment
-    ; Set the data segment register
-    assume cs:code, ds:data
+sseg segment para stack 'stack' ; Declares the stack segment
+    db 256 dup(?)               ; Reserves 256 bytes of memory for the stack
+sseg ends                       ; Ends the stack segment declaration
 
-start:
-    ; Initialize the data segment register
-    mov ax, data
-    mov ds, ax
+dseg segment para public 'data' ; Declares the data segment as a public segment
+    symbol db 'X'               ; Declares a byte variable named 'symbol' with the value of 'X'
+dseg ends                       ; Ends the data segment declaration
 
-    ; Set the number of rows in the triangle
-    mov cx, 5
+cseg segment para public 'code'         ; Declares the code segment as a public segment
+    assume cs:cseg, ss:sseg, es:nothing ; Sets the segment registers for the code segment (CS), stack segment (SS), and extra segment (ES) to the current segment (cseg), stack segment (sseg), and nothing, respectively
 
-    ; Loop through each row of the triangle
-row_loop:
-    ; Calculate the number of stars in this row (2 * row - 1)
-    mov ax, cx
-    add ax, ax
-    dec ax
+start:                 ; Marks the entry point of the program
 
-    ; Calculate the starting position for this row ((80 - stars) / 2)
-    mov bx, 80
-    sub bx, ax
-    shr bx, 1
+    assume ds:dseg     ; Sets the data segment register (DS) to the value of the data segment (dseg)
+    mov bx, dseg       ; Copies the value of dseg to the BX register
+    mov ds, bx         ; Sets the data segment register (DS) to the value in the BX register
 
-    ; Set up a pointer to the output string
-    lea si, output
+    call main          ; Calls the main procedure
 
-    ; Add spaces before the stars in this row
-space_loop:
-    mov byte ptr [si], ' '
-    inc si
-    dec bx
-    jnz space_loop
+    mov ah, 4Ch        ; Sets the value of AH to 4C (exit program to operating system)
+    mov bl, 6Ch        ; Sets the value of BL to 108 (return code of 108, meaning execution with an error)
+    int 21h            ; Performs software interrupt to terminate the program
 
-    ; Add stars to this row
-star_loop:
-    mov byte ptr [si], '*'
-    inc si
-    dec ax
-    jnz star_loop
+main proc near         ; Declares the main procedure
+    mov dl, symbol     ; Loads the value of 'symbol' into the DL register (which represents a character to output)
+    mov ah, 02h        ; Sets the value of AH to 02h (select function to output character to console)
+    int 21h            ; Performs software interrupt to output character to console
 
-row_end:
-    ; Output this row of the triangle
-    mov ah, 9h
-    lea dx, output
-    int 21h
+    ret                ; Returns from the main procedure
+main endp              ; Ends the main procedure
+
+cseg ends              ; Ends the code segment
+end start              ; Ends the program

@@ -1,5 +1,3 @@
-; .486    ; Use MPU coprocessor, maths with floating point numbers
-
 .model tiny    ; Models can be: tiny, small, normal, large, huge, flat
 
 cseg segment para public 'code' ; Declare code segment
@@ -10,7 +8,7 @@ start:  ; Declare procedure start that will call the main function. Entry point 
     call main   ; Call main function
 
     mov ah,04Ch ; 4C - function name to quit to OS. Exit to the OS
-    mov al,0FFh ; Exit code to ERRORLEVEL. Same as return 0
+    mov al,6Ch ; Exit code to ERRORLEVEL. Same as return 0
     int 21h     ; Interrupttion of DOS. A function set
     ; Add 0 at the beginning and h to the end so that they don't get confused with variable names. All HEX numbers we start with 0 and end with h
     
