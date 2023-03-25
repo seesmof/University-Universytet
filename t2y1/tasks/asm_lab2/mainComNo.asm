@@ -7,20 +7,20 @@ cseg segment para public 'code'     ; Declare code segment
 start:  ; declare program entry point
     call main   ; call main function
 
-    mov ah, 04Ch ; 4C - function name to quit to OS. Exit to the OS
-    mov bl, 6Ch     ; Error code 
-    int 21h     ; Interrupttion of DOS. A function set
+    mov ah, 04Ch    ; exit to OS
+    mov bl, 6Ch     ; set error code to 108 in hex 
+    int 21h     ; call interrupt
     
-    symbol db 'U'   ; Declare A symbol
+    symbol db 'U'   ; declare a symbol to output
 
-main proc near   ; proc = like func. Here we declare a function or a procedure called main
-    xor ax,ax   ; AX <- 0
-    mov dl, symbol ; Symbol to stdout 
-    mov ah,02h  
-    int 21h
+main proc near  ; declare main procedure
+    xor ax, ax   ; clear ax register
+    mov dl, symbol      ; load symbol to stdout 
+    mov ah, 02h     ; output symbol to stdout
+    int 21h     ; call interrupt
 
-    ret ; End function execution and return to the place where it was called
-main endp   ; End procedure or function
+    ret ; end function execution
+main endp   ; end procedure
 
-cseg ends   ; Close segment
-end start   ; End program
+cseg ends   ; close segment
+end start   ; end program execution
