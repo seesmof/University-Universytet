@@ -1,36 +1,35 @@
-.model small         ; Defines the memory model of the program (in this case, small)
-.stack 100h          ; Sets the size of the program stack to 256 bytes (100h in hexadecimal)
+.model small    ; set program model as small
+.stack 100h     ; set stack size to 100h
 
-sseg segment para stack 'stack' ; Declares the stack segment
-    db 256 dup(?)               ; Reserves 256 bytes of memory for the stack
-sseg ends                       ; Ends the stack segment declaration
+sseg segment para stack 'stack'     ; declare stack segment
+    db 256 dup(?)       ; reserve memory for stack
+sseg ends   ; end stack segment 
 
-dseg segment para public 'data' ; Declares the data segment as a public segment
-    symbol db 'X'               ; Declares a byte variable named 'symbol' with the value of 'X'
-dseg ends                       ; Ends the data segment declaration
+dseg segment para public 'data'     ; declare data segment
+    symbol db 'X'   ; declare symbol variable
+dseg ends   ; end data segment
 
-cseg segment para public 'code'         ; Declares the code segment as a public segment
-    assume cs:cseg, ss:sseg, es:nothing ; Sets the segment registers for the code segment (CS), stack segment (SS), and extra segment (ES) to the current segment (cseg), stack segment (sseg), and nothing, respectively
+cseg segment para public 'code'     ; declare code segment
+    assume cs:cseg, ss:sseg, es:nothing ; set segment register to corresponding ones
 
-start:                 ; Marks the entry point of the program
+start:  ; declare program entry point
+    assume ds:dseg  ; set data segment register
+    mov bx, dseg    ; add data segment to bx register
+    mov ds, bx  ; set ds register to bx register
 
-    assume ds:dseg     ; Sets the data segment register (DS) to the value of the data segment (dseg)
-    mov bx, dseg       ; Copies the value of dseg to the BX register
-    mov ds, bx         ; Sets the data segment register (DS) to the value in the BX register
+    call main   ; call main function
 
-    call main          ; Calls the main procedure
+    mov ah, 4Ch     ; exit to OS
+    mov bl, 6Ch     ; set error code to 108 in hex
+    int 21h     ; call interrupt
 
-    mov ah, 4Ch        ; Sets the value of AH to 4C (exit program to operating system)
-    mov bl, 6Ch        ; Sets the value of BL to 108 (return code of 108, meaning execution with an error)
-    int 21h            ; Performs software interrupt to terminate the program
+main proc near  ; declare main function
+    mov dl, symbol  ; load symbol into dl register
+    mov ah, 02h     ; output symbol to stdout
+    int 21h     ; call interrupt
 
-main proc near         ; Declares the main procedure
-    mov dl, symbol     ; Loads the value of 'symbol' into the DL register (which represents a character to output)
-    mov ah, 02h        ; Sets the value of AH to 02h (select function to output character to console)
-    int 21h            ; Performs software interrupt to output character to console
+    ret     ; stop function execution
+main endp   ; end main function
 
-    ret                ; Returns from the main procedure
-main endp              ; Ends the main procedure
-
-cseg ends              ; Ends the code segment
-end start              ; Ends the program
+cseg ends   ; end code segment
+end start   ; end program execution

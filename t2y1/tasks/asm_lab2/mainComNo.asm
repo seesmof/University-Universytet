@@ -22,5 +22,7 @@ main proc near  ; declare main procedure
     ret ; end function execution
 main endp   ; end procedure
 
+newLine proc near   ; declare modular procedure
+
 cseg ends   ; close segment
 end start   ; end program execution
