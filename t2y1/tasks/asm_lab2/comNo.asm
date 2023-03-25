@@ -1,6 +1,6 @@
 .model tiny     ; set program model as tiny
 
-cseg segment para public 'code'     ; Declare code segment
+cseg segment para public 'code'     ; declare code segment
     assume cs:cseg, ds:cseg, ss:cseg, es:nothing    ; set each code segment to code seg as it is the only segment in the program 
     org 100h    ; start loading the first instruction at 100h
 
