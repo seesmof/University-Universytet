@@ -19,36 +19,36 @@ main proc near  ; declare main procedure
     mov ah, 02h     ; output symbol to stdout
     int 21h     ; call interrupt
 
-    mov dl, 'k'
-    mov ah, 02h
-    int 21h
+    mov dl, 'k'     ; load symbol to stdout
+    mov ah, 02h     ; output symbol to stdout
+    int 21h     ; call interrupt
 
-    mov dl, 'r'
-    mov ah, 02h
-    int 21h
+    mov dl, 'r'     ; load symbol to stdout
+    mov ah, 02h     ; output symbol to stdout
+    int 21h     ; call interrupt
 
-    mov dl, 'a'
-    mov ah, 02h
-    int 21h
+    mov dl, 'a'     ; load symbol to stdout
+    mov ah, 02h     ; output symbol to stdout
+    int 21h     ; call interrupt
 
-    mov dl, 'i'
-    mov ah, 02h
-    int 21h
+    mov dl, 'i'     ; load symbol to stdout
+    mov ah, 02h     ; output symbol to stdout
+    int 21h     ; call interrupt
 
-    mov dl, 'n'
-    mov ah, 02h
-    int 21h
+    mov dl, 'n'     ; load symbol to stdout
+    mov ah, 02h     ; output symbol to stdout
+    int 21h     ; call interrupt
 
-    mov dl, 'e'
-    mov ah, 02h
-    int 21h
+    mov dl, 'e'     ; load symbol to stdout
+    mov ah, 02h     ; output symbol to stdout
+    int 21h     ; call interrupt
 
-    mov dl, 10
-    mov ah, 02h
-    int 21h
-    mov dl, 13
-    mov ah, 02h
-    int 21h
+    mov dl, 10      ; set dl register to new line
+    mov ah, 02h     ; output it to stdout
+    int 21h     ; call interrupt
+    mov dl, 13      ; set dl register to carret return
+    mov ah, 02h     ; output it to stdout
+    int 21h     ; call interrupt
 
     ret ; end function execution
 main endp   ; end procedure
