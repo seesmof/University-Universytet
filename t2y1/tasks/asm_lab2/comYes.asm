@@ -14,7 +14,7 @@ start:  ; declare program entry point
     symbol db 'U'   ; declare a symbol to output
 
 main proc near  ; declare main procedure
-    call newline
+    call newline    ; call newline function
     
     xor ax, ax   ; clear ax register
     mov dl, symbol      ; load symbol to stdout 
@@ -24,7 +24,7 @@ main proc near  ; declare main procedure
     mov dl, 'k'     ; load symbol to stdout
     mov ah, 02h     ; output symbol to stdout
     int 21h     ; call interrupt
-
+ 
     mov dl, 'r'     ; load symbol to stdout
     mov ah, 02h     ; output symbol to stdout
     int 21h     ; call interrupt
@@ -45,7 +45,7 @@ main proc near  ; declare main procedure
     mov ah, 02h     ; output symbol to stdout
     int 21h     ; call interrupt
 
-    call newline
+    call newline    ; call newline function
 
     mov dl, '<'     ; load symbol to stdout
     mov ah, 02h     ; output symbol to stdout
@@ -55,7 +55,7 @@ main proc near  ; declare main procedure
     mov ah, 02h     ; output symbol to stdout
     int 21h     ; call interrupt
 
-    call newline
+    call newline    ; call newline function
 
     ret ; end function execution
 main endp   ; end procedure

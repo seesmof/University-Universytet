@@ -22,7 +22,7 @@ main proc near  ; declare main procedure
     mov dl, 'k'     ; load symbol to stdout
     mov ah, 02h     ; output symbol to stdout
     int 21h     ; call interrupt
-
+ 
     mov dl, 'r'     ; load symbol to stdout
     mov ah, 02h     ; output symbol to stdout
     int 21h     ; call interrupt
