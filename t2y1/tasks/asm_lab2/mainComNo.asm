@@ -19,6 +19,30 @@ main proc near  ; declare main procedure
     mov ah, 02h     ; output symbol to stdout
     int 21h     ; call interrupt
 
+    mov dl, 'k'
+    mov ah, 02h
+    int 21h
+
+    mov dl, 'r'
+    mov ah, 02h
+    int 21h
+
+    mov dl, 'a'
+    mov ah, 02h
+    int 21h
+
+    mov dl, 'i'
+    mov ah, 02h
+    int 21h
+
+    mov dl, 'n'
+    mov ah, 02h
+    int 21h
+
+    mov dl, 'e'
+    mov ah, 02h
+    int 21h
+
     ret ; end function execution
 main endp   ; end procedure
 
