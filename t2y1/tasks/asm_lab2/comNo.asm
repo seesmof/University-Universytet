@@ -5,15 +5,8 @@ cseg segment para public 'code'     ; declare code segment
     org 100h    ; start loading the first instruction at 100h
 
 start:  ; declare program entry point
-    call main   ; call main function
-
-    mov ah, 04Ch    ; exit to OS
-    mov bl, 6Ch     ; set error code to 108 in hex 
-    int 21h     ; call interrupt
-    
     symbol db 'U'   ; declare a symbol to output
 
-main proc near  ; declare main procedure
     xor ax, ax   ; clear ax register
     mov dl, symbol      ; load symbol to stdout 
     mov ah, 02h     ; output symbol to stdout
@@ -50,8 +43,9 @@ main proc near  ; declare main procedure
     mov ah, 02h     ; output it to stdout
     int 21h     ; call interrupt
 
-    ret ; end function execution
-main endp   ; end procedure
+    mov ah, 04Ch    ; exit to OS
+    mov bl, 6Ch     ; set error code to 108 in hex 
+    int 21h     ; call interrupt
 
 cseg ends   ; close segment
 end start   ; end program execution

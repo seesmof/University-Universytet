@@ -1,8 +1,12 @@
 @echo off
 echo EXE Program:
-lab0exe.exe
+exe.exe
 echo %ERRORLEVEL%
 echo --------------
-echo COM Program:
-lab0com.com
+echo COM Program without Function:
+comNo.com
+echo %ERRORLEVEL%
+echo --------------
+echo COM Program with Function:
+comYes.com
 echo %ERRORLEVEL%
