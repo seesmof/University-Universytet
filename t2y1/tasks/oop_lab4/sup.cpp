@@ -209,9 +209,9 @@ ostream &outsetup(ostream &os)
 
 istream &insetup(istream &input)
 {
-    // Useful manipulators for console input
-    input >> noskipws;       // Don't skip whitespaces
-    input.ignore(100, '\n'); // Ignore up to 100 characters or until newline is found
+    // declare manipulators for console input
+    input >> noskipws;       // don't skip whitespaces
+    input.ignore(100, '\n'); // ignore up to 100 characters or until newline is found
     return input;
 }
 
