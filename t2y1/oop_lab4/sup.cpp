@@ -519,7 +519,7 @@ void outputMenu(Route &routeContainer)
         else
         {
             // declare file name holder with path
-            string outputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
+            string outputFileName = "D:/repos/university/t2y1/oop_lab4/";
             // add the file name itself to the path
             outputFileName += getFileName();
             cout << endl;
@@ -553,7 +553,7 @@ void outputMenu(Route &routeContainer)
         else
         {
             // declare file path variable
-            string inputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
+            string inputFileName = "D:/repos/university/t2y1/oop_lab4/";
             // and add filename itself to it
             inputFileName += getFileName();
             cout << endl;

@@ -122,7 +122,120 @@ ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder)
     return inputStream;
 }
 
-// string inputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
+// define a function for outputting the array of strings
+void showStrings(vector<DynamicString> &container)
+{
+    // get the size of container
+    ll containerSize = container.size();
+    // check if container is empty
+    if (containerSize == 0)
+    {
+        // if so, output error and stop function execution
+        bad("No strings to display");
+        return;
+    }
+
+    // loop through each element and print it
+    for (ll i = 0; i < containerSize; i++)
+        cout << "- " << container[i] << endl;
+    return;
+}
+
+void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME)
+{
+    // get the size of container
+    ll containerSize = container.size();
+    // check if container is empty
+    if (containerSize == 0)
+    {
+        // if so, output error and stop function execution
+        bad("No strings to output");
+        return;
+    }
+
+    ofstream outputFile(OUTPUT_FILENAME);
+    if (!outputFile.is_open())
+    {
+        bad("Couldn't open output file");
+        return;
+    }
+
+    outputFile << "==============================\n\n";
+    for (ll i = 0; i < containerSize; i++)
+        outputFile << container[i] << endl;
+    outputFile << "==============================\n\n";
+
+    outputFile.close();
+    good("Strings successfully outputted");
+    return;
+}
+
+// define a function for outputting the array of strings
+void addStrings(vector<DynamicString> &container)
+{
+    cout << "Enter the number of strings to add: ";
+    ll stringCount = getNum();
+    // check if container is empty
+    if (stringCount < 1)
+    {
+        // if so, output error and stop function execution
+        bad("Enter a positive amount of strings to add");
+        return;
+    }
+
+    // loop through each element and print it
+    for (ll i = 0; i < stringCount; i++)
+    {
+        DynamicString stringHolder;
+        cout << "- ";
+        cin >> stringHolder;
+        container.eb(stringHolder);
+        cout << endl;
+    }
+    return;
+}
+
+void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
+{
+    // declare file instance
+    ifstream inputFile(INPUT_FILENAME);
+    // check if file cannot be opened
+    if (!inputFile.is_open())
+    {
+        // if so output the error and stop function execution
+        bad("Input file cannot be opened");
+        return;
+    }
+
+    // declare variables for proecessing the lines of file
+    vector<string> linesFromFile;
+    string lineHolder;
+    ll linesCounter = 1;
+
+    // get all file lines
+    while (getline(inputFile, lineHolder))
+    {
+        // check if a line is empty which will indicate the new item
+        if (lineHolder.empty())
+            // if it is increment the counter
+            linesCounter++;
+        // if its not
+        else
+            // add line to vector
+            linesFromFile.pb(lineHolder);
+    }
+
+    // create specified amount of objects using a for loop
+    for (ll i = 0; i < linesCounter; i++)
+    {
+        DynamicString stringHolder = linesFromFile[i].c_str();
+        container.eb(stringHolder);
+    }
+
+    // end function execution
+    good("Strings successfully added");
+    return;
+}
 
 // for showing the main menu of the application
 void outputMenu(vector<DynamicString> &container)
@@ -153,16 +266,36 @@ void outputMenu(vector<DynamicString> &container)
 
         if (userDecision == 1)
         {
+            showStrings(container);
         }
         else if (userDecision == 2)
         {
-            string inputFileName = "D:/repos/university/t2y1/tasks/oop_lab5/";
-            inputFileName += getFileName();
+            string outputFileName = "D:/repos/university/t2y1/oop_lab5/";
+            outputFileName += getFileName();
+            showStrings(container, outputFileName.c_str());
         }
     }
     // if user chose to just show route
     else if (userDecision == 2)
     {
+        cout << BOLD << "Where to get strings from?\n"
+             << UNBOLD;
+        cout << "1. From console\n";
+        cout << "2. From file\n";
+        cout << "3. Exit\n";
+        userDecision = getNum();
+        cout << endl;
+
+        if (userDecision == 1)
+        {
+            addStrings(container);
+        }
+        else if (userDecision == 2)
+        {
+            string inputFileName = "D:/repos/university/t2y1/oop_lab5/";
+            inputFileName += getFileName();
+            addStrings(container, inputFileName.c_str());
+        }
     }
     // if user chose to just show route
     else if (userDecision == 3)

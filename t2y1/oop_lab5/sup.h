@@ -6,6 +6,9 @@ using namespace std;
 
 class DynamicString;
 
+// for showing the main menu of the application
+void outputMenu(vector<DynamicString> &container);
+
 // define an output stream operator function
 ostream &operator<<(ostream &outputStream, const DynamicString &OUTPUT);
 
@@ -17,6 +20,3 @@ ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT);
 
 // define an input stream operator function for file
 ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder);
-
-// for showing the main menu of the application
-void outputMenu(vector<DynamicString> &container);
