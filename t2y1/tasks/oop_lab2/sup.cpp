@@ -176,12 +176,9 @@ public:
         return totalLength;
     }
 
-    // for getting the time it takes to traverse the route
     double time_route()
     {
-        // get route time by dividing the length by an average speed of 30km/h
         double routeTime = len_route() / 50.0;
-        // return it
         return routeTime;
     }
 };

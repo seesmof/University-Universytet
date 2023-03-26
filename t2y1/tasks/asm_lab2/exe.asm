@@ -19,8 +19,8 @@ start:  ; declare program entry point
 
     call main   ; call main function
 
-    mov ah, 4Ch     ; exit to OS
-    mov bl, 6Ch     ; set error code to 108 in hex
+    mov ah, 04Ch     ; exit to OS
+    mov bl, 06Ch     ; set error code to 108 in hex
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
@@ -33,4 +33,3 @@ main endp   ; end main function
 
 cseg ends   ; end code segment
 end start   ; end program execution
- 
