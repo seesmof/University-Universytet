@@ -17,3 +17,6 @@ ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT);
 
 // define an input stream operator function for file
 ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder);
+
+// for showing the main menu of the application
+void outputMenu(vector<DynamicString> &container);

@@ -33,21 +33,8 @@ int main()
 
         do
         {
-            DynamicString str1("Hello, world!");
-            DynamicString str2;
-            cout << str1 << endl; // Output: Hello, world!
-            cin >> str2;          // User inputs a string
-            cout << str2 << endl; // Output: The input string
-            ofstream outfile("example.txt");
-            outfile << str1;
-            outfile.close();
-            ifstream infile("example.txt");
-            infile >> str2;
-            infile.close();
-            cout << str2 << endl; // Output: Hello, world!
-
             // output menu to user
-            // outputMenu(container);
+            outputMenu(container);
 
             // ask user if they would like to return to menu
             cout << "\nWould you like to return to menu? (Y | N): ";

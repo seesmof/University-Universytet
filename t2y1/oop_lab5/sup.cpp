@@ -121,3 +121,51 @@ ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder)
     // return the input stream
     return inputStream;
 }
+
+// string inputFileName = "D:/repos/university/t2y1/tasks/oop_lab4/";
+
+// for showing the main menu of the application
+void outputMenu(vector<DynamicString> &container)
+{
+    // output the menu
+    cout << BOLD << "Welcome! Choose some option from below\n"
+         << UNBOLD;
+    cout << "1. Show strings\n";
+    cout << "2. Add strings\n";
+    cout << "3. Remove strings\n";
+    cout << "4. Exit\n";
+    // ask user to enter their choice
+    cout << "Enter: ";
+    // and validate it
+    ll userDecision = getNum();
+    cout << endl;
+
+    // if user chose to just show route
+    if (userDecision == 1)
+    {
+        cout << BOLD << "Where to output the string?\n"
+             << UNBOLD;
+        cout << "1. To console\n";
+        cout << "2. To file\n";
+        cout << "3. Exit\n";
+        userDecision = getNum();
+        cout << endl;
+
+        if (userDecision == 1)
+        {
+        }
+        else if (userDecision == 2)
+        {
+            string inputFileName = "D:/repos/university/t2y1/tasks/oop_lab5/";
+            inputFileName += getFileName();
+        }
+    }
+    // if user chose to just show route
+    else if (userDecision == 2)
+    {
+    }
+    // if user chose to just show route
+    else if (userDecision == 3)
+    {
+    }
+}
