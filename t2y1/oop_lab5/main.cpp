@@ -1,9 +1,16 @@
 // include necessary libraries
-#include "../../../lib.h"
+#include "../../lib.h"
 #include "sup.h"
 using namespace std;
 
-// Для завдання з лабораторної роботи #2 реалізувати методи консольного та файлового введення/виведення, створити маніпулятори insetup та outsetup для форматування відповідно потоків введення/виведення.
+/*
+Варіант 5. Створити динамічний клас для роботи з рядками (послідовностями символів). Максимальна довжина послідовності – 65535, код завершення послідовності – нуль. Здійснити перевантаження символів операцій:
+"="	– динамічне присвоєння,
+" << " , " >> " – консольне введення-виведення значень;
+" << " , " >> "  - введення із файлу і виведення у файл з символами таким чином:
+f << A або A >> f – виведення (запис) значення A в файл f,
+f >> A або A << f – введення (читання) значення A з файлу f.
+*/
 
 // func main start
 int main()
@@ -20,14 +27,27 @@ int main()
         ///////////////////////////////////////
 
         // for storing class object pointers
-        Route routeContainer;
+        vector<DynamicString> container;
         // for manipulating program flow
         char doReturnToMenu;
 
         do
         {
+            DynamicString str1("Hello, world!");
+            DynamicString str2;
+            cout << str1 << endl; // Output: Hello, world!
+            cin >> str2;          // User inputs a string
+            cout << str2 << endl; // Output: The input string
+            ofstream outfile("example.txt");
+            outfile << str1;
+            outfile.close();
+            ifstream infile("example.txt");
+            infile >> str2;
+            infile.close();
+            cout << str2 << endl; // Output: Hello, world!
+
             // output menu to user
-            outputMenu(routeContainer);
+            // outputMenu(container);
 
             // ask user if they would like to return to menu
             cout << "\nWould you like to return to menu? (Y | N): ";
