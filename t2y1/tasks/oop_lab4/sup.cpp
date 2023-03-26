@@ -207,11 +207,33 @@ ostream &outsetup(ostream &os)
     return os;
 }
 
-istream &insetup(istream &is)
+istream &insetup(istream &input)
 {
-    is >> noskipws; // disables skipping whitespace
-    is.tie(&cout);  // ties input stream to output stream
-    return is;
+    // Useful manipulators for console input
+    input >> noskipws;       // Don't skip whitespaces
+    input.ignore(100, '\n'); // Ignore up to 100 characters or until newline is found
+    return input;
+}
+
+istream &insetup(istream &input, const string &FILE)
+{
+    // declare manipulators for file input
+    input >> noskipws;       // don't skip whitespaces
+    input.ignore(100, '\n'); // ignore up to 100 characters or until newline is found
+
+    // open file and check if it is open
+    ifstream inFile(FILE);
+    if (!inFile.is_open())
+    {
+        cerr << "Could not open file" << endl;
+        return;
+    }
+    // read data from file into buffer
+    input.rdbuf(inFile.rdbuf());
+
+    // close file and return
+    inFile.close();
+    return input;
 }
 
 // for showing all stops in a route
