@@ -199,14 +199,7 @@ string convertTime(double timeInHours)
     return to_string(hours) + ":" + (minutes < 10 ? "0" : "") + to_string(minutes);
 }
 
-ostream &outsetup(ostream &os)
-{
-    os.precision(2);
-    os << fixed;   // sets float formatting to fixed
-    os << setw(4); // sets width to 10 characters
-    return os;
-}
-
+// for manipulating input stream
 istream &insetup(istream &input)
 {
     // declare manipulators for console input
@@ -215,6 +208,7 @@ istream &insetup(istream &input)
     return input;
 }
 
+// for manipulating input stream with file
 istream &insetup(istream &input, const string &FILE)
 {
     // declare manipulators for file input
@@ -226,7 +220,7 @@ istream &insetup(istream &input, const string &FILE)
     if (!inFile.is_open())
     {
         cerr << "Could not open file" << endl;
-        return;
+        exit(1);
     }
     // read data from file into buffer
     input.rdbuf(inFile.rdbuf());
@@ -234,6 +228,36 @@ istream &insetup(istream &input, const string &FILE)
     // close file and return
     inFile.close();
     return input;
+}
+
+// for manipulating output stream
+ostream &outsetup(ostream &output)
+{
+    // Useful manipulators for console output
+    output.precision(2);     // Set precision to 2 decimal places
+    output.setf(ios::fixed); // Set fixed floating-point notation
+    return output;
+}
+
+// for manipulating output stream with file
+ostream &outsetup(ostream &output, string file_name)
+{
+    // Useful manipulators for file output
+    output.precision(2);     // Set precision to 2 decimal places
+    output.setf(ios::fixed); // Set fixed floating-point notation
+
+    // Open file and check if it is open
+    ofstream file(file_name);
+    if (!file.is_open())
+    {
+        cerr << "Could not open file" << endl;
+        exit(1);
+    }
+
+    // Write to file
+    output.rdbuf(file.rdbuf());
+    file.close();
+    return output;
 }
 
 // for showing all stops in a route
@@ -258,14 +282,14 @@ void showRoute(Route &routeContainer)
     Stop *stopHolder = routeContainer.getFirstStop();
     while (stopHolder != NULL)
     {
-        cout << "(" << counter << ") " << stopHolder->stopName << "• " << stopHolder->distanceFromPrevious << " KM\n\n";
+        outsetup(cout) << "(" << counter << ") " << stopHolder->stopName << "• " << stopHolder->distanceFromPrevious << " KM\n\n";
         // continue
         stopHolder = stopHolder->nextStop;
         counter++;
     }
     // additionally show the length of the route and the time it takes to complete
-    cout << "Total distance is " << routeContainer.len_route() << " KM\n";
-    cout << "Time it takes to complete the route is " << convertTime(routeContainer.time_route()) << endl;
+    outsetup(cout) << "Total distance is " << routeContainer.len_route() << " KM\n";
+    outsetup(cout) << "Time it takes to complete the route is " << convertTime(routeContainer.time_route()) << endl;
 
     // end function execution
     return;
@@ -297,28 +321,28 @@ void showRoute(Route &routeContainer, const string &FILE_NAME)
     }
 
     // output the upper side to the file
-    oFile << "========================================\n";
-    oFile << setw(30) << "Welcome on board!\n";
-    oFile << "========================================\n";
+    outsetup(oFile) << "========================================\n";
+    outsetup(oFile) << setw(30) << "Welcome on board!\n";
+    outsetup(oFile) << "========================================\n";
 
     // output all objects with their identifiers using a for loop
-    oFile << "\nStops (" << routeSize << "):\n\n";
+    outsetup(oFile) << "\nStops (" << routeSize << "):\n\n";
     ll counter = 1;
     // iterate over all stops
     Stop *stopHolder = routeContainer.getFirstStop();
     while (stopHolder != NULL)
     {
         // output stops data to a file
-        oFile << "(" << counter << ") " << stopHolder->stopName << "• " << stopHolder->distanceFromPrevious << " KM\n\n";
+        outsetup(oFile) << "(" << counter << ") " << stopHolder->stopName << "• " << stopHolder->distanceFromPrevious << " KM\n\n";
         // continue
         stopHolder = stopHolder->nextStop;
         counter++;
     }
 
     // add the distance and the time it takes to complete the route to the end of the file
-    oFile << "========================================\n";
-    oFile << "\nTotal distance is " << routeContainer.len_route() << " KM\n";
-    oFile << "Time it takes to complete the route is " << convertTime(routeContainer.time_route()) << endl;
+    outsetup(oFile) << "========================================\n";
+    outsetup(oFile) << "\nTotal distance is " << routeContainer.len_route() << " KM\n";
+    outsetup(oFile) << "Time it takes to complete the route is " << convertTime(routeContainer.time_route()) << endl;
 
     // close file, output success message and end function execution
     cout << endl;
@@ -358,7 +382,8 @@ void addStop(Route &routeContainer)
         // ask user to enter stop distance
         cout << "    Distance from Previous Stop (KM): ";
         // validate it as well
-        double distanceFromPreviousStop = getNum();
+        double distanceFromPreviousStop;
+        insetup(cin) >> distanceFromPreviousStop;
 
         // add stop using the method and continue
         routeContainer.add_stop(stopName, distanceFromPreviousStop);
