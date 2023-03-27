@@ -265,22 +265,33 @@ void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
 // define a function for removing an object from the container
 void removeString(vector<DynamicString> &container)
 {
-    // ask the user for the index of the element they want to remove
-    cout << "Enter index of element to delete: ";
-    ll index = getNum();
-    // if the user entered an invalid index
-    if (index < 0 || index >= container.size())
+    // check if the container is empty
+    if (container.size() == 0)
     {
-        // print error message and exit program
-        bad("Index out of range");
+        // output error message and exit program
+        bad("No strings to remove");
         return;
     }
-    // if the index is valid print a success message
-    good("Deleting element at index " + index);
-    // remove the element at the specified index from the vector
-    container.erase(container.begin() + index);
-    // exit the function
-    return;
+    else
+    {
+        // ask the user for the index of the element they want to remove
+        cout << "Enter index of element to delete: ";
+        ll index = getNum();
+        index--;
+        // if the user entered an invalid index
+        if (index < 0 || index >= container.size())
+        {
+            // print error message and exit program
+            bad("Index out of range");
+            return;
+        }
+        // if the index is valid print a success message
+        good("\nElement successfully removed\n");
+        // remove the element at the specified index from the vector
+        container.erase(container.begin() + index);
+        // exit the function
+        return;
+    }
 }
 
 // for showing the main menu of the application
