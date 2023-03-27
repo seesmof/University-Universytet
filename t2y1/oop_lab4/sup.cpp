@@ -219,7 +219,7 @@ istream &insetup(istream &input, const string &FILE)
     ifstream inFile(FILE);
     if (!inFile.is_open())
     {
-        cerr << "Could not open file" << endl;
+        bad("Could not open file");
         exit(1);
     }
     // read data from file into buffer
@@ -250,7 +250,7 @@ ostream &outsetup(ostream &output, string file_name)
     ofstream file(file_name);
     if (!file.is_open())
     {
-        cerr << "Could not open file" << endl;
+        bad("Could not open file");
         exit(1);
     }
 

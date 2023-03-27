@@ -51,25 +51,30 @@ public:
     // declare method for overloading the assignment operator
     DynamicString &operator=(const char *INPUT)
     {
-        // check if input is valid and not empty
-        if (INPUT)
-        {
-            // calculate the size of the string
-            size_t inputSize = strlen(INPUT) + 1;
-
-            // create a new character array to hold the input string
-            char *tempStringHolder = new char[inputSize];
-            // copy the contents of the input string to the new character array
-            strcpy_s(tempStringHolder, inputSize, INPUT);
-
-            // free the memory for the previously stored value
-            delete[] strValue;
-            // set the DynamicString object's strValue to the new character array holding the input string
-            strValue = tempStringHolder;
-            // update the size to the size of the input string
-            strSize = inputSize;
-        }
+        // delete the old value
+        delete[] strValue;
+        // calculate the size of the string
+        size_t inputSize = strlen(INPUT) + 1;
+        // create a new character array to hold the input string
+        strValue = new char[inputSize];
+        // copy the contents of the input string to the new character array
+        strcpy_s(strValue, inputSize, INPUT);
         // return the DynamicString object by reference
+        return *this;
+    }
+
+    // declare method for overloading the assignment operator with an object
+    DynamicString &operator=(const DynamicString &INPUT)
+    {
+        // delete the old value
+        delete[] strValue;
+        // get the length of the input string
+        strSize = INPUT.strSize;
+        // allocate memory for the new string
+        strValue = new char[strSize + 1];
+        // copy values from the input string to the new one
+        strcpy(strValue, INPUT.strValue);
+        // return the object by referance
         return *this;
     }
 
@@ -179,11 +184,12 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
         outputFile << container[i] << endl;
     }
     // output a separator line after the end of the strings
-    outputFile << "==============================\n\n";
+    outputFile << "\n==============================\n\n";
 
     // close the outputFile
     outputFile.close();
     // indicate successful output
+    cout << endl;
     good("Strings successfully outputted");
     // return
     return;
@@ -286,7 +292,9 @@ void removeString(vector<DynamicString> &container)
             return;
         }
         // if the index is valid print a success message
-        good("\nElement successfully removed\n");
+        cout << endl;
+        good("Element successfully removed");
+        cout << endl;
         // remove the element at the specified index from the vector
         container.erase(container.begin() + index);
         // exit the function

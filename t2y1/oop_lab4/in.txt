@@ -1,14 +1,14 @@
 Kyiv
-23
+23.1245
 
 Bila Cerkva
-76
+76.3434
 
 Bucha
-86
+86.7687
 
 Irpin
-76
+76.2368
 
 Hostomel
-45
+45.8645
