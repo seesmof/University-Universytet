@@ -45,7 +45,7 @@ start:  ; declare program entry point
 
     mov ah, 04Ch    ; exit to OS
     mov bl, 6Ch     ; set error code to 108 in hex 
-    int 21h     ; call interrupt
+    int 21h         ; call interrupt
 
 cseg ends   ; close segment
 end start   ; end program execution
