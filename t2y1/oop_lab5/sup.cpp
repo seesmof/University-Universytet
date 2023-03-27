@@ -141,7 +141,9 @@ void showStrings(vector<DynamicString> &container)
     // loop through each element and print it
     cout << "Available strings (" << containerSize << "):\n";
     for (ll i = 0; i < containerSize; i++)
-        cout << "- " << container[i] << endl;
+    {
+        cout << i + 1 << ". " << container[i] << endl;
+    }
     return;
 }
 
@@ -172,7 +174,10 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
     outputFile << "==============================\n\n";
     // loop through each element of the container and output it to the outputFile
     for (ll i = 0; i < containerSize; i++)
+    {
+        outputFile << i + 1 << ". ";
         outputFile << container[i] << endl;
+    }
     // output a separator line after the end of the strings
     outputFile << "==============================\n\n";
 
@@ -208,7 +213,7 @@ void addStrings(vector<DynamicString> &container)
         // create a DynamicString to hold the new string
         DynamicString stringHolder;
         // prompt the user to enter the new string
-        cout << "- ";
+        cout << i + 1 << ". ";
         cin >> stringHolder;
         // add the DynamicString to the container
         container.eb(stringHolder);
@@ -233,7 +238,7 @@ void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
     // declare variables for proecessing the lines of file
     vector<string> linesFromFile;
     string lineHolder;
-    ll linesCounter = 1;
+    ll linesCounter = 0;
 
     // get all file lines
     while (getline(inputFile, lineHolder))
