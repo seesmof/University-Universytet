@@ -33,7 +33,6 @@ int main()
 
         do
         {
-
             // output menu to user
             outputMenu(container);
 
