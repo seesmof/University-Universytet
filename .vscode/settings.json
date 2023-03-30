@@ -93,6 +93,7 @@
     "typeinfo": "cpp",
     "valarray": "cpp",
     "variant": "cpp",
-    "conio.h": "c"
+    "conio.h": "c",
+    "raylib.h": "c"
   }
 }
