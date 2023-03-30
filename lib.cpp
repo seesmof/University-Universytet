@@ -313,7 +313,7 @@ string getEmailAddress()
     else
         return emailAddress;
 
-    // should not reach this point
+    // should not reach this pointt
     return "";
 }
 
