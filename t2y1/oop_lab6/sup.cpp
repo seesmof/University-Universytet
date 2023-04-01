@@ -119,6 +119,7 @@ void createRectangle(vector<unique_ptr<Rectangle>> &rectangles)
         return;
     }
 
+    cout << endl;
     for (ll i = 0; i < amount; i++)
     {
         cout << "(" << i + 1 << ") Creating rectangle...\n";
@@ -143,8 +144,13 @@ void createRectangle(vector<unique_ptr<Rectangle>> &rectangles)
         cout << "    "
              << "Enter rectangles's color ( orange | blue ): ";
         cin >> color;
+        if (toLower(color) == "o" || toLower(color) == "orange")
+            color = "orange";
+        else
+            color = "blue";
 
         rectangles.push_back(make_unique<Rectangle>(centerX, centerY, angle, scale, color));
+        cout << endl;
     }
 
     if (rectangles.size() == amount)
@@ -156,65 +162,122 @@ void createRectangle(vector<unique_ptr<Rectangle>> &rectangles)
 
 void showRectangles(const vector<unique_ptr<Rectangle>> &rectangles)
 {
-    for (const auto &rectangle : rectangles)
+    cout << BOLD << "Your available rectangles (" << rectangles.size() << "):\n\n"
+         << UNBOLD;
+    for (ll i = 0; i < rectangles.size(); i++)
     {
-        rectangle->show();
+        cout << "(" << i + 1 << ") Outputting rectangle...\n";
+        rectangles[i]->show();
+        cout << endl;
     }
+    return;
 }
 
 void deleteRectangle(vector<unique_ptr<Rectangle>> &rectangles)
 {
-    int index;
-    cout << "Enter index of rectangle to delete: ";
-    cin >> index;
+    if (rectangles.size() == 0)
+    {
+        bad("No rectangles were created");
+        return;
+    }
+
+    showRectangles(rectangles);
+    cout << "Enter rectangle's number to delete: ";
+    ll index = getNum();
+    index--;
+    cout << endl;
+
     if (index >= 0 && index < rectangles.size())
     {
         rectangles.erase(rectangles.begin() + index);
-        cout << "Rectangle deleted!" << endl;
+        good("Rectangle succesfully deleted!");
     }
     else
     {
-        cout << "Invalid index!" << endl;
+        bad("Cannot delete the rectangle, because it doesn't exist");
     }
+    return;
 }
 
 void modifyRectangle(vector<unique_ptr<Rectangle>> &rectangles)
 {
-    int index;
-    cout << "Enter index of rectangle to modify: ";
-    cin >> index;
+    cout << "Enter rectangle's number to edit: ";
+    ll index = getNum();
+    index--;
+    cout << endl;
+
     if (index >= 0 && index < rectangles.size())
     {
-        int option;
-        cout << "1. Move rectangle" << endl;
-        cout << "2. Rotate rectangle" << endl;
-        cout << "Enter option: ";
-        cin >> option;
-        if (option == 1)
+        cout << BOLD << "Choose the value to modify\n"
+             << UNBOLD;
+        cout << "1. Move" << endl;
+        cout << "2. Rotate" << endl;
+        cout << "Enter: ";
+        ll userDecision = getNum();
+        cout << endl;
+
+        if (userDecision == 1)
         {
-            int x, y;
             cout << "Enter X offset: ";
-            cin >> x;
+            ll centerX = getNum();
+            cout << endl;
+
             cout << "Enter Y offset: ";
-            cin >> y;
-            rectangles[index]->move(x, y);
-            cout << "Rectangle moved!" << endl;
-        }
-        else if (option == 2)
-        {
-            int angle;
-            cout << "Enter angle: ";
-            cin >> angle;
-            rectangles[index]->rotate(angle);
-            cout << "Rectangle rotated!" << endl;
+            ll centerY = getNum();
+            cout << endl;
+
+            rectangles[index]->move(centerX, centerY);
+            good("Rectangle successfully moved");
         }
         else
         {
-            cout << "Invalid option!" << endl;
+            cout << "Enter angle: ";
+            ll angle = getNum();
+            cout << endl;
+
+            rectangles[index]->rotate(angle);
+            good("Rectangle succesfully rotated");
         }
     }
     else
     {
-        cout << "Invalid index!" << endl;
+        bad("Invalid rectangle index. Try again");
+    }
+    return;
+}
+
+void outputMenu(vector<unique_ptr<Rectangle>> &rectangles)
+{
+    // output the menu
+    cout << BOLD << "Welcome! Choose some option from below\n"
+         << UNBOLD;
+    cout << "1. Create rectangle\n";
+    cout << "2. Show rectangles\n";
+    cout << "3. Delete rectangle\n";
+    cout << "4. Modify rectangle\n";
+    cout << "5. Exit\n";
+    // ask user to enter their choice
+    cout << "Enter: ";
+    // and validate it
+    ll userDecision = getNum();
+    cout << endl;
+
+    if (userDecision == 1)
+    {
+        showRectangles(rectangles);
+        createRectangle(rectangles);
+    }
+    else if (userDecision == 2)
+    {
+        showRectangles(rectangles);
+    }
+    else if (userDecision == 3)
+    {
+        deleteRectangle(rectangles);
+    }
+    else if (userDecision == 4)
+    {
+        showRectangles(rectangles);
+        modifyRectangle(rectangles);
     }
 }

@@ -27,49 +27,14 @@ int main()
         ///////////////////////////////////////
 
         // for storing class object pointers
-        // vector<DynamicString> container;
+        vector<unique_ptr<Rectangle>> rectangles;
         // for manipulating program flow
         char doReturnToMenu;
 
         do
         {
-            vector<unique_ptr<Rectangle>> rectangles;
-
-            int option;
-            do
-            {
-                cout << "1. Create rectangle" << endl;
-                cout << "2. Show rectangles" << endl;
-                cout << "3. Delete rectangle" << endl;
-                cout << "4. Modify rectangle" << endl;
-                cout << "5. Exit" << endl;
-                cout << "Enter option: ";
-                cin >> option;
-
-                switch (option)
-                {
-                case 1:
-                    createRectangle(rectangles);
-                    break;
-                case 2:
-                    showRectangles(rectangles);
-                    break;
-                case 3:
-                    deleteRectangle(rectangles);
-                    break;
-                case 4:
-                    modifyRectangle(rectangles);
-                    break;
-                case 5:
-                    cout << "Exiting program..." << endl;
-                    break;
-                default:
-                    cout << "Invalid option! Please try again." << endl;
-                }
-
-            } while (option != 5);
             // output menu to user
-            // outputMenu(container);
+            outputMenu(rectangles);
 
             // ask user if they would like to return to menu
             cout << "\nWould you like to return to menu? (Y | N): ";
