@@ -4,6 +4,9 @@
 #include "lib.cpp"
 using namespace std;
 
+// for transforming string to lowercase
+string toLower(string str);
+
 // for outputting error messages
 void bad(const string &INPUT);
 
