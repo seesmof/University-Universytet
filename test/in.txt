@@ -1,3 +1,59 @@
-For example, the development of the 3D printer involved identifying a need for a more efficient and cost-effective method of creating prototypes and manufacturing products. The development of the printer involved years of refinement and improvement to the technology and design. Similarly, the development of the electric car involved identifying a need for a more environmentally friendly mode of transportation and developing a solution using electric motors and batteries.
+class GeometricFigure
+{
+protected:
+    int centerX;
+    int centerY;
+    int angle;
+    int scale;
+public:
+    GeometricFigure() : centerX(0), centerY(0), angle(0), scale(0) {}
+    GeometricFigure(int centerX, int centerY, int angle, int scale) : centerX(centerX), centerY(centerY), angle(angle), scale(scale) {}
+    virtual void show() = 0;
+    virtual void hide() = 0;
+    virtual void rotate(int angle) = 0;
+    virtual void move(int x, int y) = 0;
+    virtual ~GeometricFigure() {}
+};
 
-The process of developing stem cell therapy also likely involved identifying a need for new treatments for a variety of diseases and injuries, developing solutions using stem cells, reviewing the results of clinical trials and research studies, improving the design and efficiency of the therapy, and obtaining approval from regulatory agencies.
+class Rectangle : public GeometricFigure
+{
+private:
+    string color;
+    string symbol;
+public:
+    Rectangle(int centerX, int centerY, int angle, int scale, string color) : GeometricFigure(centerX, centerY, angle, scale), color(color), symbol(NUint) {}
+    void show() override
+    {
+        if (color == "orange")
+        {
+            if (angle != 90 || angle != 180 || angle != 270 || angle != 360 || angle != 0)
+                symbol = "🟧";
+            else
+                symbol = "🔶";
+        }
+        else
+        {
+            if (angle != 90 || angle != 180 || angle != 270 || angle != 360 || angle != 0)
+                symbol = "🟦";
+            else
+                symbol = "🔷";
+        }
+        for (int i = 0; i < scale; i++)
+        {
+            for (int k = 0; k < centerX; k++)
+                cout << " ";
+            for (int k = 0; k < centerY; k++)
+                cout << "\n";
+
+            for (int j = 0; j < scale; j++)
+                cout << symbol;
+            cout << endl;
+        }
+    }
+    void hide() override
+    { symbol = " "; }
+    void rotate(int angle) override
+    { angle += angle; }
+    void move(int x, int y) override
+    { centerX += x; centerY += y; }
+};
