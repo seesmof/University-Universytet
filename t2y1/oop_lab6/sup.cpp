@@ -47,6 +47,13 @@ public:
     // declare parameterized constructor
     Rectangle(ll centerX, ll centerY, ll angle, ll scale, string color) : GeometricFigure(centerX, centerY, angle, scale), color(color), symbol("") {}
 
+    ll getCenterX() const { return centerX; }
+    ll getCenterY() const { return centerY; }
+    ll getAngle() const { return angle; }
+    ll getScale() const { return scale; }
+    string getColor() const { return color; }
+    string getSymbol() const { return symbol; }
+
     // declare show method
     void show() override
     {
@@ -112,14 +119,13 @@ void createRectangle(vector<unique_ptr<Rectangle>> &rectangles)
 {
     cout << "How many rectangles to create: ";
     ll amount = getNum();
-
+    cout << endl;
     if (amount < 0)
     {
         bad("Cannot create that many rectangles. Try again later...");
         return;
     }
 
-    cout << endl;
     for (ll i = 0; i < amount; i++)
     {
         cout << "(" << i + 1 << ") Creating rectangle...\n";
@@ -160,8 +166,54 @@ void createRectangle(vector<unique_ptr<Rectangle>> &rectangles)
     return;
 }
 
+// declare function for creating rectangle
+void createRectangle(vector<unique_ptr<Rectangle>> &rectangles, const string &FILENAME)
+{
+    ifstream iFile(FILENAME);
+    if (!iFile.is_open())
+    {
+        bad("Could not open input file");
+        return;
+    }
+
+    vector<string> linesFromFile;
+    string lineHolder;
+    ll linesCounter = 1;
+
+    while (getline(iFile, lineHolder))
+    {
+        if (lineHolder.empty())
+            linesCounter++;
+        else
+            linesFromFile.pb(lineHolder);
+    }
+
+    for (ll i = 0, j = 0; i < linesCounter; i++, j += 5)
+    {
+        ll offsetX = stol(linesFromFile[j]);
+        ll offsetY = stol(linesFromFile[j + 1]);
+        ll angle = stol(linesFromFile[j + 2]);
+        ll scale = stol(linesFromFile[j + 3]);
+        string color = linesFromFile[j + 4];
+        rectangles.eb(make_unique<Rectangle>(offsetX, offsetY, angle, scale, color));
+    }
+
+    if (rectangles.size() == linesCounter)
+        good("All rectangles were created successfully!");
+    else
+        bad("There was some problem creating rectangles");
+    return;
+}
+
 void showRectangles(const vector<unique_ptr<Rectangle>> &rectangles)
 {
+    if (rectangles.size() == 0)
+    {
+        bad("No rectangles were created");
+        cout << endl;
+        return;
+    }
+
     cout << BOLD << "Your available rectangles (" << rectangles.size() << "):\n\n"
          << UNBOLD;
     for (ll i = 0; i < rectangles.size(); i++)
@@ -170,6 +222,32 @@ void showRectangles(const vector<unique_ptr<Rectangle>> &rectangles)
         rectangles[i]->show();
         cout << endl;
     }
+    return;
+}
+
+void showRectangles(const vector<unique_ptr<Rectangle>> &rectangles, const string &FILENAME)
+{
+
+    ofstream oFile(FILENAME);
+    if (!oFile.is_open())
+    {
+        bad("Could not open output file");
+        return;
+    }
+
+    oFile << "==============================\n\n";
+    oFile << "Your available rectangles (" << rectangles.size() << "):\n\n";
+    for (ll i = 0; i < rectangles.size(); i++)
+    {
+        oFile << "(" << i + 1 << ") Outputting rectangle...\n";
+        rectangles[i]->show();
+        oFile << endl;
+    }
+    oFile << "\n==============================\n\n";
+
+    oFile.close();
+    cout << endl;
+    good("Strings successfully outputted");
     return;
 }
 
@@ -236,6 +314,7 @@ void modifyRectangle(vector<unique_ptr<Rectangle>> &rectangles)
             cout << endl;
 
             rectangles[index]->rotate(angle);
+            cout << rectangles[index]->getAngle() << endl;
             good("Rectangle succesfully rotated");
         }
     }
@@ -264,12 +343,42 @@ void outputMenu(vector<unique_ptr<Rectangle>> &rectangles)
 
     if (userDecision == 1)
     {
+        cout << BOLD << "How would you like to create a rectangle?\n"
+             << UNBOLD;
+        cout << "1. From console\n";
+        cout << "2. From file\n";
+        cout << "Enter: ";
+        ll userDecision = getNum();
+        cout << endl;
         showRectangles(rectangles);
-        createRectangle(rectangles);
+
+        if (userDecision == 1)
+            createRectangle(rectangles);
+        else if (userDecision == 2)
+        {
+            string inputFileName = "D:/repos/university/t2y1/oop_lab6/";
+            inputFileName += getFileName();
+            createRectangle(rectangles, inputFileName);
+        }
     }
     else if (userDecision == 2)
     {
-        showRectangles(rectangles);
+        cout << BOLD << "Where would you like to show the rectangles?\n"
+             << UNBOLD;
+        cout << "1. To console\n";
+        cout << "2. To file\n";
+        cout << "Enter: ";
+        ll userDecision = getNum();
+        cout << endl;
+
+        if (userDecision == 1)
+            showRectangles(rectangles);
+        else if (userDecision == 2)
+        {
+            string outputFileName = "D:/repos/university/t2y1/oop_lab6/";
+            outputFileName += getFileName();
+            showRectangles(rectangles, outputFileName);
+        }
     }
     else if (userDecision == 3)
     {
