@@ -91,6 +91,43 @@ public:
         }
     }
 
+    // declare show method
+    void showToFile(ofstream &oFile)
+    {
+        // check for angle for both colors
+        if (color == "orange")
+        {
+            if (angle == 90 || angle == 180 || angle == 270 || angle == 360 || angle == 0)
+                symbol = "🟧";
+            else
+                symbol = "🔶";
+        }
+        else
+        {
+            if (angle == 90 || angle == 180 || angle == 270 || angle == 360 || angle == 0)
+                symbol = "🟦";
+            else
+                symbol = "🔷";
+        }
+
+        // output Y offset
+        for (ll k = 0; k < centerY; k++)
+            oFile << "\n";
+
+        // output rectangle
+        for (ll i = 0; i < scale; i++)
+        {
+            // with X offset
+            for (ll k = 0; k < centerX; k++)
+                oFile << "  ";
+            // and rectangles themselves
+            for (ll j = 0; j < scale; j++)
+                oFile << symbol;
+            // end current line
+            oFile << endl;
+        }
+    }
+
     // declare hide method
     void hide() override
     {
@@ -99,10 +136,10 @@ public:
     }
 
     // declare rotate method
-    void rotate(ll angle) override
+    void rotate(ll inputAngle) override
     {
         // modify by given angle
-        angle += angle;
+        angle += inputAngle;
     }
 
     // declare move method
@@ -240,10 +277,10 @@ void showRectangles(const vector<unique_ptr<Rectangle>> &rectangles, const strin
     for (ll i = 0; i < rectangles.size(); i++)
     {
         oFile << "(" << i + 1 << ") Outputting rectangle...\n";
-        rectangles[i]->show();
+        rectangles[i]->showToFile(oFile);
         oFile << endl;
     }
-    oFile << "\n==============================\n\n";
+    oFile << "==============================\n";
 
     oFile.close();
     cout << endl;
@@ -314,7 +351,6 @@ void modifyRectangle(vector<unique_ptr<Rectangle>> &rectangles)
             cout << endl;
 
             rectangles[index]->rotate(angle);
-            cout << rectangles[index]->getAngle() << endl;
             good("Rectangle succesfully rotated");
         }
     }
