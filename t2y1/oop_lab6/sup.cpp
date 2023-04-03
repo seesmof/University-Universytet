@@ -54,24 +54,32 @@ public:
     string getColor() const { return color; }
     string getSymbol() const { return symbol; }
 
+    void checkSymbol()
+    {
+        if (symbol != " ")
+        {
+            // check for angle for both colors
+            if (color == "orange")
+            {
+                if (angle == 90 || angle == 180 || angle == 270 || angle == 360 || angle == 0)
+                    symbol = "🟧";
+                else
+                    symbol = "🔶";
+            }
+            else
+            {
+                if (angle == 90 || angle == 180 || angle == 270 || angle == 360 || angle == 0)
+                    symbol = "🟦";
+                else
+                    symbol = "🔷";
+            }
+        }
+    }
+
     // declare show method
     void show() override
     {
-        // check for angle for both colors
-        if (color == "orange")
-        {
-            if (angle == 90 || angle == 180 || angle == 270 || angle == 360 || angle == 0)
-                symbol = "🟧";
-            else
-                symbol = "🔶";
-        }
-        else
-        {
-            if (angle == 90 || angle == 180 || angle == 270 || angle == 360 || angle == 0)
-                symbol = "🟦";
-            else
-                symbol = "🔷";
-        }
+        checkSymbol();
 
         // output Y offset
         for (ll k = 0; k < centerY; k++)
@@ -94,21 +102,7 @@ public:
     // declare show method
     void showToFile(ofstream &oFile)
     {
-        // check for angle for both colors
-        if (color == "orange")
-        {
-            if (angle == 90 || angle == 180 || angle == 270 || angle == 360 || angle == 0)
-                symbol = "🟧";
-            else
-                symbol = "🔶";
-        }
-        else
-        {
-            if (angle == 90 || angle == 180 || angle == 270 || angle == 360 || angle == 0)
-                symbol = "🟦";
-            else
-                symbol = "🔷";
-        }
+        checkSymbol();
 
         // output Y offset
         for (ll k = 0; k < centerY; k++)
@@ -264,7 +258,6 @@ void showRectangles(const vector<unique_ptr<Rectangle>> &rectangles)
 
 void showRectangles(const vector<unique_ptr<Rectangle>> &rectangles, const string &FILENAME)
 {
-
     ofstream oFile(FILENAME);
     if (!oFile.is_open())
     {
@@ -327,6 +320,7 @@ void modifyRectangle(vector<unique_ptr<Rectangle>> &rectangles)
              << UNBOLD;
         cout << "1. Move" << endl;
         cout << "2. Rotate" << endl;
+        cout << "3. Hide" << endl;
         cout << "Enter: ";
         ll userDecision = getNum();
         cout << endl;
@@ -344,7 +338,7 @@ void modifyRectangle(vector<unique_ptr<Rectangle>> &rectangles)
             rectangles[index]->move(centerX, centerY);
             good("Rectangle successfully moved");
         }
-        else
+        else if (userDecision == 2)
         {
             cout << "Enter angle: ";
             ll angle = getNum();
@@ -352,6 +346,12 @@ void modifyRectangle(vector<unique_ptr<Rectangle>> &rectangles)
 
             rectangles[index]->rotate(angle);
             good("Rectangle succesfully rotated");
+        }
+        else if (userDecision == 3)
+        {
+            rectangles[index]->hide();
+            if (rectangles[index]->getSymbol() == " ")
+                good("Rectangle have successfully been hidden");
         }
     }
     else
