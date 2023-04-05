@@ -24,6 +24,7 @@ dseg segment para public 'data'     ; declare data segment
     i       db 100 dup (0)
     j       dw 40 dup (?)
     k       dw 5 dup (8 dup (?))
+    str1    db 5 dup ('%'), '$'
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
