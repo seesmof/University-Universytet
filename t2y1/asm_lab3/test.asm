@@ -38,20 +38,21 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-    sub ax,ax      ; ax == 0
-    mov ah,09h     ; output string to stdout
+    lea dx,h    ; text to output
+    call outputStirng   ; output with function
 
-    mov dx,offset h ; text to output
-    int 21h ; call interrupt
-
-    lea dx,edl ; new line to output
-    int 21h ; call interrupt
-
-    lea dx,edl ; new line to output
-    int 21h ; call interrupt
+    lea dx,edl  ; new line to output
+    call outputStirng   ; output with function
 
     ret     ; stop function execution
 main endp   ; end main function
+
+outputStirng proc near
+    sub ax,ax
+    mov ah,09h
+    int 21h
+    ret
+outputStirng endp
 
 cseg ends   ; end code segment
 end start   ; end program execution
