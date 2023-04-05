@@ -17,6 +17,7 @@ dseg segment para public 'data'     ; declare data segment
     c   db 'A'
     d   db 65
     e   db 041h
+    f   db
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
