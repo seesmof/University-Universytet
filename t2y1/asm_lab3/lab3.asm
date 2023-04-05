@@ -6,7 +6,7 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    section_one db '1. Student Card:', '$'
+    section_one db '  1. Student Card:', '$'
     space db ' ', '$'
     student_name db '      Onyshchenko Oleh', '$'
     student_group db '          KHT-122', '$'
@@ -14,7 +14,10 @@ dseg segment para public 'data'     ; declare data segment
     current_year db '            2023', '$'
     verical_line db '-----------------------------', '$'
 
-    section_two db '', '$'
+    section_two db '  2. Data Types:', '$'
+    example_byte db 10
+    example_word dw 1000
+    example_
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
@@ -32,6 +35,8 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
+
+    ; section one start
     lea dx, new_line
     call outputString
 
@@ -72,6 +77,7 @@ main proc near  ; declare main function
     
     lea dx, new_line
     call outputString
+    ; section one end
 
     ret     ; stop function execution
 main endp   ; end main function
