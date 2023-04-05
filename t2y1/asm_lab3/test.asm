@@ -39,12 +39,12 @@ start:  ; declare program entry point
 
 main proc near  ; declare main function
     mov cx,5    ; declare amount of iterations for our loop
-m0:
+m0:             ; declare the loop itself
     lea dx,h    ; text to output
     call outputStirng   ; output with function
     lea dx,edl  ; new line to output
     call outputStirng   ; output with function
-    loop m0
+    loop m0     ; move to next iteration
 
     ret     ; stop function execution
 main endp   ; end main function
