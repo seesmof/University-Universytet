@@ -11,7 +11,7 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    g   equ 100
+    x   equ 100
     a   db 0
     b   dw ?
     c   db 'A'
@@ -19,6 +19,7 @@ dseg segment para public 'data'     ; declare data segment
     e   db 041h
     f   dw 0, 1, 2, 3, 4, ?, ?, ?, ?, ?
     g   db 'N', 'e', 'x', 't'
+    h   db 'Next', '$'
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
