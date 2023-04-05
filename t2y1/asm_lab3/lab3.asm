@@ -98,7 +98,13 @@ main proc near  ; declare main function
     lea dx, section_two_byte
     call outputString
     mov ah, 09h
-    mov dl, 
+    mov dl, example_byte
+    int 21h
+    lea dx, space
+    call outputString
+    mov ah, 09h
+    mov dl, example_byte
+    int 21h
 
     lea dx, new_line
     call outputString
