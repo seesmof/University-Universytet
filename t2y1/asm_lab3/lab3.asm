@@ -6,26 +6,12 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    name db 'Onyshchenko Oleh', '$'
-    group db 'KHT-122', '$'
+    space db ' ', '$'
+    student_name dw 'Onyshchenko_Oleh', '$'
+    student_group db 'KHT-122', '$'
     new_line db 0Dh, 0Ah, '$'
-    year db '2023', '$'
+    current_year db '2023', '$'
     verical_line db '------------------------------', '$'
-
-    x       equ 100
-    a       db 0
-    b       dw ?
-    c       db 'A'
-    d       db 65
-    e       db 041h
-    f       dw 0, 1, 2, 3, 4, ?, ?, ?, ?, ?
-    g       db 'N', 'e', 'x', 't'
-    h       db 'Next', '$'
-    i       db 100 dup (0)
-    j       dw 40 dup (?)
-    k       dw 5 dup (8 dup (?))
-    str1    db 5 dup ('%'), '$'
-    t       db ?, '$'
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
@@ -46,16 +32,16 @@ main proc near  ; declare main function
     lea dx, verical_line
     call outputString
 
-    lea dx, name
+    lea dx, student_name
     call outputString
 
-    lea dx, group
+    lea dx, student_group
     call outputString
 
     lea dx, new_line
     call outputString
 
-    lea dx, year
+    lea dx, current_year
     call outputString
 
     lea dx, verical_line
