@@ -57,8 +57,8 @@ m1:
     mov [t], bh
     add [t], 30h
     call outputString ; output with function
-    inc bh
-    loop m1 ; move to next iteration
+    inc bh      ; 
+    loop m1     ; move to next iteration
 
     ret     ; stop function execution
 main endp   ; end main function
