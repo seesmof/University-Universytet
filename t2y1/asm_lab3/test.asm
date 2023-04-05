@@ -47,6 +47,9 @@ main proc near  ; declare main function
     lea dx,edl ; new line to output
     int 21h ; call interrupt
 
+    lea dx,edl ; new line to output
+    int 21h ; call interrupt
+
     ret     ; stop function execution
 main endp   ; end main function
 
