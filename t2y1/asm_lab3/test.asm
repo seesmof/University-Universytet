@@ -46,9 +46,9 @@ main proc near  ; declare main function
     mov cx,5    ; declare amount of iterations for our loop
 m0:             ; declare the loop itself
     lea dx, h    ; text to output
-    call outputStirng   ; output with function
+    call outputString   ; output with function
     lea dx, edl  ; new line to output
-    call outputStirng   ; output with function
+    call outputString   ; output with function
     loop m0     ; move to next iteration
 
     mov cx, 75
@@ -56,16 +56,19 @@ m0:             ; declare the loop itself
 m1:
     mov [t], bh
     add [t], 30h
+    call outputString ; output with function
+    inc bh
+    loop m1 ; move to next iteration
 
     ret     ; stop function execution
 main endp   ; end main function
 
-outputStirng proc near
+outputString proc near
     sub ax,ax
     mov ah,09h
     int 21h
     ret
-outputStirng endp
+outputString endp
 
 cseg ends   ; end code segment
 end start   ; end program execution
