@@ -7,11 +7,11 @@ sseg ends   ; end stack segment
 
 dseg segment para public 'data'     ; declare data segment
     space db ' ', '$'
-    student_name db '     Onyshchenko Oleh', '$'
-    student_group db 'KHT-122', '$'
+    student_name db '      Onyshchenko Oleh', '$'
+    student_group db '          KHT-122', '$'
     new_line db 0Dh, 0Ah, '$'
-    current_year db '2023', '$'
-    verical_line db '------------------------------', '$'
+    current_year db '            2023', '$'
+    verical_line db '-----------------------------', '$'
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
