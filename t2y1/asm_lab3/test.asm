@@ -20,7 +20,7 @@ dseg segment para public 'data'     ; declare data segment
     f       dw 0, 1, 2, 3, 4, ?, ?, ?, ?, ?
     g       db 'N', 'e', 'x', 't'
     h       db 'Next', '$'
-    endl    db 0Dh, 0Ah, '$'
+    edl     db 0Dh, 0Ah, '$'
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
@@ -44,7 +44,7 @@ main proc near  ; declare main function
     mov dx,offset h ; text to output
     int 21h ; call interrupt
 
-    lea dx,offset h ; text to output
+    lea dx,edl ; text to output
     int 21h ; call interrupt
 
     ret     ; stop function execution
