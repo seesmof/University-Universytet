@@ -51,12 +51,15 @@ m0:             ; declare the loop itself
     call outputString   ; output with function
     loop m0     ; move to next iteration
 
+    sub ax, ax
+    mov ah, 09h
+    lea dx, t   ; text to output
     mov cx, 75
     mov bh, 0 
 m1:
     mov [t], bh
     add [t], 30h
-    call outputString ; output with function
+    int 21h
     inc bh      ; 
     loop m1     ; move to next iteration
 
@@ -64,8 +67,8 @@ m1:
 main endp   ; end main function
 
 outputString proc near
-    sub ax,ax
-    mov ah,09h
+    sub ax, ax
+    mov ah, 09h
     int 21h
     ret
 outputString endp
