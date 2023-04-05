@@ -38,11 +38,13 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
+
+m0:
     lea dx,h    ; text to output
     call outputStirng   ; output with function
-
     lea dx,edl  ; new line to output
     call outputStirng   ; output with function
+    loop m0
 
     ret     ; stop function execution
 main endp   ; end main function
