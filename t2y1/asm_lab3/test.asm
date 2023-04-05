@@ -38,9 +38,14 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-    mov dl, symbol  ; load symbol into dl register
-    mov ah, 02h     ; output symbol to stdout
-    int 21h     ; call interrupt
+    sub ax,ax      ; ax == 0
+    mov ah,09h     ; output string to stdout
+    mov dx,offset h ; offset to string
+    int 21h ; call interrupt
+
+    mov ah,09h
+    mov dx,offset endl
+    int 21h
 
     ret     ; stop function execution
 main endp   ; end main function
