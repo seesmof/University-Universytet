@@ -7,7 +7,7 @@ sseg ends   ; end stack segment
 
 dseg segment para public 'data'     ; declare data segment
     space db ' ', '$'
-    student_name db 'Onyshchenko_Oleh', '$'
+    student_name db '     Onyshchenko Oleh', '$'
     student_group db 'KHT-122', '$'
     new_line db 0Dh, 0Ah, '$'
     current_year db '2023', '$'
