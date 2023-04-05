@@ -44,7 +44,7 @@ main proc near  ; declare main function
     mov dx,offset h ; text to output
     int 21h ; call interrupt
 
-    lea dx,edl ; text to output
+    lea dx,edl ; new line to output
     int 21h ; call interrupt
 
     ret     ; stop function execution
