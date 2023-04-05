@@ -7,9 +7,10 @@ sseg ends   ; end stack segment
 
 dseg segment para public 'data'     ; declare data segment
     name db 'Onyshchenko Oleh', '$'
-    group dw 'KHT-122', '$'
-    new_line dd 0Dh, 0Ah, '$'
-    year dq '2023', '$'
+    group db 'KHT-122', '$'
+    new_line db 0Dh, 0Ah, '$'
+    year db '2023', '$'
+    verical_line db '------------------------------', '$'
 
     x       equ 100
     a       db 0
@@ -42,25 +43,23 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-    mov cx,5    ; declare amount of iterations for our loop
-m0:             ; declare the loop itself
-    lea dx, h    ; text to output
-    call outputString   ; output with function
-    lea dx, new_line  ; new line to output
-    call outputString   ; output with function
-    loop m0     ; move to next iteration
+    lea dx, verical_line
+    call outputString
 
-    sub ax, ax
-    mov ah, 09h
-    lea dx, t   ; text to output
-    mov cx, 75
-    mov bh, 0 
-m1:
-    mov [t], bh
-    add [t], 30h
-    int 21h
-    inc bh      ; 
-    loop m1     ; move to next iteration
+    lea dx, name
+    call outputString
+
+    lea dx, group
+    call outputString
+
+    lea dx, new_line
+    call outputString
+
+    lea dx, year
+    call outputString
+
+    lea dx, verical_line
+    call outputString
 
     ret     ; stop function execution
 main endp   ; end main function
