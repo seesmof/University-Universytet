@@ -6,7 +6,7 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    section_one db '    Student Card:', '$'
+    section_one db '1. Student Card:', '$'
     space db ' ', '$'
     student_name db '      Onyshchenko Oleh', '$'
     student_group db '          KHT-122', '$'
