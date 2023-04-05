@@ -38,7 +38,7 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-
+    mov cx,5    ; declare amount of iterations for our loop
 m0:
     lea dx,h    ; text to output
     call outputStirng   ; output with function
