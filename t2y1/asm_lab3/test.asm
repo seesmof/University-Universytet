@@ -25,6 +25,7 @@ dseg segment para public 'data'     ; declare data segment
     j       dw 40 dup (?)
     k       dw 5 dup (8 dup (?))
     str1    db 5 dup ('%'), '$'
+    t       db ?, '$'
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
@@ -49,6 +50,12 @@ m0:             ; declare the loop itself
     lea dx, edl  ; new line to output
     call outputStirng   ; output with function
     loop m0     ; move to next iteration
+
+    mov cx, 75
+    mov bh, 0 
+m1:
+    mov [t], bh
+    add [t], 30h
 
     ret     ; stop function execution
 main endp   ; end main function
