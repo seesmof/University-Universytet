@@ -21,6 +21,7 @@ dseg segment para public 'data'     ; declare data segment
     g       db 'N', 'e', 'x', 't'
     h       db 'Next', '$'
     edl     db 0Dh, 0Ah, '$'
+    i       db 100 dup (?)
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
@@ -40,9 +41,9 @@ start:  ; declare program entry point
 main proc near  ; declare main function
     mov cx,5    ; declare amount of iterations for our loop
 m0:             ; declare the loop itself
-    lea dx,h    ; text to output
+    lea dx, h    ; text to output
     call outputStirng   ; output with function
-    lea dx,edl  ; new line to output
+    lea dx, edl  ; new line to output
     call outputStirng   ; output with function
     loop m0     ; move to next iteration
 
