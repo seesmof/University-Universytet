@@ -6,12 +6,15 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
+    section_one db 'Student Card:', '$'
     space db ' ', '$'
     student_name db '      Onyshchenko Oleh', '$'
     student_group db '          KHT-122', '$'
     new_line db 0Dh, 0Ah, '$'
     current_year db '            2023', '$'
     verical_line db '-----------------------------', '$'
+
+    section_two db '', '$'
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
@@ -29,6 +32,12 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
+    lea dx, new_line
+    call outputString
+
+    lea dx, section_one
+    call outputString
+
     lea dx, verical_line
     call outputString
     lea dx, new_line
@@ -56,6 +65,9 @@ main proc near  ; declare main function
 
     lea dx, verical_line
     call outputString
+    lea dx, new_line
+    call outputString
+    
     lea dx, new_line
     call outputString
 
