@@ -40,12 +40,12 @@ start:  ; declare program entry point
 main proc near  ; declare main function
     sub ax,ax      ; ax == 0
     mov ah,09h     ; output string to stdout
-    mov dx,offset h ; offset to string
+
+    mov dx,offset h ; text to output
     int 21h ; call interrupt
 
-    mov ah,09h
-    mov dx,offset endl
-    int 21h
+    lea dx,offset h ; text to output
+    int 21h ; call interrupt
 
     ret     ; stop function execution
 main endp   ; end main function
