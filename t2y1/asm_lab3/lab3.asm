@@ -6,7 +6,7 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    section_one db 'Student Card:', '$'
+    section_one db '    Student Card:', '$'
     space db ' ', '$'
     student_name db '      Onyshchenko Oleh', '$'
     student_group db '          KHT-122', '$'
@@ -36,6 +36,8 @@ main proc near  ; declare main function
     call outputString
 
     lea dx, section_one
+    call outputString
+    lea dx, new_line
     call outputString
 
     lea dx, verical_line
