@@ -33,7 +33,7 @@ cseg segment para public 'code'     ; declare code segment
 start:  ; declare program entry point
     assume ds:dseg  ; set data segment register
     mov bx, dseg    ; add data segment to bx register
-    mov ds, bx  ; set ds register to bx register
+    mov ds, bx  ; set ds register to bx register 
 
     call main   ; call main function
 
