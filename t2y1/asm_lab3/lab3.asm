@@ -97,29 +97,22 @@ main proc near  ; declare main function
 
     lea dx, section_two_byte
     call outputString
-    mov dl, example_byte
-    mov ah, 02h
     ; Перевірка на знак та виведення байту у консоль
     mov ah, 02h ; задаємо функцію int 21h для виведення символів
-    mov al, myByte ; передаємо значення змінної myByte в регістр al
+    mov al, example_byte ; передаємо значення змінної example_byte в регістр al
     cmp al, 128 ; перевіряємо, чи є значення байту більшим за 127
     jge negative_byte ; якщо так, переходимо до виведення від'ємного значення
     jmp print_byte ; якщо ні, переходимо до виведення звичайного значення
-
-    int 21h
 
     lea dx, space
     call outputString
 
-    mov dl, example_byte
-    mov ah, 02h
     ; Перевірка на знак та виведення байту у консоль
     mov ah, 02h ; задаємо функцію int 21h для виведення символів
-    mov al, myByte ; передаємо значення змінної myByte в регістр al
+    mov al, example_byte ; передаємо значення змінної example_byte в регістр al
     cmp al, 128 ; перевіряємо, чи є значення байту більшим за 127
     jge negative_byte ; якщо так, переходимо до виведення від'ємного значення
     jmp print_byte ; якщо ні, переходимо до виведення звичайного значення
-    int 21h
 
     lea dx, new_line
     call outputString
