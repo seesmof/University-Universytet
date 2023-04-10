@@ -19,7 +19,8 @@ main proc near  ; declare main function
     lea dx, input_buffer
     call inputString ; set output string
 
-    mov [buffer_cont+buffer_length], '$'
+    mov bl, buffer_length
+    mov [buffer_cont+bx], '$'
 
     lea dx, buffer_cont
     call outputString ; set output string
