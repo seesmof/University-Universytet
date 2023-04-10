@@ -40,6 +40,9 @@ main proc near  ; declare main function
     lea dx, buffer_cont
     call outputString ; set output string
 
+    lea dx, new_line
+    call outputString ; output with function
+
     ret     ; stop function execution
 main endp   ; end main function
 
