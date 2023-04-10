@@ -32,6 +32,8 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString ; output with function
 
+    sub ax, ax
+
     lea dx, new_line
     call outputString ; output with function
 
