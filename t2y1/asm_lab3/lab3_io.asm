@@ -18,7 +18,7 @@ start:  ; declare program entry point
 main proc near  ; declare main function
     lea dx, new_line
     call outputString ; output with function
-
+    
     lea dx, input_prompt
     call outputString ; output with function
     
@@ -31,6 +31,7 @@ main proc near  ; declare main function
 
     lea dx, new_line
     call outputString ; output with function
+
     lea dx, new_line
     call outputString ; output with function
 
@@ -39,7 +40,6 @@ main proc near  ; declare main function
 
     lea dx, buffer_cont
     call outputString ; set output string
-
     lea dx, new_line
     call outputString ; output with function
 
