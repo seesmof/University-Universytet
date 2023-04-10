@@ -19,7 +19,7 @@ main proc near  ; declare main function
     lea dx, input_buffer
     call inputString ; set output string
 
-    mov [buffer_cont], '$'
+    mov [buffer_cont+buffer_length], '$'
 
     lea dx, buffer_cont
     call outputString ; set output string
@@ -50,7 +50,7 @@ dseg segment para public 'data'     ; declare data segment
     new_line db 0Dh, 0Ah, '$'
 
     input_buffer db 10
-    input_length db ?
+    buffer_length db ?
     buffer_cont db 10 dup (' ')
 dseg ends   ; end data segment
 
