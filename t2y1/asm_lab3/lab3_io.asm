@@ -21,7 +21,6 @@ main proc near  ; declare main function
 
     sub bx, bx
     mov bl, buffer_length
-    mov bh, 0
     mov [buffer_cont + bx], '$'
 
     lea dx, buffer_cont
