@@ -16,11 +16,10 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-    lea dx, new_line
-    call outputString ; set output string
-    lea dx, new_line
-    call outputString ; set output string
-    lea dx, new_line
+    lea dx, input_buffer
+    call inputString ; set output string
+
+    lea dx, buffer_cont
     call outputString ; set output string
 
     ret     ; stop function execution
@@ -47,7 +46,7 @@ sseg ends   ; end stack segment
 
 dseg segment para public 'data'     ; declare data segment
     new_line db 0Dh, 0Ah, '$'
-    
+
     input_buffer db 10
     input_length db ?
     buffer_cont db 10 dup (' ')
