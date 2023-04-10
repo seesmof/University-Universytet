@@ -37,6 +37,19 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString ; output with function
 
+    sub cx, cx
+    mov cl, 10
+    sub ax, ax
+        pos = 0 on str
+    cycle:
+        mul cl
+        symb from str
+        ascii to numb
+        add ax, numb
+        pos++
+        if pos < buffer_length goto cycle
+    endc
+
     lea dx, output_prompt
     call outputString ; output with function
 
