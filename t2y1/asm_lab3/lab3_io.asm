@@ -16,11 +16,22 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-    lea dx, edl
+    lea dx, new_line
+    call outputString ; set output string
+    lea dx, new_line
+    call outputString ; set output string
+    lea dx, new_line
     call outputString ; set output string
 
     ret     ; stop function execution
 main endp   ; end main function
+
+inputString proc near
+    sub ax, ax
+    mov ah, 09h
+    int 21h
+    ret
+inputString endp
 
 outputString proc near
     sub ax, ax
@@ -35,7 +46,8 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    
+    new_line db 0Dh, 0Ah, '$'
+    input_buffer db 100 dup (0)
 dseg ends   ; end data segment
 
 end start   ; end program execution
