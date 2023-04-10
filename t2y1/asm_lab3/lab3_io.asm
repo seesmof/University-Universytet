@@ -19,6 +19,7 @@ main proc near  ; declare main function
     lea dx, input_buffer
     call inputString ; set output string
 
+    sub bx, bx
     mov bl, buffer_length
     mov bh, 0
     mov [buffer_cont + bx], '$'
@@ -31,7 +32,7 @@ main endp   ; end main function
 
 inputString proc near
     sub ax, ax
-    mov ah, 09h
+    mov ah, 0Ah
     int 21h
     ret
 inputString endp
