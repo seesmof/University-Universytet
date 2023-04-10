@@ -31,6 +31,11 @@ main proc near  ; declare main function
 
     lea dx, new_line
     call outputString ; output with function
+    lea dx, new_line
+    call outputString ; output with function
+
+    lea dx, output_prompt
+    call outputString ; output with function
 
     lea dx, buffer_cont
     call outputString ; set output string
@@ -60,6 +65,7 @@ sseg ends   ; end stack segment
 dseg segment para public 'data'     ; declare data segment
     new_line db 0Dh, 0Ah, '$'
     input_prompt db 'Enter a string: ', '$'
+    output_prompt db 'Your string: ', '$'
 
     input_buffer db 10
     buffer_length db ?
