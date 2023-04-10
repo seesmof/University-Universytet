@@ -29,6 +29,9 @@ main proc near  ; declare main function
     mov bl, buffer_length
     mov [buffer_cont + bx], '$'
 
+    lea dx, new_line
+    call outputString ; output with function
+
     lea dx, buffer_cont
     call outputString ; set output string
 
