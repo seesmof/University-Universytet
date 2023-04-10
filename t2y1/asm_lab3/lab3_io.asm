@@ -20,7 +20,8 @@ main proc near  ; declare main function
     call inputString ; set output string
 
     mov bl, buffer_length
-    mov [buffer_cont+bx], '$'
+    mov bh, 0
+    mov [buffer_cont + bx], '$'
 
     lea dx, buffer_cont
     call outputString ; set output string
