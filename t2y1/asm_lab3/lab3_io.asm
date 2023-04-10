@@ -16,6 +16,12 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
+    lea dx, new_line
+    call outputString ; output with function
+
+    lea dx, input_prompt
+    call outputString ; output with function
+    
     lea dx, input_buffer
     call inputString ; set output string
 
@@ -50,6 +56,7 @@ sseg ends   ; end stack segment
 
 dseg segment para public 'data'     ; declare data segment
     new_line db 0Dh, 0Ah, '$'
+    input_prompt db 'Enter a string: ', '$'
 
     input_buffer db 10
     buffer_length db ?
