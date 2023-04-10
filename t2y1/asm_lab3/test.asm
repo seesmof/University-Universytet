@@ -6,11 +6,6 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    name db 'Onyshchenko Oleh', '$'
-    group dw 'KHT-122', '$'
-    new_line dd 0Dh, 0Ah, '$'
-    year dq '2023', '$'
-
     x       equ 100
     a       db 0
     b       dw ?
