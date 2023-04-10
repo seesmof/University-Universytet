@@ -18,7 +18,7 @@ start:  ; declare program entry point
 main proc near  ; declare main function
     lea dx, new_line
     call outputString ; output with function
-    
+
     lea dx, input_prompt
     call outputString ; output with function
     
@@ -70,9 +70,9 @@ dseg segment para public 'data'     ; declare data segment
     input_prompt db 'Enter a string: ', '$'
     output_prompt db 'Your string: ', '$'
 
-    input_buffer db 10
+    input_buffer db 100
     buffer_length db ?
-    buffer_cont db 10 dup (' ')
+    buffer_cont db 100 dup (' ')
 dseg ends   ; end data segment
 
 end start   ; end program execution
