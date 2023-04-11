@@ -5,67 +5,34 @@ sseg segment para stack 'stack'     ; declare stack segment
     db 256 dup(?)       ; reserve memory for stack
 sseg ends   ; end stack segment 
 
+; set up the data segment
 dseg segment para public 'data'     ; declare data segment
-    x       equ 100
-    a       db 0
-    b       dw ?
-    c       db 'A'
-    d       db 65
-    e       db 041h
-    f       dw 0, 1, 2, 3, 4, ?, ?, ?, ?, ?
-    g       db 'N', 'e', 'x', 't'
-    h       db 'Next', '$'
-    i       db 100 dup (0)
-    j       dw 40 dup (?)
-    k       dw 5 dup (8 dup (?))
-    str1    db 5 dup ('%'), '$'
-    t       db ?, '$'
+    ; create variables of different types and sizes
+    var1 db 1 ; byte variable
+    var2 dw 2 ; word variable
+    var3 dd 3 ; double word variable
+
+    ; initialize variables in different ways and with different values
+    var4 db ? ; uninitialized byte variable
+    var5 db 'A' ; initialized with character value
+    var6 db "Hello" ; initialized with string value
+
+    ; create character strings and arrays with 1/2/4-byte elements of different dimensions
+    str1 db "Hello, World!", '$'
+    arr1 db 1, 2, 3, 4, 5 ; one-dimensional byte array
+    arr2 dw 1, 2, 3, 4, 5 ; one-dimensional word array
+    arr3 dd 1, 2, 3, 4, 5 ; one-dimensional double word array
 dseg ends   ; end data segment
 
 cseg segment para public 'code'     ; declare code segment
     assume cs:cseg, ss:sseg, es:nothing ; set segment register to corresponding ones
+start:
+    ; implement the output of any printed character to the console using interrupt function 2
+    mov dl, 'A' ; move character to dl register
+    mov ah, 02h ; set ah register to function code for outputting character to console
+    int 21h ; call interrupt
 
-start:  ; declare program entry point
-    assume ds:dseg  ; set data segment register
-    mov bx, dseg    ; add data segment to bx register
-    mov ds, bx  ; set ds register to bx register
-
-    call main   ; call main function
-
-    mov ah, 04Ch     ; exit to OS
-    mov bl, 06Ch     ; set error code to 108 in hex
-    int 21h     ; call interrupt
-
-main proc near  ; declare main function
-    mov cx,5    ; declare amount of iterations for our loop
-m0:             ; declare the loop itself
-    lea dx, h    ; text to output
-    call outputString   ; output with function
-    lea dx, new_line  ; new line to output
-    call outputString   ; output with function
-    loop m0     ; move to next iteration
-
-    sub ax, ax
-    mov ah, 09h
-    lea dx, t   ; text to output
-    mov cx, 75
-    mov bh, 0 
-m1:
-    mov [t], bh
-    add [t], 30h
-    int 21h
-    inc bh      ; 
-    loop m1     ; move to next iteration
-
-    ret     ; stop function execution
-main endp   ; end main function
-
-outputString proc near
-    sub ax, ax
-    mov ah, 09h
-    int 21h
-    ret
-outputString endp
+; rest of the code goes here
 
 cseg ends   ; end code segment
 end start   ; end program execution
