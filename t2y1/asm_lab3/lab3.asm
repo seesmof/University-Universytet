@@ -17,6 +17,7 @@ start:  ; declare program entry point
 
 main proc near  ; declare main function
     call section_one
+    
     call section_two
 
     ret     ; stop function execution
@@ -74,6 +75,13 @@ section_two proc near
     lea dx, new_line
     call outputString
 
+    lea dx, section_two_byte
+    call outputString
+    mov dl, example_byte
+    call outputChar
+    lea dx, new_line
+    call outputString
+
     lea dx, new_line
     call outputString
 section_two endp
@@ -82,9 +90,15 @@ outputString proc near
     sub ax, ax
     mov ah, 09h
     int 21h
-    mov dx, offset empty_string
     ret
 outputString endp
+
+outputChar proc near
+    sub ax, ax
+    mov ah, 02h
+    int 21h
+    ret
+outputChar endp
 cseg ends   ; end code segment
 
 sseg segment para stack 'stack'     ; declare stack segment
@@ -92,8 +106,6 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    empty_string    db  '$'
-    
     section_one_heading db ' 1. Student Card:', '$'
     student_name db '      Onyshchenko Oleh', '$'
     student_group db '          KHT-122', '$'
