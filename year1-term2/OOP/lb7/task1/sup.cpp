@@ -5,11 +5,12 @@
 // Виконати завдання з лабораторної роботи №1, де тип елементу заданої структури даних довільний. Використати шаблонні функції.
 
 // delta class declaration
+template <typename T>
 class Delta
 {
 private:
     // declare private members
-    ll objectDescriptor;
+    T objectDescriptor;
 
 public:
     // create default constructor function
@@ -24,7 +25,7 @@ public:
         return descriptorHolder++;
     }
 
-    ll getObjectDescriptor() const
+    T getObjectDescriptor() const
     {
         return objectDescriptor;
     }
@@ -36,7 +37,8 @@ public:
 };
 
 // object creation function
-void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+template <typename T>
+void createObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
     // ask user to enter number of delta objects to create
     ll objectsAmount;
@@ -67,14 +69,15 @@ void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 
     // create specified amount of objects using a for loop
     for (ll i = 0; i < objectsAmount; i++)
-        deltaObjectsVector.push_back(make_unique<Delta>());
+        deltaObjectsVector.push_back(make_unique<Delta<T>>());
 
     // end function execution
     return;
 }
 
 // printing objects function
-void printObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+template <typename T>
+void printObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
     // get vector size
     ll vectorSize = deltaObjectsVector.size();
@@ -90,7 +93,8 @@ void printObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 }
 
 // object deletion function
-void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+template <typename T>
+void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
     // check if vector is empty
     if (deltaObjectsVector.size() == 0)
