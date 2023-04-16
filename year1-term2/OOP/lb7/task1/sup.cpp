@@ -1,12 +1,10 @@
-#include <bits/stdc++.h>
 #include "sup.h"
-#include "../../../lib.h"
-using namespace std;
+#include "D:\repos\university\lib.h"
 
-// 1. Виконати завдання з лабораторної роботи #1, де тип елементу заданої структури даних довільний. Використати шаблонні функції.
+// Створити клас Delta таким чином, щоб кожний об’єкт вміщував свій персональний номер (дескриптор об’єкта) та функцію, яка повертає його значення. Дескриптор об’єкта – унікальне для об’єктів даного типу ціле число.
+// Виконати завдання з лабораторної роботи №1, де тип елементу заданої структури даних довільний. Використати шаблонні функції.
 
 // delta class declaration
-template <typename T>
 class Delta
 {
 private:
@@ -18,7 +16,7 @@ public:
     Delta() : objectDescriptor(getNextDefaultDescriptor()) {}
 
     // next identifier creator
-    static T getNextDefaultDescriptor()
+    static ll getNextDefaultDescriptor()
     {
         // use static variable for tracking identifier
         static int descriptorHolder = 0;
@@ -26,7 +24,7 @@ public:
         return descriptorHolder++;
     }
 
-    T getObjectDescriptor() const
+    ll getObjectDescriptor() const
     {
         return objectDescriptor;
     }
@@ -38,7 +36,7 @@ public:
 };
 
 // object creation function
-void createObjects(vector<unique_ptr<Delta<int>>> &deltaObjectsVector)
+void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
     // ask user to enter number of delta objects to create
     ll objectsAmount;
@@ -69,14 +67,14 @@ void createObjects(vector<unique_ptr<Delta<int>>> &deltaObjectsVector)
 
     // create specified amount of objects using a for loop
     for (ll i = 0; i < objectsAmount; i++)
-        deltaObjectsVector.push_back(make_unique<Delta<int>>());
+        deltaObjectsVector.push_back(make_unique<Delta>());
 
     // end function execution
     return;
 }
 
 // printing objects function
-void printObjects(vector<unique_ptr<Delta<int>>> &deltaObjectsVector)
+void printObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
     // get vector size
     ll vectorSize = deltaObjectsVector.size();
@@ -92,7 +90,7 @@ void printObjects(vector<unique_ptr<Delta<int>>> &deltaObjectsVector)
 }
 
 // object deletion function
-void deleteObjects(vector<unique_ptr<Delta<int>>> &deltaObjectsVector)
+void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
     // check if vector is empty
     if (deltaObjectsVector.size() == 0)

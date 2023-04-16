@@ -1,9 +1,9 @@
 // include necessary libraries
-#include "../../../lib.h"
+#include "D:\repos\university\lib.h"
 #include "sup.h"
-using namespace std;
 
-// 1. Виконати завдання з лабораторної роботи #1, де тип елементу заданої структури даних довільний. Використати шаблонні функції.
+// Створити клас Delta таким чином, щоб кожний об’єкт вміщував свій персональний номер (дескриптор об’єкта) та функцію, яка повертає його значення. Дескриптор об’єкта – унікальне для об’єктів даного типу ціле число.
+// Виконати завдання з лабораторної роботи №1, де тип елементу заданої структури даних довільний. Використати шаблонні функції.
 
 // func main start
 int main()
@@ -21,7 +21,7 @@ int main()
         ///////////////////////////////////////
 
         // for storing class object pointers
-        vector<unique_ptr<Delta<int>>> deltaObjectsVector;
+        vector<unique_ptr<Delta>> deltaObjectsVector;
         // for manipulating program flow
         char doReturnToMenu;
 
