@@ -149,3 +149,24 @@ void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
     // end function execution
     return;
 }
+
+template <typename T>
+vector<unique_ptr<Delta<T>>> getTypeFromUser()
+{
+    cout << BOLD << "Choose a data type for a class\n"
+         << UNBOLD;
+    cout << "1. Integer\n";
+    cout << "2. Double\n";
+    cout << "3. String\n";
+    cout << "4. Exit\n";
+    cout << "\nEnter: ";
+    ll inputType = getNum();
+    cout << endl;
+
+    if (inputType == 1)
+        return vector<unique_ptr<Delta<int>>>();
+    else if (inputType == 2)
+        return vector<unique_ptr<Delta<double>>>();
+    else
+        return vector<unique_ptr<Delta<string>>>();
+}

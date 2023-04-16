@@ -20,27 +20,8 @@ int main()
     {
         ///////////////////////////////////////
 
-        // for storing class object pointers
-        // vector<unique_ptr<Delta>> deltaObjectsVector;
-        // for manipulating program flow
         char doReturnToMenu;
-
-        cout << BOLD << "Choose a data type for a class\n"
-             << UNBOLD;
-        cout << "1. Integer\n";
-        cout << "2. Double\n";
-        cout << "3. String\n";
-        cout << "4. Exit\n";
-        cout << "\nEnter: ";
-        ll inputType = getNum();
-        cout << endl;
-
-        if (inputType == 1)
-            vector<unique_ptr<Delta<int>>> deltaObjectsVector;
-        else if (inputType == 2)
-            vector<unique_ptr<Delta<double>>> deltaObjectsVector;
-        else
-            vector<unique_ptr<Delta<string>>> deltaObjectsVector;
+        auto deltaObjectsVector = getTypeFromUser<int>();
 
         do
         {
