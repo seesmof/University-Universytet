@@ -30,7 +30,7 @@ int main()
             cout << "2. Double\n";
             cout << "3. String\n";
             cout << "4. Exit\n";
-            cout << "\nEnter: ";
+            cout << "Enter: ";
             userDecision = getNum();
             cout << endl;
 
