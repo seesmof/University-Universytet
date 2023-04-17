@@ -21,38 +21,38 @@ int main()
         ///////////////////////////////////////
 
         char doReturnToMenu;
+        // output menu to user and prompt them to choose an option
+        cout << BOLD << "Choose a data type\n"
+             << UNBOLD;
+        cout << "1. Integer\n";
+        cout << "2. Double\n";
+        cout << "3. String\n";
+        cout << "4. Exit\n";
+        cout << "Enter: ";
+        userDecision = getNum();
+        cout << endl;
+
+        // if user chose to add objects
+        if (userDecision == 1)
+        {
+            vector<unique_ptr<Delta<int>>> deltaObjectsVector;
+            outputMenu(deltaObjectsVector);
+        }
+        // if user chose to delete objects
+        else if (userDecision == 2)
+        {
+            vector<unique_ptr<Delta<double>>> deltaObjectsVector;
+            outputMenu(deltaObjectsVector);
+        }
+        // if user chose to print objects
+        else if (userDecision == 3)
+        {
+            vector<unique_ptr<Delta<string>>> deltaObjectsVector;
+            outputMenu(deltaObjectsVector);
+        }
+
         do
         {
-            // output menu to user and prompt them to choose an option
-            cout << BOLD << "Choose a data type\n"
-                 << UNBOLD;
-            cout << "1. Integer\n";
-            cout << "2. Double\n";
-            cout << "3. String\n";
-            cout << "4. Exit\n";
-            cout << "Enter: ";
-            userDecision = getNum();
-            cout << endl;
-
-            // if user chose to add objects
-            if (userDecision == 1)
-            {
-                vector<unique_ptr<Delta<int>>> deltaObjectsVector;
-                outputMenu(deltaObjectsVector);
-            }
-            // if user chose to delete objects
-            else if (userDecision == 2)
-            {
-                vector<unique_ptr<Delta<double>>> deltaObjectsVector;
-                outputMenu(deltaObjectsVector);
-            }
-            // if user chose to print objects
-            else if (userDecision == 3)
-            {
-                vector<unique_ptr<Delta<string>>> deltaObjectsVector;
-                outputMenu(deltaObjectsVector);
-            }
-
             // ask user if they would like to return to menu
             cout << "\nWould you like to return to menu? (Y | N): ";
             cin >> doReturnToMenu;
@@ -66,7 +66,6 @@ int main()
             // if not, break out of loop
             else
                 break;
-
         } while (doReturnToMenu == 'y' || doReturnToMenu == 'Y');
         // execute while user chooses to return to menu
 
