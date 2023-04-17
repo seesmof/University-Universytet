@@ -69,6 +69,7 @@ void createObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
     cout << "\nAdding objects (" << objectsAmount << "):\n";
     for (ll i = 0; i < objectsAmount; i++)
     {
+        cin.ignore();
         T value;
         cout << i + 1 << ". Enter value for object: ";
         cin >> value;
@@ -96,7 +97,7 @@ void printObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
          << UNBOLD;
     for (ll i = 0; i < vectorSize; i++)
     {
-        cout << "(" << deltaObjectsVector[i]->getDescriptor() << ") " << deltaObjectsVector[i]->getValue() << endl;
+        cout << deltaObjectsVector[i]->getDescriptor() << ". " << deltaObjectsVector[i]->getValue() << endl;
     }
 }
 
