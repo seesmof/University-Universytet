@@ -10,13 +10,18 @@ class Delta
 {
 private:
     // declare private members
-    static ll nextDescriptor;
     ll descriptor;
     T value;
 
 public:
     // create default constructor function
-    Delta(T inValue) : value(inValue), descriptor(nextDescriptor++) {}
+    Delta(T inValue) : value(inValue), descriptor(nextDescriptor()) {}
+
+    static ll nextDescriptor()
+    {
+        static ll nextDescriptor = 0;
+        return nextDescriptor++;
+    }
 
     // next identifier creator
     T getValue() const
@@ -119,4 +124,42 @@ void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 
     // end function execution
     return;
+}
+
+// for showing the main menu of the application
+template <typename T>
+void outputMenu(vector<Delta<T>> &container)
+{
+    // output menu to user and prompt them to choose an option
+    cout << BOLD << "Choose an option from menu\n"
+         << UNBOLD;
+    cout << "1. Add objects\n";
+    cout << "2. Delete objects\n";
+    cout << "3. Print objects\n";
+    cout << "4. Exit\n";
+    cout << "\nEnter: ";
+    userDecision = getNum();
+    cout << endl;
+
+    // if user chose to add objects
+    if (userDecision == 1)
+    {
+        vector<unique_ptr<Delta<T>>> deltaObjectsVector;
+        // add objects
+        createObjects(deltaObjectsVector);
+        // print them to console
+        printObjects(deltaObjectsVector);
+    }
+    // if user chose to delete objects
+    else if (userDecision == 2)
+    {
+        // delete them
+        deleteObjects(deltaObjectsVector);
+        // print them to console
+        printObjects(deltaObjectsVector);
+    }
+    // if user chose to print objects
+    else if (userDecision == 3)
+        // print objects to console
+        printObjects(deltaObjectsVector);
 }

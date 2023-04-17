@@ -20,25 +20,7 @@ int main()
     {
         ///////////////////////////////////////
 
-        string dataType;
         char doReturnToMenu;
-
-        cout << BOLD << "Choose data type\n"
-             << UNBOLD;
-        cout << "1. Integer\n";
-        cout << "2. Double\n";
-        cout << "3. String\n";
-        cout << "4. Exit\n";
-        cout << "\nEnter: ";
-        ll inputType = getNum();
-        if (inputType == 1)
-            dataType = "int";
-        else if (inputType == 2)
-            dataType = "double";
-        else if (inputType == 3)
-            dataType = "string";
-        vector<unique_ptr<Delta<dataType>>> deltaObjectsVector;
-
         do
         {
             // output menu to user and prompt them to choose an option
@@ -49,24 +31,13 @@ int main()
             cout << "3. Print objects\n";
             cout << "4. Exit\n";
             cout << "\nEnter: ";
-            cin >> userDecision;
-
-            // check if input is not an integer
-            if (cin.fail())
-            {
-                // output error
-                cout << RED << "\nERROR: Enter an integer...\n\n"
-                     << UNRED;
-                // clear buffer
-                cin.clear();
-                cin.ignore();
-                // break out of loop
-                break;
-            }
+            userDecision = getNum();
+            cout << endl;
 
             // if user chose to add objects
             if (userDecision == 1)
             {
+                vector<unique_ptr<Delta<dataType>>> deltaObjectsVector;
                 // add objects
                 createObjects(deltaObjectsVector);
                 // print them to console
