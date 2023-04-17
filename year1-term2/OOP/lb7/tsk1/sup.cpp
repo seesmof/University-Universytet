@@ -70,11 +70,10 @@ void createObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
     for (ll i = 0; i < objectsAmount; i++)
     {
         T value;
-        cout << "Enter value for object " << i + 1 << ": ";
+        cout << i + 1 << ". Enter value for object " << i + 1 << ": ";
         cin >> value;
         deltaObjectsVector.push_back(make_unique<Delta<T>>(value));
     }
-    deltaObjectsVector.push_back(make_unique<Delta<T>>());
 
     // end function execution
     return;
@@ -154,7 +153,7 @@ void outputMenu(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
     cout << "3. Print objects\n";
     cout << "4. Exit\n";
     cout << "\nEnter: ";
-    userDecision = getNum();
+    ll userDecision = getNum();
     cout << endl;
 
     // if user chose to add objects
