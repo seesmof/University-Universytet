@@ -20,8 +20,24 @@ int main()
     {
         ///////////////////////////////////////
 
+        string dataType;
         char doReturnToMenu;
-        auto deltaObjectsVector = getTypeFromUser<int>();
+
+        cout << BOLD << "Choose data type\n"
+             << UNBOLD;
+        cout << "1. Integer\n";
+        cout << "2. Double\n";
+        cout << "3. String\n";
+        cout << "4. Exit\n";
+        cout << "\nEnter: ";
+        ll inputType = getNum();
+        if (inputType == 1)
+            dataType = "int";
+        else if (inputType == 2)
+            dataType = "double";
+        else if (inputType == 3)
+            dataType = "string";
+        vector<unique_ptr<Delta<dataType>>> deltaObjectsVector;
 
         do
         {

@@ -1,5 +1,5 @@
 // include necessary libraries
-#include "../../lib.h"
+#include "D:\repos\university\lib.h"
 #include "sup.h"
 using namespace std;
 

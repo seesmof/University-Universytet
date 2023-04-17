@@ -10,24 +10,23 @@ class Delta
 {
 private:
     // declare private members
-    T objectDescriptor;
+    static ll nextDescriptor;
+    ll descriptor;
+    T value;
 
 public:
     // create default constructor function
-    Delta() : objectDescriptor(getNextDefaultDescriptor()) {}
+    Delta(T inValue) : value(inValue), descriptor(nextDescriptor++) {}
 
     // next identifier creator
-    static ll getNextDefaultDescriptor()
+    T getValue() const
     {
-        // use static variable for tracking identifier
-        static int descriptorHolder = 0;
-        // return it to user
-        return descriptorHolder++;
+        return value;
     }
 
-    T getObjectDescriptor() const
+    ll getDescriptor() const
     {
-        return objectDescriptor;
+        return descriptor;
     }
 
     // create default destructor function
@@ -35,30 +34,19 @@ public:
     {
     }
 };
+template <typename T>
+ll Delta<T>::nextDescriptor = 0;
 
 // object creation function
 template <typename T>
 void createObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
     // ask user to enter number of delta objects to create
-    ll objectsAmount;
     cout << "\nEnter an amount of objects to create: ";
-    cin >> objectsAmount;
+    ll objectsAmount = getNum();
 
-    // if entered text is not an integer
-    if (cin.fail())
-    {
-        // output error
-        cout << RED << "\nERROR: Enter an integer...\n\n"
-             << UNRED;
-        // clear buffer
-        cin.clear();
-        cin.ignore();
-        // stop function execution
-        return;
-    }
     // if entered amount is less than one
-    else if (objectsAmount < 1)
+    if (objectsAmount < 1)
     {
         // output error and stop function
         cout << RED << "\nERROR: Invalid amount of objects...\n\n"
@@ -107,25 +95,8 @@ void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
         // print all objects to user
         printObjects(deltaObjectsVector);
 
-        // prompt user to enter an object number to delete
-        ll numToDelete = 0;
         cout << "\nEnter a number of object to delete: ";
-        cin >> numToDelete;
-
-        // check if entered text is not an integer
-        if (cin.fail())
-        {
-            // output error
-            cout << RED << "\nERROR: Enter an integer...\n\n"
-                 << UNRED;
-            // clear buffer
-            cin.clear();
-            cin.ignore();
-            // stop function execution
-            return;
-        }
-
-        // modify object number to fit in with indeces
+        ll numToDelete = getNum();
         numToDelete--;
 
         // if the object number is out of range
@@ -148,25 +119,4 @@ void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 
     // end function execution
     return;
-}
-
-template <typename T>
-vector<unique_ptr<Delta<T>>> getTypeFromUser()
-{
-    cout << BOLD << "Choose a data type for a class\n"
-         << UNBOLD;
-    cout << "1. Integer\n";
-    cout << "2. Double\n";
-    cout << "3. String\n";
-    cout << "4. Exit\n";
-    cout << "\nEnter: ";
-    ll inputType = getNum();
-    cout << endl;
-
-    if (inputType == 1)
-        return vector<unique_ptr<Delta<int>>>();
-    else if (inputType == 2)
-        return vector<unique_ptr<Delta<double>>>();
-    else
-        return vector<unique_ptr<Delta<string>>>();
 }
