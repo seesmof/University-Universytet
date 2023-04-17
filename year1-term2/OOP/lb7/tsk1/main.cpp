@@ -24,11 +24,11 @@ int main()
         do
         {
             // output menu to user and prompt them to choose an option
-            cout << BOLD << "Choose an option from menu\n"
+            cout << BOLD << "Choose a data type\n"
                  << UNBOLD;
-            cout << "1. Add objects\n";
-            cout << "2. Delete objects\n";
-            cout << "3. Print objects\n";
+            cout << "1. Integer\n";
+            cout << "2. Double\n";
+            cout << "3. String\n";
             cout << "4. Exit\n";
             cout << "\nEnter: ";
             userDecision = getNum();

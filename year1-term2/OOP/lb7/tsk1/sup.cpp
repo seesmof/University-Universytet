@@ -39,8 +39,6 @@ public:
     {
     }
 };
-template <typename T>
-ll Delta<T>::nextDescriptor = 0;
 
 // object creation function
 template <typename T>
