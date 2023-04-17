@@ -37,24 +37,21 @@ int main()
             // if user chose to add objects
             if (userDecision == 1)
             {
-                vector<unique_ptr<Delta<dataType>>> deltaObjectsVector;
-                // add objects
-                createObjects(deltaObjectsVector);
-                // print them to console
-                printObjects(deltaObjectsVector);
+                vector<unique_ptr<Delta<int>>> deltaObjectsVector;
+                outputMenu(deltaObjectsVector);
             }
             // if user chose to delete objects
             else if (userDecision == 2)
             {
-                // delete them
-                deleteObjects(deltaObjectsVector);
-                // print them to console
-                printObjects(deltaObjectsVector);
+                vector<unique_ptr<Delta<double>>> deltaObjectsVector;
+                outputMenu(deltaObjectsVector);
             }
             // if user chose to print objects
             else if (userDecision == 3)
-                // print objects to console
-                printObjects(deltaObjectsVector);
+            {
+                vector<unique_ptr<Delta<string>>> deltaObjectsVector;
+                outputMenu(deltaObjectsVector);
+            }
 
             // ask user if they would like to return to menu
             cout << "\nWould you like to return to menu? (Y | N): ";

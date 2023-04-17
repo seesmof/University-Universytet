@@ -34,6 +34,11 @@ public:
         return descriptor;
     }
 
+    void setValue(T inValue)
+    {
+        value = inValue;
+    }
+
     // create default destructor function
     ~Delta()
     {
@@ -126,7 +131,7 @@ void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 
 // for showing the main menu of the application
 template <typename T>
-void outputMenu(vector<Delta<T>> &container)
+void outputMenu(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
     // output menu to user and prompt them to choose an option
     cout << BOLD << "Choose an option from menu\n"
@@ -142,7 +147,6 @@ void outputMenu(vector<Delta<T>> &container)
     // if user chose to add objects
     if (userDecision == 1)
     {
-        vector<unique_ptr<Delta<T>>> deltaObjectsVector;
         // add objects
         createObjects(deltaObjectsVector);
         // print them to console
