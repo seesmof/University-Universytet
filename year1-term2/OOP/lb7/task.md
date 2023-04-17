@@ -12,3 +12,12 @@
 - Не зрозумів друге, в сенсі довільний тип даних?
   - Зробити просто string, без шаблонів. Тоді не розумію нашо взагалі той клас реалізовувати якшо сам string в stl вже реалізований, ну добре.
 - Тобто, шаблони тільки в першому завданні, топ!
+
+---
+
+| Energy Source | Description                          | Advantages                  | Disadvantages                                          |
+| ------------- | ------------------------------------ | --------------------------- | ------------------------------------------------------ |
+| Hydroelectric | Generated from flowing water         | No air pollution, reliable  | Can harm aquatic ecosystems, dependent on water supply |
+| Wind          | Generated from wind turbines         | No air pollution, renewable | Can be noisy, dependent on wind supply                 |
+| Solar         | Generated from sunlight              | No air pollution, renewable | Dependent on weather and daylight                      |
+| Geothermal    | Generated from heat within the earth | No air pollution, reliable  | Limited to certain geographic locations                |
