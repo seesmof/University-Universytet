@@ -14,7 +14,9 @@ private:
     T value;
 
 public:
-    // create default constructor function
+    // default constructor for when we don't specify the value
+    Delta() : value(), descriptor(nextDescriptor()) {}
+    // parameterised constructor for when we do specify the value
     Delta(T inValue) : value(inValue), descriptor(nextDescriptor()) {}
 
     static ll nextDescriptor()
@@ -64,8 +66,15 @@ void createObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
     }
 
     // create specified amount of objects using a for loop
+    cout << "Adding objects (" << objectsAmount << "):\n";
     for (ll i = 0; i < objectsAmount; i++)
-        deltaObjectsVector.push_back(make_unique<Delta<T>>());
+    {
+        T value;
+        cout << "Enter value for object " << i + 1 << ": ";
+        cin >> value;
+        deltaObjectsVector.push_back(make_unique<Delta<T>>(value));
+    }
+    deltaObjectsVector.push_back(make_unique<Delta<T>>());
 
     // end function execution
     return;
