@@ -96,5 +96,6 @@
     "conio.h": "c",
     "raylib.h": "c",
     "*.m": "cpp"
-  }
+  },
+  "gitdoc.enabled": true
 }
