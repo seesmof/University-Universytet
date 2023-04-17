@@ -77,15 +77,19 @@ void printObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
     // get vector size
     ll vectorSize = deltaObjectsVector.size();
+    if (vectorSize == 0)
+    {
+        bad("No objects to print");
+        return;
+    }
 
     // output all objects with their identifiers using a for loop
     cout << BOLD << "\nYour objects (" << vectorSize << "): \n"
          << UNBOLD;
     for (ll i = 0; i < vectorSize; i++)
-        cout << i + 1 << ". Descriptor: " << deltaObjectsVector[i]->getObjectDescriptor() << endl;
-
-    // end function execution
-    return;
+    {
+        cout << "(" << deltaObjectsVector[i]->getDescriptor() << ") " << deltaObjectsVector[i]->getValue() << endl;
+    }
 }
 
 // object deletion function
@@ -117,7 +121,7 @@ void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
         {
             // output success message
             cout << GREEN << endl
-                 << deltaObjectsVector[numToDelete]->getObjectDescriptor() << " successfully deleted\n"
+                 << deltaObjectsVector[numToDelete]->getValue() << " successfully deleted\n"
                  << UNGREEN;
 
             // erase object from vector
