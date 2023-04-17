@@ -51,24 +51,6 @@ int main()
             outputMenu(deltaObjectsVector);
         }
 
-        do
-        {
-            // ask user if they would like to return to menu
-            cout << "\nWould you like to return to menu? (Y | N): ";
-            cin >> doReturnToMenu;
-            // if so, continue loop execution
-            if (doReturnToMenu == 'Y' || doReturnToMenu == 'y')
-            {
-                cout << endl
-                     << endl;
-                continue;
-            }
-            // if not, break out of loop
-            else
-                break;
-        } while (doReturnToMenu == 'y' || doReturnToMenu == 'Y');
-        // execute while user chooses to return to menu
-
         ///////////////////////////////////////
 
         // ask user if they would like to continue execution of program

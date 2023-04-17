@@ -118,7 +118,6 @@ void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 
         cout << "\nEnter a number of object to delete: ";
         ll numToDelete = getNum();
-        numToDelete--;
 
         // if the object number is out of range
         if (numToDelete > deltaObjectsVector.size() - 1 || numToDelete < 0)
@@ -146,35 +145,49 @@ void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 template <typename T>
 void outputMenu(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
-    // output menu to user and prompt them to choose an option
-    cout << BOLD << "Choose an option from menu\n"
-         << UNBOLD;
-    cout << "1. Add objects\n";
-    cout << "2. Delete objects\n";
-    cout << "3. Print objects\n";
-    cout << "4. Exit\n";
-    cout << "Enter: ";
-    ll userDecision = getNum();
-    cout << endl;
+    char doContinue;
+    do
+    {
+        // output menu to user and prompt them to choose an option
+        cout << BOLD << "Choose an option from menu\n"
+             << UNBOLD;
+        cout << "1. Add objects\n";
+        cout << "2. Delete objects\n";
+        cout << "3. Print objects\n";
+        cout << "4. Exit\n";
+        cout << "Enter: ";
+        ll userDecision = getNum();
+        cout << endl;
 
-    // if user chose to add objects
-    if (userDecision == 1)
-    {
-        // add objects
-        createObjects(deltaObjectsVector);
-        // print them to console
-        printObjects(deltaObjectsVector);
-    }
-    // if user chose to delete objects
-    else if (userDecision == 2)
-    {
-        // delete them
-        deleteObjects(deltaObjectsVector);
-        // print them to console
-        printObjects(deltaObjectsVector);
-    }
-    // if user chose to print objects
-    else if (userDecision == 3)
-        // print objects to console
-        printObjects(deltaObjectsVector);
+        // if user chose to add objects
+        if (userDecision == 1)
+        {
+            // add objects
+            createObjects(deltaObjectsVector);
+            // print them to console
+            printObjects(deltaObjectsVector);
+        }
+        // if user chose to delete objects
+        else if (userDecision == 2)
+        {
+            // delete them
+            deleteObjects(deltaObjectsVector);
+            // print them to console
+            printObjects(deltaObjectsVector);
+        }
+        // if user chose to print objects
+        else if (userDecision == 3)
+            // print objects to console
+            printObjects(deltaObjectsVector);
+
+        cout << "\nWould you like to return to menu? (Y | N): ";
+        cin >> doContinue;
+        if (doContinue == 'y' || doContinue == 'Y')
+        {
+            cout << endl;
+            continue;
+        }
+        else
+            break;
+    } while (doContinue == 'y' || doContinue == 'Y');
 }
