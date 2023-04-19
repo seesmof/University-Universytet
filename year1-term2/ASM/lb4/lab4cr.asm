@@ -15,31 +15,31 @@ start:  ; declare program entry point
     call exit2os ; exit to OS
 
 main proc near  ; declare main function
-    lea dx, new_line
+    lea dx, endl
     call outputString ; output with function
 
-    lea dx, input_prompt
+    lea dx, minp
     call outputString ; output with function
     
-    lea dx, input_buffer
+    lea dx, buff
     call inputString ; set output string
 
     sub bx, bx
-    mov bl, buffer_length
-    mov [buffer_cont + bx], '$'
+    mov bl, blen
+    mov [binp + bx], '$'
 
-    lea dx, new_line
+    lea dx, endl
     call outputString ; output with function
 
-    lea dx, new_line
+    lea dx, endl
     call outputString ; output with function
 
-    lea dx, output_prompt
+    lea dx, mout
     call outputString ; output with function
 
-    lea dx, buffer_cont
+    lea dx, binp
     call outputString ; set output string
-    lea dx, new_line
+    lea dx, endl
     call outputString ; output with function
 
     ret     ; stop function execution
@@ -77,14 +77,14 @@ dseg segment para public 'data'     ; declare data segment
     buff db 100
     blen db ?
     binp db 10 dup (' ')
-    
-    new_line db 0Dh, 0Ah, '$'
-    input_prompt db 'Enter a string: ', '$'
-    output_prompt db 'Your string: ', '$'
 
-    input_buffer db 100
-    buffer_length db ?
-    buffer_cont db 100 dup (' ')
+    new_line db 0Dh, 0Ah, '$'
+    input_string db 'Enter a string: ', '$'
+    output_string db 'Your string: ', '$'
+
+    in_buffer db 100
+    in_length db ?
+    buf_count db 100 dup (' ')
 dseg ends   ; end data segment
 
 end start   ; end program execution
