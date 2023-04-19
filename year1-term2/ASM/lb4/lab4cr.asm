@@ -71,13 +71,12 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    new_line db 0Dh, 0Ah, '$'
-    input_prompt db 'Enter a string: ', '$'
-    output_prompt db 'Your string: ', '$'
-
-    input_buffer db 100
-    buffer_length db ?
-    buffer_cont db 100 dup (' ')
+    minp db 'Input stirng: ', '$'
+    mout db 'Resulting string: ', '$'
+    endl db 0Dh, 0Ah, '$'
+    buff db 100
+    blen db ?
+    binp db 10 dup (' ')
 dseg ends   ; end data segment
 
 end start   ; end program execution
