@@ -10,13 +10,14 @@ start:  ; declare program entry point
     mov ds, bx  ; set ds register to bx register
 
     call main   ; call main function
-    
+
     mov bl, 0h     ; set error code to 108 in hex
     call exit2os ; exit to OS
 
 exit2os proc near
     mov ah, 04Ch     ; exit to OS
     int 21h     ; call interrupt
+    ret         ; return from interrupt
 exit2os endp
 
 main proc near  ; declare main function
