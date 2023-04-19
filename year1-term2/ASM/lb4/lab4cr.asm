@@ -11,6 +11,7 @@ start:  ; declare program entry point
 
     call main   ; call main function
     mov bl, 0h     ; set error code to 108 in hex
+    call exit2os ; exit to OS
 
 exit2os proc near
     mov ah, 04Ch     ; exit to OS
