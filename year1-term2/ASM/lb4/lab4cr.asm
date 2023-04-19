@@ -49,6 +49,9 @@ inputString proc near
     sub ax, ax
     mov ah, 0Ah
     int 21h
+    sub bx, bx
+    mob bl, blen
+    mov [binp + bx], '$'
     ret
 inputString endp
 
