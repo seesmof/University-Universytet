@@ -1,16 +1,14 @@
-class Person {
-  var name: String
-  var age: Int
-  
-  init(name: String, age: Int) {
-    self.name = name
-    self.age = age
-  }
-  
-  func sayHello() {
-    print("Hello, my name is \(name).")
-  }
-}
+import UIKit
+import PlaygroundSupport
 
-let john = Person(name: "John", age: 30)
-john.sayHello()
+let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+view.backgroundColor = .red
+
+let label = UILabel(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
+label.text = "Hello, Playgrounds!"
+label.textColor = .white
+label.textAlignment = .center
+
+view.addSubview(label)
+
+PlaygroundPage.current.liveView = view
