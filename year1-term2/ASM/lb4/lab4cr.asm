@@ -10,6 +10,7 @@ start:  ; declare program entry point
     mov ds, bx  ; set ds register to bx register
 
     call main   ; call main function
+    
     mov bl, 0h     ; set error code to 108 in hex
     call exit2os ; exit to OS
 
