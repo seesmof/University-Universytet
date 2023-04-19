@@ -14,7 +14,6 @@ start:  ; declare program entry point
     mov bl, 0h     ; set error code to 108 in hex
     call exit2os ; exit to OS
 
-
 main proc near  ; declare main function
     lea dx, new_line
     call outputString ; output with function
