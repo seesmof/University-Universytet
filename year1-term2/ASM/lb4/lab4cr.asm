@@ -12,7 +12,7 @@ start:  ; declare program entry point
     call main   ; call main function
 
     mov ah, 04Ch     ; exit to OS
-    mov bl, 06Ch     ; set error code to 108 in hex
+    mov bl, 0h     ; set error code to 108 in hex
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
