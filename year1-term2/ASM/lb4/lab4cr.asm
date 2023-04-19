@@ -77,6 +77,14 @@ dseg segment para public 'data'     ; declare data segment
     buff db 100
     blen db ?
     binp db 10 dup (' ')
+    
+    new_line db 0Dh, 0Ah, '$'
+    input_prompt db 'Enter a string: ', '$'
+    output_prompt db 'Your string: ', '$'
+
+    input_buffer db 100
+    buffer_length db ?
+    buffer_cont db 100 dup (' ')
 dseg ends   ; end data segment
 
 end start   ; end program execution
