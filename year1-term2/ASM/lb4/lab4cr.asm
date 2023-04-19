@@ -21,7 +21,7 @@ main proc near  ; declare main function
     lea dx, minp
     call outputString ; output with function
     
-    lea dx, buff
+    lea dx, binp
     call inputString ; set output string
 
     sub bx, bx
@@ -51,7 +51,7 @@ inputString proc near
     int 21h
     sub bx, bx
     mob bl, blen
-    mov [binp + bx], '$'
+    mov [bcon + bx], '$'
     ret
 inputString endp
 
@@ -77,9 +77,9 @@ dseg segment para public 'data'     ; declare data segment
     minp db 'Input stirng: ', '$'
     mout db 'Resulting string: ', '$'
     endl db 0Dh, 0Ah, '$'
-    buff db 100
+    binp db 100
     blen db ?
-    binp db 10 dup (' ')
+    bcon db 10 dup (' ')
 
     new_line db 0Dh, 0Ah, '$'
     input_string db 'Enter a string: ', '$'
