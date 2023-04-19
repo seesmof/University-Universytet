@@ -12,9 +12,10 @@ start:  ; declare program entry point
     call main   ; call main function
     mov bl, 0h     ; set error code to 108 in hex
 
-exit2os:
+exit2os proc near
     mov ah, 04Ch     ; exit to OS
     int 21h     ; call interrupt
+exit2os endp
 
 main proc near  ; declare main function
     lea dx, new_line
