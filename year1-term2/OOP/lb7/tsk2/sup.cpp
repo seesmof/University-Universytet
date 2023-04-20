@@ -17,7 +17,7 @@ private:
     ll m_size;
 
 public:
-    StringManipulator() : m_value(""), m_size(NULL) {}
+    StringManipulator() : m_value(""), m_size(0) {}
 
     StringManipulator(const string &value) : m_value(value), m_size(value.length()) {}
 
