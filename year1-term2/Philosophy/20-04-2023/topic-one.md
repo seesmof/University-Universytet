@@ -26,3 +26,15 @@ Here's a table summarizing the major philosophers and their works:
 | St. Augustine of Hippo | _Confessions_, _The City of God_ |
 | St. Thomas Aquinas     | _Summa Theologica_               |
 | William of Ockham      | _Summa Logicae_, _Quodlibeta_    |
+
+---
+
+# Відповідь два
+
+In medieval philosophy, there were two main scholastic philosophical schools that continued the lines of Plato and Aristotle. These schools were:
+
+1. The Platonists: This school of thought was heavily influenced by Plato's philosophy, particularly his theory of Forms. The Platonists believed that there were transcendent, eternal Forms or Ideas that existed beyond the physical world. They argued that these Forms were the true reality, and that the physical world was merely a shadow or copy of them. The Platonists were influential in the development of Christian theology, as they saw the Forms as a way of explaining the nature of God and the relationship between God and the world.
+
+2. The Aristotelians: This school of thought was based on the philosophy of Aristotle, particularly his emphasis on empirical observation and logical reasoning. The Aristotelians believed that knowledge could only be gained through observation and experience, and that reason was the key to understanding the world. They were instrumental in the development of natural philosophy and science in the Middle Ages, as they applied Aristotelian principles to the study of the natural world.
+
+Both the Platonists and the Aristotelians had a profound impact on medieval philosophy, and their ideas continue to influence philosophical thought to this day.
