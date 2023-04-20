@@ -74,8 +74,6 @@ void showStrings(vector<DynamicString> &container)
     return;
 }
 
-// define a function for outputting the container of strings to the file
-
 void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME)
 {
     // set containerSize to the size of the container
