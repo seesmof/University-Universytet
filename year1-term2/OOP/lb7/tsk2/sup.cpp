@@ -36,10 +36,7 @@ public:
         m_size = value.length();
     }
 
-    ll getSize() const
-    {
-        return m_size;
-    }
+    ll getSize() const { return m_size; }
 
     void reverseValue()
     {
