@@ -118,8 +118,6 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
     return;
 }
 
-// define a function for outputting the array of strings
-
 void addStrings(vector<DynamicString> &container)
 {
     // ask the user for the number of strings to add
