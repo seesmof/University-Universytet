@@ -1,9 +1,5 @@
 # Середньовічна філософія
 
-Sure! Here are some schematic notes on Medieval philosophy using Markdown:
-
-# Medieval Philosophy
-
 ## Overview
 
 - Medieval philosophy refers to the philosophy that existed in Western Europe during the Middle Ages, roughly from the 5th century to the 15th century.
