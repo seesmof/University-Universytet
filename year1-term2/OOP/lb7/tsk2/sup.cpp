@@ -30,31 +30,26 @@ public:
         return m_value;
     }
 
-    // Method to set the string value
     void setValue(string value)
     {
         m_value = value;
     }
 
-    // Method to get the size value
     long long getSize() const
     {
         return m_size;
     }
 
-    // Method to set the size value
     void setSize(long long size)
     {
         m_size = size;
     }
 
-    // Method to reverse the string value
     void reverseValue()
     {
         reverse(m_value.begin(), m_value.end());
     }
 
-    // Method to concatenate a string to the value
     void concatenateValue(string value)
     {
         m_value += value;
