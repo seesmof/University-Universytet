@@ -36,7 +36,7 @@ public:
         m_size = value.length();
     }
 
-    long long m_size() const
+    ll m_size() const
     {
         return m_size;
     }
@@ -49,6 +49,7 @@ public:
     void concatenateValue(string value)
     {
         m_value += value;
+        m_size = m_value.length();
     }
 };
 
