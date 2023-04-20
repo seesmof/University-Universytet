@@ -1,13 +1,14 @@
-#include <stdio.h>
-#include <conio.h>
-char lname[20], fname[15];
-int n, god_rogd;
-int main()
+void Sort(int[] array)
 {
-    clrscr();
-    puts("Inser last name, first name, year of birth: ")
-    puts("then press enter")
-    n = scanf("%s %s %d", lname, fname, &god_rogd);
-    printf("%d positions are inserted: %s %s %d\n", n, lname, fname, god_rogd);
-    return 0;
+    for (j = 0; j < n - 1; j++)
+    {
+        iMin = j;
+        for (i = j + 1; i < n; i++)
+        {
+            if (array[i] < array[iMin])
+                iMin = i;
+        }
+            if (iMin != j)
+        swap(array[j], array[iMin];
+    }
 }
