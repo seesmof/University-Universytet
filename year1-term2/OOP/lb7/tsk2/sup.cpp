@@ -53,8 +53,6 @@ public:
     }
 };
 
-// define a function for outputting the array of strings
-
 void showStrings(vector<DynamicString> &container)
 {
     // get the size of container
