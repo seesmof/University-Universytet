@@ -41,11 +41,6 @@ public:
         return m_size;
     }
 
-    void setSize(long long size)
-    {
-        m_size = size;
-    }
-
     void reverseValue()
     {
         reverse(m_value.begin(), m_value.end());
