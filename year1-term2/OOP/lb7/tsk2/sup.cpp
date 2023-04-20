@@ -24,10 +24,10 @@ public:
     DynamicString(string value, long long size) : m_value(value), m_size(size) {}
 
     // Copy constructor
-    StringManipulator(const StringManipulator &other) : m_value(other.m_value), m_size(other.m_size) {}
+    DynamicString(const DynamicString &other) : m_value(other.m_value), m_size(other.m_size) {}
 
     // Destructor
-    ~StringManipulator() {}
+    ~DynamicString() {}
 
     // Method to get the string value
     string getValue() const
