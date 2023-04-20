@@ -21,7 +21,7 @@ public:
     StringManipulator() : m_value(""), m_size(0) {}
 
     // constructor with a string argument
-    StringManipulator(const std::string &value) : m_value(value), m_size(value.length()) {}
+    StringManipulator(const string &value) : m_value(value), m_size(value.length()) {}
 
     // copy constructor
     StringManipulator(const StringManipulator &other) : m_value(other.m_value), m_size(other.m_size) {}
@@ -36,20 +36,20 @@ public:
     }
 
     // get value of string
-    const std::string &value() const
+    const string &value() const
     {
         return m_value;
     }
 
     // set value of string
-    void setValue(const std::string &value)
+    void setValue(const string &value)
     {
         m_value = value;
         m_size = value.length();
     }
 
     // append string to value
-    void append(const std::string &str)
+    void append(const string &str)
     {
         m_value.append(str);
         m_size = m_value.length();
