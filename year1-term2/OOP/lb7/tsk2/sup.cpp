@@ -95,8 +95,6 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
     if (!(outputFile.peek() == ifstream::traits_type::eof()))
         good("Strings successfully outputted");
     outputFile.close();
-
-    return;
 }
 
 void addStrings(vector<DynamicString> &container)
