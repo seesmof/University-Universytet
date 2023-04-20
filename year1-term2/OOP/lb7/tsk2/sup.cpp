@@ -13,28 +13,48 @@ f >> A або A << f – введення (читання) значення A з
 class DynamicString
 {
 private:
-    string value;
-    ll size;
+    string m_value;
+    ll m_size;
 
 public:
-    DynamicString() : value(""), size(0) {}
-    DynamicString(const string &INPUT) : value(INPUT), size(strlen(INPUT.c_str()) + 1) {}
+    DynamicString() : m_value(nullptr), m_size(0) {}
 
+    // define a parameterized constructor
+    DynamicString(const T *INPUT) : m_value(nullptr), m_size(0)
+    {
+        // check if the value of INPUT is not null
+        if (INPUT)
+        {
+            // if it's not null, determine the length of the INPUT string and add 1 to it, taking the null terminator into account
+            m_size = strlen(INPUT) + 1;
+            // allocate an array of m_size characters and assign it to m_value
+            m_value = new T[m_size];
+            strcpy_s(m_value, m_size, INPUT);
+        }
+    }
+
+    // Define a copy constructor for creating a new copy object
     DynamicString(const DynamicString &other)
     {
+        // calculate the length of the string that is being copied
+        size_t len = strlen(other.m_value) + 1;
+        // allocate memory for the new copy of the string
+        m_value = new T[len];
+        // aopy the contents of the original string into the new memory location
+        strcpy_s(m_value, len, other.m_value);
     }
 
     // declare method for overloading the assignment operator
     DynamicString &operator=(const T *INPUT)
     {
         // delete the old value
-        delete[] value;
+        delete[] m_value;
         // calculate the size of the string
         size_t inputSize = strlen(INPUT) + 1;
         // create a new character array to hold the input string
-        value = new T[inputSize];
+        m_value = new T[inputSize];
         // copy the contents of the input string to the new character array
-        strcpy_s(value, inputSize, INPUT);
+        strcpy_s(m_value, inputSize, INPUT);
         // return the DynamicString object by reference
         return *this;
     }
@@ -43,13 +63,13 @@ public:
     DynamicString &operator=(const DynamicString &INPUT)
     {
         // delete the old value
-        delete[] value;
+        delete[] m_value;
         // get the length of the input string
-        size = INPUT.size;
+        m_size = INPUT.m_size;
         // allocate memory for the new string
-        value = new T[size + 1];
+        m_value = new T[m_size + 1];
         // copy values from the input string to the new one
-        strcpy_s(value, size + 1, INPUT.value);
+        strcpy_s(m_value, m_size + 1, INPUT.m_value);
         // return the object by referance
         return *this;
     }
@@ -58,7 +78,7 @@ public:
     friend ostream &operator<<(ostream &outputStream, const DynamicString &OUTPUT)
     {
         // output the string value of the DynamicString object to the output stream
-        outputStream << OUTPUT.value;
+        outputStream << OUTPUT.m_value;
         // return the output stream
         return outputStream;
     }
@@ -79,8 +99,8 @@ public:
     // define an output stream operator function for file
     friend ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT)
     {
-        // write the value of value to output
-        outputStream << OUTPUT.value;
+        // write the value of m_value to output
+        outputStream << OUTPUT.m_value;
         // return the output stream
         return outputStream;
     }
@@ -102,7 +122,7 @@ public:
     ~DynamicString()
     {
         // delete the string
-        delete[] value;
+        delete[] m_value;
     }
 };
 
