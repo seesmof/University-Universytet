@@ -58,7 +58,6 @@ void showStrings(vector<DynamicString> &container)
     {
         cout << i + 1 << ". " << container[i] << endl;
     }
-    return;
 }
 
 void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME)
