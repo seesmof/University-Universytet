@@ -8,7 +8,7 @@ void Sort(int[] array)
             if (array[i] < array[iMin])
                 iMin = i;
         }
-            if (iMin != j)
-        swap(array[j], array[iMin];
+        if (iMin != j)
+            swap(array[j], array[iMin];
     }
 }
