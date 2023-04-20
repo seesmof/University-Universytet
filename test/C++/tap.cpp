@@ -16,14 +16,6 @@ float MyFunction(int number)
 
 int main()
 {
-    const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{}[];:,.<>?"; // Define the characters to use in the password
-    const int password_length = 64;                                                                               // Define the desired length of the password
-    string password = "";                                                                                         // Initialize an empty string for the password
-    srand(time(NULL));                                                                                            // Seed the random number generator with the current time
-    for (int i = 0; i < password_length; i++)
-    {                                               // Loop through the desired length of the password
-        password += chars[rand() % chars.length()]; // Add a random character from the character string to the password
-    }
-    cout << "Random Password: " << password << endl; // Print the generated password
+    cout << MyFunction(17);
     return 0;
 }
