@@ -18,11 +18,7 @@ private:
 
 public:
     // Constructor with default values
-    DynamicString()
-    {
-        m_value = "";
-        m_size = 0;
-    }
+    DynamicString() : m_value(""), m_size(0) {}
 
     // Constructor that takes initial values
     DynamicString(string value, long long size) : m_value(value), m_size(size) {}
