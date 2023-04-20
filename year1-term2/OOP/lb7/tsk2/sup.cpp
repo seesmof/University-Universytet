@@ -44,9 +44,9 @@ public:
     }
 };
 
-void showStrings(vector<DynamicString> &container)
+void showStrings(const vector<DynamicString> &container)
 {
-    ll containerSize = container.size();
+    const ll containerSize = container.size();
     if (containerSize == 0)
     {
         bad("No strings to display");
