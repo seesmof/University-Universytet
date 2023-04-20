@@ -17,112 +17,49 @@ private:
     ll m_size;
 
 public:
-    DynamicString() : m_value(nullptr), m_size(0) {}
+    // default constructor
+    StringManipulator() : m_value(""), m_size(0) {}
 
-    // define a parameterized constructor
-    DynamicString(const T *INPUT) : m_value(nullptr), m_size(0)
+    // constructor with a string argument
+    StringManipulator(const std::string &value) : m_value(value), m_size(value.length()) {}
+
+    // copy constructor
+    StringManipulator(const StringManipulator &other) : m_value(other.m_value), m_size(other.m_size) {}
+
+    // destructor
+    ~StringManipulator() {}
+
+    // get size of string
+    long long size() const
     {
-        // check if the value of INPUT is not null
-        if (INPUT)
-        {
-            // if it's not null, determine the length of the INPUT string and add 1 to it, taking the null terminator into account
-            m_size = strlen(INPUT) + 1;
-            // allocate an array of m_size characters and assign it to m_value
-            m_value = new T[m_size];
-            strcpy_s(m_value, m_size, INPUT);
-        }
+        return m_size;
     }
 
-    // Define a copy constructor for creating a new copy object
-    DynamicString(const DynamicString &other)
+    // get value of string
+    const std::string &value() const
     {
-        // calculate the length of the string that is being copied
-        size_t len = strlen(other.m_value) + 1;
-        // allocate memory for the new copy of the string
-        m_value = new T[len];
-        // aopy the contents of the original string into the new memory location
-        strcpy_s(m_value, len, other.m_value);
+        return m_value;
     }
 
-    // declare method for overloading the assignment operator
-    DynamicString &operator=(const T *INPUT)
+    // set value of string
+    void setValue(const std::string &value)
     {
-        // delete the old value
-        delete[] m_value;
-        // calculate the size of the string
-        size_t inputSize = strlen(INPUT) + 1;
-        // create a new character array to hold the input string
-        m_value = new T[inputSize];
-        // copy the contents of the input string to the new character array
-        strcpy_s(m_value, inputSize, INPUT);
-        // return the DynamicString object by reference
-        return *this;
+        m_value = value;
+        m_size = value.length();
     }
 
-    // declare method for overloading the assignment operator with an object
-    DynamicString &operator=(const DynamicString &INPUT)
+    // append string to value
+    void append(const std::string &str)
     {
-        // delete the old value
-        delete[] m_value;
-        // get the length of the input string
-        m_size = INPUT.m_size;
-        // allocate memory for the new string
-        m_value = new T[m_size + 1];
-        // copy values from the input string to the new one
-        strcpy_s(m_value, m_size + 1, INPUT.m_value);
-        // return the object by referance
-        return *this;
+        m_value.append(str);
+        m_size = m_value.length();
     }
 
-    // define an output stream operator function
-    friend ostream &operator<<(ostream &outputStream, const DynamicString &OUTPUT)
+    // clear value of string
+    void clear()
     {
-        // output the string value of the DynamicString object to the output stream
-        outputStream << OUTPUT.m_value;
-        // return the output stream
-        return outputStream;
-    }
-
-    // define an input stream operator function
-    friend istream &operator>>(istream &inputStream, DynamicString &inputHolder)
-    {
-        // define a character array to store input
-        char buffer[65536];
-        // use the getline function to read input from an input stream and store it in the buffer array
-        inputStream.getline(buffer, 65536);
-        // convert the buffer array to a DynamicString object and store it in inputHolder
-        inputHolder = buffer;
-        // return the input stream
-        return inputStream;
-    }
-
-    // define an output stream operator function for file
-    friend ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT)
-    {
-        // write the value of m_value to output
-        outputStream << OUTPUT.m_value;
-        // return the output stream
-        return outputStream;
-    }
-
-    // define an input stream operator function for file
-    friend ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder)
-    {
-        // define a character array to store input
-        char buffer[65536];
-        // use the getline function to read input from an input stream and store it in the buffer array
-        inputStream.getline(buffer, 65536);
-        // convert the buffer array to a DynamicString object and store it in inputHolder
-        inputHolder = buffer;
-        // return the input stream
-        return inputStream;
-    }
-
-    // declare destructor
-    ~DynamicString()
-    {
-        // delete the string
-        delete[] m_value;
+        m_value.clear();
+        m_size = 0;
     }
 };
 
