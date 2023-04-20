@@ -71,7 +71,7 @@ public:
 };
 
 // define a function for outputting the array of strings
-template <typename T>
+
 void showStrings(vector<DynamicString<T>> &container)
 {
     // get the size of container
@@ -94,7 +94,7 @@ void showStrings(vector<DynamicString<T>> &container)
 }
 
 // define a function for outputting the container of strings to the file
-template <typename T>
+
 void showStrings(vector<DynamicString<T>> &container, const string &OUTPUT_FILENAME)
 {
     // set containerSize to the size of the container
@@ -138,7 +138,7 @@ void showStrings(vector<DynamicString<T>> &container, const string &OUTPUT_FILEN
 }
 
 // define a function for outputting the array of strings
-template <typename T>
+
 void addStrings(vector<DynamicString<T>> &container)
 {
     // ask the user for the number of strings to add
@@ -171,7 +171,6 @@ void addStrings(vector<DynamicString<T>> &container)
     return;
 }
 
-template <typename T>
 void addStrings(vector<DynamicString<T>> &container, const string &INPUT_FILENAME)
 {
     // declare file instance
@@ -212,7 +211,7 @@ void addStrings(vector<DynamicString<T>> &container, const string &INPUT_FILENAM
 }
 
 // define a function for removing an object from the container
-template <typename T>
+
 void removeString(vector<DynamicString<T>> &container)
 {
     // check if the container is empty
@@ -247,7 +246,7 @@ void removeString(vector<DynamicString<T>> &container)
 }
 
 // for showing the main menu of the application
-template <typename T>
+
 void outputMenu(vector<DynamicString<T>> &container)
 {
     // output the menu
