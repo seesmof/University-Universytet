@@ -25,7 +25,10 @@ public:
 
     ~DynamicString() {}
 
-    string getValue() const { return m_value; }
+    string getValue() const
+    {
+        return m_value;
+    }
 
     void setValue(string value)
     {
@@ -33,7 +36,10 @@ public:
         m_size = value.length();
     }
 
-    ll getSize() const { return m_size; }
+    ll getSize() const
+    {
+        return m_size;
+    }
 
     void reverseValue() { reverse(m_value.begin(), m_value.end()); }
 
