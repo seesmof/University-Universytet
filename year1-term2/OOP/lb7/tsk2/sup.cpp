@@ -91,10 +91,10 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
     }
     outputFile << "\n==============================\n\n";
 
-    outputFile.close();
     cout << endl;
-    if (!(file.peek() == ifstream::traits_type::eof()))
+    if (!(outputFile.peek() == ifstream::traits_type::eof()))
         good("Strings successfully outputted");
+
     return;
 }
 
