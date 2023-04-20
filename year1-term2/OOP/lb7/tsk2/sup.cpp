@@ -17,7 +17,7 @@ private:
     ll m_size;
 
 public:
-    StringManipulator() : m_value(""), m_size(0) {}
+    StringManipulator() : m_value(""), m_size(NULL) {}
 
     StringManipulator(const string &value) : m_value(value), m_size(value.length()) {}
 
@@ -25,7 +25,7 @@ public:
 
     ~StringManipulator() {}
 
-    long long size() const
+    ll size() const
     {
         return m_size;
     }
