@@ -1,14 +1,9 @@
-void Sort(int[] array)
+float MyFunction(int number)
 {
-    for (j = 0; j < n - 1; j++)
+    float result = 1
+    for (int a = 0; a < number; a++)
     {
-        iMin = j;
-        for (i = j + 1; i < n; i++)
-        {
-            if (array[i] < array[iMin])
-                iMin = i;
-        }
-        if (iMin != j)
-            swap(array[j], array[iMin];
+        result = result * (a < 10 ? 2 : 1.5);
     }
+    return result;
 }
