@@ -41,7 +41,10 @@ public:
         return m_size;
     }
 
-    void reverseValue() { reverse(m_value.begin(), m_value.end()); }
+    void reverseValue()
+    {
+        reverse(m_value.begin(), m_value.end());
+    }
 
     void concatenateValue(string value)
     {
