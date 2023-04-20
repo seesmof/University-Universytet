@@ -17,40 +17,52 @@ private:
     ll m_size;
 
 public:
+    // Constructor with default values
     StringManipulator() : m_value(""), m_size(0) {}
 
-    StringManipulator(const string &value) : m_value(value), m_size(value.length()) {}
+    // Constructor that takes initial values
+    StringManipulator(std::string value, long long size) : m_value(value), m_size(size) {}
 
+    // Copy constructor
     StringManipulator(const StringManipulator &other) : m_value(other.m_value), m_size(other.m_size) {}
 
+    // Destructor
     ~StringManipulator() {}
 
-    ll size() const
-    {
-        return m_size;
-    }
-
-    const string &value() const
+    // Method to get the string value
+    std::string getValue() const
     {
         return m_value;
     }
 
-    void setValue(const string &value)
+    // Method to set the string value
+    void setValue(std::string value)
     {
         m_value = value;
-        m_size = value.length();
     }
 
-    void append(const string &str)
+    // Method to get the size value
+    long long getSize() const
     {
-        m_value.append(str);
-        m_size = m_value.length();
+        return m_size;
     }
 
-    void clear()
+    // Method to set the size value
+    void setSize(long long size)
     {
-        m_value.clear();
-        m_size = 0;
+        m_size = size;
+    }
+
+    // Method to reverse the string value
+    void reverseValue()
+    {
+        std::reverse(m_value.begin(), m_value.end());
+    }
+
+    // Method to concatenate a string to the value
+    void concatenateValue(std::string value)
+    {
+        m_value += value;
     }
 };
 
