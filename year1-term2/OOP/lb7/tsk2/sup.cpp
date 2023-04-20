@@ -106,8 +106,7 @@ void showStrings(vector &&container, const string &OUTPUT_FILENAME)
         return;
     }
 
-    📋 Copy code
-        ofstream outputFile(OUTPUT_FILENAME);
+    ofstream outputFile(OUTPUT_FILENAME);
     if (!outputFile.is_open())
     {
         bad("Couldn't open output file");
