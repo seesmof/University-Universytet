@@ -72,7 +72,7 @@ public:
 
 // define a function for outputting the array of strings
 
-void showStrings(vector<DynamicString<T>> &container)
+void showStrings(vector<DynamicString> &container)
 {
     // get the size of container
     ll containerSize = container.size();
@@ -95,7 +95,7 @@ void showStrings(vector<DynamicString<T>> &container)
 
 // define a function for outputting the container of strings to the file
 
-void showStrings(vector<DynamicString<T>> &container, const string &OUTPUT_FILENAME)
+void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME)
 {
     // set containerSize to the size of the container
     ll containerSize = container.size();
@@ -139,7 +139,7 @@ void showStrings(vector<DynamicString<T>> &container, const string &OUTPUT_FILEN
 
 // define a function for outputting the array of strings
 
-void addStrings(vector<DynamicString<T>> &container)
+void addStrings(vector<DynamicString> &container)
 {
     // ask the user for the number of strings to add
     cout << "Enter the number of strings to add: ";
@@ -154,7 +154,7 @@ void addStrings(vector<DynamicString<T>> &container)
         return;
     }
 
-    DynamicString<T> stringHolder;
+    DynamicString stringHolder;
     // prompt the user to enter the specified number of strings
     cout << "Add strings below (" << stringCount << "): \n";
     // for each string to add
@@ -171,7 +171,7 @@ void addStrings(vector<DynamicString<T>> &container)
     return;
 }
 
-void addStrings(vector<DynamicString<T>> &container, const string &INPUT_FILENAME)
+void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
 {
     // declare file instance
     ifstream inputFile(INPUT_FILENAME);
@@ -212,7 +212,7 @@ void addStrings(vector<DynamicString<T>> &container, const string &INPUT_FILENAM
 
 // define a function for removing an object from the container
 
-void removeString(vector<DynamicString<T>> &container)
+void removeString(vector<DynamicString> &container)
 {
     // check if the container is empty
     if (container.size() == 0)
@@ -247,7 +247,7 @@ void removeString(vector<DynamicString<T>> &container)
 
 // for showing the main menu of the application
 
-void outputMenu(vector<DynamicString<T>> &container)
+void outputMenu(vector<DynamicString> &container)
 {
     // output the menu
     cout << BOLD << "Welcome! Choose some option from below\n"
