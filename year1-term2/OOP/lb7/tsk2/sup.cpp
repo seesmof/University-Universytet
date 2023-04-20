@@ -36,7 +36,7 @@ public:
         m_size = value.length();
     }
 
-    ll m_size() const
+    ll getSize() const
     {
         return m_size;
     }
