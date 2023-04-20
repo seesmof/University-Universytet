@@ -189,8 +189,6 @@ void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
     return;
 }
 
-// define a function for removing an object from the container
-
 void removeString(vector<DynamicString> &container)
 {
     // check if the container is empty
