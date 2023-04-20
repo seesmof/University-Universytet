@@ -93,7 +93,7 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
 
     outputFile.close();
     cout << endl;
-    if (!is_empty(outputFile))
+    if (file.peek() == std::ifstream::traits_type::eof())
         good("Strings successfully outputted");
     return;
 }
