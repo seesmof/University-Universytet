@@ -33,6 +33,7 @@ public:
     void setValue(string value)
     {
         m_value = value;
+        m_size = value.length();
     }
 
     long long getSize() const
