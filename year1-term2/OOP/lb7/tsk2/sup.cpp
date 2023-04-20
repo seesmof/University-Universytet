@@ -17,19 +17,14 @@ private:
     ll m_size;
 
 public:
-    // Constructor with default values
     DynamicString() : m_value(""), m_size(0) {}
 
-    // Constructor that takes initial values
     DynamicString(string value, long long size) : m_value(value), m_size(size) {}
 
-    // Copy constructor
     DynamicString(const DynamicString &other) : m_value(other.m_value), m_size(other.m_size) {}
 
-    // Destructor
     ~DynamicString() {}
 
-    // Method to get the string value
     string getValue() const
     {
         return m_value;
