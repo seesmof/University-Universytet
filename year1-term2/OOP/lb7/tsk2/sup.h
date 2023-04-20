@@ -13,3 +13,5 @@ void addStrings(vector<DynamicString> &container);
 void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME);
 
 void removeString(vector<DynamicString> &container);
+
+void outputMenu(vector<DynamicString> &container);
