@@ -17,45 +17,36 @@ private:
     ll m_size;
 
 public:
-    // default constructor
     StringManipulator() : m_value(""), m_size(0) {}
 
-    // constructor with a string argument
     StringManipulator(const string &value) : m_value(value), m_size(value.length()) {}
 
-    // copy constructor
     StringManipulator(const StringManipulator &other) : m_value(other.m_value), m_size(other.m_size) {}
 
-    // destructor
     ~StringManipulator() {}
 
-    // get size of string
     long long size() const
     {
         return m_size;
     }
 
-    // get value of string
     const string &value() const
     {
         return m_value;
     }
 
-    // set value of string
     void setValue(const string &value)
     {
         m_value = value;
         m_size = value.length();
     }
 
-    // append string to value
     void append(const string &str)
     {
         m_value.append(str);
         m_size = m_value.length();
     }
 
-    // clear value of string
     void clear()
     {
         m_value.clear();
