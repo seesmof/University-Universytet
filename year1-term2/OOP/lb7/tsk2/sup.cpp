@@ -20,15 +20,8 @@ public:
     DynamicString() : value(""), size(0) {}
     DynamicString(const string &INPUT) : value(INPUT), size(strlen(INPUT.c_str()) + 1) {}
 
-    // Define a copy constructor for creating a new copy object
     DynamicString(const DynamicString &other)
     {
-        // calculate the length of the string that is being copied
-        size_t len = strlen(other.value) + 1;
-        // allocate memory for the new copy of the string
-        value = new T[len];
-        // aopy the contents of the original string into the new memory location
-        strcpy_s(value, len, other.value);
     }
 
     // declare method for overloading the assignment operator
