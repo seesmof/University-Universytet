@@ -1,47 +1,47 @@
-Here's an example of how you could write schematic notes for modern philosophy in Markdown:
+Ось приклад того, як можна писати схематичні нотатки для сучасної філософії у Markdown:
 
-# Modern Philosophy
+# Сучасна філософія
 
-## Descartes
+## Декарт
 
-- Famous for "I think, therefore I am"
-- Believed in mind-body dualism
-- Rationalist
+- Відомий за висловом "Я мислю, отже, існую"
+- Вірив у дуалізм розуму і тіла
+- Раціоналіст
 
-## Hobbes
+## Гоббс
 
-- Believed in social contract theory
-- Humans are naturally selfish and violent
-- Absolute monarchy is the best form of government
+- Вірив у теорію суспільного договору
+- Люди від природи егоїстичні та жорстокі
+- Абсолютна монархія - найкраща форма правління
 
-## Locke
+## Локк
 
-- Believed in natural rights
-- Humans are born with inherent rights to life, liberty, and property
-- Social contract theory, but government should protect natural rights
+- Вірив у природні права
+- Люди народжуються з невід'ємними правами на життя, свободу та власність
+- Теорія суспільного договору, але уряд повинен захищати природні права
 
-## Spinoza
+## Спіноза
 
-- Believed in pantheism
-- God is everything and everything is God
-- Ethical philosophy based on reason and rationality
+- Вірив у пантеїзм
+- Бог є все і все є Бог
+- Етична філософія, заснована на розумі та раціональності
 
-## Leibniz
+## Лейбніц
 
-- Believed in the "best of all possible worlds"
-- Monadology - everything is made up of indivisible units called monads
-- Rationalist
+- Вірив у "найкращий з усіх можливих світів"
+- Монадологія - все складається з неподільних одиниць, які називаються монадами
+- Раціоналіст
 
-## Hume
+## Юм
 
-- Empiricist
-- Skepticism about cause and effect
-- Believed in moral sentiment - emotions guide moral decisions
+- Емпірик
+- Скептично ставився до причин і наслідків
+- Вірив у моральні почуття - емоції керують моральними рішеннями
 
-## Kant
+## Кант
 
-- Deontological ethics - morality is based on duty and reason
-- Categorical imperative - act only according to that maxim by which you can at the same time will that it should become a universal law
-- Transcendental idealism - mind shapes our experience of reality
+- Деонтологічна етика - мораль ґрунтується на обов'язку та розумі
+- Категоричний імператив - чини тільки згідно з тією максимою, за допомогою якої ти можеш водночас бажати, щоб вона стала універсальним законом
+- Трансцендентальний ідеалізм - розум формує наш досвід реальності
 
-These are just brief notes, but they give you an idea of some of the key ideas and thinkers in modern philosophy.
+Це лише короткі нотатки, але вони дають вам уявлення про деякі ключові ідеї та мислителів сучасної філософії.
