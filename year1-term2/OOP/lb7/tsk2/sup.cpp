@@ -116,7 +116,6 @@ void addStrings(vector<DynamicString> &container)
         container.eb(stringHolder);
         cout << endl;
     }
-    return;
 }
 
 void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
@@ -140,7 +139,7 @@ void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
 
     for (ll i = 0; i < linesCounter; i++)
     {
-        DynamicString stringHolder = linesFromFile[i].c_str();
+        DynamicString stringHolder = DynamicString(linesFromFile[i]);
         container.eb(stringHolder);
     }
 
