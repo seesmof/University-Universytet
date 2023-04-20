@@ -98,6 +98,35 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
     return;
 }
 
+void showStrings(vector &&container, const string &OUTPUT_FILENAME)
+{
+    if (container.empty())
+    {
+        bad("No strings to output");
+        return;
+    }
+
+    📋 Copy code
+        ofstream outputFile(OUTPUT_FILENAME);
+    if (!outputFile.is_open())
+    {
+        bad("Couldn't open output file");
+        return;
+    }
+
+    outputFile << "==============================\n\n";
+    ll i = 1;
+    for (auto &&str : container)
+    {
+        outputFile << i++ << ". " << std::move(str) << endl;
+    }
+    outputFile << "\n==============================\n\n";
+
+    outputFile.close();
+    cout << endl;
+    good("Strings successfully outputted");
+}
+
 void addStrings(vector<DynamicString> &container)
 {
     cout << "Enter the number of strings to add: ";
