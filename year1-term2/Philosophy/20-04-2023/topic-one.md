@@ -15,8 +15,8 @@
 
 ## Themes
 
-- Scholasticism: A method of learning that emphasized dialectical reasoning and the use of logic to reconcile contradictory ideas. It was used to reconcile faith and reason in medieval theology.
-- Natural Theology: The study of God and the universe through reason and observation. It was believed that God could be known through His creation.
+с- Natural Theology: The study of God and the universe through reason and observation. It was believed that God could be known through His creation.
+
 - Nominalism: The belief that universals (such as "humanity" or "beauty") do not actually exist, but are only names or concepts created by humans.
 
 Here's a table summarizing the major philosophers and their works:
