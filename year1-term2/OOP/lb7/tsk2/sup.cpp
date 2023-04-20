@@ -25,10 +25,7 @@ public:
 
     ~DynamicString() {}
 
-    string getValue() const
-    {
-        return m_value;
-    }
+    string getValue() const { return m_value; }
 
     void setValue(string value)
     {
