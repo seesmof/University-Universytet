@@ -226,20 +226,14 @@ void removeString(vector<DynamicString> &container)
     }
 }
 
-// for showing the main menu of the application
-
-void outputMenu(vector<DynamicString> &container)
 {
-    // output the menu
     cout << BOLD << "Welcome! Choose some option from below\n"
          << UNBOLD;
     cout << "1. Show strings\n";
     cout << "2. Add strings\n";
     cout << "3. Remove strings\n";
     cout << "4. Exit\n";
-    // ask user to enter their choice
     cout << "Enter: ";
-    // and validate it
     ll userDecision = getNum();
     cout << endl;
 
