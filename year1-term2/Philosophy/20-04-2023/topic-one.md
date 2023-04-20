@@ -24,5 +24,3 @@ Here's a table summarizing the major philosophers and their works:
 | St. Augustine of Hippo | _Confessions_, _The City of God_ |
 | St. Thomas Aquinas     | _Summa Theologica_               |
 | William of Ockham      | _Summa Logicae_, _Quodlibeta_    |
-
-I hope this helps! Let me know if you have any other questions.
