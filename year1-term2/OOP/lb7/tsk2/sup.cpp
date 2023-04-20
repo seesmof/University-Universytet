@@ -18,14 +18,14 @@ private:
 
 public:
     // Constructor with default values
-    StringManipulator()
+    DynamicString()
     {
         m_value = "";
         m_size = 0;
     }
 
     // Constructor that takes initial values
-    StringManipulator(string value, long long size) : m_value(value), m_size(size) {}
+    DynamicString(string value, long long size) : m_value(value), m_size(size) {}
 
     // Copy constructor
     StringManipulator(const StringManipulator &other) : m_value(other.m_value), m_size(other.m_size) {}
