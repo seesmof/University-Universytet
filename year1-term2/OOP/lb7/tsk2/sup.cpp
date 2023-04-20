@@ -93,7 +93,8 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
 
     outputFile.close();
     cout << endl;
-    good("Strings successfully outputted");
+    if (!is_empty(outputFile))
+        good("Strings successfully outputted");
     return;
 }
 
