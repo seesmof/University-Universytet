@@ -13,8 +13,8 @@ f >> A або A << f – введення (читання) значення A з
 class DynamicString
 {
 private:
-    string m_value;
-    ll m_size;
+    std::string m_value;
+    long long m_size;
 
 public:
     // Constructor with default values
