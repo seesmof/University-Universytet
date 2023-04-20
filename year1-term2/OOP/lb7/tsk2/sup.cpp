@@ -84,7 +84,6 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
         bad("Couldn't open output file");
         return;
     }
-
     outputFile << "==============================\n\n";
     for (ll i = 0; i < containerSize; i++)
     {
