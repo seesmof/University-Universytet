@@ -237,7 +237,6 @@ void removeString(vector<DynamicString> &container)
     ll userDecision = getNum();
     cout << endl;
 
-    // if user chose to show the strings
     if (userDecision == 1)
     {
         // print a message asking where to output the string
