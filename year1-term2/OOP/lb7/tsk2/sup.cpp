@@ -19,7 +19,7 @@ private:
 public:
     DynamicString() : m_value(""), m_size(0) {}
 
-    DynamicString(string value) : m_value(value), m_size(size) {}
+    DynamicString(string value) : m_value(value), m_size(value.length()) {}
 
     DynamicString(const DynamicString &other) : m_value(other.m_value), m_size(other.m_size) {}
 
