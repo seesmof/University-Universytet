@@ -21,7 +21,7 @@ public:
     StringManipulator() : m_value(""), m_size(0) {}
 
     // Constructor that takes initial values
-    StringManipulator(std::string value, long long size) : m_value(value), m_size(size) {}
+    StringManipulator(string value, long long size) : m_value(value), m_size(size) {}
 
     // Copy constructor
     StringManipulator(const StringManipulator &other) : m_value(other.m_value), m_size(other.m_size) {}
@@ -30,13 +30,13 @@ public:
     ~StringManipulator() {}
 
     // Method to get the string value
-    std::string getValue() const
+    string getValue() const
     {
         return m_value;
     }
 
     // Method to set the string value
-    void setValue(std::string value)
+    void setValue(string value)
     {
         m_value = value;
     }
@@ -56,11 +56,11 @@ public:
     // Method to reverse the string value
     void reverseValue()
     {
-        std::reverse(m_value.begin(), m_value.end());
+        reverse(m_value.begin(), m_value.end());
     }
 
     // Method to concatenate a string to the value
-    void concatenateValue(std::string value)
+    void concatenateValue(string value)
     {
         m_value += value;
     }
