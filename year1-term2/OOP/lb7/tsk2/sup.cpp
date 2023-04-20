@@ -101,8 +101,7 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
     // loop through each element of the container and output it to the outputFile
     for (ll i = 0; i < containerSize; i++)
     {
-        outputFile << i + 1 << ". ";
-        outputFile << container[i] << endl;
+        outputFile << i + 1 << ". " << container[i] << endl;
     }
     // output a separator line after the end of the strings
     outputFile << "\n==============================\n\n";
