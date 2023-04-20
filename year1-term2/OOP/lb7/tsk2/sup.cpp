@@ -18,7 +18,11 @@ private:
 
 public:
     // Constructor with default values
-    StringManipulator() : m_value(""), m_size(0) {}
+    StringManipulator()
+    {
+        m_value = "";
+        m_size = 0;
+    }
 
     // Constructor that takes initial values
     StringManipulator(string value, long long size) : m_value(value), m_size(size) {}
