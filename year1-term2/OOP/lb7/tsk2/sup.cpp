@@ -13,6 +13,7 @@ f >> A або A << f – введення (читання) значення A з
 class DynamicString
 {
 private:
+    string value;
     T *strValue;    // pointer to the string value
     size_t strSize; // size of the string value
 
