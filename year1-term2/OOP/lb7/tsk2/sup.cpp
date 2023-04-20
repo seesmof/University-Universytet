@@ -226,6 +226,7 @@ void removeString(vector<DynamicString> &container)
     }
 }
 
+void outputMenu(vector<DynamicString> &container)
 {
     cout << BOLD << "Welcome! Choose some option from below\n"
          << UNBOLD;
