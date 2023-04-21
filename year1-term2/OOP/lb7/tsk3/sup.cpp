@@ -103,7 +103,7 @@ void delObjs(vector<unique_ptr<Delta>> &container)
 void outputMenu(vector<unique_ptr<Delta>> &container)
 {
     vector<string> menuItems = {"Show objects", "Add objects", "Remove objects", "Exit"};
-    showMenu(menuItems);
+    ll userDecision = showMenu(menuItems);
 
     if (userDecision == 1)
     {
