@@ -144,7 +144,49 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
         "6. Convert to lowercase",
         "7. Find substring",
         "8. Exit"};
-}
+    ll userDecision = showMenu(menuItems);
+
+    if (userDecision == 1)
+    {
+        string value;
+        cout << "Enter new value: ";
+        getline(cin, value);
+        container[numToModify]->setValue(value);
+    }
+    else if (userDecision == 2)
+    {
+        container[numToModify]->m_reverse();
+    }
+    else if (userDecision == 3)
+    {
+        string value;
+        cout << "Enter new value: ";
+        getline(cin, value);
+        container[numToModify]->m_replace(value, value);
+    }
+    else if (userDecision == 4)
+    {
+        container[numToModify]->m_remove_spaces();
+    }
+    else if (userDecision == 5)
+    {
+        container[numToModify]->m_to_upper();
+    }
+    else if (userDecision == 6)
+    {
+        container[numToModify]->m_to_lower();
+    }
+    else if (userDecision == 7)
+    {
+        string value;
+        cout << "Enter substring: ";
+        getline(cin, value);
+        container[numToModify]->m_find_substring(value);
+    }
+    else if (userDecision == 8)
+    {
+        return;
+    }
 }
 
 void outputMenu(vector<unique_ptr<DynamicString>> &container)
