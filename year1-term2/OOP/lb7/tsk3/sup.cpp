@@ -6,17 +6,7 @@
 class Delta
 {
 private:
-    ll objectDescriptor;
-
 public:
-    Delta() : objectDescriptor(getNextDefaultDescriptor()) {}
-    static ll getNextDefaultDescriptor()
-    {
-        static int descriptorHolder = 0;
-        return descriptorHolder++;
-    }
-    ll getObjectDescriptor() const { return objectDescriptor; }
-    ~Delta() {}
 };
 
 void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
