@@ -6,7 +6,16 @@
 class DynamicString
 {
 private:
+    string m_value;
+    ll m_size;
+
 public:
+    DynamicString() : m_value(""), m_size(0) {}
+    DynamicString(string value) : m_value(value), m_size(value.size()) {}
+    void setValue(string value)
+    {
+        m_value = value;
+    }
 };
 
 void showStrings(vector<DynamicString> &container)
