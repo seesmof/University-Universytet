@@ -21,7 +21,8 @@ public:
     ll getSize() const { return m_size; }
     void reverse()
     {
-        reverse(m_value.begin(), m_value.end());
+        string temp = m_value;
+        reverse(temp.begin(), temp.end());
     }
 
     ~DynamicString() {}
