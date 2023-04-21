@@ -21,7 +21,6 @@ public:
     ll getSize() const { return m_size; }
     void m_reverse()
     {
-        string temp = m_value;
         reverse(temp.begin(), temp.end());
     }
 
