@@ -145,6 +145,7 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
         "7. Find substring",
         "8. Exit"};
     ll userDecision = showMenu(menuItems);
+    cin.ignore();
 
     if (userDecision == 1)
     {
