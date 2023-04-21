@@ -4,7 +4,7 @@
 #include "lib.cpp"
 using namespace std;
 
-ll showMenu(const vector<string> &MENU_OPTIONS, string input_prompt = "one option");
+ll showMenu(const vector<string> &menuOptions);
 
 // for transforming string to lowercase
 string toLower(string str);

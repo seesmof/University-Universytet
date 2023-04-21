@@ -23,7 +23,7 @@ int main()
                 "Vector",
                 "List",
             };
-            ll userDecision = showMenu(menuItems, "what container to use");
+            ll userDecision = showMenu(menuItems);
 
             if (userDecision == 1)
             {
