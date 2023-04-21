@@ -9,6 +9,7 @@ int main()
     srand(time(NULL));
     char doContinue;
     char doReturnToMenu;
+
     vector<unique_ptr<Delta>> container;
 
     cout << "\n";
