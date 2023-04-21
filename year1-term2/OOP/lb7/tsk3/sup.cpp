@@ -84,7 +84,7 @@ void delObjs(vector<unique_ptr<Delta>> &container)
 
     if (numToRemove < 0 || numToRemove >= initSize)
     {
-        bad("Enter a valid number string number");
+        bad("Enter a valid object number");
         return;
     }
 
