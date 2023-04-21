@@ -1,7 +1,6 @@
+#include "D:\repos\university\lib.h"
 #include "sup.h"
-#include "../../../lib.h"
 
-// delta class declaration
 class Delta
 {
 private:
