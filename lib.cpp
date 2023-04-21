@@ -81,15 +81,6 @@ ostream &UNYELLOW(ostream &os)
     return os << "\033[0m";
 }
 
-// for transforming string to lowercase
-string toLower(string str)
-{
-    // transfort the whole stirng
-    transform(str.begin(), str.end(), str.begin(), ::tolower);
-    // return it
-    return str;
-}
-
 // for outputting error messages
 void bad(const string &INPUT)
 {
