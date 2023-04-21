@@ -91,6 +91,12 @@ void delObjs(Container &container)
         return;
     }
 
+    if (!is_same<typename Container::iterator, typename vector<typename Container::value_type>::iterator>::value)
+    {
+        bad("Container is not a vector");
+        return;
+    }
+
     container.erase(container.begin() + numToRemove);
     cout << endl;
 
