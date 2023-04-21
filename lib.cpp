@@ -21,6 +21,48 @@ void dbg_out(Head H, Tail... T)
 }
 #define dbg(...) cerr << "(" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
 
+// for outputting error messages
+void bad(const string &INPUT)
+{
+    // create a stringstream object to store the message
+    stringstream ss;
+    // add ANSI escape codes for red text
+    ss << "\033[1;31mERROR: " << INPUT << "\033[0m";
+    // output the message to cerr
+    cerr << ss.str() << endl;
+}
+
+// for outputting success messages
+void good(const string &INPUT)
+{
+    // create a stringstream object to store the message
+    stringstream ss;
+    // add ANSI escape codes for red text
+    ss << "\033[1;32mSUCCESS: " << INPUT << "\033[0m";
+    // output the message to cerr
+    cerr << ss.str() << endl;
+}
+
+// for getting nubmer input from user
+ll getNum()
+{
+    // declare variables for holding the input
+    ll number;
+    // while user enters invalid input
+    while (!(cin >> number))
+    {
+        // clear buffer
+        cin.clear();
+        // ignore new line char
+        cin.ignore(256, '\n');
+        // output error message and continue
+        cout << endl;
+        bad("Enter an integer");
+        cout << endl;
+    }
+    return number;
+}
+
 // For making text bold
 ostream &BOLD(ostream &os)
 {
@@ -83,10 +125,11 @@ ostream &UNYELLOW(ostream &os)
 
 ll showMenu(const vector<string> &menuOptions)
 {
-    cout << BOLD << "Welcome! Choose one option from the menu below\n" << UNBOLD;
+    cout << BOLD << "Welcome! Choose one option from the menu below\n"
+         << UNBOLD;
     for (ll i = 0; i < menuOptions.size(); i++)
     {
-        cout << i+1 << ". " << menuOptions[i] << endl;
+        cout << i + 1 << ". " << menuOptions[i] << endl;
     }
     cout << "Enter your choice: ";
     ll userDecision = getNum();
@@ -100,48 +143,6 @@ string toLower(string str)
     transform(str.begin(), str.end(), str.begin(), ::tolower);
     // return it
     return str;
-}
-
-// for outputting error messages
-void bad(const string &INPUT)
-{
-    // create a stringstream object to store the message
-    stringstream ss;
-    // add ANSI escape codes for red text
-    ss << "\033[1;31mERROR: " << INPUT << "\033[0m";
-    // output the message to cerr
-    cerr << ss.str() << endl;
-}
-
-// for outputting success messages
-void good(const string &INPUT)
-{
-    // create a stringstream object to store the message
-    stringstream ss;
-    // add ANSI escape codes for red text
-    ss << "\033[1;32mSUCCESS: " << INPUT << "\033[0m";
-    // output the message to cerr
-    cerr << ss.str() << endl;
-}
-
-// for getting nubmer input from user
-ll getNum()
-{
-    // declare variables for holding the input
-    ll number;
-    // while user enters invalid input
-    while (!(cin >> number))
-    {
-        // clear buffer
-        cin.clear();
-        // ignore new line char
-        cin.ignore(256, '\n');
-        // output error message and continue
-        cout << endl;
-        bad("Enter an integer");
-        cout << endl;
-    }
-    return number;
 }
 
 // validates an inputed name
