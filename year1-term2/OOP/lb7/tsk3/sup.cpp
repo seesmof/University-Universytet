@@ -9,15 +9,15 @@ private:
 public:
 };
 
-void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void addObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
 }
 
-void printObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void showObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
 }
 
-void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void delObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
 }
 
