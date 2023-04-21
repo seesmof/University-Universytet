@@ -128,6 +128,7 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
     cout << "Enter number of string to modify: ";
     ll numToModify = getNum();
     numToModify--;
+    cout << endl;
 
     if (numToModify < 0 || numToModify >= container.size())
     {
