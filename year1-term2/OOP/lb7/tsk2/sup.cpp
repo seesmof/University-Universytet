@@ -116,8 +116,10 @@ void outputMenu(vector<DynamicString> &container)
     }
     else if (userDecision == 2)
     {
+        addStrings(container);
     }
     else if (userDecision == 3)
     {
+        removeString(container);
     }
 }
