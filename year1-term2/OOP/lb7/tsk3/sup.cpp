@@ -30,9 +30,17 @@ void showObjs(Container &container)
     }
 
     cout << "Available objects (" << objsNum << "):\n";
-    for (ll i = 0; i < objsNum; i++)
+    if (!is_same<typename Container::iterator, typename vector<typename Container::value_type>::iterator>::value)
     {
-        cout << i + 1 << ". Descriptor: " << container[i]->getID() << endl;
+        auto it = next(container.begin(), numToRemove);
+        container.erase(it);
+    }
+    else
+    {
+        for (ll i = 0; i < objsNum; i++)
+        {
+            cout << i + 1 << ". Descriptor: " << container[i]->getID() << endl;
+        }
     }
 }
 
