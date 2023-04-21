@@ -19,6 +19,7 @@ public:
     }
     string getValue() const { return m_value; }
     ll getSize() const { return m_size; }
+    ~DynamicString() {}
 };
 
 void showStrings(vector<DynamicString> &container)
