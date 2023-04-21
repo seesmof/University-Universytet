@@ -13,17 +13,16 @@ int main()
     list<unique_ptr<Delta>> container_list;
 
     cout << "\n";
+    vector<string> menuItems = {
+        "Vector",
+        "List",
+    };
+    ll userDecision = showMenu(menuItems);
     do
     {
         do
         {
             ///////////////////////////////////////
-
-            vector<string> menuItems = {
-                "Vector",
-                "List",
-            };
-            ll userDecision = showMenu(menuItems);
 
             if (userDecision == 1)
             {
