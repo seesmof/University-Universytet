@@ -4,37 +4,21 @@
 class Delta
 {
 private:
-    // declare private members
     ll objectDescriptor;
 
 public:
-    // create default constructor function
     Delta() : objectDescriptor(getNextDefaultDescriptor()) {}
-
-    // next identifier creator
     static ll getNextDefaultDescriptor()
     {
-        // use static variable for tracking identifier
         static int descriptorHolder = 0;
-        // return it to user
         return descriptorHolder++;
     }
-
-    ll getObjectDescriptor() const;
-
-    // create default destructor function
+    ll getObjectDescriptor() const { return objectDescriptor; }
     ~Delta()
     {
     }
 };
 
-// getter for object identifier
-ll Delta::getObjectDescriptor() const
-{
-    return objectDescriptor;
-}
-
-// object creation function
 void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
     // ask user to enter number of delta objects to create
