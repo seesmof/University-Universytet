@@ -19,7 +19,8 @@ public:
     ~Delta() {}
 };
 
-void showObjs(vector<unique_ptr<Delta>> &container)
+template <typename Container>
+void showObjs(Container &container)
 {
     ll objsNum = container.size();
     if (objsNum == 0)
@@ -35,7 +36,8 @@ void showObjs(vector<unique_ptr<Delta>> &container)
     }
 }
 
-void addObjs(vector<unique_ptr<Delta>> &container)
+template <typename Container>
+void addObjs(Container &container)
 {
     ll initSize = container.size();
 
@@ -64,7 +66,8 @@ void addObjs(vector<unique_ptr<Delta>> &container)
     showObjs(container);
 }
 
-void delObjs(vector<unique_ptr<Delta>> &container)
+template <typename Container>
+void delObjs(Container &container)
 {
     ll initSize = container.size();
 
