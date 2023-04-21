@@ -21,6 +21,7 @@ public:
     ll getSize() const { return m_size; }
     void m_reverse() { reverse(m_value.begin(), m_value.end()); }
     void m_replace(string replaceThis, string withThis) { regex_replace(m_value, regex(replaceThis), withThis); }
+    void m_remove_spaces() { m_value.erase(remove_if(m_value.begin(), m_value.end(), isspace), m_value.end()) }
     ~DynamicString() {}
 };
 
