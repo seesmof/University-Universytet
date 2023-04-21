@@ -19,10 +19,8 @@ int main()
     {
         ///////////////////////////////////////
 
-        // for storing class object pointers
         vector<DynamicString> container;
-        // for manipulating program flow
-        char doReturnToMenu;
+        char doContinue;
 
         do
         {
