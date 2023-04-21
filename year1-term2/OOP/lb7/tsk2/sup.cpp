@@ -115,6 +115,32 @@ void removeString(vector<unique_ptr<DynamicString>> &container)
 
 void modifyString(vector<unique_ptr<DynamicString>> &container)
 {
+    if (container.size() == 0)
+    {
+        bad("No strings found");
+        return;
+    }
+
+    cout << endl;
+    showStrings(container);
+    cout << endl;
+
+    cout << "Enter number of string to modify: ";
+    ll numToModify = getNum();
+    numToModify--;
+
+    if (numToModify < 0 || numToModify >= container.size())
+    {
+        bad("Enter a valid number string number");
+        return;
+    }
+
+    vector<string> menuItems = {
+        "1. Change value",
+        "2. Reverse",
+        "3. Replace (given substring with another string)",
+        "4. Remove excessive spaces",
+    }
 }
 
 void outputMenu(vector<unique_ptr<DynamicString>> &container)
