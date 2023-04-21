@@ -27,7 +27,9 @@ public:
     void m_find_substring(string substring) { m_value.find(substring); }
     string m_validate_name()
     {
-        validateName(m_value);
+        string name = m_value;
+        validateName(name);
+        return name;
     }
     ~DynamicString() {}
 };
