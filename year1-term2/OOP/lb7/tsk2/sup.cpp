@@ -84,6 +84,7 @@ void removeString(vector<unique_ptr<DynamicString>> &container)
 
     cout << "Enter number of string to remove: ";
     ll numToRemove = getNum();
+    numToRemove--;
 
     if (numToRemove < 0 || numToRemove >= initSize)
     {
