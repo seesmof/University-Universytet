@@ -54,6 +54,7 @@ void addStrings(vector<DynamicString> &container)
 
     for (ll i = 0; i < numToAdd; i++)
     {
+        cin.ignore();
         string value;
         cout << i + 1 << ". Enter value: ";
         getline(cin, value);
