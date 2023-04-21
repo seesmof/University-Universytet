@@ -53,8 +53,8 @@ void addStrings(vector<DynamicString> &container)
     for (ll i = 0; i < numToAdd; i++)
     {
         string value;
-        cout << "Enter string " << i + 1 << ": ";
-        cin >> value;
+        cout << i + 1 << ". Enter value: ";
+        getline(cin, value);
         container.push_back(DynamicString(value));
     }
 }
