@@ -11,12 +11,13 @@ private:
 
 public:
     DynamicString() : m_value(""), m_size(0) {}
-    DynamicString(string value) : m_value(value), m_size(value.size()) {}
+    DynamicString(string value) : m_value(value), m_size(value.length()) {}
     void setValue(string value)
     {
         m_value = value;
         m_size = value.length();
     }
+    string getValue() const { return m_value; }
 };
 
 void showStrings(vector<DynamicString> &container)
