@@ -136,8 +136,8 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
     }
 
     vector<string> menuItems = {
-        "1. Change value",
-        "2. Reverse",
+        "Change value",
+        "Reverse",
         "3. Replace (given substring with another string)",
         "4. Remove excessive spaces",
         "5. Convert to uppercase",
@@ -199,8 +199,8 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
 void outputMenu(vector<unique_ptr<DynamicString>> &container)
 {
     vector<string> menuItems = {
-        "1. Show strings",
-        "2. Add strings",
+        "Show strings",
+        "Add strings",
         "3. Remove strings",
         "4. Modify strings",
         "5. Exit"};
