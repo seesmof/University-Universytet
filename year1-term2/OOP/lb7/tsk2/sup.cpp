@@ -66,6 +66,7 @@ void showStrings(vector<unique_ptr<DynamicString>> &container, const string &FIL
         file << i + 1 << ". " << container[i]->getValue() << " - " << container[i]->getSize() << " symbols\n";
     }
     file.close();
+
     if (file.good())
         good("Strings succesfully saved");
     else
