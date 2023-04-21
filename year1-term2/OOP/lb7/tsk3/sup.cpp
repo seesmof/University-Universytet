@@ -104,9 +104,9 @@ void outputMenu(vector<unique_ptr<Delta>> &container)
 {
     cout << BOLD << "Welcome! Choose some option from below\n"
          << UNBOLD;
-    cout << "1. Show strings\n";
-    cout << "2. Add strings\n";
-    cout << "3. Remove strings\n";
+    cout << "1. Show objects\n";
+    cout << "2. Add objects\n";
+    cout << "3. Remove objects\n";
     cout << "4. Exit\n";
     cout << "Enter: ";
     ll userDecision = getNum();
