@@ -26,6 +26,16 @@ void showStrings(vector<DynamicString> &container)
 {
     ll stringsNum = container.size();
     if (stringsNum == 0)
+    {
+        bad("No strings found");
+        return;
+    }
+
+    cout << "Available strings (" << stringsNum << "):\n";
+    for (ll i = 0; i < stringsNum; i++)
+    {
+        cout << i + 1 << ". " << container[i].getValue() << " - " << container[i].getSize() << endl;
+    }
 }
 
 void addStrings(vector<DynamicString> &container)
