@@ -122,3 +122,26 @@ void outputMenu(vector<unique_ptr<Delta>> &container)
         delObjs(container);
     }
 }
+
+void outputMenu(list<unique_ptr<Delta>> &container)
+{
+    vector<string> menuItems = {
+        "Show objects",
+        "Add objects",
+        "Remove objects",
+        "Exit"};
+    ll userDecision = showMenu(menuItems);
+
+    if (userDecision == 1)
+    {
+        showObjs(container);
+    }
+    else if (userDecision == 2)
+    {
+        addObjs(container);
+    }
+    else if (userDecision == 3)
+    {
+        delObjs(container);
+    }
+}
