@@ -64,6 +64,35 @@ void addObjs(vector<unique_ptr<Delta>> &container)
     showObjs(container);
 }
 
+void addObjs(list<unique_ptr<Delta>> &container)
+{
+    ll initSize = container.size();
+
+    cout << "Enter number of objects to add: ";
+    ll numToAdd = getNum();
+    cout << endl;
+
+    if (numToAdd == 0)
+    {
+        bad("Enter a valid number of objects");
+        return;
+    }
+
+    for (ll i = 0; i < numToAdd; i++)
+    {
+        container.push_back(make_unique<Delta>());
+    }
+    cout << endl;
+
+    if (container.size() == initSize + numToAdd)
+        good("Objects added successfully");
+    else
+        bad("Failed to add objects");
+
+    cout << endl;
+    showObjs(container);
+}
+
 void delObjs(vector<unique_ptr<Delta>> &container)
 {
     ll initSize = container.size();
