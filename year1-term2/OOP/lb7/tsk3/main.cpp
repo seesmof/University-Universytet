@@ -1,11 +1,9 @@
-// include necessary libraries
 #include "../../../lib.h"
 #include "sup.h"
 using namespace std;
 
 // Варіант 5. Створити клас Delta таким чином, щоб кожний об’єкт вміщував свій персональний номер (дескриптор об’єкта) та функцію, яка повертає його значення. Дескриптор об’єкта – унікальне для об’єктів даного типу ціле число.
 
-// func main start
 int main()
 {
     // declare local variables //
