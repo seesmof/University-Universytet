@@ -92,12 +92,12 @@ void delObjs(vector<unique_ptr<Delta>> &container)
     cout << endl;
 
     if (container.size() == initSize - 1)
-        good("String succesfully removed");
+        good("Object succesfully removed");
     else
-        bad("String was not removed");
+        bad("Object was not removed");
 
     cout << endl;
-    showStrings(container);
+    showObjs(container);
 }
 
 void outputMenu(vector<unique_ptr<Delta>> &container)
