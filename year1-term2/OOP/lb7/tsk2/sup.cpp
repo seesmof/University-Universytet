@@ -42,6 +42,21 @@ void addStrings(vector<DynamicString> &container)
 {
     cout << "Enter number of strings to add: ";
     ll numToAdd = getNum();
+    cout << endl;
+
+    if (numToAdd == 0)
+    {
+        bad("Enter a valid number of strings");
+        return;
+    }
+
+    for (ll i = 0; i < numToAdd; i++)
+    {
+        string value;
+        cout << "Enter string " << i + 1 << ": ";
+        cin >> value;
+        container.push_back(DynamicString(value));
+    }
 }
 
 void removeString(vector<DynamicString> &container)
