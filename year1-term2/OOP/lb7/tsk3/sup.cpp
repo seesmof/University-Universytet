@@ -31,7 +31,7 @@ void showObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
     cout << "Available objects (" << objsNum << "):\n";
     for (ll i = 0; i < objsNum; i++)
     {
-        cout << i + 1 << ". Object " << deltaObjectsVector[i]->getID() << endl;
+        cout << i + 1 << ". Descriptor: " << deltaObjectsVector[i]->getID() << endl;
     }
 }
 
