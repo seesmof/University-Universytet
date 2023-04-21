@@ -19,8 +19,7 @@ public:
     ~Delta() {}
 };
 
-template <typename Container>
-void showObjs(Container &container)
+void showObjs(vector<unique_ptr<Delta>> &container)
 {
     ll objsNum = container.size();
     if (objsNum == 0)
@@ -30,26 +29,13 @@ void showObjs(Container &container)
     }
 
     cout << "Available objects (" << objsNum << "):\n";
-    if (!is_same<typename Container::iterator, typename vector<typename Container::value_type>::iterator>::value)
+    for (ll i = 0; i < objsNum; i++)
     {
-        ll i = 0;
-        for (auto it = container.begin(); it != container.end(); it++)
-        {
-            cout << i + 1 << ". Descriptor: " << *it->getID() << endl;
-            i++;
-        }
-    }
-    else
-    {
-        for (ll i = 0; i < objsNum; i++)
-        {
-            cout << i + 1 << ". Descriptor: " << container[i]->getID() << endl;
-        }
+        cout << i + 1 << ". Descriptor: " << container[i]->getID() << endl;
     }
 }
 
-template <typename Container>
-void addObjs(Container &container)
+void addObjs(vector<unique_ptr<Delta>> &container)
 {
     ll initSize = container.size();
 
@@ -78,8 +64,7 @@ void addObjs(Container &container)
     showObjs(container);
 }
 
-template <typename Container>
-void delObjs(Container &container)
+void delObjs(vector<unique_ptr<Delta>> &container)
 {
     ll initSize = container.size();
 
@@ -103,13 +88,7 @@ void delObjs(Container &container)
         return;
     }
 
-    if (!is_same<typename Container::iterator, typename vector<typename Container::value_type>::iterator>::value)
-    {
-        auto it = next(container.begin(), numToRemove);
-        container.erase(it);
-    }
-    else
-        container.erase(container.begin() + numToRemove);
+    container.erase(container.begin() + numToRemove);
     cout << endl;
 
     if (container.size() == initSize - 1)
@@ -121,8 +100,7 @@ void delObjs(Container &container)
     showObjs(container);
 }
 
-template <typename Container>
-void outputMenu(Container &container)
+void outputMenu(vector<unique_ptr<Delta>> &container)
 {
     vector<string> menuItems = {
         "Show objects",
