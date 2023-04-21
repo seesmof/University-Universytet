@@ -35,14 +35,14 @@ void outputMenu(vector<unique_ptr<Delta>> &container)
 
     if (userDecision == 1)
     {
-        showStrings(container);
+        showObjs(container);
     }
     else if (userDecision == 2)
     {
-        addStrings(container);
+        addObjs(container);
     }
     else if (userDecision == 3)
     {
-        removeString(container);
+        delObjs(container);
     }
 }
