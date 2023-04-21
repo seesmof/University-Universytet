@@ -19,11 +19,8 @@ text = text.replace('/r/n/r/n', "")
 text = text.replace('/r/n/r', " ")
 text = text.replace('/r/n', "")
 text = text.replace('/r', "")
-text = text.replace(':
-                    `
-                    ``', ": \n
-                    `
-                    ``")
+text = text.replace(':', ": \n
+                    ")
 text = text.replace(':1.', ":\n1.")
 text = text.replace('.1.', ".\n1.")
 text = text.replace('.2.', ".\n2.")
