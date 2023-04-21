@@ -11,6 +11,7 @@ int main()
     char doReturnToMenu;
 
     vector<unique_ptr<Delta>> container;
+    list<unique_ptr<Delta>> listContainer;
 
     cout << "\n";
     do
