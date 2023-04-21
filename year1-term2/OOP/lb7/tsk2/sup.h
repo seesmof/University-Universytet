@@ -7,3 +7,5 @@ class DynamicString;
 void showStrings(vector<unique_ptr<DynamicString>> &container);
 
 void addStrings(vector<unique_ptr<DynamicString>> &container);
+
+void removeString(vector<unique_ptr<DynamicString>> &container);
