@@ -45,6 +45,7 @@ void addStrings(vector<unique_ptr<DynamicString>> &container)
     cout << "Enter number of strings to add: ";
     ll numToAdd = getNum();
     cout << endl;
+    cin.ignore();
 
     if (numToAdd == 0)
     {
@@ -54,7 +55,6 @@ void addStrings(vector<unique_ptr<DynamicString>> &container)
 
     for (ll i = 0; i < numToAdd; i++)
     {
-        cin.ignore();
         string value;
         cout << i + 1 << ". Enter value: ";
         getline(cin, value);
