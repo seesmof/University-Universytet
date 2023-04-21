@@ -109,7 +109,6 @@ void removeString(vector<unique_ptr<DynamicString>> &container)
 
 void outputMenu(vector<unique_ptr<DynamicString>> &container)
 {
-    // output the menu
     cout << BOLD << "Welcome! Choose some option from below\n"
          << UNBOLD;
     cout << "1. Show strings\n";
