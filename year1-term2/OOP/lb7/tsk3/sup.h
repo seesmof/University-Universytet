@@ -4,3 +4,4 @@
 
 class Delta;
 void showObjs(vector<unique_ptr<Delta>> &container);
+void addObjs(vector<unique_ptr<Delta>> &container);
