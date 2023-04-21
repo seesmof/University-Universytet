@@ -26,7 +26,6 @@ public:
     void m_remove_spaces() { m_value.erase(remove(m_value.begin(), m_value.end(), ' '), m_value.end()); }
     void m_to_upper() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::toupper); }
     void m_to_lower() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::tolower); }
-    void m_find_substring(string substring) { m_value.find(substring); }
     ~DynamicString() {}
 };
 
@@ -207,7 +206,6 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
         "Remove excessive spaces",
         "Convert to uppercase",
         "Convert to lowercase",
-        "Find substring",
         "Exit"};
     ll userDecision = showMenu(menuItems);
     cin.ignore();
@@ -244,16 +242,6 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
     else if (userDecision == 6)
     {
         container[numToModify]->m_to_lower();
-    }
-    else if (userDecision == 7)
-    {
-        string value;
-        cout << "Enter substring: ";
-        getline(cin, value);
-        if (container[numToModify]->m_find_substring(value) != -1)
-            good("Substring found");
-        else
-            bad("Substring not found");
     }
 
     cout << endl;
