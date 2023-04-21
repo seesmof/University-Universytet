@@ -18,6 +18,7 @@ public:
         m_size = value.length();
     }
     string getValue() const { return m_value; }
+    ll getSize() const { return m_size; }
 };
 
 void showStrings(vector<DynamicString> &container)
