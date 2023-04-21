@@ -25,12 +25,6 @@ public:
     void m_to_upper() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::toupper); }
     void m_to_lower() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::tolower); }
     void m_find_substring(string substring) { m_value.find(substring); }
-    string m_validate_name()
-    {
-        string name = m_value;
-        validateName(name);
-        return name;
-    }
     ~DynamicString() {}
 };
 
