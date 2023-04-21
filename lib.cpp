@@ -81,7 +81,19 @@ ostream &UNYELLOW(ostream &os)
     return os << "\033[0m";
 }
 
-// for transforming string to lowercase
+ll showMenu(const vector<string> &menuOptions)
+{
+    cout << BOLD << "Welcome! Choose one option from the menu below\n" << UNBOLD;
+    for (ll i = 0; i < menuOptions.size(); i++)
+    {
+        cout << i+1 << ". " << menuOptions[i] << endl;
+    }
+    cout << "Enter your choice: ";
+    ll userDecision = getNum();
+    cout << endl;
+    return userDecision;
+}
+
 string toLower(string str)
 {
     // transfort the whole stirng
