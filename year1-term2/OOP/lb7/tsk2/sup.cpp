@@ -102,6 +102,9 @@ void removeString(vector<unique_ptr<DynamicString>> &container)
         good("String succesfully removed");
     else
         bad("String was not removed");
+
+    cout << endl;
+    showStrings(container);
 }
 
 void outputMenu(vector<unique_ptr<DynamicString>> &container)
