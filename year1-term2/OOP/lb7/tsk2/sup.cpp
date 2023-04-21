@@ -279,7 +279,8 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
             showStrings(container);
         else if (userDecision == 2)
         {
-            string fileName = getFileName();
+            string fileName = ROOT_PATH;
+            fileName += getFileName();
             showStrings(container, fileName);
         }
     }
@@ -295,7 +296,8 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
             addStrings(container);
         else if (userDecision == 2)
         {
-            string fileName = getFileName();
+            string fileName = ROOT_PATH;
+            fileName += getFileName();
             addStrings(container, fileName);
         }
     }
