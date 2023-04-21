@@ -20,7 +20,7 @@ public:
     string getValue() const { return m_value; }
     ll getSize() const { return m_size; }
     void m_reverse() { reverse(m_value.begin(), m_value.end()); }
-    void m_replace(string replaceThis, string withThis) { m_value.replace(replaceThis, withThis); }
+    void m_replace(string replaceThis, string withThis) { m_value.replace(m_value.find(replaceThis), replaceThis.length(), withThis); }
     void m_remove_spaces() { m_value.erase(remove(m_value.begin(), m_value.end(), ' '), m_value.end()); }
     void m_to_upper() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::toupper); }
     void m_to_lower() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::tolower); }
