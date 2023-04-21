@@ -125,7 +125,7 @@ ostream &UNYELLOW(ostream &os)
 
 ll showMenu(const vector<string> &MENU_OPTIONS)
 {
-    cout << BOLD << "Welcome! Choose one option from the menu below\n"
+    cout << BOLD << "Choose one option from the menu below\n"
          << UNBOLD;
     for (ll i = 0; i < MENU_OPTIONS.size(); i++)
     {
