@@ -6,6 +6,8 @@
 class Delta
 {
 private:
+    ll m_id;
+
 public:
 };
 
