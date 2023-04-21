@@ -1,9 +1,7 @@
 #include "sup.h"
 #include "D:\repos\university\lib.h"
 
-/*
-Виконати завдання з лабораторної роботи #5 з довільним типом даних
- */
+//
 
 class DynamicString
 {
