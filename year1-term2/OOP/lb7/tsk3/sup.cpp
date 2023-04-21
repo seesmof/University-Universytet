@@ -17,7 +17,32 @@ void printObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
 }
 
-// object deletion function
 void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
+}
+
+void outputMenu(vector<unique_ptr<DynamicString>> &container)
+{
+    cout << BOLD << "Welcome! Choose some option from below\n"
+         << UNBOLD;
+    cout << "1. Show strings\n";
+    cout << "2. Add strings\n";
+    cout << "3. Remove strings\n";
+    cout << "4. Exit\n";
+    cout << "Enter: ";
+    ll userDecision = getNum();
+    cout << endl;
+
+    if (userDecision == 1)
+    {
+        showStrings(container);
+    }
+    else if (userDecision == 2)
+    {
+        addStrings(container);
+    }
+    else if (userDecision == 3)
+    {
+        removeString(container);
+    }
 }
