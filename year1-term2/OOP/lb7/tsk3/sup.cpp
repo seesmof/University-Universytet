@@ -14,9 +14,7 @@ public:
         return descriptorHolder++;
     }
     ll getObjectDescriptor() const { return objectDescriptor; }
-    ~Delta()
-    {
-    }
+    ~Delta() {}
 };
 
 void createObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
