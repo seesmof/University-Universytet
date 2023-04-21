@@ -1,6 +1,5 @@
 #include "D:\repos\university\lib.h"
 #include "sup.h"
-using namespace std;
 
 // Виконати завдання з лабораторної роботи #1 використавши, для зберігання даних класи Standard Template Library (STL) або list або vector. Поясніть різницю в використанні цих класів.
 
