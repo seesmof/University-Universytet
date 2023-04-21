@@ -57,6 +57,9 @@ void addStrings(vector<DynamicString> &container)
         getline(cin, value);
         container.push_back(DynamicString(value));
     }
+
+    if (container.size() == initSize + numToAdd)
+        good("Strings succesfully added") else bad("Strings were not added");
 }
 
 void removeString(vector<DynamicString> &container)
