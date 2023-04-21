@@ -100,6 +100,42 @@ void delObjs(vector<unique_ptr<Delta>> &container)
     showObjs(container);
 }
 
+void delObjs(list<unique_ptr<Delta>> &container)
+{
+    ll initSize = container.size();
+
+    if (initSize == 0)
+    {
+        bad("No objects found");
+        return;
+    }
+
+    cout << endl;
+    showObjs(container);
+    cout << endl;
+
+    cout << "Enter object number to remove: ";
+    ll numToRemove = getNum();
+    numToRemove--;
+
+    if (numToRemove < 0 || numToRemove >= initSize)
+    {
+        bad("Enter a valid object number");
+        return;
+    }
+
+    container.erase(container.begin() + numToRemove);
+    cout << endl;
+
+    if (container.size() == initSize - 1)
+        good("Object succesfully removed");
+    else
+        bad("Object was not removed");
+
+    cout << endl;
+    showObjs(container);
+}
+
 void outputMenu(vector<unique_ptr<Delta>> &container)
 {
     vector<string> menuItems = {
