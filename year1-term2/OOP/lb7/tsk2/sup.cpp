@@ -66,6 +66,9 @@ void addStrings(vector<unique_ptr<DynamicString>> &container)
         good("Strings succesfully added");
     else
         bad("Strings were not added");
+
+    cout << endl;
+    showStrings(container);
 }
 
 void removeString(vector<unique_ptr<DynamicString>> &container)
