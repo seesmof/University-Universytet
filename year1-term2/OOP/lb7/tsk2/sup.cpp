@@ -22,6 +22,8 @@ public:
     void m_reverse() { reverse(m_value.begin(), m_value.end()); }
     void m_replace(string replaceThis, string withThis) { regex_replace(m_value, regex(replaceThis), withThis); }
     void m_remove_spaces() { m_value.erase(remove(m_value.begin(), m_value.end(), ' '), m_value.end()); }
+    void m_to_upper() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::toupper); }
+    void m_to_lower() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::tolower); }
     ~DynamicString() {}
 };
 
