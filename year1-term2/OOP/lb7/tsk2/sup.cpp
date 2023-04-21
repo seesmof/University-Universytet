@@ -19,10 +19,7 @@ public:
     }
     string getValue() const { return m_value; }
     ll getSize() const { return m_size; }
-    void m_reverse()
-    {
-        reverse(temp.begin(), temp.end());
-    }
+    void m_reverse() { reverse(temp.begin(), temp.end()); }
 
     ~DynamicString() {}
 };
