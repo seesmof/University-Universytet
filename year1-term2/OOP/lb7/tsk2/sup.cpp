@@ -93,6 +93,7 @@ void removeString(vector<unique_ptr<DynamicString>> &container)
     }
 
     container.erase(container.begin() + numToRemove);
+    cout << endl;
 
     if (container.size() == initSize - 1)
         good("String succesfully removed");
