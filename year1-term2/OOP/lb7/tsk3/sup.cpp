@@ -78,7 +78,7 @@ void delObjs(vector<unique_ptr<Delta>> &container)
     showObjs(container);
     cout << endl;
 
-    cout << "Enter number of string to remove: ";
+    cout << "Enter object number to remove: ";
     ll numToRemove = getNum();
     numToRemove--;
 
