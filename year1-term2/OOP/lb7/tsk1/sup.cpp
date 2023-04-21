@@ -148,16 +148,12 @@ void outputMenu(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
     char doContinue;
     do
     {
-        // output menu to user and prompt them to choose an option
-        cout << BOLD << "Choose an option from menu\n"
-             << UNBOLD;
-        cout << "1. Add objects\n";
-        cout << "2. Delete objects\n";
-        cout << "3. Print objects\n";
-        cout << "4. Exit\n";
-        cout << "Enter: ";
-        ll userDecision = getNum();
-        cout << endl;
+        vector<string> menuItems = {
+            "Add objects",
+            "Delete objects",
+            "Print objects",
+            "Exit"};
+        ll userDecision = showMenu(menuItems);
 
         // if user chose to add objects
         if (userDecision == 1)
