@@ -45,6 +45,10 @@ void showObjs(list<unique_ptr<Delta>> &container)
     }
 
     cout << "Available objects (" << objsNum << "):\n";
+    for (auto it = container.begin(); it != container.end(); it++)
+    {
+        cout << it->get()->getID() << endl;
+    }
     for (ll i = 0; i < objsNum; i++)
     {
         cout << i + 1 << ". Descriptor: " << container[i]->getID() << endl;
