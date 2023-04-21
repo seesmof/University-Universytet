@@ -250,7 +250,10 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
         string value;
         cout << "Enter substring: ";
         getline(cin, value);
-        container[numToModify]->m_find_substring(value);
+        if (container[numToModify]->m_find_substring(value))
+            good("Substring found");
+        else
+            bad("Substring not found");
     }
 
     cout << endl;
