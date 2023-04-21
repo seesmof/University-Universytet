@@ -86,6 +86,11 @@ void addStrings(vector<unique_ptr<DynamicString>> &container, const string &FILE
     {
         lines.push_back(line);
     }
+    file.close();
+    for (auto &line : lines)
+    {
+        container.push_back(make_unique<DynamicString>(line));
+    }
 }
 
 void removeString(vector<unique_ptr<DynamicString>> &container)
