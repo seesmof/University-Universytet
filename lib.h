@@ -4,10 +4,10 @@
 #include "lib.cpp"
 using namespace std;
 
-ll showMenu(const vector<string> &menuOptions)
+ll showMenu(const vector<string> &menuOptions);
 
-    // for transforming string to lowercase
-    string toLower(string str);
+// for transforming string to lowercase
+string toLower(string str);
 
 // for outputting error messages
 void bad(const string &INPUT);
