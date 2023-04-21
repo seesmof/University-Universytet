@@ -8,8 +8,8 @@ int main()
 {
     srand(time(NULL));
     char doContinue;
-    vector<unique_ptr<DynamicString>> container;
     char doReturnToMenu;
+    vector<unique_ptr<Delta>> container;
 
     cout << "\n";
     do
