@@ -113,6 +113,10 @@ void removeString(vector<unique_ptr<DynamicString>> &container)
     showStrings(container);
 }
 
+void modifyString(vector<unique_ptr<DynamicString>> &container)
+{
+}
+
 void outputMenu(vector<unique_ptr<DynamicString>> &container)
 {
     vector<string> menuItems = {
@@ -134,5 +138,9 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
     else if (userDecision == 3)
     {
         removeString(container);
+    }
+    else if (userDecision == 4)
+    {
+        modifyString(container);
     }
 }
