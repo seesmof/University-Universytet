@@ -23,7 +23,18 @@ public:
     ll getSize() const { return m_size; }
     void m_reverse() { reverse(m_value.begin(), m_value.end()); }
     void m_replace(string replaceThis, string withThis) { m_value.replace(m_value.find(replaceThis), replaceThis.length(), withThis); }
-    void m_remove_spaces() { m_value.erase(remove(m_value.begin(), m_value.end(), ' '), m_value.end()); }
+    void m_remove_spaces()
+    {
+        stringstream ss(m_value);
+        string word;
+        m_value.clear();
+
+        while (ss >> word)
+            m_value += word + " ";
+
+        if (!m_value.empty())
+            m_value.pop_back();
+    }
     void m_to_upper() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::toupper); }
     void m_to_lower() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::tolower); }
     ~DynamicString() {}
