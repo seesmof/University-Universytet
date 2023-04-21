@@ -77,6 +77,17 @@ void addStrings(vector<unique_ptr<DynamicString>> &container)
     showStrings(container);
 }
 
+void addStrings(vector<unique_ptr<DynamicString>> &container, const string &FILE)
+{
+    ifstream file(FILE);
+    string line;
+    vector<string> lines;
+    while (getline(file, line))
+    {
+        lines.push_back(line);
+    }
+}
+
 void removeString(vector<unique_ptr<DynamicString>> &container)
 {
     ll initSize = container.size();
