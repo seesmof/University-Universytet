@@ -58,7 +58,8 @@ void addStrings(vector<unique_ptr<DynamicString>> &container)
         string value;
         cout << i + 1 << ". Enter value: ";
         getline(cin, value);
-        container.push_back(DynamicString(value));
+
+        container.push_back(make_unique<DynamicString>(value));
     }
 
     if (container.size() == initSize + numToAdd)
