@@ -15,7 +15,7 @@ public:
         static ll id = 0;
         return id++;
     }
-    void getID() const { return id; }
+    void getID() const { return m_id; }
 };
 
 void addObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
