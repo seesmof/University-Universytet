@@ -62,7 +62,7 @@ void showStrings(vector<unique_ptr<DynamicString>> &container, const string &FIL
     }
 
     file << "==============================\n\n";
-    file << "\nAvailable strings (" << stringsNum << "):\n";
+    file << "Available strings (" << stringsNum << "):\n";
     for (ll i = 0; i < stringsNum; i++)
     {
         file << i + 1 << ". " << container[i]->getValue() << " - " << container[i]->getSize() << " symbols\n";
