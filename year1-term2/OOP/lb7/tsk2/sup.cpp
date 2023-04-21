@@ -19,7 +19,7 @@ public:
     }
     string getValue() const { return m_value; }
     ll getSize() const { return m_size; }
-    void reverse()
+    void m_reverse()
     {
         string temp = m_value;
         reverse(temp.begin(), temp.end());
