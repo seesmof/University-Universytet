@@ -188,6 +188,9 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
     {
         return;
     }
+
+    cout << endl;
+    showStrings(container);
 }
 
 void outputMenu(vector<unique_ptr<DynamicString>> &container)
