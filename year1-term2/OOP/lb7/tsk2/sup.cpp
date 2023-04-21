@@ -119,7 +119,8 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
         "1. Show strings",
         "2. Add strings",
         "3. Remove strings",
-        "4. Exit"};
+        "4. Modify strings",
+        "5. Exit"};
     ll userDecision = showMenu(menuItems);
 
     if (userDecision == 1)
