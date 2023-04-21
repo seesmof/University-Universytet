@@ -19,9 +19,9 @@ public:
     ~Delta() {}
 };
 
-void showObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void showObjs(vector<unique_ptr<Delta>> &container)
 {
-    ll objsNum = deltaObjectsVector.size();
+    ll objsNum = container.size();
     if (objsNum == 0)
     {
         bad("No objects to show");
@@ -31,13 +31,13 @@ void showObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
     cout << "Available objects (" << objsNum << "):\n";
     for (ll i = 0; i < objsNum; i++)
     {
-        cout << i + 1 << ". Descriptor: " << deltaObjectsVector[i]->getID() << endl;
+        cout << i + 1 << ". Descriptor: " << container[i]->getID() << endl;
     }
 }
 
-void addObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void addObjs(vector<unique_ptr<Delta>> &container)
 {
-    ll initSize = deltaObjectsVector.size();
+    ll initSize = container.size();
 
     cout << "Enter number of objects to add: ";
     ll numToAdd = getNum();
@@ -51,20 +51,20 @@ void addObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
 
     for (ll i = 0; i < numToAdd; i++)
     {
-        deltaObjectsVector.push_back(make_unique<Delta>());
+        container.push_back(make_unique<Delta>());
     }
     cout << endl;
 
-    if (deltaObjectsVector.size() == initSize + numToAdd)
+    if (container.size() == initSize + numToAdd)
         good("Objects added successfully");
     else
         bad("Failed to add objects");
 
     cout << endl;
-    showObjs(deltaObjectsVector);
+    showObjs(container);
 }
 
-void delObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void delObjs(vector<unique_ptr<Delta>> &container)
 {
     ll initSize = container.size();
 
