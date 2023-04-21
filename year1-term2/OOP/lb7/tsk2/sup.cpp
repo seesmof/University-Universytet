@@ -209,8 +209,13 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
             "Show in console",
             "Show in file",
             "Exit"};
-
-        showStrings(container);
+        userDecision = showMenu(menuItems);
+        if (userDecision == 1)
+            showStrings(container);
+        else if (userDecision == 2)
+        {
+            string fileName;
+                }
     }
     else if (userDecision == 2)
     {
