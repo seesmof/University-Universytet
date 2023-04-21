@@ -21,6 +21,18 @@ public:
 
 void showObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
+    ll objsNum = deltaObjectsVector.size();
+    if (objsNum == 0)
+    {
+        bad("No objects to show");
+        return;
+    }
+
+    cout << "Available objects (" << objsNum << "):\n";
+    for (ll i = 0; i < objsNum; i++)
+    {
+        cout << i + 1 << ". Object " << deltaObjectsVector[i]->getID() << endl;
+    }
 }
 
 void addObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
