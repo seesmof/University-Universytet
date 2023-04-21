@@ -19,7 +19,7 @@ int main()
     {
         ///////////////////////////////////////
 
-        vector<DynamicString> container;
+        vector<unique_ptr<DynamicString>> container;
         char doReturnToMenu;
 
         do
