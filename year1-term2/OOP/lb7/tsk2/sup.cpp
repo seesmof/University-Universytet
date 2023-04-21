@@ -44,6 +44,30 @@ void showStrings(vector<unique_ptr<DynamicString>> &container)
     }
 }
 
+void showStrings(vector<unique_ptr<DynamicString>> &container, const string &FILE)
+{
+    ll stringsNum = container.size();
+    if (stringsNum == 0)
+    {
+        bad("No strings found");
+        return;
+    }
+
+    ofstream file(FILE);
+
+    if (!file.is_open())
+    {
+        bad("File could not be opened");
+        return;
+    }
+
+    for (ll i = 0; i < stringsNum; i++)
+    {
+        file << i + 1 << ". " << container[i]->getValue() << " - " << container[i]->getSize() << " symbols\n";
+    }
+    file.close();
+}
+
 void addStrings(vector<unique_ptr<DynamicString>> &container)
 {
     ll initSize = container.size();
@@ -83,6 +107,12 @@ void addStrings(vector<unique_ptr<DynamicString>> &container, const string &FILE
     ifstream file(FILE);
     string line;
     vector<string> lines;
+
+    if (!file.is_open())
+    {
+        bad("File not found");
+        return;
+    }
 
     while (getline(file, line))
     {
