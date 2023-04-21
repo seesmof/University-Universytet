@@ -3,7 +3,7 @@
 
 // Виконати завдання з лабораторної роботи #5 з довільним типом даних
 
-const string ROOT_PATH = "D:/repos/university/year1-term2/OOP/lb7/tsk2/sup.cpp";
+const string ROOT_PATH = "D:/repos/university/year1-term2/OOP/lb7/tsk2/";
 
 class DynamicString
 {
