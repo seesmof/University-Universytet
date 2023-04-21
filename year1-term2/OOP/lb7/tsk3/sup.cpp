@@ -100,7 +100,8 @@ void delObjs(vector<unique_ptr<Delta>> &container)
     showObjs(container);
 }
 
-void outputMenu(vector<unique_ptr<Delta>> &container)
+template <typename Container>
+void outputMenu(Container &container)
 {
     vector<string> menuItems = {
         "Show objects",
