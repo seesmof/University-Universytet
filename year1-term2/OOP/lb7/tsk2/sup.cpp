@@ -69,7 +69,6 @@ void showStrings(vector<unique_ptr<DynamicString>> &container, const string &FIL
     if (file.good())
         good("Strings succesfully saved");
     else
-
         bad("Strings were not saved");
 }
 
