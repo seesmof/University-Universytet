@@ -34,7 +34,6 @@ headers = {
 }
 
 response = requests.post(url, json=data, headers=headers)
-print(response.status_code)
 
 data = response.text
 text = data.replace("data: ", "")
