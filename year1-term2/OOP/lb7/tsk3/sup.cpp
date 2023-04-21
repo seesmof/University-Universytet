@@ -124,8 +124,8 @@ void delObjs(list<unique_ptr<Delta>> &container)
         return;
     }
 
-    container.erase(container.begin() + numToRemove);
-    cout << endl;
+    auto it = next(container, numToRemove);
+    container.erase(it);
 
     if (container.size() == initSize - 1)
         good("Object succesfully removed");
