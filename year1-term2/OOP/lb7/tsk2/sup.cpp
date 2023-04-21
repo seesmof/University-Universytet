@@ -22,7 +22,7 @@ public:
     ~DynamicString() {}
 };
 
-void showStrings(vector<DynamicString> &container)
+void showStrings(vector<unique_ptr<DynamicString>> &container)
 {
     ll stringsNum = container.size();
     if (stringsNum == 0)
@@ -38,7 +38,7 @@ void showStrings(vector<DynamicString> &container)
     }
 }
 
-void addStrings(vector<DynamicString> &container)
+void addStrings(vector<unique_ptr<DynamicString>> &container)
 {
     ll initSize = container.size();
 
@@ -67,7 +67,7 @@ void addStrings(vector<DynamicString> &container)
         bad("Strings were not added");
 }
 
-void removeString(vector<DynamicString> &container)
+void removeString(vector<unique_ptr<DynamicString>> &container)
 {
     ll initSize = container.size();
 
@@ -98,7 +98,7 @@ void removeString(vector<DynamicString> &container)
         bad("String was not removed");
 }
 
-void outputMenu(vector<DynamicString> &container)
+void outputMenu(vector<unique_ptr<DynamicString>> &container)
 {
     // output the menu
     cout << BOLD << "Welcome! Choose some option from below\n"
