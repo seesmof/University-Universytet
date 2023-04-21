@@ -24,6 +24,8 @@ public:
 
 void showStrings(vector<DynamicString> &container)
 {
+    ll stringsNum = container.size();
+    if (stringsNum == 0)
 }
 
 void addStrings(vector<DynamicString> &container)
@@ -49,6 +51,7 @@ void outputMenu(vector<DynamicString> &container)
 
     if (userDecision == 1)
     {
+        showStrings(container);
     }
     else if (userDecision == 2)
     {
