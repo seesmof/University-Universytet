@@ -1,26 +1,18 @@
-As a personal fitness trainer, the first thing I would suggest is that you start by doing a full-body workout for 1-1.5 hours every day except for Sunday. The order of the exercises should be arranged in a way that targets different muscle groups and avoids overworking any one area. Here is a sample workout plan that you can follow:
-
-1. Warm-up: 10-15 minutes of light cardio to get your heart rate up and your muscles warmed up. This could be jogging in place, jumping jacks, or using a stationary bike.
-
-2. Squats: 3 sets of 12 reps. This exercise targets your legs, glutes, and core. Be sure to keep your back straight and your knees behind your toes.
-
-3. Bench press: 3 sets of 12 reps. This exercise targets your chest, shoulders, and triceps. Be sure to use proper form and have a spotter if necessary.
-
-4. Pull-ups: 3 sets of 8 reps. This exercise targets your back, biceps, and forearms. If you cannot do a full pull-up, use an assisted pull-up machine or resistance bands.
-
-5. Lunges: 3 sets of 12 reps (6 on each leg). This exercise targets your legs, glutes, and core. Be sure to keep your knee behind your toes and your back straight.
-
-6. Overhead press: 3 sets of 12 reps. This exercise targets your shoulders, triceps, and upper back. Be sure to use proper form and not arch your back.
-
-7. Plank: 3 sets of 30-60 seconds. This exercise targets your core and helps improve your posture. Be sure to keep your back straight and your abs tight.
-
-8. Cool-down: 10-15 minutes of stretching to help prevent injury and reduce soreness.
-
-It's important to note that this is just a sample workout plan and may not be suitable for everyone. You should consult with a personal trainer or physician before starting any new exercise program. Additionally, it's important to listen to your body and adjust the number of reps or sets as needed to avoid injury.
-
-In terms of diet, it's important to eat a balanced diet that includes plenty of fruits, vegetables, whole grains, lean proteins, and healthy fats. Avoid processed foods and sugary drinks, and drink plenty of water to stay hydrated. You may also want to consider tracking your calorie intake using a food diary or app to ensure you are getting the right amount of nutrients for your body.
-
-Sources:
-
-- [Source 4](https://www.calculator.net/overweight-calculator.html)
-- [Source 1](https://getcalc.com/health-ideal-weight-calculator.htm?gender=male&height=186cm)
+3.3.1 Ознайомитися з основними теоретичними відомостями за темою роботи, використовуючи дані методичні вказівки, а також рекомендовану літературу.
+3.3.2 Вивчити принципи роботи пошукових систем та інструментарій, що надається ними.
+3.3.3 Виконати пошук інформації в Internet за допомогою різних пошукових серверів:
+a) знайти та навести у звіті визначення п’яти з наступних спеціальних термінів: інформаційна технологія, програмне забезпечення, протокол, інформація, файл, дані, мова програмування, операційна система, база даних, компілятор, ASCII, графічний редактор, комп’ютерна мережа, сервер, комп’ютерний вірус, модуль, система керування вмістом, парадигма програмування, гіпертекст, віджет, комунікація, веб-сайт, URL, текстовий редактор, електронна пошта, інтернет-спільнота, фішинг, RSS, плагін, веб-портал, віртуальна машина, інтерпретатор, інтернет-бот, файрвол, проксі-сервер, веб-сервер, транслятор, емулятор, синтаксис, семантика (за варіантом);
+б) знайти за допомогою системи Google Академія та привести у відповідності зі стандартом ДСТУ ГОСТ 7.1:2006 «Система стандартів з інформації, бібліотечної та видавничої справи. Бібліографічний запис. Бібліографічний опис. Загальні вимоги та правила складання» бібліографічні дані книг або статей з журналів (за останні 5 років) за спеціальністю: 10 загалом за спеціальністю та 5 за однією з наступних тем: операційні системи Android, Linux, iOS, OS X, FreeBSD, мови програмування Python, Perl, Java, PHP, C#, Ruby, SQL, Objective-C, Erlang, мови розмітки XML та LaTex, системи керування базами даних MySQL та Oracle Database, системи керування вмістом Joomla!, Drupal, WordPress, графічні редактори CorelDRAW та Adobe Photoshop, веб-сервери Apache та IIS (за варіантом);
+в) привести у звіті коротку біографію, область наукової діяльності та досягнення 5 з наступних діячів: Алан Кей, Лінус Торвальдс, Метью Грей, Енді Рубін, Тім Бернерс-Лі, Мартін Купер, Денніс Рітчі, Кен Швабер, Конрад Цузе, Чарлз Беббідж, Норберт Вінер, Алан Тюрінг, Френк Розенблат, Марвін Мінський, Алан Тюринг, Стів Джобс, В.М. Глушков, Ґвідо ван Россум, Расмус Лердорф, Б'ярн Страуструп, Кен Томпсон, А́ ндерс Ге́йлсберґ, Брендан Айк, Ні́клаус Вірт, Ада Лавлейс, Білл Гейтс, Пол Аллен, Едгар Кодд, Норберт Вінер, Стів Возняк, Річард Столмен, Ларрі Пейдж, Сергі́й Брін, Джеймс Гослінг, Брем Коен, Ларрі Волл, Міґель де Ікаса, Джордж Буль, Джон фон Нейман, Говард Каннінгем (за варіантом).
+3.3.4 Обрати запит для пошуку та порівняти результати пошуку для різних пошукових систем (хоча б трьох), заповнивши таблицю, що містить такі стовпці: – No з/п; – адреса пошукового сервера; – перелік перших 10 сайтів, що найдені за результатами пошуку (URL-адреси); – коротка назва кожного сайту; – релевантність кожного отриманого результату запиту та середній результат для кожного пошукового сервера. Стовпець «релевантність запиту» розділяється на дві колонки, перша з яких заповнюється студентом на власний розсуд як суб’єктивна оцінка (за 100 бальною шкалою) відповідності знайденої інформації введеному запиту, а друга заповнюється як обчислена оцінка Rel:  
+Rel = Ws + k1Wp
+де Ws – міра, що визначає частоту появи окремого слова в тексті веб-сторінки та дорівнює добутку відношень кількості входжень кожного слова в текст веб-сторінки до кількості слів у документі; k1 – коефіцієнт, що визначає значимість міри Wp по відношенню до Ws (встановлюється студентом суб’єктивно); Wp – міра, що визначає частоту появи цілого тексту запиту в тексті веб-сторінки і дорівнює відношенню кількості входжень повного тексту запиту в текст веб-сторінки до тієї ж кількості, збільшеної на одиницю.
+3.3.5 Обрати деяке зображення для пошуку, виконати пошук на різних пошукових серверах, заповнити таблицю порівняння результатів аналогічно п. 3.3.4, навести результати пошуку найбільш релевантної інформації (релевантність оцінити суб’єктивно).
+3.3.6 За допомогою бази знань та набору обчислювальних алгоритмів Wolfram Alpha розв’язати диференційне рівняння та систему лінійних алгебраїчних рівнянь, виконати операції над матрицями.
+3.3.7 Створити додаткову поштову скриньку та перенаправити листи з неї на основну.
+3.3.8 Вивчити принципи роботи в Internet за допомогою браузерів Google Chrome, Mozilla Firefox, Opera, Internet Explorer, Safari (хоча б трьох з перелічених).
+3.3.9 Обрати критерії порівняння та виконати порівняння розглянутих браузерів, для чого заповнити відповідну таблицю.
+3.3.10 Синхронізувати дані веб-перегляду на різних пристроях з доступом до Internet в одному з браузерів.
+3.3.11 Заблокувати рекламу в браузері.
+3.3.12 Оформити звіт з роботи.
+3.3.13 Відповісти на контрольні запитання.
