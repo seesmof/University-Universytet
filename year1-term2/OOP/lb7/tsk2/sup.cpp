@@ -138,12 +138,12 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
     vector<string> menuItems = {
         "Change value",
         "Reverse",
-        "3. Replace (given substring with another string)",
-        "4. Remove excessive spaces",
-        "5. Convert to uppercase",
-        "6. Convert to lowercase",
-        "7. Find substring",
-        "8. Exit"};
+        "Replace (given substring with another string)",
+        "Remove excessive spaces",
+        "Convert to uppercase",
+        "Convert to lowercase",
+        "Find substring",
+        "Exit"};
     ll userDecision = showMenu(menuItems);
     cin.ignore();
 
@@ -201,9 +201,9 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
     vector<string> menuItems = {
         "Show strings",
         "Add strings",
-        "3. Remove strings",
-        "4. Modify strings",
-        "5. Exit"};
+        "Remove strings",
+        "Modify strings",
+        "Exit"};
     ll userDecision = showMenu(menuItems);
 
     if (userDecision == 1)
