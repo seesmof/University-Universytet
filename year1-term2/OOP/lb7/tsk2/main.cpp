@@ -20,7 +20,7 @@ int main()
         ///////////////////////////////////////
 
         vector<DynamicString> container;
-        char doContinue;
+        char doReturnToMenu;
 
         do
         {
