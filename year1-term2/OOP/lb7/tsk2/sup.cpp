@@ -160,10 +160,13 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
     }
     else if (userDecision == 3)
     {
-        string value;
-        cout << "Enter new value: ";
-        getline(cin, value);
-        container[numToModify]->m_replace(value, value);
+        string replaceThis;
+        string withThis;
+        cout << "Enter substring to replace: ";
+        getline(cin, replaceThis);
+        cout << "Enter substring to replace with: ";
+        getline(cin, withThis);
+        container[numToModify]->m_replace(replaceThis, withThis);
     }
     else if (userDecision == 4)
     {
