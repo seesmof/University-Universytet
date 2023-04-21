@@ -12,7 +12,8 @@ data = {
         "date": "14/04/2023",
         "language": "en-GB",
         "detailed": False,
-        "creative": True
+        "creative": False,
+        "expert": True,
     }
 }
 headers = {
