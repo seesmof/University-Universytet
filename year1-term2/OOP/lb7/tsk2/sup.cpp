@@ -60,6 +60,7 @@ void addStrings(vector<unique_ptr<DynamicString>> &container)
         getline(cin, value);
         container.push_back(make_unique<DynamicString>(value));
     }
+    cout << endl;
 
     if (container.size() == initSize + numToAdd)
         good("Strings succesfully added");
