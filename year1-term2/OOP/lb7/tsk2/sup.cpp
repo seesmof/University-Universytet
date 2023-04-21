@@ -59,7 +59,9 @@ void addStrings(vector<DynamicString> &container)
     }
 
     if (container.size() == initSize + numToAdd)
-        good("Strings succesfully added") else bad("Strings were not added");
+        good("Strings succesfully added");
+    else
+        bad("Strings were not added");
 }
 
 void removeString(vector<DynamicString> &container)
