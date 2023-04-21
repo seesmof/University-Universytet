@@ -1,33 +1,38 @@
-import tkinter as tk
-import requests
+response = requests.post(url, json=data, headers=headers)
 
+print(response.status_code)
 
-def get_weather():
-    city = city_entry.get()
-    url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=YOUR_API_KEY'
-    response = requests.get(url)
-    data = response.json()
-    weather = data['weather'][0]['description']
-    temperature = str(round(data['main']['temp'] - 273.15, 1)) + '°C'
-    weather_label.config(text=f'Weather: {weather}')
-    temperature_label.config(text=f'Temperature: {temperature}')
+data = response.text
+text = data.replace("data: ", "")
+text = text.replace("\n ", "")
 
-
-root = tk.Tk()
-
-city_label = tk.Label(root, text='City:')
-city_label.pack()
-
-city_entry = tk.Entry(root)
-city_entry.pack()
-
-button = tk.Button(root, text='Get Weather', command=get_weather)
-button.pack()
-
-weather_label = tk.Label(root, text='')
-weather_label.pack()
-
-temperature_label = tk.Label(root, text='')
-temperature_label.pack()
-
-root.mainloop()
+text = f'''{text}'''
+print('-------------------------------------------')
+text = text.replace('\n', "/n")
+text = text.replace('\r', "/r")
+print(text)
+print('-------------------------------------------')
+text = text.replace('/r/n/r/n/r/n/r/n', "\n")
+text = text.replace('/r/n/r/n/r/n', "\n")
+text = text.replace('/r/n/r/n/r', "\n")
+text = text.replace('/r/n/r/n', "")
+text = text.replace('/r/n/r', " ")
+text = text.replace('/r/n', "")
+text = text.replace('/r', "")
+text = text.replace(':
+                    `
+                    ``', ": \n
+                    `
+                    ``")
+text = text.replace(':1.', ":\n1.")
+text = text.replace('.1.', ".\n1.")
+text = text.replace('.2.', ".\n2.")
+text = text.replace('.3.', ".\n3.")
+text = text.replace('.4.', ".\n4.")
+text = text.replace('.5.', ".\n5.")
+text = text.replace('.6.', ".\n6.")
+text = text.replace('.7.', ".\n7.")
+text = text.replace('.8.', ".\n8.")
+text = text.replace('.9.', ".\n9.")
+text = text.replace('.10.', ".\n10.")
+print(text)
