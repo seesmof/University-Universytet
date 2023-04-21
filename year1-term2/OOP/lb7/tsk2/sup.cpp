@@ -24,6 +24,7 @@ public:
     void m_remove_spaces() { m_value.erase(remove(m_value.begin(), m_value.end(), ' '), m_value.end()); }
     void m_to_upper() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::toupper); }
     void m_to_lower() { transform(m_value.begin(), m_value.end(), m_value.begin(), ::tolower); }
+    void m_find_substring(string substring) { m_value.find(substring); }
     ~DynamicString() {}
 };
 
