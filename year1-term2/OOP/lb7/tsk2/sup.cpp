@@ -19,6 +19,8 @@ public:
     }
     string getValue() const { return m_value; }
     ll getSize() const { return m_size; }
+    void reverse() { reverse(m_value.begin(), m_value.end()); }
+
     ~DynamicString() {}
 };
 
