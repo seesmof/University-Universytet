@@ -284,8 +284,8 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
     else if (userDecision == 2)
     {
         menuItems = {
-            "Add strings from file",
             "Add strings from console",
+            "Add strings from file",
             "Exit"};
         userDecision = showMenu(menuItems);
 
