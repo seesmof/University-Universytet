@@ -214,8 +214,9 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
             showStrings(container);
         else if (userDecision == 2)
         {
-            string fileName;
-                }
+            string fileName = getFileName();
+            showStrings(container, fileName);
+        }
     }
     else if (userDecision == 2)
     {
