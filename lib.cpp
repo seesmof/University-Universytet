@@ -123,13 +123,13 @@ ostream &UNYELLOW(ostream &os)
     return os << "\033[0m";
 }
 
-ll showMenu(const vector<string> &menuOptions)
+ll showMenu(const vector<string> &MENU_OPTIONS)
 {
     cout << BOLD << "Welcome! Choose one option from the menu below\n"
          << UNBOLD;
-    for (ll i = 0; i < menuOptions.size(); i++)
+    for (ll i = 0; i < MENU_OPTIONS.size(); i++)
     {
-        cout << i + 1 << ". " << menuOptions[i] << endl;
+        cout << i + 1 << ". " << MENU_OPTIONS[i] << endl;
     }
     cout << "Enter your choice: ";
     ll userDecision = getNum();
