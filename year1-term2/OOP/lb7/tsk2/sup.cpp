@@ -40,6 +40,8 @@ void showStrings(vector<DynamicString> &container)
 
 void addStrings(vector<DynamicString> &container)
 {
+    cout << "Enter number of strings to add: ";
+    ll numToAdd = getNum();
 }
 
 void removeString(vector<DynamicString> &container)
