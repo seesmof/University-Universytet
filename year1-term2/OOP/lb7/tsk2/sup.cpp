@@ -15,35 +15,6 @@ void showStrings(vector<DynamicString> &container)
 
 void addStrings(vector<DynamicString> &container)
 {
-    // ask the user for the number of strings to add
-    cout << "Enter the number of strings to add: ";
-    ll stringCount = getNum();
-    // ignore any input entered before getting the number of strings
-    cin.ignore();
-    // if the number of strings is less than 1
-    if (stringCount < 1)
-    {
-        // display the error message and exit the program
-        bad("Enter a positive amount of strings to add");
-        return;
-    }
-
-    // prompt the user to enter the specified number of strings
-    cout << "Add strings below (" << stringCount << "): \n";
-    // for each string to add
-    for (ll i = 0; i < stringCount; i++)
-    {
-        // create a DynamicString to hold the new string
-        DynamicString stringHolder;
-        // prompt the user to enter the new string
-        cout << i + 1 << ". ";
-        cin >> stringHolder;
-        // add the DynamicString to the container
-        container.eb(stringHolder);
-        cout << endl;
-    }
-    // axit the function
-    return;
 }
 
 void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
