@@ -23,6 +23,8 @@ public:
     void m_replace(string replaceThis, string withThis) { regex_replace(m_value, regex(replaceThis), withThis); }
     void m_remove_spaces()
     {
+        input.erase(
+            : remove_if(input.begin(), input.end(), isspace), input.end());
         m_value.erase(remove_if(m_value.begin(), m_value.end(), isspace), m_value.end())
     }
     ~DynamicString() {}
