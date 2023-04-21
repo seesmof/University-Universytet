@@ -79,18 +79,26 @@ void addStrings(vector<unique_ptr<DynamicString>> &container)
 
 void addStrings(vector<unique_ptr<DynamicString>> &container, const string &FILE)
 {
+    ll initSize = container.size();
     ifstream file(FILE);
     string line;
     vector<string> lines;
+
     while (getline(file, line))
     {
         lines.push_back(line);
     }
     file.close();
+
     for (auto &line : lines)
     {
         container.push_back(make_unique<DynamicString>(line));
     }
+
+    if (container.size() == initSize + lines.size())
+        good("Strings succesfully added");
+    else
+        bad("Strings were not added");
 }
 
 void removeString(vector<unique_ptr<DynamicString>> &container)
