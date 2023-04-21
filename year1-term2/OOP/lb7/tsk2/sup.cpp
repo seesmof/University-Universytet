@@ -145,6 +145,7 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
         "Convert to uppercase",
         "Convert to lowercase",
         "Find substring",
+        "Validate name",
         "Exit"};
     ll userDecision = showMenu(menuItems);
     cin.ignore();
@@ -191,7 +192,7 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
     }
     else if (userDecision == 8)
     {
-        return;
+        container[numToModify]->m_validate_name();
     }
 
     cout << endl;
