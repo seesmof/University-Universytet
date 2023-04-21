@@ -19,6 +19,12 @@ int main()
         {
             ///////////////////////////////////////
 
+            vector<string> menuItems = {
+                "Vector",
+                "List",
+            };
+            ll userDecision = showMenu(menuItems);
+
             outputMenu(container);
 
             ///////////////////////////////////////
