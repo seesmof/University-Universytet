@@ -1,7 +1,5 @@
-#include <bits/stdc++.h>
 #include "sup.h"
 #include "../../../lib.h"
-using namespace std;
 
 // delta class declaration
 class Delta
