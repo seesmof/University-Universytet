@@ -210,6 +210,7 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
             "Show in file",
             "Exit"};
         userDecision = showMenu(menuItems);
+
         if (userDecision == 1)
             showStrings(container);
         else if (userDecision == 2)
@@ -220,7 +221,19 @@ void outputMenu(vector<unique_ptr<DynamicString>> &container)
     }
     else if (userDecision == 2)
     {
-        addStrings(container);
+        menuItems = {
+            "Add strings from file",
+            "Add strings from console",
+            "Exit"};
+        userDecision = showMenu(menuItems);
+
+        if (userDecision == 1)
+            addStrings(container);
+        else if (userDecision == 2)
+        {
+            string fileName = getFileName();
+            addStrings(container, fileName);
+        }
     }
     else if (userDecision == 3)
     {
