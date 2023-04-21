@@ -41,11 +41,6 @@ text = data.replace("data: ", "")
 text = text.replace("\n ", "")
 
 text = f'''{text}'''
-print('-------------------------------------------')
-text = text.replace('\n', "/n")
-text = text.replace('\r', "/r")
-print(text)
-print('-------------------------------------------')
 text = text.replace('/r/n/r/n/r/n/r/n', "\n")
 text = text.replace('/r/n/r/n/r/n', "\n")
 text = text.replace('/r/n/r/n/r', "\n")
