@@ -3,7 +3,9 @@
 
 // Виконати завдання з лабораторної роботи #5 з довільним типом даних
 
-class DynamicString
+const ROOT_PATH = "D:/repos/university/year1-term2/OOP/lb7/tsk2/sup.cpp"
+
+    class DynamicString
 {
 private:
     string m_value;
