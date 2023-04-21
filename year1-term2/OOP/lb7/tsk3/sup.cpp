@@ -70,7 +70,7 @@ void delObjs(vector<unique_ptr<Delta>> &container)
 
     if (initSize == 0)
     {
-        bad("No strings found");
+        bad("No objects found");
         return;
     }
 
