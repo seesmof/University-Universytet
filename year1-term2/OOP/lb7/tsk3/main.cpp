@@ -16,11 +16,13 @@ int main()
     cout << "\n";
     do
     {
-        ///////////////////////////////////////
-
         do
         {
+            ///////////////////////////////////////
+
             outputMenu(container);
+
+            ///////////////////////////////////////
 
             cout << "\nWould you like to return to menu? (Y | N): ";
             cin >> doReturnToMenu;
@@ -34,8 +36,6 @@ int main()
                 break;
 
         } while (doReturnToMenu == 'y' || doReturnToMenu == 'Y');
-
-        ///////////////////////////////////////
 
         cout << "\nWould you like to continue program execution? (Y | N): ";
         cin >> doContinue;
