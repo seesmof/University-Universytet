@@ -41,7 +41,7 @@ void showStrings(vector<unique_ptr<DynamicString>> &container)
     cout << "Available strings (" << stringsNum << "):\n";
     for (ll i = 0; i < stringsNum; i++)
     {
-        cout << i + 1 << ". " << container[i]->getValue() << " - " << container[i]->getSize() << endl;
+        cout << i + 1 << ". " << container[i]->getValue() << " - " << container[i]->getSize() << " symbols\n";
     }
 }
 
