@@ -9,13 +9,16 @@ private:
     ll m_id;
 
 public:
-Delta() : m_id(nextID()) {}
-ll nextID()
-{
-    static ll id = 0;
-    return id++;
+    Delta() : m_id(nextID()) {}
+    ll nextID()
+    {
+        static ll id = 0;
+        return id++;
+    }
+    void getID() const { return id; }
 }
-};
+}
+;
 
 void addObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
