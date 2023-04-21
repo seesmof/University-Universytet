@@ -19,11 +19,11 @@ public:
     ~Delta() {}
 };
 
-void addObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void showObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
 }
 
-void showObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
+void addObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
 }
 
