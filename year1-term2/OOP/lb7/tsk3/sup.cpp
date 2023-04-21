@@ -35,6 +35,22 @@ void showObjs(vector<unique_ptr<Delta>> &container)
     }
 }
 
+void showObjs(list<unique_ptr<Delta>> &container)
+{
+    ll objsNum = container.size();
+    if (objsNum == 0)
+    {
+        bad("No objects to show");
+        return;
+    }
+
+    cout << "Available objects (" << objsNum << "):\n";
+    for (ll i = 0; i < objsNum; i++)
+    {
+        cout << i + 1 << ". Descriptor: " << container[i]->getID() << endl;
+    }
+}
+
 void addObjs(vector<unique_ptr<Delta>> &container)
 {
     ll initSize = container.size();
