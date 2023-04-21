@@ -102,15 +102,8 @@ void delObjs(vector<unique_ptr<Delta>> &container)
 
 void outputMenu(vector<unique_ptr<Delta>> &container)
 {
-    cout << BOLD << "Welcome! Choose some option from below\n"
-         << UNBOLD;
-    cout << "1. Show objects\n";
-    cout << "2. Add objects\n";
-    cout << "3. Remove objects\n";
-    cout << "4. Exit\n";
-    cout << "Enter: ";
-    ll userDecision = getNum();
-    cout << endl;
+    vector<string> menuItems = {"Show objects", "Add objects", "Remove objects", "Exit"};
+    showMenu(menuItems);
 
     if (userDecision == 1)
     {
