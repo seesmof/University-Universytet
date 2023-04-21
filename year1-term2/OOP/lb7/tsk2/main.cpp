@@ -6,19 +6,15 @@ using namespace std;
 
 int main()
 {
-    // declare local variables //
     srand(time(NULL));
     char doContinue;
-    /////////////////////////////
+    vector<unique_ptr<DynamicString>> container;
+    char doReturnToMenu;
 
-    // project intro
     cout << "\n";
     do
     {
         ///////////////////////////////////////
-
-        vector<unique_ptr<DynamicString>> container;
-        char doReturnToMenu;
 
         do
         {
