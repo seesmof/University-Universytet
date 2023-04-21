@@ -21,7 +21,7 @@ void deleteObjects(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
 }
 
-void outputMenu(vector<unique_ptr<DynamicString>> &container)
+void outputMenu(vector<unique_ptr<Delta>> &container)
 {
     cout << BOLD << "Welcome! Choose some option from below\n"
          << UNBOLD;
