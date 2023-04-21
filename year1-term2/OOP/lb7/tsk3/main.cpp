@@ -25,7 +25,14 @@ int main()
             };
             ll userDecision = showMenu(menuItems, "what container to use");
 
-            outputMenu(container);
+            if (userDecision == 1)
+            {
+                outputMenu(container);
+            }
+            else if (userDecision == 2)
+            {
+                outputMenu(container_list);
+            }
 
             ///////////////////////////////////////
 
