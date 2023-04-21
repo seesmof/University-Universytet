@@ -124,7 +124,7 @@ void delObjs(list<unique_ptr<Delta>> &container)
         return;
     }
 
-    auto it = next(container, numToRemove);
+    auto it = next(container.begin(), numToRemove);
     container.erase(it);
 
     if (container.size() == initSize - 1)
