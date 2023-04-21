@@ -140,7 +140,11 @@ void modifyString(vector<unique_ptr<DynamicString>> &container)
         "2. Reverse",
         "3. Replace (given substring with another string)",
         "4. Remove excessive spaces",
-    }
+        "5. Convert to uppercase",
+        "6. Convert to lowercase",
+        "7. Find substring",
+        "8. Exit"};
+}
 }
 
 void outputMenu(vector<unique_ptr<DynamicString>> &container)
