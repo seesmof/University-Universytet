@@ -16,9 +16,7 @@ public:
         return id++;
     }
     void getID() const { return id; }
-}
-}
-;
+};
 
 void addObjs(vector<unique_ptr<Delta>> &deltaObjectsVector)
 {
