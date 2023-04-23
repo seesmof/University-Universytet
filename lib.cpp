@@ -184,11 +184,12 @@ string generateRandomPassword(int length)
     return randomPass;
 }
 
-vector<string> getUniqueVector(vector<string> &inputVector)
+template <typename T>
+vector<T> getUniqueVector(vector<T> &inputVector)
 {
-    vector<string> uniqueElements;
-    unordered_set<string> seenElements;
-    for (string element : inputVector)
+    vector<T> uniqueElements;
+    unordered_set<T> seenElements;
+    for (T element : inputVector)
     {
         if (seenElements.find(element) == seenElements.end())
         {
