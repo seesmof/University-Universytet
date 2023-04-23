@@ -34,7 +34,7 @@
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
-  - [Resources Used](#resources-used)
+  - [Tech and Resources Used](#tech-and-resources-used)
 - [License](#license)
 - [Contact](#contact)
 
@@ -44,7 +44,7 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Resources Used
+### Tech and Resources Used
 
 ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 <br>
