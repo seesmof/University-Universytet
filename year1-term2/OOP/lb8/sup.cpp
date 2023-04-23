@@ -64,17 +64,17 @@ istream &operator>>(istream &inputStream, DynamicString &inputHolder)
     inputHolder = buffer;
     return inputStream;
 }
-ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT)
+ofstream &operator<<(ofstream &outputFile, const DynamicString &OUTPUT)
 {
-    outputStream << OUTPUT.strValue;
-    return outputStream;
+    outputFile << OUTPUT.strValue;
+    return outputFile;
 }
-ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder)
+ifstream &operator>>(ifstream &inputFile, DynamicString &inputHolder)
 {
     char buffer[65536];
-    inputStream.getline(buffer, 65536);
+    inputFile.getline(buffer, 65536);
     inputHolder = buffer;
-    return inputStream;
+    return inputFile;
 }
 
 // define a function for outputting the array of strings
