@@ -227,14 +227,11 @@ void outputMenu(vector<DynamicString> &container)
     }
     else if (userDecision == 2)
     {
-        cout << BOLD << "Where to get strings from?\n"
-             << UNBOLD;
-        cout << "1. From console\n";
-        cout << "2. From file\n";
-        cout << "3. Exit\n";
-        cout << "Enter: ";
-        userDecision = getNum();
-        cout << endl;
+        menuItems = {
+            "Add strings from console",
+            "Add strings from file",
+            "Exit"};
+        userDecision = showMenu(menuItems);
 
         if (userDecision == 1)
         {
@@ -242,18 +239,13 @@ void outputMenu(vector<DynamicString> &container)
         }
         else if (userDecision == 2)
         {
-            string inputFileName = "D:/repos/university/t2y1/oop_lab5/";
-            inputFileName += getFileName();
-
-            addStrings(container, inputFileName.c_str());
+            string fileName = ROOT_DIR;
+            fileName += getFileName();
+            addStrings(container, fileName);
         }
     }
     else if (userDecision == 3)
     {
-        showStrings(container);
-
         removeString(container);
-
-        showStrings(container);
     }
 }
