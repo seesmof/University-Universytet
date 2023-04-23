@@ -62,6 +62,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 - [![JQuery][JQuery.com]][JQuery-url]
 - ![Image](https://github-readme-stats.vercel.app/api?username=seesmof&theme=blue-green)
+- ![Image](https://github-readme-stats.vercel.app/api/top-langs/?username=seesmof&theme=blue-green)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
