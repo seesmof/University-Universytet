@@ -21,41 +21,27 @@ void dbg_out(Head H, Tail... T)
 }
 #define dbg(...) cerr << "(" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
 
-// for outputting error messages
 void bad(const string &INPUT)
 {
-    // create a stringstream object to store the message
     stringstream ss;
-    // add ANSI escape codes for red text
     ss << "\033[1;31mERROR: " << INPUT << "\033[0m";
-    // output the message to cerr
     cerr << ss.str() << endl;
 }
 
-// for outputting success messages
 void good(const string &INPUT)
 {
-    // create a stringstream object to store the message
     stringstream ss;
-    // add ANSI escape codes for red text
     ss << "\033[1;32mSUCCESS: " << INPUT << "\033[0m";
-    // output the message to cerr
     cerr << ss.str() << endl;
 }
 
-// for getting nubmer input from user
 ll getNum()
 {
-    // declare variables for holding the input
     ll number;
-    // while user enters invalid input
     while (!(cin >> number))
     {
-        // clear buffer
         cin.clear();
-        // ignore new line char
         cin.ignore(256, '\n');
-        // output error message and continue
         cout << endl;
         bad("Enter an integer");
         cout << endl;
@@ -63,61 +49,51 @@ ll getNum()
     return number;
 }
 
-// For making text bold
 ostream &BOLD(ostream &os)
 {
     return os << "\e[1m";
 }
 
-// For changing text back to normal
 ostream &UNBOLD(ostream &os)
 {
     return os << "\e[0m";
 }
 
-// For setting text color to red
 ostream &RED(ostream &os)
 {
     return os << "\033[1;31m";
 }
 
-// For changing text back to normal
 ostream &UNRED(ostream &os)
 {
     return os << "\033[0m";
 }
 
-// For setting text color to green
 ostream &GREEN(ostream &os)
 {
     return os << "\033[1;32m";
 }
 
-// For changing text back to normal
 ostream &UNGREEN(ostream &os)
 {
     return os << "\033[0m";
 }
 
-// For changing text color to gray
 ostream &GRAY(ostream &os)
 {
     return os << "\033[1;30m";
 }
 
-// For changing text back to normal
 ostream &UNGRAY(ostream &os)
 {
     return os << "\033[0m";
 }
 
-// For changing text color to yellow
 ostream &YELLOW(ostream &os)
 {
     return os << "\033[1;33m";
 }
 
-// For changing text back to normal
 ostream &UNYELLOW(ostream &os)
 {
     return os << "\033[0m";
