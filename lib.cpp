@@ -177,36 +177,28 @@ void quickSort(vector<T> &arr, int left, int right)
     // iterate through the values of i and j
     while (i <= j)
     {
-        // iterate through the array until finds an element that is greater than the pivot value
         while (arr[i] > pivot)
-            i++; // increment i
-        // iterate through the array until finds an element that is less than the pivot value
+            i++;
         while (arr[j] < pivot)
-            j--; // decrement j
+            j--;
 
-        // check if the value of i is <= j.
         if (i <= j)
         {
-            // swap the values of arr[i] and arr[j], then increment i and decrement j
             swap(arr[i], arr[j]);
             i++;
             j--;
         }
     };
 
-    // recursively sort the left part of the array
     if (left < j)
         quickSort(arr, left, j);
-    // recursively sort the right part of the array
     if (i < right)
         quickSort(arr, i, right);
 }
 
-// implements the Exchange Sort algorithm to sort the elements of the given vector in ascending order
 template <typename T>
 void exchangeSort(vector<T> &arr)
 {
-    // check if size of array is <= 1, if so stop function
     if (arr.size() <= 1)
         return;
 
@@ -216,11 +208,9 @@ void exchangeSort(vector<T> &arr)
                 swap(arr[i], arr[j]);
 }
 
-// implements the Bubble Sort algorithm to sort the elements of the given vector in ascending order
 template <typename T>
 void bubbleSort(vector<T> &arr)
 {
-    // check if size of array is <= 1, if so stop function
     if (arr.size() <= 1)
         return;
 
@@ -230,31 +220,25 @@ void bubbleSort(vector<T> &arr)
                 swap(arr[j], arr[j + 1]);
 }
 
-// implements the Merge Sort algorithm to sort the elements of the given vector in ascending order
 template <typename T>
 void mergeSort(vector<T> &arr)
 {
-    // check if size of array is <= 1, if so stop function
     if (arr.size() <= 1)
         return;
 
-    vector<int> left, right;     // for partitioning the array
-    int middle = arr.size() / 2; // calculate the middle index of the array
+    vector<int> left, right;
+    int middle = arr.size() / 2;
 
-    // iterate through the array from start to middle and add each element to left vector
     for (int i = 0; i < middle; i++)
         left.push_back(arr[i]);
-    // iterate through the array from middle to end and add each element to right vector
     for (int i = middle; i < arr.size(); i++)
         right.push_back(arr[i]);
 
-    // recursively sort left and right vectors
     mergeSort(left);
     mergeSort(right);
 
-    int i = 0, j = 0, k = 0; // declare indeces
+    int i = 0, j = 0, k = 0;
 
-    // iterate through the left and right vectors until the end of either vector
     while (i < left.size() && j < right.size())
     {
         if (left[i] > right[j])
@@ -270,7 +254,6 @@ void mergeSort(vector<T> &arr)
         k++;
     }
 
-    // merge left and input vectors
     while (i < left.size())
     {
         arr[k] = left[i];
@@ -278,7 +261,6 @@ void mergeSort(vector<T> &arr)
         k++;
     }
 
-    // merge right and input vectors
     while (j < right.size())
     {
         arr[k] = right[j];
@@ -287,7 +269,6 @@ void mergeSort(vector<T> &arr)
     }
 }
 
-// to output one dimensional vector
 template <typename T>
 void outputArray(vector<T> arr)
 {
@@ -296,7 +277,6 @@ void outputArray(vector<T> arr)
     cout << endl;
 }
 
-// to output one dimensional array
 void outputArray(int *arr)
 {
     int n = sizeof(arr) / sizeof(int);
@@ -305,7 +285,6 @@ void outputArray(int *arr)
     cout << endl;
 }
 
-// to output two dimensional vector
 template <typename T>
 void outputArray(vector<vector<T>> &arr)
 {
@@ -318,15 +297,12 @@ void outputArray(vector<vector<T>> &arr)
     }
 }
 
-// for getting email address from user
 string getEmailAddress()
 {
-    // ask user for email address
     string emailAddress;
     cout << "Please enter an email address: ";
     cin >> emailAddress;
 
-    // validate email address
     if (emailAddress.find("@") == string::npos)
     {
         cout << "\nERROR: Invalid email address\n\n";
@@ -335,99 +311,73 @@ string getEmailAddress()
     else
         return emailAddress;
 
-    // should not reach this pointt
     return "";
 }
 
-// For getting text file inputted from user
 string getFileName()
 {
-    // Declare local variables
-    string fileName = "";         // for storing file name
-    bool isExtensionFound = true; // for tracking file extension
+    string fileName = "";
+    bool isExtensionFound = true;
 
-    // Create do while loop for properly getting file name with extension
     do
     {
-        // Ask user to enter file name
         cout << "Enter file name: ";
         cin >> fileName;
 
-        // Create condition to check if file extension is found
         if (fileName.find(".") == string::npos)
         {
-            // Execute if not found
-            isExtensionFound = false; // set tracker state to false
-            // Output error message
+            isExtensionFound = false;
             cout << "\nERROR: File extension not found. Try again...\n\n";
-            continue; // jump into next iteration
+            continue;
         }
-        // If extension is found
         else
-            break; // jump out of loop
+            break;
     } while (isExtensionFound == false);
 
-    // Return file name
     return fileName;
 }
 
-// For generating a random string of given length
 string generateRandomString(int length)
 {
     // Declare local variables
-    string chars = "abcdefghijklmnopqrstuvwxy"; // characters pool to generate random string from
-    string randomString = "";                   // random string result holder
-
-    // Generate a random character and add it to the string until it reaches the desired length
+    string chars = "abcdefghijklmnopqrstuvwxy";
+    string randomString = "";
     for (int i = 0; i < length; i++)
     {
-        // Generate a random index between 0 and the size of our character pool
         int index = rand() % chars.size();
-
-        // Add the character at that index to our string
         randomString += chars[index];
     }
 
-    return randomString; // Append ".txt" and return the generated string
+    return randomString;
 }
 
-// For generating a random password of given length
 string generateRandomPassword(int length)
 {
-    // Declare local variables
-    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxy1234567890!@#$%^&*()_+=-[]{}`~';/.,"; // characters pool to generate random string from
-    string randomPass = "";                                                                                 // random string result holder
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxy1234567890!@#$%^&*()_+=-[]{}`~';/.,";
+    string randomPass = "";
 
-    // Generate a random character and add it to the string until it reaches the desired length
     for (int i = 0; i < length; i++)
     {
-        // Generate a random index between 0 and the size of our character pool
         int index = rand() % chars.size();
-
-        // Add the character at that index to our string
         randomPass += chars[index];
     }
 
     return randomPass;
 }
 
-// returns a vector containing only the unique elements from the input vector
 vector<string> getUniqueVector(vector<string> &inputVector)
 {
-    vector<string> uniqueElements;      // to store unique elements as strings
-    unordered_set<string> seenElements; // to store elements that have already been seen
+    vector<string> uniqueElements;
+    unordered_set<string> seenElements;
 
-    // iterate through each element of the inputVector
     for (string element : inputVector)
     {
-        // check if the element is present in the seenElements container
         if (seenElements.find(element) == seenElements.end())
         {
-            uniqueElements.push_back(element); // add the element to uniqueElements vector
-            seenElements.insert(element);      // inserts the element into the seenElements set, if it is not already present
+            uniqueElements.push_back(element);
+            seenElements.insert(element);
         }
     }
 
-    // return a vector containing only the unique elements from the original vector
     return uniqueElements;
 }
