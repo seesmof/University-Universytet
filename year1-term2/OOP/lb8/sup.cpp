@@ -174,27 +174,38 @@ void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
 
 void removeString(vector<DynamicString> &container)
 {
-    if (container.size() == 0)
+    ll initSize = container.size();
+
+    if (initSize == 0)
     {
-        bad("No strings to remove");
+        bad("No strings found");
         return;
     }
+
+    cout << endl;
+    showStrings(container);
+    cout << endl;
+
+    cout << "Enter number of string to remove: ";
+    ll numToRemove = getNum();
+    numToRemove--;
+
+    if (numToRemove < 0 || numToRemove >= initSize)
+    {
+        bad("Enter a valid number string number");
+        return;
+    }
+
+    container.erase(container.begin() + numToRemove);
+    cout << endl;
+
+    if (container.size() == initSize - 1)
+        good("String succesfully removed");
     else
-    {
-        cout << "Enter index of element to delete: ";
-        ll index = getNum();
-        index--;
-        if (index < 0 || index >= container.size())
-        {
-            bad("Index out of range");
-            return;
-        }
-        cout << endl;
-        good("Element successfully removed");
-        cout << endl;
-        container.erase(container.begin() + index);
-        return;
-    }
+        bad("String was not removed");
+
+    cout << endl;
+    showStrings(container);
 }
 
 void outputMenu(vector<DynamicString> &container)
