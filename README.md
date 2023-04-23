@@ -85,5 +85,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&ogoColor=white)](https://t.me/seesmof)
 <br>
 
-[![Discord](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](<[mailto:seesmwork@gmail.com](https://discordapp.com/users/289998109226958858)>)
+[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](<[mailto:seesmwork@gmail.com](https://discordapp.com/users/289998109226958858)>)
 <br>
