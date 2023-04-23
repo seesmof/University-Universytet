@@ -173,7 +173,6 @@ string getFileName()
 
 string generateRandomString(int length)
 {
-    // Declare local variables
     string chars = "abcdefghijklmnopqrstuvwxy";
     string randomString = "";
     for (int i = 0; i < length; i++)
