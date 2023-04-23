@@ -64,18 +64,6 @@ istream &operator>>(istream &inputStream, DynamicString &inputHolder)
     inputHolder = buffer;
     return inputStream;
 }
-ofstream &operator<<(ofstream &outputFile, const DynamicString &OUTPUT)
-{
-    outputFile << OUTPUT.strValue;
-    return outputFile;
-}
-ifstream &operator>>(ifstream &inputFile, DynamicString &inputHolder)
-{
-    char buffer[65536];
-    inputFile.getline(buffer, 65536);
-    inputHolder = buffer;
-    return inputFile;
-}
 
 // define a function for outputting the array of strings
 void showStrings(vector<DynamicString> &container)
