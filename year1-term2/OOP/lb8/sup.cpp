@@ -208,6 +208,9 @@ void removeString(vector<DynamicString> &container)
         return;
     }
 
+    cout << numToRemove << endl;
+    cout << container[numToRemove] << endl;
+
     container.erase(container.begin() + numToRemove);
     cout << endl;
 
