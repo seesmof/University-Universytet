@@ -1,6 +1,8 @@
 <a name="readme-top"></a>
 
+![Contributors](http://ForTheBadge.com/images/badges/built-by-developers.svg)
 ![Contributors](http://ForTheBadge.com/images/badges/built-with-love.svg)
+![Contributors](http://ForTheBadge.com/images/badges/built-with-science.svg)
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
