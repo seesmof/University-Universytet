@@ -93,10 +93,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <br>
 
 <p align="right"><a href="#readme-top"><strong>Back to top</strong></a></p>
-
----
-
-787d12
-bcc41c
-e0ea21
-f3ff9d
