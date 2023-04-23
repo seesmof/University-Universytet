@@ -142,7 +142,7 @@ void addStrings(vector<DynamicString> &container)
     return;
 }
 
-void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
+void addStrings(vector<DynamicString> &container, const string &FILE)
 {
     ll initSize = container.size();
     ifstream file(FILE);
@@ -171,7 +171,7 @@ void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
     else
         bad("Strings were not added");
 
-    ifstream inputFile(INPUT_FILENAME);
+    ifstream inputFile(FILE);
     if (!inputFile.is_open())
     {
         bad("Input file cannot be opened");
