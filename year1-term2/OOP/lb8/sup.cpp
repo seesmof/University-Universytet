@@ -6,117 +6,68 @@
 class DynamicString
 {
 private:
-    char *strValue; // pointer to the string value
-    size_t strSize; // size of the string value
+    char *strValue;
+    size_t strSize;
 
 public:
-    // declare default constructor
     DynamicString() : strValue(nullptr), strSize(0) {}
-
-    // define a parameterized constructor
     DynamicString(const char *INPUT) : strValue(nullptr), strSize(0)
     {
-        // check if the value of INPUT is not null
         if (INPUT)
         {
-            // if it's not null, determine the length of the INPUT string and add 1 to it, taking the null terminator into account
             strSize = strlen(INPUT) + 1;
-            // allocate an array of strSize characters and assign it to strValue
             strValue = new char[strSize];
-            // copy the contents of the INPUT string to strValue
             strcpy_s(strValue, strSize, INPUT);
         }
     }
-
-    // Define a copy constructor for creating a new copy object
     DynamicString(const DynamicString &other)
     {
-        // calculate the length of the string that is being copied
         size_t len = strlen(other.strValue) + 1;
-        // allocate memory for the new copy of the string
         strValue = new char[len];
-        // aopy the contents of the original string into the new memory location
         strcpy_s(strValue, len, other.strValue);
     }
-
-    // declare method for overloading the assignment operator
     DynamicString &operator=(const char *INPUT)
     {
-        // delete the old value
         delete[] strValue;
-        // calculate the size of the string
         size_t inputSize = strlen(INPUT) + 1;
-        // create a new character array to hold the input string
         strValue = new char[inputSize];
-        // copy the contents of the input string to the new character array
         strcpy_s(strValue, inputSize, INPUT);
-        // return the DynamicString object by reference
         return *this;
     }
-
-    // declare method for overloading the assignment operator with an object
     DynamicString &operator=(const DynamicString &INPUT)
     {
-        // delete the old value
         delete[] strValue;
-        // get the length of the input string
         strSize = INPUT.strSize;
-        // allocate memory for the new string
         strValue = new char[strSize + 1];
-        // copy values from the input string to the new one
         strcpy(strValue, INPUT.strValue);
-        // return the object by referance
         return *this;
     }
-
-    // define an output stream operator function
     friend ostream &operator<<(ostream &outputStream, const DynamicString &OUTPUT)
     {
-        // output the string value of the DynamicString object to the output stream
         outputStream << OUTPUT.strValue;
-        // return the output stream
         return outputStream;
     }
-
-    // define an input stream operator function
     friend istream &operator>>(istream &inputStream, DynamicString &inputHolder)
     {
-        // define a character array to store input
         char buffer[65536];
-        // use the getline function to read input from an input stream and store it in the buffer array
         inputStream.getline(buffer, 65536);
-        // convert the buffer array to a DynamicString object and store it in inputHolder
         inputHolder = buffer;
-        // return the input stream
         return inputStream;
     }
-
-    // define an output stream operator function for file
     friend ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT)
     {
-        // write the value of strValue to output
         outputStream << OUTPUT.strValue;
-        // return the output stream
         return outputStream;
     }
-
-    // define an input stream operator function for file
     friend ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder)
     {
-        // define a character array to store input
         char buffer[65536];
-        // use the getline function to read input from an input stream and store it in the buffer array
         inputStream.getline(buffer, 65536);
-        // convert the buffer array to a DynamicString object and store it in inputHolder
         inputHolder = buffer;
-        // return the input stream
         return inputStream;
     }
-
-    // declare destructor
     ~DynamicString()
     {
-        // delete the string
         delete[] strValue;
     }
 };
