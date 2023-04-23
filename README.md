@@ -34,7 +34,7 @@
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
-  - [Technologies Used](#technologies-used)
+  - [Resources Used](#resources-used)
 - [License](#license)
 - [Contact](#contact)
 
@@ -44,7 +44,7 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Technologies Used
+### Resources Used
 
 ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 <br>
@@ -65,6 +65,9 @@
 <br>
 
 ![MDN Web Docs](https://img.shields.io/badge/MDN_Web_Docs-black?style=for-the-badge&logo=mdnwebdocs&logoColor=white)
+<br>
+
+![FreeCodeCamp](https://img.shields.io/badge/freecodecamp-27273D?style=for-the-badge&logo=freecodecamp&logoColor=white)
 <br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
