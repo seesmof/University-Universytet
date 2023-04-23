@@ -1,4 +1,5 @@
 #include "sup.h"
+#include "exc.h"
 #include "D:\repos\university\lib.h"
 
 const string ROOT_DIR = "D:/repos/university/year1-term2/OOP/lb8/";
@@ -74,19 +75,18 @@ public:
 
 void showStrings(vector<DynamicString> &container)
 {
-    ll containerSize = container.size();
-    if (containerSize == 0)
+    ll stringsNum = container.size();
+    if (stringsNum == 0)
     {
-        bad("No strings to display");
+        bad("No strings found");
         return;
     }
 
-    cout << "Available strings (" << containerSize << "):\n";
-    for (ll i = 0; i < containerSize; i++)
+    cout << "Available strings (" << stringsNum << "):\n";
+    for (ll i = 0; i < stringsNum; i++)
     {
         cout << i + 1 << ". " << container[i] << endl;
     }
-    return;
 }
 
 void showStrings(vector<DynamicString> &container, const string &FILE)
