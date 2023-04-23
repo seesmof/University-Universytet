@@ -58,7 +58,7 @@ Personal repository with all the C++ projects from period one, year one.
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">University Archive</h3>
 
   <p align="center">
     project_description
@@ -106,7 +106,7 @@ Personal repository with all the C++ projects from period one, year one.
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `seesmof`, `university`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `seesmof`, `university`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `University Archive`, `project_description`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
