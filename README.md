@@ -80,3 +80,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&ogoColor=white)](https://t.me/seesmof)
+<br>
+
+[![Email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:seesmwork@gmail.com)
+<br>
+
+[![Email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:seesmwork@gmail.com)
+<br>
