@@ -79,4 +79,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/users/289998109226958858)
 <br>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right"><a href="#readme-top"><strong>Back to top</strong></a></p>
