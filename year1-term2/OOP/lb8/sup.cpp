@@ -78,7 +78,7 @@ void showStrings(vector<DynamicString> &container)
     ll stringsNum = container.size();
     if (stringsNum == 0)
     {
-        bad("No strings found");
+        throw IOException();
         return;
     }
 
@@ -129,7 +129,7 @@ void addStrings(vector<DynamicString> &container)
 
     if (numToAdd < 1)
     {
-        bad("Enter a valid number of strings");
+        throw IOException();
         return;
     }
 
@@ -145,7 +145,7 @@ void addStrings(vector<DynamicString> &container)
     if (container.size() == initSize + numToAdd)
         good("Strings succesfully added");
     else
-        bad("Strings were not added");
+        throw IOException();
 
     cout << endl;
     showStrings(container);
