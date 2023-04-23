@@ -128,7 +128,7 @@ void addStrings(vector<DynamicString> &container)
     cout << endl;
     cin.ignore();
 
-    if (numToAdd == 0)
+    if (numToAdd <= 0)
     {
         bad("Enter a valid number of strings");
         return;
