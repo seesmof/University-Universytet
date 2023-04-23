@@ -208,14 +208,11 @@ void outputMenu(vector<DynamicString> &container)
 
     if (userDecision == 1)
     {
-        cout << BOLD << "Where to output the string?\n"
-             << UNBOLD;
-        cout << "1. To console\n";
-        cout << "2. To file\n";
-        cout << "3. Exit\n";
-        cout << "Enter: ";
-        userDecision = getNum();
-        cout << endl;
+        menuItems = {
+            "Output to console",
+            "Output to file",
+            "Exit"};
+        userDecision = showMenu(menuItems);
 
         if (userDecision == 1)
         {
@@ -223,9 +220,9 @@ void outputMenu(vector<DynamicString> &container)
         }
         else if (userDecision == 2)
         {
-            string outputFileName = "D:/repos/university/t2y1/oop_lab5/";
-            outputFileName += getFileName();
-            showStrings(container, outputFileName.c_str());
+            string fileName = ROOT_DIR;
+            fileName += getFileName();
+            showStrings(container, fileName);
         }
     }
     else if (userDecision == 2)
