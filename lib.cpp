@@ -53,7 +53,6 @@ ostream &BOLD(ostream &os)
 {
     return os << "\e[1m";
 }
-
 ostream &UNBOLD(ostream &os)
 {
     return os << "\e[0m";
@@ -63,7 +62,6 @@ ostream &RED(ostream &os)
 {
     return os << "\033[1;31m";
 }
-
 ostream &UNRED(ostream &os)
 {
     return os << "\033[0m";
@@ -73,7 +71,6 @@ ostream &GREEN(ostream &os)
 {
     return os << "\033[1;32m";
 }
-
 ostream &UNGREEN(ostream &os)
 {
     return os << "\033[0m";
@@ -83,7 +80,6 @@ ostream &GRAY(ostream &os)
 {
     return os << "\033[1;30m";
 }
-
 ostream &UNGRAY(ostream &os)
 {
     return os << "\033[0m";
@@ -93,7 +89,6 @@ ostream &YELLOW(ostream &os)
 {
     return os << "\033[1;33m";
 }
-
 ostream &UNYELLOW(ostream &os)
 {
     return os << "\033[0m";
