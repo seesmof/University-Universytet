@@ -21,18 +21,11 @@
     <br />
     <a href="https://github.com/seesmof/university"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/seesmof/university">View Demo</a>
-    ·
-    <a href="https://github.com/seesmof/university/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/seesmof/university/issues">Request Feature</a>
   </p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
+<summary>Table of Contents</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -54,7 +47,6 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-</details>
 
 <!-- ABOUT THE PROJECT -->
 
