@@ -161,42 +161,16 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
     }
     file.close();
 
-    for (auto &line : lines)
+    for (ll i = 0; i < lines.size(); i++)
     {
-        container.push_back(DynamicString(line));
+        DynamicString stringHolder = lines[i].c_str();
+        container.eb(stringHolder);
     }
 
     if (container.size() == initSize + lines.size())
         good("Strings succesfully added");
     else
         bad("Strings were not added");
-
-    ifstream inputFile(FILE);
-    if (!inputFile.is_open())
-    {
-        bad("Input file cannot be opened");
-        return;
-    }
-
-    vector<string> linesFromFile;
-    string lineHolder;
-    ll linesCounter = 0;
-
-    while (getline(inputFile, lineHolder))
-    {
-        linesCounter++;
-        linesFromFile.pb(lineHolder);
-    }
-
-    for (ll i = 0; i < linesCounter; i++)
-    {
-        DynamicString stringHolder = linesFromFile[i].c_str();
-        container.eb(stringHolder);
-    }
-
-    cout << endl;
-    good("Strings successfully added");
-    return;
 }
 
 void removeString(vector<DynamicString> &container)
