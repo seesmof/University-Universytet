@@ -144,6 +144,33 @@ void addStrings(vector<DynamicString> &container)
 
 void addStrings(vector<DynamicString> &container, const string &INPUT_FILENAME)
 {
+    ll initSize = container.size();
+    ifstream file(FILE);
+    string line;
+    vector<string> lines;
+
+    if (!file.is_open())
+    {
+        bad("File not found");
+        return;
+    }
+
+    while (getline(file, line))
+    {
+        lines.push_back(line);
+    }
+    file.close();
+
+    for (auto &line : lines)
+    {
+        container.push_back(DynamicString(line));
+    }
+
+    if (container.size() == initSize + lines.size())
+        good("Strings succesfully added");
+    else
+        bad("Strings were not added");
+
     ifstream inputFile(INPUT_FILENAME);
     if (!inputFile.is_open())
     {
