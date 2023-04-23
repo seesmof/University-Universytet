@@ -14,7 +14,7 @@
     <img src="./blueprint/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h1 align="center">University Archive</h1>
+<h2 align="center">University Archive</h2>
 
   <p align="center">
     A personal repository, an archive pretty much, of all the tasks, resources and other documentation or information tied to my university journey.
@@ -26,17 +26,17 @@
 
 <!-- TABLE OF CONTENTS -->
 
-## Table of Contents
+### Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
-  - [Technologies Used](#technologies-used)
+- [Technologies Used](#technologies-used)
 - [License](#license)
 - [Contact](#contact)
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
+### About The Project
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -64,7 +64,7 @@
 
 <!-- LICENSE -->
 
-## License
+### License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
@@ -72,7 +72,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 
-## Contact
+### Contact
 
 [![Email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:seesmwork@gmail.com)
 <br>
