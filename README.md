@@ -42,7 +42,7 @@ This is a repository that contains all of my university stuff throughout the yea
       - other files
   - ...
 
-Now, to understand the system a bit more, let's dive a bit deeper into it. To understand how it works we first need to understand what each part means. So, basically the root directory is broken up into term folders. One term - one folder. In each term folder there must be one folder for each course and
+Now, to understand the system a bit more, let's dive a bit deeper into it. To understand how it works we first need to understand what each part means. So, basically the root directory is broken up into term folders. One term - one folder. In each term folder there must be one folder for each course and possibly some important documents in root. In each course folder there must be a course
 
 ### Tech and Resources Used
 
