@@ -42,54 +42,34 @@ public:
         strcpy(strValue, INPUT.strValue);
         return *this;
     }
-    friend ostream &operator<<(ostream &outputStream, const DynamicString &OUTPUT)
-    {
-        outputStream << OUTPUT.strValue;
-        return outputStream;
-    }
-    friend istream &operator>>(istream &inputStream, DynamicString &inputHolder)
-    {
-        char buffer[65536];
-        inputStream.getline(buffer, 65536);
-        inputHolder = buffer;
-        return inputStream;
-    }
-    friend ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT)
-    {
-        outputStream << OUTPUT.strValue;
-        return outputStream;
-    }
-    friend ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder)
-    {
-        char buffer[65536];
-        inputStream.getline(buffer, 65536);
-        inputHolder = buffer;
-        return inputStream;
-    }
+    friend ostream &operator<<(ostream &outputStream, const DynamicString &OUTPUT);
+    friend istream &operator>>(istream &inputStream, DynamicString &inputHolder);
+    friend ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT);
+    friend ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder);
     ~DynamicString()
     {
         delete[] strValue;
     }
 };
 
-friend ostream &operator<<(ostream &outputStream, const DynamicString &OUTPUT)
+ostream &operator<<(ostream &outputStream, const DynamicString &OUTPUT)
 {
     outputStream << OUTPUT.strValue;
     return outputStream;
 }
-friend istream &operator>>(istream &inputStream, DynamicString &inputHolder)
+istream &operator>>(istream &inputStream, DynamicString &inputHolder)
 {
     char buffer[65536];
     inputStream.getline(buffer, 65536);
     inputHolder = buffer;
     return inputStream;
 }
-friend ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT)
+ofstream &operator<<(ofstream &outputStream, const DynamicString &OUTPUT)
 {
     outputStream << OUTPUT.strValue;
     return outputStream;
 }
-friend ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder)
+ifstream &operator>>(ifstream &inputStream, DynamicString &inputHolder)
 {
     char buffer[65536];
     inputStream.getline(buffer, 65536);
