@@ -61,7 +61,7 @@ Personal repository with all the C++ projects from period one, year one.
 <h3 align="center">University Archive</h3>
 
   <p align="center">
-    project_description
+    A personal repository, an archive pretty much, of all the tasks, resources and other documentation or information tied to my university journey.
     <br />
     <a href="https://github.com/seesmof/university"><strong>Explore the docs »</strong></a>
     <br />
@@ -106,7 +106,7 @@ Personal repository with all the C++ projects from period one, year one.
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `seesmof`, `university`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `University Archive`, `project_description`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `seesmof`, `university`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `University Archive`, `A personal repository, an archive pretty much, of all the tasks, resources and other docu or inf about tied to university journey.`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
