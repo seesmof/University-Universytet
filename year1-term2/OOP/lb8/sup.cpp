@@ -183,14 +183,17 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
 
 void removeString(vector<DynamicString> &container)
 {
-
     try
     {
         ll initSize = container.size();
+        if (initSize == 0)
+        {
+            throw IOException();
+        }
     }
-    if (initSize == 0)
+    catch (Exception &e)
     {
-        throw IOException();
+        cout << e.what() << endl;
     }
 
     cout << endl;
