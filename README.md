@@ -53,7 +53,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-- ![Image](https://github-readme-stats.vercel.app/api/top-langs/?username=seesmof&theme=blue-green)
+- [C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
