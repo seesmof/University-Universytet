@@ -25,6 +25,9 @@
 </div>
 
 <!-- TABLE OF CONTENTS -->
+
+## Table of Contents
+
 <summary>Table of Contents</summary>
 <ol>
     <li>
@@ -47,7 +50,7 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+### Technologies Used
 
 ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 <br>
