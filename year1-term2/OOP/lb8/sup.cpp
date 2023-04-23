@@ -160,8 +160,7 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
 
     if (!file.is_open())
     {
-        bad("File not found");
-        return;
+        throw IOException();
     }
 
     while (getline(file, line))
@@ -179,7 +178,7 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
     if (container.size() == initSize + lines.size())
         good("Strings succesfully added");
     else
-        bad("Strings were not added");
+        throw IOException();
 }
 
 void removeString(vector<DynamicString> &container)
