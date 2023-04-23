@@ -94,15 +94,13 @@ void showStrings(vector<DynamicString> &container, const string &FILE)
     ll stringsNum = container.size();
     if (stringsNum == 0)
     {
-        bad("No strings found");
-        return;
+        throw IOException();
     }
 
     ofstream file(FILE);
     if (!file.is_open())
     {
-        bad("File could not be opened");
-        return;
+        throw IOException();
     }
 
     file << "==============================\n\n";
@@ -117,7 +115,7 @@ void showStrings(vector<DynamicString> &container, const string &FILE)
     if (file.good())
         good("Strings succesfully saved");
     else
-        bad("Strings were not saved");
+        throw IOException();
 }
 
 void addStrings(vector<DynamicString> &container)
