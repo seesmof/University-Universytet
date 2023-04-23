@@ -128,7 +128,7 @@ void addStrings(vector<DynamicString> &container)
     cout << endl;
     cin.ignore();
 
-    if (numToAdd <= 0)
+    if (numToAdd < 1)
     {
         bad("Enter a valid number of strings");
         return;
@@ -136,10 +136,10 @@ void addStrings(vector<DynamicString> &container)
 
     for (ll i = 0; i < numToAdd; i++)
     {
-        string value;
+        DynamicString value;
         cout << i + 1 << ". Enter value: ";
-        getline(cin, value);
-        container.push_back(make_unique<DynamicString>(value));
+        cin >> value;
+        container.eb(value);
     }
     cout << endl;
 
@@ -150,26 +150,6 @@ void addStrings(vector<DynamicString> &container)
 
     cout << endl;
     showStrings(container);
-
-    cout << "Enter the number of strings to add: ";
-    ll stringCount = getNum();
-    cin.ignore();
-    if (stringCount < 1)
-    {
-        bad("Enter a positive amount of strings to add");
-        return;
-    }
-
-    cout << "Add strings below (" << stringCount << "): \n";
-    for (ll i = 0; i < stringCount; i++)
-    {
-        DynamicString stringHolder;
-        cout << i + 1 << ". ";
-        cin >> stringHolder;
-        container.eb(stringHolder);
-        cout << endl;
-    }
-    return;
 }
 
 void addStrings(vector<DynamicString> &container, const string &FILE)
