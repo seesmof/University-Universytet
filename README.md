@@ -31,8 +31,6 @@
 
 ## About The Project
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Tech and Resources Used
 
 ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
@@ -62,15 +60,11 @@
 ![FreeCodeCamp](https://img.shields.io/badge/freecodecamp-27273D?style=for-the-badge&logo=freecodecamp&logoColor=white)
 <br>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- LICENSE -->
 
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
 
@@ -84,3 +78,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 [![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/users/289998109226958858)
 <br>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
