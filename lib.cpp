@@ -329,6 +329,7 @@ void outputArray(vector<vector<T>> &arr)
         cout << "\n";
     }
 }
+
 string toLower(string str)
 {
     transform(str.begin(), str.end(), str.begin(), ::tolower);
