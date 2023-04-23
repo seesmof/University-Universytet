@@ -10,12 +10,16 @@ public:
     }
 };
 
-class IO_Exception : public Exception
+class FileException : public Exception
 {
 public:
-    bool fileNotFound(const string &filename) const
+    void checkFile(const std::string &filename)
     {
-        return true;
+        std::fstream file(filename);
+        if (!file.is_open())
+        {
+            throw std::runtime_error("File not found or cannot be opened");
+        }
     }
 };
 
