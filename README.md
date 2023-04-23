@@ -42,7 +42,7 @@ This is a repository that contains all of my university stuff throughout the yea
       - other files
   - ...
 
-Now, to understand the system a bit more, let's dive a bit deeper into it.
+Now, to understand the system a bit more, let's dive a bit deeper into it. To understand how it works we first need to understand what each part means. So, basically the root directory is broken up into term folders.
 
 ### Tech and Resources Used
 
@@ -93,3 +93,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <br>
 
 <p align="right"><a href="#readme-top"><strong>Back to top</strong></a></p>
+
+---
+
+#
