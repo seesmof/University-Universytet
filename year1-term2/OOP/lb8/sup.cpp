@@ -193,7 +193,7 @@ void removeString(vector<DynamicString> &container)
     }
     catch (Exception &e)
     {
-        cout << e.what() << endl;
+        e.what();
     }
 
     cout << endl;
