@@ -14,7 +14,7 @@
     <img src="./blueprint/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">University Archive</h3>
+<h1 align="center">University Archive</h1>
 
   <p align="center">
     A personal repository, an archive pretty much, of all the tasks, resources and other documentation or information tied to my university journey.
