@@ -109,7 +109,7 @@ void showStrings(vector<DynamicString> &container, const string &FILE)
     file << "Available strings (" << stringsNum << "):\n";
     for (ll i = 0; i < stringsNum; i++)
     {
-        outputFile << i + 1 << ". " << container[i] << endl;
+        file << i + 1 << ". " << container[i] << endl;
     }
     file << "\n==============================\n\n";
     file.close();
@@ -118,19 +118,6 @@ void showStrings(vector<DynamicString> &container, const string &FILE)
         good("Strings succesfully saved");
     else
         bad("Strings were not saved");
-
-    outputFile << "==============================\n\n";
-    for (ll i = 0; i < containerSize; i++)
-    {
-        outputFile << i + 1 << ". ";
-        outputFile << container[i] << endl;
-    }
-    outputFile << "\n==============================\n\n";
-
-    outputFile.close();
-    cout << endl;
-    good("Strings successfully outputted");
-    return;
 }
 
 void addStrings(vector<DynamicString> &container)
