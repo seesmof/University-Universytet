@@ -108,18 +108,11 @@ ll showMenu(const vector<string> &MENU_OPTIONS)
     return userDecision;
 }
 
-string toLower(string str)
-{
-    transform(str.begin(), str.end(), str.begin(), ::tolower);
-    return str;
-}
-
 string validateName(string inputString)
 {
     stringstream stringProcessor(inputString);
     string wordHolder;
     string resultHolder;
-
     while (stringProcessor >> wordHolder)
     {
         if (!isupper(wordHolder[0]))
@@ -136,7 +129,6 @@ string getEmailAddress()
     string emailAddress;
     cout << "Please enter an email address: ";
     cin >> emailAddress;
-
     if (emailAddress.find("@") == string::npos)
     {
         cout << "\nERROR: Invalid email address\n\n";
@@ -144,7 +136,6 @@ string getEmailAddress()
     }
     else
         return emailAddress;
-
     return "";
 }
 
@@ -152,7 +143,6 @@ string getFileName()
 {
     string fileName = "";
     bool isExtensionFound = true;
-
     do
     {
         cout << "Enter file name: ";
@@ -167,7 +157,6 @@ string getFileName()
         else
             break;
     } while (isExtensionFound == false);
-
     return fileName;
 }
 
@@ -180,7 +169,6 @@ string generateRandomString(int length)
         int index = rand() % chars.size();
         randomString += chars[index];
     }
-
     return randomString;
 }
 
@@ -188,13 +176,11 @@ string generateRandomPassword(int length)
 {
     string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxy1234567890!@#$%^&*()_+=-[]{}`~';/.,";
     string randomPass = "";
-
     for (int i = 0; i < length; i++)
     {
         int index = rand() % chars.size();
         randomPass += chars[index];
     }
-
     return randomPass;
 }
 
@@ -202,7 +188,6 @@ vector<string> getUniqueVector(vector<string> &inputVector)
 {
     vector<string> uniqueElements;
     unordered_set<string> seenElements;
-
     for (string element : inputVector)
     {
         if (seenElements.find(element) == seenElements.end())
@@ -211,7 +196,6 @@ vector<string> getUniqueVector(vector<string> &inputVector)
             seenElements.insert(element);
         }
     }
-
     return uniqueElements;
 }
 
@@ -344,4 +328,9 @@ void outputArray(vector<vector<T>> &arr)
             cout << arr[i][j] << " ";
         cout << "\n";
     }
+}
+string toLower(string str)
+{
+    transform(str.begin(), str.end(), str.begin(), ::tolower);
+    return str;
 }
