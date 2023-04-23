@@ -8,11 +8,22 @@
 
 ### Навести бібліографічні дані книг або статей за останні 5 років
 
-1. Linux
-2. Python
-3. LaTeX
-4. MySQL
-5. WordPress
+1. C++
+2. Object-Oriented Programming
+3. Programming
+4. Algorithms
+5. Data Structures
+6. Sorting Algorithms
+7. Vectors
+8. Linked Lists
+9. Stacks
+10. Queues
+
+11. Linux
+12. Python
+13. LaTeX
+14. MySQL
+15. WordPress
 
 ### Навести коротку біографію, область наукової діяльності та досягнення
 
