@@ -41,14 +41,6 @@
     <li><a href="#acknowledgments">Acknowledgments</a></li>
 </ol>
 
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `seesmof`, `university`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `University Archive`, `A personal repository, an archive pretty much, of all the tasks, resources and other docu or inf about tied to university journey.`
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
