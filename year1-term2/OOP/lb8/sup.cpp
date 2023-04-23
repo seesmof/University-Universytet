@@ -99,7 +99,6 @@ void showStrings(vector<DynamicString> &container, const string &FILE)
     }
 
     ofstream file(FILE);
-
     if (!file.is_open())
     {
         bad("File could not be opened");
@@ -110,7 +109,7 @@ void showStrings(vector<DynamicString> &container, const string &FILE)
     file << "Available strings (" << stringsNum << "):\n";
     for (ll i = 0; i < stringsNum; i++)
     {
-        file << i + 1 << ". " << container[i]->getValue() << " - " << container[i]->getSize() << " symbols\n";
+        outputFile << i + 1 << ". " << container[i] << endl;
     }
     file << "\n==============================\n\n";
     file.close();
@@ -119,20 +118,6 @@ void showStrings(vector<DynamicString> &container, const string &FILE)
         good("Strings succesfully saved");
     else
         bad("Strings were not saved");
-
-    ll containerSize = container.size();
-    if (containerSize == 0)
-    {
-        bad("No strings to output");
-        return;
-    }
-
-    ofstream outputFile(FILE);
-    if (!outputFile.is_open())
-    {
-        bad("Couldn't open output file");
-        return;
-    }
 
     outputFile << "==============================\n\n";
     for (ll i = 0; i < containerSize; i++)
