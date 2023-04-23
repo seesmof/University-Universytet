@@ -121,6 +121,36 @@ void showStrings(vector<DynamicString> &container, const string &OUTPUT_FILENAME
 
 void addStrings(vector<DynamicString> &container)
 {
+    ll initSize = container.size();
+
+    cout << "Enter number of strings to add: ";
+    ll numToAdd = getNum();
+    cout << endl;
+    cin.ignore();
+
+    if (numToAdd == 0)
+    {
+        bad("Enter a valid number of strings");
+        return;
+    }
+
+    for (ll i = 0; i < numToAdd; i++)
+    {
+        string value;
+        cout << i + 1 << ". Enter value: ";
+        getline(cin, value);
+        container.push_back(make_unique<DynamicString>(value));
+    }
+    cout << endl;
+
+    if (container.size() == initSize + numToAdd)
+        good("Strings succesfully added");
+    else
+        bad("Strings were not added");
+
+    cout << endl;
+    showStrings(container);
+
     cout << "Enter the number of strings to add: ";
     ll stringCount = getNum();
     cin.ignore();
