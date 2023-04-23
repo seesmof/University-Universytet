@@ -1,51 +1,40 @@
 ```c++
-#include <iostream>
-#include <fstream>
-// Base Exception class
 class Exception
 {
 public:
-    virtual const char *what() const throw()
+    virtual void what() const throw()
     {
-        return "An exception has occurred";
+        bad("An exception has occurred");
     }
 };
-// Exception class for handling I/O stream errors
+
 class IOException : public Exception
 {
 public:
-    const char *what() const throw() override
+    void what() const throw() override
     {
-        return "I/O stream error";
+        bad("I/O stream error");
     }
 };
-// Exception class for handling arithmetic errors (division by 0)
+
 class ArithmeticException : public Exception
 {
 public:
-    const char *what() const throw() override
+    void what() const throw() override
     {
-        return "Arithmetic error: division by zero";
+        bad("Arithmetic error: division by zero");
     }
 };
-// Exception class for handling errors in dynamic memory allocation
+
 class MemoryException : public Exception
 {
 public:
-    const char *what() const throw() override
+    void what() const throw() override
     {
-        return "Memory allocation error";
+        bad("Memory allocation error");
     }
 };
-// Example function that uses the above-defined exception classes
-void divide(int a, int b)
-{
-    if (b == 0)
-    {
-        throw ArithmeticException();
-    }
-    cout << "Result: " << a / b << endl;
-}
+
 int main()
 {
     try
