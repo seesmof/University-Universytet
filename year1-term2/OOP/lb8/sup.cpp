@@ -183,9 +183,10 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
 
 void removeString(vector<DynamicString> &container)
 {
+    ll initSize;
     try
     {
-        ll initSize = container.size();
+        initSize = container.size();
         if (initSize == 0)
         {
             throw IOException();
@@ -196,6 +197,7 @@ void removeString(vector<DynamicString> &container)
         e.what();
     }
 
+    initSize = container.size();
     cout << endl;
     showStrings(container);
     cout << endl;

@@ -14,24 +14,6 @@ int main()
     char doContinue;
     /////////////////////////////
 
-    IO_Exception io;
-    if (io.fileNotFound("file.txt"))
-    {
-        cout << "File not found.\n";
-    }
-
-    Arithmetic_Exception arith;
-    if (arith.divisionByZero(0))
-    {
-        cout << "Division by zero.\n";
-    }
-
-    Memory_Exception mem;
-    if (mem.allocationError())
-    {
-        cout << "Error during dynamic memory allocation.\n";
-    }
-
     // project intro
     cout << "\n";
     do
