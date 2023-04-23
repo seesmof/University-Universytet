@@ -11,36 +11,36 @@
 class Exception
 {
 public:
-    virtual const char *what() const throw()
+    virtual void what() const throw()
     {
-        return "An exception has occurred";
+        bad("An exception has occurred");
     }
 };
 
 class IOException : public Exception
 {
 public:
-    const char *what() const throw() override
+    void what() const throw() override
     {
-        return "I/O stream error";
+        bad("I/O stream error");
     }
 };
 
 class ArithmeticException : public Exception
 {
 public:
-    const char *what() const throw() override
+    void what() const throw() override
     {
-        return "Arithmetic error: division by zero";
+        bad("Arithmetic error: division by zero");
     }
 };
 
 class MemoryException : public Exception
 {
 public:
-    const char *what() const throw() override
+    void what() const throw() override
     {
-        return "Memory allocation error";
+        bad("Memory allocation error");
     }
 };
 
