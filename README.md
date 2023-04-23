@@ -31,7 +31,7 @@
 
 ## About The Project
 
-This is a repository that contains all of my
+This is a repository that contains all of my university stuff throughout the years of studying. It includes, but not limited to all of my homework tasks, projects, resources, documentation and much more. On the second term of year one I have came up with a near-perfect file system which is structured in the following format:
 
 ### Tech and Resources Used
 
