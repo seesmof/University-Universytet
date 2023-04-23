@@ -20,12 +20,12 @@ public:
 class FileException : public Exception
 {
 public:
-    void checkFile(const std::string &filename)
+    void checkFile(const string &filename)
     {
-        std::fstream file(filename);
+        fstream file(filename);
         if (!file.is_open())
         {
-            throw std::runtime_error("File not found or cannot be opened");
+            throw runtime_error("File not found or cannot be opened");
         }
     }
 };
