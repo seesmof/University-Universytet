@@ -37,6 +37,7 @@ public:
     }
 };
 
+/*
 int main()
 {
     IO_Exception io;
@@ -59,3 +60,4 @@ int main()
 
     return 0;
 }
+*/
