@@ -203,22 +203,6 @@ void removeString(vector<DynamicString> &container)
         good("String succesfully removed");
     else
         bad("String was not removed");
-
-    cout << endl;
-    showStrings(container);
-
-    cout << "Enter index of element to delete: ";
-    ll index = getNum();
-    index--;
-    if (index < 0 || index >= container.size())
-    {
-        bad("Index out of range");
-        return;
-    }
-    cout << endl;
-    good("Element successfully removed");
-    cout << endl;
-    container.erase(container.begin() + index);
 }
 
 void outputMenu(vector<DynamicString> &container)
