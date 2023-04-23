@@ -187,8 +187,7 @@ void removeString(vector<DynamicString> &container)
 
     if (initSize == 0)
     {
-        bad("No strings found");
-        return;
+        throw IOException();
     }
 
     cout << endl;
@@ -201,8 +200,7 @@ void removeString(vector<DynamicString> &container)
 
     if (numToRemove < 0 || numToRemove >= initSize)
     {
-        bad("Enter a valid number string number");
-        return;
+        throw IOException();
     }
 
     container.erase(container.begin() + numToRemove);
@@ -211,7 +209,7 @@ void removeString(vector<DynamicString> &container)
     if (container.size() == initSize - 1)
         good("String succesfully removed");
     else
-        bad("String was not removed");
+        throw IOException();
 }
 
 void outputMenu(vector<DynamicString> &container)
