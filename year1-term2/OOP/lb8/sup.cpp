@@ -1,6 +1,8 @@
 #include "sup.h"
 #include "D:\repos\university\lib.h"
 
+const string ROOT_DIR = "D:/repos/university/year1-term2/OOP/lb8/";
+
 class DynamicString
 {
 private:
