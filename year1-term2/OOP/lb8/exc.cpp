@@ -8,43 +8,39 @@
     в)  помилки  виділення  динамічної  пам’яті  при перевантаженні операторів new  та delete.
 */
 
-class Exception : public exception
+class Exception
 {
 public:
     virtual const char *what() const throw()
     {
-        return "Unknown exception occurred.";
+        return "An exception has occurred";
     }
 };
 
-class FileException : public Exception
+class IOException : public Exception
 {
 public:
-    void checkFile(const string &filename)
+    const char *what() const throw() override
     {
-        fstream file(filename);
-        if (!file.is_open())
-        {
-            throw runtime_error("File not found or cannot be opened");
-        }
+        return "I/O stream error";
     }
 };
 
-class Arithmetic_Exception : public Exception
+class ArithmeticException : public Exception
 {
 public:
-    bool divisionByZero(double divisor) const
+    const char *what() const throw() override
     {
-        return true;
+        return "Arithmetic error: division by zero";
     }
 };
 
-class Memory_Exception : public Exception
+class MemoryException : public Exception
 {
 public:
-    bool allocationError() const
+    const char *what() const throw() override
     {
-        return true;
+        return "Memory allocation error";
     }
 };
 
