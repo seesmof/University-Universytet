@@ -131,6 +131,91 @@ string validateName(string inputString)
     return resultHolder;
 }
 
+string getEmailAddress()
+{
+    string emailAddress;
+    cout << "Please enter an email address: ";
+    cin >> emailAddress;
+
+    if (emailAddress.find("@") == string::npos)
+    {
+        cout << "\nERROR: Invalid email address\n\n";
+        getEmailAddress();
+    }
+    else
+        return emailAddress;
+
+    return "";
+}
+
+string getFileName()
+{
+    string fileName = "";
+    bool isExtensionFound = true;
+
+    do
+    {
+        cout << "Enter file name: ";
+        cin >> fileName;
+
+        if (fileName.find(".") == string::npos)
+        {
+            isExtensionFound = false;
+            cout << "\nERROR: File extension not found. Try again...\n\n";
+            continue;
+        }
+        else
+            break;
+    } while (isExtensionFound == false);
+
+    return fileName;
+}
+
+string generateRandomString(int length)
+{
+    // Declare local variables
+    string chars = "abcdefghijklmnopqrstuvwxy";
+    string randomString = "";
+    for (int i = 0; i < length; i++)
+    {
+        int index = rand() % chars.size();
+        randomString += chars[index];
+    }
+
+    return randomString;
+}
+
+string generateRandomPassword(int length)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxy1234567890!@#$%^&*()_+=-[]{}`~';/.,";
+    string randomPass = "";
+
+    for (int i = 0; i < length; i++)
+    {
+        int index = rand() % chars.size();
+        randomPass += chars[index];
+    }
+
+    return randomPass;
+}
+
+vector<string> getUniqueVector(vector<string> &inputVector)
+{
+    vector<string> uniqueElements;
+    unordered_set<string> seenElements;
+
+    for (string element : inputVector)
+    {
+        if (seenElements.find(element) == seenElements.end())
+        {
+            uniqueElements.push_back(element);
+            seenElements.insert(element);
+        }
+    }
+
+    return uniqueElements;
+}
+
 template <typename T>
 void quickSort(vector<T> &arr, int left, int right)
 {
@@ -260,89 +345,4 @@ void outputArray(vector<vector<T>> &arr)
             cout << arr[i][j] << " ";
         cout << "\n";
     }
-}
-
-string getEmailAddress()
-{
-    string emailAddress;
-    cout << "Please enter an email address: ";
-    cin >> emailAddress;
-
-    if (emailAddress.find("@") == string::npos)
-    {
-        cout << "\nERROR: Invalid email address\n\n";
-        getEmailAddress();
-    }
-    else
-        return emailAddress;
-
-    return "";
-}
-
-string getFileName()
-{
-    string fileName = "";
-    bool isExtensionFound = true;
-
-    do
-    {
-        cout << "Enter file name: ";
-        cin >> fileName;
-
-        if (fileName.find(".") == string::npos)
-        {
-            isExtensionFound = false;
-            cout << "\nERROR: File extension not found. Try again...\n\n";
-            continue;
-        }
-        else
-            break;
-    } while (isExtensionFound == false);
-
-    return fileName;
-}
-
-string generateRandomString(int length)
-{
-    // Declare local variables
-    string chars = "abcdefghijklmnopqrstuvwxy";
-    string randomString = "";
-    for (int i = 0; i < length; i++)
-    {
-        int index = rand() % chars.size();
-        randomString += chars[index];
-    }
-
-    return randomString;
-}
-
-string generateRandomPassword(int length)
-{
-    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxy1234567890!@#$%^&*()_+=-[]{}`~';/.,";
-    string randomPass = "";
-
-    for (int i = 0; i < length; i++)
-    {
-        int index = rand() % chars.size();
-        randomPass += chars[index];
-    }
-
-    return randomPass;
-}
-
-vector<string> getUniqueVector(vector<string> &inputVector)
-{
-    vector<string> uniqueElements;
-    unordered_set<string> seenElements;
-
-    for (string element : inputVector)
-    {
-        if (seenElements.find(element) == seenElements.end())
-        {
-            uniqueElements.push_back(element);
-            seenElements.insert(element);
-        }
-    }
-
-    return uniqueElements;
 }
