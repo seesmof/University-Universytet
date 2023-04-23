@@ -36,9 +36,13 @@ This is a repository that contains all of my university stuff throughout the yea
 - yearN-termN
   - CourseName
     - taskName
+      - report.docx
       - resources
       - solution
-      - звіт
+      - other files
+  - ...
+
+Now, to understand the system a bit more, let's dive a bit deeper into it.
 
 ### Tech and Resources Used
 
