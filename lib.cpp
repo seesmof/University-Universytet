@@ -1,4 +1,3 @@
-// include necessary libraries
 #include <bits/stdc++.h>
 #include "lib.h"
 using namespace std;
