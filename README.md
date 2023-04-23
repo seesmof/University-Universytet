@@ -1,15 +1,8 @@
 <a name="readme-top"></a>
 
 ![Contributors](http://ForTheBadge.com/images/badges/built-by-developers.svg)
+[![MIT License][license-shield]](./LICENSE)
 ![Contributors](http://ForTheBadge.com/images/badges/built-with-love.svg)
-![Contributors](http://ForTheBadge.com/images/badges/built-with-science.svg)
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
