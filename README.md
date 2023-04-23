@@ -45,10 +45,6 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `seesmof`, `university`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `University Archive`, `A personal repository, an archive pretty much, of all the tasks, resources and other docu or inf about tied to university journey.`
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
@@ -85,5 +81,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&ogoColor=white)](https://t.me/seesmof)
 <br>
 
-[![Email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](https://discordapp.com/users/289998109226958858)
+[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/users/289998109226958858)
 <br>
