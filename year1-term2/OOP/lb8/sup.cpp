@@ -197,15 +197,12 @@ void removeString(vector<DynamicString> &container)
 
 void outputMenu(vector<DynamicString> &container)
 {
-    cout << BOLD << "Welcome! Choose some option from below\n"
-         << UNBOLD;
-    cout << "1. Show strings\n";
-    cout << "2. Add strings\n";
-    cout << "3. Remove strings\n";
-    cout << "4. Exit\n";
-    cout << "Enter: ";
-    ll userDecision = getNum();
-    cout << endl;
+    vector<string> menuItems = {
+        "Show strings",
+        "Add strings",
+        "Remove strings",
+        "Exit"};
+    ll userDecision = showMenu(menuItems);
 
     if (userDecision == 1)
     {
