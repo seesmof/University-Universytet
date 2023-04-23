@@ -139,42 +139,36 @@ ll showMenu(const vector<string> &MENU_OPTIONS)
 
 string toLower(string str)
 {
-    // transfort the whole stirng
     transform(str.begin(), str.end(), str.begin(), ::tolower);
-    // return it
     return str;
 }
 
-// validates an inputed name
 string validateName(string inputString)
 {
-    stringstream stringProcessor(inputString); // create a stringstream object from the inputted name
+    stringstream stringProcessor(inputString);
     string wordHolder;
     string resultHolder;
 
     while (stringProcessor >> wordHolder)
-    { // loop through each word in the stringstream
+    {
         if (!isupper(wordHolder[0]))
-        {                                           // check if the first letter of the word is not uppercase
-            wordHolder[0] = toupper(wordHolder[0]); // capitalize the first letter of the word
+        {
+            wordHolder[0] = toupper(wordHolder[0]);
         }
-        resultHolder += wordHolder + " "; // add the modified word to the new name
+        resultHolder += wordHolder + " ";
     }
-    return resultHolder; // return the result of the validation
+    return resultHolder;
 }
 
-// implements the Quick Sort algorithm to sort the elements of the given vector in ascending order
 template <typename T>
 void quickSort(vector<T> &arr, int left, int right)
 {
-    int i = left, j = right;             // initialize two variables, i and j, to the values of left and right respectively.
-    int pivot = arr[(left + right) / 2]; // find the pivot element by taking the average of the left and right
+    int i = left, j = right;
+    int pivot = arr[(left + right) / 2];
 
-    // check if size of array is <= 1, if so stop function
     if (arr.size() <= 1)
         return;
 
-    // iterate through the values of i and j
     while (i <= j)
     {
         while (arr[i] > pivot)
