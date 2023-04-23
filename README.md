@@ -78,5 +78,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 
 ## Contact
-
-- [Project Link](https://github.com/seesmof/university)
