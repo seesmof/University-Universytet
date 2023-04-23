@@ -1,9 +1,5 @@
 <a name="readme-top"></a>
 
-![Contributors](http://ForTheBadge.com/images/badges/built-by-developers.svg)
-[![MIT License][license-shield]](./LICENSE)
-![Contributors](http://ForTheBadge.com/images/badges/built-with-love.svg)
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
