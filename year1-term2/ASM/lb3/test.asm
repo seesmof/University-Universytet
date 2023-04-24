@@ -54,7 +54,10 @@ main proc near  ; declare main function
         inc si
         loop print_message
 
-    lea dx
+    lea dx, msg
+    call outputString
+    lea dx, new_line
+    call outputString
 
     lea dx, new_line
     call outputString
