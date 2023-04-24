@@ -44,20 +44,15 @@ main proc near  ; declare main function
     call outputString
 
     ; Output a matrix variable
-    mov cx, 
-    mov cx, 3
-    mov si, offset my_matrix
-    loop_row:
-        mov bx, cx
-        mov dx, offset my_matrix
-        add dx, bx
+    mov cx, 8
+    mov si, offset message
+    print_message:
         mov dl, [si]
-        add dl, '$'
         call outputSymbol
         lea dx, _space
         call outputString
         inc si
-        loop loop_row
+        loop print_message
 
     lea dx, new_line
     call outputString
