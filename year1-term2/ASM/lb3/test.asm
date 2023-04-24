@@ -19,6 +19,8 @@ main proc near  ; declare main function
     mov dl, my_byte
     call outputSymbol
 
+    
+
     ret
 main endp   ; end main function
 
