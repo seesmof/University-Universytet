@@ -168,6 +168,7 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
     catch (Exception &e)
     {
         bad(e.what());
+        exit(1);
     }
 
     while (getline(file, line))
@@ -192,6 +193,7 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
     catch (Exception &e)
     {
         bad(e.what());
+        exit(1);
     }
 }
 
