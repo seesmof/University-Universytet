@@ -202,23 +202,22 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
         {
             throw IOException();
         }
+        while (getline(file, line))
+        {
+            lines.push_back(line);
+        }
+        file.close();
+
+        for (ll i = 0; i < lines.size(); i++)
+        {
+            DynamicString stringHolder = lines[i].c_str();
+            container.eb(stringHolder);
+        }
     }
     catch (Exception &e)
     {
         bad(e.what());
         // exit(1);
-    }
-
-    while (getline(file, line))
-    {
-        lines.push_back(line);
-    }
-    file.close();
-
-    for (ll i = 0; i < lines.size(); i++)
-    {
-        DynamicString stringHolder = lines[i].c_str();
-        container.eb(stringHolder);
     }
 
     try
