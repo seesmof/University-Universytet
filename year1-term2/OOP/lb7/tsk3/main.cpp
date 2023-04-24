@@ -16,7 +16,7 @@ int main()
     vector<string> menuItems = {
         "Vector",
         "List",
-    };
+        "Exit"};
     ll userDecision = showMenu(menuItems);
     do
     {
