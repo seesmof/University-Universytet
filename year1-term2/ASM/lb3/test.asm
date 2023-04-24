@@ -119,9 +119,13 @@ main proc near  ; declare main function
 main endp   ; end main function
 
 outputString proc near
+    ; clear the AX register
     sub ax, ax
+    ; set AH to 09h to indicate that we want to output a string
     mov ah, 09h
+    ; call interrupt 21h to output the string
     int 21h
+    ; return from the procedure
     ret
 outputString endp
 
