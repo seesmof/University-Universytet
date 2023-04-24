@@ -25,6 +25,9 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
+    lea dx, new_line
+    call outputString
+
     ; Output an array variable
     mov cx, 5
     mov si, offset my_array
