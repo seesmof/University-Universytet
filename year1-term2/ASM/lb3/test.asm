@@ -16,9 +16,6 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-    mov dl, my_byte
-    call outputSymbol
-
     lea dx, new_line
     call outputString
 
