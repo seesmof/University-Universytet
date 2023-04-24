@@ -56,6 +56,7 @@ main proc near  ; declare main function
 
     lea dx, msg
     call outputString
+    mov 
     lea dx, new_line
     call outputString
 
@@ -143,10 +144,8 @@ dseg segment para public 'data'     ; declare data segment
                 dd 5, 6, 7, 8
                 dd 9, 10, 11, 12
 
-    cr db 0dh ; carriage return
-    lf db 0ah ; line feed
     bs db 08h ; backspace
-    msg db 'Hello, world!', 'Backspace: ', bs, 'o', bs, '!', '$'
+    msg db 'Last char will be removed now O', '$'
 dseg ends   ; end data segment
 
 end start   ; end program execution
