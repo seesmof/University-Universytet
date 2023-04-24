@@ -25,9 +25,12 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
-    lea dx, my_string
+    lea dx horizontal_line
     call outputString
-    lea dx, new_line
+        lea dx, new_line
+    call outputString
+
+    lea dx, my_string
     call outputString
 
     ret
