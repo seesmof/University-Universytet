@@ -16,85 +16,10 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-    ; Output a byte variable
     mov dl, my_byte
-    add dl, '0'
-    mov ah, 2
-    int 21h
+    call outputSymbol
 
-    ; Output a word variable
-    mov ax, my_word
-    mov bh, 0
-    mov bl, 10
-    div bl
-    add ax, '0'
-    mov dl, al
-    mov ah, 2
-    int 21h
-    mov dl, ah
-    add dl, '0'
-    mov ah, 2
-    int 21h
-
-    ; Output a dword variable
-    mov eax, my_dword
-    mov bh, 0
-    mov bl, 10
-    div bl
-    add ax, '0'
-    mov dl, al
-    mov ah, 2
-    int 21h
-    mov dl, ah
-    add dl, '0'
-    mov ah, 2
-    int 21h
-    mov eax, my_dword
-    shr eax, 16
-    mov bh, 0
-    mov bl, 10
-    div bl
-    add ax, '0'
-    mov dl, al
-    mov ah, 2
-    int 21h
-    mov dl, ah
-    add dl, '0'
-    mov ah, 2
-    int 21h
-
-    ; Output a string variable
-    mov dx, offset my_string
-    mov ah, 9
-    int 21h
-
-    ; Output an array variable
-    mov cx, 5
-    mov si, offset my_array
-    loop_start:
-        mov dl, [si]
-        add dl, '0'
-        mov ah, 2
-        int 21h
-        inc si
-        loop loop_start
-
-    ; Output a matrix variable
-    mov cx, 3
-    mov si, offset my_matrix
-    loop_row:
-        mov bx, cx
-        mov dx, offset my_matrix
-        add dx, bx
-        mov dl, [si]
-        add dl, '0'
-        mov ah, 2
-        int 21h
-        inc si
-        loop loop_row
-
-    mov ah, 4ch
-    int 21h
+    ret
 main endp   ; end main function
 
 outputString proc near
