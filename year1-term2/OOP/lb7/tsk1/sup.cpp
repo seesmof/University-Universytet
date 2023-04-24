@@ -28,13 +28,12 @@ public:
 template <typename T>
 void createObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
-    cout << "\nEnter an amount of objects to create: ";
+    cout << "Enter number of objects to create: ";
     ll objectsAmount = getNum();
 
     if (objectsAmount < 1)
     {
-        cout << RED << "\nERROR: Invalid amount of objects...\n\n"
-             << UNRED;
+        bad("Invalid amount of objects");
         return;
     }
 
