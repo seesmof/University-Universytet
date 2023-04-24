@@ -25,8 +25,12 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
-    mov dl, my_byte
-    add dl, '$'
+    mov ax, my_word
+    mov bh, 0
+    mov bl, 10
+    div bl
+    add ax, '0'
+    mov dl, al
     call outputSymbol
     lea dx, new_line
     call outputString
