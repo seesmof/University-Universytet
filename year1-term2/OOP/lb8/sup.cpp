@@ -175,10 +175,17 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
         container.eb(stringHolder);
     }
 
-    if (container.size() == initSize + lines.size())
-        good("Strings succesfully added");
-    else
-        throw IOException();
+    try
+    {
+        if (container.size() == initSize + lines.size())
+            good("Strings succesfully added");
+        else
+            throw IOException();
+    }
+    catch (Exception &e)
+    {
+        bad(e.what());
+    }
 }
 
 void removeString(vector<DynamicString> &container)
