@@ -102,6 +102,9 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
+    ; Define a space character and initialize it
+    _space db ' ', '$'
+
     ; Define a new line character and initialize it
     new_line db 0Dh, 0Ah, '$'
 
