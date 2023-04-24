@@ -25,6 +25,8 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
+    lea dx, new_line
+    call outputString
     lea dx, horizontal_line
     call outputString
     lea dx, new_line
@@ -86,7 +88,7 @@ dseg segment para public 'data'     ; declare data segment
     ; Define necessary string  and initialize them with corresponding values
     my_string db '      Oleh Onyshchenko', '$'
     student_group db '          KHT-122', '$'
-    horizontal_line db '--------------------------------', '$'
+    horizontal_line db '-------------------------------', '$'
     current_year db '           2023', '$'
 
     ; Define an array of bytes and initialize it with values
