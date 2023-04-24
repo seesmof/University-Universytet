@@ -11,7 +11,7 @@ int main()
     ll a, b;
     cin >> a >> b;
     cout << _max(a, b);
-    double a, b;
-    cin >> a >> b;
-    cout << _max(a, b);
+    double c, d;
+    cin >> c >> d;
+    cout << _max(c, d);
 }
