@@ -3,9 +3,9 @@
 
 // Виконати завдання з лабораторної роботи #5 з довільним типом даних
 
-const string ROOT_PATH = "D:/repos/university/year1-term2/OOP/lb7/tsk2/";
+const string ROOT_PATH = "D:\repos\university\year1-term2\OOP\lb7\tsk2\";
 
-class DynamicString
+    class DynamicString
 {
 private:
     string m_value;
