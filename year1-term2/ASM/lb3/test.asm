@@ -25,6 +25,31 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
+    ; Output an array variable
+    mov cx, 5
+    mov si, offset my_array
+    loop_start:
+        mov dl, [si]
+        add dl, '0'
+        mov ah, 2
+        int 21h
+        inc si
+        loop loop_start
+
+    ; Output a matrix variable
+    mov cx, 3
+    mov si, offset my_matrix
+    loop_row:
+        mov bx, cx
+        mov dx, offset my_matrix
+        add dx, bx
+        mov dl, [si]
+        add dl, '0'
+        mov ah, 2
+        int 21h
+        inc si
+        loop loop_row
+
     lea dx, new_line
     call outputString
     lea dx, horizontal_line
