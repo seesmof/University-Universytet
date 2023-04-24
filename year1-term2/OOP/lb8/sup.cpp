@@ -221,6 +221,7 @@ void removeString(vector<DynamicString> &container)
     }
 }
 
+/*
 void removeString(vector<DynamicString> &container)
 {
     ll initSize;
@@ -259,6 +260,7 @@ void removeString(vector<DynamicString> &container)
     else
         throw IOException();
 }
+*/
 
 void outputMenu(vector<DynamicString> &container)
 {
