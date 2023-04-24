@@ -26,6 +26,9 @@ main proc near  ; declare main function
     call outputString
 
     lea dx, my_string
+    call outputString
+    lea dx, new_line
+    call outputString
 
     ret
 main endp   ; end main function
