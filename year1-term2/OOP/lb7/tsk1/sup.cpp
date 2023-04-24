@@ -25,25 +25,19 @@ public:
     ~Delta() {}
 };
 
-// object creation function
 template <typename T>
 void createObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
-    // ask user to enter number of delta objects to create
     cout << "\nEnter an amount of objects to create: ";
     ll objectsAmount = getNum();
 
-    // if entered amount is less than one
     if (objectsAmount < 1)
     {
-        // output error and stop function
         cout << RED << "\nERROR: Invalid amount of objects...\n\n"
              << UNRED;
-        // stop function execution
         return;
     }
 
-    // create specified amount of objects using a for loop
     cout << "\nAdding objects (" << objectsAmount << "):\n";
     for (ll i = 0; i < objectsAmount; i++)
     {
@@ -54,15 +48,12 @@ void createObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
         deltaObjectsVector.push_back(make_unique<Delta<T>>(value));
     }
 
-    // end function execution
     return;
 }
 
-// printing objects function
 template <typename T>
 void printObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
-    // get vector size
     ll vectorSize = deltaObjectsVector.size();
     if (vectorSize == 0)
     {
@@ -70,7 +61,6 @@ void printObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
         return;
     }
 
-    // output all objects with their identifiers using a for loop
     cout << BOLD << "\nYour objects (" << vectorSize << "): \n"
          << UNBOLD;
     for (ll i = 0; i < vectorSize; i++)
@@ -79,47 +69,35 @@ void printObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
     }
 }
 
-// object deletion function
 template <typename T>
 void deleteObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
-    // check if vector is empty
     if (deltaObjectsVector.size() == 0)
-        // if so, output error message
         cout << GRAY << "\nNo objects to delete\n"
              << UNGRAY;
-    // if not
     else
     {
-        // print all objects to user
         printObjects(deltaObjectsVector);
 
         cout << "\nEnter a number of object to delete: ";
         ll numToDelete = getNum();
 
-        // if the object number is out of range
         if (numToDelete > deltaObjectsVector.size() - 1 || numToDelete < 0)
-            // output error message
             cout << RED << "\nERROR: Invalid object number\n"
                  << UNRED;
-        // if not
         else
         {
-            // output success message
             cout << GREEN << endl
                  << deltaObjectsVector[numToDelete]->getValue() << " successfully deleted\n"
                  << UNGREEN;
 
-            // erase object from vector
             deltaObjectsVector.erase(deltaObjectsVector.begin() + numToDelete);
         }
     }
 
-    // end function execution
     return;
 }
 
-// for showing the main menu of the application
 template <typename T>
 void outputMenu(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
 {
@@ -133,25 +111,17 @@ void outputMenu(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
             "Exit"};
         ll userDecision = showMenu(menuItems);
 
-        // if user chose to add objects
         if (userDecision == 1)
         {
-            // add objects
             createObjects(deltaObjectsVector);
-            // print them to console
             printObjects(deltaObjectsVector);
         }
-        // if user chose to delete objects
         else if (userDecision == 2)
         {
-            // delete them
             deleteObjects(deltaObjectsVector);
-            // print them to console
             printObjects(deltaObjectsVector);
         }
-        // if user chose to print objects
         else if (userDecision == 3)
-            // print objects to console
             printObjects(deltaObjectsVector);
 
         cout << "\nWould you like to return to menu? (Y | N): ";
