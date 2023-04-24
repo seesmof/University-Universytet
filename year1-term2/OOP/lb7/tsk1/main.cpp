@@ -21,7 +21,6 @@ int main()
         ///////////////////////////////////////
 
         char doReturnToMenu;
-        // output menu to user and prompt them to choose an option
         cout << BOLD << "Choose a data type\n"
              << UNBOLD;
         cout << "1. Integer\n";
