@@ -158,9 +158,16 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
     string line;
     vector<string> lines;
 
-    if (!file.is_open())
+    try
     {
-        throw IOException();
+        if (!file.is_open())
+        {
+            throw IOException();
+        }
+    }
+    catch (Exception &e)
+    {
+        bad(e.what());
     }
 
     while (getline(file, line))
