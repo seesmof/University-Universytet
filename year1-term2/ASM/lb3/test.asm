@@ -106,6 +106,13 @@ outputString proc near
     int 21h
     ret
 outputString endp
+
+outputSymbol proc near
+    sub ax, ax
+    mov ah, 02h
+    int 21h
+    ret
+outputSymbol endp
 cseg ends   ; end code segment
 
 sseg segment para stack 'stack'     ; declare stack segment
