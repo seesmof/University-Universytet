@@ -99,9 +99,17 @@ void showStrings(vector<DynamicString> &container)
 void showStrings(vector<DynamicString> &container, const string &FILE)
 {
     ll stringsNum = container.size();
-    if (stringsNum == 0)
+    try
     {
-        throw IOException();
+        if (stringsNum == 0)
+        {
+            throw IOException();
+        }
+    }
+    catch (Exception &e)
+    {
+        bad(e.what());
+        exit(1);
     }
 
     ofstream file(FILE);
