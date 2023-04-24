@@ -19,7 +19,7 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
-    mov dl, my_byte
+    lea dx, my_byte
     call outputString
 
     ret
