@@ -68,11 +68,11 @@ main proc near  ; declare main function
     ; Loop through each character in the message string and print it
     print_message:
         mov dl, [si]     ; load the current character into DL register
-        call outputSymbol   ; Print the character in DL register
-        lea dx, _space   ; Load the offset of the space character into DX register
-        call outputString   ; Print the space character
-        inc si           ; Move to the next character in the message string
-        loop print_message  ; Repeat until all characters have been printed
+        call outputSymbol   ; print the character in DL register
+        lea dx, _space   ; load the offset of the space character into DX register
+        call outputString   ; print the space character
+        inc si           ; move to the next character in the message string
+        loop print_message  ; repeat until all characters have been printed
 
     ; output new line
     lea dx, new_line
