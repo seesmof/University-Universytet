@@ -8,11 +8,9 @@
 // func main start
 int main()
 {
-    // declare local variables //
     srand(time(NULL));
     char doContinue;
-    ll userDecision;
-    /////////////////////////////
+    char doReturnToMenu;
 
     // project intro
     cout << "\n";
@@ -20,7 +18,12 @@ int main()
     {
         ///////////////////////////////////////
 
-        char doReturnToMenu;
+        vector<string> menuItems = {
+            "Integer",
+            "Double",
+
+            "String",
+            "Exit"};
         cout << BOLD << "Choose a data type\n"
              << UNBOLD;
         cout << "1. Integer\n";
