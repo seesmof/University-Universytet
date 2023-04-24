@@ -13,7 +13,7 @@ class Exception
 public:
     virtual const char *what() const throw()
     {
-        bad("An exception has occurred");
+        return "An exception has occurred";
     }
 };
 
@@ -22,7 +22,7 @@ class IOException : public Exception
 public:
     const char *what() const throw() override
     {
-        bad("I/O stream error");
+        return "I/O stream error";
     }
 };
 
@@ -31,7 +31,7 @@ class ArithmeticException : public Exception
 public:
     const char *what() const throw() override
     {
-        bad("Arithmetic error: division by zero");
+        return "Arithmetic error: division by zero";
     }
 };
 
@@ -40,6 +40,6 @@ class MemoryException : public Exception
 public:
     const char *what() const throw() override
     {
-        bad("Memory allocation error");
+        return "Memory allocation error";
     }
 };
