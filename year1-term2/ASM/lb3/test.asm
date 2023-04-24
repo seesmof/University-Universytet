@@ -65,8 +65,11 @@ dseg segment para public 'data'     ; declare data segment
     ; Define a dword and initialize it with a value
     my_dword dd 5678h
 
-    ; Define a string and initialize it with a value of my name and group
-    my_string db 'Oleh Onyshchenko KHT-122', '$'
+    ; Define necessary string  and initialize them with corresponding values
+    my_string db 'Oleh Onyshchenko', '$'
+    student_group db 'KHT-122', '$'
+    horizontal_line db '--------------------------------', '$'
+    current_year db '2023', '$'
 
     ; Define an array of bytes and initialize it with values
     myByteArray db 1, 2, 3, 4, 5
