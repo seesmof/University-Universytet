@@ -25,7 +25,7 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
-    lea dx, my_string
+    lea dx, offset my_string
     call outputString
     lea dx, new_line
     call outputString
