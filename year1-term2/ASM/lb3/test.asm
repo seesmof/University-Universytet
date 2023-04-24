@@ -54,6 +54,8 @@ main proc near  ; declare main function
         inc si
         loop print_message
 
+    lea dx
+
     lea dx, new_line
     call outputString
 
@@ -137,6 +139,11 @@ dseg segment para public 'data'     ; declare data segment
     myDwordArray dd 1, 2, 3, 4
                 dd 5, 6, 7, 8
                 dd 9, 10, 11, 12
+
+    cr db 0dh ; carriage return
+    lf db 0ah ; line feed
+    bs db 08h ; backspace
+    msg db 'Hello, world!', cr, lf, 'Backspace: ', bs, 'o', bs, '!', cr, lf, '$'
 dseg ends   ; end data segment
 
 end start   ; end program execution
