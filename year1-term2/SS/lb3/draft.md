@@ -62,3 +62,17 @@
 ### Синхронізувати дані веб-перегляду на різних пристроях з доступом до Internet в одному з браузерів
 
 ### Заблокувати рекламу в браузері
+
+---
+
+| Feature          | Google                                                                  | Bing                                                                                 |
+| ---------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Market share     | 92.05% (as of April 2021)                                               | 2.44% (as of April 2021)                                                             |
+| Homepage design  | Simple and minimalistic                                                 | Image-based with news and trending topics                                            |
+| Search algorithm | Emphasizes relevance and authority of web pages                         | Emphasizes user engagement and social signals                                        |
+| Search results   | Displays organic results, ads, and featured snippets                    | Displays organic results, ads, and knowledge panels                                  |
+| Voice search     | Supports voice search on mobile and smart speakers                      | Supports voice search on mobile and smart speakers                                   |
+| Image search     | Offers advanced image search options and Google Lens                    | Offers advanced image search options and Bing Visual Search                          |
+| Maps             | Offers Google Maps with Street View and real-time traffic updates       | Offers Bing Maps with 3D maps and bird's eye view                                    |
+| Translation      | Offers Google Translate with support for 109 languages                  | Offers Bing Translator with support for 60 languages                                 |
+| Personalization  | Offers personalized search results based on search history and location | Offers personalized search results based on search history and social media activity |
