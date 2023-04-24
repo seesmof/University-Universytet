@@ -146,7 +146,7 @@ dseg segment para public 'data'     ; declare data segment
     cr db 0dh ; carriage return
     lf db 0ah ; line feed
     bs db 08h ; backspace
-    msg db 'Hello, world!', cr, lf, 'Backspace: ', bs, 'o', bs, '!', cr, lf, '$'
+    msg db 'Hello, world!', 'Backspace: ', bs, 'o', bs, '!', '$'
 dseg ends   ; end data segment
 
 end start   ; end program execution
