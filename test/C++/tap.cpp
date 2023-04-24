@@ -4,7 +4,6 @@ template <typename T1, typename T2>
 T1 _max(T1 a, T2 b)
 {
     return a > b ? a : b;
-    // return a > b ? a : b;
 }
 
 int main()
