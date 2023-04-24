@@ -54,13 +54,15 @@ main proc near  ; declare main function
         inc si
         loop print_message
 
-    lea dx, msg
+    lea dx, testing_control_character
     call outputString
     mov dl, bs
     call outputSymbol
     lea dx, new_line
     call outputString
-    lea dx, msg
+    lea dx, new_line
+    call outputString
+    lea dx, testing_control_character
     call outputString
     lea dx, new_line
     call outputString
@@ -150,7 +152,7 @@ dseg segment para public 'data'     ; declare data segment
                 dd 9, 10, 11, 12
 
     bs db 08h ; backspace
-    msg db 'Last char will be removed now O', '$'
+    testing_control_character db 'Last char will be removed now O', '$'
 dseg ends   ; end data segment
 
 end start   ; end program execution
