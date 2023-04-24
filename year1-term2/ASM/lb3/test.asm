@@ -44,6 +44,7 @@ main proc near  ; declare main function
     call outputString
 
     ; Output a matrix variable
+    mov cx, 
     mov cx, 3
     mov si, offset my_matrix
     loop_row:
@@ -129,6 +130,7 @@ dseg segment para public 'data'     ; declare data segment
     student_group db '          KHT-122', '$'
     horizontal_line db '-------------------------------', '$'
     current_year db '           2023', '$'
+    message db 'Assembly', '$'
 
     ; Define an array of bytes and initialize it with values
     my_array db 1, 2, 3, 4, 5
