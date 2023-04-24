@@ -33,18 +33,18 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
-    ; Output an array variable
-    mov cx, 5
-    mov si, offset my_array
+    mov cx, 5         ; initialize counter to 5
+    mov si, offset my_array  ; initialize pointer to my_array
+
     loop_start:
-        mov dl, [si]
-        add dl, '$'
-        call outputSymbol
-        lea dx, _space
-        call outputString
-        inc si
-        loop loop_start
-    
+    mov dl, [si]    ; load byte at memory address pointed to by si into dl
+    add dl, '$'     ; add ASCII value of $ to dl
+    call outputSymbol ; output resulting character to console
+    lea dx, _space  ; load memory address of _space string into dx
+    call outputString ; output space character to console
+    inc si          ; increment pointer to point to next byte in array
+    loop loop_start ; repeat loop until cx reaches 0    
+
     ; output new line
     lea dx, new_line
     call outputString
