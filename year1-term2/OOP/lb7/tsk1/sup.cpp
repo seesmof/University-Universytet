@@ -99,14 +99,17 @@ void deleteObjects(vector<unique_ptr<Delta<T>>> &container)
         bad("Invalid object number");
         return;
     }
-    else
-    {
-        cout << GREEN << endl
-             << container[numToDelete]->getValue() << " successfully deleted\n"
-             << UNGREEN;
 
-        container.erase(container.begin() + numToDelete);
-    }
+    container.erase(container.begin() + numToDelete);
+    cout << endl;
+
+    if (container.size() == initSize - 1)
+        good("Object successfully deleted");
+    else
+        bad("Failed to delete object");
+
+    cout << endl;
+    printObjects(container);
 }
 
 template <typename T>
