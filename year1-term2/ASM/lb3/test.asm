@@ -16,15 +16,20 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
+    ; output new line
     lea dx, new_line
     call outputString
 
+    ; output a byte character
     mov dl, my_byte
+    ; use null terminator to output the character itself
     add dl, '$'
     call outputSymbol
+    ; output new line
     lea dx, new_line
     call outputString
 
+    ; output new line
     lea dx, new_line
     call outputString
 
@@ -40,6 +45,7 @@ main proc near  ; declare main function
         inc si
         loop loop_start
     
+    ; output new line
     lea dx, new_line
     call outputString
 
@@ -54,31 +60,39 @@ main proc near  ; declare main function
         inc si
         loop print_message
 
+    ; output new line
     lea dx, new_line
     call outputString
 
+    ; output new line
     lea dx, new_line
     call outputString
     lea dx, horizontal_line
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString
     lea dx, my_string
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString
     lea dx, student_group
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString
     lea dx, current_year
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString
     lea dx, horizontal_line
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString    
 
