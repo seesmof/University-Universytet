@@ -211,6 +211,7 @@ void removeString(vector<DynamicString> &container)
     catch (Exception &e)
     {
         bad(e.what());
+        exit(1);
     }
 
     initSize = container.size();
@@ -233,6 +234,7 @@ void removeString(vector<DynamicString> &container)
     catch (Exception &e)
     {
         bad(e.what());
+        exit(1);
     }
 
     container.erase(container.begin() + numToRemove);
@@ -248,6 +250,7 @@ void removeString(vector<DynamicString> &container)
     catch (const Exception &e)
     {
         bad(e.what());
+        exit(1);
     }
 }
 
