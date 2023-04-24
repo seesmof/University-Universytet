@@ -114,12 +114,10 @@ void outputMenu(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
         if (userDecision == 1)
         {
             createObjects(deltaObjectsVector);
-            printObjects(deltaObjectsVector);
         }
         else if (userDecision == 2)
         {
             deleteObjects(deltaObjectsVector);
-            printObjects(deltaObjectsVector);
         }
         else if (userDecision == 3)
             printObjects(deltaObjectsVector);
