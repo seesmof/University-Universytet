@@ -44,7 +44,7 @@ void createObjects(vector<unique_ptr<Delta<T>>> &deltaObjectsVector)
         T value;
         cout << i + 1 << ". Enter value for object: ";
         cin >> value;
-        deltaObjectsVector.push_back(make_unique<Delta<T>>(value));
+        deltaObjectsVector.eb(make_unique<Delta<T>>(value));
     }
 
     return;
