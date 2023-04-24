@@ -35,6 +35,9 @@ main proc near  ; declare main function
         int 21h
         inc si
         loop loop_start
+    
+    lea dx, new_line
+    call outputString
 
     ; Output a matrix variable
     mov cx, 3
@@ -49,6 +52,9 @@ main proc near  ; declare main function
         int 21h
         inc si
         loop loop_row
+
+    lea dx, new_line
+    call outputString
 
     lea dx, new_line
     call outputString
