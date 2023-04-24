@@ -19,7 +19,11 @@ main proc near  ; declare main function
     mov dl, my_byte
     call outputSymbol
 
-    
+    lea dx, new_line
+    call outputString
+
+    mov dl, my_byte
+    call outputString
 
     ret
 main endp   ; end main function
