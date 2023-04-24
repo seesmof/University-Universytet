@@ -61,7 +61,7 @@ void addObjs(vector<unique_ptr<Delta>> &container)
     ll numToAdd = getNum();
     cout << endl;
 
-    if (numToAdd == 0)
+    if (numToAdd < 1)
     {
         bad("Enter a valid number of objects");
         return;
