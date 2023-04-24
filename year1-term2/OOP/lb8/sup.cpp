@@ -150,10 +150,17 @@ void addStrings(vector<DynamicString> &container)
     cout << endl;
     cin.ignore();
 
-    if (numToAdd < 1)
+    try
     {
-        throw IOException();
-        return;
+        if (numToAdd < 1)
+        {
+            throw IOException();
+        }
+    }
+    catch (Exception &e)
+    {
+        bad(e.what());
+        exit(1);
     }
 
     for (ll i = 0; i < numToAdd; i++)
