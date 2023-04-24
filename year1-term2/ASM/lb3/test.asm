@@ -56,7 +56,8 @@ main proc near  ; declare main function
 
     lea dx, msg
     call outputString
-    mov 
+    mov dl, bs
+    call outputSymbol
     lea dx, new_line
     call outputString
 
