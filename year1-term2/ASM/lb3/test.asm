@@ -26,7 +26,6 @@ main proc near  ; declare main function
     call outputString
 
     mov ax, my_word
-    add dl, '$'
     call outputSymbol
     lea dx, new_line
     call outputString
