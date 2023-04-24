@@ -54,19 +54,6 @@ main proc near  ; declare main function
         inc si
         loop print_message
 
-    lea dx, testing_control_character
-    call outputString
-    mov dl, bs
-    call outputSymbol
-    lea dx, new_line
-    call outputString
-    lea dx, new_line
-    call outputString
-    lea dx, testing_control_character
-    call outputString
-    lea dx, new_line
-    call outputString
-
     lea dx, new_line
     call outputString
 
@@ -147,12 +134,9 @@ dseg segment para public 'data'     ; declare data segment
     my_matrix dw 1, 2, 3, 4, 5
 
     ; Define a 2-dimensional array of doublewords and initialize it with values
-    myDwordArray dd 1, 2, 3, 4
+    my_dword_matrix dd 1, 2, 3, 4
                 dd 5, 6, 7, 8
                 dd 9, 10, 11, 12
-
-    bs db 08h ; backspace
-    testing_control_character db 'Last char will be removed now O', '$'
 dseg ends   ; end data segment
 
 end start   ; end program execution
