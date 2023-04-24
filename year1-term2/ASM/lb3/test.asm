@@ -73,6 +73,29 @@ dseg segment para public 'data'     ; declare data segment
     input_buffer db 100
     buffer_length db ?
     buffer_cont db 100 dup (' ')
+
+    ; Define a byte variable and initialize it with a value
+    myByte db 10
+
+    ; Define a word variable and initialize it with a value
+    myWord dw 1234h
+
+    ; Define a doubleword variable and initialize it with a value
+    myDword dd 12345678h
+
+    ; Define a string variable and initialize it with a value
+    myString db 'Hello, world!', 0
+
+    ; Define an array of bytes and initialize it with values
+    myByteArray db 1, 2, 3, 4, 5
+
+    ; Define an array of words and initialize it with values
+    myWordArray dw 1, 2, 3, 4, 5
+
+    ; Define a 2-dimensional array of doublewords and initialize it with values
+    myDwordArray dd 1, 2, 3, 4
+                dd 5, 6, 7, 8
+                dd 9, 10, 11, 12
 dseg ends   ; end data segment
 
 end start   ; end program execution
