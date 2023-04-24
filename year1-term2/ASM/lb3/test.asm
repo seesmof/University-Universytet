@@ -60,14 +60,14 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
-    ; Initialize CX register with the number of characters in the message string
+    ; initialize CX register with the number of characters in the message string
     mov cx, 8
-    ; Initialize SI register with the offset of the message string
+    ; initialize SI register with the offset of the message string
     mov si, offset message
 
     ; Loop through each character in the message string and print it
     print_message:
-        mov dl, [si]     ; Load the current character into DL register
+        mov dl, [si]     ; load the current character into DL register
         call outputSymbol   ; Print the character in DL register
         lea dx, _space   ; Load the offset of the space character into DX register
         call outputString   ; Print the space character
