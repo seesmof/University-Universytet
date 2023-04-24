@@ -206,9 +206,17 @@ void removeString(vector<DynamicString> &container)
     ll numToRemove = getNum();
     numToRemove--;
 
-    if (numToRemove < 0 || numToRemove >= initSize)
+    try
     {
-        throw IOException();
+
+        if (numToRemove < 0 || numToRemove >= initSize)
+        {
+            throw IOException();
+        }
+    }
+    catch (Exception &e)
+    {
+        bad(e.what());
     }
 
     container.erase(container.begin() + numToRemove);
