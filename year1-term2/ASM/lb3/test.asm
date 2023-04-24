@@ -81,16 +81,19 @@ main proc near  ; declare main function
     ; output new line
     lea dx, new_line
     call outputString
+    ; output horizontal line
     lea dx, horizontal_line
     call outputString
     ; output new line
     lea dx, new_line
     call outputString
+    ; output my name
     lea dx, my_string
     call outputString
     ; output new line
     lea dx, new_line
     call outputString
+    ; output my group
     lea dx, student_group
     call outputString
     ; output new line
@@ -99,11 +102,13 @@ main proc near  ; declare main function
     ; output new line
     lea dx, new_line
     call outputString
+    ; output current year
     lea dx, current_year
     call outputString
     ; output new line
     lea dx, new_line
     call outputString
+    ; output horizontal line
     lea dx, horizontal_line
     call outputString
     ; output new line
@@ -133,35 +138,35 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    ; Define a space character and initialize it
+    ; define a space character and initialize it
     _space db ' ', '$'
 
-    ; Define a new line character and initialize it
+    ; define a new line character and initialize it
     new_line db 0Dh, 0Ah, '$'
 
-    ; Define a byte and initialize it with a value
+    ; define a byte and initialize it with a value
     my_byte db 10h
 
-    ; Define a word and initialize it with a value
+    ; define a word and initialize it with a value
     my_word dw 1234h
 
-    ; Define a dword and initialize it with a value
+    ; define a dword and initialize it with a value
     my_dword dd 5678h
 
-    ; Define necessary string  and initialize them with corresponding values
+    ; define necessary string  and initialize them with corresponding values
     my_string db '      Oleh Onyshchenko', '$'
     student_group db '          KHT-122', '$'
     horizontal_line db '-------------------------------', '$'
     current_year db '           2023', '$'
     message db 'Assembly', '$'
 
-    ; Define an array of bytes and initialize it with values
+    ; define an array of bytes and initialize it with values
     my_array db 1, 2, 3, 4, 5
 
-    ; Define an array of words and initialize it with values
+    ; define an array of words and initialize it with values
     my_matrix dw 1, 2, 3, 4, 5
 
-    ; Define a 2-dimensional array of doublewords and initialize it with values
+    ; define a 2-dimensional array of doublewords and initialize it with values
     my_dword_matrix dd 1, 2, 3, 4
                 dd 5, 6, 7, 8
                 dd 9, 10, 11, 12
