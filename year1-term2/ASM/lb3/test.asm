@@ -19,30 +19,11 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString ; output with function
 
-    lea dx, input_prompt
-    call outputString ; output with function
+    mov al, myByte
+    call outputString
+    lea dx, new_line
+    call outputString
     
-    lea dx, input_buffer
-    call inputString ; set output string
-
-    sub bx, bx
-    mov bl, buffer_length
-    mov [buffer_cont + bx], '$'
-
-    lea dx, new_line
-    call outputString ; output with function
-
-    lea dx, new_line
-    call outputString ; output with function
-
-    lea dx, output_prompt
-    call outputString ; output with function
-
-    lea dx, buffer_cont
-    call outputString ; set output string
-    lea dx, new_line
-    call outputString ; output with function
-
     ret     ; stop function execution
 main endp   ; end main function
 
