@@ -25,13 +25,28 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
-    lea dx horizontal_line
+    lea dx, horizontal_line
     call outputString
-        lea dx, new_line
+    lea dx, new_line
     call outputString
-
     lea dx, my_string
     call outputString
+    lea dx, new_line
+    call outputString
+    lea dx, student_group
+    call outputString
+    lea dx, new_line
+    call outputString
+    lea dx, new_line
+    call outputString
+    lea dx, current_year
+    call outputString
+    lea dx, new_line
+    call outputString
+    lea dx, horizontal_line
+    call outputString
+    lea dx, new_line
+    call outputString    
 
     ret
 main endp   ; end main function
