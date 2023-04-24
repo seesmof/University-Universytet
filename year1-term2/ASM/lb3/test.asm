@@ -20,37 +20,37 @@ main proc near  ; declare main function
     call outputString
 
     mov dl, my_byte
-    mov dl, '0'
+    mov dl, '$'
     call outputSymbol
     lea dx, new_line
     call outputString
 
     mov dl, my_byte
-    mov dl, '0'
+    mov dl, '$'
     call outputSymbol
     lea dx, new_line
     call outputString
 
     mov dl, my_byte
-    mov dl, '0'
+    mov dl, '$'
     call outputSymbol
     lea dx, new_line
     call outputString
 
     mov dl, my_byte
-    mov dl, '0'
+    mov dl, '$'
     call outputSymbol
     lea dx, new_line
     call outputString
 
     mov dl, my_byte
-    mov dl, '0'
+    mov dl, '$'
     call outputSymbol
     lea dx, new_line
     call outputString
 
     mov dl, my_byte
-    mov dl, '0'
+    mov dl, '$'
     call outputSymbol
     lea dx, new_line
     call outputString
