@@ -130,9 +130,13 @@ outputString proc near
 outputString endp
 
 outputSymbol proc near
+    ; clear the AX register
     sub ax, ax
+    ; set AH to 02h to indicate that we want to output a character
     mov ah, 02h
+    ; call interrupt 21h to output the character
     int 21h
+    ; return from the procedure
     ret
 outputSymbol endp
 cseg ends   ; end code segment
