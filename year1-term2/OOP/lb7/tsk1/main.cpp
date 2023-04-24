@@ -51,7 +51,6 @@ int main()
             break;
     } while (doContinue = 'Y' || doContinue == 'y');
 
-    // stop main function execution
     cout << "\nThanks for using this program\n\n";
     return 0;
 }
