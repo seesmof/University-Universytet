@@ -222,10 +222,17 @@ void removeString(vector<DynamicString> &container)
     container.erase(container.begin() + numToRemove);
     cout << endl;
 
-    if (container.size() == initSize - 1)
-        good("String succesfully removed");
-    else
-        throw IOException();
+    try
+    {
+        if (container.size() == initSize - 1)
+            good("String succesfully removed");
+        else
+            throw IOException();
+    }
+    catch (const Exception &e)
+    {
+        bad(e.what());
+    }
 }
 
 void outputMenu(vector<DynamicString> &container)
