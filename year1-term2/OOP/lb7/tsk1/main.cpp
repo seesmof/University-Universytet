@@ -39,7 +39,7 @@ int main()
         }
         else if (userDecision == 4)
         {
-            vector<unique_ptr<Delta>>() deltaObjectsVector;
+            vector<unique_ptr<Delta<>>> deltaObjectsVector;
             outputMenu(deltaObjectsVector);
         }
 
