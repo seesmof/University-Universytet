@@ -1,9 +1,10 @@
 #include "D:\repos\university\lib.h"
 
-template <typename T>
-T _max(T a, T b)
+template <typename T1, typename T2>
+T1 _max(T1 a, T2 b)
 {
     return a > b ? a : b;
+    // return a > b ? a : b;
 }
 
 int main()
