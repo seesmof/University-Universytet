@@ -25,34 +25,7 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
-    mov ax, my_word
-    call outputSymbol
-    lea dx, new_line
-    call outputString
-
-    mov dl, my_byte
-    add dl, '$'
-    call outputSymbol
-    lea dx, new_line
-    call outputString
-
-    mov dl, my_byte
-    add dl, '$'
-    call outputSymbol
-    lea dx, new_line
-    call outputString
-
-    mov dl, my_byte
-    add dl, '$'
-    call outputSymbol
-    lea dx, new_line
-    call outputString
-
-    mov dl, my_byte
-    add dl, '$'
-    call outputSymbol
-    lea dx, new_line
-    call outputString
+    lea dx, my_string
 
     ret
 main endp   ; end main function
@@ -83,7 +56,7 @@ dseg segment para public 'data'     ; declare data segment
     my_byte db 10h
     my_word dw 1234h
     my_dword dd 5678h
-    my_string db 'Hello, world!', 0
+    my_string db 'Oleh Onyshchenko KHT-122', 0
     my_array db 1, 2, 3, 4, 5
     my_matrix dw 1, 2, 3, 4, 5, 6, 7, 8, 9
 dseg ends   ; end data segment
