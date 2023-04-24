@@ -24,6 +24,31 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
+    mov dl, my_byte
+    call outputSymbol
+    lea dx, new_line
+    call outputString
+
+    mov dl, my_byte
+    call outputSymbol
+    lea dx, new_line
+    call outputString
+
+    mov dl, my_byte
+    call outputSymbol
+    lea dx, new_line
+    call outputString
+
+    mov dl, my_byte
+    call outputSymbol
+    lea dx, new_line
+    call outputString
+
+    mov dl, my_byte
+    call outputSymbol
+    lea dx, new_line
+    call outputString
+
     ret
 main endp   ; end main function
 
