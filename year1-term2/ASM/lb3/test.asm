@@ -33,27 +33,27 @@ main proc near  ; declare main function
     lea dx, new_line
     call outputString
 
-    ; Initialize counter to 5
+    ; initialize counter to 5
     mov cx, 5
-    ; Initialize pointer to my_array
+    ; initialize pointer to my_array
     mov si, offset my_array
 
-    ; Loop 5 times
+    ; loop 5 times
     loop_start:
-        ; Load byte at memory address pointed to by si into dl
+        ; load byte at memory address pointed to by si into dl
         mov dl, [si]
-        ; Add ASCII value of $ to dl
+        ; add ASCII value of $ to dl
         add dl, '$'
-        ; Output resulting character to console
+        ; output resulting character to console
         call outputSymbol
-        ; Load memory address of _space string into dx
+        ; load memory address of _space string into dx
         lea dx, _space
-        ; Output space character to console
+        ; output space character to console
         call outputString
 
-        ; Increment pointer to point to next byte in array
+        ; increment pointer to point to next byte in array
         inc si
-        ; Repeat loop until cx reaches 0
+        ; repeat loop until cx reaches 0
         loop loop_start
 
     ; output new line
@@ -65,7 +65,7 @@ main proc near  ; declare main function
     ; initialize SI register with the offset of the message string
     mov si, offset message
 
-    ; Loop through each character in the message string and print it
+    ; loop through each character in the message string and print it
     print_message:
         mov dl, [si]     ; load the current character into DL register
         call outputSymbol   ; print the character in DL register
