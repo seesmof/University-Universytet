@@ -100,13 +100,6 @@ main proc near  ; declare main function
     int 21h
 main endp   ; end main function
 
-inputString proc near
-    sub ax, ax
-    mov ah, 0Ah
-    int 21h
-    ret
-inputString endp
-
 outputString proc near
     sub ax, ax
     mov ah, 09h
