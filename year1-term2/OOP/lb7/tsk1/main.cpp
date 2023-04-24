@@ -37,6 +37,11 @@ int main()
             vector<unique_ptr<Delta<string>>> deltaObjectsVector;
             outputMenu(deltaObjectsVector);
         }
+        else if (userDecision == 4)
+        {
+            vector<unique_ptr<Delta>> deltaObjectsVector;
+            outputMenu(deltaObjectsVector);
+        }
 
         ///////////////////////////////////////
 
