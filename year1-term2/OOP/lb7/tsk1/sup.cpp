@@ -4,28 +4,21 @@
 // Створити клас Delta таким чином, щоб кожний об’єкт вміщував свій персональний номер (дескриптор об’єкта) та функцію, яка повертає його значення. Дескриптор об’єкта – унікальне для об’єктів даного типу ціле число.
 // Виконати завдання з лабораторної роботи №1, де тип елементу заданої структури даних довільний. Використати шаблонні функції.
 
-// delta class declaration
 template <typename T>
 class Delta
 {
 private:
-    // declare private members
     ll descriptor;
     T value;
 
 public:
-    // default constructor for when we don't specify the value
     Delta() : value(), descriptor(nextDescriptor()) {}
-    // parameterised constructor for when we do specify the value
     Delta(T inValue) : value(inValue), descriptor(nextDescriptor()) {}
-
     static ll nextDescriptor()
     {
         static ll nextDescriptor = 0;
         return nextDescriptor++;
     }
-
-    // next identifier creator
     T getValue() const
     {
         return value;
