@@ -194,7 +194,7 @@ void removeString(vector<DynamicString> &container)
     }
     catch (Exception &e)
     {
-        e.what();
+        bad(e.what());
     }
 
     initSize = container.size();
