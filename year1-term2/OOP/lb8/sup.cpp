@@ -213,24 +213,24 @@ void addStrings(vector<DynamicString> &container, const string &FILE)
             DynamicString stringHolder = lines[i].c_str();
             container.eb(stringHolder);
         }
+
+        try
+        {
+            if (container.size() == initSize + lines.size())
+                good("Strings succesfully added");
+            else
+                throw IOException();
+        }
+        catch (Exception &e)
+        {
+            bad(e.what());
+            exit(1);
+        }
     }
     catch (Exception &e)
     {
         bad(e.what());
         // exit(1);
-    }
-
-    try
-    {
-        if (container.size() == initSize + lines.size())
-            good("Strings succesfully added");
-        else
-            throw IOException();
-    }
-    catch (Exception &e)
-    {
-        bad(e.what());
-        exit(1);
     }
 }
 
