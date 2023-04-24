@@ -53,13 +53,21 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
+    ; Define a new line character and initialize it
     new_line db 0Dh, 0Ah, '$'
 
-    ; Define variables of different types and sizes
+    ; Define a byte and initialize it with a value
     my_byte db 10h
+
+    ; Define a word and initialize it with a value
     my_word dw 1234h
+
+    ; Define a dword and initialize it with a value
     my_dword dd 5678h
+
+    ; Define a string and initialize it with a value of my name and group
     my_string db 'Oleh Onyshchenko KHT-122', '$'
+
     ; Define an array of bytes and initialize it with values
     myByteArray db 1, 2, 3, 4, 5
 
