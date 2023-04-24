@@ -16,9 +16,6 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-    mov ax, @data
-    mov ds, ax
-
     ; Output a byte variable
     mov dl, my_byte
     add dl, '0'
