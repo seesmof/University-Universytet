@@ -1,8 +1,14 @@
-Ponderous
-Quixotic
-Capricious
-Effervescent
-Mellifluous
-Insipid
-Luminous
-Ephemeral
+==============================
+
+Available strings (8):
+1. Ponderous
+2. Quixotic
+3. Capricious
+4. Effervescent
+5. Mellifluous
+6. Insipid
+7. Luminous
+8. Ephemeral
+
+==============================
+

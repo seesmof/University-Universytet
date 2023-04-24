@@ -127,10 +127,18 @@ void showStrings(vector<DynamicString> &container, const string &FILE)
     file << "\n==============================\n\n";
     file.close();
 
-    if (file.good())
-        good("Strings succesfully saved");
-    else
-        throw IOException();
+    try
+    {
+        if (file.good())
+            good("Strings succesfully saved");
+        else
+            throw IOException();
+    }
+    catch (Exception &e)
+    {
+        bad(e.what());
+        exit(1);
+    }
 }
 
 void addStrings(vector<DynamicString> &container)
