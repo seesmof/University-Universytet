@@ -76,10 +76,17 @@ public:
 void showStrings(vector<DynamicString> &container)
 {
     ll stringsNum = container.size();
-    if (stringsNum == 0)
+    try
     {
-        throw IOException();
-        return;
+        if (stringsNum == 0)
+        {
+            throw IOException();
+        }
+    }
+    catch (IOException &e)
+    {
+        bad(e.what());
+        exit(1);
     }
 
     cout << "Available strings (" << stringsNum << "):\n";
