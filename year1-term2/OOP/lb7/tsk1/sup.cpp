@@ -19,25 +19,10 @@ public:
         static ll nextDescriptor = 0;
         return nextDescriptor++;
     }
-    T getValue() const
-    {
-        return value;
-    }
-
-    ll getDescriptor() const
-    {
-        return descriptor;
-    }
-
-    void setValue(T inValue)
-    {
-        value = inValue;
-    }
-
-    // create default destructor function
-    ~Delta()
-    {
-    }
+    T getValue() const { return value; }
+    ll getDescriptor() const { return descriptor; }
+    void setValue(T inValue) { value = inValue; }
+    ~Delta() {}
 };
 
 // object creation function
