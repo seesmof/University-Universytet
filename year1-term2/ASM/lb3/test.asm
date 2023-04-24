@@ -32,6 +32,8 @@ main proc near  ; declare main function
         mov dl, [si]
         add dl, '$'
         call outputSymbol
+        lea dx, _space
+        call outputString
         inc si
         loop loop_start
     
@@ -48,6 +50,8 @@ main proc near  ; declare main function
         mov dl, [si]
         add dl, '$'
         call outputSymbol
+        lea dx, _space
+        call outputString
         inc si
         loop loop_row
 
