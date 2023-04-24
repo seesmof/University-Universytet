@@ -42,39 +42,37 @@ main proc near  ; declare main function
     loop_start:
         ; Load byte at memory address pointed to by si into dl
         mov dl, [si]
-
         ; Add ASCII value of $ to dl
         add dl, '$'
-
         ; Output resulting character to console
         call outputSymbol
-
         ; Load memory address of _space string into dx
         lea dx, _space
-
         ; Output space character to console
         call outputString
 
         ; Increment pointer to point to next byte in array
         inc si
-
         ; Repeat loop until cx reaches 0
         loop loop_start
-  
+
     ; output new line
     lea dx, new_line
     call outputString
 
-    ; Output a matrix variable
+    ; Initialize CX register with the number of characters in the message string
     mov cx, 8
+    ; Initialize SI register with the offset of the message string
     mov si, offset message
+
+    ; Loop through each character in the message string and print it
     print_message:
-        mov dl, [si]
-        call outputSymbol
-        lea dx, _space
-        call outputString
-        inc si
-        loop print_message
+        mov dl, [si]     ; Load the current character into DL register
+        call outputSymbol   ; Print the character in DL register
+        lea dx, _space   ; Load the offset of the space character into DX register
+        call outputString   ; Print the space character
+        inc si           ; Move to the next character in the message string
+        loop print_message  ; Repeat until all characters have been printed
 
     ; output new line
     lea dx, new_line
