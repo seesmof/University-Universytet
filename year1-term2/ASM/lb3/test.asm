@@ -60,6 +60,10 @@ main proc near  ; declare main function
     call outputSymbol
     lea dx, new_line
     call outputString
+    lea dx, msg
+    call outputString
+    lea dx, new_line
+    call outputString
 
     lea dx, new_line
     call outputString
