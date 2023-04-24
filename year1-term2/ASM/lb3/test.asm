@@ -120,10 +120,10 @@ dseg segment para public 'data'     ; declare data segment
     my_array db 1, 2, 3, 4, 5
 
     ; Define an array of words and initialize it with values
-    myWordArray dw 1, 2, 3, 4, 5
+    my_matrix dw 1, 2, 3, 4, 5
 
     ; Define a 2-dimensional array of doublewords and initialize it with values
-    my_matrix dd 1, 2, 3, 4
+    myDwordArray dd 1, 2, 3, 4
                 dd 5, 6, 7, 8
                 dd 9, 10, 11, 12
 dseg ends   ; end data segment
