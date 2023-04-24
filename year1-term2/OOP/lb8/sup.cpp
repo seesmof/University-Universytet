@@ -172,10 +172,18 @@ void addStrings(vector<DynamicString> &container)
     }
     cout << endl;
 
-    if (container.size() == initSize + numToAdd)
-        good("Strings succesfully added");
-    else
-        throw IOException();
+    try
+    {
+        if (container.size() == initSize + numToAdd)
+            good("Strings succesfully added");
+        else
+            throw IOException();
+    }
+    catch (Exception &e)
+    {
+        bad(e.what());
+        exit(1);
+    }
 
     cout << endl;
     showStrings(container);
