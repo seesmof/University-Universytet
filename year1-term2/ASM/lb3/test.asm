@@ -30,9 +30,8 @@ main proc near  ; declare main function
     mov si, offset my_array
     loop_start:
         mov dl, [si]
-        add dl, '0'
-        mov ah, 2
-        int 21h
+        add dl, '$'
+        call outputSymbol
         inc si
         loop loop_start
     
@@ -47,9 +46,8 @@ main proc near  ; declare main function
         mov dx, offset my_matrix
         add dx, bx
         mov dl, [si]
-        add dl, '0'
-        mov ah, 2
-        int 21h
+        add dl, '$'
+        call outputSymbol
         inc si
         loop loop_row
 
