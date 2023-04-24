@@ -7,7 +7,7 @@ cseg segment para public 'code'     ; declare code segment
 start:  ; declare program entry point
     assume ds:dseg  ; set data segment register
     mov bx, dseg    ; add data segment to bx register
-    mov ds, bx  ; set ds register to bx register 
+    mov ds, bx  ; set ds register to bx register
 
     call main   ; call main function
 
@@ -16,89 +16,129 @@ start:  ; declare program entry point
     int 21h     ; call interrupt
 
 main proc near  ; declare main function
-    call section_one
-    
-    call section_two
-
-    ret     ; stop function execution
-main endp   ; end main function
-
-section_one proc near 
+    ; output new line
     lea dx, new_line
     call outputString
 
-    lea dx, section_one_heading
-    call outputString
+    ; output a byte character
+    mov dl, my_byte
+    ; use null terminator to output the character itself
+    add dl, '$'
+    call outputSymbol
+    ; output new line
     lea dx, new_line
     call outputString
 
+    ; output new line
+    lea dx, new_line
+    call outputString
+
+    ; initialize counter to 5
+    mov cx, 5
+    ; initialize pointer to my_array
+    mov si, offset my_array
+
+    ; loop 5 times
+    loop_start:
+        ; load byte at memory address pointed to by si into dl
+        mov dl, [si]
+        ; add ASCII value of $ to dl
+        add dl, '$'
+        ; output resulting character to console
+        call outputSymbol
+        ; load memory address of _space string into dx
+        lea dx, _space
+        ; output space character to console
+        call outputString
+
+        ; increment pointer to point to next byte in array
+        inc si
+        ; repeat loop until cx reaches 0
+        loop loop_start
+
+    ; output new line
+    lea dx, new_line
+    call outputString
+
+    ; initialize CX register with the number of characters in the message string
+    mov cx, 8
+    ; initialize SI register with the offset of the message string
+    mov si, offset message
+
+    ; loop through each character in the message string and print it
+    print_message:
+        mov dl, [si]     ; load the current character into DL register
+        call outputSymbol   ; print the character in DL register
+        lea dx, _space   ; load the offset of the space character into DX register
+        call outputString   ; print the space character
+        inc si           ; move to the next character in the message string
+        loop print_message  ; repeat until all characters have been printed
+
+    ; output new line
+    lea dx, new_line
+    call outputString
+
+    ; output new line
+    lea dx, new_line
+    call outputString
+    ; output horizontal line
     lea dx, horizontal_line
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString
-
-    lea dx, student_name
+    ; output my name
+    lea dx, my_string
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString
-
+    ; output my group
     lea dx, student_group
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString
-
+    ; output new line
     lea dx, new_line
     call outputString
-    lea dx, new_line
-    call outputString
-
+    ; output current year
     lea dx, current_year
     call outputString
+    ; output new line
     lea dx, new_line
     call outputString
-
+    ; output horizontal line
     lea dx, horizontal_line
     call outputString
+    ; output new line
     lea dx, new_line
-    call outputString
-    
-    lea dx, new_line
-    call outputString
-section_one endp
+    call outputString    
 
-section_two proc near
-    lea dx, new_line
-    call outputString
-
-    lea dx, section_two_heading
-    call outputString
-    lea dx, new_line
-    call outputString
-
-    lea dx, section_two_byte
-    call outputString
-    mov dl, example_byte
-    call outputChar
-    lea dx, new_line
-    call outputString
-
-    lea dx, new_line
-    call outputString
-section_two endp
+    ret
+main endp   ; end main function
 
 outputString proc near
+    ; clear the AX register
     sub ax, ax
+    ; set AH to 09h to indicate that we want to output a string
     mov ah, 09h
+    ; call interrupt 21h to output the string
     int 21h
+    ; return from the procedure
     ret
 outputString endp
 
-outputChar proc near
+outputSymbol proc near
+    ; clear the AX register
     sub ax, ax
+    ; set AH to 02h to indicate that we want to output a character
     mov ah, 02h
+    ; call interrupt 21h to output the character
     int 21h
+    ; return from the procedure
     ret
-outputChar endp
+outputSymbol endp
 cseg ends   ; end code segment
 
 sseg segment para stack 'stack'     ; declare stack segment
@@ -106,25 +146,38 @@ sseg segment para stack 'stack'     ; declare stack segment
 sseg ends   ; end stack segment 
 
 dseg segment para public 'data'     ; declare data segment
-    section_one_heading db ' 1. Student Card:', '$'
-    student_name db '      Onyshchenko Oleh', '$'
-    student_group db '          KHT-122', '$'
-    new_line db 0Dh, 0Ah, '$'
-    current_year db '            2023', '$'
-    horizontal_line db '-----------------------------', '$'
+    ; define a space character and initialize it
+    _space db ' ', '$'
 
-    section_two_heading db ' 2. Data Types:', '$'
-    section_two_byte db '  2.1 Byte: ', '$'
-    example_byte db 10
-    section_two_word db '  2.2 Word: ', '$'
-    example_word dw 1000
-    section_two_dword db '  2.3 Double Word: ', '$'
-    example_dword dd 12345678h
-    section_two_float db '  2.4 Float: ', '$'
-    example_float dd 3.14
-    section_two_string db '  2.3 String: ', '$'
-    example_string db 'Hello, Assembly', '$'
-    space db ', ', '$'
+    ; define a new line character and initialize it
+    new_line db 0Dh, 0Ah, '$'
+
+    ; define a byte and initialize it with a value
+    my_byte db 10h
+
+    ; define a word and initialize it with a value
+    my_word dw 1234h
+
+    ; define a dword and initialize it with a value
+    my_dword dd 5678h
+
+    ; define necessary string  and initialize them with corresponding values
+    my_string db '      Oleh Onyshchenko', '$'
+    student_group db '          KHT-122', '$'
+    horizontal_line db '-------------------------------', '$'
+    current_year db '           2023', '$'
+    message db 'Assembly', '$'
+
+    ; define an array of bytes and initialize it with values
+    my_array db 1, 2, 3, 4, 5
+
+    ; define an array of words and initialize it with values
+    my_matrix dw 1, 2, 3, 4, 5
+
+    ; define a 2-dimensional array of doublewords and initialize it with values
+    my_dword_matrix dd 1, 2, 3, 4
+                dd 5, 6, 7, 8
+                dd 9, 10, 11, 12
 dseg ends   ; end data segment
 
 end start   ; end program execution
