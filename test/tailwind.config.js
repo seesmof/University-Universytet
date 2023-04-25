@@ -10,5 +10,6 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/aspect-ratio"),
+    require("prettier-plugin-tailwindcss"),
   ],
 };
