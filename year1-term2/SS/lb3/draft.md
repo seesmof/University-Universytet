@@ -9,7 +9,7 @@
 ### Навести бібліографічні дані книг або статей за останні 5 років
 
 1. C++
-2. Object-Oriented Programming
+2. Big O notation
 3. Programming
 4. Algorithms
 5. Data Structures
