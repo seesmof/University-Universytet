@@ -34,6 +34,7 @@ okay a bit more testing
 damn it
 FUCK
 FUFKING CUTN WILLK YOU EVENR RWORK?
+okay it works with an emoji, thanks god
 
 Зразок книги:
 
