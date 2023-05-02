@@ -25,17 +25,6 @@
 14. MySQL
 15. WordPress
 
-this is something else
-and this is other shees
-now we go
-and this now
-add this too
-okay a bit more testing
-damn it
-FUCK
-FUFKING CUTN WILLK YOU EVENR RWORK?
-okay it works with an emoji, thanks god
-
 Зразок книги:
 
 Прізвище, ініціали автора. Назва книги [Текст] / П.І.Б. автора. - Місто видання: Назва видавництва, Рік видання. - Кількість сторінок.
