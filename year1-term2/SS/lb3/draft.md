@@ -179,3 +179,36 @@ how to search database like google in php
 | 1   | DuckDuckGo    | https://www.sitepoint.com/search-php-mysql-like-google/                                            | SitePoint        | 100                    | 0.4364                 |
 | 2   | DuckDuckGo    | https://www.codexworld.com/how-to-search-data-from-mysql-database-like-google/                     | CodexWorld       | 90                     | 0.3927                 |
 | 3   | DuckDuckGo    | https://www.tutorialspoint.com/how-to-implement-google-like-search-in-php-and-mysql                |
+
+---
+
+0.7362
+0.8525
+0.4918
+0.9284
+0.2631
+0.6170
+0.1783
+0.9855
+0.6256
+0.4010
+0.7147
+0.1542
+0.5299
+0.7876
+0.8640
+0.4021
+0.0439
+0.7275
+0.9602
+0.2853
+0.8397
+0.6808
+0.2504
+0.7957
+0.9202
+0.5764
+0.3159
+0.4381
+0.6872
+0.5727
