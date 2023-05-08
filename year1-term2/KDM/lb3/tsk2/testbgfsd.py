@@ -1,45 +1,77 @@
-# Step 1: Accept input from user
-import heapq
-num_vertices = int(input("Enter number of vertices: "))
-graph = {}
+import networkx as nx
+graph = nx.Graph()
+
+''''''
+num_vertices = int(input("\nВведіть кількість вершин: "))
+print()
 
 for i in range(1, num_vertices+1):
-    graph[i] = {}
     for j in range(i+1, num_vertices+1):
-        weight = int(input(f"Enter weight between {i} and {j}: "))
-        graph[i][j] = weight
-        graph[j][i] = weight
+        if i != j:
+            weight = int(
+                input(f"Введіть вагу між вершиною {i} та {j}: "))
+            if weight != 0:
+                graph.add_edge(i, j, weight=weight)
 
-# Step 2: Implement Dijkstra's Algorithm
+'''
+graph.add_edge(1, 2, weight=4)
+graph.add_edge(1, 3, weight=3)
+graph.add_edge(1, 4, weight=2)
+graph.add_edge(2, 5, weight=2)
+graph.add_edge(2, 7, weight=1)
+graph.add_edge(3, 5, weight=6)
+graph.add_edge(3, 6, weight=7)
+graph.add_edge(4, 6, weight=2)
+graph.add_edge(4, 7, weight=4)
+graph.add_edge(5, 8, weight=7)
+graph.add_edge(5, 9, weight=5)
+graph.add_edge(6, 8, weight=4)
+graph.add_edge(6, 10, weight=3)
+graph.add_edge(7, 9, weight=4)
+graph.add_edge(7, 10, weight=5)
+graph.add_edge(8, 11, weight=7)
+graph.add_edge(9, 11, weight=1)
+graph.add_edge(10, 11, weight=3)
+'''
+
+T = nx.minimum_spanning_tree(graph)
+print(f"\nМінімальне остовне дерево:")
+
+total_weight = 0
+for u, v, data in T.edges(data=True):
+    weight = data['weight']
+    print(f"{u} -- {v} = {weight}")
+    total_weight += weight
+print(f"Вага дерева = {total_weight}")
 
 
-def dijkstra(graph, start):
-    distances = {vertex: float('inf') for vertex in graph}
-    distances[start] = 0
-    queue = [(0, start)]
-    while queue:
-        current_distance, current_vertex = heapq.heappop(queue)
-        if current_distance > distances[current_vertex]:
-            continue
-        for neighbor, weight in graph[current_vertex].items():
-            distance = current_distance + weight
-            if distance < distances[neighbor]:
-                distances[neighbor] = distance
-                heapq.heappush(queue, (distance, neighbor))
-    return distances
+def dijkstra(graph, start, end):
+    dist = {v: float('inf') for v in graph.nodes()}
+    dist[start] = 0
+    prev = {}
+    unvisited = set(graph.nodes())
+    while unvisited:
+        current = min(unvisited, key=lambda v: dist[v])
+        unvisited.remove(current)
+        if dist[current] == float('inf'):
+            break
+        for neighbor in graph.neighbors(current):
+            tentative_dist = dist[current] + graph[current][neighbor]['weight']
+            if tentative_dist < dist[neighbor]:
+                dist[neighbor] = tentative_dist
+                prev[neighbor] = current
+    path = []
+    current = end
+    while current != start:
+        path.append(current)
+        current = prev[current]
+    path.append(start)
+    path.reverse()
+    path_str = " -> ".join(str(v) for v in path)
+    return path_str
 
 
-# Step 3: Find shortest path using Dijkstra's Algorithm
-start_vertex = int(input("Enter start vertex: "))
-distances = dijkstra(graph, start_vertex)
-
-# Step 4: Output shortest path
-shortest_path = []
-current_vertex = num_vertices
-while current_vertex != start_vertex:
-    shortest_path.append(str(current_vertex))
-    current_vertex = min(graph[current_vertex], key=lambda x: distances[x])
-shortest_path.append(str(start_vertex))
-shortest_path.reverse()
-
-print(" -> ".join(shortest_path))
+start = list(graph.nodes())[0]
+end = list(graph.nodes())[-1]
+shortest_path = dijkstra(graph, start, end)
+print(f"\nНайкоротший шлях: {shortest_path}\n")
