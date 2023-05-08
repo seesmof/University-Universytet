@@ -1,58 +1,118 @@
+# Kruskal's Algorithm for finding Minimum Spanning Tree
 
-class Graph:
-    def __init__(self, vertices):
-        self.V = vertices
-        self.graph = []
+# Graph represented as list of edges with weights
+import heapq
 
-    def addEdge(self, u, v, w):
-        self.graph.append([u, v, w])
+# Ask the user for the number of vertices in the graph
+num_vertices = int(input("Введіть кількість вершин: "))
 
-    def find(self, parent, i):
-        if parent[i] != i:
-            parent[i] = self.find(parent, parent[i])
-        return parent[i]
+# Create an empty dictionary to represent the graph
+graph = {}
 
-    def union(self, parent, rank, x, y):
-        if rank[x] < rank[y]:
-            parent[x] = y
-        elif rank[x] > rank[y]:
-            parent[y] = x
-        else:
-            parent[y] = x
-            rank[x] += 1
+# For each vertex in the graph
+for i in range(1, num_vertices+1):
+    # Create a sub-dictionary to represent the edges and weights for that vertex
+    edges = {}
+    # For each other vertex in the graph
+    for j in range(1, num_vertices+1):
+        # If the other vertex is not the current vertex
+        if i != j:
+            # Ask the user for the weight of the edge between the current vertex and the other vertex
+            weight = int(
+                input(f"Введіть вагу між {i} та {j}: "))
+            # If the weight is not 0, add the other vertex and its weight to the sub-dictionary for the current vertex
+            if weight != 0:
+                edges[j] = weight
+    # Add the sub-dictionary for the current vertex to the graph dictionary
+    graph[i] = edges
 
-    def KruskalMST(self):
-        result = []
-        i = 0
-        e = 0
-        self.graph = sorted(self.graph, key=lambda item: item[2])
-        parent = []
-        rank = []
-        for node in range(self.V):
-            parent.append(node)
-            rank.append(0)
-        while e < self.V - 1:
-            u, v, w = self.graph[i]
-            i = i + 1
-            x = self.find(parent, u)
-            y = self.find(parent, v)
-            if x != y:
-                e = e + 1
-                result.append([u, v, w])
-                self.union(parent, rank, x, y)
-        minimumCost = 0
-        print("Edges in the constructed MST")
-        for u, v, weight in result:
-            minimumCost += weight
-            print("%d -- %d == %d" % (u, v, weight))
-        print("Minimum Spanning Tree", minimumCost)
+# Sort edges by weight
+graph_edges = []
+for i in range(1, num_vertices+1):
+    for j, weight in graph[i].items():
+        graph_edges.append((i, j, weight))
+graph_edges = sorted(graph_edges, key=lambda x: x[2])
+
+# Initialize parent dictionary and rank dictionary for union-find algorithm
+parent = {i: i for i in range(1, num_vertices+1)}
+rank = {i: 0 for i in range(1, num_vertices+1)}
 
 
-if __name__ == '__main__':
-    g = Graph(4)
-    g.addEdge(0, 1, 10)
-    g.addEdge(0, 2, 6)
-    g.addEdge(0, 3, 5)
-    g.addEdge(1, 3, 15)
-    g.addEdge(2, 3, 4)
-    g.KruskalMST()
+# Define find and union functions for union-find algorithm
+def find(node):
+    if parent[node] == node:
+        return node
+    parent[node] = find(parent[node])
+    return parent[node]
+
+
+def union(node1, node2):
+    root1 = find(node1)
+    root2 = find(node2)
+    if root1 == root2:
+        return
+    if rank[root1] < rank[root2]:
+        parent[root1] = root2
+    elif rank[root1] > rank[root2]:
+        parent[root2] = root1
+    else:
+        parent[root2] = root1
+        rank[root1] += 1
+
+
+# Initialize variables for minimum spanning tree and total weight
+minimum_spanning_tree = []
+total_weight = 0
+
+# Iterate through edges and add to minimum spanning tree if they don't create a cycle
+for edge in graph:
+    node1, node2, weight = edge
+    if find(node1) != find(node2):
+        union(node1, node2)
+        minimum_spanning_tree.append(edge)
+        total_weight += weight
+
+# Print minimum spanning tree and total weight
+print(f"\nМінімальне остовне дерево:")
+for edge in minimum_spanning_tree:
+    print(f"{edge[0]} -- {edge[1]} = {edge[2]}")
+print(f"\nВага мінімального остовного дерева: {total_weight}")
+
+# Shortest path using Dijkstra's Algorithm
+
+# Graph represented as dictionary of dictionaries with weights
+graph = {1: {2: 4, 3: 3, 4: 2}, 2: {1: 4, 5: 2, 7: 1}, 3: {1: 3, 5: 6, 6: 7}, 4: {1: 2, 6: 2, 7: 7}, 5: {2: 2, 3: 6, 8: 4, 9: 7}, 6: {
+    3: 7, 4: 2, 8: 4, 10: 3}, 7: {2: 1, 4: 7, 9: 5, 10: 5}, 8: {5: 4, 6: 4, 11: 4}, 9: {5: 7, 7: 5, 11: 1}, 10: {6: 3, 7: 5, 11: 3}, 11: {8: 4, 9: 1, 10: 3}}
+
+
+# Dijkstra's Algorithm for finding shortest path
+def dijkstra(graph, start, end):
+    distances = {node: float('inf') for node in graph}
+    distances[start] = 0
+    heap = [(0, start)]
+    while heap:
+        (distance, current_node) = heapq.heappop(heap)
+        if distance > distances[current_node]:
+            continue
+        for neighbor, weight in graph[current_node].items():
+            distance_to_neighbor = distance + weight
+            if distance_to_neighbor < distances[neighbor]:
+                distances[neighbor] = distance_to_neighbor
+                heapq.heappush(heap, (distance_to_neighbor, neighbor))
+    path = [end]
+    current_node = end
+    while current_node != start:
+        for neighbor, weight in graph[current_node].items():
+            if distances[current_node] == distances[neighbor] + weight:
+                path.append(neighbor)
+                current_node = neighbor
+                break
+    path.reverse()
+    return path
+
+
+# Print shortest path
+shortest_path = dijkstra(graph, 1, 11)
+shortest_path = shortest_path.replace("[", "")
+shortest_path = shortest_path.replace("]", "")
+print(f"Найкоротший шлях: {shortest_path}\n")
