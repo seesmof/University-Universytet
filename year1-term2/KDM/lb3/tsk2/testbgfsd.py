@@ -1,79 +1,78 @@
-from queue import PriorityQueue
+class Graph:
 
-# define the Kruskal's algorithm function
+    def __init__(self, vertices):
+        self.V = vertices
+        self.graph = []
+
+    # Function to add an edge to graph
+    def addEdge(self, u, v, w):
+        self.graph.append([u, v, w])
+
+    # A utility function to find set of an element i
+    # (truly uses path compression technique)
+    def find(self, parent, i):
+        if parent[i] != i:
+            parent[i] = self.find(parent, parent[i])
+        return parent[i]
+
+    # A function that does union of two sets of x and y
+    # (uses union by rank)
+    def union(self, parent, rank, x, y):
+        if rank[x] < rank[y]:
+            parent[x] = y
+        elif rank[x] > rank[y]:
+            parent[y] = x
+        else:
+            parent[y] = x
+            rank[x] += 1
+
+    def kruskal(self):
+        # Sort all the edges in non-decreasing order of their weight
+        self.graph = sorted(self.graph, key=lambda item: item[2])
+
+        parent = []
+        rank = []
+
+        # Create V subsets with single elements
+        for node in range(self.V):
+            parent.append(node)
+            rank.append(0)
+
+        # Variable to store the edges of the minimum spanning tree
+        mst = []
+
+        # Variable to keep track of the number of edges added to the minimum spanning tree
+        e = 0
+
+        # Number of edges to be taken is less than V-1
+        while e < self.V - 1:
+            u, v, w = self.graph.pop(0)
+            x = self.find(parent, u)
+            y = self.find(parent, v)
+
+            # If including this edge doesn't cause cycle, then include it in result
+            if x != y:
+                e += 1
+                mst.append([u, v, w])
+                self.union(parent, rank, x, y)
+
+        # Print the edges of the minimum spanning tree in the desired format
+        for u, v, weight in mst:
+            print("{} -- {} = {}".format(u, v, weight))
 
 
-def kruskal(graph, num_vertices):
-    # initialize the minimum spanning tree and the parent array
-    mst = []
-    parent = [i for i in range(num_vertices)]
+# Ask the user for the number of vertices in the graph
+n = int(input("Enter the number of vertices: "))
 
-    # define the find function for the union-find algorithm
-    def find(x):
-        if parent[x] != x:
-            parent[x] = find(parent[x])
-        return parent[x]
+# Create a Graph object with the given number of vertices
+g = Graph(n)
 
-    # sort the edges by weight
-    edges = []
-    for i in range(num_vertices):
-        for j in range(num_vertices):
-            if graph[i][j] != 0:
-                edges.append((graph[i][j], i, j))
-    edges.sort()
+# Ask the user for the weight between each vertex pair and add the edges to the graph object
+for i in range(n):
+    for j in range(i+1, n):
+        weight = int(
+            input("Enter the weight between {} and {}: ".format(i+1, j+1)))
+        g.addEdge(i, j, weight)
 
-    # iterate over the edges and add them to the MST if they don't create a cycle
-    for edge in edges:
-        weight, u, v = edge
-        if find(u) != find(v):
-            mst.append(edge)
-            parent[find(u)] = find(v)
-
-    return mst
-
-# define the Dijkstra's algorithm function
-
-
-def dijkstra(graph, start):
-    # initialize the distances and the priority queue
-    distances = {i: float('inf') for i in range(len(graph))}
-    distances[start] = 0
-    pq = PriorityQueue()
-    pq.put((0, start))
-
-    # iterate over the vertices and update the distances
-    while not pq.empty():
-        current_distance, current_vertex = pq.get()
-        if current_distance > distances[current_vertex]:
-            continue
-        for neighbor, weight in enumerate(graph[current_vertex]):
-            if weight != 0:
-                distance = current_distance + weight
-                if distance < distances[neighbor]:
-                    distances[neighbor] = distance
-                    pq.put((distance, neighbor))
-
-    return distances
-
-
-# get the number of vertices and the weights from the user
-num_vertices = int(input("Enter the number of vertices: "))
-graph = []
-for i in range(num_vertices):
-    row = list(
-        map(int, input(f"Enter the weights for vertex {i+1}: ").split()))
-    graph.append(row)
-
-# find the minimum spanning tree using Kruskal's algorithm
-mst = kruskal(graph, num_vertices)
-print("Minimum Spanning Tree:")
-for edge in mst:
-    print(f"{edge[1]} -- {edge[2]}: {edge[0]}")
-
-# find the shortest path using Dijkstra's algorithm
-start = int(input("Enter the starting vertex for Dijkstra's algorithm: "))
-distances = dijkstra(graph, start)
-print("Shortest Path:")
-for i in range(num_vertices):
-    if i != start:
-        print(f"{start} -- {i}: {distances[i]}")
+# Call the kruskal method of the Graph object to find the minimum spanning tree
+g.kruskal()
