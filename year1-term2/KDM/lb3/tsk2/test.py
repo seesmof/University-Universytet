@@ -80,10 +80,6 @@ print(f"\nВага мінімального остовного дерева: {to
 
 # Shortest path using Dijkstra's Algorithm
 
-# Graph represented as dictionary of dictionaries with weights
-graph = {1: {2: 4, 3: 3, 4: 2}, 2: {1: 4, 5: 2, 7: 1}, 3: {1: 3, 5: 6, 6: 7}, 4: {1: 2, 6: 2, 7: 7}, 5: {2: 2, 3: 6, 8: 4, 9: 7}, 6: {
-    3: 7, 4: 2, 8: 4, 10: 3}, 7: {2: 1, 4: 7, 9: 5, 10: 5}, 8: {5: 4, 6: 4, 11: 4}, 9: {5: 7, 7: 5, 11: 1}, 10: {6: 3, 7: 5, 11: 3}, 11: {8: 4, 9: 1, 10: 3}}
-
 
 # Dijkstra's Algorithm for finding shortest path
 def dijkstra(graph, start, end):
