@@ -1,0 +1,9 @@
+D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/CMakeFiles/calendar_app.dir
+D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/CMakeFiles/edit_cache.dir
+D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/CMakeFiles/rebuild_cache.dir
+D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/CMakeFiles/list_install_components.dir
+D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/CMakeFiles/install.dir
+D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/CMakeFiles/install/local.dir
+D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/CMakeFiles/install/strip.dir
+D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/CMakeFiles/calendar_app_autogen_timestamp_deps.dir
+D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/CMakeFiles/calendar_app_autogen.dir

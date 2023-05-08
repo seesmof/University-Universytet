@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-86c113df455c8d3ca43d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "calendar_app",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "calendar_app::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-calendar_app-Debug-91ca68ed4b9e50a28335.json",
+					"name" : "calendar_app",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "calendar_app_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-calendar_app_autogen-Debug-5cb643ac85a87865904e.json",
+					"name" : "calendar_app_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "calendar_app_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-calendar_app_autogen_timestamp_deps-Debug-a4b191fdd5def07e0f52.json",
+					"name" : "calendar_app_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug",
+		"source" : "D:/repos/university/year1-term2/OOP/lb9/calendar_app"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

@@ -1,0 +1,32 @@
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: D:/programs/QT_CREATOR/6.5.0/Boot2Qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/x86_64-poky-linux-g++.exe 
+Build flags: -DQT_QML_DEBUG
+Id flags: -c;--target=x86_64-poky-linux 
+
+The output was:
+1
+x86_64-poky-linux-g++.exe: error: unrecognized command-line option '--target=x86_64-poky-linux'
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: D:/programs/QT_CREATOR/6.5.0/Boot2Qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/x86_64-poky-linux-g++.exe 
+Build flags: -DQT_QML_DEBUG
+Id flags:  
+
+The output was:
+1
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot open Scrt1.o: No such file or directory
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot open crti.o: No such file or directory
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot open crtbeginS.o: No such file or directory
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot open crtendS.o: No such file or directory
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot open crtn.o: No such file or directory
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot find -lstdc++
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot find -lm
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot find -lgcc_s
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot find -lgcc
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot find -lc
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot find -lgcc_s
+d:/programs/qt_creator/6.5.0/boot2qt/intel-skylake-64/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/x86_64-poky-linux/../../libexec/x86_64-poky-linux/gcc/x86_64-poky-linux/12.2.0/ld.exe: error: cannot find -lgcc
+collect2.exe: error: ld returned 1 exit status
+
+
