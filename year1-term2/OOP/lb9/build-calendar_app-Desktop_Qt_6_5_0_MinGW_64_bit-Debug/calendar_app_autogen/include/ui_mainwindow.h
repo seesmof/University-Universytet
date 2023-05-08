@@ -31,6 +31,7 @@ public:
     QTabWidget *tabWidget;
     QWidget *tab_4;
     QCalendarWidget *calendarWidget;
+    QTextEdit *textEdit_7;
     QWidget *tab;
     QTextEdit *textEdit;
     QTextEdit *textEdit_2;
@@ -61,9 +62,12 @@ public:
         tab_4->setObjectName("tab_4");
         calendarWidget = new QCalendarWidget(tab_4);
         calendarWidget->setObjectName("calendarWidget");
-        calendarWidget->setGeometry(QRect(9, 6, 791, 331));
+        calendarWidget->setGeometry(QRect(10, 10, 791, 331));
         calendarWidget->setGridVisible(false);
         calendarWidget->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
+        textEdit_7 = new QTextEdit(tab_4);
+        textEdit_7->setObjectName("textEdit_7");
+        textEdit_7->setGeometry(QRect(10, 350, 791, 71));
         tabWidget->addTab(tab_4, QString());
         tab = new QWidget();
         tab->setObjectName("tab");
@@ -95,7 +99,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 808, 21));
+        menubar->setGeometry(QRect(0, 0, 808, 17));
         menuOOP_Lab_9 = new QMenu(menubar);
         menuOOP_Lab_9->setObjectName("menuOOP_Lab_9");
         MainWindow->setMenuBar(menubar);
