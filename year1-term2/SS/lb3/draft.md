@@ -71,6 +71,11 @@
 
 ### Заблокувати рекламу в браузері
 
+Using the knowledge base and a set of computational
+Wolfram Alpha algorithms to solve a differential equation and
+system of linear algebraic equations, perform operations on
+matrices.
+
 ---
 
 Для розрахунку оцінки релевантності перша частина є суб'єктивною, де студент оцінює релевантність знайденої інформації до введеного запиту за 100-бальною шкалою.
