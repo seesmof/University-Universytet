@@ -90,3 +90,6 @@
   - perfect work experience sections
     - job title / position
     - company name
+    - achievements and responsibilities
+  - make it clear how you took company from point A to point B
+  - work experience in reverse order chronologically
