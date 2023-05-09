@@ -93,3 +93,26 @@
     - achievements and responsibilities
   - make it clear how you took company from point A to point B
   - work experience in reverse order chronologically
+- skills section
+  - hard skills are technical and specific skills that are directly related to tasks
+  - soft skills are personal attributes, non technical skills
+    - communication
+    - leadership
+    - teamwork
+    - critical thinking
+  - jobs include skills they want
+  - list hard skills or make a rating out of them
+  - list soft skills as well
+  - universal skills can be mentioned too
+- education section
+  - tips for the section
+    - if no work exeprience, then put education first
+    - if have university degree, don't mention high school
+    - mention GPA if its above average
+- those were the necessary sections for any resume
+- optional sections
+  - certificates and awards
+  - languages
+    - categorise languages by your level of knowledge
+  - hobbies or interests
+  - personal projects
