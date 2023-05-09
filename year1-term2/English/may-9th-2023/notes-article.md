@@ -1,0 +1,92 @@
+# Article Notes
+
+- employers look at CVs for 6 sec tops
+- how to grab one's attention in those seconds?
+  - takes time to make a good CV
+  - but worth for getting a dream job
+- do you need a CV?
+  - some emloyers say CV, others resume
+    - location based differences
+    - in Europe its same thing
+    - in US
+      - resume - one page summary of work experience
+      - CV - longer academic diary
+      - resume is shorter, CV is longer
+- why use CV builder
+  - word templates are lifeless
+  - CV wants to stand out
+- how to format CV
+  - must have sections
+    - contact information
+    - CV summary or objective
+    - work experience
+    - skills
+    - education
+  - optional sections
+    - certificates and awards
+    - langauges
+    - personal projects
+    - valunteer experience
+- CV layout
+  - things people notice
+    - if everything is easy to read
+    - consistent styling?
+    - well organised?
+  - best practices
+    - keep all on one page
+    - clear section headings
+    - use margins properly
+    - keep clear details
+    - save as PDF
+  - types of resume
+    - traditional
+      - suits well for
+        - legal
+        - banking
+        - finance
+        - etc
+    - creative
+      - suits well for
+        - tech startups
+        - innovative company
+        - etc
+- hot to add contact info
+  - arguably the most important part
+  - tripple check it
+  - should include
+    - name
+    - phone number
+    - email
+    - title
+    - location
+  - could include
+    - linkedin
+    - twitter
+    - quora
+    - StackOverflow / GitHub
+    - medium
+    - etc
+- how to grab attention
+  - does it pass 6 seconds test?
+  - if have 2 years of work experience - do CV summary
+    - else - go for CV objective
+  - summary should include
+    - jobs
+    - years of experience
+    - achievemnts and responsibilities
+    - your goals
+  - mention how experience will help bring value
+  - how to do a CV objective?
+    - 2-3 sentences long tops, like summary
+    - focus on motivation
+    - might wanna include
+      - skills
+      - education
+      - types of responsibility
+      - how can apply experience
+    - summarise the goal and your motivation
+- how to show off work experience
+  - main section
+  - perfect work experience sections
+    - job title / position
+    - company name
