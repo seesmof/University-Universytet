@@ -39,3 +39,15 @@ max_flow_value, max_flow_dict = nx.maximum_flow(G, '1', '13')
 # print the full and maximum flows
 print("Full flow:", full_flow)
 print("Maximum flow:", max_flow_value)
+
+
+# Find the maximum flow and the corresponding flow values
+flow_value, flow_dict = nx.maximum_flow(G, '1', '13')
+
+# Print the maximum flow value
+print("Maximum flow:", flow_value)
+
+# Print the flow values for each edge
+for u in flow_dict:
+    for v in flow_dict[u]:
+        print(f"Flow from {u} to {v}: {flow_dict[u][v]}")
