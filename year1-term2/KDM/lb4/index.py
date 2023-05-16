@@ -1,53 +1,29 @@
 import networkx as nx
 
-# create a directed weighted graph
-G = nx.DiGraph()
 
-# add nodes to the graph
-G.add_nodes_from(['1', '2', '3', '4', '5', '6', '7',
-                 '8', '9', '10', '11', '12', '13'])
+def create_graph():
+    G = nx.DiGraph()
+    nodes = ['1', '2', '3', '4', '5', '6',
+             '7', '8', '9', '10', '11', '12', '13']
+    edges = [('1', '2', 11), ('1', '3', 15), ('1', '4', 11), ('1', '5', 15), ('2', '6', 7), ('2', '7', 9), ('3', '6', 4), ('4', '7', 8), ('4', '8', 9), ('4', '9', 4), ('5', '8', 9),
+             ('5', '9', 5), ('6', '10', 8), ('7', '10', 13), ('7', '11', 7), ('8', '11', 4), ('8', '12', 4), ('9', '12', 12), ('10', '13', 20), ('11', '13', 10), ('12', '13', 13)]
+    G.add_nodes_from(nodes)
+    for edge in edges:
+        G.add_edge(edge[0], edge[1], capacity=edge[2])
+    return G
 
-# add edges to the graph
-G.add_edge('1', '2', capacity=11)
-G.add_edge('1', '3', capacity=15)
-G.add_edge('1', '4', capacity=11)
-G.add_edge('1', '5', capacity=15)
-G.add_edge('2', '6', capacity=7)
-G.add_edge('2', '7', capacity=9)
-G.add_edge('3', '6', capacity=4)
-G.add_edge('4', '7', capacity=8)
-G.add_edge('4', '8', capacity=9)
-G.add_edge('4', '9', capacity=4)
-G.add_edge('5', '8', capacity=9)
-G.add_edge('5', '9', capacity=5)
-G.add_edge('6', '10', capacity=8)
-G.add_edge('7', '10', capacity=13)
-G.add_edge('7', '11', capacity=7)
-G.add_edge('8', '11', capacity=4)
-G.add_edge('8', '12', capacity=4)
-G.add_edge('9', '12', capacity=12)
-G.add_edge('10', '13', capacity=20)
-G.add_edge('11', '13', capacity=10)
-G.add_edge('12', '13', capacity=13)
 
-# find the full flow
-full_flow = nx.maximum_flow_value(G, '1', '13')
+G = create_graph()
 
-# find the maximum flow
 max_flow_value, max_flow_dict = nx.maximum_flow(G, '1', '13')
 
-# print the full and maximum flows
-print("Full flow:", full_flow)
-print("Maximum flow:", max_flow_value)
+print()
+print("Потік:")
+for edge in G.edges():
+    edge_str = edge[0] + " - " + edge[1] + " -- " + \
+        str(G.get_edge_data(edge[0], edge[1])['capacity'])
+    print(edge_str)
 
 
-# Find the maximum flow and the corresponding flow values
-flow_value, flow_dict = nx.maximum_flow(G, '1', '13')
-
-# Print the maximum flow value
-print("Maximum flow:", flow_value)
-
-# Print the flow values for each edge
-for u in flow_dict:
-    for v in flow_dict[u]:
-        print(f"Flow from {u} to {v}: {flow_dict[u][v]}")
+print("\nПовний потік:", max_flow_value)
+print()
