@@ -83,7 +83,7 @@ operator:
     mov dl,25
     int 10h
 
-    mov ah,09h
+    mov ah,9
     mov dx,offset p3
     int 21h
     mov ah,01h
