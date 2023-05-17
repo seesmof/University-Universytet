@@ -15,7 +15,7 @@ def create_graph():
 
 G = create_graph()
 
-max_flow_value, max_flow_dict = nx.maximum_flow(G, '1', '13')
+max_flow_value = nx.maximum_flow(G, '1', '13')
 
 print()
 print("Потік:")
@@ -25,5 +25,5 @@ for edge in G.edges():
     print(edge_str)
 
 
-print("\nПовний потік:", max_flow_value)
+print("\nМаксимальний потік:", max_flow_value)
 print()
