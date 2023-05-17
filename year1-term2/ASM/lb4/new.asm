@@ -1,145 +1,247 @@
-.model small
-.stack 100h
-
+.model medium
+.386
+.stack
 .data
-    num1 db ?
-    num2 db ?
-    result dw ?
+
+    p1 db 'Enter operand 1:$'
+    p2 db 'Enter operand 2:$'
+    p3 db 'Enter operator (+ - * /):$'
 
 .code
-    mov ax, @data
-    mov ds, ax
+m   proc
 
-    ; prompt user to enter first number
-    mov ah, 9h
-    lea dx, prompt1
+    mov ax,@data
+    mov ds,ax
+    mov ax,0b800h
+    mov es,ax
+    mov di,7d0h
+    mov ah,10100100b
+    mov dh,ah
+
+loopOne:
+
+    mov ah,2
+    mov bh,0
+    mov dh,2
+    mov dl,25
+    int 10h
+
+    mov ah,9
+    mov dx,offset p1
     int 21h
 
-    ; read first number as string
-    mov ah, 0ah
-    lea dx, num1
+    mov ah,1
     int 21h
+    cmp al,30h
 
-    ; convert first number to integer
-    mov al, num1[2]
-    sub al, '0'
-    mov bl, num1[1]
-    sub bl, '0'
-    mov cl, 10
-    mul cl
-    add al, bl
-    mov num1, al
+    jae failedFirst
+    jmp loopOne
 
-    ; prompt user to enter second number
-    mov ah, 9h
-    lea dx, prompt2
-    int 21h
+failedFirst:
 
-    ; read second number as string
-    mov ah, 0ah
-    lea dx, num2
-    int 21h
+    cmp al,39h
+    jbe passedFirst
+    jmp loopOne
 
-    ; convert second number to integer
-    mov al, num2[2]
-    sub al, '0'
-    mov bl, num2[1]
-    sub bl, '0'
-    mul cl
-    add al, bl
-    mov num2, al
-
-    ; display menu of mathematical operations
-    mov ah, 9h
-    lea dx, menu
-    int 21h
-
-    ; prompt user to choose operation
-    mov ah, 1h
-    int 21h
-    sub al, '0'
-
-    ; perform chosen operation
-    cmp al, 1
-    je add_nums
-    cmp al, 2
-    je sub_nums
-    cmp al, 3
-    je mul_nums
-    cmp al, 4
-    je div_nums
-
-add_nums:
-    mov al, num1
-    add al, num2
-    mov result, ax
-    jmp display_result
-
-sub_nums:
-    mov al, num1
-    sub al, num2
-    mov result, ax
-    jmp display_result
-
-mul_nums:
-    mov al, num1
-    mul num2
-    mov result, ax
-    jmp display_result
-
-div_nums:
-    mov al, num1
-    xor ah, ah
-    div num2
-    mov result, ax
-
-display_result:
-    ; display result
-    mov ah, 9h
-    lea dx, result_msg
-    int 21h
-    mov ax, result
-    call print_num
-    jmp exit_prog
-
-print_num proc near
+passedFirst:
+    sub al,30h
     push ax
-    push bx
-    push cx
-    push dx
 
-    mov bx, 10
-    mov cx, 0
+loopTwo:
 
-print_loop:
-    xor dx, dx
-    div bx
-    push dx
-    inc cx
-    cmp ax, 0
-    jne print_loop
+    mov ah,2
+    mov bh,0
+    mov dh,3
+    mov dl,25
+    int 10h
 
-display_loop:
-    pop dx
-    add dl, '0'
-    mov ah, 2h
+    mov ah,9
+    mov dx,offset p2
     int 21h
-    loop display_loop
 
-    pop dx
-    pop cx
+    mov ah,1
+    int 21h
+
+    cmp al,30h
+    jae failedSecond
+    jmp loopTwo
+
+failedSecond:
+    cmp al,39h
+    jbe passedSecond
+    jmp loopTwo
+
+passedSecond:
+    sub al,30h
+    push ax
+
+operator:
+
+    mov ah,2
+    mov bh,0
+    mov dh,4
+    mov dl,25
+    int 10h
+
+    mov ah,09h
+    mov dx,offset p3
+    int 21h
+    mov ah,01h
+    int 21h
+    mov bl,al
+    mov ah,02h
+    mov bl,al
+    mov ah,02h
+    mov dl,0Ah
+    int 21h
+
+    cmp bl, '*'
+    je multiplication
+
+    cmp bl, '/'
+    je division
+
+    cmp bl, '+'
+    je addition
+
+    cmp bl, '-'
+    je subtraction
+
+    jmp operator
+
+multiplication:
     pop bx
     pop ax
-    ret
-print_num endp
 
-exit_prog:
-    mov ah, 4ch
+    mul bl
+
+    mov bh,0
+    mov bl,10
+    div bl
+
+    add al,30h
+    add ah,30h
+    mov bl,ah
+
+    push ax
+    mov ah,2
+    mov dl,0Ah
+    int 21h
+    mov dl,0Dh
+    int 21h
+    pop ax
+
+    mov ah,2
+    mov bh,0
+    mov dh,5
+    mov dl,25
+    int 10h
+
+    mov ah,2
+    mov dl,al
     int 21h
 
-prompt1 db 'Enter first number: $'
-prompt2 db 'Enter second number: $'
-menu db 'Choose operation:', 13, 10, '1. Add', 13, 10, '2. Subtract', 13, 10, '3. Multiply', 13, 10, '4. Divide', 13, 10, '$'
-result_msg db 'Result: $'
+    mov ah,2
+    mov dl,bl
+    int 21h
+
+    mov ah,2
+    mov bh,0
+    mov dh,6
+    mov dl,25
+    int 10h
+
+    jmp getInp
+
+addition:
+    pop bx
+    pop ax
+
+    add al,bl
+    mov ah,0
+    AAA
+
+    mov bx,ax
+    add bh,48
+    add bl,48
+
+    push bx
     
-end
+    mov ah,2
+    mov bh,0
+    mov dh,5
+    mov dl,25
+    int 10h
+
+    pop bx
+    mov ah,2
+    mov dl,bh
+    int 21h
+
+    mov ah,2
+    mov dl,bl
+    int 21h
+
+    mov ah,2
+    mov bh,0
+    mov dh,6
+    mov dl,25
+    int 10h
+
+    jmp getInp
+
+subtraction:
+    pop bx
+    pop ax
+
+    mov ch,0h
+
+    cmp al,bl
+    jb negative
+
+solve:
+    sub al,bl
+    sub al,30h
+
+    push ax
+
+    mov ah,2
+    mov dl,0Ah
+    int 21h
+    mov dl,0Dh
+    int 21h
+
+    mov ah,2
+    mov bh,0
+    mov dh,5
+    mov dl,25
+    int 10h
+
+    cmp ch,1h
+    je symbol
+
+show:
+    pop ax
+    mov ah,2
+    mov dl,al
+    int 21h
+
+    mov ah,2
+    mov bh,0
+    mov dh,6
+    mov dl,25
+    int 10h
+
+    jmp getInp
+
+negative:
+    mov dl,al
+    mov al,bl
+    mov bl,dl
+    mov ch,1h
+    jmp solve
+
+symbol:
+    mov dl,'-'
+    int 21h
+    jmp show
