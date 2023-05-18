@@ -245,3 +245,55 @@ symbol:
     mov dl,'-'
     int 21h
     jmp show
+
+division:
+
+    pop bx
+    mov bh,0h
+    mov bx,0h
+    je ifzero
+    pop ax
+    mov ah,0h
+
+    div bl
+
+    add al,30h
+    add ah,30h
+    mov bl,ah
+
+    mov ah,2
+    mov bh,0
+    mov dh,5
+    mov dl,25
+    int 10h
+
+    mov ah,2
+    mov dl,al
+    int 21h
+
+    mov ah,2
+    mov bh,0
+    mov dh,7
+    mov dl,25
+    int 10h
+
+    jmp getInp
+
+ifzero:
+    mov ah,2
+    mov bh,0
+    mov dh,6
+    mov dl,25
+    int 10h
+    jmp getInp
+
+getInp:
+
+    mov ah,2
+    mov bh,0
+    mov dh,8
+    mov dl,25
+    int 10h
+
+m   endp
+end m
