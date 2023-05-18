@@ -1,6 +1,40 @@
 import networkx as nx
 
 
+def manual_max_flow(G, s, t):
+    flow = {}
+    for u in G.nodes:
+        flow[u] = {}
+        for v in G.nodes:
+            flow[u][v] = 0
+    while True:
+        path = bfs(G, s, t, flow)
+        if not path:
+            break
+        df = float("inf")
+        for u, v in path:
+            df = min(df, G[u][v]["capacity"] - flow[u][v])
+        for u, v in path:
+            flow[u][v] += df
+            flow[v][u] -= df
+    max_flow_value = sum(flow[s][v] for v in G.nodes)
+    return max_flow_value
+
+
+def bfs(G, s, t, flow):
+    queue = [s]
+    paths = {s: []}
+    while queue:
+        u = queue.pop(0)
+        for v in G[u]:
+            if G[u][v]["capacity"] - flow[u][v] > 0 and v not in paths:
+                paths[v] = paths[u] + [(u, v)]
+                if v == t:
+                    return paths[v]
+                queue.append(v)
+    return None
+
+
 def create_graph():
     G = nx.DiGraph()
     nodes = ['1', '2', '3', '4', '5', '6',
@@ -15,8 +49,6 @@ def create_graph():
 
 G = create_graph()
 
-max_flow_value = nx.maximum_flow(G, '1', '13')
-
 print()
 print("Потік:")
 for edge in G.edges():
@@ -24,6 +56,9 @@ for edge in G.edges():
         str(G.get_edge_data(edge[0], edge[1])['capacity'])
     print(edge_str)
 
+max_flow_value = manual_max_flow(G, "1", "13")
+print("\nПовний потік:", max_flow_value)
 
+max_flow_value, max_flow_dict = nx.maximum_flow(G, '1', '13')
 print("\nМаксимальний потік:", max_flow_value)
 print()
