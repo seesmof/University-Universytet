@@ -1,147 +1,309 @@
-.model small
-.stack 100h
+.MODEL SMALL
+.STACK 100H
+.DATA
+MSG1 DB 'For Add type   :'1'$'
+MSG2 DB 10,13,'For Sub type   :'2'$'
+MSG3 DB 10,13,'For Mul type   :'3'$'
+MSG4 DB 10,13,'For Div type   :'4'$'
+MSG5 DB 10,13,'Choose Any One:$'
+MSG6 DB 10,13,10,13,'Enter 1st Number:$'
+MSG7 DB 10,13,'Enter 2nd Number:$'
+MSG8 DB 10,13,10,13,'The Result is:$' 
+MSG DB 10,13,10,13,'               ***THANK YOU FOR USING MY APP***$'
+                           
 
-.data
-msg1 db 'Enter the first number: $'
-msg2 db 'Enter the second number: $'
-msg3 db 'Choose an operation: $'
-msg4 db '1. Add $'
-msg5 db '2. Subtract $'
-msg6 db '3. Multiply $'
-msg7 db '4. Divide $'
-msg8 db '5. Exit $'
-result db 'Result: $'
-endl db 0Dh, 0Ah, '$'
-
-.code
-mov ax, @data
-mov ds, ax
-
-; Get the first number
-mov ah, 9
-lea dx, msg1
-int 21h
-
-mov ah, 1
-int 21h
-sub al, 30h ; Convert ASCII to integer
-mov bl, al
-
-mov ah, 9
-lea dx, endl
-int 21h
-
-; Get the second number
-mov ah, 9
-lea dx, msg2
-int 21h
-
-mov ah, 1
-int 21h
-sub al, 30h ; Convert ASCII to integer
-mov bh, al
-
-mov ah, 9
-lea dx, endl
-int 21h
-mov ah, 9
-lea dx, endl
-int 21h
-
-; Display the menu and get the choice
-mov ah, 9
-lea dx, msg3
-int 21h
-mov ah, 9
-lea dx, endl
-int 21h
-
-lea dx, msg4
-int 21h
-mov ah, 9
-lea dx, endl
-int 21h
-
-lea dx, msg5
-int 21h
-mov ah, 9
-lea dx, endl
-int 21h
-
-lea dx, msg6
-int 21h
-mov ah, 9
-lea dx, endl
-int 21h
-
-lea dx, msg7
-int 21h
-mov ah, 9
-lea dx, endl
-int 21h
-
-lea dx, msg8
-int 21h
-mov ah, 9
-lea dx, endl
-int 21h
-
-mov ah, 1
-int 21h
-sub al, 30h ; Convert ASCII to integer
-cmp al, 1
-je add_numbers
-cmp al, 2
-je subtract_numbers
-cmp al, 3
-je multiply_numbers
-cmp al, 4
-je divide_numbers
-cmp al, 5
-je exit_program
-
-add_numbers:
-mov ax, bx
-add ax, cx
-jmp display_result
-
-subtract_numbers:
-mov ax, bx
-sub ax, cx
-jmp display_result
-
-multiply_numbers:
-mov ax, bx
-mul cx
-jmp display_result
-
-divide_numbers:
-mov ax, bx
-xor dx, dx ; Clear the DX register
-div cx
-jmp display_result
-
-exit_program:
-mov ah, 4ch
-int 21h
-
-display_result:
-; Convert the result to ASCII and display it
-add ax, 30h
-mov ah, 0eh
-lea dx, result
-int 21h
-
-mov al, ah
-add al, 30h
-mov ah, 0eh
-int 21h
-
-output_string:
-mov ah, 9
-int 21h
-
-; Terminate the program
-mov ah, 4ch
-int 21h
-end
+NUM1 DB ?
+NUM2 DB ?
+RESULT DB ?
+.CODE
+MAIN PROC
+    MOV AX,@DATA
+    MOV DS,AX
+    
+    LEA DX,MSG1
+    MOV AH,9
+    INT 21H
+    
+    LEA DX,MSG2
+    MOV AH,9
+    INT 21H
+    
+    LEA DX,MSG3
+    MOV AH,9
+    INT 21H
+    
+    LEA DX,MSG4
+    MOV AH,9
+    INT 21H 
+    
+    
+    
+    LEA DX,MSG5
+    MOV AH,9
+    INT 21H
+    
+  
+    MOV AH,1
+    INT 21H
+    MOV BH,AL
+    SUB BH,48
+    
+    CMP BH,1
+    JE ADD
+    
+    CMP BH,2
+    JE SUB
+     
+    CMP BH,3
+    JE MUL
+    
+    CMP BH,4
+    JE DIV
+    
+    
+    
+    
+  ADD:
+    LEA DX,MSG6  ;ENTER 1ST NUMBER
+    MOV AH,9
+    INT 21H 
+    
+    MOV AH,1
+    INT 21H
+    MOV BL,AL
+    
+    LEA DX,MSG7    ;ENTER 2ND NUMBER
+    MOV AH,9
+    INT 21H 
+    
+    
+    
+    MOV AH,1
+    INT 21H
+    MOV CL,AL
+    
+    ADD AL,BL
+    MOV AH,0
+    AAA
+    
+    
+    MOV BX,AX 
+    ADD BH,48
+    ADD BL,48 
+    
+ 
+    
+    LEA DX,MSG8
+    MOV AH,9
+    INT 21H
+    
+    
+    MOV AH,2
+    MOV DL,BH
+    INT 21H
+    
+    MOV AH,2
+    MOV DL,BL
+    INT 21H
+    
+    ;LEA DX,MSG
+    ;MOV AH,9
+    ;INT 21H 
+    
+    JMP EXIT_P 
+    
+    
+   
+    
+   
+    
+ 
+        
+    
+    
+    
+     
+    
+   SUB:
+ 
+    LEA DX,MSG6  ;ENTER 1ST NUMBER
+    MOV AH,9
+    INT 21H 
+    
+    MOV AH,1
+    INT 21H
+    MOV BL,AL
+    
+    LEA DX,MSG7    ;ENTER 2ND NUMBER
+    MOV AH,9
+    INT 21H 
+    
+    
+    
+    MOV AH,1
+    INT 21H
+    MOV CL,AL
+    
+    SUB BL,CL
+    ADD BL,48
+    
+    
+    
+    
+    LEA DX,MSG8
+    MOV AH,9
+    INT 21H
+    
+    
+    MOV AH,2
+    MOV DL,BL
+    INT 21H
+    
+    
+    
+    ;LEA DX,MSG
+    ;MOV AH,9
+    ;INT 21H
+    
+    
+    
+    JMP EXIT_P 
+    
+    
+    
+    
+   MUL:
+ 
+    LEA DX,MSG6
+    MOV AH,9
+    INT 21H
+    
+    
+    MOV AH,1
+    INT 21H
+    SUB AL,30H
+    MOV NUM1,AL
+    
+    
+    LEA DX,MSG7
+    MOV AH,9
+    INT 21H 
+    
+    
+    MOV AH,1
+    INT 21H
+    SUB AL,30H
+    MOV NUM2,AL
+    
+    
+    MUL NUM1
+    MOV RESULT,AL
+    AAM  
+    
+    
+    ADD AH,30H
+    ADD AL,30H
+    
+    
+    MOV BX,AX 
+    
+    
+    LEA DX,MSG8
+    MOV AH,9
+    INT 21H 
+    
+    MOV AH,2
+    MOV DL,BH
+    INT 21H
+    
+    MOV AH,2
+    MOV DL,BL
+    INT 21H
+    
+    ;LEA DX,MSG
+    ;MOV AH,9
+    ;INT 21H 
+    
+    
+    
+    JMP EXIT_P  
+    
+   
+   
+   
+   
+   
+   DIV:
+    LEA DX,MSG6
+    MOV AH,9
+    INT 21H
+    
+    
+    MOV AH,1
+    INT 21H
+    SUB AL,30H
+    MOV NUM1,AL
+    
+    
+    LEA DX,MSG7
+    MOV AH,9
+    INT 21H 
+    
+    
+    MOV AH,1
+    INT 21H
+    SUB AL,30H
+    MOV NUM2,AL
+    
+    MOV CL,NUM1
+    MOV CH,00
+    MOV AX,CX  
+    
+    DIV NUM2
+    MOV RESULT,AL
+    MOV AH, 00
+    AAD  
+    
+    
+    ADD AH,30H
+    ADD AL,30H
+    
+    
+    MOV BX,AX 
+    
+    
+    LEA DX,MSG8
+    MOV AH,9
+    INT 21H 
+    
+    MOV AH,2
+    MOV DL,BH
+    INT 21H
+    
+    MOV AH,2
+    MOV DL,BL
+    INT 21H
+    
+    
+    ;LEA DX,MSG
+    ;MOV AH,9
+    ;INT 21H 
+    
+    JMP EXIT_P
+    
+    EXIT_P:
+    
+        LEA DX,MSG
+        MOV AH,9
+        INT 21H  
+  
+    
+   
+         
+        
+    EXIT:
+    
+    MOV AH,4CH
+    INT 21H
+    MAIN ENDP
+END MAIN
