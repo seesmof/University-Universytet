@@ -35,7 +35,26 @@ main proc near  ; declare main function
   call outputString ; set output string
 
   ; PARSE STRING FOR NUMBERS
-  
+    lea si, output_buffer  ; load the address of output_buffer into si
+    mov cx, 10             ; set the initial value of the base to 10
+
+convert_to_string:
+    xor dx, dx             ; clear dx to store remainder
+    div cx                 ; divide num1 by 10
+    add dl, '0'            ; convert the remainder to ASCII character
+    dec si                 ; decrement si to store the character in reverse order
+    mov [si], dl           ; store the character in output_buffer
+    test ax, ax            ; check if num1 becomes zero
+    jnz convert_to_string  ; if not, continue conversion
+
+    lea dx, [si]           ; load the address of the converted string into dx
+    call outputString      ; output the string
+
+    ; Reset the output buffer for subsequent conversions
+    lea si, output_buffer
+    mov cx, 256
+    xor al, al
+    rep stosb
 
   ; GET SECOND STRING FROM USER
   lea dx, input_prompt
@@ -89,8 +108,8 @@ sseg ends   ; end stack segment
 
 dseg segment para public 'data'     ; declare data segment
     new_line db 0Dh, 0Ah, '$'
-    input_prompt db 'Enter a string: ', '$'
-    output_prompt db 'Your string: ', '$'
+    input_prompt db 'Enter a string: $'
+    output_prompt db 'Your string: $'
 
     input_buffer db 100
     buffer_length db ?

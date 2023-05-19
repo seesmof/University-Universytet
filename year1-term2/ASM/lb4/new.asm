@@ -1,299 +1,71 @@
-.model medium
-.386
-.stack
-.data
+.model small
+.stack 100h
 
-    p1 db 'Enter operand 1:$'
-    p2 db 'Enter operand 2:$'
-    p3 db 'Enter operator (+ - * /):$'
+.data
+    msg db 'Enter a number: $'
+    num db 10, ? ; max length of input is 10 characters
+    base db 10 ; default number system is decimal
+    NUM1 db ?
 
 .code
-m   proc
+main proc
+    mov ax, @data
+    mov ds, ax
 
-    mov ax,@data
-    mov ds,ax
-    mov ax,0b800h
-    mov es,ax
-    mov di,7d0h
-    mov ah,10100100b
-    mov dh,ah
-
-loopOne:
-
-    mov ah,2
-    mov bh,0
-    mov dh,2
-    mov dl,25
-    int 10h
-
-    mov ah,9
-    mov dx,offset p1
+    ; display message
+    mov ah, 9
+    lea dx, msg
     int 21h
 
-    mov ah,1
-    int 21h
-    cmp al,30h
-
-    jae failedFirst
-    jmp loopOne
-
-failedFirst:
-
-    cmp al,39h
-    jbe passedFirst
-    jmp loopOne
-
-passedFirst:
-    sub al,30h
-    push ax
-
-loopTwo:
-
-    mov ah,2
-    mov bh,0
-    mov dh,3
-    mov dl,25
-    int 10h
-
-    mov ah,9
-    mov dx,offset p2
+    ; read input string
+    mov ah, 0Ah
+    lea dx, num
     int 21h
 
-    mov ah,1
+    ; convert input string to number
+    xor ax, ax ; clear ax
+    xor bx, bx ; clear bx
+    mov bl, base ; set base
+    mov si, offset num+2 ; set si to start of input string
+    mov cl, [num+1] ; set cl to length of input string
+convert_loop:
+    cmp cl, 0 ; check if end of input string
+    je convert_done
+    mov dl, [si] ; get current digit
+    cmp dl, '0' ; check if digit is less than '0'
+    jb convert_error
+    cmp dl, '9' ; check if digit is greater than '9'
+    ja check_alpha
+    sub dl, '0' ; convert digit to value
+    jmp convert_continue
+check_alpha:
+    cmp dl, 'A' ; check if digit is less than 'A'
+    jb convert_error
+    cmp dl, 'Z' ; check if digit is greater than 'Z'
+    ja convert_error
+    sub dl, 'A' - 10 ; convert digit to value
+    jmp convert_continue
+convert_error:
+    ; handle error
+    int 21h
+    jmp convert_done
+convert_continue:
+    ; update ax with new digit
+    mul bl ; ax = ax * base
+    add ax, dx ; ax = ax + dl
+    inc si ; move to next digit
+    dec cl ; decrement length
+    jmp convert_loop
+convert_done:
+    ; ax now contains the converted number
+    ; display result
+    mov num1, ax
+    mov ah, 9
+    lea dx, num1
     int 21h
 
-    cmp al,30h
-    jae failedSecond
-    jmp loopTwo
-
-failedSecond:
-    cmp al,39h
-    jbe passedSecond
-    jmp loopTwo
-
-passedSecond:
-    sub al,30h
-    push ax
-
-operator:
-
-    mov ah,2
-    mov bh,0
-    mov dh,4
-    mov dl,25
-    int 10h
-
-    mov ah,9
-    mov dx,offset p3
+    mov ah, 4Ch
     int 21h
-    mov ah,01h
-    int 21h
-    mov bl,al
-    mov ah,02h
-    mov bl,al
-    mov ah,02h
-    mov dl,0Ah
-    int 21h
+main endp
 
-    cmp bl, '*'
-    je multiplication
-
-    cmp bl, '/'
-    je division
-
-    cmp bl, '+'
-    je addition
-
-    cmp bl, '-'
-    je subtraction
-
-    jmp operator
-
-multiplication:
-    pop bx
-    pop ax
-
-    mul bl
-
-    mov bh,0
-    mov bl,10
-    div bl
-
-    add al,30h
-    add ah,30h
-    mov bl,ah
-
-    push ax
-    mov ah,2
-    mov dl,0Ah
-    int 21h
-    mov dl,0Dh
-    int 21h
-    pop ax
-
-    mov ah,2
-    mov bh,0
-    mov dh,5
-    mov dl,25
-    int 10h
-
-    mov ah,2
-    mov dl,al
-    int 21h
-
-    mov ah,2
-    mov dl,bl
-    int 21h
-
-    mov ah,2
-    mov bh,0
-    mov dh,6
-    mov dl,25
-    int 10h
-
-    jmp getInp
-
-addition:
-    pop bx
-    pop ax
-
-    add al,bl
-    mov ah,0
-    AAA
-
-    mov bx,ax
-    add bh,48
-    add bl,48
-
-    push bx
-    
-    mov ah,2
-    mov bh,0
-    mov dh,5
-    mov dl,25
-    int 10h
-
-    pop bx
-    mov ah,2
-    mov dl,bh
-    int 21h
-
-    mov ah,2
-    mov dl,bl
-    int 21h
-
-    mov ah,2
-    mov bh,0
-    mov dh,6
-    mov dl,25
-    int 10h
-
-    jmp getInp
-
-subtraction:
-    pop bx
-    pop ax
-
-    mov ch,0h
-
-    cmp al,bl
-    jb negative
-
-solve:
-    sub al,bl
-    sub al,30h
-
-    push ax
-
-    mov ah,2
-    mov dl,0Ah
-    int 21h
-    mov dl,0Dh
-    int 21h
-
-    mov ah,2
-    mov bh,0
-    mov dh,5
-    mov dl,25
-    int 10h
-
-    cmp ch,1h
-    je symbol
-
-show:
-    pop ax
-    mov ah,2
-    mov dl,al
-    int 21h
-
-    mov ah,2
-    mov bh,0
-    mov dh,6
-    mov dl,25
-    int 10h
-
-    jmp getInp
-
-negative:
-    mov dl,al
-    mov al,bl
-    mov bl,dl
-    mov ch,1h
-    jmp solve
-
-symbol:
-    mov dl,'-'
-    int 21h
-    jmp show
-
-division:
-
-    pop bx
-    mov bh,0h
-    mov bx,0h
-    je ifzero
-    pop ax
-    mov ah,0h
-
-    div bl
-
-    add al,30h
-    add ah,30h
-    mov bl,ah
-
-    mov ah,2
-    mov bh,0
-    mov dh,5
-    mov dl,25
-    int 10h
-
-    mov ah,2
-    mov dl,al
-    int 21h
-
-    mov ah,2
-    mov bh,0
-    mov dh,7
-    mov dl,25
-    int 10h
-
-    jmp getInp
-
-ifzero:
-    mov ah,2
-    mov bh,0
-    mov dh,6
-    mov dl,25
-    int 10h
-    jmp getInp
-
-getInp:
-
-    mov ah,2
-    mov bh,0
-    mov dh,8
-    mov dl,25
-    int 10h
-
-m   endp
-end m
+end main
