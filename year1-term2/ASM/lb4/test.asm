@@ -1,309 +1,106 @@
-.MODEL SMALL
-.STACK 100H
-.DATA
-MSG1 DB 'For Add type   :'1'$'
-MSG2 DB 10,13,'For Sub type   :'2'$'
-MSG3 DB 10,13,'For Mul type   :'3'$'
-MSG4 DB 10,13,'For Div type   :'4'$'
-MSG5 DB 10,13,'Choose Any One:$'
-MSG6 DB 10,13,10,13,'Enter 1st Number:$'
-MSG7 DB 10,13,'Enter 2nd Number:$'
-MSG8 DB 10,13,10,13,'The Result is:$' 
-MSG DB 10,13,10,13,'               ***THANK YOU FOR USING MY APP***$'
-                           
+.model small    ; set program model as small
+.stack 100h     ; set stack size to 100h
 
-NUM1 DB ?
-NUM2 DB ?
-RESULT DB ?
-.CODE
-MAIN PROC
-    MOV AX,@DATA
-    MOV DS,AX
-    
-    LEA DX,MSG1
-    MOV AH,9
-    INT 21H
-    
-    LEA DX,MSG2
-    MOV AH,9
-    INT 21H
-    
-    LEA DX,MSG3
-    MOV AH,9
-    INT 21H
-    
-    LEA DX,MSG4
-    MOV AH,9
-    INT 21H 
-    
-    
-    
-    LEA DX,MSG5
-    MOV AH,9
-    INT 21H
-    
+cseg segment para public 'code'     ; declare code segment
+    assume cs:cseg, ss:sseg, es:nothing ; set segment register to corresponding ones
+
+start:  ; declare program entry point
+    assume ds:dseg  ; set data segment register
+    mov bx, dseg    ; add data segment to bx register
+    mov ds, bx  ; set ds register to bx register
+
+    call main   ; call main function
+
+    mov ah, 04Ch     ; exit to OS
+    mov bl, 06Ch     ; set error code to 108 in hex
+    int 21h     ; call interrupt
+
+main proc near  ; declare main function
+  lea dx, new_line
+  call outputString ; output with function
+
+  ; GET STRING FROM USER
+  lea dx, input_prompt
+  call outputString ; output with function
+  lea dx, input_buffer
+  call inputString ; set output string
+  sub bx, bx
+  mov bl, buffer_length
+  mov [buffer_cont + bx], '$'
+  lea dx, new_line
+  call outputString ; output with function
+  lea dx, new_line
+  call outputString ; output with function
+  lea dx, buffer_cont
+  call outputString ; set output string
+
+  ; PARSE STRING FOR NUMBERS
   
-    MOV AH,1
-    INT 21H
-    MOV BH,AL
-    SUB BH,48
-    
-    CMP BH,1
-    JE ADD
-    
-    CMP BH,2
-    JE SUB
-     
-    CMP BH,3
-    JE MUL
-    
-    CMP BH,4
-    JE DIV
-    
-    
-    
-    
-  ADD:
-    LEA DX,MSG6  ;ENTER 1ST NUMBER
-    MOV AH,9
-    INT 21H 
-    
-    MOV AH,1
-    INT 21H
-    MOV BL,AL
-    
-    LEA DX,MSG7    ;ENTER 2ND NUMBER
-    MOV AH,9
-    INT 21H 
-    
-    
-    
-    MOV AH,1
-    INT 21H
-    MOV CL,AL
-    
-    ADD AL,BL
-    MOV AH,0
-    AAA
-    
-    
-    MOV BX,AX 
-    ADD BH,48
-    ADD BL,48 
-    
- 
-    
-    LEA DX,MSG8
-    MOV AH,9
-    INT 21H
-    
-    
-    MOV AH,2
-    MOV DL,BH
-    INT 21H
-    
-    MOV AH,2
-    MOV DL,BL
-    INT 21H
-    
-    ;LEA DX,MSG
-    ;MOV AH,9
-    ;INT 21H 
-    
-    JMP EXIT_P 
-    
-    
-   
-    
-   
-    
- 
-        
-    
-    
-    
-     
-    
-   SUB:
- 
-    LEA DX,MSG6  ;ENTER 1ST NUMBER
-    MOV AH,9
-    INT 21H 
-    
-    MOV AH,1
-    INT 21H
-    MOV BL,AL
-    
-    LEA DX,MSG7    ;ENTER 2ND NUMBER
-    MOV AH,9
-    INT 21H 
-    
-    
-    
-    MOV AH,1
-    INT 21H
-    MOV CL,AL
-    
-    SUB BL,CL
-    ADD BL,48
-    
-    
-    
-    
-    LEA DX,MSG8
-    MOV AH,9
-    INT 21H
-    
-    
-    MOV AH,2
-    MOV DL,BL
-    INT 21H
-    
-    
-    
-    ;LEA DX,MSG
-    ;MOV AH,9
-    ;INT 21H
-    
-    
-    
-    JMP EXIT_P 
-    
-    
-    
-    
-   MUL:
- 
-    LEA DX,MSG6
-    MOV AH,9
-    INT 21H
-    
-    
-    MOV AH,1
-    INT 21H
-    SUB AL,30H
-    MOV NUM1,AL
-    
-    
-    LEA DX,MSG7
-    MOV AH,9
-    INT 21H 
-    
-    
-    MOV AH,1
-    INT 21H
-    SUB AL,30H
-    MOV NUM2,AL
-    
-    
-    MUL NUM1
-    MOV RESULT,AL
-    AAM  
-    
-    
-    ADD AH,30H
-    ADD AL,30H
-    
-    
-    MOV BX,AX 
-    
-    
-    LEA DX,MSG8
-    MOV AH,9
-    INT 21H 
-    
-    MOV AH,2
-    MOV DL,BH
-    INT 21H
-    
-    MOV AH,2
-    MOV DL,BL
-    INT 21H
-    
-    ;LEA DX,MSG
-    ;MOV AH,9
-    ;INT 21H 
-    
-    
-    
-    JMP EXIT_P  
-    
-   
-   
-   
-   
-   
-   DIV:
-    LEA DX,MSG6
-    MOV AH,9
-    INT 21H
-    
-    
-    MOV AH,1
-    INT 21H
-    SUB AL,30H
-    MOV NUM1,AL
-    
-    
-    LEA DX,MSG7
-    MOV AH,9
-    INT 21H 
-    
-    
-    MOV AH,1
-    INT 21H
-    SUB AL,30H
-    MOV NUM2,AL
-    
-    MOV CL,NUM1
-    MOV CH,00
-    MOV AX,CX  
-    
-    DIV NUM2
-    MOV RESULT,AL
-    MOV AH, 00
-    AAD  
-    
-    
-    ADD AH,30H
-    ADD AL,30H
-    
-    
-    MOV BX,AX 
-    
-    
-    LEA DX,MSG8
-    MOV AH,9
-    INT 21H 
-    
-    MOV AH,2
-    MOV DL,BH
-    INT 21H
-    
-    MOV AH,2
-    MOV DL,BL
-    INT 21H
-    
-    
-    ;LEA DX,MSG
-    ;MOV AH,9
-    ;INT 21H 
-    
-    JMP EXIT_P
-    
-    EXIT_P:
-    
-        LEA DX,MSG
-        MOV AH,9
-        INT 21H  
-  
-    
-   
-         
-        
-    EXIT:
-    
-    MOV AH,4CH
-    INT 21H
-    MAIN ENDP
-END MAIN
+
+  ; GET SECOND STRING FROM USER
+  lea dx, input_prompt
+  call outputString ; output with function
+  lea dx, input_buffer
+  call inputString ; set output string
+  sub bx, bx
+  mov bl, buffer_length
+  mov [buffer_cont + bx], '$'
+  lea dx, new_line
+  call outputString ; output with function
+  lea dx, new_line
+  call outputString ; output with function
+  lea dx, buffer_cont
+  call outputString ; set output string
+
+  ; PARSE FOR NUMBERS
+
+
+  ; OUTPUT MENU WHERE USER CHOOSES AN OPERATOR
+
+
+  ; DEPENDING ON INPUT, PERFORM AN OPERATION
+
+
+  ; OUTPUT RESULT
+
+  lea dx, new_line
+  call outputString ; output with function
+  ret     ; stop function execution
+main endp   ; end main function
+
+inputString proc near
+    sub ax, ax
+    mov ah, 0Ah
+    int 21h
+    ret
+inputString endp
+
+outputString proc near
+    sub ax, ax
+    mov ah, 09h
+    int 21h
+    ret
+outputString endp
+cseg ends   ; end code segment
+
+sseg segment para stack 'stack'     ; declare stack segment
+    db 256 dup(?)       ; reserve memory for stack
+sseg ends   ; end stack segment 
+
+dseg segment para public 'data'     ; declare data segment
+    new_line db 0Dh, 0Ah, '$'
+    input_prompt db 'Enter a string: ', '$'
+    output_prompt db 'Your string: ', '$'
+
+    input_buffer db 100
+    buffer_length db ?
+    buffer_cont db 100 dup (' ')
+
+    num1 db ?
+    num2 db ?
+
+    buffer DB "abc123xy4z",0
+    output_buffer DB 256 DUP("$")
+dseg ends   ; end data segment
+
+end start   ; end program execution
