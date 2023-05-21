@@ -1,3 +1,5 @@
+; ITS WRONG IN CALCULATIONS THOUGH
+
 .MODEL SMALL
 .STACK 100H
 
@@ -39,16 +41,18 @@
 
     ; Converting the result into binary
     MOV CH, 8
-    LEA SI, BUFFER
+    MOV SI, OFFSET BUFFER
 
 CONVERT_LOOP:
     ROL BL, 1 ; Rotate left through carry
-    ADC DL, 0 ; Add carry to DL
-    ADD DL, '0' ; Convert DL to ASCII character
-    MOV [SI], DL ; Store character in buffer
+    ADC AL, 0 ; Add carry to AL
+    AND AL, 00000001B ; Mask all but the least significant bit
+    OR AL, 00110000B ; Convert AL to ASCII character
+    MOV [SI], AL ; Store character in buffer
     INC SI
 
-    LOOP CONVERT_LOOP
+    DEC CH ; Decrement loop counter
+    JNZ CONVERT_LOOP ; Jump if not zero
 
     ; Displaying the resulting text string to the console
     MOV AH, 09H
