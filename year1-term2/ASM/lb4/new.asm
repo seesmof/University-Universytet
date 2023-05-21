@@ -2,70 +2,115 @@
 .stack 100h
 
 .data
-    msg db 'Enter a number: $'
-    num db 10, ? ; max length of input is 10 characters
-    base db 10 ; default number system is decimal
-    NUM1 db ?
+num1 db 6 ; maximum number of digits to read for num1
+num2 db 6 ; maximum number of digits to read for num2
+buf1 db 6 dup('?') ; buffer to store num1 string
+buf2 db 6 dup('?') ; buffer to store num2 string
+result dw ? 
 
 .code
-main proc
-    mov ax, @data
-    mov ds, ax
+start:
+mov ax, @data
+mov ds, ax
 
-    ; display message
-    mov ah, 9
-    lea dx, msg
-    int 21h
+; Prompt user to enter first number
+mov ah, 9
+mov dx, offset msg_num1
+int 21h
 
-    ; read input string
-    mov ah, 0Ah
-    lea dx, num
-    int 21h
+; Read first number from user input
+mov ah, 0Ah
+mov dx, offset buf1
+int 21h
 
-    ; convert input string to number
-    xor ax, ax ; clear ax
-    xor bx, bx ; clear bx
-    mov bl, base ; set base
-    mov si, offset num+2 ; set si to start of input string
-    mov cl, [num+1] ; set cl to length of input string
-convert_loop:
-    cmp cl, 0 ; check if end of input string
-    je convert_done
-    mov dl, [si] ; get current digit
-    cmp dl, '0' ; check if digit is less than '0'
-    jb convert_error
-    cmp dl, '9' ; check if digit is greater than '9'
-    ja check_alpha
-    sub dl, '0' ; convert digit to value
-    jmp convert_continue
-check_alpha:
-    cmp dl, 'A' ; check if digit is less than 'A'
-    jb convert_error
-    cmp dl, 'Z' ; check if digit is greater than 'Z'
-    ja convert_error
-    sub dl, 'A' - 10 ; convert digit to value
-    jmp convert_continue
-convert_error:
-    ; handle error
-    int 21h
-    jmp convert_done
-convert_continue:
-    ; update ax with new digit
-    mul bl ; ax = ax * base
-    add ax, dx ; ax = ax + dl
-    inc si ; move to next digit
-    dec cl ; decrement length
-    jmp convert_loop
-convert_done:
-    ; ax now contains the converted number
-    ; display result
-    mov num1, ax
-    mov ah, 9
-    lea dx, num1
-    int 21h
+; Convert string to number
+call parse_num1
 
-    mov ah, 4Ch
-    int 21h
-main endp
+; Prompt user to enter second number
+mov ah, 9
+mov dx, offset msg_num2
+int 21h
 
-end main
+; Read second number from user input
+mov ah, 0Ah
+mov dx, offset buf2
+int 21h
+
+; Convert string to number
+call parse_num2
+
+; Add the numbers and store result in 'result' variable
+mov ax, num1
+add ax, num2
+mov result, ax
+
+; Convert result to binary using 16-bit registers
+mov bx, 0
+mov cx, 16
+
+loop1:
+rol ax, 1
+adc bh, 0
+loop loop1
+
+; Print the binary result to console
+mov ah, 9
+mov dx, offset msg_result
+int 21h
+
+mov cx, 16
+
+loop2:
+shr bh, 1
+rcr result, 1
+mov dl, '0'
+adc dl, 0
+mov ah, 2
+int 21h
+loop loop2
+
+mov ah, 4ch
+int 21h
+
+parse_num1:
+mov si, offset buf1
+mov cl, [si] ; first character in buffer is count of digits
+inc si ; move to start of actual digits
+mov al, 0 ; clear out register
+loop1:
+mov bl, [si] ; current character
+inc si ; move to next character
+cmp bl, 0x0d ; check for carriage return
+je done1
+sub bl, '0' ; convert from ASCII to number
+mul byte ptr [num10] ; multiply current number by 10
+add al, bl ; add to current number
+jmp loop1
+done1:
+mov num1, ax ; store converted number
+ret
+
+; Subroutine to convert string buffer to number
+parse_num2:
+mov si, offset buf2
+mov cl, [si] ; first character in buffer is count of digits
+inc si ; move to start of actual digits
+mov al, 0 ; clear out register
+loop2:
+mov bl, [si] ; current character
+inc si ; move to next character
+cmp bl, 0x0d ; check for carriage return
+je done2
+sub bl, '0' ; convert from ASCII to number
+mul byte ptr [num10] ; multiply current number by 10
+add al, bl ; add to current number
+jmp loop2
+done2:
+mov num2, ax ; store converted number
+ret
+
+msg_num1 db 'Enter the first number: $'
+msg_num2 db 'Enter the second number: $'
+msg_result db 'The binary result is: $'
+num10 db 10 ; used for converting ASCII to number
+end start
