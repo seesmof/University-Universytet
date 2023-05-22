@@ -6,8 +6,10 @@
 .DATA
     MSG1 DB 0DH, 0AH, "Enter the first number: $"
     MSG2 DB 0DH, 0AH, "Enter the second number: $"
-    RESULT DB 0DH, 0AH, "Result in binary: $"
+    RESULT_DEC DB 0DH, 0AH, "Result in decimal: $"
+    RESULT_BIN DB 0DH, 0AH, "Result in binary: $"
     BUFFER DB 9 DUP ('$') ; Buffer to store the binary representation
+    ENDL DB 0DH, 0AH, "$"
 
 .CODE
 .STARTUP
@@ -39,6 +41,14 @@
     ; Adding the numbers together
     ADD BL, CL
 
+    MOV AH, 09H
+    LEA DX, RESULT_DEC
+    INT 21H
+    MOV DL, BL ; Move the decimal result to DL
+    ADD DL, '0' ; Convert DL to ASCII
+    MOV AH, 02H ; Function to display a character
+    INT 21H ; Display the decimal result character
+
     ; Converting the result into binary
     MOV CH, 8
     MOV SI, OFFSET BUFFER
@@ -56,12 +66,14 @@ CONVERT_LOOP:
 
     ; Displaying the resulting text string to the console
     MOV AH, 09H
-    LEA DX, RESULT
+    LEA DX, RESULT_BIN
     INT 21H
 
     ; Displaying the binary representation from the buffer
     MOV DX, OFFSET BUFFER
     MOV AH, 09H
+    INT 21H
+    LEA DX, ENDL
     INT 21H
 
 .EXIT
