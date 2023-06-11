@@ -12,9 +12,9 @@ def print_pole(pole, count):
         print("  ║ ", end="")
         for cell in row:
             if cell == 1:
-                print(Fore.GREEN+"▩"+Fore.RESET, end=" ")
+                print("🔴 ", end="")
             else:
-                print(Fore.RED + "▩" + Fore.RESET, end=" ")
+                print("  ", end="")
         print()
     print("  ╚═", end="")
 
