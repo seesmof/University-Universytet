@@ -1,23 +1,9 @@
+# main.py file are made by Maryakhin Roman
+
 from colorama import Fore, Back, Style
+import random
 
 cycle = 0
-
-
-def print_pole(pole, count):
-    if count == 0:
-        print("\n  ╔═ Початкове поле:")
-    else:
-        print(f"  ╔═ Крок {count}:")
-    for row in pole:
-        print("  ║ ", end="")
-        for cell in row:
-            if cell == 1:
-                print("🔴 ", end="")
-            else:
-                print("  ", end="")
-        print()
-    print("  ╚═", end="")
-
 
 def get_neighbours(pole, row, col):
     rows = len(pole)
@@ -59,6 +45,43 @@ def update_pole(pole):
         new_pole.append(new_row)
     return new_pole
 
+def print_pole(pole, count):
+    if count == 0:
+        print("\n  ╔═ Початкове поле:")
+    else:
+        print(f"  ╔═ Крок {count}:")
+    for row in pole:
+        print("  ║ ", end="")
+        for cell in row:
+            if cell == 1:
+                print("🔴 ", end="")
+            else:
+                print("  ", end="")
+        print()
+    print("  ╚═", end="")
+
+
+def inputValues(size):
+    # Shared Function, made together
+
+    pole = []
+    if input("   1 - ручний\n   2 - автоматичний\nВиберіть метод введення: ") == "1":
+        print(
+            f"  => Введіть початкову конфігурацію поля {size}x{size} (1 - жива клітина, 0 - мертва клітина):")
+        pole = []
+        for i in range(size):
+            print("  -> ", end="")
+            ryad = list(map(int, input().split()))
+            pole.append(ryad)
+
+    # -------- Onyshchenko Oleh part
+    else:
+        
+        pole = [[random.choice([1, 0])
+                 for _ in range(size)] for _ in range(size)]
+
+    return pole
+    # --------
 
 def start_game():
     global cycle
@@ -74,15 +97,8 @@ def start_game():
     \033[0m""" + Fore.RESET)
 
     size = int(input("  =───────> Введіть розмір поля: "))
-    print(
-        f"  => Введіть початкову конфігурацію поля {size}x{size} (1 - жива клітина, 0 - мертва клітина):")
 
-    pole = []
-
-    for i in range(size):
-        print("  -> ", end="")
-        ryad = list(map(int, input().split()))
-        pole.append(ryad)
+    pole = inputValues(size)
 
     print_pole(pole, count)
     print(' Для наступного кроку натисніть Enter. Для виходу введіть "0"')
