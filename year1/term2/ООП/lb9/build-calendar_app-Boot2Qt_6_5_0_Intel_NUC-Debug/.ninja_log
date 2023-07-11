@@ -1,9 +1,0 @@
-# ninja log v5
-5	894	7052253287879308	calendar_app_autogen/timestamp	c1e8d5d808eeb80d
-5	894	7052253287879308	calendar_app_autogen/mocs_compilation.cpp	c1e8d5d808eeb80d
-5	894	7052253287879308	D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/calendar_app_autogen/timestamp	c1e8d5d808eeb80d
-5	894	7052253287879308	D:/repos/university/year1-term2/OOP/lb9/build-calendar_app-Boot2Qt_6_5_0_Intel_NUC-Debug/calendar_app_autogen/mocs_compilation.cpp	c1e8d5d808eeb80d
-894	3042	7052253311528854	CMakeFiles/calendar_app.dir/calendar_app_autogen/mocs_compilation.cpp.o	36ab7d58d6fe4d72
-898	3076	7052253311878599	CMakeFiles/calendar_app.dir/main.cpp.o	90646ba3a240d7ca
-903	3223	7052253313337512	CMakeFiles/calendar_app.dir/mainwindow.cpp.o	1edde7b16a0802a3
-3223	3397	7052253315033415	calendar_app	6454e904fb057b1b
