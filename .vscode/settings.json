@@ -97,5 +97,6 @@
     "raylib.h": "c",
     "*.m": "cpp"
   },
-  "gitdoc.enabled": true
+  "gitdoc.enabled": true,
+  "conventionalCommits.scopes": ["Y2T1_WEB"]
 }
