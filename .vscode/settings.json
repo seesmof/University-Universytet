@@ -98,5 +98,14 @@
     "*.m": "cpp"
   },
   "gitdoc.enabled": true,
-  "conventionalCommits.scopes": ["Y2T1_WEB"]
+  "conventionalCommits.scopes": [
+    "Y2T1_WEB",
+    "Y2T1_DSA",
+    "Y2T1_OPI",
+    "Y2T1_OOP-KP",
+    "Y2T1_IY",
+    "Y2T1_SP",
+    "Y2T1_SRVM",
+    "Y2T1_TY"
+  ]
 }
