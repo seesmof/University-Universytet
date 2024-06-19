@@ -1,4 +1,0 @@
-- select all employees if they work in office
-- select all employees if their base salary is less than 200
-- select all employees that are supervisors
-- select all female employees

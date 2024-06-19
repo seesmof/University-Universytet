@@ -1,4 +1,0 @@
-﻿admin,admin,true
-user,user,false
-new,new,false
-neww,neww,true
