@@ -1,0 +1,285 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|e:\\all\\university\\y2t2\\sa\\tasks\\ct2\\dev\\app\\tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\users.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:users.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:tickets.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:tickets.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\flights.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:flights.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\flights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:flights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\flights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:flights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\app.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:app.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:tickets.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{124E2F3A-5AC2-45F9-803B-7CAA656BCC65}|App.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "tickets.resx",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.resx",
+              "RelativeDocumentMoniker": "tickets.resx",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.resx",
+              "RelativeToolTip": "tickets.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-06-18T10:44:59.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "menu.cs [Design]",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\menu.cs",
+              "RelativeDocumentMoniker": "menu.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\menu.cs [Design]",
+              "RelativeToolTip": "menu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T09:26:45.426Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "login.cs [Design]",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\login.cs",
+              "RelativeDocumentMoniker": "login.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\login.cs [Design]",
+              "RelativeToolTip": "login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T09:25:46.117Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "flights.cs [Design]",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\flights.cs",
+              "RelativeDocumentMoniker": "flights.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\flights.cs [Design]",
+              "RelativeToolTip": "flights.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T09:24:09.736Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "tickets.txt",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.txt",
+              "RelativeDocumentMoniker": "tickets.txt",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.txt",
+              "RelativeToolTip": "tickets.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-06-17T08:44:41.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "flights.cs",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\flights.cs",
+              "RelativeDocumentMoniker": "flights.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\flights.cs",
+              "RelativeToolTip": "flights.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T09:40:57.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "users.txt",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\users.txt",
+              "RelativeDocumentMoniker": "users.txt",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\users.txt",
+              "RelativeToolTip": "users.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-06-17T08:45:02.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "tickets.cs [Design]",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.cs",
+              "RelativeDocumentMoniker": "tickets.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.cs [Design]",
+              "RelativeToolTip": "tickets.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T09:38:44.654Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "tickets.cs",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.cs",
+              "RelativeDocumentMoniker": "tickets.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.cs",
+              "RelativeToolTip": "tickets.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T09:32:14.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "signup.cs [Design]",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\signup.cs",
+              "RelativeDocumentMoniker": "signup.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\signup.cs [Design]",
+              "RelativeToolTip": "signup.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T09:29:15.525Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "tickets.Designer.cs",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.Designer.cs",
+              "RelativeDocumentMoniker": "tickets.Designer.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\tickets.Designer.cs",
+              "RelativeToolTip": "tickets.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJoAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T09:38:21.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "flights.txt",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\flights.txt",
+              "RelativeDocumentMoniker": "flights.txt",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\flights.txt",
+              "RelativeToolTip": "flights.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-06-17T08:44:01.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "signup.cs",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\signup.cs",
+              "RelativeDocumentMoniker": "signup.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\signup.cs",
+              "RelativeToolTip": "signup.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T10:19:10.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "login.cs",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\login.cs",
+              "RelativeDocumentMoniker": "login.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\login.cs",
+              "RelativeToolTip": "login.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwCoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T10:18:05.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T08:43:26.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "App",
+              "DocumentMoniker": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\App.csproj",
+              "RelativeDocumentMoniker": "App.csproj",
+              "ToolTip": "E:\\all\\University\\y2t2\\SA\\tasks\\ct2\\dev\\App\\App.csproj",
+              "RelativeToolTip": "App.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-17T09:40:27.051Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
