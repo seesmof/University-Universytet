@@ -9,4 +9,4 @@
 
 all sorts of tasks, tests, documents and stuff like that from the university course that GOD blessed me with, its called software engineering ✝️💓📿 all the glory be to Jesus Christ our Holy Lord GOD Almighty forever and ever Amen 
 
-GOD bless you guys, have an amazingly blessed day today and forevermore ✝️💌🕊️
+GOD bless you guys, have an amazingly blessed day today and forevermore and be blessed forever! ✝️💌🕊️
