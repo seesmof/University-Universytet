@@ -1,0 +1,24 @@
+analiz vymog do programnogo zabezpečennja:
+  kontrol': ispyt
+  skoročennja: AV
+  nazva: AV Analiz Vymog
+empiryčni metody v informacijnyh tehnologijah:
+  kontrol': ispyt
+  skoročennja: EM
+  nazva: EM Empiryčni Metody
+operacijni systemy:
+  kontrol': zalik, kursač
+  skoročennja: OS
+  nazva: OS Operacijni Systemy
+geoinformacijni systemy:
+  kontrol': zalik
+  skoročennja: GS
+  nazva: GS Geoinformacijni Systemy
+projektnyj praktykum:
+  kontrol': zalik
+  skoročennja: PP
+  nazva: PP Projektnyj Praktykum
+rozrobka prykladnyh program:
+  kontrol': zalik
+  skoročennja: RP
+  nazva: RP Rozrobka Prykladnyh Program
