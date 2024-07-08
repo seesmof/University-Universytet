@@ -1,24 +1,30 @@
-analiz vymog do programnogo zabezpečennja:
-  kontrol': ispyt
-  skoročennja: AV
-  nazva: AV Analiz Vymog
-empiryčni metody v informacijnyh tehnologijah:
-  kontrol': ispyt
-  skoročennja: EM
-  nazva: EM Empiryčni Metody
 operacijni systemy:
   kontrol': zalik, kursač
   skoročennja: OS
   nazva: OS Operacijni Systemy
+  baly: 8
+analiz vymog do programnogo zabezpečennja:
+  kontrol': ispyt
+  skoročennja: AV
+  nazva: AV Analiz Vymog
+  baly: 4
+empiryčni metody v informacijnyh tehnologijah:
+  kontrol': ispyt
+  skoročennja: EM
+  nazva: EM Empiryčni Metody
+  baly: 4
 geoinformacijni systemy:
   kontrol': zalik
   skoročennja: GS
   nazva: GS Geoinformacijni Systemy
+  baly: 3.5
 projektnyj praktykum:
   kontrol': zalik
   skoročennja: PP
   nazva: PP Projektnyj Praktykum
+  baly: 3.5
 rozrobka prykladnyh program:
   kontrol': zalik
   skoročennja: RP
   nazva: RP Rozrobka Prykladnyh Program
+  baly: 3.5
