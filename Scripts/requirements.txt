@@ -1,3 +1,0 @@
-rich
-inquirer
-PyYAML
