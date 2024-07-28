@@ -1,6 +1,9 @@
 ---
 names:
   - folders naming conventions
+  - folders' names conventions
+  - folders' naming rules
+  - folders' names rules
   - naming conventions for courses' folders
   - naming conventions for disciplines' folders
 ---
