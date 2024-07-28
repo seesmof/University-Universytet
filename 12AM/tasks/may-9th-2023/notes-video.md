@@ -16,7 +16,7 @@
         - location
         - job title
       - optional info
-        - linkedin [[URL]]
+        - linkedin URL
         - social media
         - website / blog / portfolio
       - do not include

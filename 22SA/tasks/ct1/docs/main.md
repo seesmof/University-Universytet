@@ -91,7 +91,7 @@ def taskOne() -> None:
     console.print("\n", outputTable, "\n")
 
     with console.status("Checking for existing files...", spinner="point"):
-        existingFiles: list[dict] = [file for file in filesData if file["does_exist"]]
+        existingFiles: list[dict] = [file for file in filesData if file["does_exist"
         existingFiles.sort(key=lambda x: (x["extension"], x["full_path"], x["name"]))
 
     if len(existingFiles) == 0:
@@ -126,8 +126,8 @@ def taskOne() -> None:
 
 def taskTwo() -> None:
     class Room:
-        def __init__(self, number: int = 0, seats: list[list[int]] = []) -> None:
-            self.seats: list[list[int]] = seats
+        def __init__(self, number: int = 0, seats: list[list[int = []) -> None:
+            self.seats: list[list[int = seats
             self.number: int = number
 
     class Movie:
@@ -168,7 +168,7 @@ def taskTwo() -> None:
                 self.movies.append(Movie(title=movieData["title"], rooms=rooms))
 
     def drawSeatsGrid(room: Room, movie: Movie) -> None:
-        seats: list[list[str]] = [
+        seats: list[list[str = [
             ["🔴" if not seat else "🟢" for seat in row] for row in room.seats
         ]
 
@@ -382,8 +382,8 @@ def taskTwo() -> None:
             )["rooms"]
             numOfRooms: int = int(numOfRooms)
 
-            seats: list[list[list[int]]] = [
-                [[random.choice([0, 1]) for _ in range(10)] for _ in range(5)]
+            seats: list[list[list[int] = [
+                random.choice([0, 1]) for _ in range(10)] for _ in range(5)]
                 for _ in range(numOfRooms)
             ]
             rooms: list[Room] = []
@@ -504,7 +504,7 @@ def functional(n: int) -> None:
 
 
 def imperative(n: int) -> None:
-    stack: list[tuple[str, int, int]] = []
+    stack: list[tuple[str, int, int = []
     stack.append(("", 0, 0))
 
     while stack:

@@ -8,24 +8,24 @@
 ## Роботи
 
 - Лабораторні
-  - [[АСД.Лаб1. Лінійні структури даних]] - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwMzk3/details)
-  - [[АСД.Лаб2. Дерева та геш-таблиці]] - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwMzk4/details)
-  - [[АСД.Лаб3. Жадібні алгоритми]] - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwMzk5/details)
-  - [[АСД.Лаб4. Динамічне програмування]] - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwNDAw/details)
-  - [[АСД.Лаб5. Алгоритми для роботи з графами. Алгоритми обходу графів]] - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwNDAx/details)
-  - [[АСД.Лаб6. Алгоритми для роботи з графами. Алгоритми пошуку найкоротших шляхів]] - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwNDAy/details)
-  - [[АСД.Лаб7. Моделювання транспортної мережі за допомогою графів]] - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwNDAz/details)
+  - АСД.Лаб1. Лінійні структури даних - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwMzk3/details)
+  - АСД.Лаб2. Дерева та геш-таблиці - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwMzk4/details)
+  - АСД.Лаб3. Жадібні алгоритми - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwMzk5/details)
+  - АСД.Лаб4. Динамічне програмування - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwNDAw/details)
+  - АСД.Лаб5. Алгоритми для роботи з графами. Алгоритми обходу графів - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwNDAx/details)
+  - АСД.Лаб6. Алгоритми для роботи з графами. Алгоритми пошуку найкоротших шляхів - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwNDAy/details)
+  - АСД.Лаб7. Моделювання транспортної мережі за допомогою графів - [Клас](https://classroom.google.com/c/NjIwNjE0MDEwMzg3/a/NjIwNjE0MDEwNDAz/details)
 - Самостійні
-  - [[АСД.РГЗ1.]]
+  - АСД.РГЗ1.
 - Лекції
-  - [[АСД.Лек1. Вступ, введення в алгоритми та їх аналіз]]
-  - [[АСД.Пра1. Вступна]]
-  - [[АСД.Лек2. Big-O Notation and intro to Data Structures]]
-  - [[АСД.Пра2. Дивимось Python]]
-  - [[АСД.Лек3. Лінійні структури даних]]
-  - [[АСД.Лек4.]]
-  - [[АСД.Лек5.]]
-  - [[АСД.Лек6]]
+  - АСД.Лек1. Вступ, введення в алгоритми та їх аналіз
+  - АСД.Пра1. Вступна
+  - АСД.Лек2. Big-O Notation and intro to Data Structures
+  - АСД.Пра2. Дивимось Python
+  - АСД.Лек3. Лінійні структури даних
+  - АСД.Лек4.
+  - АСД.Лек5.
+  - АСД.Лек6
 
 ## Посилання
 

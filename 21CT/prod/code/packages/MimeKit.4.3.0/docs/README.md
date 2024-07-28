@@ -47,8 +47,8 @@ flexibility in that I'd be able to use Generics and create a more .NET-compliant
 
 While mainstream beliefs may suggest that C# can never be as fast as C, it turns out that with a bit of creative
 parser design and a few clever optimizations 
-<sup>[[1](http://jeffreystedfast.blogspot.com/2013/09/optimization-tips-tricks-used-by.html)]
-[[2](http://jeffreystedfast.blogspot.com/2013/10/optimization-tips-tricks-used-by.html)]</sup>, MimeKit's
+<sup>1](http://jeffreystedfast.blogspot.com/2013/09/optimization-tips-tricks-used-by.html)]
+2](http://jeffreystedfast.blogspot.com/2013/10/optimization-tips-tricks-used-by.html)]</sup>, MimeKit's
 performance is actually [on par with GMime](http://jeffreystedfast.blogspot.com/2014/03/gmime-gets-speed-boost.html).
 
 Since GMime is pretty well-known as a high-performance native MIME parser and MimeKit more-or-less matches GMime's

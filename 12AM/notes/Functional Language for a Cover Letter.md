@@ -73,5 +73,5 @@ Yours faithfully, (if you are writing to ‘Dear Sir / Madam’).
 
 ---
 
-links: [[112b Іноземна мова]]
+links: 112b Іноземна мова
 

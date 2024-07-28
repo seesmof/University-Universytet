@@ -1,10 +1,10 @@
 # Markdown Guide for Web Development
 
-Markdown is a lightweight markup language that allows you to write formatted text using a [[plain]] text editor. Here is a guide to some of the more advanced features of Markdown that you can use in web development.
+Markdown is a lightweight markup language that allows you to write formatted text using a plain text editor. Here is a guide to some of the more advanced features of Markdown that you can use in web development.
 
 ## Tables
 
-Tables in Markdown can be a bit challenging, so it's recommended to use [[HTML]] markup instead for more complex layouts. However, for simple two-column tables, you can use lists with strong text instead of Markdown tables. Here's an example of a table:
+Tables in Markdown can be a bit challenging, so it's recommended to use HTML markup instead for more complex layouts. However, for simple two-column tables, you can use lists with strong text instead of Markdown tables. Here's an example of a table:
 
 ```
 | Default aligned | Left aligned | Center aligned  | Right aligned  |

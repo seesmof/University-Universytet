@@ -37,4 +37,4 @@ In medieval philosophy, there were two main scholastic philosophical schools tha
 
 2. The Aristotelians: This school of thought was based on the philosophy of Aristotle, particularly his emphasis on empirical observation and logical reasoning. The Aristotelians believed that knowledge could only be gained through observation and experience, and that reason was the key to understanding the world. They were instrumental in the development of natural philosophy and science in the Middle Ages, as they applied Aristotelian principles to the study of the natural world.
 
-Both the Platonists and the Aristotelians had a [[profound]] impact on medieval philosophy, and their ideas continue to influence philosophical thought to this day.
+Both the Platonists and the Aristotelians had a profound impact on medieval philosophy, and their ideas continue to influence philosophical thought to this day.

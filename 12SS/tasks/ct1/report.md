@@ -75,7 +75,7 @@ Swift - це потужна та легка у використанні мова
 Існує кілька відмінностей між PowerPoint 2003 і 2010, зокрема
 
 - Інтерфейс користувача: Інтерфейс користувача PowerPoint 2010 було оновлено за допомогою стрічки, яка забезпечує більш впорядкований і контекстний спосіб доступу до команд і функцій.
-- Формати файлів: PowerPoint 2010 за замовчуванням використовує формат файлів Office Open [[XML]] (.pptx), тоді як PowerPoint 2003 використовує старіший двійковий формат файлів (.ppt).
+- Формати файлів: PowerPoint 2010 за замовчуванням використовує формат файлів Office Open XML (.pptx), тоді як PowerPoint 2003 використовує старіший двійковий формат файлів (.ppt).
 - Спільна робота: PowerPoint 2010 містить більше можливостей для спільної роботи, таких як співавторство, коментування та керування версіями, які були недоступні в PowerPoint 2003.
 - Мультимедіа: PowerPoint 2010 містить більше мультимедійних функцій, таких як редагування та вбудовування відео, які були недоступні в PowerPoint 2003.
 - Безпека: PowerPoint 2010 містить більше функцій безпеки, зокрема захищене подання, які допомагають захиститися від шкідливого програмного забезпечення та інших загроз.
@@ -198,7 +198,7 @@ Swift was designed specifically for iOS and macOS app development, and is widely
 
 2. Server-side programming with Vapor
 
-Swift is also used for server-side programming, particularly with the Vapor [[framework]]. Vapor is a popular open-source web [[framework]] for Swift that allows developers to build high-performance web applications and APIs.
+Swift is also used for server-side programming, particularly with the Vapor framework. Vapor is a popular open-source web framework for Swift that allows developers to build high-performance web applications and APIs.
 
 3. Machine learning with TensorFlow and Core ML
 

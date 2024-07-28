@@ -138,8 +138,8 @@ console.print(integrate.trapezoid(a, axis=1))
 ```
 
 ```shell
-[[0 1 2]
- [3 4 5]]
+0 1 2]
+ [3 4 5
 
 [1.5 2.5 3.5]
 
