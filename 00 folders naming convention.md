@@ -33,3 +33,10 @@ tasks: folder for tasks and homework
   l: лабораторні роботи
 terms: терміни курсу і їх визначення
 ```
+```yml
+exams
+notes
+stuff
+tasks
+terms
+```
