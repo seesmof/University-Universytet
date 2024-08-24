@@ -23,20 +23,19 @@ thank YOU LORD
 thank YOU FATHER GOD
 HALLELUJAH THANK YOU JESUS CHRIST our HOLY LORD GOD ALMIGHTY KING OF KINGS AND LORD OF LORDS 
 # course folders structure 
+
 ```yml
-exams: notes for exam preparations
-notes: notes for the course
-stuff: attachments and materials
+exam: notes for exam preparations
+note: notes for the course
+file: attachments and materials
   l: методичка лекцій
   p: методичка практик
-tasks: folder for tasks and homework
+task: folder for tasks and homework
   l: лабораторні роботи
-terms: терміни курсу і їх визначення
 ```
 ```yml
-exams
-notes
-stuff
-tasks
-terms
+exam
+note
+file
+task
 ```
