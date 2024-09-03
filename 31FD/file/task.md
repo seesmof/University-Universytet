@@ -1,0 +1,23 @@
+Програмне забезпечення продажу та придбання нерухомості. Всю нерухомість поділено на приватні будинки, окремі квартири та квартири в новобудовах. Приватні будинки та окремі квартири можуть виставлятися на продаж звичайними користувачами. Квартири в новобудовах можуть виставлятися тільки спеціальними менеджерами. Користувачі можуть подавати заявки на перегляд житла, передивлятися стан заявок, а також після перегляду виставляти оцінку. Власники можуть передивлятися заяявки на всі їхні пропозиції або на обрані, підтверджувати перегляд або скасовувати, знімати пропозиції (кількість кімнат, площа, рік будівництва, зображення, планування, тощо), змінювати.
+
+- market 
+  - listing 
+    - type: house | flat | new
+    - rooms: 1 | 2 | 3
+    - area: 12 | 17 | 23
+    - decade: 00 | 10 | 20
+    - style: Biblical | Missionary | Monastic
+    - rating
+    - image
+- profile 
+  - add listing 
+    - if type != manager: house | flat
+    - if type == manager: house | flat | new
+  - set appointments 
+    - see status 
+    - after visiting set score for the listing
+  - for owners 
+    - see appointments for all listings or for selected ones
+    - approve or cancel appointments
+    - delete listings 
+    - modify listing
