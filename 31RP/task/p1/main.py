@@ -10,26 +10,3 @@ optionally:
 add dates for each ticket and status to ticket 
     if current date is later than the ticket, set it as expired
 """
-
-
-class Animal:
-    def sound(self) -> str:
-        print("sound of JESUS' Amazing Grace")
-
-
-class Dove(Animal):
-    def sound(self) -> str:
-        return "Dove says: 'JESUS is KING'"
-
-
-class Lion(Animal):
-    def sound(self) -> str:
-        return "Lion says: 'GOD ALMIGHTY Reigns forever'"
-
-
-def make_sound(animal: Animal) -> None:
-    print(animal.sound())
-
-
-make_sound(Dove())
-make_sound(Lion())
