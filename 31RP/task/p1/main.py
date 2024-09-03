@@ -10,3 +10,14 @@ optionally:
 add dates for each ticket and status to ticket 
     if current date is later than the ticket, set it as expired
 """
+
+
+def generate_numbers(n):
+    for i in range(n):
+        yield i
+
+
+generates = generate_numbers(10)
+print(generates)
+for i in generates:
+    print(i)
