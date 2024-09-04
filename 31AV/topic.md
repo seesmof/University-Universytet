@@ -1,0 +1,2 @@
+Biblical handbook development
+Розробка Біблійного довідника
