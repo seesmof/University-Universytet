@@ -1,2 +1,14 @@
-Розробка технічного завдання
-
+- data
+  - listing
+    - name: str
+    - type: house | flat | new
+    - rooms: 1 | 2 | 3
+    - area: 12 | 17 | 23
+    - decade: 00 | 10 | 20
+    - photo
+    - style: Biblical | Missionary | Monastic
+  - meeting 
+    - listing: listing.name
+    - status: pending | approved | canceled
+    - score: good | great | well
+  - user
