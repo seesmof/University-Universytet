@@ -1,0 +1,44 @@
+- listing
+  - owner: user.name
+  - name: str
+  - type: house | flat | new
+  - rooms: 1 | 2 | 3
+  - area: 12 | 17 | 23
+  - decade: 00 | 10 | 20
+  - style: Biblical | Missionary | Monastic
+  - photo: str
+- meeting 
+  - client: user.name
+  - seller: user.name
+  - listing: listing.name
+  - status: pending | approved | canceled
+  - score: good | great | well
+- user
+  - name: str
+  - password: str
+  - type: user | manager
+  - listings 
+    - name: listing.name
+    - own: bool
+    - selected: bool
+
+---
+
+- listing 
+  - type: house | flat | condo 
+  - rooms 
+  - area 
+  - decade 
+  - image 
+  - style 
+- user
+  - add new listing 
+    - type condo can be listed only by manager
+  - request meeting 
+    - status pending | approved | canceled
+    - score good | great | well 
+  - view meetings 
+    - by me 
+    - to me 
+      - for selected or all listings 
+      - change status 
