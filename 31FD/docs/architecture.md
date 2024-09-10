@@ -1,5 +1,5 @@
 # Model
-- User
+- User: for handling user data and functions
   - string name: user name
   - string password: user password
   - string type: user | manager
@@ -10,7 +10,7 @@
   - function loadUsers(): loads users
   - function saveUsers(): saves users
   - function getUser(name): get user by name
-- Meeting
+- Meeting: for handling meeting data and functions
   - string client: user name of meeting client
   - string seller: user name of listing seller
   - Listing listing: selected listing to view
@@ -19,7 +19,7 @@
   - function loadMeetings(): loads meetings
   - function saveMeetings(): saves meetings
   - function getMeeting(listing): get meeting by listing
-- Listing
+- Listing: for handling listing data and functions
   - string owner: user name of listing owner
   - string name: listing name
   - string type: house | flat | condo
