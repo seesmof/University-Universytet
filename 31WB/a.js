@@ -4,6 +4,6 @@ const fetchData = async (url) => {
   return data;
 };
 
-fetchData("https://bolls.life/get-chapter/UTT/22/8/").then((data) =>
-  console.log(data)
-);
+fetchData("https://bolls.life/get-chapter/UTT/22/8/")
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
