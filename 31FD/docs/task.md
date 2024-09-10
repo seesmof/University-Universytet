@@ -41,3 +41,4 @@
 - info section about why listings are free and what it all means
 - ability to change UI language: Ukrainian | English
 - in login screen remember users and quickly login
+- try making a copy of DB in XML files
