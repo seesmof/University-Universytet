@@ -1,0 +1,56 @@
+# Model
+- User
+  - string name: user name
+  - string password: user password
+  - string type: user | manager
+  - List<Listing> listings: list of user's own listings
+    - string name: listing name
+    - bool own: true if listing is owned by user
+    - bool selected: true if listing is selected
+  - function loadUsers(): loads users
+  - function saveUsers(): saves users
+  - function getUser(name): get user by name
+- Meeting
+  - string client: user name of meeting client
+  - string seller: user name of listing seller
+  - Listing listing: selected listing to view
+  - string status: pending | approved | canceled
+  - string score: good | great | well
+  - function loadMeetings(): loads meetings
+  - function saveMeetings(): saves meetings
+  - function getMeeting(listing): get meeting by listing
+- Listing
+  - string owner: user name of listing owner
+  - string name: listing name
+  - string type: house | flat | condo
+  - int rooms: 1 | 2 | 3
+  - int area: 12 | 17 | 23
+  - int decade: 00 | 10 | 20
+  - string style: Biblical | Missionary | Monastic
+  - string photo: path to listing image
+  - function loadListings(): loads listings
+  - function saveListings(): saves listings
+  - function getListing(name): get listing by name
+
+# View
+- MenuView: main container for all views
+  - List<Listing> listings: global list of listings
+  - List<Meeting> meetings: global list of meetings
+  - List<User> users: global list of users
+- ListingsView: listings grid with description and image
+- MeetingsView: meetings grid with details
+- ProfileView: user profile information and listings
+
+# ViewModel
+- function openListings(listings): opens the listings view
+- function openMeetings(meetings): opens the meetings view
+- function openProfile(users): opens the profile view
+- function checkUser(user): checks if user credentials are correct
+- function registerUser(user): registers new user, check if user already exists
+- function addListing(listing): adds new listing
+- function deleteListing(listing): deletes listing
+- function editListing(listing): edits listing
+- function addMeeting(meeting): adds new meeting
+- function deleteMeeting(meeting): deletes meeting
+- function editMeeting(meeting): edits meeting
+- function rateMeeting(meeting, score): rates meeting
