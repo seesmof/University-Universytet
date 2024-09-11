@@ -4,6 +4,7 @@
 
 ## language options 
 
+- c
 - rust 
 - python 
 - assembly 
