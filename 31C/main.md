@@ -5,8 +5,8 @@
 ## language options 
 
 - rust 
+- python 
 - assembly 
-- python
 
 ## planning 
 
