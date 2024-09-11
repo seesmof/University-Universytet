@@ -1,0 +1,33 @@
+---
+const pageTitle = "JESUS thank YOU for About";
+
+const person = {
+  firstName: "Oleh",
+  country: "Ukraine",
+  interests: ["BIBLE reading", "Koine Greek", "JESUS"],
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a href="/">home</a>
+    <a href="/about/">about</a>
+    <a href="/blog/">blog</a>
+
+    <h1>{pageTitle}</h1>
+    <ul>
+      <li>JESUS called us {person.firstName}</li>
+      <li>JESUS placed us in {person.country}</li>
+      <li>JESUS blessed us with {person.interests.length} interests:</li>
+      <ul>
+        {person.interests.map((interest) => <li>{interest}</li>)}
+      </ul>
+    </ul>
+  </body>
+</html>
