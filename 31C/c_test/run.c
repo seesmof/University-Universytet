@@ -1,24 +1,36 @@
 #include <stdio.h>
+#include <time.h>
+
+double get_cpu_speed()
+{
+  clock_t start = clock();
+  for (int i = 0; i < 100000000; i++)
+  {
+  }
+  clock_t end = clock();
+
+  double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC;
+
+  return elapsed_time;
+}
+
 int main()
 {
-  while (1)
-  {
-    // Update information each second
-    sleep(1);
+  int cpu_speed = 0;
+  int cpu_cores = 0;
+  int cpu_threads = 0;
 
-    // Output CPU information
-    int cpu_cores = 4;
-    printf("CPU: %d cores\n", cpu_cores);
+  int ram_usage = 0;
+  int ram_total = 0;
+  int ram_speed = 0;
 
-    // Output RAM information
-    int ram_size = 21333;
-    printf("RAM: %d MB\n", ram_size);
+  int gpu_usage = 0;
+  int gpu_memory = 0;
+  int gpu_temperature = 0;
 
-    // Output GPU information
-    char gpu_name[] = "GTX 1050 Ti";
-    printf("GPU: %s\n", gpu_name);
+  int disk_usage = 0;
+  int disk_total = 0;
+  int disk_speed = 0;
 
-    // Clear screen
-    system("cls");
-  }
+  return 0;
 }

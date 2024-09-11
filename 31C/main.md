@@ -20,7 +20,7 @@
   - handles 
   - up time 
   - base speed 
-  - scokets 
+  - sockets 
   - cores 
   - logical processors
   - virtualization
