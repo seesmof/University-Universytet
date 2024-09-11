@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .card {
+    @apply rounded-md text-center ring-2 ring-slate-200 text-lg;
+  }
+}
+@layer base {
+}
