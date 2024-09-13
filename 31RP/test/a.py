@@ -1,6 +1,7 @@
 import numpy as np
 
-dataset = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
-print(dataset)
-arrangement = np.arange(0, 4)
-print(arrangement)
+data = np.arange(12).reshape(3, 4)
+print(data)
+print(
+    f"{data.shape=}, {data.ndim=}, {data.dtype.name=}, {data.itemsize=}, {data.size=}"
+)
