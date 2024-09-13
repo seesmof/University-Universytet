@@ -17,41 +17,59 @@ import tkinter as tk
 
 root = tk.Tk()
 root.geometry("700x300")
+root.title("JESUS' Cinema")
 
 root_container = tk.Frame(root)
 root_container.pack(fill=tk.BOTH, expand=True, padx=7, pady=7)
 
 
 def movie_select(_: tk.Event):
-    selected_index = movies_container.curselection()[0]
+    try:
+        selected_index = movies_container.curselection()[0]
+    except IndexError:
+        return
+
     movie_name = movies_container.get(selected_index)
+
     print(
         f"JESUS REIGNS HALLELUJAH JESUS THANK YOU JESUS HALLELUJAH JESUS THANK YOU JESUS HALLELUJAH AMEN: {movie_name}"
     )
-    movies_data = {
-        "The Passions of the Christ": [1, 2, 3],
-        "The Nativity Story": [4, 5, 6],
-        "The Questions of Faith": [7, 8, 9],
-    }
-    halls_container.delete(0, tk.END)
-    for hall in movies_data.get(movie_name, []):
-        halls_container.insert(tk.END, f"Hall {hall}")
+
+
+def hall_select(_: tk.Event):
+    try:
+        selected_index = halls_container.curselection()[0]
+    except IndexError:
+        return
+
+    hall_name = halls_container.get(selected_index)
+
+    print("JESUS THANK YOU JESUS HALLELUJAH: hall select")
+
+
+def seat_select(_: tk.Event):
+    try:
+        selected_index = seats_container.curselection()[0]
+    except IndexError:
+        return
+
+    seat_name = seats_container.get(selected_index)
+
+    print("JESUS THANK YOU JESUS HALLELUAJH: seat select")
 
 
 movies_container = tk.Listbox(root_container)
 movies_container.pack(expand=True, fill=tk.BOTH, side=tk.LEFT)
 movies_container.bind("<<ListboxSelect>>", movie_select)
-movies_container.insert(tk.END, "Select movie here...")
-movies_container.itemconfig(0, fg="gray")
 movies = ["The Passions of the Christ", "The Nativity Story", "The Questions of Faith"]
 movies_container.insert(tk.END, *movies)
 
 halls_container = tk.Listbox(root_container)
 halls_container.pack(expand=True, fill=tk.BOTH, side=tk.LEFT)
-# halls_container.bind("<<ListboxSelect>>", hall_select)
+halls_container.bind("<<ListboxSelect>>", hall_select)
 
 seats_container = tk.Listbox(root_container)
 seats_container.pack(expand=True, fill=tk.BOTH, side=tk.LEFT)
-# seats_container.bind("<<ListboxSelect>>", seat_select)
+seats_container.bind("<<ListboxSelect>>", seat_select)
 
 root.mainloop()
