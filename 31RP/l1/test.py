@@ -2,15 +2,10 @@ import tkinter as tk
 
 root = tk.Tk()
 
-listbox = tk.Listbox(root)
-listbox.insert(tk.END, "Item 1")
-listbox.insert(tk.END, "Item 2")
-listbox.pack()
+var = tk.StringVar(value=dir(tk))
 
-combobox = tk.StringVar(root)
-combobox.set("Select...")
-options = ["Option 1", "Option 2"]
-drop = tk.OptionMenu(root, combobox, *options)
-drop.pack()
+tk.Listbox(root, listvariable=var, selectmode="browse").pack(side="left")
+tk.Listbox(root, listvariable=var, selectmode="extended").pack(side="left")
 
+root.mainloop()
 root.mainloop()
