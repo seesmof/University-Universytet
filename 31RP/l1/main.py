@@ -1,4 +1,6 @@
 """ 
+sale of tickets to the cinema with the ability to view the sessions, free and occupied seats for each session in the respective hall, reservation and release of seats
+
 movies grid
 for each movie a page with different rooms 
 for each room a grid of seats: marked red if busy and green if free
@@ -11,13 +13,22 @@ add dates for each ticket and status to ticket
     if current date is later than the ticket, set it as expired
 """
 
+import tkinter as tk
 
-def generate_numbers(n):
-    for i in range(n):
-        yield i
+root = tk.Tk()
+root.geometry("700x300")
 
+root_container = tk.Frame(root)
+root_container.pack(fill=tk.BOTH, expand=True, padx=7, pady=7)
 
-generates = generate_numbers(10)
-print(generates)
-for i in generates:
-    print(i)
+movies_container = tk.Listbox(root_container).pack(
+    expand=True, fill=tk.BOTH, side=tk.LEFT
+)
+halls_container = tk.Listbox(root_container).pack(
+    expand=True, fill=tk.BOTH, side=tk.LEFT
+)
+seats_container = tk.Listbox(root_container).pack(
+    expand=True, fill=tk.BOTH, side=tk.LEFT
+)
+
+root.mainloop()
