@@ -1,11 +1,37 @@
 ---
-import MenuCard from "../components/MenuCard.astro";
-import Section from "../components/Section.astro";
-import DefaultLayout from "../layouts/DefaultLayout.astro";
-import "../styles/global.css";
+import Verse from "../components/Verse.astro";
+import Layout from "../layouts/Layout.astro";
 
-const Ephesians_chapter_count = 6;
-const slogan = "БОЖОЮ Милістю на ІСУСОВУ Славу";
+const title = "Чому ІСУС важливий для мене?";
 ---
 
-<DefaultLayout title=`Домівка: ${slogan}` />
+<Layout title={title}>
+  <main class="p-3 md:py-7 flex flex-col gap-3 mx-auto max-w-3xl">
+    <h1>{title}</h1>
+    <Verse
+      text="Промовляє до нього Ісус: Я дорога, і правда, і життя. До Отця не приходить ніхто, якщо не через Мене."
+      reference="Івана 14:6"
+    />
+    <p>ІСУС ХРИСТОС є моїм життям, бо ВІН врятував мене.</p>
+    <p>БІБЛІЯ каже що справедлива відплата за наш гріх це смерть:</p>
+    <Verse
+      text="Бо заплата за гріх смерть, а дар Божий вічне життя в Христі Ісусі, Господі нашім!"
+      reference="римлян 6:23"
+    />
+    <p>Всі люди грішні:</p>
+    <Verse
+      text="бо всі згрішили, і позбавлені Божої слави,"
+      reference="римлян 3:23"
+    />
+    <p>
+      Через це нам усім потрібне ІСУСОВЕ прощенняаби не страждати у пеклі цілу
+      вічність.
+    </p>
+    <p>
+      Як думаєте, ви хороша людина? <a
+        href="/good-person-quiz"
+        title="Чи хороша ви людина?">Отримайте відповідь тут</a
+      >
+    </p>
+  </main>
+</Layout>
