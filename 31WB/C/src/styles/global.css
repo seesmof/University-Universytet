@@ -4,9 +4,16 @@
 
 @layer base {
   a {
-    @apply text-green-700 hover:underline;
+    @apply text-lime-700 hover:underline;
   }
   h1 {
-    @apply text-xl mb-1 md:mb-3 md:text-3xl;
+    @apply text-xl md:text-3xl;
+  }
+  h2 {
+    @apply text-lg md:text-2xl pt-3;
+  }
+  h1,
+  h2 {
+    @apply font-serif my-1 md:my-3;
   }
 }
