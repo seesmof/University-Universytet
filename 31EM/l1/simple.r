@@ -23,3 +23,6 @@ mode_value
 median_value
 mean_value
 frequency_table
+dataset
+
+write.table(dataset, "E:\\University\\31EM\\l1\\data.txt")
