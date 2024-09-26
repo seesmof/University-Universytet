@@ -5,13 +5,13 @@ s <- v / 10
 
 # generate dataset
 dataset <- rnorm(n, m, s)
+dataset <- round(dataset)
 
 # save data into txt file 
 write.table(dataset, "E:\\University\\31EM\\l1\\data.txt")
 
 # get histogram
 hist(dataset, col="green")
-
 
 # get frequency table
 frequency_table <- table(dataset)
