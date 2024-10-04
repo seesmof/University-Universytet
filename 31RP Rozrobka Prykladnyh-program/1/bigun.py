@@ -1,27 +1,50 @@
 """ 
 fil'my, zaly, miscja
+
+Movie
+    id 
+    name 
+    rooms 
+    
+Room 
+    id 
+    number 
+    seats
+
+Seat
+    id
+    row
+    number 
+
+Ticket
+    id
+    movie
+    room
+    row
+    seat
+
+
+Film 
+    nazva 
+    zaly 
+
+Zala 
+    miscja 
+
+Misce 
+    status
+    rjad 
+    nomer 
 """
 
+import os
+import json
+import sqlite3
 
-class Konstanty:
-    import os
+current_dir: str = os.path.dirname(os.path.abspath(__file__))
+data_base: str = os.path.join(current_dir, "data.db")
 
-    POTOCHNA_TEKA: str = os.path.dirname(os.path.abspath(__file__))
-
-
-class Menju:
-    def __init__(self):
-        print("Slava ISUSU HRYSTU!")
-
-
-class User:
-    jmennja: str
-    parol: str
-
-    def __init__(self, jmennja: str, parol: str):
-        self.jmennja = jmennja
-        self.parol = parol
-
-
-test_user = User("test", "test")
-print(test_user.jmennja)
+""" 
+daily Psalm and Proverb dont join into the general link 
+when periscope is selected, section colors dont work 
+"""
