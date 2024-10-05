@@ -27,17 +27,23 @@ def configure_window():
 
 window=configure_window()
 
-current_page=Frame(window,background="yellow")
+current_page=Frame(window,background="white")
 current_page.pack(fill=BOTH,expand=True)
-def change_color(color): current_page.configure(background=color)
+def change_page_color(color): 
+    clear_page()
+    current_page.configure(background=color)
+    text_label=Label(current_page,text=color.capitalize())
+    text_label.pack(anchor=CENTER,expand=True)
+def clear_page(): 
+    for w in current_page.winfo_children(): w.destroy()
 
 buttons_container=Frame(window)
 buttons_container.pack(side=BOTTOM,fill=X)
 
-green_button=Button(buttons_container, text="Green", command=lambda: change_color("green"))
-green_button.pack(side=LEFT, expand=True, fill=X)
+yellow_button=Button(buttons_container, text="Yellow", command=lambda: change_page_color("yellow"))
+yellow_button.pack(side=LEFT, expand=True, fill=X)
 
-blue_button=Button(buttons_container, text="Blue", command=lambda: change_color("blue"))
+blue_button=Button(buttons_container, text="Blue", command=lambda: change_page_color("cyan"))
 blue_button.pack(side=LEFT, expand=True, fill=X)
 
 if __name__=="__main__": window.mainloop()
