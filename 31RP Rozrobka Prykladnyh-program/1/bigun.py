@@ -1,29 +1,6 @@
 """ 
 fil'my, zaly, miscja
 
-Movie
-    id 
-    name 
-    rooms 
-    
-Room 
-    id 
-    number 
-    seats
-
-Seat
-    id
-    row
-    number 
-
-Ticket
-    id
-    movie
-    room
-    row
-    seat
-
-
 Film 
     nazva 
     zaly 
@@ -37,14 +14,27 @@ Misce
     nomer 
 """
 
-import os
-import json
-import sqlite3
+from tkinter import *
 
-current_dir: str = os.path.dirname(os.path.abspath(__file__))
-data_base: str = os.path.join(current_dir, "data.db")
+def configure_window():
+    root=Tk()
+    root.geometry("700x400")
+    root.configure(background="white")
+    root.title("Kinoteatr")
+    root.resizable(False,False)
+    return root
 
-""" 
-daily Psalm and Proverb dont join into the general link 
-when periscope is selected, section colors dont work 
-"""
+window=configure_window()
+
+movies_list=Listbox(window)
+movies_list.pack(padx=3,pady=3,expand=True,fill=BOTH,side=LEFT)
+movies=["Christ","Jesus","King of Kings","Bible","Cross","Sins","Atonement","Election","Grace","Love","Peace","Joy","Trust","Hope","Heaven"]
+for movie in movies: movies_list.insert(END,movie)
+
+rooms_list=Listbox(window)
+rooms_list.pack(padx=3,pady=3,expand=True,fill=BOTH,side=LEFT)
+
+seats_list=Listbox(window)
+seats_list.pack(padx=3,pady=3,expand=True,fill=BOTH,side=LEFT)
+
+if __name__=="__main__": window.mainloop()
