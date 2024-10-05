@@ -14,18 +14,21 @@ Misce
     nomer 
 """
 
-from tkinter import *
+from tkinter import * 
 
-def configure_window():
-    root=Tk()
-    root.geometry("700x400")
-    root.configure(background="white")
-    root.title("Kinoteatr")
-    root.resizable(False,False)
-    root.bind("<Escape>", lambda _: root.destroy())
-    return root
+class Window(Tk):
+    def __init__(self, window_title:str="Kinoteatr"):
+        super().__init__()
+        self.configure_window(title=window_title)
 
-window=configure_window()
+    def configure_window(self,title:str):
+        self.geometry("700x400")
+        self.configure(background="white")
+        self.title(title)
+        self.resizable(False,False)
+        self.bind("<Escape>", lambda _: self.destroy())
+
+window=Window()
 
 current_page=Frame(window,background="white")
 current_page.pack(fill=BOTH,expand=True)
