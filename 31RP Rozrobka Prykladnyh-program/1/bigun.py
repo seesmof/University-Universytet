@@ -22,19 +22,22 @@ def configure_window():
     root.configure(background="white")
     root.title("Kinoteatr")
     root.resizable(False,False)
+    root.bind("<Escape>", lambda _: root.destroy())
     return root
 
 window=configure_window()
 
-movies_list=Listbox(window)
-movies_list.pack(padx=3,pady=3,expand=True,fill=BOTH,side=LEFT)
-movies=["Christ","Jesus","King of Kings","Bible","Cross","Sins","Atonement","Election","Grace","Love","Peace","Joy","Trust","Hope","Heaven"]
-for movie in movies: movies_list.insert(END,movie)
+current_page=Frame(window,background="yellow")
+current_page.pack(fill=BOTH,expand=True)
+def change_color(color): current_page.configure(background=color)
 
-rooms_list=Listbox(window)
-rooms_list.pack(padx=3,pady=3,expand=True,fill=BOTH,side=LEFT)
+buttons_container=Frame(window)
+buttons_container.pack(side=BOTTOM,fill=X)
 
-seats_list=Listbox(window)
-seats_list.pack(padx=3,pady=3,expand=True,fill=BOTH,side=LEFT)
+green_button=Button(buttons_container, text="Green", command=lambda: change_color("green"))
+green_button.pack(side=LEFT, expand=True, fill=X)
+
+blue_button=Button(buttons_container, text="Blue", command=lambda: change_color("blue"))
+blue_button.pack(side=LEFT, expand=True, fill=X)
 
 if __name__=="__main__": window.mainloop()
