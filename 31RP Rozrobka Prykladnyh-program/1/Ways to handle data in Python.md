@@ -1,2 +1,0 @@
-- pickle (or shelve) package: for smaller projects
-- database (sqlite built-in or postgresql): for larger projects or permanent data
