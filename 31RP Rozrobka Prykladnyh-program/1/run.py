@@ -27,9 +27,12 @@ class JsonProcessor:
         self.name=file_name if ".json" in file_name else f"{file_name}.json"
         self.shljah=os.path.join(teka,self.name)
     def read_data(self) -> dict: 
-        with open(self.shljah,encoding="utf-8",mode="r") as f: return json.load(f)
+        with open(self.shljah,encoding="utf-8",mode="r") as f: 
+            try: return json.load(f) 
+            except: return {}
     def write_data(self,data:dict):
-        with open(self.shljah,encoding="utf-8",mode="w") as f: json.dump(data,indent=2)
+        print(data)
+        with open(self.shljah,encoding="utf-8",mode="w") as f: json.dump(data,f)
 
 """ 
 file name data
@@ -42,8 +45,13 @@ generate rooms
 
 class DataHandler:
     def __init__(self,file_name:str="data"):
-        self.data:dict=JsonProcessor(file_name).read_data()
+        self.file_handler=JsonProcessor(file_name)
+        self.data:dict=self.file_handler.read_data()
         self.rooms:list[list[bool]]=self.generate_rooms()
+        for name in self.data:
+            rooms=self.generate_rooms()
+            self.data[name]=rooms
+        self.file_handler.write_data(self.data)
     def generate_rooms(self,rooms:int=3):
         def generate_seats(rows:int=3,cols:int=7): return [[random.choice([0,1]) for col in range(cols)] for row in range(rows)]
         return [generate_seats() for room in range(rooms)]
