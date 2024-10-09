@@ -1,0 +1,4 @@
+- links in home 
+- links to other pages on each - a navbar
+- email link at the bottom of home 
+- new page with images 
