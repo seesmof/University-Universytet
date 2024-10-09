@@ -1,4 +1,8 @@
 from pprint import pprint
-from run import *
-h=DataHandler()
-pprint(h.data)
+from new import *
+
+m=Movie("ISUSE SPASY")
+m.generate_rooms()
+for r in m.rooms: pprint(r.number)
+d=DataProcessor()
+pprint(d.get_path("data.json"))
