@@ -4,10 +4,10 @@
   - список 
   - виділенний текст 
 - 3 сторінки загалом 
-  - типи обкладинок Біблії
+  - BIBLE verses 
+  - BIBLE covers
     - paperback 
     - hardcover 
     - vynil 
     - leather 
   - BIBLE sizes 
-  - BIBLE verses 
