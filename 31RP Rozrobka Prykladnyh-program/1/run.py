@@ -16,7 +16,7 @@ def run(text:str):print(text)
 
 data={"ONE":[[1,2,3],[1,2,3]],"TWO":[[1,2,3],[1,2,3],[1,2,3]]}
 for m in data:
-    b=Button(container,text=m,command=lambda:run(m))
+    b=Button(container,text=m,command=lambda m=m:run(m))
     b.pack(side=TOP,fill=X)
 
 if __name__=="__main__":window.mainloop()
