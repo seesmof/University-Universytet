@@ -9,9 +9,12 @@ window.bind("<Escape>",lambda _:window.destroy())
 container=Frame(window,background="white")
 container.pack(fill=BOTH,expand=1,padx=7,pady=7)
 
+def clear_container():
+    for w in container.winfo_children():w.destroy()
+
 movies=["JESUS"]
 for m in movies:
-    b=Button(container,text=m)
+    b=Button(container,text=m,command=clear_container)
     b.pack(side=TOP,fill=X)
 
 if __name__=="__main__":window.mainloop()
