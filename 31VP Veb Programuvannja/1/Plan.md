@@ -5,9 +5,6 @@
   - виділенний текст 
 - 3 сторінки загалом 
   - BIBLE verses 
-  - BIBLE covers
-    - paperback 
-    - hardcover 
-    - vynil 
-    - leather 
-  - BIBLE sizes 
+    - live 
+    - proclaim
+    - rely
