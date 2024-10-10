@@ -1,2 +1,11 @@
 - table page layout 
+  - header > nav
+  - main content
+    - h1 page name
+    - sections with h2 for each
+  - footer 
+    - copyright
+    - email link
 - resume page 
+  - table of contents 
+- add new pages to navbar
