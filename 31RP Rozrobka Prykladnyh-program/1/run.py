@@ -18,6 +18,8 @@ class Movie:
         self.year=year
         self.image=image
 
+movies:list[Movie]=[]
 for movie in movies_data:
     movie_object=Movie(**movie)
-    print(movie_object.name, movie_object.year)
+    movies.append(movie_object)
+print([movie.name for movie in movies])
