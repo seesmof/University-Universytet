@@ -3,11 +3,24 @@ import json
 import random 
 from tkinter import *
 
-current_folder=os.path.dirname(os.path.abspath(__file__))
-movies_data_file_path=os.path.join(current_folder,"movies.json")
 GREEN_BUTTON="lawn green"
 BLUE_BUTTON="dodger blue"
-COLORS=["AntiqueWhite","PaleGreen","khaki"]
+COLORS=["AntiqueWhite","LightSteelBlue","khaki"]
+
+class DataLoader:
+    @staticmethod
+    def load_movies():
+        current_folder=os.path.dirname(os.path.abspath(__file__))
+        movies_data_file_path=os.path.join(current_folder,"movies.json")
+
+        with open(movies_data_file_path,mode="r",encoding="utf-8") as f: 
+            movies_data=json.load(f)
+
+        movies:list[Movie]=[]
+        for movie in movies_data:
+            movie_object=Movie(**movie)
+            movies.append(movie_object)
+        return movies 
 
 class Movie:
     name: str 
@@ -24,18 +37,6 @@ class Movie:
             [[random.choice([0,1]) for seat in range(7)] for row in range(3)]
             for room in range(3)
         ]
-
-def show_seats(room):
-    for row in room:
-        print("".join(["🟢" if not seat else "🔵" for seat in row]))
-
-def load_movies():
-    with open(movies_data_file_path,mode="r",encoding="utf-8") as f: movies_data=json.load(f)
-    movies:list[Movie]=[]
-    for movie in movies_data:
-        movie_object=Movie(**movie)
-        movies.append(movie_object)
-    return movies 
 
 class Window(Tk):
     def __init__(self):
@@ -103,7 +104,7 @@ def build_seats():
             seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:on_seat_select(row_index,seat_index,button_object))
             seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
-movies=load_movies()
+movies=DataLoader.load_movies()
 build_movies()
 
 if __name__=="__main__": window.mainloop()
