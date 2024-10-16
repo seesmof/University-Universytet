@@ -47,6 +47,10 @@ movies=load_movies()
 movie=None
 room=None
 
+def clear_container(container:Frame):
+    for widget in container.winfo_children():
+        widget.destroy()
+
 movies_container=Frame(window,background="white")
 movies_container.pack(fill=BOTH)
 
@@ -69,8 +73,7 @@ def on_room_select(room_index:int):
     build_seats(room)
 
 def build_rooms(movie_index:int,selected_movie:Movie):
-    for widget in rooms_container.winfo_children(): 
-        widget.destroy()
+    clear_container(rooms_container)
     for room_index,room in enumerate(movie.rooms):
         button_object=Button(rooms_container,text=f"Зала {room_index+1}")
         button_object.config(command=lambda room_index=room_index:on_room_select(room_index))
@@ -84,9 +87,7 @@ def on_seat_select(room,row_index,seat_index,button_object):
     button_object.config(background=GREEN_BUTTON if not room[row_index][seat_index] else BLUE_BUTTON)
 
 def build_seats(room):
-    for widget in seats_container.winfo_children():
-        widget.destroy()
-
+    clear_container(seats_container)
     for row_index, row in enumerate(room): 
         row_container=Frame(seats_container,bg=f"LightSkyBlue{row_index+1}")
         row_container.pack(side=TOP,fill=BOTH,expand=1)
