@@ -45,13 +45,16 @@ window.title("Cinema")
 window.config(background="white")
 window.bind("<Escape>",lambda _: window.destroy())
 
-room=movies[-1].rooms[-1]
+movie=None
+room=None
 
 movies_container=Frame(window,background="cyan2")
 movies_container.pack(fill=BOTH)
 
-def on_movie_select(movie_index:int,movie:Movie):
-    print(movie_index,movie.name)
+def on_movie_select(movie_index:int,selected_movie:Movie):
+    global movie
+    movie=movies[movie_index]
+    print(movie.name)
 
 for movie_index,movie in enumerate(movies):
     button_object=Button(movies_container,text=movie.name)
@@ -61,7 +64,7 @@ for movie_index,movie in enumerate(movies):
 seats_grid_container=Frame(window,background="OliveDrab2")
 seats_grid_container.pack(expand=1,fill=BOTH)
 
-def toggle_seat_status(row_index,seat_index,button_object):
+def toggle_seat_status(room,row_index,seat_index,button_object):
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
     button_object.config(background=GREEN_BUTTON if not room[row_index][seat_index] else BLUE_BUTTON)
 
@@ -75,7 +78,7 @@ def build_seats_grid(room):
     for row_index,row in enumerate(rows):
         for seat_index,seat in enumerate(room[row_index]):
             seat_button=Button(row,background=GREEN_BUTTON if not seat else BLUE_BUTTON)
-            seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:toggle_seat_status(row_index,seat_index,button_object))
+            seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:toggle_seat_status(room,row_index,seat_index,button_object))
             seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
 if __name__=="__main__": window.mainloop()
