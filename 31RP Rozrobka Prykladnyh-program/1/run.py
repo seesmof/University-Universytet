@@ -51,10 +51,16 @@ for index, row in enumerate(room):
     container=Frame(window,bg=f"LightSkyBlue{index+1}")
     container.pack(side=TOP,fill=BOTH,expand=1)
     rows.append(container)
+
+def toggle_seat_status(row_index,seat_index):
+    room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
+    print(room[row_index][seat_index])
+    show_seats(room)
+
 for row_index,row in enumerate(rows):
     for seat_index,seat in enumerate(room[row_index]):
         seat_button=Button(row,text=str(seat))
-        seat_button.config(command=lambda row_index=row_index,seat_index=seat_index:print(room[row_index][seat_index]))
+        seat_button.config(command=lambda row_index=row_index,seat_index=seat_index:toggle_seat_status(row_index,seat_index))
         seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
 if __name__=="__main__": window.mainloop()
