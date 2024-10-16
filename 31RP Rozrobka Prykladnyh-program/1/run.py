@@ -43,7 +43,6 @@ window.title("Кінотеатр 'ІСУСОВА Благодать'")
 window.config(background="white")
 window.bind("<Escape>",lambda _: window.destroy())
 
-movies=load_movies()
 movie=None
 room=None
 
@@ -54,18 +53,23 @@ def clear_container(container:Frame):
 movies_container=Frame(window,background="white")
 movies_container.pack(fill=BOTH)
 
+rooms_container=Frame(window,background="white")
+rooms_container.pack(fill=BOTH)
+
+seats_container=Frame(window,background="white")
+seats_container.pack(expand=1,fill=BOTH)
+
 def on_movie_select(movie_index:int,selected_movie:Movie):
     global movie
     movie=movies[movie_index]
     build_rooms(movie_index,selected_movie)
 
-for movie_index,movie in enumerate(movies):
-    button_object=Button(movies_container,text=movie.name)
-    button_object.config(command=lambda movie_index=movie_index,movie=movie:on_movie_select(movie_index,movie))
-    button_object.pack(side=LEFT,expand=1,fill=BOTH)
-
-rooms_container=Frame(window,background="white")
-rooms_container.pack(fill=BOTH)
+def build_movies(movies):
+    clear_container(movies_container)
+    for movie_index,movie in enumerate(movies):
+        button_object=Button(movies_container,text=movie.name)
+        button_object.config(command=lambda movie_index=movie_index,movie=movie:on_movie_select(movie_index,movie))
+        button_object.pack(side=LEFT,expand=1,fill=BOTH)
 
 def on_room_select(room_index:int):
     global room
@@ -78,9 +82,6 @@ def build_rooms(movie_index:int,selected_movie:Movie):
         button_object=Button(rooms_container,text=f"Зала {room_index+1}")
         button_object.config(command=lambda room_index=room_index:on_room_select(room_index))
         button_object.pack(side=LEFT,expand=1,fill=BOTH)
-
-seats_container=Frame(window,background="white")
-seats_container.pack(expand=1,fill=BOTH)
 
 def on_seat_select(room,row_index,seat_index,button_object):
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
@@ -96,5 +97,8 @@ def build_seats(room):
             seat_button=Button(row_container,background=GREEN_BUTTON if not seat else BLUE_BUTTON)
             seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:on_seat_select(room,row_index,seat_index,button_object))
             seat_button.pack(side=LEFT,fill=BOTH,expand=1)
+
+movies=load_movies()
+build_movies(movies)
 
 if __name__=="__main__": window.mainloop()
