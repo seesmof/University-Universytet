@@ -36,13 +36,15 @@ def load_movies():
         movies.append(movie_object)
     return movies 
 
-window=Tk()
-window.geometry("700x300")
-window.resizable(0,0)
-window.title("Кінотеатр 'ІСУСОВА Благодать'")
-window.config(background="white")
-window.bind("<Escape>",lambda _: window.destroy())
+class Window(Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("700x300")
+        self.resizable(0,0)
+        self.title("Кінотеатр 'ІСУСОВА Благодать'")
+        self.bind("<Escape>",lambda _: window.destroy())
 
+window=Window()
 movies=None
 movie=None
 room=None
