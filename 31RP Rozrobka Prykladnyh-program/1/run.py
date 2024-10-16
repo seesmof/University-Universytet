@@ -18,15 +18,18 @@ class Movie:
         self.description=description
         self.year=year
         self.image=image
+        self.room=[[random.choice([0,1]) for seat in range(7)] for row in range(3)]
+
+    def show_seats(self):
+        for row in self.room:
+            print("".join(["🟢" if not seat else "🔵" for seat in row]))
 
 movies:list[Movie]=[]
 for movie in movies_data:
     movie_object=Movie(**movie)
     movies.append(movie_object)
-
-room=[
-   [random.choice([0,1]) for _ in range(7)] 
-   for row in range(3)
-]
-for row in room: 
-    print("".join(["🟢" if not seat else "🔵" for seat in row]))
+for movie in movies:
+    print(movie.name)
+    movie.show_seats()
+    print()
+movies[-3].show_seats()
