@@ -1,5 +1,6 @@
 import os 
 import json 
+import random 
 
 current_folder=os.path.dirname(os.path.abspath(__file__))
 movies_data_file_path=os.path.join(current_folder,"movies.json")
@@ -22,4 +23,10 @@ movies:list[Movie]=[]
 for movie in movies_data:
     movie_object=Movie(**movie)
     movies.append(movie_object)
-print([movie.name for movie in movies])
+
+room=[
+   [random.choice([0,1]) for _ in range(7)] 
+   for row in range(3)
+]
+for row in room: 
+    print("".join(["🟢" if not seat else "🔵" for seat in row]))
