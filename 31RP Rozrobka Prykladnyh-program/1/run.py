@@ -36,18 +36,24 @@ def load_movies():
 
 movies=load_movies()
 
-room=movies[-1].rooms[-1]
-show_seats(room)
-
 window=Tk()
 window.geometry("700x300")
 window.resizable(0,0)
 window.title("Cinema")
+window.config(background="white")
 window.bind("<Escape>",lambda _: window.destroy())
+
+room=movies[-1].rooms[-1]
+show_seats(room)
 
 rows=[]
 for index, row in enumerate(room,start=1): 
-    container=Frame(window,padx=3,pady=3,bg=f"LightSkyBlue{index}")
+    container=Frame(window,bg=f"LightSkyBlue{index}")
     container.pack(side=TOP,fill=BOTH,expand=1)
+    rows.append(container)
+for index,row in enumerate(rows):
+    for seat in room[index]:
+        seat_button=Button(row,text=str(seat))
+        seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
 if __name__=="__main__": window.mainloop()
