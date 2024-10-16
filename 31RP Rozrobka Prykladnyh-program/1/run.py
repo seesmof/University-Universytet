@@ -62,7 +62,7 @@ seats_container.pack(expand=1,fill=BOTH)
 def on_movie_select(movie_index:int):
     global movie
     movie=movies[movie_index]
-    build_rooms(movie_index)
+    build_rooms()
 
 def build_movies(movies):
     clear_container(movies_container)
@@ -76,7 +76,7 @@ def on_room_select(room_index:int):
     room=movie.rooms[room_index]
     build_seats(room)
 
-def build_rooms(movie_index:int):
+def build_rooms():
     clear_container(rooms_container)
     for room_index,room in enumerate(movie.rooms):
         button_object=Button(rooms_container,text=f"Зала {room_index+1}")
