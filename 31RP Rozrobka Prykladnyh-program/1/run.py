@@ -7,6 +7,7 @@ current_folder=os.path.dirname(os.path.abspath(__file__))
 movies_data_file_path=os.path.join(current_folder,"movies.json")
 GREEN_BUTTON="lawn green"
 BLUE_BUTTON="dodger blue"
+COLORS=["AntiqueWhite","PaleGreen","khaki"]
 
 class Movie:
     name: str 
@@ -70,7 +71,7 @@ def on_movie_select(movie_index:int):
 def build_movies():
     clear_container(movies_container)
     for movie_index,movie in enumerate(movies):
-        button_object=Button(movies_container,text=movie.name)
+        button_object=Button(movies_container,text=movie.name,background=f"{COLORS[movie_index]}1")
         button_object.config(command=lambda movie_index=movie_index:on_movie_select(movie_index))
         button_object.pack(side=LEFT,expand=1,fill=BOTH)
 
