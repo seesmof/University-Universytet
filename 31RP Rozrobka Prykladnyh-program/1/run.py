@@ -68,6 +68,7 @@ rooms_container.pack(fill=BOTH)
 def on_room_select(room_index:int):
     global room
     room=movie.rooms[room_index]
+    build_seats(room)
 
 def build_rooms(movie_index:int,selected_movie:Movie):
     for widget in rooms_container.winfo_children(): 
@@ -77,17 +78,20 @@ def build_rooms(movie_index:int,selected_movie:Movie):
         button_object.config(command=lambda room_index=room_index:on_room_select(room_index))
         button_object.pack(side=LEFT,expand=1,fill=BOTH)
 
-seats_grid_container=Frame(window,background="OliveDrab2")
-seats_grid_container.pack(expand=1,fill=BOTH)
+seats_container=Frame(window,background="OliveDrab2")
+seats_container.pack(expand=1,fill=BOTH)
 
 def toggle_seat_status(room,row_index,seat_index,button_object):
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
     button_object.config(background=GREEN_BUTTON if not room[row_index][seat_index] else BLUE_BUTTON)
 
 def build_seats(room):
+    for widget in seats_container.winfo_children():
+        widget.destroy()
+
     rows=[]
     for index, row in enumerate(room): 
-        container=Frame(seats_grid_container,bg=f"LightSkyBlue{index+1}")
+        container=Frame(seats_container,bg=f"LightSkyBlue{index+1}")
         container.pack(side=TOP,fill=BOTH,expand=1)
         rows.append(container)
 
