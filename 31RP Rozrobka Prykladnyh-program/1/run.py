@@ -46,11 +46,13 @@ window.config(background="white")
 window.bind("<Escape>",lambda _: window.destroy())
 
 room=movies[-1].rooms[-1]
-show_seats(room)
+
+seats_grid_container=Frame(window,background="OliveDrab2")
+seats_grid_container.pack(expand=1,fill=BOTH)
 
 rows=[]
 for index, row in enumerate(room): 
-    container=Frame(window,bg=f"LightSkyBlue{index+1}")
+    container=Frame(seats_grid_container,bg=f"LightSkyBlue{index+1}")
     container.pack(side=TOP,fill=BOTH,expand=1)
     rows.append(container)
 
