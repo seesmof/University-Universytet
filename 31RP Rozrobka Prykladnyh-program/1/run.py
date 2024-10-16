@@ -43,6 +43,7 @@ window.title("Кінотеатр 'ІСУСОВА Благодать'")
 window.config(background="white")
 window.bind("<Escape>",lambda _: window.destroy())
 
+movies=None
 movie=None
 room=None
 
@@ -64,7 +65,7 @@ def on_movie_select(movie_index:int):
     movie=movies[movie_index]
     build_rooms()
 
-def build_movies(movies):
+def build_movies():
     clear_container(movies_container)
     for movie_index,movie in enumerate(movies):
         button_object=Button(movies_container,text=movie.name)
@@ -74,7 +75,7 @@ def build_movies(movies):
 def on_room_select(room_index:int):
     global room
     room=movie.rooms[room_index]
-    build_seats(room)
+    build_seats()
 
 def build_rooms():
     clear_container(rooms_container)
@@ -88,7 +89,7 @@ def on_seat_select(row_index,seat_index,button_object):
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
     button_object.config(background=GREEN_BUTTON if not room[row_index][seat_index] else BLUE_BUTTON)
 
-def build_seats(room):
+def build_seats():
     clear_container(seats_container)
     for row_index, row in enumerate(room): 
         row_container=Frame(seats_container,bg=f"LightSkyBlue{row_index+1}")
@@ -100,6 +101,6 @@ def build_seats(room):
             seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
 movies=load_movies()
-build_movies(movies)
+build_movies()
 
 if __name__=="__main__": window.mainloop()
