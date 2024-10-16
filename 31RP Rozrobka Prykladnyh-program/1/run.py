@@ -59,16 +59,16 @@ rooms_container.pack(fill=BOTH)
 seats_container=Frame(window,background="white")
 seats_container.pack(expand=1,fill=BOTH)
 
-def on_movie_select(movie_index:int,selected_movie:Movie):
+def on_movie_select(movie_index:int):
     global movie
     movie=movies[movie_index]
-    build_rooms(movie_index,selected_movie)
+    build_rooms(movie_index)
 
 def build_movies(movies):
     clear_container(movies_container)
     for movie_index,movie in enumerate(movies):
         button_object=Button(movies_container,text=movie.name)
-        button_object.config(command=lambda movie_index=movie_index,movie=movie:on_movie_select(movie_index,movie))
+        button_object.config(command=lambda movie_index=movie_index:on_movie_select(movie_index))
         button_object.pack(side=LEFT,expand=1,fill=BOTH)
 
 def on_room_select(room_index:int):
@@ -76,7 +76,7 @@ def on_room_select(room_index:int):
     room=movie.rooms[room_index]
     build_seats(room)
 
-def build_rooms(movie_index:int,selected_movie:Movie):
+def build_rooms(movie_index:int):
     clear_container(rooms_container)
     for room_index,room in enumerate(movie.rooms):
         button_object=Button(rooms_container,text=f"Зала {room_index+1}")
