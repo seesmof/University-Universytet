@@ -79,7 +79,7 @@ def build_rooms(movie_index:int,selected_movie:Movie):
 seats_container=Frame(window,background="white")
 seats_container.pack(expand=1,fill=BOTH)
 
-def toggle_seat_status(room,row_index,seat_index,button_object):
+def on_seat_select(room,row_index,seat_index,button_object):
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
     button_object.config(background=GREEN_BUTTON if not room[row_index][seat_index] else BLUE_BUTTON)
 
@@ -87,16 +87,13 @@ def build_seats(room):
     for widget in seats_container.winfo_children():
         widget.destroy()
 
-    rows=[]
-    for index, row in enumerate(room): 
-        container=Frame(seats_container,bg=f"LightSkyBlue{index+1}")
-        container.pack(side=TOP,fill=BOTH,expand=1)
-        rows.append(container)
+    for row_index, row in enumerate(room): 
+        row_container=Frame(seats_container,bg=f"LightSkyBlue{row_index+1}")
+        row_container.pack(side=TOP,fill=BOTH,expand=1)
 
-    for row_index,row in enumerate(rows):
         for seat_index,seat in enumerate(room[row_index]):
-            seat_button=Button(row,background=GREEN_BUTTON if not seat else BLUE_BUTTON)
-            seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:toggle_seat_status(room,row_index,seat_index,button_object))
+            seat_button=Button(row_container,background=GREEN_BUTTON if not seat else BLUE_BUTTON)
+            seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:on_seat_select(room,row_index,seat_index,button_object))
             seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
 if __name__=="__main__": window.mainloop()
