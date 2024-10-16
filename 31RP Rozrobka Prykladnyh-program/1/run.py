@@ -5,8 +5,6 @@ import random
 current_folder=os.path.dirname(os.path.abspath(__file__))
 movies_data_file_path=os.path.join(current_folder,"movies.json")
 
-with open(movies_data_file_path,mode="r",encoding="utf-8") as f: movies_data=json.load(f)
-
 class Movie:
     name: str 
     description: str 
@@ -24,12 +22,17 @@ class Movie:
         for row in self.room:
             print("".join(["🟢" if not seat else "🔵" for seat in row]))
 
-movies:list[Movie]=[]
-for movie in movies_data:
-    movie_object=Movie(**movie)
-    movies.append(movie_object)
+def load_movies():
+    with open(movies_data_file_path,mode="r",encoding="utf-8") as f: movies_data=json.load(f)
+    movies:list[Movie]=[]
+    for movie in movies_data:
+        movie_object=Movie(**movie)
+        movies.append(movie_object)
+    return movies 
+
+movies=load_movies()
 for movie in movies:
     print(movie.name)
     movie.show_seats()
     print()
-movies[-3].show_seats()
+movies[-1].show_seats()
