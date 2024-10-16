@@ -83,7 +83,8 @@ def build_rooms(movie_index:int):
         button_object.config(command=lambda room_index=room_index:on_room_select(room_index))
         button_object.pack(side=LEFT,expand=1,fill=BOTH)
 
-def on_seat_select(room,row_index,seat_index,button_object):
+def on_seat_select(row_index,seat_index,button_object):
+    global room
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
     button_object.config(background=GREEN_BUTTON if not room[row_index][seat_index] else BLUE_BUTTON)
 
@@ -91,11 +92,11 @@ def build_seats(room):
     clear_container(seats_container)
     for row_index, row in enumerate(room): 
         row_container=Frame(seats_container,bg=f"LightSkyBlue{row_index+1}")
-        row_container.pack(side=TOP,fill=BOTH,expand=1)
+        row_container.pack(side=TOP,expand=1,fill=BOTH)
 
         for seat_index,seat in enumerate(room[row_index]):
             seat_button=Button(row_container,background=GREEN_BUTTON if not seat else BLUE_BUTTON)
-            seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:on_seat_select(room,row_index,seat_index,button_object))
+            seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:on_seat_select(row_index,seat_index,button_object))
             seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
 movies=load_movies()
