@@ -50,28 +50,32 @@ room=movies[-1].rooms[-1]
 movies_container=Frame(window,background="cyan2")
 movies_container.pack(fill=BOTH)
 
+def on_movie_select(movie_index:int,movie:Movie):
+    print(movie_index,movie.name)
+
 for movie_index,movie in enumerate(movies):
     button_object=Button(movies_container,text=movie.name)
-    button_object.config(command=lambda movie_name=movie.name:print(movie_name))
+    button_object.config(command=lambda movie_index=movie_index,movie=movie:on_movie_select(movie_index,movie))
     button_object.pack(side=LEFT,expand=1,fill=BOTH)
 
 seats_grid_container=Frame(window,background="OliveDrab2")
 seats_grid_container.pack(expand=1,fill=BOTH)
 
-rows=[]
-for index, row in enumerate(room): 
-    container=Frame(seats_grid_container,bg=f"LightSkyBlue{index+1}")
-    container.pack(side=TOP,fill=BOTH,expand=1)
-    rows.append(container)
-
 def toggle_seat_status(row_index,seat_index,button_object):
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
     button_object.config(background=GREEN_BUTTON if not room[row_index][seat_index] else BLUE_BUTTON)
 
-for row_index,row in enumerate(rows):
-    for seat_index,seat in enumerate(room[row_index]):
-        seat_button=Button(row,background=GREEN_BUTTON if not seat else BLUE_BUTTON)
-        seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:toggle_seat_status(row_index,seat_index,button_object))
-        seat_button.pack(side=LEFT,fill=BOTH,expand=1)
+def build_seats_grid(room):
+    rows=[]
+    for index, row in enumerate(room): 
+        container=Frame(seats_grid_container,bg=f"LightSkyBlue{index+1}")
+        container.pack(side=TOP,fill=BOTH,expand=1)
+        rows.append(container)
+
+    for row_index,row in enumerate(rows):
+        for seat_index,seat in enumerate(room[row_index]):
+            seat_button=Button(row,background=GREEN_BUTTON if not seat else BLUE_BUTTON)
+            seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:toggle_seat_status(row_index,seat_index,button_object))
+            seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
 if __name__=="__main__": window.mainloop()
