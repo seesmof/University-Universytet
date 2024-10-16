@@ -16,11 +16,14 @@ class Movie:
         self.description=description
         self.year=year
         self.image=image
-        self.room=[[random.choice([0,1]) for seat in range(7)] for row in range(3)]
+        self.rooms=[
+            [[random.choice([0,1]) for seat in range(7)] for row in range(3)]
+            for room in range(3)
+        ]
 
-    def show_seats(self):
-        for row in self.room:
-            print("".join(["🟢" if not seat else "🔵" for seat in row]))
+def show_seats(room):
+    for row in room:
+        print("".join(["🟢" if not seat else "🔵" for seat in row]))
 
 def load_movies():
     with open(movies_data_file_path,mode="r",encoding="utf-8") as f: movies_data=json.load(f)
@@ -33,6 +36,8 @@ def load_movies():
 movies=load_movies()
 for movie in movies:
     print(movie.name)
-    movie.show_seats()
+    for room in movie.rooms:
+        show_seats(room)
+        print()
     print()
-movies[-1].show_seats()
+show_seats(movies[-1].rooms[-1])
