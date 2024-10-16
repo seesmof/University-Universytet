@@ -2,14 +2,14 @@
 
 - no limitations for how to develop
 
-## language options 
+# language options 
 
 - c
 - rust 
 - python 
 - assembly 
 
-## planning 
+# Features 
 
 - cpu
   - name 
