@@ -54,15 +54,12 @@ for index, row in enumerate(room):
 
 def toggle_seat_status(row_index,seat_index,button_object):
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
-    new_value=room[row_index][seat_index]
-    show_seats(room)
-    print(new_value)
-    button_object.config(text=new_value)
+    button_object.config(background="lawn green" if not room[row_index][seat_index] else "dodger blue")
 
 
 for row_index,row in enumerate(rows):
     for seat_index,seat in enumerate(room[row_index]):
-        seat_button=Button(row,text=str(seat))
+        seat_button=Button(row,background="lawn green" if not seat else "dodger blue")
         seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:toggle_seat_status(row_index,seat_index,button_object))
         seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
