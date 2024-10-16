@@ -47,6 +47,14 @@ window.bind("<Escape>",lambda _: window.destroy())
 
 room=movies[-1].rooms[-1]
 
+movies_container=Frame(window,background="cyan2")
+movies_container.pack(fill=BOTH)
+
+for movie_index,movie in enumerate(movies):
+    button_object=Button(movies_container,text=movie.name)
+    button_object.config(command=lambda movie_name=movie.name:print(movie_name))
+    button_object.pack(side=LEFT,expand=1,fill=BOTH)
+
 seats_grid_container=Frame(window,background="OliveDrab2")
 seats_grid_container.pack(expand=1,fill=BOTH)
 
