@@ -83,7 +83,7 @@ def on_room_select(room_index:int):
 def build_rooms():
     clear_container(rooms_container)
     for room_index,room in enumerate(movie.rooms):
-        button_object=Button(rooms_container,text=f"Зала {room_index+1}")
+        button_object=Button(rooms_container,text=f"Зала {room_index+1}",background=f"{COLORS[movies.index(movie)]}1")
         button_object.config(command=lambda room_index=room_index:on_room_select(room_index))
         button_object.pack(side=LEFT,expand=1,fill=BOTH)
 
