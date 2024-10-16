@@ -1,6 +1,7 @@
 import os 
 import json 
 import random 
+from tkinter import *
 
 current_folder=os.path.dirname(os.path.abspath(__file__))
 movies_data_file_path=os.path.join(current_folder,"movies.json")
@@ -34,10 +35,12 @@ def load_movies():
     return movies 
 
 movies=load_movies()
-for movie in movies:
-    print(movie.name)
-    for room in movie.rooms:
-        show_seats(room)
-        print()
-    print()
-show_seats(movies[-1].rooms[-1])
+
+room=movies[-1].rooms[-1]
+show_seats(room)
+
+window=Tk()
+window.geometry("700x300")
+window.resizable(0,0)
+window.title("Cinema")
+window.mainloop()
