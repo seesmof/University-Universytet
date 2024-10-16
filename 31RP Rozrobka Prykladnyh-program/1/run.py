@@ -5,6 +5,8 @@ from tkinter import *
 
 current_folder=os.path.dirname(os.path.abspath(__file__))
 movies_data_file_path=os.path.join(current_folder,"movies.json")
+GREEN_BUTTON="lawn green"
+BLUE_BUTTON="dodger blue"
 
 class Movie:
     name: str 
@@ -54,12 +56,11 @@ for index, row in enumerate(room):
 
 def toggle_seat_status(row_index,seat_index,button_object):
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
-    button_object.config(background="lawn green" if not room[row_index][seat_index] else "dodger blue")
-
+    button_object.config(background=GREEN_BUTTON if not room[row_index][seat_index] else BLUE_BUTTON)
 
 for row_index,row in enumerate(rows):
     for seat_index,seat in enumerate(room[row_index]):
-        seat_button=Button(row,background="lawn green" if not seat else "dodger blue")
+        seat_button=Button(row,background=GREEN_BUTTON if not seat else BLUE_BUTTON)
         seat_button.config(command=lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:toggle_seat_status(row_index,seat_index,button_object))
         seat_button.pack(side=LEFT,fill=BOTH,expand=1)
 
