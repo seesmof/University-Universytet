@@ -41,7 +41,7 @@ movies=load_movies()
 window=Tk()
 window.geometry("700x300")
 window.resizable(0,0)
-window.title("Cinema")
+window.title("Кінотеатр 'ІСУСОВА Благодать'")
 window.config(background="white")
 window.bind("<Escape>",lambda _: window.destroy())
 
@@ -55,11 +55,27 @@ def on_movie_select(movie_index:int,selected_movie:Movie):
     global movie
     movie=movies[movie_index]
     print(movie.name)
+    build_rooms(movie_index,selected_movie)
 
 for movie_index,movie in enumerate(movies):
     button_object=Button(movies_container,text=movie.name)
     button_object.config(command=lambda movie_index=movie_index,movie=movie:on_movie_select(movie_index,movie))
     button_object.pack(side=LEFT,expand=1,fill=BOTH)
+
+rooms_container=Frame(window,background="medium orchid")
+rooms_container.pack(fill=BOTH)
+
+def on_room_select(room_index:int):
+    global room
+    room=movie.rooms[room_index]
+
+def build_rooms(movie_index:int,selected_movie:Movie):
+    for widget in rooms_container.winfo_children(): 
+        widget.destroy()
+    for room_index,room in enumerate(movie.rooms):
+        button_object=Button(rooms_container,text=f"Зала {room_index+1}")
+        button_object.config(command=lambda room_index=room_index:on_room_select(room_index))
+        button_object.pack(side=LEFT,expand=1,fill=BOTH)
 
 seats_grid_container=Frame(window,background="OliveDrab2")
 seats_grid_container.pack(expand=1,fill=BOTH)
@@ -68,7 +84,7 @@ def toggle_seat_status(room,row_index,seat_index,button_object):
     room[row_index][seat_index]=0 if room[row_index][seat_index] else 1
     button_object.config(background=GREEN_BUTTON if not room[row_index][seat_index] else BLUE_BUTTON)
 
-def build_seats_grid(room):
+def build_seats(room):
     rows=[]
     for index, row in enumerate(room): 
         container=Frame(seats_grid_container,bg=f"LightSkyBlue{index+1}")
