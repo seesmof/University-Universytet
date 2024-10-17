@@ -3,9 +3,7 @@ import json
 import random 
 from tkinter import *
 
-GREEN_BUTTON="lawn green"
-BLUE_BUTTON="dodger blue"
-COLORS=["AntiqueWhite","LightSteelBlue","khaki"]
+from constants import *
 
 class Movie:
     def __init__(self, name:str, description:str, year:int, image: str): 
