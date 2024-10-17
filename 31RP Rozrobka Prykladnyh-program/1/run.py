@@ -4,6 +4,7 @@ import random
 from tkinter import *
 
 from constants import *
+from objects import *
 
 class Movie:
     def __init__(self, name:str, description:str, year:int, image: str): 
@@ -57,10 +58,6 @@ class Window(Tk):
         # при натисканні кнопки Esc програма закривається
         self.bind("<Escape>",lambda _: window.destroy())
 
-window=Window()
-movie=None
-room=None
-
 class Container(Frame):
     def __init__(self,parent,expand:bool=0):
         super().__init__(parent,background="white")
@@ -69,10 +66,6 @@ class Container(Frame):
     def clear(self):
         for widget in self.winfo_children():
             widget.destroy()
-
-movies_container=Container(window)
-rooms_container=Container(window)
-seats_container=Container(window,expand=1)
 
 def place_button(button_object:Button,command):
     button_object.config(command=command)
@@ -129,7 +122,12 @@ def build_seats():
             seat_button=Button(row_container,background=choose_button_color(seat))
             place_button(seat_button,lambda row_index=row_index,seat_index=seat_index,button_object=seat_button:on_seat_select(row_index,seat_index,button_object))
 
+window=Window()
 movies=DataLoader.load_movies()
-build_movies()
 
-if __name__=="__main__": window.mainloop()
+movies_container=Container(window)
+rooms_container=Container(window)
+seats_container=Container(window,expand=1)
+
+build_movies()
+window.mainloop()
