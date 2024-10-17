@@ -55,14 +55,14 @@ def clear_container(container:Frame):
     for widget in container.winfo_children():
         widget.destroy()
 
-movies_container=Frame(window,background="white")
-movies_container.pack(fill=BOTH)
+class Container(Frame):
+    def __init__(self,parent,expand:bool=0):
+        super().__init__(parent,background="white")
+        self.pack(fill=BOTH,expand=expand)
 
-rooms_container=Frame(window,background="white")
-rooms_container.pack(fill=BOTH)
-
-seats_container=Frame(window,background="white")
-seats_container.pack(expand=1,fill=BOTH)
+movies_container=Container(window)
+rooms_container=Container(window)
+seats_container=Container(window,expand=1)
 
 def on_movie_select(movie_index:int):
     global movie
