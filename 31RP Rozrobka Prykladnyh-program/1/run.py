@@ -47,7 +47,6 @@ class Window(Tk):
         self.bind("<Escape>",lambda _: window.destroy())
 
 window=Window()
-movies=None
 movie=None
 room=None
 
