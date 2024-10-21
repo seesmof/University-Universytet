@@ -11,10 +11,15 @@ def one():
         "lower":PI/4,
         "upper":PI/7
     }
-    print(bounds)
+    target_function=lambda x:(np.cos(2*x)+np.sin(x)**2)/np.sin(3*x)
+    solution=sp.integrate.quad(target_function,bounds["lower"],bounds["upper"])
+    print(solution)
 def two():
     """ 
     Побудувати графік функції
     Знайти її мінімум методом Нелдера-Міда: точність 10
     """
+    import matplotlib
+    print(matplotlib.__version__)
 one()
+two()
