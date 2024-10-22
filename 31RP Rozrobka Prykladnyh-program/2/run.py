@@ -26,5 +26,14 @@ def two():
     F=target_function(B,D)
     print(F)
 
+    fig=plt.figure()
+    ax=fig.add_subplot(111,projection='3d')
+    ax.plot_surface(B,D,F)
+    plt.show()
+
+    plt.contourf(B,D,F)
+    plt.colorbar()
+    plt.show()
+
 one()
 two()
