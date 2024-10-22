@@ -20,10 +20,19 @@ def two():
     Знайти її мінімум методом Нелдера-Міда: точність 10
     '''
     target_function=lambda x,y:x**2+y**2-4*x-y-x*y
-    plt.plot(x,y,'o-g')
-    plt.xlabel('Вертикаль')
-    plt.ylabel('Горизонталь')
-    plt.title('Графік функції')
-    plt.show()
+    b=np.arange(-3,3,0.1)
+    d=np.arange(-3,3,0.1)
+    nu=np.zeros((b.size,d.size))
+    counter_y=0
+    for deta in d:
+        counter_x=0
+        for beta in b:
+            nu[counter_x,counter_y]=np.sqrt(1+(2*deta*beta)**2)/np.sqrt((1-beta**2)**2)+(2*deta*beta)**2
+            counter_x+=1
+        counter_y+=1
+    B,D=np.meshgrid(d,b)
+    fig=plt.figure()
+    ax=fig.add_subplot(333,projection='3d')
+    ax.plot_surface(B,D,nu)
 one()
 two()
