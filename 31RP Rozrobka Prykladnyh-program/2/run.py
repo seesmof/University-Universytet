@@ -19,8 +19,7 @@ def two():
     Побудувати графік функції
     Знайти її мінімум методом Нелдера-Міда: точність 10
     '''
-    x=np.array([1,2,6,8])
-    y=np.array([3,8,1,10])
+    target_function=lambda x,y:x**2+y**2-4*x-y-x*y
     plt.plot(x,y,'o-g')
     plt.xlabel('Вертикаль')
     plt.ylabel('Горизонталь')
