@@ -1,14 +1,13 @@
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import pyplot as plt 
-from matplotlib import cm
-import numpy as np 
+import scipy.optimize as optimize
 
-fig=plt.figure()
-ax=fig.add_subplot(111,projection='3d')
-r=np.linspace(0.3,1.12,70)
-p=np.linspace(0,2*3.14,70)
-R,P=np.meshgrid(r,p)
-F,Y=R*np.cos(P),R*np.sin(P)
-G=(R**2-1)**2
-ax.plot_surface(F,Y,G)
-plt.show()
+def f(params):
+    x,y=params
+    return x**2+y**2-4*x-y-x*y
+
+initial_guess = [3,3]
+result = optimize.minimize(f, initial_guess)
+if result.success:
+    fitted_params = result.x
+    print(fitted_params)
+else:
+    raise ValueError(result.message)

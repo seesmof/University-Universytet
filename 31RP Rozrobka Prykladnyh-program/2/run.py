@@ -17,23 +17,24 @@ def one():
 def two():
     ''' 
     Побудувати графік функції
-    Знайти її мінімум методом Нелдера-Міда: точність 10
     '''
     target_function=lambda x,y:x**2+y**2-4*x-y-x*y
     b=np.arange(-3,3,0.1)
     d=np.arange(-3,3,0.1)
     B,D=np.meshgrid(b,d)
     F=target_function(B,D)
-    print(F)
 
     fig=plt.figure()
     ax=fig.add_subplot(111,projection='3d')
     ax.plot_surface(B,D,F)
     plt.show()
-
-    plt.contourf(B,D,F)
-    plt.colorbar()
-    plt.show()
-
+    '''
+    Знайти її мінімум методом Нелдера-Міда: точність 10
+    '''
+    def f(params):
+        x,y=params
+        return x**2+y**2-4*x-y-x*y
+    min_value=sp.optimize.minimize(f,[3,3],method='Nelder-Mead')
+    print([float(f'{val:.10f}') for val in min_value.x.tolist()])
 one()
 two()
