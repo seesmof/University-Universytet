@@ -1,1 +1,4 @@
 - replace all BIBLE verses with PHIL or UKRK translation 
+- apply red #cc331d color to BIBLE verse texts 
+- add form validation to contact page 
+- add reset button to the contact form 
