@@ -14,7 +14,8 @@
         width: 27%;
       }
       table input,
-      table textarea {
+      table textarea,
+      table select {
         background: inherit;
         border: 0.1rem solid #457577;
         padding: 0.3rem;
@@ -82,15 +83,16 @@
             </tr>
             <tr>
               <td>
-                <label for="user_topic_input">Тема</label>
+                <label for="user_topic_select">Тема</label>
               </td>
               <td>
-                <input
-                  type="text"
-                  name="user_topic"
-                  id="user_topic_input"
-                  placeholder="Сюди вашу тему..."
-                />
+                <select name="user_topic" id="user_topic_select">
+                  <option value="none" selected disabled hidden>
+                    Сюди вашу тему...
+                  </option>
+                  <option value="question">Питання</option>
+                  <option value="suggestion">Пропозиція</option>
+                </select>
               </td>
             </tr>
             <tr>
