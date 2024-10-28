@@ -1,0 +1,3 @@
+- make contacts form page 
+  - format form with table 
+  - add styles to the form 
