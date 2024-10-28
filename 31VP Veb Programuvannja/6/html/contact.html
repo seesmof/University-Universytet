@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакти</title>
+    <link rel="shortcut icon" href="../images/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/global.css" />
+
+    <style>
+      table tr td:nth-child(1) {
+        vertical-align: top;
+        font-weight: 500;
+        width: 27%;
+      }
+      table input,
+      table textarea,
+      table select {
+        background: inherit;
+        border: 0.1rem solid #457577;
+        padding: 0.3rem;
+        margin-left: 0.3rem;
+        margin-bottom: 0.3rem;
+        width: 100%;
+        font-family: inherit;
+      }
+      table input:hover,
+      table textarea:hover,
+      table select:hover {
+        border: 0.1rem solid #077;
+      }
+      table label {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="page">
+      <nav>
+        <a href="./index.html" title="Домівка">Домівка</a>
+        <a href="./live.html" title="Життя новим життям">Життя новим життям</a>
+        <a href="./proclaim.html" title="Проголошення Христа"
+          >Проголошення Христа</a
+        >
+        <a href="./rely.html" title="Опора на Божі ресурси"
+          >Опора на Божі ресурси</a
+        >
+        <a href="./gallery.html" title="Зображення Єрусалиму"
+          >Зображення Єрусалиму</a
+        >
+        <a href="./structure.html" title="Структура сторінок"
+          >Структура сторінок</a
+        >
+        <a href="./resume.html" title="Резюме">Резюме</a>
+      </nav>
+      <main>
+        <section>
+          <h1 id="contact">Контакти</h1>
+          <p>Для отримання відповіді, будь ласка, заповніть форму:</p>
+          <table>
+            <form method="post">
+              <tr>
+                <td>
+                  <label for="user_name_input">Імʼя</label>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    name="user_name"
+                    id="user_name_input"
+                    placeholder="Сюди ваше імʼя..."
+                    required
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="user_email_input">Пошта</label>
+                </td>
+                <td>
+                  <input
+                    type="email"
+                    name="user_email"
+                    id="user_email_input"
+                    placeholder="Сюди вашу адресу електронної пошти..."
+                    required
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="user_topic_select">Тема</label>
+                </td>
+                <td>
+                  <select name="user_topic" id="user_topic_select">
+                    <option value="none" selected disabled hidden>
+                      Сюди вашу тему...
+                    </option>
+                    <option value="question">Питання</option>
+                    <option value="suggestion">Пропозиція</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="user_message_input">Повідомлення</label>
+                </td>
+                <td>
+                  <textarea
+                    name="user_message"
+                    id="user_message_input"
+                    rows="7"
+                    placeholder="Сюди ваше повідомлення..."
+                    required
+                    style="resize: none"
+                  ></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <input
+                    type="submit"
+                    name="submit_button"
+                    id="submit_button"
+                    value="Надіслати"
+                    style="font-weight: 500"
+                  />
+                </td>
+              </tr>
+            </form>
+          </table>
+        </section>
+        <footer>
+          <small title="Інформація про авторське право">
+            Ця та всі інші сторінки назавжди і безповоротно передані в
+            <a
+              href="https://creativecommons.org/publicdomain/zero/1.0/"
+              title="Деталі ліцензії"
+              >суспільне надбання</a
+            >
+          </small>
+          <address>
+            Є питання?
+            <a href="./contact.html">Напишіть на пошту</a>
+          </address>
+        </footer>
+      </main>
+      <aside>
+        <a href="#contact">Контакти</a>
+      </aside>
+    </div>
+  </body>
+</html>

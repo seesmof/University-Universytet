@@ -1,0 +1,1 @@
+- replace all BIBLE verses with PHIL or UKRK translation 
