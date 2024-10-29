@@ -4,6 +4,9 @@
 strong {
   color: var(--verse);
 }
+strong::after {
+  content: " ";
+}
 cite::before {
   content: "(";
 }
