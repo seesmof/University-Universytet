@@ -13,3 +13,6 @@ cite::before {
 cite::after {
   content: ")";
 }
+section a {
+  text-decoration: none;
+}
