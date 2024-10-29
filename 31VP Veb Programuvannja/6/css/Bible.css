@@ -1,0 +1,12 @@
+:root {
+  --verse: #cc331d;
+}
+strong {
+  color: var(--verse);
+}
+cite::before {
+  content: "(";
+}
+cite::after {
+  content: ")";
+}
