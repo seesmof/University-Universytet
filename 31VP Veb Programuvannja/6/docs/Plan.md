@@ -8,3 +8,4 @@
 - align BIBLE verse references with BIBLE Kulish
 - add form validation to contact page 
 - add reset button to the contact form 
+- maybe redo styling with TailwindCSS
