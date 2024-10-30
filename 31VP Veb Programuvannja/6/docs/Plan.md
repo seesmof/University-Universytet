@@ -1,4 +1,4 @@
-- replace all BIBLE verses with PHIL or UKRK translation 
+- replace all BIBLE verses with UKRK translation 
 - apply red #cc331d color to BIBLE verse texts 
 - remove space before Bible verse reference 
 - remove space after BIBLE verse and add via css 
