@@ -3,6 +3,7 @@
 - remove space before Bible verse reference 
 - remove space after BIBLE verse and add via css 
 - change BIBLE verse links to BollsLife
+- make sidebars sticky 
 - make all BIBLE verses a link
 - align BIBLE verse references with BIBLE Kulish
 - add form validation to contact page 

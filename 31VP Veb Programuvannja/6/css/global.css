@@ -17,14 +17,6 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-a {
-  color: var(--blue);
-}
-a:active,
-a:hover {
-  color: var(--blue_active);
-}
-
 #page {
   display: flex;
   flex-direction: column;
@@ -63,6 +55,9 @@ main footer {
   aside {
     width: 21%;
     gap: 0.5rem;
+    height: max-content;
+    position: sticky;
+    top: 0;
   }
   main {
     flex: 1 1 0%;
@@ -80,4 +75,11 @@ main footer {
 }
 li {
   list-style-position: inside;
+}
+a {
+  color: var(--blue);
+}
+a:active,
+a:hover {
+  color: var(--blue_active);
 }
