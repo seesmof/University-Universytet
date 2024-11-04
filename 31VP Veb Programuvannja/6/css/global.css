@@ -1,15 +1,10 @@
+@import "./constants.css";
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --bg: #fbf3c7;
-  --fg: #3c3777;
-  --blue: #457577;
-  --blue_active: #077;
-}
 body {
   background-color: var(--bg);
   color: var(--fg);

@@ -6,33 +6,7 @@
     <title>Контакти</title>
     <link rel="shortcut icon" href="../images/logo.svg" type="image/x-icon" />
     <link rel="stylesheet" href="../css/global.css" />
-
-    <style>
-      table tr td:nth-child(1) {
-        vertical-align: top;
-        font-weight: 500;
-        width: 27%;
-      }
-      table input,
-      table textarea,
-      table select {
-        background: inherit;
-        border: 0.1rem solid #457577;
-        padding: 0.3rem;
-        margin-left: 0.3rem;
-        margin-bottom: 0.3rem;
-        width: 100%;
-        font-family: inherit;
-      }
-      table input:hover,
-      table textarea:hover,
-      table select:hover {
-        border: 0.1rem solid #077;
-      }
-      table label {
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="../css/form.css" />
   </head>
   <body>
     <div id="page">
@@ -160,20 +134,35 @@
     </div>
 
     <script>
-      const form = document.querySelector("form");
       const name_input = document.querySelector("#user_name_input");
       const mail_input = document.querySelector("#user_email_input");
       const type_input = document.querySelector("#user_topic_select");
       const text_input = document.querySelector("#user_message_input");
+
+      const form = document.querySelector("form");
       const snd_button = document.querySelector("#submit_button");
       const rst_button = document.querySelector("#reset_button");
 
-      rst_button.addEventListener("click", (e) => {
-        name_input.innerHTML = "";
-        mail_input.innerHTML = "";
+      function reset_inputs() {
+        name_input.textContent = "";
+        name_input.classList = null;
+
+        mail_input.textContent = "";
+        mail_input.classList = null;
+
         type_input.children[0].selected = true;
-        text_input.innerHTML = "";
-      });
+        type_input.classList = null;
+
+        text_input.textContent = "";
+        text_input.classList = null;
+      }
+
+      function validate_form(e) {
+        e.preventDefault();
+      }
+
+      rst_button.addEventListener("click", (e) => reset_inputs());
+      form.addEventListener("submit", (e) => validate_form(e));
     </script>
   </body>
 </html>

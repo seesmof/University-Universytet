@@ -1,6 +1,4 @@
-:root {
-  --verse: #cc331d;
-}
+@import "./constants.css";
 strong {
   color: var(--verse);
 }
