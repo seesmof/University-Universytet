@@ -145,22 +145,61 @@
 
       function reset_inputs() {
         name_input.textContent = "";
-        name_input.classList = null;
+        name_input.classList = [];
 
         mail_input.textContent = "";
-        mail_input.classList = null;
+        mail_input.classList = [];
 
         type_input.children[0].selected = true;
-        type_input.classList = null;
+        type_input.classList = [];
 
         text_input.textContent = "";
-        text_input.classList = null;
+        text_input.classList = [];
+      }
+
+      function mark_input_error(input_field) {
+        input_field.classList.add("error");
       }
 
       function validate_form(e) {
         e.preventDefault();
-        console.log("AMEN");
-        form.submit();
+
+        const submitted_name = name_input.value;
+        const submitted_mail = mail_input.value;
+        const submitted_text = text_input.value;
+
+        let name_valid = true;
+        let mail_valid = true;
+        let text_valid = true;
+
+        if (submitted_name === "") {
+          mark_input_error(name_input);
+          name_valid = false;
+        }
+        if (submitted_mail === "" || !submitted_mail.includes("@")) {
+          mark_input_error(mail_input);
+          mail_valid = false;
+        }
+        if (submitted_text === "") {
+          mark_input_error(text_input);
+          text_valid = false;
+        }
+
+        let error_message = [];
+        if (name_valid && mail_valid && text_valid) {
+          form.submit();
+        } else {
+          if (!name_valid) {
+            error_message.push("Неправильно введене імʼя");
+          }
+          if (!mail_valid) {
+            error_message.push("Неправильно введена електронна адреса");
+          }
+          if (!text_valid) {
+            error_message.push("Неправильно введений текст");
+          }
+          alert(error_message.join("\n"));
+        }
       }
 
       rst_button.addEventListener("click", (e) => reset_inputs());
