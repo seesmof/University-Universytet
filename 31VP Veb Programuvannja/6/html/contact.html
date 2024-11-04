@@ -67,11 +67,11 @@
                 </td>
                 <td>
                   <select name="user_topic" id="user_topic_select">
-                    <option value="none" selected disabled hidden>
+                    <option value="Не зазначена" selected disabled hidden>
                       Сюди вашу тему...
                     </option>
-                    <option value="question">Питання</option>
-                    <option value="suggestion">Пропозиція</option>
+                    <option value="Питання">Питання</option>
+                    <option value="Пропозиція">Пропозиція</option>
                   </select>
                 </td>
               </tr>
@@ -187,6 +187,11 @@
 
         let error_message = [];
         if (name_valid && mail_valid && text_valid) {
+          const data_window = window.open(
+            "./results.html",
+            `${submitted_name} ${type_input.value} ${submitted_mail} ${submitted_text}`,
+            "height=700,width=370"
+          );
           form.submit();
         } else {
           if (!name_valid) {
@@ -196,7 +201,7 @@
             error_message.push("Неправильно введена електронна адреса");
           }
           if (!text_valid) {
-            error_message.push("Неправильно введений текст");
+            error_message.push("Неправильно введене повідомлення");
           }
           alert(error_message.join("\n"));
         }

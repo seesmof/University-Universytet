@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Результати форми</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,container-queries"></script>
+  </head>
+  <body>
+    <div class="bg-amber-100 min-h-screen flex flex-col gap-3 p-3">
+      <h1 class="font-medium text-xl text-lime-600">
+        Повідомлення успішно надіслано
+      </h1>
+
+      <label class="font-medium" for="name">Імʼя</label>
+      <input class="bg-inherit border-0 px-0" disabled type="text" id="name" />
+
+      <label class="font-medium" for="type">Тема повідомлення</label>
+      <input class="bg-inherit border-0 px-0" disabled type="text" id="type" />
+
+      <label class="font-medium" for="mail">Електоронна пошта</label>
+      <input class="bg-inherit border-0 px-0" disabled type="text" id="mail" />
+
+      <label class="font-medium" for="text">Текст повідомлення</label>
+      <textarea
+        class="bg-inherit border-0 px-0 resize-none"
+        disabled
+        rows="13"
+        id="text"
+      ></textarea>
+    </div>
+    <script>
+      const [name, selected_type, mail, text] = window.name.split(" ");
+
+      const output_name = document.querySelector("#name");
+      const output_type = document.querySelector("#type");
+      const output_mail = document.querySelector("#mail");
+      const output_text = document.querySelector("#text");
+
+      output_name.value = name;
+      output_type.value = selected_type;
+      output_mail.value = mail;
+      output_text.value = text;
+    </script>
+  </body>
+</html>
