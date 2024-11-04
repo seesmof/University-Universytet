@@ -18,11 +18,6 @@ table select {
   width: 100%;
   font-family: inherit;
 }
-table input:hover,
-table textarea:hover,
-table select:hover {
-  border: 0.1rem solid var(--blue_active);
-}
 .error {
   border: 0.1rem solid var(--error);
 }
