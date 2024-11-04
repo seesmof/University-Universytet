@@ -159,10 +159,12 @@
 
       function validate_form(e) {
         e.preventDefault();
+        console.log("AMEN");
+        form.submit();
       }
 
       rst_button.addEventListener("click", (e) => reset_inputs());
-      form.addEventListener("submit", (e) => validate_form(e));
+      snd_button.addEventListener("click", (e) => validate_form(e));
     </script>
   </body>
 </html>
