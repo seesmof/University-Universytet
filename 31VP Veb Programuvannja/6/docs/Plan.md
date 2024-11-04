@@ -7,4 +7,5 @@
 - make all BIBLE verses a link 
 - align BIBLE verse references with BIBLE Kulish 
 - add form validation to contact page 
+- add popup with contacts form data 
 - add reset button to the contact form 
