@@ -1,4 +1,5 @@
 @import "./constants.css";
+
 strong {
   color: var(--verse);
   line-height: 1.7rem;
@@ -8,12 +9,14 @@ strong {
 strong::after {
   content: " ";
 }
+
 cite::before {
   content: "(";
 }
 cite::after {
   content: ")";
 }
+
 section a {
   text-decoration: none;
 }
