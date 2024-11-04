@@ -117,7 +117,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2">
+                <td>
+                  <input
+                    type="reset"
+                    name="reset_button"
+                    id="reset_button"
+                    value="Скинути"
+                    style="font-weight: 500"
+                  />
+                </td>
+                <td>
                   <input
                     type="submit"
                     name="submit_button"
@@ -149,5 +158,22 @@
         <a href="#contact">Контакти</a>
       </aside>
     </div>
+
+    <script>
+      const form = document.querySelector("form");
+      const name_input = document.querySelector("#user_name_input");
+      const mail_input = document.querySelector("#user_email_input");
+      const type_input = document.querySelector("#user_topic_select");
+      const text_input = document.querySelector("#user_message_input");
+      const snd_button = document.querySelector("#submit_button");
+      const rst_button = document.querySelector("#reset_button");
+
+      rst_button.addEventListener("click", (e) => {
+        name_input.innerHTML = "";
+        mail_input.innerHTML = "";
+        type_input.children[0].selected = true;
+        text_input.innerHTML = "";
+      });
+    </script>
   </body>
 </html>
