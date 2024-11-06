@@ -1,8 +1,7 @@
 from django.urls import path
 
-from server.finances import views
-
+from . import views
 
 urlpatterns=[
-    path('',views.index,name='Home')
+    path('',views.index,name='index')
 ]
