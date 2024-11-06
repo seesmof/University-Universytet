@@ -1,4 +1,4 @@
-user='root',
-host='localhost',
-password='1313',
-database='data'
+USER='root'
+HOST='localhost'
+PASSWORD='1313'
+DATABASE='data'
