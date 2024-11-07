@@ -14,6 +14,9 @@ class User(models.Model):
         default=UserKind.CLIENT
     )
 
+    def __str__(self) -> str:
+        return f'{self.name} has ₴{self.balance} limited to ₴{self.limit} and is a {"client" if self.kind=="C" else "manager"}'
+
 class Payment(models.Model):
     amount=models.PositiveIntegerField()
     user=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -26,3 +29,6 @@ class Payment(models.Model):
         default=PaymentKind.SINGLE
     )
     date=models.DateField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f'{"single" if self.kind=="S" else "periodic"} for ₴{self.amount} by {self.user.name}, next for {self.date}'
