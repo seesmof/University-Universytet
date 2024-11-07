@@ -13,7 +13,7 @@ main:
   mov ah,9
   int 21h
 
-  je stopfourch
+  je stopzeroh
 
 stopfourch:
   mov ah,4ch
