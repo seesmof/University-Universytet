@@ -1,0 +1,9 @@
+- gui with list of all drives 
+  - drive type 
+  - total size 
+  - free size 
+  - number of sectors in a cluster 
+  - number of bytes in a sector 
+  - drive letter 
+  - drive serial number 
+  - drive file system type 
