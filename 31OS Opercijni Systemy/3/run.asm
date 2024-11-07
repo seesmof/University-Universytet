@@ -13,7 +13,7 @@ main:
   mov ah,9
   int 21h
 
-  je stoptwentysevenh
+  je stopthirtyoneh
 
 stopfourch:
   mov ah,4ch
@@ -31,6 +31,10 @@ stopret:
 
 stoptwentysevenh:
   int 27h
+
+stopthirtyoneh:
+  mov ah,31h
+  int 21h
 
 end main
 end
