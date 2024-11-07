@@ -19,5 +19,12 @@ stopfourch:
   mov ah,4ch
   int 21h
 
+stopzeroh:
+  mov ah,0h
+  int 21h
+
+stoptwentyh:
+  int 20h
+
 end main
 end
