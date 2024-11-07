@@ -5,7 +5,7 @@
   msg db "JESUS CHRIST IS LORD",13,10,'$'
 
 .code
-start:
+main:
   mov ax,@data
   mov ds,ax 
 
@@ -13,9 +13,14 @@ start:
   mov ah,9
   int 21h
 
-  je stop
+  je stoptwentyh
 
-stop:
+stopfourch:
   mov ah,4ch
   int 21h
-end start
+
+stoptwentyh:
+  int 20h
+
+end main
+end
