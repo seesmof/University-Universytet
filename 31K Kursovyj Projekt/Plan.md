@@ -1,13 +1,34 @@
 # analysis of system resources app
 
 - no limitations for how to develop
+- but dont use anything pre-built, write all form scratch
 
 # language options 
 
 - c
+- go
 - rust 
 - python 
 - assembly 
+
+# features 
+
+- ram 
+  - total size 
+  - used size 
+  - speed 
+- storage devices 
+  - name 
+  - total space
+  - available space 
+- cpu 
+  - name 
+  - cores 
+  - load 
+- gpu 
+  - name 
+  - memory 
+  - load 
 
 # Features 
 
