@@ -1,4 +1,4 @@
-TABLE_FILE_PATH='E:\\Universytet\\31EM Empirychni Metody\\2\\a.xlsx'
+TABLE_FILE_PATH='E:\\Universytet\\31EM Empirychni Metody\\3\\a.xlsx'
 
 v=19
 n=v*100
