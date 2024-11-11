@@ -15,7 +15,5 @@ hist(dataset.arr,main='Histogram of observed data ALLELUJAH')
 plot(density(dataset.arr),main='Density estimate of data ALLELUJAH')
 
 probabilities.arr=pnorm(dataset.arr,mean=m,sd=s)
-# this one is for Pearson
 chisq.test(probabilities.arr)
-# this one is for Kolmogorom
 ks.test(dataset.arr,probabilities.arr)
