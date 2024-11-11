@@ -6,4 +6,4 @@
   - number of bytes in a sector 
   - drive letter 
   - drive serial number 
-  - drive file system type
+  - drive file system type 
