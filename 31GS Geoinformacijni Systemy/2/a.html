@@ -10,24 +10,26 @@
   <body>
     <div id="canvas" class="h-screen w-full"></div>
     <script>
-      function init() {
-        var lat = new google.maps.LatLng(47.887426494702595, 35.16264846817133);
-        var mapOptions = {
+      function load_map() {
+        var coordinates_data = new google.maps.LatLng(
+          47.887426494702595,
+          35.16264846817133
+        );
+        var map_options = {
           zoom: 12,
-          center: lat,
+          center: coordinates_data,
         };
         var map = new google.maps.Map(
           document.querySelector("#canvas"),
-          mapOptions
+          map_options
         );
         var marker = new google.maps.Marker({
-          position: lat,
+          position: coordinates_data,
           map: map,
           title: "ALLELUJAH",
         });
       }
-
-      google.maps.event.addDomListener(window, "load", init);
+      google.maps.event.addDomListener(window, "load", load_map);
     </script>
   </body>
 </html>
