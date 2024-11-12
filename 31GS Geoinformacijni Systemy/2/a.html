@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Картографічний додаток -- Геоінформаційні системи</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,container-queries"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  </head>
+  <body>
+    <div id="canvas" class="h-screen w-full"></div>
+    <script>
+      function init() {
+        var lat = new google.maps.LatLng(47.887426494702595, 35.16264846817133);
+        var mapOptions = {
+          zoom: 12,
+          center: lat,
+        };
+        var map = new google.maps.Map(
+          document.querySelector("#canvas"),
+          mapOptions
+        );
+        var marker = new google.maps.Marker({
+          position: lat,
+          map: map,
+          title: "ALLELUJAH",
+        });
+      }
+
+      google.maps.event.addDomListener(window, "load", init);
+    </script>
+  </body>
+</html>
