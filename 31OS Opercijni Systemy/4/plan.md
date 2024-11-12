@@ -1,5 +1,5 @@
 - gui with list of all drives 
-  - drive type GetDriveType
+  - drive type GetDriveType 
   - total size 
   - free size 
   - number of sectors in a cluster 
