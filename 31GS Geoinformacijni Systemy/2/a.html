@@ -10,13 +10,15 @@
   <body>
     <div id="canvas" class="h-screen w-full"></div>
     <script>
+      const ZOOM_LEVEL = 300 / 100;
+      const MARKER_MESSAGE = "Варіант 19";
       function load_map() {
         var coordinates_data = new google.maps.LatLng(
           47.887426494702595,
           35.16264846817133
         );
         var map_options = {
-          zoom: 12,
+          zoom: ZOOM_LEVEL,
           center: coordinates_data,
         };
         var map = new google.maps.Map(
@@ -26,7 +28,7 @@
         var marker = new google.maps.Marker({
           position: coordinates_data,
           map: map,
-          title: "ALLELUJAH",
+          title: MARKER_MESSAGE,
         });
       }
       google.maps.event.addDomListener(window, "load", load_map);
