@@ -5,5 +5,5 @@
   - free size GetDiskFreeSpaceEx
   - number of sectors in a cluster 
   - number of bytes in a sector 
-  - drive serial number 
-  - drive file system type 
+  - drive serial number GetVolumeInformation
+  - drive file system type GetVolumeInformation

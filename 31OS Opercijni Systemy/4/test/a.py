@@ -17,11 +17,6 @@ drive_types={
 
 available_drives=[drive for drive in wa.GetLogicalDriveStrings().split('\000') if drive]
 for drive in available_drives:
-    print(drive)
     drive_type=drive_types[wf.GetDriveType(drive)]
-    print(drive_type)
     drive_free_space,drive_total_space,_=[round(value*bytes_to_gigabyes) for value in wf.GetDiskFreeSpaceEx(drive)]
-    print(drive_free_space,drive_total_space)
     drive_name,drive_serial_number,_,_,drive_file_system=wa.GetVolumeInformation(drive)
-    print(drive_serial_number)
-    print()
