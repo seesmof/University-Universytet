@@ -1,1 +1,2 @@
 Charlotte
+Charlotte, North Carolina
