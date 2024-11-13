@@ -16,7 +16,8 @@ drive_types={
 }
 
 available_drives=[drive for drive in wa.GetLogicalDriveStrings().split('\000') if drive]
-for drive in available_drives:
-    drive_type=drive_types[wf.GetDriveType(drive)]
-    drive_free_space,drive_total_space,_=[round(value*bytes_to_gigabyes) for value in wf.GetDiskFreeSpaceEx(drive)]
-    drive_name,drive_serial_number,_,_,drive_file_system=wa.GetVolumeInformation(drive)
+for drive_letter in available_drives:
+    drive_type=drive_types[wf.GetDriveType(drive_letter)]
+    drive_free_space,drive_total_space,_=[round(value*bytes_to_gigabyes) for value in wf.GetDiskFreeSpaceEx(drive_letter)]
+    drive_name,drive_serial_number,_,_,drive_file_system=wa.GetVolumeInformation(drive_letter)
+    print(f'{drive_name} ({drive_letter[:-1]}) is {drive_type}, has a total of {drive_total_space} GB and {drive_free_space} GB free, a serial number of {drive_serial_number} and a {drive_file_system} file system')
