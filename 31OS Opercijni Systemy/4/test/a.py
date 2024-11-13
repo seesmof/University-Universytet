@@ -1,9 +1,7 @@
 import win32api as wa
 import win32file as wf
 
-from nicegui import ui,app
-
-app.native.window_args['resizable']=False
+from nicegui import ui
 
 bytes_to_gigabyes=10**-9
 
@@ -24,4 +22,4 @@ for drive_letter in available_drives:
     drive_name,drive_serial_number,_,_,drive_file_system=wa.GetVolumeInformation(drive_letter)
     print(f'{drive_name} ({drive_letter[:-1]}) is {drive_type}, has {drive_free_space} GB our of {drive_total_space} GB free, a serial number of {drive_serial_number} and a {drive_file_system} file system')
 
-ui.run(native=False,window_size=(700,300),title="Операційні системи 4",favicon='💾')
+ui.run(title="Операційні системи 4",favicon='💾')
