@@ -1,8 +1,6 @@
 Listing
   type: private OR flat OR new 
   owner: User
-  rooms: int
-  area: int
 User 
   type: user OR manager 
   listings: list[Listing]
@@ -12,7 +10,8 @@ Meeting
   score: int 1 to 10
   listing: Listing
 
-confirmMeeting: Meeting.status=visited
-viewAllMeetings: return list[Meeting] Meeting.listing.owner==current_user__owner
-viewChosenMeetings return [Listing for Listing in viewAllMeetings() if Listing in current_user__owner.chosen]
-cancelMeeting: Meeting.status=canceled
+confirmMeeting(): Meeting.status=visited
+viewAllMeetings(): return list[Meeting] Meeting.listing.owner==current_user__owner
+viewChosenMeetings(): return [Listing for Listing in viewAllMeetings() if Listing in current_user__owner.chosen]
+cancelMeeting(): Meeting.status=canceled
+editListing(newListingData: Listing): Listing=newListingData
