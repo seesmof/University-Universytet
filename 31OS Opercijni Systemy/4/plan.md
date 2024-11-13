@@ -1,9 +1,9 @@
 - gui with list of all drives 
-  - drive type GetDriveType 
-  - total size 
-  - free size 
+  - drive letter GetLogicalDrivesString
+  - drive type GetDriveType
+  - total size GetDiskFreeSpaceEx
+  - free size GetDiskFreeSpaceEx
   - number of sectors in a cluster 
   - number of bytes in a sector 
-  - drive letter 
   - drive serial number 
   - drive file system type 
