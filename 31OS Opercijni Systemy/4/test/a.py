@@ -41,5 +41,5 @@ for drive_letter in available_drives:
         'total_space':drive_total_space
     })
 
-ui.table(columns=cols,rows=rows,row_key='name')
+ui.table(columns=cols,rows=rows,row_key='name').classes('w-full')
 ui.run(title="Операційні системи 4",favicon='💾')
