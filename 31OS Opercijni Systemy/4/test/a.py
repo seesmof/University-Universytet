@@ -13,25 +13,26 @@ DRIVE_TYPES={
 }
 
 columns_data=[
-    ('name','Drive Name'),
-    ('letter','Drive Letter'),
-    ('type','Drive Type'),
+    ('name','Name'),
+    ('letter','Letter'),
+    ('type','Type'),
     ('serial_number','Serial Number'),
     ('file_system','File System'),
     ('free_space','Free Space (GB)'),
     ('total_space','Total Space (GB)'),
 ]
-cols=[
-    {'name':'name','label':'Name','field':'name','align':'left','sortable':True},
-    {'name':'letter','label':'Letter','field':'letter','align':'left','sortable':True},
-    {'name':'type','label':'Type','field':'type','align':'left','sortable':True},
-    {'name':'serial_number','label':'Serial Number','field':'serial_number','align':'left','sortable':True},
-    {'name':'file_system','label':'File System','field':'file_system','align':'left','sortable':True},
-    {'name':'free_space','label':'Free Space (GB)','field':'free_space','align':'left','sortable':True},
-    {'name':'total_space','label':'Total Space (GB)','field':'total_space','align':'left','sortable':True},
+columns=[
+    {
+        'name':data_name,
+        'label':data_label,
+        'field':data_name,
+        'align':'left',
+        'sortable':True
+    }
+    for data_name, data_label in columns_data
 ]
-
 rows=[]
+
 available_drives=[drive for drive in wa.GetLogicalDriveStrings().split('\000') if drive]
 for drive_letter in available_drives:
     drive_type=DRIVE_TYPES[wf.GetDriveType(drive_letter)]
@@ -47,5 +48,5 @@ for drive_letter in available_drives:
         'total_space':drive_total_space
     })
 
-ui.table(columns=cols,rows=rows,row_key='name',title='Available Drives').classes('w-full')
+ui.table(columns=columns,rows=rows,row_key='name',title='Available Drives').classes('w-full')
 ui.run(title="Операційні системи 4",favicon='💾')
