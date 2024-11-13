@@ -1,13 +1,15 @@
 Listing
   type: private OR flat OR new 
   owner: User
+  rooms: int
+  area: int
 User 
   type: user OR manager 
   listings: list[Listing]
   chosen: list[Listing]
 Meeting 
   status: pending OR visited OR canceled
-  score: 1 OR 2 OR 3
+  score: int 1 to 10
   listing: Listing
 
 confirmMeeting: Meeting.status=visited
