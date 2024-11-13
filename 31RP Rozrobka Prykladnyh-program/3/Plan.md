@@ -20,3 +20,4 @@
   - see user info if user.kind==manager
   - set balance if user.kind==manager
   - set limit if user.kind==manager
+
