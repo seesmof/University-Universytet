@@ -1,5 +1,7 @@
 import win32api as wa
 import win32file as wf
+import subprocess as sp
+import wmi
 
 bytes_to_gigabyes=10**-9
 
@@ -20,5 +22,6 @@ for drive in available_drives:
     print(drive_type)
     drive_free_space,drive_total_space,_=[round(value*bytes_to_gigabyes) for value in wf.GetDiskFreeSpaceEx(drive)]
     print(drive_free_space,drive_total_space)
-    drive_serial_number=wa.getdiskse
+    drive_serial_number=sp.check_output('wmic diskdrive get SerialNumber').decode()
+    print(drive_serial_number)
     print()
