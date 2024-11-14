@@ -18,15 +18,6 @@ cor(year,rate)
 
 o=sample(n,replace=T)
 t=sample(n,replace=T)
-o.matrix=matrix(o,nrow=n,ncol=n)
-t.matrix=matrix(t,nrow=n,ncol=n)
-o.matrix
-t.matrix
-
-x_csv="E:\\Universytet\\31EM Empirychni Metody\\4\\o.csv"
-y_csv="E:\\Universytet\\31EM Empirychni Metody\\4\\t.csv"
-write.csv(o.matrix, x_csv)
-write.csv(t.matrix, y_csv)
 
 print(cor.test(o,t,use='complete.obs'))
 p.lm=lm(formula=t~o)
