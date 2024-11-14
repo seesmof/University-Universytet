@@ -5,7 +5,7 @@ library(datarium)
 data('jobsatisfaction',package='datarium')
 
 jobsatisfaction %>% sample_n_by(education_level,size=1)
-# jobsatisfaction=jobsatisfaction %>% reorder_levels(group,order=c('ctrl','trt1','trt2'))
+# jobsatisfaction=jobsatisfaction %>% reorder_levels(education_level,order=c('ctrl','trt1','trt2'))
 jobsatisfaction %>% group_by(education_level) %>% get_summary_stats(score,type='common')
 ggboxplot(jobsatisfaction,x='education_level',y='score')
 res.kruskal=jobsatisfaction %>% kruskal_test(score~education_level)
