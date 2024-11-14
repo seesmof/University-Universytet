@@ -7,3 +7,5 @@ ggplot(data=jobsatisfaction,aes(x=gender,y=score))+geom_boxplot(aes(fill=educati
 
 require(doBy)
 summaryBy(score~gender+education_level,data=jobsatisfaction,FUN=c(mean,sd,length))
+
+plot.design(jobsatisfaction)
