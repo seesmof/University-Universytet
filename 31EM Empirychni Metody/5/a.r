@@ -8,3 +8,5 @@ PlantGrowth %>% group_by(group) %>% get_summary_stats(weight,type='common')
 ggboxplot(PlantGrowth,x='group',y='weight')
 res.kruskal=PlantGrowth %>% kruskal_test(weight~group)
 res.kruskal
+PlantGrowth %>% kruskal_effsize(weight~group)
+pwc=PlantGrowth %>% dunn_test(weight~group,p.adjust.method='bonferroni')
