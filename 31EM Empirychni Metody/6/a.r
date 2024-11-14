@@ -1,4 +1,4 @@
-k=4
+sampes_count=4
 n=19
 
 x1=sample(-1:1,n,T)
@@ -16,11 +16,11 @@ x24=x2*x4
 x34=x3*x4
 
 x=rbind(x1,x2,x3,x4,x12,x13,x14,x23,x24,x34)
+N=length(y)
 
 a0=sum(y)/N
 a=rep(0,10)
 
-N=length(y)
 M=length(a)
 
 for (j in 1:N)
