@@ -11,3 +11,10 @@ summaryBy(score~gender+education_level,data=jobsatisfaction,FUN=c(mean,sd,length
 plot.design(jobsatisfaction)
 
 with(jobsatisfaction,interaction.plot(x.factor=education_level,trace.factor=gender,response=score))
+
+# weightgain = score
+# type = gender
+# source = education_level
+
+m1=aov(score~education_level+gender+source:gender,data=jobsatisfaction)
+summary(m1)
