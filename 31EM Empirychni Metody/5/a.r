@@ -1,17 +1,19 @@
 library(tidyverse)
 library(ggpubr)
 library(rstatix)
+library(datarium)
+data('jobsatisfaction',package='datarium')
 
 
-PlantGrowth %>% sample_n_by(group,size=1)
+jobsatisfaction %>% sample_n_by(education_level,size=1)
 
-PlantGrowth=PlantGrowth %>% reorder_levels(group,order=c('ctrl','trt1','trt2'))
+# jobsatisfaction=jobsatisfaction %>% reorder_levels(group,order=c('ctrl','trt1','trt2'))
 
-PlantGrowth %>% group_by(group) %>% get_summary_stats(weight,type='common')
+jobsatisfaction %>% group_by(education_level) %>% get_summary_stats(score,type='common')
 
-ggboxplot(PlantGrowth,x='group',y='weight')
+ggboxplot(jobsatisfaction,x='education_level',y='score')
 
-res.kruskal=PlantGrowth %>% kruskal_test(weight~group)
+res.kruskal=jobsatisfaction %>% kruskal_test(score~education_level)
 
 res.kruskal
 
