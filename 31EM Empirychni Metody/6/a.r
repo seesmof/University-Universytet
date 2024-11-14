@@ -22,7 +22,6 @@ a0=sum(y)/N
 a=rep(0,10)
 
 M=length(a)
-
 for (j in 1:N)
   for (k in 1:M)
     a[k]=a[k]+(y[j]*x[k,j])
