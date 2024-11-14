@@ -13,3 +13,5 @@ pwc=PlantGrowth %>% dunn_test(weight~group,p.adjust.method='bonferroni')
 pwc
 pwc2=PlantGrowth %>% wilcox_test(weight~group,p.adjust.method='bonferroni')
 pwc2
+pwc=pwc %>% add_xy_position(x='group')
+ggboxplot(PlantGrowth,x='group',y='weight')+stat_pvalue_manual(pwc,hide.ns=T)+labs(subtitle=get_test_label(res.kruskal,detailed=T),caption=get_pwc_label(pwc))
