@@ -35,4 +35,6 @@ s=c('x1', 'x2', 'x3', 'x4', 'x1*x2', 'x1*x3', 'x1*x4', 'x2*x3', 'x2*x4', 'x3*x4'
 s1=''
 for (k in 1:M)
   s1=paste0(s1,sprintf('% + f*%s',a[k],s[k]))
-s1
+
+s2=paste0('y = ',a0,s1)
+s2
