@@ -9,3 +9,5 @@ require(doBy)
 summaryBy(score~gender+education_level,data=jobsatisfaction,FUN=c(mean,sd,length))
 
 plot.design(jobsatisfaction)
+
+with(jobsatisfaction,interaction.plot(x.factor=education_level,trace.factor=gender,response=score))
