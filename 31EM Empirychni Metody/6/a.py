@@ -6,6 +6,7 @@ def gc(obs):
         c+=itertools.combinations(obs,r)
     return c
 
-vs=['x1','x2','x3']
+# do this manually JESUS plEASE HELp
+vs=['x1','x2','x3','x4']
 co=gc(vs)
 print([c for c in co if len(c)==2])
