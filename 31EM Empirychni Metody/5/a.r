@@ -10,3 +10,4 @@ res.kruskal=PlantGrowth %>% kruskal_test(weight~group)
 res.kruskal
 PlantGrowth %>% kruskal_effsize(weight~group)
 pwc=PlantGrowth %>% dunn_test(weight~group,p.adjust.method='bonferroni')
+pwc
