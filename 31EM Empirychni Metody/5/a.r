@@ -1,6 +1,3 @@
-library(tidyverse)
-library(ggpubr)
-library(rstatix)
 library(datarium)
 data('jobsatisfaction',package='datarium')
 
