@@ -17,16 +17,16 @@ res.kruskal=jobsatisfaction %>% kruskal_test(score~education_level)
 
 res.kruskal
 
-PlantGrowth %>% kruskal_effsize(weight~group)
+jobsatisfaction %>% kruskal_effsize(score~education_level)
 
-pwc=PlantGrowth %>% dunn_test(weight~group,p.adjust.method='bonferroni')
+pwc=jobsatisfaction %>% dunn_test(score~education_level,p.adjust.method='bonferroni')
 
 pwc
 
-pwc2=PlantGrowth %>% wilcox_test(weight~group,p.adjust.method='bonferroni')
+pwc2=jobsatisfaction %>% wilcox_test(score~education_level,p.adjust.method='bonferroni')
 
 pwc2
 
-pwc=pwc %>% add_xy_position(x='group')
+pwc=pwc %>% add_xy_position(x='education_level')
 
-ggboxplot(PlantGrowth,x='group',y='weight')+stat_pvalue_manual(pwc,hide.ns=T)+labs(subtitle=get_test_label(res.kruskal,detailed=T),caption=get_pwc_label(pwc))
+ggboxplot(jobsatisfaction,x='education_level',y='score')+stat_pvalue_manual(pwc,hide.ns=T)+labs(subtitle=get_test_label(res.kruskal,detailed=T),caption=get_pwc_label(pwc))
