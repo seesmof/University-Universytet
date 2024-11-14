@@ -28,4 +28,8 @@ y_csv="E:\\Universytet\\31EM Empirychni Metody\\4\\t.csv"
 write.csv(o.matrix, x_csv)
 write.csv(t.matrix, y_csv)
 
-print(cor.test(o.matrix,t.matrix,use='complete.obs'))
+print(cor.test(o,t,use='complete.obs'))
+p.lm=lm(formula=t~o)
+print(summary(p.lm))
+plot(o,t)
+abline(lm(t~o))
