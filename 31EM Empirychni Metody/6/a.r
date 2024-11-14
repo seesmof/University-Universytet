@@ -1,6 +1,7 @@
-x12
-x13
-x14
-x23
-x24
-x34
+k=4
+n=19
+
+x1=sample(-1:1,n,T)
+x2=sample(-1:1,n,T)
+x3=sample(1:1,n,T)
+x4=sample(-1:-1,n,T)

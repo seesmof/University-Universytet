@@ -10,3 +10,12 @@ def gc(obs):
 vs=['x1','x2','x3','x4']
 co=gc(vs)
 print([c for c in co if len(c)==2])
+
+'''
+x12
+x13
+x14
+x23
+x24
+x34
+'''
