@@ -16,5 +16,6 @@ with(jobsatisfaction,interaction.plot(x.factor=education_level,trace.factor=gend
 # type = gender
 # source = education_level
 
-m1=aov(score~education_level+gender+source:gender,data=jobsatisfaction)
-summary(m1)
+m=lm(score~gender*education_level,data=jobsatisfaction)
+anova(m)
+summary(m)
