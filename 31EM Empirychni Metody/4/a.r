@@ -13,14 +13,17 @@ plot(year,rate,main='Процентна ставка')
 cor(year,rate)
 
 
-x=sample(19,replace=T)
-y=sample(19*1000,replace=T)
-x.matrix=matrix(x,nrow=19,ncol=19)
-y.matrix=matrix(y,nrow=190,ncol=100)
-x.matrix
-y.matrix
+n=19
+o=sample(n,replace=T)
+t=sample(n,replace=T)
+o.matrix=matrix(o,nrow=n,ncol=n)
+t.matrix=matrix(t,nrow=n,ncol=n)
+o.matrix
+t.matrix
 
-x_csv="E:\\Universytet\\31EM Empirychni Metody\\4\\x.csv"
-y_csv="E:\\Universytet\\31EM Empirychni Metody\\4\\y.csv"
-write.csv(x.matrix, x_csv)
-write.csv(y.matrix, y_csv)
+x_csv="E:\\Universytet\\31EM Empirychni Metody\\4\\o.csv"
+y_csv="E:\\Universytet\\31EM Empirychni Metody\\4\\t.csv"
+write.csv(o.matrix, x_csv)
+write.csv(t.matrix, y_csv)
+
+print(cor.test(o.matrix,t.matrix,use='complete.obs'))
