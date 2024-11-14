@@ -19,3 +19,8 @@ x.matrix=matrix(x,nrow=19,ncol=19)
 y.matrix=matrix(y,nrow=190,ncol=100)
 x.matrix
 y.matrix
+
+x_csv="E:\\Universytet\\31EM Empirychni Metody\\4\\x.csv"
+y_csv="E:\\Universytet\\31EM Empirychni Metody\\4\\y.csv"
+write.csv(x.matrix, x_csv)
+write.csv(y.matrix, y_csv)
