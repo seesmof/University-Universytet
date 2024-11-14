@@ -1,3 +1,4 @@
 library(datarium)
-data=jobsatisfaction
-data
+data("jobsatisfaction", package = "datarium")
+
+str(jobsatisfaction)
