@@ -17,7 +17,12 @@ x34=x3*x4
 
 x=rbind(x1,x2,x3,x4,x12,x13,x14,x23,x24,x34)
 
-N=length(y)
-
 a0=sum(y)/N
 a=rep(0,10)
+
+N=length(y)
+M=length(a)
+
+for (j in 1:N)
+  for (k in 1:M)
+    a[k]=a[k]+(y[j]*x[k,j])
