@@ -29,3 +29,4 @@ for (j in 1:N)
 
 for (k in 1:M)
   a[k]=a[k]/N
+
