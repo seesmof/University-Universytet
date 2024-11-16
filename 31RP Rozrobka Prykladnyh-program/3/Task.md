@@ -21,3 +21,8 @@
   - set balance if user.kind==manager
   - set limit if user.kind==manager
 
+USER='root'
+HOST='localhost'
+PASSWORD='1313'
+DATABASE='data'
+
