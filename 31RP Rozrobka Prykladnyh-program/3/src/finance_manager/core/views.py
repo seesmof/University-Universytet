@@ -14,3 +14,13 @@ def user_dashboard_view(request, user_id):
     user = User.objects.get(id=user_id)
     transactions = Transaction.objects.filter(user=user)
     return render(request, 'user_dashboard.html', {'user': user, 'transactions': transactions})
+
+def add_transaction_view(request, user_id):
+    user = User.objects.get(id=user_id)
+    if request.method == 'POST':
+        amount = request.POST.get('amount')
+        description = request.POST.get('description')
+        date = request.POST.get('date')
+        Transaction.objects.create(user=user, amount=amount, description=description, date=date)
+        return redirect('user_dashboard', user_id=user.id)
+    return render(request, 'add_transaction.html', {'user': user})
