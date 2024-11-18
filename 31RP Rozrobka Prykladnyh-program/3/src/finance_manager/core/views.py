@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import User
+from .models import User, Transaction
 
 # Create your views here.
 def login_view(request):
@@ -12,4 +12,5 @@ def login_view(request):
 
 def user_dashboard_view(request, user_id):
     user = User.objects.get(id=user_id)
-    return render(request, 'user_dashboard.html', {'user': user})
+    transactions = Transaction.objects.filter(user=user)
+    return render(request, 'user_dashboard.html', {'user': user, 'transactions': transactions})
