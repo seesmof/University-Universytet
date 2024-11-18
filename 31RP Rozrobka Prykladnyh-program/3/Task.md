@@ -31,11 +31,8 @@ Pay
   - set balance if user.manager
   - set limit if user.manager
 
-'NAME':'data',
-'USER':'root',
-'HOST':'localhost',
-'PASSWORD':'1313',
-'DATABASE':'data',
-'PORT':'3306',
-
-A web-based financial management application that allows customers to make one-time and recurring payments. The initial amount of money on each client's account and credit limits are determined by the manager, who has access to all client information. The client can view all information about their account (including transaction history), deposit funds, pay for services, and schedule recurring payments.
+'USER': 'root',
+'PASSWORD': '1313',
+'HOST': 'localhost',
+'PORT': '3306',
+'NAME': 'data',
