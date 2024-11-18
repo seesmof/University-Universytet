@@ -5,16 +5,9 @@ Pay
   amount:int
   purpose:str
 User 
+  manager:bool
   balance:int
   limit:int
-  manager:bool
-
-
-- payment 
-  - kind: single OR periodic 
-  - amount: money 
-  - date: date
-  - user: user.id
 
 - functions 
   - add money to balance 
