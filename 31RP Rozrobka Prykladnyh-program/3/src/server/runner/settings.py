@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'runner.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'data',
+        'NAME':'data',
         'USER':'root',
         'HOST':'localhost',
         'PASSWORD':'1313',
         'DATABASE':'data',
-        'PORT':'3306'
+        'PORT':'3306',
     }
 }
 
