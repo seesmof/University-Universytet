@@ -10,6 +10,6 @@ def login_view(request):
             return redirect('user_dashboard', user_id=user.id)
     return render(request, 'login.html')
 
-def user_dashboard(request, user_id):
+def user_dashboard_view(request, user_id):
     user = User.objects.get(id=user_id)
     return render(request, 'user_dashboard.html', {'user': user})
