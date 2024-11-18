@@ -12,7 +12,7 @@ class User(models.Model):
 class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.PositiveBigIntegerField()
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True)
     description = models.CharField(max_length=255)
 
     def __str__(self):
