@@ -8,6 +8,7 @@ class Account(models.Model):
     manager = models.BooleanField(default=False)
 
 class Pay(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
     purpose = models.CharField(max_length=255)
     amount = models.PositiveBigIntegerField()
     periodic = models.BooleanField(default=False)
