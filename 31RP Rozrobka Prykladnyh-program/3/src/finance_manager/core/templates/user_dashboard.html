@@ -1,35 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ user.username }}'s Dashboard</title>
-</head>
-<body>
-  <h2>Welcome, {{ user.username }}</h2>
-  <p>Your balance: {{ user.balance }}</p>
-  <p>Your credit limit: {{ user.credit_limit }}</p>
+{% extends 'base.html' %}
 
-  <h3>Transaction History</h3>
-  <ul>
-    {% for transaction in transactions %}
+{% block title %}{{ user.username }}'s Dashboard{% endblock %}
 
-      <li>
-        <span>{{ transaction.date|date:"d-m-Y" }}</span>
-        <span>₴{{ transaction.amount }}</span>
-        <div>{{ transaction.description }}</div>
-        <button onclick="confirmDeletion({{ transaction.id }})">Delete</button>
-    {% endfor %}
-  </ul>
+{% block content %}
+<h2>Welcome, {{ user.username }}</h2>
+<p>Your balance: {{ user.balance }}</p>
+<p>Your credit limit: {{ user.credit_limit }}</p>
 
-  <a href="{% url 'add_transaction' user.id %}">Add Transaction</a>
-  <script>
-    const confirmDeletion = (transactionId) => {
-      const confirmation = confirm('Are you sure you want to delete this transaction?');
-      if (confirmation) {
-        window.location.href = `/delete_transaction/${transactionId}/`;
-      }
-    };
-  </script>
-</body>
-</html>
+<h3>Transaction History</h3>
+<ul>
+  {% for transaction in transactions %}
+
+    <li>
+      <span>{{ transaction.date|date:"d-m-Y" }}</span>
+      <span>₴{{ transaction.amount }}</span>
+      <div>{{ transaction.description }}</div>
+      <button onclick="confirmDeletion({{ transaction.id }})">Delete</button>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'add_transaction' user.id %}">Add Transaction</a>
+<script>
+  const confirmDeletion = (transactionId) => {
+    const confirmation = confirm('Are you sure you want to delete this transaction?');
+    if (confirmation) {
+      window.location.href = `/delete_transaction/${transactionId}/`;
+    }
+  };
+</script>
+{% endblock %}
