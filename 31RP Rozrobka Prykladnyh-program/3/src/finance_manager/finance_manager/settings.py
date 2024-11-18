@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7j&&y4^i33dy%a+uqeyh*mg=)w@qcngc8e@1xx6rtlm%ufs*+b'
+SECRET_KEY = 'django-insecure-8^rox_v-7lh5w7gpjez2%=5nj4&5nox%na5so2&-u*7cmyh6oj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'core',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,7 +75,7 @@ WSGI_APPLICATION = 'finance_manager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME':'data',
         'USER':'root',
         'HOST':'localhost',
