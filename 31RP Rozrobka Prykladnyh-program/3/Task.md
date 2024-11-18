@@ -37,3 +37,5 @@ Pay
 'PASSWORD':'1313',
 'DATABASE':'data',
 'PORT':'3306',
+
+A web-based financial management application that allows customers to make one-time and recurring payments. The initial amount of money on each client's account and credit limits are determined by the manager, who has access to all client information. The client can view all information about their account (including transaction history), deposit funds, pay for services, and schedule recurring payments.
