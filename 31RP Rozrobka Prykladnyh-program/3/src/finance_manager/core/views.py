@@ -24,3 +24,9 @@ def add_transaction_view(request, user_id):
         Transaction.objects.create(user=user, amount=amount, description=description, date=date)
         return redirect('user_dashboard', user_id=user.id)
     return render(request, 'add_transaction.html', {'user': user})
+
+def delete_transaction_view(request, transaction_id):
+    transaction = Transaction.objects.get(id=transaction_id)
+    user_id = transaction.user.id
+    transaction.delete()
+    return redirect('user_dashboard', user_id=user_id)
