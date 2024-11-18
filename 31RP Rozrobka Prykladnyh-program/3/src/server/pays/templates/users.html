@@ -4,6 +4,6 @@
 
 {%block content%}
 {%for user in users%}
-<li>{{user}}</li>
+<li>{{user}}, <a href="{%url 'user' user_id=user.id%}">see more</a></li>
 {%endfor%}
 {%endblock%}
