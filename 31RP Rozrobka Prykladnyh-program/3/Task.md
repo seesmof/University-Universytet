@@ -31,8 +31,9 @@ Pay
   - set balance if user.manager
   - set limit if user.manager
 
+NAME='data'
 USER='root'
 HOST='localhost'
 PASSWORD='1313'
 DATABASE='data'
-
+PORT='3306'
