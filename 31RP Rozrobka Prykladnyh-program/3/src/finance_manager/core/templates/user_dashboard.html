@@ -16,5 +16,7 @@
       <li>{{ transaction.date }}: {{ transaction.description }} ({{ transaction.amount }})</li>
     {% endfor %}
   </ul>
+
+  <a href="{% url 'add_transaction' user.id %}">Add Transaction</a>
 </body>
 </html>
