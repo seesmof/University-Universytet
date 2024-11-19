@@ -93,6 +93,17 @@ def edit(request, id, admin):
     
 def periodic(request, id):
     client=Client.objects.get(pk=id)
+    if request.method=='POST':
+        form=PeriodicForm(request.POST)
+        if not form.is_valid():
+            return redirect('client',id=client.id)
+        data=form.cleaned_data
+        amount=data['amount']
+        period=data['period']
+        purpose=data['purpose']
+        periodic_payment=PeriodicPayment(client=client,amount=amount,period=period,purpose=purpose)
+        periodic_payment.save()
+        return redirect('client',id=client.id)
     if request.method=='GET':
         form=PeriodicForm()
         return render(request, 'periodic.html', {'form':form,'client':client})
