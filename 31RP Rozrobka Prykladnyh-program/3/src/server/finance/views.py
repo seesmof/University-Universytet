@@ -145,9 +145,22 @@ def pay_period(request, payment_id):
         kind=dict(Payment.KINDS)['Periodic']
     )
     payment_log.save()
-    # payment.next_date=payment.next_date.day+1 if payment.period=='Day' else (payment.next_date.month+1%12) or 12 if payment.period=='Month' else payment.next_date.year+1
     next_year,next_month,next_day=payment.next_date.year,payment.next_date.month,payment.next_date.day
-    payment.next_date.day=payment.next_date.day+1 if payment.period=='Day' else payment.next_date.day
+    if payment.period=='Day': 
+        next_day=next_day+1
+        if next_day>31:
+            next_day=1
+            next_month=next_month+1
+            if next_month>12:
+                next_month=1
+                next_year=next_year+1
+    if payment.period=='Month':
+        next_month=next_month+1
+        if next_month>12:
+            next_month=1
+            next_year=next_year+1
+    if payment.period=='Year': next_year+=1
+    payment.next_date=datetime.date(next_year,next_month,next_day)
     print(payment.next_date)
     payment.save()
     return redirect('client',id=client.id)
