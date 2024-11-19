@@ -11,14 +11,16 @@
     <td>Amount</td>
     <td>Purpose</td>
     <td>Period</td>
-    <td>Next Date</td>
+    <td>Next payment</td>
+    <td>Action</td>
   </tr>
   {%for row in periodic_payments%}
   <tr>
     <td>{{row.amount}}</td>
     <td>{{row.purpose}}</td>
     <td>{{row.period}}</td>
-    <td>{{row.next_date}}</td>
+    <td>{{row.next_date|date:'d.m.Y'}}</td>
+    <td><a href="">Pay</a></td>
   </tr>
   {%endfor%}
 </table>
