@@ -1,8 +1,7 @@
 from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
-from datetime import datetime
 from django.utils.timezone import make_aware
+import datetime
 
 from .forms import *
 from .models import Client, Payment, PeriodicPayment
@@ -45,7 +44,7 @@ def deposit(request, id):
         client.save()
         payment=Payment(
             client=client,
-            timestamp=make_aware(datetime.now()),
+            timestamp=make_aware(datetime.datetime.now()),
             purpose=form.cleaned_data['purpose'],
             amount=amount,
             operation=dict(Payment.OPERATIONS)['Deposit'],
@@ -72,7 +71,7 @@ def withdraw(request, id):
         client.save()
         payment=Payment(
             client=client,
-            timestamp=make_aware(datetime.now()),
+            timestamp=make_aware(datetime.datetime.now()),
             purpose=form.cleaned_data['purpose'],
             amount=amount,
             operation=dict(Payment.OPERATIONS)['Withdrawal'],
@@ -138,14 +137,15 @@ def pay_period(request, payment_id):
     client.save()
     payment_log=Payment(
         client=client,
-        timestamp=make_aware(datetime.now()),
+        timestamp=make_aware(datetime.datetime.now()),
         purpose=payment.purpose,
         amount=payment.amount,
         operation=dict(Payment.OPERATIONS)['Withdrawal'],
         kind=dict(Payment.KINDS)['Periodic']
     )
     payment_log.save()
-    next_day,next_month,next_year=payment.next_date.strftime('%d.%m.%Y').split('.')
-    print(next_day,next_month,next_year)
+    period=payment.period
+    payment.next_date=payment.next_date+datetime.timedelta(days=1) if period=='Day' else ((payment.next_date.month+1)%12 or 12) if period=='Month' else payment.next_date.year+1
+    print(payment.next_date)
     payment.save()
     return redirect('client',id=client.id)
