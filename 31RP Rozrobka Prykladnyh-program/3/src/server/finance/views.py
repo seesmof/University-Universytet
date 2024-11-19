@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
-from .forms import NameForm,DepositForm,WithdrawForm
+from .forms import *
 from .models import Client
 
 def home(request):
@@ -59,5 +59,6 @@ def withdraw(request, id):
 
 def edit(request, id):
     client=Client.objects.get(pk=id)
-    print(client)
-    return HttpResponse('AMEN')
+    if request.method=='GET':
+        form=EditForm()
+    return render(request, 'edit.html', {'form':form,'client':client})
