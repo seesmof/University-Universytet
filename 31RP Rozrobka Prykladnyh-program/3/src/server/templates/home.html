@@ -1,15 +1,15 @@
 {%extends 'base.html'%}
 
-{%block title%}Home{%endblock%}
+{%block title%}Домівка{%endblock%}
 
 {%block content%}
 {%if user.is_authenticated%}
-ALLELUJAH, {{user.username}}
+АЛИЛУЯ, {{user.username}}!
 <form action="{%url 'logout'%}" method="post">
   {%csrf_token%}
-  <button type="submit">Log out</button>
+  <button type="submit">Вийти</button>
 </form>
 {%else%}
-<p><a href="{%url 'login'%}">Log in</a> first please</p>
+<p><a href="{%url 'login'%}">Увійдіть</a> перше будласка</p>
 {%endif%}
 {%endblock%}
