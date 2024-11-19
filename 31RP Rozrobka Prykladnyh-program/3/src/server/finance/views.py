@@ -25,7 +25,8 @@ def home(request):
 def client(request, id):
     client=Client.objects.get(pk=id)
     clients=Client.objects.all().values() if client.manager else None
-    return render(request, 'client.html', {'client':client,'clients':clients})
+    payments=Payment.objects.filter(client=client).values()
+    return render(request, 'client.html', {'client':client,'clients':clients,'payments':payments})
 
 def deposit(request, id):
     client=Client.objects.get(pk=id)
