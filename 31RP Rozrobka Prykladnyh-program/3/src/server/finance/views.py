@@ -42,7 +42,14 @@ def deposit(request, id):
         client.credit-=amount
         client.balance+=amount
         client.save()
-        payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation=dict(Payment.OPERATIONS)['Deposit'],kind=dict(Payment.KINDS)['Single'])
+        payment=Payment(
+            client=client,
+            timestamp=datetime.now(),
+            purpose=form.cleaned_data['purpose'],
+            amount=amount,
+            operation=dict(Payment.OPERATIONS)['Deposit'],
+            kind=dict(Payment.KINDS)['Single']
+        )
         payment.save()
         return redirect('client', id=client.id)
     if request.method=='GET':
@@ -62,7 +69,14 @@ def withdraw(request, id):
         client.balance-=amount
         client.credit+=amount
         client.save()
-        payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation=dict(Payment.OPERATIONS)['Withdrawal'],kind=dict(Payment.KINDS)['Single'])
+        payment=Payment(
+            client=client,
+            timestamp=datetime.now(),
+            purpose=form.cleaned_data['purpose'],
+            amount=amount,
+            operation=dict(Payment.OPERATIONS)['Withdrawal'],
+            kind=dict(Payment.KINDS)['Single']
+        )
         payment.save()
         return redirect('client', id=client.id)
     if request.method=='GET':
@@ -101,7 +115,12 @@ def periodic(request, id):
         amount=data['amount']
         period=data['period']
         purpose=data['purpose']
-        periodic_payment=PeriodicPayment(client=client,amount=amount,period=period,purpose=purpose)
+        periodic_payment=PeriodicPayment(
+            client=client,
+            amount=amount,
+            period=period,
+            purpose=purpose
+        )
         periodic_payment.save()
         return redirect('client',id=client.id)
     if request.method=='GET':
@@ -115,9 +134,17 @@ def pay_period(request, payment_id):
         # error here
         return redirect('client',id=client.id)
     client.balance-=payment.amount
-    payment_log=Payment(client=client,timestamp=datetime.now(),purpose=payment.purpose,amount=payment.amount,operation=dict(Payment.OPERATIONS)['Withdrawal'],kind=dict(Payment.KINDS)['Periodic'])
-    print(payment.next_date)
-    payment_log.save()
-    payment.save()
     client.save()
+    payment_log=Payment(
+        client=client,
+        timestamp=datetime.now(),
+        purpose=payment.purpose,
+        amount=payment.amount,
+        operation=dict(Payment.OPERATIONS)['Withdrawal'],
+        kind=dict(Payment.KINDS)['Periodic']
+    )
+    payment_log.save()
+    next_day,next_month,next_year=payment.next_date.strftime('%d.%m.%Y').split('.')
+    print(next_day,next_month,next_year)
+    payment.save()
     return redirect('client',id=client.id)
