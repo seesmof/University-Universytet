@@ -10,8 +10,12 @@
 <button>Add money</button>
 <button>Make payment</button>
 <button>Schedule payment</button>
-
 <h3>Payments History</h3>
+<table style="border-spacing: 1rem;">
+  {%for pay in payments%}
+  {{pay}}
+  {%endfor%}
+</table>
 {%else%}
 <h3>Available Users</h3>
 <table style="border-spacing: 1rem;">

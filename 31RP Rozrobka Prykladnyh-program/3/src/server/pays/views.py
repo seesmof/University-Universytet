@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Account
+from .models import Account,Pay
 
 def users_view(request):
     users = Account.objects.all()
@@ -8,6 +8,13 @@ def users_view(request):
 
 def user_view(request, user_id):
     user = Account.objects.filter(pk=user_id).first()
+    payments = Pay.objects.filter(user=user.id)
+    users=None
     if user.manager:
         users = Account.objects.all().values()
-    return render(request, 'user.html', {'user': user, 'users': users if users else {}})
+    context={
+        'user':user,
+        'payments':payments,
+        'users':users
+    }
+    return render(request, 'user.html', context)
