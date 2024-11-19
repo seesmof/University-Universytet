@@ -1,4 +1,4 @@
 from django import forms
 
 class NameForm(forms.Form):
-    username = forms.CharField()
+    name = forms.CharField(label='Client name')

@@ -7,8 +7,8 @@ def home(request):
     if request.method=='POST':
         form=NameForm(request.POST)
         if form.is_valid():
-            username=form.cleaned_data['username']
-            return HttpResponse(username)
+            name=form.cleaned_data['name']
+            return HttpResponse(name)
     if request.method=='GET':
         form = NameForm()
     return render(request, 'home.html', {'form':form})
