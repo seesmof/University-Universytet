@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.conf import settings
 
 from . import models
+from .forms import Login
 
 def index(request):
-    return HttpResponse(settings.CURRENT_USER_ID)
+    return render(request,'login.html',{'form':Login()})
