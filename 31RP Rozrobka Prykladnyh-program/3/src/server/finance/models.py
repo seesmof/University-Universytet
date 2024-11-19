@@ -28,4 +28,15 @@ class Payment(models.Model):
     def __str__(self):
         return f'{self.purpose} on {self.timestamp.strftime('%d.%m.%Y at %H:%M:%S')} by {self.client.name} for {self.amount}'
     
-# add PeriodicPayment class, in client page add 'Pay' button, on click update next_date based on period taken from (DAY, MONTH, YEAR)
+# add PeriodicPayment class, in client page add 'Pay' button, on click update next_date based on period taken from (DAY, MONTH, YEAR). in client page also add 'New Periodic Payment' button to create one
+class PeriodicPayment(models.Model):
+    client=models.ForeignKey(Client,on_delete=models.CASCADE)
+    amount=models.PositiveIntegerField()
+    purpose=models.TextField()
+    PERIODS=[
+        ('Day','Day'),
+        ('Month','Month'),
+        ('Year','Year'),
+    ]
+    period=models.CharField(max_length=12,choices=PERIODS)
+    next_date=models.DateField()
