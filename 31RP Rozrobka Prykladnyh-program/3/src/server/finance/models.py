@@ -15,15 +15,15 @@ class Payment(models.Model):
     amount=models.PositiveIntegerField()
     purpose=models.TextField()
     OPERATIONS=[
-        ('WIT','Withdrawal'),
-        ('DEP','Deposit'),
+        ('Withdrawal','Withdrawal'),
+        ('Deposit','Deposit'),
     ]
-    operation=models.CharField(max_length=3,choices=OPERATIONS)
+    operation=models.CharField(max_length=12,choices=OPERATIONS)
     KINDS=[
-        ('SNG','Single'),
-        ('PER','Periodic'),
+        ('Single','Single'),
+        ('Periodic','Periodic'),
     ]
-    kind=models.CharField(max_length=3,choices=KINDS)
+    kind=models.CharField(max_length=12,choices=KINDS)
 
     def __str__(self):
         return f'{self.purpose} on {self.timestamp.strftime('%d.%m.%Y at %H:%M:%S')} by {self.client.name} for {self.amount}'
