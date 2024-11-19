@@ -1,9 +1,0 @@
-{%extends 'base.html'%}
-
-{%block title%}Users{%endblock%}
-
-{%block content%}
-{%for user in users%}
-<li>{{user}}, <a href="{%url 'user' user_id=user.id%}">see more</a></li>
-{%endfor%}
-{%endblock%}
