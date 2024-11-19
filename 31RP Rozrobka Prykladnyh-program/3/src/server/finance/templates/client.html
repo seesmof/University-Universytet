@@ -4,3 +4,26 @@
 <p>Limit: {{client.credit}}</p>
 <a href="{% url 'deposit' id=client.id%}">Deposit</a>
 <a href="{% url 'withdraw' id=client.id%}">Withdraw</a>
+{%if client.manager%}
+<h2>Clients Data</h2>
+<table>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Balance</td>
+    <td>Credit</td>
+    <td>Manager?</td>
+    <td>Actions</td>
+  </tr>
+  {%for c in clients%}
+  <tr>
+    <td>{{c.id}}</td>
+    <td>{{c.name}}</td>
+    <td>{{c.balance}}</td>
+    <td>{{c.credit}}</td>
+    <td>{{c.manager}}</td>
+    <td></td>
+  </tr>
+  {%endfor%}
+</table>
+{%endif%}
