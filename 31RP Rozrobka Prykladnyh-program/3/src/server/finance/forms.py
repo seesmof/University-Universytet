@@ -8,3 +8,9 @@ class DepositForm(forms.Form):
 
 class WithdrawForm(forms.Form):
     amount = forms.IntegerField(label='Amount to withdraw')
+
+class EditForm(forms.Form):
+    name=forms.CharField()
+    balance=forms.IntegerField()
+    credit=forms.IntegerField()
+    manager=forms.BooleanField()

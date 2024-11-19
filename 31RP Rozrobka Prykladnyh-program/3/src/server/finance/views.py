@@ -56,3 +56,8 @@ def withdraw(request, id):
     if request.method=='GET':
         form=WithdrawForm()
     return render(request, 'withdraw.html', {'form':form,'client':client})
+
+def edit(request, id):
+    client=Client.objects.get(pk=id)
+    print(client)
+    return HttpResponse('AMEN')

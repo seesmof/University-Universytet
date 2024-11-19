@@ -3,7 +3,7 @@
 
 # List of Functions
 - [x] add money to balance (take away from credit and add to balance)
-- [ ] see all users info IF user.manager 
+- [x] see all users info IF user.manager 
 - [ ] change balance IF user.manager 
 - [ ] change limit IF user.manager 
 - [ ] see payments history 
