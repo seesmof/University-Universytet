@@ -6,8 +6,8 @@
 - [x] see all users info IF user.manager 
 - [x] change balance IF user.manager 
 - [x] change limit IF user.manager 
+- [x] make single payment 
 - [ ] see payments history 
-- [ ] make single payment 
 - [ ] make periodic payment 
 
 # MySQL Database Setup
