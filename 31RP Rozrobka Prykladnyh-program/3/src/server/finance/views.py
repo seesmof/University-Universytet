@@ -19,21 +19,22 @@ def home(request):
     return render(request, 'home.html', {'form':form})
 
 def client(request, id):
-    client=Client.objects.filter(pk=id).first()
+    client=Client.objects.get(pk=id)
     return render(request, 'client.html', {'client':client})
 
 def deposit(request, id):
-    client=Client.objects.filter(pk=id).first()
+    client=Client.objects.get(pk=id)
+    print(client, client.credit)
     if request.method=='POST':
         form=DepositForm(request.POST)
         if form.is_valid():
             amount=form.cleaned_data['amount']
-            if amount>client.credit:
-                # process error here
-                pass
+            if client.credit < amount:
+                return redirect('client', id=client.id)
             client.balance+=amount
             client.credit-=amount
-            return redirect(client, 'client.html', {'client':client})
+            client.save()
+            return redirect('client', id=client.id)
     if request.method=='GET':
         form=DepositForm()
     return render(request, 'deposit.html', {'form':form,'client':client})

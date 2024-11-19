@@ -1,2 +1,6 @@
 <h1>Deposit for {{client.name}}</h1>
-<a href="{%url 'client' id=client.id}">Go back</a>
+<form method="post">
+  {%csrf_token%}
+  {{form}}
+  <button type="submit">Amen</button>
+</form>
