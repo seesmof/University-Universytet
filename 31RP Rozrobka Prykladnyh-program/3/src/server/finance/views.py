@@ -22,8 +22,8 @@ def home(request):
 def client(request, id):
     client=Client.objects.get(pk=id)
     clients=None
-    if client.manager:
-        clients=Client.objects.all().values()
+    :
+        clients=Client.objects.all().values() 
     return render(request, 'client.html', {'client':client,'clients':clients})
 
 def deposit(request, id):
@@ -34,8 +34,8 @@ def deposit(request, id):
             amount=form.cleaned_data['amount']
             if client.credit < amount:
                 return redirect('client', id=client.id)
-            client.balance+=amount
             client.credit-=amount
+            client.balance+=amount
             client.save()
             return redirect('client', id=client.id)
     if request.method=='GET':
@@ -51,8 +51,8 @@ def withdraw(request, id):
             if client.balance < amount:
                 return redirect('client', id=client.id)
             # add purpose field here and create a transcation object also
-            client.credit+=amount
             client.balance-=amount
+            client.credit+=amount
             client.save()
             return redirect('client', id=client.id)
     if request.method=='GET':
