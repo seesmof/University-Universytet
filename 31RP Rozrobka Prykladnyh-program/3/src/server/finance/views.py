@@ -36,7 +36,6 @@ def deposit(request, id):
             client.credit-=amount
             client.balance+=amount
             client.save()
-            # add purpose field here and create a transcation object also
             payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount)
             payment.save()
             return redirect('client', id=client.id)
@@ -55,6 +54,8 @@ def withdraw(request, id):
             client.balance-=amount
             client.credit+=amount
             client.save()
+            payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount)
+            payment.save()
             return redirect('client', id=client.id)
     if request.method=='GET':
         form=WithdrawForm()
