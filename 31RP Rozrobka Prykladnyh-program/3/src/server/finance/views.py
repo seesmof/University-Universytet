@@ -9,16 +9,18 @@ from .models import Client, Payment
 def home(request):
     if request.method=='POST':
         form=NameForm(request.POST)
-        if form.is_valid():
-            name=form.cleaned_data['name']
-            client=Client.objects.filter(name=name).first()
-            if not client:
-                client=Client(name=name)
-                client.save()
-            return redirect('client', id=client.id)
+        if not form.is_valid():
+            # error here
+            return redirect('home')
+        name=form.cleaned_data['name']
+        client=Client.objects.filter(name=name).first()
+        if not client:
+            client=Client(name=name)
+            client.save()
+        return redirect('client', id=client.id)
     if request.method=='GET':
         form = NameForm()
-    return render(request, 'home.html', {'form':form})
+        return render(request, 'home.html', {'form':form})
 
 def client(request, id):
     client=Client.objects.get(pk=id)
@@ -33,6 +35,7 @@ def deposit(request, id):
             return redirect('client', id=client.id)
         amount=form.cleaned_data['amount']
         if client.credit < amount:
+            # error here
             return redirect('client', id=client.id)
         client.credit-=amount
         client.balance+=amount
@@ -52,6 +55,7 @@ def withdraw(request, id):
             return redirect('client', id=client.id)
         amount=form.cleaned_data['amount']
         if client.balance < amount:
+            # error here
             return redirect('client', id=client.id)
         client.balance-=amount
         client.credit+=amount
@@ -69,18 +73,18 @@ def edit(request, id, admin):
         form=EditForm(request.POST)
         if not form.is_valid():
             return redirect('client', id=client.id)
-            data=form.cleaned_data
-            edited_client=Client.objects.filter(name=data['name']).first()
-            new_name=data['name']
-            new_balance=data['balance']
-            new_credit=data['credit']
-            new_status=data['manager']
-            edited_client.name=new_name
-            edited_client.balance=new_balance
-            edited_client.credit=new_credit
-            edited_client.manager=new_status
-            edited_client.save()
-            return redirect('client', id=admin)
+        data=form.cleaned_data
+        edited_client=Client.objects.filter(name=data['name']).first()
+        new_name=data['name']
+        new_balance=data['balance']
+        new_credit=data['credit']
+        new_status=data['manager']
+        edited_client.name=new_name
+        edited_client.balance=new_balance
+        edited_client.credit=new_credit
+        edited_client.manager=new_status
+        edited_client.save()
+        return redirect('client', id=admin)
     if request.method=='GET':
         form=EditForm(initial=model_to_dict(client))
-    return render(request, 'edit.html', {'form':form,'client':client,'admin':admin})
+        return render(request, 'edit.html', {'form':form,'client':client,'admin':admin})
