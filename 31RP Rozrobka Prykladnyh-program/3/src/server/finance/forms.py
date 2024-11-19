@@ -21,5 +21,5 @@ class EditForm(forms.Form):
 
 class PeriodicForm(forms.Form):
     amount = forms.IntegerField(label='Amount to pay')
-    purpose = forms.CharField()
     period = forms.ChoiceField(choices=PeriodicPayment.PERIODS)
+    purpose = forms.CharField()

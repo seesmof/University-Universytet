@@ -1,0 +1,7 @@
+<a href="{%url 'client' id=client.id%}">Back</a>
+<h1>Adding periodic payment for {{client.name}}</h1>
+<form method="post">
+  {%csrf_token%}
+  {{form}}
+  <button type="submit">Amen</button>
+</form>

@@ -90,3 +90,9 @@ def edit(request, id, admin):
     if request.method=='GET':
         form=EditForm(initial=model_to_dict(client))
         return render(request, 'edit.html', {'form':form,'client':client,'admin':admin})
+    
+def periodic(request, id):
+    client=Client.objects.get(pk=id)
+    if request.method=='GET':
+        form=PeriodicForm()
+        return render(request, 'periodic.html', {'form':form,'client':client})
