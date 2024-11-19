@@ -21,3 +21,6 @@ def home(request):
 def client(request, id):
     client=Client.objects.filter(pk=id).first()
     return render(request, 'client.html', {'client':client})
+
+def deposit(request, id):
+    return HttpResponse('AMEN')
