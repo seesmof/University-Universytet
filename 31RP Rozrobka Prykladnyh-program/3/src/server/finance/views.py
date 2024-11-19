@@ -50,6 +50,7 @@ def withdraw(request, id):
             amount=form.cleaned_data['amount']
             if client.balance < amount:
                 return redirect('client', id=client.id)
+            # add purpose field here and create a transcation object also
             client.credit+=amount
             client.balance-=amount
             client.save()
