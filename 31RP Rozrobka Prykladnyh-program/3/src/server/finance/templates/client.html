@@ -4,6 +4,27 @@
 <p>Limit: {{client.credit}}</p>
 <a href="{% url 'deposit' id=client.id%}">Deposit</a>
 <a href="{% url 'withdraw' id=client.id%}">Withdraw</a>
+
+<h2>Payments</h2>
+<table>
+  <tr>
+    <td>Amount</td>
+    <td>Purpose</td>
+    <td>Operation</td>
+    <td>Type</td>
+    <td>Time</td>
+  </tr>
+  {%for row in payments%}
+  <tr>
+    <td>{{row.amount}}</td>
+    <td>{{row.purpose}}</td>
+    <td>{{row.operations_display}}</td>
+    <td>{{row.kind_display}}</td>
+    <td>{{row.timestamp}}</td>
+  </tr>
+  {%endfor%}
+</table>
+
 {%if client.manager%}
 <h2>Clients Data</h2>
 <table>
