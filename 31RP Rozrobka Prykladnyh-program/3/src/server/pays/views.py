@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Account,Pay
+from .models import *
 
 def users_view(request):
     users = Account.objects.all()
