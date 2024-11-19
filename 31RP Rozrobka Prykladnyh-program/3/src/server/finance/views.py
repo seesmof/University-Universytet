@@ -13,11 +13,11 @@ def home(request):
             if not client:
                 client=Client(name=name)
                 client.save()
-                print('didnt exist')
             return redirect('client', id=client.id)
     if request.method=='GET':
         form = NameForm()
     return render(request, 'home.html', {'form':form})
 
 def client(request, id):
-    return HttpResponse(id)
+    client=Client.objects.filter(pk=id).first()
+    return render(request, 'client.html', {'client':client})
