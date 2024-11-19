@@ -39,4 +39,4 @@ class PeriodicPayment(models.Model):
         ('Year','Year'),
     ]
     period=models.CharField(max_length=12,choices=PERIODS)
-    next_date=models.DateField()
+    next_date=models.DateField(auto_now_add=True)

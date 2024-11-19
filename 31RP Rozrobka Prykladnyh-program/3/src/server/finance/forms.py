@@ -1,5 +1,7 @@
 from django import forms
 
+from .models import  PeriodicPayment
+
 class NameForm(forms.Form):
     name = forms.CharField(label='Client name')
 
@@ -16,3 +18,8 @@ class EditForm(forms.Form):
     balance=forms.IntegerField()
     credit=forms.IntegerField()
     manager=forms.BooleanField(required=False)
+
+class PeriodicForm(forms.Form):
+    amount = forms.IntegerField(label='Amount to pay')
+    purpose = forms.CharField()
+    period = forms.ChoiceField(choices=PeriodicPayment.PERIODS)
