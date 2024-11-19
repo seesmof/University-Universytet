@@ -2,7 +2,7 @@
 Вебдодаток керування фінансами, який забезпечує виконання одноразових та періодичних платежів клієнтами. Початкова кількість коштів на рахунку кожного клієнта та його кредитні ліміти визначаються менеджером, якому доступна вся інформація про клієнтів. Клієнт може переглядати всю інформацію про власний рахунок (разом з історією транзакцій), вносити кошти, сплачувати за послуги, призначати періодичні платежі.
 
 # List of Functions
-- add money to balance 
+- add money to balance (take away from credit and add to balance)
 - see payments history 
 - make single payment 
 - make periodic payment 
@@ -18,11 +18,10 @@
 'NAME': 'data',
 
 # Models Architecture
-Pay
-  periodic:bool
-  amount:int
-  purpose:str
 User 
-  manager:bool
-  balance:int
-  limit:int
+  name = str 
+  balance = int 
+  credit = int 
+Transaction 
+  user = user id 
+  amount = int 
