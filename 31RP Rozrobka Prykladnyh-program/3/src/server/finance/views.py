@@ -64,7 +64,18 @@ def edit(request, id, admin):
         if form.is_valid():
             data=form.cleaned_data
             edited_client=Client.objects.filter(name=data['name']).first()
+            new_name=data['name']
+            new_balance=data['balance']
+            new_credit=data['credit']
+            new_status=data['manager']
+            edited_client.name=new_name
+            edited_client.balance=new_balance
+            edited_client.credit=new_credit
+            edited_client.manager=new_status
+            edited_client.save()
             return redirect('client', id=admin)
     if request.method=='GET':
+        print(client.balance,client.credit,client.name)
+        # form prepopulation doesnt work
         form=EditForm({'name':client.name,'balance':client.balance,'credit':client.balance,'manager':client.manager})
     return render(request, 'edit.html', {'form':form,'client':client})
