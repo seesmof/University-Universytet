@@ -5,6 +5,10 @@
 {%block content%}
 {%if user.is_authenticated%}
 ALLELUJAH, {{user.username}}
+<form action="{%url 'logout'%}" method="post">
+  {%csrf_token%}
+  <button type="submit">Log out</button>
+</form>
 {%else%}
 <p><a href="{%url 'login'%}">Log in</a> first please</p>
 {%endif%}
