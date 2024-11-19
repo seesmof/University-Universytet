@@ -75,7 +75,6 @@ def edit(request, id, admin):
             edited_client.save()
             return redirect('client', id=admin)
     if request.method=='GET':
-        print(client.balance,client.credit,client.name)
         # form prepopulation doesnt work
-        form=EditForm({'name':client.name,'balance':client.balance,'credit':client.balance,'manager':client.manager})
-    return render(request, 'edit.html', {'form':form,'client':client})
+        form=EditForm(initial={'name':client.name,'balance':client.balance,'credit':client.balance,'manager':client.manager})
+    return render(request, 'edit.html', {'form':form,'client':client,'admin':admin})
