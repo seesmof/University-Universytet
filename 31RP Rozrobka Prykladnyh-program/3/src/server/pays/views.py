@@ -8,4 +8,6 @@ def users_view(request):
 
 def user_view(request, user_id):
     user = Account.objects.filter(pk=user_id).first()
-    return render(request, 'user.html', {'user': user})
+    if user.manager:
+        users = Account.objects.all().values()
+    return render(request, 'user.html', {'user': user, 'users': users if users else {}})
