@@ -3,10 +3,16 @@
 {%block title%}{{user.name}}'s Account{%endblock%}
 
 {%block content%}
-<h2>Welcome, {{user.name}}!</h2>
-<div style="display: flex; align-items: start;">
-  <p>Balance: {{user.balance}}</p>
-  <button>Add money</button>
-</div>
-  <p>Limit: {{user.limit}}</p>
+<h2>СЛАВА ГОСПОДУ ІСУСУ ХРИСТУ, {{user.name}}!</h2>
+{%if not user.manager%}
+<p>Balance: {{user.balance}}</p>
+<p>Limit: {{user.limit}}</p>
+<button>Add money</button>
+<button>Make payment</button>
+<button>Schedule payment</button>
+
+<h3>Payments History</h3>
+{%else%}
+<h3>Available Users</h3>
+{%endif%}
 {%endblock%}
