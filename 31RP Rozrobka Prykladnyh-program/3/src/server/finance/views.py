@@ -145,7 +145,8 @@ def pay_period(request, payment_id):
     )
     payment_log.save()
     period=payment.period
-    payment.next_date=payment.next_date+datetime.timedelta(days=1) if period=='Day' else ((payment.next_date.month+1)%12 or 12) if period=='Month' else payment.next_date.year+1
-    print(payment.next_date)
+    next_year,next_month,next_day=payment.period.year,payment.period.month,payment.period.day
+    next_year,next_month,next_day=int(next_year),int(next_month),int(next_day)
+    print(next_day,next_month,next_year)
     payment.save()
     return redirect('client',id=client.id)
