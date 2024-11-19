@@ -13,4 +13,4 @@ class EditForm(forms.Form):
     name=forms.CharField()
     balance=forms.IntegerField()
     credit=forms.IntegerField()
-    manager=forms.BooleanField()
+    manager=forms.BooleanField(required=False)

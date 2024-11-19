@@ -59,7 +59,6 @@ def withdraw(request, id):
 
 def edit(request, id):
     client=Client.objects.get(pk=id)
-    print(client.manager)
     if request.method=='GET':
         form=EditForm({'name':client.name,'balance':client.balance,'credit':client.balance,'manager':client.manager})
     return render(request, 'edit.html', {'form':form,'client':client})
