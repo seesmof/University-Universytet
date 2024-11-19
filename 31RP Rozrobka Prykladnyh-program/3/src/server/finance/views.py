@@ -20,10 +20,10 @@ def home(request):
 
 def client(request, id):
     client=Client.objects.get(pk=id)
+    clients=None
     if client.manager:
-        clients=Client.objects.all()
-        print(clients)
-    return render(request, 'client.html', {'client':client})
+        clients=Client.objects.all().values()
+    return render(request, 'client.html', {'client':client,'clients':clients})
 
 def deposit(request, id):
     client=Client.objects.get(pk=id)
