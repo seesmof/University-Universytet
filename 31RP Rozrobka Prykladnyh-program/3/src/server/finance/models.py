@@ -11,9 +11,9 @@ class Client(models.Model):
     
 class Payment(models.Model):
     client=models.ForeignKey(Client,on_delete=models.CASCADE)
-    when=models.DateTimeField()
+    timestamp=models.DateTimeField()
     purpose=models.TextField()
     amount=models.PositiveIntegerField()
 
     def __str__(self):
-        return f'{self.purpose} on {self.when} by {self.client.name} for {self.amount}'
+        return f'{self.purpose} on {self.timestamp} by {self.client.name} for {self.amount}'
