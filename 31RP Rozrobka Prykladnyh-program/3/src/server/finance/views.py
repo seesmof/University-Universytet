@@ -29,43 +29,46 @@ def deposit(request, id):
     client=Client.objects.get(pk=id)
     if request.method=='POST':
         form=DepositForm(request.POST)
-        if form.is_valid():
-            amount=form.cleaned_data['amount']
-            if client.credit < amount:
-                return redirect('client', id=client.id)
-            client.credit-=amount
-            client.balance+=amount
-            client.save()
-            payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation='DEP',kind='SNG')
-            payment.save()
+        if not form.is_valid():
             return redirect('client', id=client.id)
+        amount=form.cleaned_data['amount']
+        if client.credit < amount:
+            return redirect('client', id=client.id)
+        client.credit-=amount
+        client.balance+=amount
+        client.save()
+        payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation='DEP',kind='SNG')
+        payment.save()
+        return redirect('client', id=client.id)
     if request.method=='GET':
         form=DepositForm()
-    return render(request, 'deposit.html', {'form':form,'client':client})
+        return render(request, 'deposit.html', {'form':form,'client':client})
 
 def withdraw(request, id):
     client=Client.objects.get(pk=id)
     if request.method=='POST':
         form=WithdrawForm(request.POST)
-        if form.is_valid():
-            amount=form.cleaned_data['amount']
-            if client.balance < amount:
-                return redirect('client', id=client.id)
-            client.balance-=amount
-            client.credit+=amount
-            client.save()
-            payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation='WIT',kind='SNG')
-            payment.save()
+        if not form.is_valid():
             return redirect('client', id=client.id)
+        amount=form.cleaned_data['amount']
+        if client.balance < amount:
+            return redirect('client', id=client.id)
+        client.balance-=amount
+        client.credit+=amount
+        client.save()
+        payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation='WIT',kind='SNG')
+        payment.save()
+        return redirect('client', id=client.id)
     if request.method=='GET':
         form=WithdrawForm()
-    return render(request, 'withdraw.html', {'form':form,'client':client})
+        return render(request, 'withdraw.html', {'form':form,'client':client})
 
 def edit(request, id, admin):
     client=Client.objects.get(pk=id)
     if request.method=='POST':
         form=EditForm(request.POST)
-        if form.is_valid():
+        if not form.is_valid():
+            return redirect('client', id=client.id)
             data=form.cleaned_data
             edited_client=Client.objects.filter(name=data['name']).first()
             new_name=data['name']
