@@ -1,0 +1,11 @@
+{%extend 'base.html'%}
+
+{%block title%}Home{%endblock%}
+
+{%block content%}
+{%if user.is_authenticated%}
+ALLELUJAH, {{user.username}}
+{%else%}
+<p><a href="{%url 'login'%}">Log in</a> first please</p>
+{%endif%}
+{%endblock%}
