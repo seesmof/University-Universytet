@@ -41,7 +41,7 @@ def deposit(request, id):
         client.credit-=amount
         client.balance+=amount
         client.save()
-        payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation='DEP',kind='SNG')
+        payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation=dict(Payment.OPERATIONS)['Deposit'],kind=dict(Payment.KINDS)['Single'])
         payment.save()
         return redirect('client', id=client.id)
     if request.method=='GET':
@@ -61,7 +61,7 @@ def withdraw(request, id):
         client.balance-=amount
         client.credit+=amount
         client.save()
-        payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation='WIT',kind='SNG')
+        payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount,operation=dict(Payment.OPERATIONS)['Withdrawal'],kind=dict(Payment.KINDS)['Single'])
         payment.save()
         return redirect('client', id=client.id)
     if request.method=='GET':

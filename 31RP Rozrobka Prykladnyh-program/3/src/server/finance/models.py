@@ -28,10 +28,4 @@ class Payment(models.Model):
     def __str__(self):
         return f'{self.purpose} on {self.timestamp.strftime('%d.%m.%Y at %H:%M:%S')} by {self.client.name} for {self.amount}'
     
-    def operation_display(self):
-        return dict(Payment.OPERATIONS)[self.operation]
-    
-    def kind_display(self):
-        return dict(Payment.KINDS)[self.kind]
-
 # add PeriodicPayment class, in client page add 'Pay' button, on click update next_date based on period taken from (DAY, MONTH, YEAR)
