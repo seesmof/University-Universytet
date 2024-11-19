@@ -76,6 +76,5 @@ def edit(request, id, admin):
             edited_client.save()
             return redirect('client', id=admin)
     if request.method=='GET':
-        # form prepopulation doesnt work
         form=EditForm(initial=model_to_dict(client))
     return render(request, 'edit.html', {'form':form,'client':client,'admin':admin})
