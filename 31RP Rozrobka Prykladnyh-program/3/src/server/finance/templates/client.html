@@ -20,7 +20,7 @@
     <td>{{row.purpose}}</td>
     <td>{{row.operations_display}}</td>
     <td>{{row.kind_display}}</td>
-    <td>{{row.timestamp}}</td>
+    <td>{{row.timestamp|date:'d.m.Y H:i:s'}}</td>
   </tr>
   {%endfor%}
 </table>
@@ -43,6 +43,7 @@
     <td>{{c.balance}}</td>
     <td>{{c.credit}}</td>
     <td>{{c.manager}}</td>
+    <!-- add ability to view client's payment history on separate page and edit it -->
     <td>
       <a href="{%url 'edit' id=c.id admin=client.id%}">Edit</a>
     </td>
