@@ -16,4 +16,4 @@ class Payment(models.Model):
     amount=models.PositiveIntegerField()
 
     def __str__(self):
-        return f'{self.purpose} on {self.timestamp} by {self.client.name} for {self.amount}'
+        return f'{self.purpose} on {self.timestamp.strftime('%d.%m.%Y at %H:%M:%S')} by {self.client.name} for {self.amount}'

@@ -1,9 +1,10 @@
 from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from datetime import datetime
 
 from .forms import *
-from .models import Client
+from .models import Client, Payment
 
 def home(request):
     if request.method=='POST':
@@ -35,6 +36,9 @@ def deposit(request, id):
             client.credit-=amount
             client.balance+=amount
             client.save()
+            # add purpose field here and create a transcation object also
+            payment=Payment(client=client,timestamp=datetime.now(),purpose=form.cleaned_data['purpose'],amount=amount)
+            payment.save()
             return redirect('client', id=client.id)
     if request.method=='GET':
         form=DepositForm()
@@ -48,7 +52,6 @@ def withdraw(request, id):
             amount=form.cleaned_data['amount']
             if client.balance < amount:
                 return redirect('client', id=client.id)
-            # add purpose field here and create a transcation object also
             client.balance-=amount
             client.credit+=amount
             client.save()
