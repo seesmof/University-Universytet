@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from datetime import datetime
 
 from .forms import *
-from .models import Client, Payment
+from .models import Client, Payment, PeriodicPayment
 
 def home(request):
     if request.method=='POST':
@@ -26,7 +26,8 @@ def client(request, id):
     client=Client.objects.get(pk=id)
     clients=Client.objects.all().values() if client.manager else None
     payments=Payment.objects.filter(client=client).values()
-    return render(request, 'client.html', {'client':client,'clients':clients,'payments':payments})
+    periodic_payments=PeriodicPayment.objects.filter(client=client).values()
+    return render(request, 'client.html', {'client':client,'clients':clients,'payments':payments,'periodic_payments':periodic_payments})
 
 def deposit(request, id):
     client=Client.objects.get(pk=id)
