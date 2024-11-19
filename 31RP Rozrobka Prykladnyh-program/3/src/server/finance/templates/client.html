@@ -5,6 +5,7 @@
 <a href="{% url 'deposit' id=client.id%}">Deposit</a>
 <a href="{% url 'withdraw' id=client.id%}">Withdraw</a>
 
+{%if periodic_payments%}
 <h2>Periodic Payments</h2>
 <table>
   <tr>
@@ -24,31 +25,8 @@
   </tr>
   {%endfor%}
 </table>
-{%if periodic_payments%}
 {%endif%}
 <a href="{%url 'periodic' id=client.id%}">Add</a>
-
-{%if payments%}
-<h2>Payments</h2>
-<table>
-  <tr>
-    <td>Amount</td>
-    <td>Purpose</td>
-    <td>Operation</td>
-    <td>Type</td>
-    <td>Time</td>
-  </tr>
-  {%for row in payments%}
-  <tr>
-    <td>{{row.amount}}</td>
-    <td>{{row.purpose}}</td>
-    <td>{{row.operation}}</td>
-    <td>{{row.kind}}</td>
-    <td>{{row.timestamp|date:'d.m.Y H:i:s'}}</td>
-  </tr>
-  {%endfor%}
-</table>
-{%endif%}
 
 {%if client.manager%}
 <h2>Clients Data</h2>
@@ -72,6 +50,28 @@
     <td>
       <a href="{%url 'edit' id=c.id admin=client.id%}">Edit</a>
     </td>
+  </tr>
+  {%endfor%}
+</table>
+{%endif%}
+
+{%if payments%}
+<h2>Payments</h2>
+<table>
+  <tr>
+    <td>Amount</td>
+    <td>Purpose</td>
+    <td>Operation</td>
+    <td>Type</td>
+    <td>Time</td>
+  </tr>
+  {%for row in payments reversed%}
+  <tr>
+    <td>{{row.amount}}</td>
+    <td>{{row.purpose}}</td>
+    <td>{{row.operation}}</td>
+    <td>{{row.kind}}</td>
+    <td>{{row.timestamp|date:'d.m.Y H:i:s'}}</td>
   </tr>
   {%endfor%}
 </table>
