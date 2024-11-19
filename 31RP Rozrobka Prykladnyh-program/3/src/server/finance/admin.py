@@ -6,7 +6,7 @@ class ClientAdmin(admin.ModelAdmin):
     list_display=['name','balance','credit','manager']
 
 class PaymentAdmin(admin.ModelAdmin):
-    list_display=['client','amount','purpose','timestamp',]
+    list_display=['client','amount','purpose','operation','kind','timestamp',]
 
 admin.site.register(Client,ClientAdmin)
 admin.site.register(Payment,PaymentAdmin)
