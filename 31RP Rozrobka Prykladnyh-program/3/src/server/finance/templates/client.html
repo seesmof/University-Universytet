@@ -23,7 +23,7 @@
     <td>{{c.credit}}</td>
     <td>{{c.manager}}</td>
     <td>
-      <a href="{%url 'edit' id=c.id%}">Edit</a>
+      <a href="{%url 'edit' id=c.id admin=client.id%}">Edit</a>
     </td>
   </tr>
   {%endfor%}

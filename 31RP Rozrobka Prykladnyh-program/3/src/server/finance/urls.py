@@ -7,5 +7,5 @@ urlpatterns = [
     path('client/<int:id>', views.client, name='client'),
     path('deposit/<int:id>', views.deposit, name='deposit'),
     path('withdraw/<int:id>', views.withdraw, name='withdraw'),
-    path('edit/<int:id>', views.edit, name='edit'),
+    path('edit/<int:admin>/<int:id>', views.edit, name='edit'),
 ]
