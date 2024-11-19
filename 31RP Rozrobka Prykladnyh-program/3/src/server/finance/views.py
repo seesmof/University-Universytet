@@ -26,9 +26,14 @@ def deposit(request, id):
     if request.method=='POST':
         form=DepositForm(request.POST)
         if form.is_valid():
-            amount=form.cleaned_data.get('amount',0)
             client=Client.objects.filter(pd=id).first()
+            amount=form.cleaned_data['amount']
+            if amount>client.credit:
+                # process error here
+                pass
+            client.balance+=amount
+            client.credit-=amount
+            return redirect(client, 'client.html', {'client':client})
     if request.method=='GET':
         form=DepositForm()
-    remainder=client.credit
-    return render(request, '')
+    return render(request, 'deposit.html', {'form':form})
