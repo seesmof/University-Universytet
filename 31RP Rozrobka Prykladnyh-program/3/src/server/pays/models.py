@@ -1,5 +1,6 @@
 from django.db import models
 
+""" 
 class User(models.Model):
     name = models.CharField(max_length=100)
     password = models.CharField(max_length=255)
@@ -24,3 +25,4 @@ class Entry(models.Model):
     date = models.DateField()
     amount = models.PositiveIntegerField()
     purpose = models.TextField()
+"""
