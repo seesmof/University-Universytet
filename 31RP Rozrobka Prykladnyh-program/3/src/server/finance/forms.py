@@ -5,9 +5,11 @@ class NameForm(forms.Form):
 
 class DepositForm(forms.Form):
     amount = forms.IntegerField(label='Amount to deposit')
+    purpose = forms.CharField()
 
 class WithdrawForm(forms.Form):
     amount = forms.IntegerField(label='Amount to withdraw')
+    purpose = forms.CharField()
 
 class EditForm(forms.Form):
     name=forms.CharField()
