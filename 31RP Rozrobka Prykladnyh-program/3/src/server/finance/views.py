@@ -1,3 +1,4 @@
+from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
@@ -76,5 +77,5 @@ def edit(request, id, admin):
             return redirect('client', id=admin)
     if request.method=='GET':
         # form prepopulation doesnt work
-        form=EditForm(initial={'name':client.name,'balance':client.balance,'credit':client.balance,'manager':client.manager})
+        form=EditForm(initial=model_to_dict(client))
     return render(request, 'edit.html', {'form':form,'client':client,'admin':admin})
