@@ -148,7 +148,8 @@ def pay_period(request, payment_id):
     next_year,next_month,next_day=payment.next_date.year,payment.next_date.month,payment.next_date.day
     if payment.period=='Day': 
         next_day=next_day+1
-        if next_day>31:
+        print(next_day)
+        if next_day>=28:
             next_day=1
             next_month=next_month+1
             if next_month>12:
