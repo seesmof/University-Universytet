@@ -2,6 +2,7 @@ from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from datetime import datetime
+from django.utils.timezone import make_aware
 
 from .forms import *
 from .models import Client, Payment, PeriodicPayment
@@ -44,7 +45,7 @@ def deposit(request, id):
         client.save()
         payment=Payment(
             client=client,
-            timestamp=datetime.now(),
+            timestamp=make_aware(datetime.now()),
             purpose=form.cleaned_data['purpose'],
             amount=amount,
             operation=dict(Payment.OPERATIONS)['Deposit'],
@@ -71,7 +72,7 @@ def withdraw(request, id):
         client.save()
         payment=Payment(
             client=client,
-            timestamp=datetime.now(),
+            timestamp=make_aware(datetime.now()),
             purpose=form.cleaned_data['purpose'],
             amount=amount,
             operation=dict(Payment.OPERATIONS)['Withdrawal'],
@@ -137,7 +138,7 @@ def pay_period(request, payment_id):
     client.save()
     payment_log=Payment(
         client=client,
-        timestamp=datetime.now(),
+        timestamp=make_aware(datetime.now()),
         purpose=payment.purpose,
         amount=payment.amount,
         operation=dict(Payment.OPERATIONS)['Withdrawal'],
