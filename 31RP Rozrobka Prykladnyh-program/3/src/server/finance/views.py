@@ -1,14 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
 from .forms import NameForm
+from .models import Client
 
 def home(request):
     if request.method=='POST':
         form=NameForm(request.POST)
         if form.is_valid():
             name=form.cleaned_data['name']
-            return HttpResponse(name)
+            client=Client.objects.filter(name=name).first()
+            if not client:
+                client=Client(name=name)
+                client.save()
+                print('didnt exist')
+            return redirect('client', id=client.id)
     if request.method=='GET':
         form = NameForm()
     return render(request, 'home.html', {'form':form})
+
+def client(request, id):
+    return HttpResponse(id)
