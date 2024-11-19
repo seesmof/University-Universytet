@@ -62,7 +62,7 @@ def edit(request, id, admin):
     if request.method=='POST':
         form=EditForm(request.POST)
         if form.is_valid():
-            return redirect('client',id=client.id)
+            return redirect('client',id=admin)
     if request.method=='GET':
         form=EditForm({'name':client.name,'balance':client.balance,'credit':client.balance,'manager':client.manager})
     return render(request, 'edit.html', {'form':form,'client':client})
