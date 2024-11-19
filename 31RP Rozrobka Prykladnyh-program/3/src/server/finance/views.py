@@ -108,7 +108,16 @@ def periodic(request, id):
         form=PeriodicForm()
         return render(request, 'periodic.html', {'form':form,'client':client})
     
-def pay_period(request, payment_id, client_id):
-    client=Client.objects.get(pk=client_id)
+def pay_period(request, payment_id):
     payment=PeriodicPayment.objects.get(pk=payment_id)
-    return redirect('client',id=client_id)
+    client=payment.client
+    if client.balance < payment.amount:
+        # error here
+        return redirect('client',id=client.id)
+    client.balance-=payment.amount
+    payment_log=Payment(client=client,timestamp=datetime.now(),purpose=payment.purpose,amount=payment.amount,operation=dict(Payment.OPERATIONS)['Withdrawal'],kind=dict(Payment.KINDS)['Periodic'])
+    print(payment.next_date)
+    payment_log.save()
+    payment.save()
+    client.save()
+    return redirect('client',id=client.id)
