@@ -39,7 +39,7 @@ class PeriodicPayment(models.Model):
         ('Year','Year'),
     ]
     period=models.CharField(max_length=12,choices=PERIODS)
-    next_date=models.DateField(auto_now_add=True)
+    next_date=models.DateField()
 
     def __str__(self):
         return f'Every {self.period.lower()} by {self.client.name} for {self.amount} at {self.next_date.strftime('%d.%m.%Y')}'
