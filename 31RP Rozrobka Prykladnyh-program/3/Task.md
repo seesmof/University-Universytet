@@ -8,7 +8,7 @@
 - [x] change limit IF user.manager 
 - [x] make single payment 
 - [x] see payments history 
-- [ ] make periodic payment 
+- [x] make periodic payment 
 
 # MySQL Database Setup
 'USER': 'root',

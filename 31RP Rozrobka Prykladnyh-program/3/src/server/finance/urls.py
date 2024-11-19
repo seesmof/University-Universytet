@@ -9,4 +9,5 @@ urlpatterns = [
     path('withdraw/<int:id>', views.withdraw, name='withdraw'),
     path('edit/<int:admin>/<int:id>', views.edit, name='edit'),
     path('periodic/<int:id>', views.periodic, name='periodic'),
+    path('pay_period/<int:client_id>/<int:payment_id>', views.pay_period, name='pay_period'),
 ]

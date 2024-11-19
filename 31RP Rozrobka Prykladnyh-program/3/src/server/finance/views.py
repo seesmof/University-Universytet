@@ -107,3 +107,10 @@ def periodic(request, id):
     if request.method=='GET':
         form=PeriodicForm()
         return render(request, 'periodic.html', {'form':form,'client':client})
+    
+def pay_period(request, payment_id, client_id):
+    client=Client.objects.get(pk=client_id)
+    payment=PeriodicPayment.objects.get(pk=payment_id)
+    if request.method=='GET':
+        print('AMEN',payment,client)
+        return redirect('client',id=client_id)
