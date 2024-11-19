@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
-from .forms import NameForm,DepositForm
+from .forms import NameForm,DepositForm,WithdrawForm
 from .models import Client
 
 def home(request):
@@ -24,7 +24,6 @@ def client(request, id):
 
 def deposit(request, id):
     client=Client.objects.get(pk=id)
-    print(client, client.credit)
     if request.method=='POST':
         form=DepositForm(request.POST)
         if form.is_valid():
@@ -38,3 +37,19 @@ def deposit(request, id):
     if request.method=='GET':
         form=DepositForm()
     return render(request, 'deposit.html', {'form':form,'client':client})
+
+def withdraw(request, id):
+    client=Client.objects.get(pk=id)
+    if request.method=='POST':
+        form=WithdrawForm(request.POST)
+        if form.is_valid():
+            amount=form.cleaned_data['amount']
+            if client.balance < amount:
+                return redirect('client', id=client.id)
+            client.credit+=amount
+            client.balance-=amount
+            client.save()
+            return redirect('client', id=client.id)
+    if request.method=='GET':
+        form=WithdrawForm()
+    return render(request, 'withdraw.html', {'form':form,'client':client})
