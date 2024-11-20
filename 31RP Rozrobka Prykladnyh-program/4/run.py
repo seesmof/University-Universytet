@@ -82,24 +82,32 @@ while 1:
         c.execute(client_query)
         rows=c.fetchall()[0]
         return rows
+    
+    def get_balance(
+        user_name:str,
+    ):
+        client_query=f'SELECT name,balance FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
+        c.execute(client_query)
+        r=c.fetchall()[0]
+        return r
 
     if check_any(['вихід','вийти']): break
     elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
     elif check_any(['користувачі']): show_clients()
-    elif check_any(['користувач']):
-        stripped_words=clean_query([w for w in words if 'користувач' not in w])
+    elif check_any(['баланс']):
+        stripped_words=clean_query([w for w in words if 'балан' not in w])
         found=False
         for word in stripped_words:
             try:
-                name,balance,credit,is_manager=get_user(word)
-                print(f'{name}{" (менеджер)" if is_manager else ""} має {balance} з {credit}')
+                name,balance=get_balance(word)
+                print(f'{name} має {balance}')
                 found=True
                 break
             except:
                 continue
         if not found: print('користувача не знайдено')
-    elif check_any(['баланс']):
-        stripped_words=clean_query([w for w in words if 'балан' not in w])
+    elif check_any(['користувач']):
+        stripped_words=clean_query([w for w in words if 'користувач' not in w])
         found=False
         for word in stripped_words:
             try:
