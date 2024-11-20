@@ -28,19 +28,14 @@ images_folder=os.path.join(root,'images')
 app.add_media_files('/images',images_folder)
 image_files=os.listdir(images_folder)
 
-def update_image():
-    print(image_file)
-    ui.update(image)
-image_file=image_files[0]
-image=ui.image(f'/images/{image_file}')
-image_file=ui.input(
-    label='File name here...',
+ui.label('Image to process').classes('font-medium text-lg')
+selected_image_file=ui.select(
+    options=image_files,
     value=image_files[0],
-    autocomplete=image_files,
-    on_change=update_image()
+    with_input=True
 ).classes('w-full')
 
-ui.label('Number of colors').classes('mt-7')
+ui.label('Number of colors').classes('mt-7 font-medium text-lg')
 colors_count_slider=ui.slider(min=1,max=3,value=3)
 with ui.row().classes('flex justify-between w-full'):
     ui.label(1)
