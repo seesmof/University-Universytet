@@ -20,14 +20,15 @@ df['scaled_green']=whiten(df['green'])
 df['scaled_blue']=whiten(df['blue'])
 
 cluster_centers,_=kmeans(df[['scaled_red','scaled_blue','scaled_green']],3)
-dominant_colors=[]
 red_std,green_std,blue_std=df[['red','green','blue']].std()
-for center in cluster_centers:
-    red_scaled,green_scaled,blue_scaled=center
-    dominant_colors.append((red_scaled*red_std/255,green_scaled*green_std/255,blue_scaled*blue_std/255))
+
+colors=[]
+for red_scaled,green_scaled,blue_scaled in cluster_centers:
+    colors.append((red_scaled*red_std/255,green_scaled*green_std/255,blue_scaled*blue_std/255))
 
 # limit number of colors here by selected value from slider
 colors_number=3
-dominant_colors=dominant_colors[:3]
-plt.imshow([dominant_colors])
+
+colors=colors[:3]
+plt.imshow([colors])
 plt.show()
