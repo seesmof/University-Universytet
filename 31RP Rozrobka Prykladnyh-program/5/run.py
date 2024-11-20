@@ -23,15 +23,24 @@ def get_colors(
     palette=np.uint8(model.cluster_centers_)
     return palette
 
-LABEL_CLASSES='font-medium text-lg'
-
-ui.label('Image to process').classes(LABEL_CLASSES)
 root=os.path.dirname(os.path.abspath(__file__))
 images_folder=os.path.join(root,'images')
 app.add_media_files('/images',images_folder)
-ui.image('/images/landscape_moor_nature_reserve.jpg')
+image_files=os.listdir(images_folder)
 
-ui.label('Number of colors').classes(LABEL_CLASSES)
+def update_image():
+    print(image_file)
+    ui.update(image)
+image_file=image_files[0]
+image=ui.image(f'/images/{image_file}')
+image_file=ui.input(
+    label='File name here...',
+    value=image_files[0],
+    autocomplete=image_files,
+    on_change=update_image()
+).classes('w-full')
+
+ui.label('Number of colors').classes('mt-7')
 colors_count_slider=ui.slider(min=1,max=3,value=3)
 with ui.row().classes('flex justify-between w-full'):
     ui.label(1)
