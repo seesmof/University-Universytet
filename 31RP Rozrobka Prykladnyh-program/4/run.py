@@ -54,10 +54,10 @@ while 1:
 
     if check_any(['вихід','вийти']): break
     elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
-    elif check_all(['є','користувач']):
-
-    elif 'є' in words:
-        all_clients_query=f'SELECT name FROM {CLIENTS_TABLE}'
+    elif check_any(['користувачі']):
+        all_clients_query=f'SELECT name,balance,credit FROM {CLIENTS_TABLE}'
         c.execute(all_clients_query)
-        res=c.fetchall()
-        print(','.join([r[0] for r in res]))
+        rows=c.fetchall()
+        for client in rows:
+            name,balance,credit=client
+            print(f'{name} має {balance} з {credit}')
