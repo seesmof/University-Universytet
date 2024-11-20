@@ -15,4 +15,7 @@ for row in image:
         g.append(tg)
         b.append(tb)
 
-print(r,g,b)
+df=pd.DataFrame({'red':r,'green':g,'blue':b})
+df['scaled_color_red']=whiten(df['red'])
+df['scaled_color_blue']=whiten(df['blue'])
+df['scaled_color_green']=whiten(df['green'])
