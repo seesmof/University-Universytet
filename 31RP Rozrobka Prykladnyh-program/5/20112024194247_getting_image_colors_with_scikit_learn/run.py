@@ -14,8 +14,6 @@ for row in image:
         g.append(current_green)
         b.append(current_blue)
 
-print(len(r),len(g),len(b))
-
 df=pd.DataFrame({'red':r,'green':g,'blue':b})
 df['scaled_color_red']=whiten(df['red'])
 df['scaled_color_blue']=whiten(df['blue'])
