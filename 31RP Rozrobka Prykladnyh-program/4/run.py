@@ -122,6 +122,23 @@ while 1:
         for client in rows:
             name,balance,credit,manager=client
             print(f'- {name} має {balance} на рахунку, {credit} кредитного ліміту, та {"Є" if manager else "НЕ є"} менеджером')
+    elif check_any(['період']):
+        q=f'SELECT amount,purpose,period,next_date,client_id FROM {PERIODIC_PAYMENTS_TABLE}'
+        c.execute(q)
+        rows=c.fetchall()
+        print(f'Інформація про періодичні платежі ({len(rows)}):')
+        for amount,purpose,period,next_date,client_id in rows:
+            client_id,client_name=get_client_by_id(client_id)
+            print(f'- {purpose} кожен {"день" if period=="Day" else "місяць" if period=="Month" else "рік"}, наступний платіж {next_date.strftime("%d.%m.%Y")} для {client_name}')
+    elif check_any(['плат']):
+        q=f'SELECT timestamp,purpose,amount,client_id,kind,operation FROM {PAYMENTS_TABLE}'
+        c.execute(q)
+        rows=c.fetchall()
+        print(f'Інформація про платежі ({len(rows)}):')
+        for timestamp,purpose,amount,client_id,kind,operation in rows:
+            print(kind,operation)
+            client_id,client_name=get_client_by_id(client_id)
+            print(f'- {purpose} за {timestamp.strftime("%d.%m.%Y о %H:%M:%S")} на {amount} від {client_name}, {"одноразове" if kind=="Single" else "періодичне"} {"внесення" if operation=="Deposit" else "зняття"}')
     elif check_any(['баланс']):
         stripped_words=clean_query([w for w in words if 'балан' not in w])
         found=False
@@ -151,24 +168,6 @@ while 1:
             try:
                 name,manager=get_manager(word)
                 print(f'{name} {"Є" if manager else "НЕ є"} менеджером')
-                found=True
-                break
-            except: continue
-        if not found: print('користувача не знайдено')
-    elif check_any(['період']):
-        stripped_words=clean_query([w for w in words if 'період' not in w])
-        found=False
-        for word in stripped_words:
-            try:
-                found=True
-                break
-            except: continue
-        if not found: print('користувача не знайдено')
-    elif check_any(['плат']):
-        stripped_words=clean_query([w for w in words if 'плат' not in w])
-        found=False
-        for word in stripped_words:
-            try:
                 found=True
                 break
             except: continue
