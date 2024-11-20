@@ -23,10 +23,7 @@ while 1:
 '''.strip()
 
     request=input('> ')
-    request.lower()
-
-    words=nltk.word_tokenize(request)
-    print(words)
+    words=nltk.word_tokenize(request.lower())
 
     if 'вихід' in words or 'вийти' in words: break
     elif 'поможи' in words or 'допомога' in words: print(HELP_MESSAGE)
