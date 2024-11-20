@@ -2,6 +2,7 @@ from sklearn.cluster import KMeans
 import matplotlib.image as img
 from nicegui import ui, app
 import numpy as np 
+import os
 
 '''
 get an image from user 
@@ -23,6 +24,13 @@ def get_colors(
     return palette
 
 LABEL_CLASSES='font-medium text-lg'
+
+ui.label('Image to process').classes(LABEL_CLASSES)
+root=os.path.dirname(os.path.abspath(__file__))
+images_folder=os.path.join(root,'images')
+app.add_media_files('/images',images_folder)
+ui.image('/images/landscape_moor_nature_reserve.jpg')
+
 ui.label('Number of colors').classes(LABEL_CLASSES)
 colors_count_slider=ui.slider(min=1,max=3,value=3)
 with ui.row().classes('flex justify-between w-full'):
