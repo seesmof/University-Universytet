@@ -7,19 +7,19 @@ import pandas as pd
 image_path=r'E:\Universytet\31RP Rozrobka Prykladnyh-program\5\landscape_red_thurm_schwyz.jpg'
 image=img.imread(image_path)
 
-r,g,b=[],[],[]
+red,green,blue=[],[],[]
 for row in image:
     for current_red,current_green,current_blue in row:
-        r.append(current_red)
-        g.append(current_green)
-        b.append(current_blue)
+        red.append(current_red)
+        green.append(current_green)
+        blue.append(current_blue)
 
-df=pd.DataFrame({'red':r,'green':g,'blue':b})
-df['scaled_color_red']=whiten(df['red'])
-df['scaled_color_blue']=whiten(df['blue'])
-df['scaled_color_green']=whiten(df['green'])
+df=pd.DataFrame({'red':red,'green':green,'blue':blue})
+df['scaled_red']=whiten(df['red'])
+df['scaled_green']=whiten(df['green'])
+df['scaled_blue']=whiten(df['blue'])
 
-cluster_centers,_=kmeans(df[['scaled_color_red','scaled_color_blue','scaled_color_green']],3)
+cluster_centers,_=kmeans(df[['scaled_red','scaled_blue','scaled_green']],3)
 dominant_colors=[]
 red_std,green_std,blue_std=df[['red','green','blue']].std()
 for center in cluster_centers:
