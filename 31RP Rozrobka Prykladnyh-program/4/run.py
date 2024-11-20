@@ -23,6 +23,7 @@ while 1:
 - користувачі: виведення списку користувачів
 - користувач: виведення даних про користувача
 - баланс: виведення балансу користувача
+- ліміт АБО кредит: виведення кредитного ліміту користувача
 '''.strip()
 
     request=input('> ')
@@ -91,6 +92,14 @@ while 1:
         r=c.fetchall()[0]
         return r
 
+    def get_credit(
+        user_name:str,
+    ):
+        client_query=f'SELECT name,credit FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
+        c.execute(client_query)
+        r=c.fetchall()[0]
+        return r
+    
     if check_any(['вихід','вийти']): break
     elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
     elif check_any(['користувачі']): show_clients()
@@ -100,7 +109,19 @@ while 1:
         for word in stripped_words:
             try:
                 name,balance=get_balance(word)
-                print(f'{name} має {balance}')
+                print(f'{name} має {balance} на рахунку')
+                found=True
+                break
+            except:
+                continue
+        if not found: print('користувача не знайдено')
+    elif check_any(['кредит','ліміт']):
+        stripped_words=clean_query([w for w in words if 'балан' not in w])
+        found=False
+        for word in stripped_words:
+            try:
+                name,balance=get_credit(word)
+                print(f'{name} має {balance} кредитного ліміту')
                 found=True
                 break
             except:
