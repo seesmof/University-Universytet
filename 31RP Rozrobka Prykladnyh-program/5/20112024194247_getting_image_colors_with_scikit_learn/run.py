@@ -10,7 +10,7 @@ print(image)
 
 r,g,b=[],[],[]
 for row in image:
-    for tr,tg,tb,t in row:
+    for tr,tg,tb in row:
         r.append(tr)
         g.append(tg)
         b.append(tb)
