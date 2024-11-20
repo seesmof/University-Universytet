@@ -9,4 +9,4 @@ data={
     'mentioned_in':'Matthew and Luke,Mark and Acts,Luke and Acts,John and Revelation,John,1 and 2 Kings,Jonah'.split(','),
 }
 df=pd.DataFrame(data)
-print(df[['name','mentioned_in']])
+print(df)
