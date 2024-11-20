@@ -27,3 +27,4 @@ print(lines)
 source=nltk.corpus.gutenberg
 HOLY_BIBLE='Bible-KJV.TXT'
 print(source.words(HOLY_BIBLE)[1:120])
+print(text)
