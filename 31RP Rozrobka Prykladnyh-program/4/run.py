@@ -37,9 +37,25 @@ while 1:
                     found=True
                     break
         return found
+    
+    def check_all(
+        terms:list[str],
+        words:list[str]=words,
+    ):
+        all_good=True
+        for term in terms:
+            found=False
+            for word in words:
+                if term in word: found=True
+            if not found:
+                all_good=False
+                break
+        return all_good
 
     if check_any(['вихід','вийти']): break
     elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
+    elif check_all(['є','користувач']):
+
     elif 'є' in words:
         all_clients_query=f'SELECT name FROM {CLIENTS_TABLE}'
         c.execute(all_clients_query)
