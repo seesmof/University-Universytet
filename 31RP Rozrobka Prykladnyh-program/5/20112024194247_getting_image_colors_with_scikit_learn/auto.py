@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import matplotlib.image as img
 
-
 def get_colors(
     image_path:str,
 ):
