@@ -24,10 +24,5 @@ REVELATION_22_UKRK='''
 Wall_REVELATION_22_UKRK=REVELATION_22_UKRK.replace('\n',' ').strip()
 
 import nltk
-HOLY_BIBLE='Bible-KJV.TXT'
-BIBLE_Words=nltk.corpus.gutenberg.words(HOLY_BIBLE)
-text=nltk.Text(BIBLE_Words)
-print(text.count('Amen'))
-text=nltk.Text(' '.join(REVELATION_22_UKRK.split('\n')))
-print(REVELATION_22_UKRK)
-print(text.count('Амінь'))
+ts=nltk.word_tokenize(Wall_REVELATION_22_UKRK)
+print(ts)
