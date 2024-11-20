@@ -1,6 +1,9 @@
+NAME='data'
 USER='root'
 PASSWORD='1313'
 HOST='localhost'
 PORT='3306'
-NAME='data'
-print(USER)
+
+from peewee import *
+
+db=MySQLDatabase(NAME,user=USER,password=PASSWORD,host=HOST,port=PORT)
