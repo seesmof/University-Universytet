@@ -110,8 +110,8 @@ while 1:
         r=c.fetchall()[0]
         return r
     
-    if check_any(['вихід','вийти']): break
-    elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
+    if check_any(['вих','вий']): break
+    elif check_any(['пом','доп']): print(HELP_MESSAGE)
     elif check_any(['користувачі']): show_clients()
     elif check_any(['баланс']):
         stripped_words=clean_query([w for w in words if 'балан' not in w])
