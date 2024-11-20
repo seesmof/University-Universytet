@@ -13,7 +13,6 @@ CLIENTS_TABLE='finance_client'
 PAYMENTS_TABLE='finance_payment'
 PERIODIC_PAYMENTS_TABLE='finance_periodicpayment'
 
-import random
 import nltk
 
 while 1:
@@ -114,6 +113,7 @@ while 1:
     
     if check_any(['вих','вий']): break
     elif check_any(['пом','доп']): print(HELP_MESSAGE)
+    elif check_any(['пр','віт']): print(request)
     elif check_any(['користувачі']) or check_all(['всі','кор']) or check_all(['усі','кор']) or (check_any('кор') and len(words)==1):
         all_clients_query=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE}'
         c.execute(all_clients_query)
