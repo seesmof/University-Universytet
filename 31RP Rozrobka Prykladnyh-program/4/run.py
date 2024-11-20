@@ -25,6 +25,8 @@ while 1:
 - баланс: виведення балансу користувача
 - ліміт АБО кредит: виведення кредитного ліміту користувача
 - менеджер АБО адміністратор: виведення статусу користувача
+- платежі: виведення історії усіх платежів
+- періодичні платежі: виведення усіх запланованих платежів
 '''.strip()
 
     request=input('> ')
@@ -120,8 +122,7 @@ while 1:
                 print(f'{name} має {balance} на рахунку')
                 found=True
                 break
-            except:
-                continue
+            except: continue
         if not found: print('користувача не знайдено')
     elif check_any(['кредит','ліміт']):
         stripped_words=clean_query([w for w in words if 'балан' not in w])
@@ -132,8 +133,7 @@ while 1:
                 print(f'{name} має {balance} кредитного ліміту')
                 found=True
                 break
-            except:
-                continue
+            except: continue
         if not found: print('користувача не знайдено')
     elif check_any(['мен','адм']):
         stripped_words=clean_query([w for w in words if 'мен' not in w and 'адм' not in w])
@@ -144,9 +144,10 @@ while 1:
                 print(f'{name} {"Є" if manager else "НЕ є"} менеджером')
                 found=True
                 break
-            except:
-                continue
+            except: continue
         if not found: print('користувача не знайдено')
+    elif check_any(['період']): pass
+    elif check_any(['плат']): pass
     elif check_any(['користувач']):
         stripped_words=clean_query([w for w in words if 'користувач' not in w])
         found=False
@@ -156,6 +157,5 @@ while 1:
                 print(f'{name} має {balance} на рахунку, {credit} кредитного ліміту, та {"Є" if is_manager else "НЕ є"} менеджером')
                 found=True
                 break
-            except:
-                continue
+            except: continue
         if not found: print('користувача не знайдено')
