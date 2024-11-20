@@ -22,4 +22,12 @@ def get_colors(
     palette=np.uint8(model.cluster_centers_)
     return palette
 
+LABEL_CLASSES='font-medium text-lg'
+ui.label('Number of colors').classes(LABEL_CLASSES)
+colors_count_slider=ui.slider(min=1,max=3,value=3)
+with ui.row().classes('flex justify-between w-full'):
+    ui.label(1)
+    ui.label(2)
+    ui.label(3)
+
 ui.run(favicon='🖼️',title='Image Colors')
