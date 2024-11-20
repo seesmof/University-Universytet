@@ -10,10 +10,10 @@ print(image.shape)
 
 r,g,b=[],[],[]
 for row in image:
-    for tr,tg,tb in row:
-        r.append(tr)
-        g.append(tg)
-        b.append(tb)
+    for current_red,current_green,current_blue in row:
+        r.append(current_red)
+        g.append(current_green)
+        b.append(current_blue)
 
 df=pd.DataFrame({'red':r,'green':g,'blue':b})
 df['scaled_color_red']=whiten(df['red'])
