@@ -1,2 +1,3 @@
 nltk
 peewee
+mysql-connector-python
