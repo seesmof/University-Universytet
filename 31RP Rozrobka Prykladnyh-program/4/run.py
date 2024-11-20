@@ -21,6 +21,7 @@ while 1:
 - вийти АБО вихід: закриття програми
 - поможи АБО допомога: виведення цього повідомлення
 - користувачі: виведення списку користувачів
+- користувач: виведення даних про користувача
 '''.strip()
 
     request=input('> ')
@@ -51,13 +52,16 @@ while 1:
                 all_good=False
                 break
         return all_good
-
-    if check_any(['вихід','вийти']): break
-    elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
-    elif check_any(['користувачі']):
+    
+    def show_clients(
+    ):
         all_clients_query=f'SELECT name,balance,credit FROM {CLIENTS_TABLE}'
         c.execute(all_clients_query)
         rows=c.fetchall()
         for client in rows:
             name,balance,credit=client
             print(f'{name} має {balance} з {credit}')
+
+    if check_any(['вихід','вийти']): break
+    elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
+    elif check_any(['користувачі']): show_clients()
