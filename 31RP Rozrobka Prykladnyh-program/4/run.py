@@ -20,13 +20,26 @@ while 1:
     HELP_MESSAGE='''Доступні команди:
 - вийти АБО вихід: закриття програми
 - поможи АБО допомога: виведення цього повідомлення
+- користувачі: виведення списку користувачів
 '''.strip()
 
     request=input('> ')
     words=nltk.word_tokenize(request.lower())
 
-    if 'вихід' in words or 'вийти' in words: break
-    elif 'поможи' in words or 'допомога' in words: print(HELP_MESSAGE)
+    def check_any(
+        terms:list[str],
+        words:list[str]=words,
+    ):
+        found=False
+        for term in terms:
+            for word in words:
+                if term in word:
+                    found=True
+                    break
+        return found
+
+    if check_any(['вихід','вийти']): break
+    elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
     elif 'є' in words:
         all_clients_query=f'SELECT name FROM {CLIENTS_TABLE}'
         c.execute(all_clients_query)
