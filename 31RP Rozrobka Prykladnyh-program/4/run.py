@@ -78,6 +78,12 @@ while 1:
         rows=c.fetchall()
         return rows
     
+    def get_client_by_id(
+        client_id:int,
+    ):
+        q=f'SELECT id,name FROM {CLIENTS_TABLE} WHERE id={client_id}'
+        return execute_query(q)[0]
+
     def get_client_by_name(
         user_name:str,
     ):
@@ -86,14 +92,6 @@ while 1:
         rows=c.fetchall()[0]
         return rows
 
-    def get_client_by_id(
-        client_id:int,
-    ):
-        q=f'SELECT id,name FROM {CLIENTS_TABLE} WHERE id={client_id}'
-        c.execute(q)
-        r=c.fetchall()[0]
-        return r
-    
     def get_balance(
         user_name:str,
     ):
@@ -124,22 +122,21 @@ while 1:
     elif check_any(['користувачі']) or check_all(['всі','кор']) or check_all(['усі','кор']) or (check_any(['кор']) and len(words)==1):
         q=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE}'
         rows=execute_query(q)
-        print(f'Інформація про користувачів ({len(rows)}):')
+        print(f'Користувачі ({len(rows)}):')
         for client in rows:
             name,balance,credit,manager=client
             print(f'- {name} має {balance} на рахунку, {credit} кредитного ліміту, та {"Є" if manager else "НЕ є"} менеджером')
     elif check_any(['пер']):
         q=f'SELECT amount,purpose,period,next_date,client_id FROM {PERIODIC_PAYMENTS_TABLE}'
         rows=execute_query(q)
-        print(f'Інформація про періодичні платежі ({len(rows)}):')
+        print(f'Періодичні платежі ({len(rows)}):')
         for amount,purpose,period,next_date,client_id in rows:
             client_id,client_name=get_client_by_id(client_id)
             print(f'- {purpose} кожен {"день" if period=="Day" else "місяць" if period=="Month" else "рік"}, наступний платіж {next_date.strftime("%d.%m.%Y")} для {client_name}')
     elif check_any(['пл']):
         q=f'SELECT timestamp,purpose,amount,client_id,kind,operation FROM {PAYMENTS_TABLE}'
-        c.execute(q)
-        rows=c.fetchall()
-        print(f'Інформація про платежі ({len(rows)}):')
+        rows=execute_query(q)
+        print(f'Платежі ({len(rows)}):')
         for timestamp,purpose,amount,client_id,kind,operation in rows:
             client_id,client_name=get_client_by_id(client_id)
             print(f'- {purpose} за {timestamp.strftime("%d.%m.%Y o %H:%M:%S")} на {amount} від {client_name}, {"одноразове" if kind=="Single" else "періодичне"} {"зняття" if operation=="Withdrawal" else "внесення"}')
