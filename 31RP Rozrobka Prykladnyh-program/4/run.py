@@ -29,8 +29,8 @@ while 1:
 - користувач: виведення усіх даних про користувача
 '''.strip()
 
-    request=input('> ')
-    words=nltk.word_tokenize(request.lower())
+    user_query=input('> ')
+    words=nltk.word_tokenize(user_query.lower())
 
     def check_any(
         terms:list[str],
@@ -71,13 +71,28 @@ while 1:
             and 'чи' not in word
         ]
     
-    def get_user(
+    def execute_query(
+        query:str,
+    ):
+        c.execute(query)
+        rows=c.fetchall()
+        return rows
+    
+    def get_client_by_name(
         user_name:str,
     ):
         client_query=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
         c.execute(client_query)
         rows=c.fetchall()[0]
         return rows
+
+    def get_client_by_id(
+        client_id:int,
+    ):
+        q=f'SELECT id,name FROM {CLIENTS_TABLE} WHERE id={client_id}'
+        c.execute(q)
+        r=c.fetchall()[0]
+        return r
     
     def get_balance(
         user_name:str,
@@ -103,34 +118,24 @@ while 1:
         r=c.fetchall()[0]
         return r
     
-    def get_client_by_id(
-        client_id:int,
-    ):
-        q=f'SELECT id,name FROM {CLIENTS_TABLE} WHERE id={client_id}'
-        c.execute(q)
-        r=c.fetchall()[0]
-        return r
-    
     if check_any(['вих','вий']): break
     elif check_any(['пом','доп']): print(HELP_MESSAGE)
-    elif check_any(['пр','віт']): print(request)
-    elif check_any(['користувачі']) or check_all(['всі','кор']) or check_all(['усі','кор']) or (check_any('кор') and len(words)==1):
-        all_clients_query=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE}'
-        c.execute(all_clients_query)
-        rows=c.fetchall()
+    elif check_any(['пр','віт']): print(user_query)
+    elif check_any(['користувачі']) or check_all(['всі','кор']) or check_all(['усі','кор']) or (check_any(['кор']) and len(words)==1):
+        q=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE}'
+        rows=execute_query(q)
         print(f'Інформація про користувачів ({len(rows)}):')
         for client in rows:
             name,balance,credit,manager=client
             print(f'- {name} має {balance} на рахунку, {credit} кредитного ліміту, та {"Є" if manager else "НЕ є"} менеджером')
-    elif check_any(['період']):
+    elif check_any(['пер']):
         q=f'SELECT amount,purpose,period,next_date,client_id FROM {PERIODIC_PAYMENTS_TABLE}'
-        c.execute(q)
-        rows=c.fetchall()
+        rows=execute_query(q)
         print(f'Інформація про періодичні платежі ({len(rows)}):')
         for amount,purpose,period,next_date,client_id in rows:
             client_id,client_name=get_client_by_id(client_id)
             print(f'- {purpose} кожен {"день" if period=="Day" else "місяць" if period=="Month" else "рік"}, наступний платіж {next_date.strftime("%d.%m.%Y")} для {client_name}')
-    elif check_any(['плат']):
+    elif check_any(['пл']):
         q=f'SELECT timestamp,purpose,amount,client_id,kind,operation FROM {PAYMENTS_TABLE}'
         c.execute(q)
         rows=c.fetchall()
@@ -176,7 +181,7 @@ while 1:
         found=False
         for word in stripped_words:
             try:
-                name,balance,credit,is_manager=get_user(word)
+                name,balance,credit,is_manager=get_client_by_name(word)
                 print(f'{name} має {balance} на рахунку, {credit} кредитного ліміту, та {"Є" if is_manager else "НЕ є"} менеджером')
                 found=True
                 break
