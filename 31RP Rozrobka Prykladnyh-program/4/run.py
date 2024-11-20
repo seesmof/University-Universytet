@@ -109,7 +109,7 @@ while 1:
         return execute_query(q)[0]
     
     if check_any(['вих','вий']): break
-    elif check_any(['пом','доп']): print(HELP_MESSAGE)
+    elif check_any(['пом','доп','ком']): print(HELP_MESSAGE)
     elif check_any(['прив','віт']): print(user_query)
     elif check_any(['користувачі']) or check_all(['всі','кор']) or check_all(['усі','кор']) or (check_any(['кор']) and len(words)==1):
         q=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE}'
