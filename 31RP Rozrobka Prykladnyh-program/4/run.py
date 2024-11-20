@@ -105,7 +105,7 @@ while 1:
     def get_manager(
         user_name:str,
     ):
-        client_query=f'SELECT name,manager FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
+        q=f'SELECT name,manager FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
         return execute_query(q)[0]
     
     if check_any(['вих','вий']): break
