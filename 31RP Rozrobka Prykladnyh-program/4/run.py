@@ -136,9 +136,8 @@ while 1:
         rows=c.fetchall()
         print(f'Інформація про платежі ({len(rows)}):')
         for timestamp,purpose,amount,client_id,kind,operation in rows:
-            print(kind,operation)
             client_id,client_name=get_client_by_id(client_id)
-            print(f'- {purpose} за {timestamp.strftime("%d.%m.%Y о %H:%M:%S")} на {amount} від {client_name}, {"одноразове" if kind=="Single" else "періодичне"} {"внесення" if operation=="Deposit" else "зняття"}')
+            print(f'- {purpose} за {timestamp.strftime("%d.%m.%Y o %H:%M:%S")} на {amount} від {client_name}, {"одноразове" if kind=="Single" else "періодичне"} {"зняття" if operation=="Withdrawal" else "внесення"}')
     elif check_any(['баланс']):
         stripped_words=clean_query([w for w in words if 'балан' not in w])
         found=False
