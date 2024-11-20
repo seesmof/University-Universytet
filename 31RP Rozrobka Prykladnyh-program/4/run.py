@@ -24,6 +24,7 @@ while 1:
 - користувач: виведення даних про користувача
 - баланс: виведення балансу користувача
 - ліміт АБО кредит: виведення кредитного ліміту користувача
+- менеджер АБО адміністратор: виведення статусу користувача
 '''.strip()
 
     request=input('> ')
@@ -65,6 +66,7 @@ while 1:
             and 'про' not in word
             and 'дан' not in word
             and 'інф' not in word
+            and 'чи' not in word
         ]
     
     def show_clients(
@@ -100,6 +102,14 @@ while 1:
         r=c.fetchall()[0]
         return r
     
+    def get_manager(
+        user_name:str,
+    ):
+        client_query=f'SELECT name,manager FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
+        c.execute(client_query)
+        r=c.fetchall()[0]
+        return r
+    
     if check_any(['вихід','вийти']): break
     elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
     elif check_any(['користувачі']): show_clients()
@@ -127,13 +137,25 @@ while 1:
             except:
                 continue
         if not found: print('користувача не знайдено')
+    elif check_any(['мен','адм']):
+        stripped_words=clean_query([w for w in words if 'мен' not in w and 'адм' not in w])
+        found=False
+        for word in stripped_words:
+            try:
+                name,manager=get_manager(word)
+                print(f'{name} {"є" if manager else "не є"} менеджером')
+                found=True
+                break
+            except:
+                continue
+        if not found: print('користувача не знайдено')
     elif check_any(['користувач']):
         stripped_words=clean_query([w for w in words if 'користувач' not in w])
         found=False
         for word in stripped_words:
             try:
                 name,balance,credit,is_manager=get_user(word)
-                print(f'{name}{" (менеджер)" if is_manager else ""} має {balance} з {credit}')
+                print(f'{name} має {balance} на рахунку, {credit} кредитного ліміту, та {"є" if is_manager else "не є"} менеджером')
                 found=True
                 break
             except:
