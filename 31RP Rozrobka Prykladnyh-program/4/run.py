@@ -24,10 +24,10 @@ while 1:
 - періодичні платежі: виведення усіх запланованих платежів
 - платежі: виведення історії усіх платежів
 Користувацькі команди (потребують імені користувача у запиті):
-- користувач: виведення даних про користувача
 - баланс: виведення балансу користувача
 - ліміт АБО кредит: виведення кредитного ліміту користувача
 - менеджер АБО адміністратор: виведення статусу користувача
+- користувач: виведення усіх даних про користувача
 '''.strip()
 
     request=input('> ')
@@ -114,8 +114,7 @@ while 1:
     
     if check_any(['вих','вий']): break
     elif check_any(['пом','доп']): print(HELP_MESSAGE)
-    elif check_any(['пр','віт']): print(request)
-    elif check_any(['користувачі']):
+    elif check_any(['користувачі']) or check_all(['всі','кор']) or check_all(['усі','кор']) or (check_any('кор') and len(words)==1):
         all_clients_query=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE}'
         c.execute(all_clients_query)
         rows=c.fetchall()
@@ -172,8 +171,8 @@ while 1:
                 break
             except: continue
         if not found: print('користувача не знайдено')
-    elif check_any(['користувач']):
-        stripped_words=clean_query([w for w in words if 'користувач' not in w])
+    else:
+        stripped_words=clean_query([w for w in words if 'кор' not in w])
         found=False
         for word in stripped_words:
             try:
