@@ -25,3 +25,8 @@ red_std,green_std,blue_std=df[['red','green','blue']].std()
 for center in cluster_centers:
     red_scaled,green_scaled,blue_scaled=center
     dominant_colors.append((red_scaled*red_std/255,green_scaled*green_std/255,blue_scaled*blue_std/255))
+
+dominant_colors=dominant_colors[:2]
+print(len(dominant_colors))
+plt.imshow([dominant_colors])
+plt.show()
