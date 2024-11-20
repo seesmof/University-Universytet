@@ -14,6 +14,7 @@ PAYMENTS_TABLE='finance_payment'
 PERIODIC_PAYMENTS_TABLE='finance_periodicpayment'
 
 import random
+import nltk
 
 while 1:
     HELP_MESSAGE='''Доступні команди:
@@ -24,11 +25,12 @@ while 1:
     request=input('> ')
     request.lower()
 
-    if 'вихід' in request or 'вийти' in request: break
-    elif 'поможи' in request or 'допомога' in request: print(HELP_MESSAGE)
-    elif 'привіт' in request or 'вітаю' in request: print(request)
-    elif 'як справи' in request: print(random.choice(['нормально','добре','чудово']))
-    elif 'є' in request:
+    words=nltk.word_tokenize(request)
+    print(words)
+
+    if 'вихід' in words or 'вийти' in words: break
+    elif 'поможи' in words or 'допомога' in words: print(HELP_MESSAGE)
+    elif 'є' in words:
         all_clients_query=f'SELECT name FROM {CLIENTS_TABLE}'
         c.execute(all_clients_query)
         res=c.fetchall()
