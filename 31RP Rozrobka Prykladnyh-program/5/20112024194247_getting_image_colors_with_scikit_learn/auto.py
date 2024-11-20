@@ -19,5 +19,6 @@ folder_path=r'E:\Universytet\31RP Rozrobka Prykladnyh-program\5'
 images='landscape_red_thurm_schwyz.jpg,landscape_moor_nature_reserve.jpg,nature_reserve_moor_forest_0.jpg'.split(',')
 for image in images:
     palette=get_colors(rf'{folder_path}\{image}')
+    print(palette,round(palette.mean()))
     plt.imshow([palette])
     plt.show()
