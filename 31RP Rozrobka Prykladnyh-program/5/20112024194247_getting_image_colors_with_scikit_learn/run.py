@@ -6,6 +6,7 @@ import pandas as pd
 
 image_path=r'E:\Universytet\31RP Rozrobka Prykladnyh-program\5\landscape_red_thurm_schwyz.jpg'
 image=img.imread(image_path)
+print(image.shape)
 
 r,g,b=[],[],[]
 for row in image:
@@ -26,7 +27,8 @@ for center in cluster_centers:
     red_scaled,green_scaled,blue_scaled=center
     dominant_colors.append((red_scaled*red_std/255,green_scaled*green_std/255,blue_scaled*blue_std/255))
 
-dominant_colors=dominant_colors[:2]
-print(len(dominant_colors))
+# limit number of colors here by selected value from slider
+colors_number=3
+dominant_colors=dominant_colors[:3]
 plt.imshow([dominant_colors])
 plt.show()
