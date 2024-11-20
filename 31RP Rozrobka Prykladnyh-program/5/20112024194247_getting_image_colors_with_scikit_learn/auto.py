@@ -16,6 +16,7 @@ n_colors=3
 model=KMeans(n_clusters=n_colors,random_state=40).fit(pixel)
 
 palette=np.uint8(model.cluster_centers_)
+print(palette)
 
 plt.imshow([palette])
 plt.show()
