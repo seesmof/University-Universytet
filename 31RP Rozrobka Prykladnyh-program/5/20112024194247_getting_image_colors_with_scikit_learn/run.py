@@ -6,7 +6,6 @@ import pandas as pd
 
 image_path=r'E:\Universytet\31RP Rozrobka Prykladnyh-program\5\landscape_red_thurm_schwyz.jpg'
 image=img.imread(image_path)
-print(image.shape)
 
 r,g,b=[],[],[]
 for row in image:
@@ -14,6 +13,8 @@ for row in image:
         r.append(current_red)
         g.append(current_green)
         b.append(current_blue)
+
+print(len(r),len(g),len(b))
 
 df=pd.DataFrame({'red':r,'green':g,'blue':b})
 df['scaled_color_red']=whiten(df['red'])
