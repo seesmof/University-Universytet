@@ -123,8 +123,7 @@ while 1:
         q=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE}'
         rows=execute_query(q)
         print(f'Користувачі ({len(rows)}):')
-        for client in rows:
-            name,balance,credit,manager=client
+        for name,balance,credit,manager in rows:
             print(f'- {name} має {balance} на рахунку, {credit} кредитного ліміту, та {"Є" if manager else "НЕ є"} менеджером')
     elif check_any(['пер']):
         q=f'SELECT amount,purpose,period,next_date,client_id FROM {PERIODIC_PAYMENTS_TABLE}'
@@ -140,8 +139,8 @@ while 1:
         for timestamp,purpose,amount,client_id,kind,operation in rows:
             client_id,client_name=get_client_by_id(client_id)
             print(f'- {purpose} за {timestamp.strftime("%d.%m.%Y o %H:%M:%S")} на {amount} від {client_name}, {"одноразове" if kind=="Single" else "періодичне"} {"зняття" if operation=="Withdrawal" else "внесення"}')
-    elif check_any(['баланс']):
-        stripped_words=clean_query([w for w in words if 'балан' not in w])
+    elif check_any(['бал','гро']):
+        stripped_words=clean_query([w for w in words if 'бал' not in w and 'гро' not in w])
         found=False
         for word in stripped_words:
             try:
@@ -151,8 +150,8 @@ while 1:
                 break
             except: continue
         if not found: print('користувача не знайдено')
-    elif check_any(['кредит','ліміт']):
-        stripped_words=clean_query([w for w in words if 'балан' not in w])
+    elif check_any(['кр','лім']):
+        stripped_words=clean_query([w for w in words if 'кр' not in w and 'лім' not in w])
         found=False
         for word in stripped_words:
             try:
