@@ -1,5 +1,4 @@
-import nltk
-text='''
+REVELATION_22_UKRK='''
 Одкриттє 22:1 І показав менї чисту ріку води життя, ясну як хришталь, що виходила з престола Божого і Агнцевого.
 Одкриттє 22:2 А посеред улицї його, та й по сей і по той бік ріки - дерево життя, що родить овощі дванайцять (раз), і що місяця свій овощ дає, а листє з дерева на сцїленнє поган.
 Одкриттє 22:3 І вже більш не буде жодного проклону; а престол Бога і Агнця буде в ньому, і слуги Його служити муть Йому.
@@ -22,9 +21,14 @@ text='''
 Одкриттє 22:20 Сей, що про се сьвідкує, глаголе: Так, прийду хутко! Амінь. О, прийди, Господи Ісусе!
 Одкриттє 22:21 Благодать Господа нашого Ісуса Христа з усїма вами. Амінь.
 '''
-lines=text.strip().split('\n')
-print(lines)
+
+import nltk
+lines=REVELATION_22_UKRK.strip().split('\n')
 source=nltk.corpus.gutenberg
 HOLY_BIBLE='Bible-KJV.TXT'
-print(source.words(HOLY_BIBLE)[1:120])
-print(text)
+BIBLE_Words=source.words(HOLY_BIBLE)
+text=nltk.Text(BIBLE_Words)
+print(text.count('Amen'))
+text=nltk.Text(' '.join(REVELATION_22_UKRK.split('\n')))
+print(REVELATION_22_UKRK)
+print(text.count('Амінь'))
