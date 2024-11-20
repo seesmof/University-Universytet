@@ -21,8 +21,7 @@ REVELATION_22_UKRK='''
 Одкриттє 22:20 Сей, що про се сьвідкує, глаголе: Так, прийду хутко! Амінь. О, прийди, Господи Ісусе!
 Одкриттє 22:21 Благодать Господа нашого Ісуса Христа з усїма вами. Амінь.
 '''
-Wall_REVELATION_22_UKRK=REVELATION_22_UKRK.replace('\n',' ').strip()
 
 import nltk
-ts=nltk.word_tokenize(Wall_REVELATION_22_UKRK)
-print(ts)
+words=nltk.word_tokenize(REVELATION_22_UKRK.replace('\n',' ').strip())
+print(words)
