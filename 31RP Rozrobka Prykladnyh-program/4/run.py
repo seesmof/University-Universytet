@@ -69,15 +69,6 @@ while 1:
             and 'чи' not in word
         ]
     
-    def show_clients(
-    ):
-        all_clients_query=f'SELECT name,balance,credit FROM {CLIENTS_TABLE}'
-        c.execute(all_clients_query)
-        rows=c.fetchall()
-        for client in rows:
-            name,balance,credit=client
-            print(f'{name} має {balance} з {credit}')
-
     def get_user(
         user_name:str,
     ):
@@ -112,7 +103,14 @@ while 1:
     
     if check_any(['вих','вий']): break
     elif check_any(['пом','доп']): print(HELP_MESSAGE)
-    elif check_any(['користувачі']): show_clients()
+    elif check_any(['користувачі']):
+        all_clients_query=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE}'
+        c.execute(all_clients_query)
+        rows=c.fetchall()
+        print(f'Інформація про користувачів ({len(rows)}):')
+        for client in rows:
+            name,balance,credit,manager=client
+            print(f'- {name} має {balance} на рахунку, {credit} кредитного ліміту, та {"Є" if manager else "НЕ є"} менеджером')
     elif check_any(['баланс']):
         stripped_words=clean_query([w for w in words if 'балан' not in w])
         found=False
@@ -143,7 +141,7 @@ while 1:
         for word in stripped_words:
             try:
                 name,manager=get_manager(word)
-                print(f'{name} {"є" if manager else "не є"} менеджером')
+                print(f'{name} {"Є" if manager else "НЕ є"} менеджером')
                 found=True
                 break
             except:
@@ -155,7 +153,7 @@ while 1:
         for word in stripped_words:
             try:
                 name,balance,credit,is_manager=get_user(word)
-                print(f'{name} має {balance} на рахунку, {credit} кредитного ліміту, та {"є" if is_manager else "не є"} менеджером')
+                print(f'{name} має {balance} на рахунку, {credit} кредитного ліміту, та {"Є" if is_manager else "НЕ є"} менеджером')
                 found=True
                 break
             except:
