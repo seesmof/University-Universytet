@@ -87,34 +87,26 @@ while 1:
     def get_client_by_name(
         user_name:str,
     ):
-        client_query=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
-        c.execute(client_query)
-        rows=c.fetchall()[0]
-        return rows
+        q=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
+        return execute_query(q)[0]
 
     def get_balance(
         user_name:str,
     ):
-        client_query=f'SELECT name,balance FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
-        c.execute(client_query)
-        r=c.fetchall()[0]
-        return r
+        q=f'SELECT name,balance FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
+        return execute_query(q)[0]
 
     def get_credit(
         user_name:str,
     ):
-        client_query=f'SELECT name,credit FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
-        c.execute(client_query)
-        r=c.fetchall()[0]
-        return r
+        q=f'SELECT name,credit FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
+        return execute_query(q)[0]
     
     def get_manager(
         user_name:str,
     ):
         client_query=f'SELECT name,manager FROM {CLIENTS_TABLE} WHERE name="{user_name}"'
-        c.execute(client_query)
-        r=c.fetchall()[0]
-        return r
+        return execute_query(q)[0]
     
     if check_any(['вих','вий']): break
     elif check_any(['пом','доп']): print(HELP_MESSAGE)
