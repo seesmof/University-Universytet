@@ -21,12 +21,13 @@ while 1:
 - вийти АБО вихід: закриття програми
 - поможи АБО допомога: виведення цього повідомлення
 - користувачі: виведення списку користувачів
+- періодичні платежі: виведення усіх запланованих платежів
+- платежі: виведення історії усіх платежів
+Користувацькі команди (потребують імені користувача у запиті):
 - користувач: виведення даних про користувача
 - баланс: виведення балансу користувача
 - ліміт АБО кредит: виведення кредитного ліміту користувача
 - менеджер АБО адміністратор: виведення статусу користувача
-- платежі: виведення історії усіх платежів
-- періодичні платежі: виведення усіх запланованих платежів
 '''.strip()
 
     request=input('> ')
@@ -103,6 +104,14 @@ while 1:
         r=c.fetchall()[0]
         return r
     
+    def get_client_by_id(
+        client_id:int,
+    ):
+        q=f'SELECT id,name FROM {CLIENTS_TABLE} WHERE id={client_id}'
+        c.execute(q)
+        r=c.fetchall()[0]
+        return r
+    
     if check_any(['вих','вий']): break
     elif check_any(['пом','доп']): print(HELP_MESSAGE)
     elif check_any(['користувачі']):
@@ -146,8 +155,24 @@ while 1:
                 break
             except: continue
         if not found: print('користувача не знайдено')
-    elif check_any(['період']): pass
-    elif check_any(['плат']): pass
+    elif check_any(['період']):
+        stripped_words=clean_query([w for w in words if 'період' not in w])
+        found=False
+        for word in stripped_words:
+            try:
+                found=True
+                break
+            except: continue
+        if not found: print('користувача не знайдено')
+    elif check_any(['плат']):
+        stripped_words=clean_query([w for w in words if 'плат' not in w])
+        found=False
+        for word in stripped_words:
+            try:
+                found=True
+                break
+            except: continue
+        if not found: print('користувача не знайдено')
     elif check_any(['користувач']):
         stripped_words=clean_query([w for w in words if 'користувач' not in w])
         found=False
