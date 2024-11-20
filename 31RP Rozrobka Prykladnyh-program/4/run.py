@@ -22,6 +22,7 @@ while 1:
 - поможи АБО допомога: виведення цього повідомлення
 - користувачі: виведення списку користувачів
 - користувач: виведення даних про користувача
+- баланс: виведення балансу користувача
 '''.strip()
 
     request=input('> ')
@@ -53,6 +54,18 @@ while 1:
                 break
         return all_good
     
+    def clean_query(
+        query:list[str],
+    ):
+        return [
+            word for word in query
+            if 'буд' not in word
+            and 'ласк' not in word
+            and 'про' not in word
+            and 'дан' not in word
+            and 'інф' not in word
+        ]
+    
     def show_clients(
     ):
         all_clients_query=f'SELECT name,balance,credit FROM {CLIENTS_TABLE}'
@@ -74,15 +87,19 @@ while 1:
     elif check_any(['поможи','допомога']): print(HELP_MESSAGE)
     elif check_any(['користувачі']): show_clients()
     elif check_any(['користувач']):
-        stripped_words=[
-            w for w in words 
-            if 'користувач' not in w
-            and 'буд' not in w
-            and 'ласк' not in w
-            and 'про' not in w
-            and 'дан' not in w
-            and 'інф' not in w
-        ]
+        stripped_words=clean_query([w for w in words if 'користувач' not in w])
+        found=False
+        for word in stripped_words:
+            try:
+                name,balance,credit,is_manager=get_user(word)
+                print(f'{name}{" (менеджер)" if is_manager else ""} має {balance} з {credit}')
+                found=True
+                break
+            except:
+                continue
+        if not found: print('користувача не знайдено')
+    elif check_any(['баланс']):
+        stripped_words=clean_query([w for w in words if 'балан' not in w])
         found=False
         for word in stripped_words:
             try:
