@@ -21,4 +21,5 @@ df['scaled_color_green']=whiten(df['green'])
 
 cluster_centers,_=kmeans(df[['scaled_color_red','scaled_color_blue','scaled_color_green']],3)
 dominant_colors=[]
-print(cluster_centers)
+sred,sgreen,sblue=df[['red','green','blue']].std()
+print(sred,sgreen,sblue)
