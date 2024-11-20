@@ -114,6 +114,7 @@ while 1:
     
     if check_any(['вих','вий']): break
     elif check_any(['пом','доп']): print(HELP_MESSAGE)
+    elif check_any(['пр','віт']): print(request)
     elif check_any(['користувачі']):
         all_clients_query=f'SELECT name,balance,credit,manager FROM {CLIENTS_TABLE}'
         c.execute(all_clients_query)
