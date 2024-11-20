@@ -20,3 +20,7 @@ PERIODIC_PAYMENTS_TABLE='finance_periodicpayment'
 c.execute(f'SELECT * FROM {CLIENTS_TABLE}')
 r=c.fetchall()
 print(r)
+
+c.execute(f'SHOW COLUMNS FROM {CLIENTS_TABLE}')
+r=c.fetchall()
+print(r)
