@@ -1,37 +1,17 @@
-class Listing: об'єкт нерухомості
-  int id: унікальний ідентифікатор
-  User owner: користувач власник
-  string name: назва
-  int price: вартість
-  enum['Private' | 'Flat' | 'New'] kind: тип
+addListing(string kind, string name, int price): відправити об'єкт до бази, перевірити змінні
+viewListing(Listing listing): відфільтрувати усі об'єкти, отримати необхідний
+editListing(Listing listing): отримати потрібний об'єкт, перевірити коректність значень
+deleteListing(Listing listing): перевірити коректність змінних, отримати потрібний об'єкт
+makeChosen(Listing listing, User user): перевірити коректність змінних, отримати необхідні об'єкти
 
-  void addListing(string kind, string name, int price): додати до бази даних
-  Listing viewListing(Listing listing): переглянути
-  void editListing(Listing listing): змінити
-  void deleteListing(Listing listing): видалити
-  void makeChosen(Listing listing, User user): додати до обраних
+addUser(string name, bool manager): відправити користувача до бази, перевірити коректність змінних
+viewUser(User user): відфільтрувати список користувачів, отримати потрібного
+editUser(User user): отримати потрібного користувача, перевірити коректність введених значень
+deleteUser(User user): отримати необхідного користувача, перевірити коректність значення
 
-class User: користувач застосунком
-  int id: унікальний ідентифікатор
-  string name: ім'я
-  bool manager: статус
-  list[Listing] listings: виставлені об'єкти нерухомості
-  list[Listing] chosen: обрані об'єкти нерухомості
-  list[Meeting] meetings: зустрічі
+addMeeting(Listing listing, User viewer): перевірити коректність введеня значень
+viewMeeting(Meeting meeting): відфільтрувати об'єкти зустрічей та отримати необхідний
+editMeeting(Meeting meeting): отримати необхідний об'єкт зустрічі
+deleteMeeting(Meeting meeting): отримати потрібний об'єкт зустрічі
 
-  void addUser(string name, bool manager): додати до бази даних
-  User viewUser(User user): переглянути
-  void editUser(User user): змінити
-  void deleteUser(User user): видалити
-
-class Meeting: об'єкт зустрічі
-  int id: унікальний ідентифікатор
-  Listing listing: об'єкт нерухомості для перегляду
-  User viewer: користувач переглядач
-  int score: оцінка
-  enum['Private' | 'Flat' | 'New'] status: статус
-
-  void addMeeting(Listing listing, User viewer): додати до бази даних
-  Meeting viewMeeting(Meeting meeting): переглянути
-  void editMeeting(Meeting meeting): змінити
-  void deleteMeeting(Meeting meeting): видалити
+Бізнес-правило makeChosen передбачає взаємодію з двома типами об'єктів. Це може нести потенційні безпекові ризики. Усі бізнес-правила, пов'язані з видаленням об'єктів, передбачають безпекові ризики та необхідність створення резервних копій об'єктів для запобігання втрати даних.
