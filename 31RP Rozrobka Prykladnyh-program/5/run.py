@@ -114,11 +114,8 @@ def update_colors():
         os.path.join(IMAGE_FOLDER_PATH,this_file_name) for this_file_name,this_color_value in closest_colors
     ]
     similar_image_one.source=closest_color_image_paths[0]
-    similar_image_one.update()
     similar_image_two.source=closest_color_image_paths[1]
-    similar_image_two.update()
     similar_image_three.source=closest_color_image_paths[2]
-    similar_image_three.update()
 
 def update_ui():
     update_image_output()
