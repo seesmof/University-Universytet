@@ -69,7 +69,6 @@ def get_colors_dataset(
             colors_count=colors_count
         )
         colors_dataset[image_file_name]=this_image_colors
-    print(colors_dataset)
     return colors_dataset
 
 def get_average_colors(
@@ -84,19 +83,16 @@ def get_average_colors(
 
 ROOT_FOLDER=os.path.dirname(os.path.abspath(__file__))
 IMAGE_FOLDER_PATH=os.path.join(ROOT_FOLDER,'images')
+IMAGE_FILE_NAMES=os.listdir(IMAGE_FOLDER_PATH)
 
 LABEL_CLASSES='font-medium text-lg'
 COLOR_CLASSES='flex-1 py-7 rounded-md'
 
+app.add_media_files('/images',IMAGE_FOLDER_PATH)
+image_file=IMAGE_FILE_NAMES[0]
 colors_count=3
 
-app.add_media_files('/images',IMAGE_FOLDER_PATH)
-image_files=os.listdir(IMAGE_FOLDER_PATH)
-image_file=image_files[0]
-image_colors=get_colors_dataset(
-    images_folder=IMAGE_FOLDER_PATH,
-    image_files=image_files
-)
+image_colors=get_colors_dataset(IMAGE_FOLDER_PATH,IMAGE_FILE_NAMES)
 average_image_colors=get_average_colors(image_colors)
 
 def update_image_output():
@@ -105,11 +101,9 @@ def update_image_output():
 
 def update_colors():
     colors_count_label.text=f'Most common colors ({colors_count})'
-    colors_count_label.update()
 
     image_average_color=average_image_colors[image_file]
     colors_list=list(set((image_name,color_value) for image_name,color_value in average_image_colors.items() if color_value<=image_average_color and image_name!=image_file))
-    print(colors_list)
     closest_colors=sorted(
         colors_list,
         key=lambda color: color[1],
@@ -132,7 +126,7 @@ def update_ui():
 
 ui.label('Image to process').classes(LABEL_CLASSES)
 ui.select(
-    options=image_files,
+    options=IMAGE_FILE_NAMES,
     with_input=True,
     value=image_file,
     on_change=update_ui,
