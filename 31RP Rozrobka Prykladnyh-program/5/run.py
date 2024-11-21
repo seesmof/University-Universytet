@@ -37,9 +37,5 @@ selected_image_file=ui.select(
 
 ui.label('Number of colors').classes('mt-7 font-medium text-lg')
 colors_count_slider=ui.slider(min=1,max=3,value=3)
-with ui.row().classes('flex justify-between w-full'):
-    ui.label(1)
-    ui.label(2)
-    ui.label(3)
 
 ui.run(favicon='🖼️',title='Image Colors')
