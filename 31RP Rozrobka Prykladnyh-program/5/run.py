@@ -151,7 +151,7 @@ with ui.row().classes('flex justify-between w-full'):
     ui.label(3)
 
 ui.label(f'Results for {image_file}').classes('mt-12 '+LABEL_CLASSES)
-results_image=ui.image(os.path.join(IMAGE_FOLDER_PATH,image_file)).classes('max-h-96 rounded-md object-center')
+results_image=ui.image(os.path.join(IMAGE_FOLDER_PATH,image_file)).classes('rounded-md object-center').style('max-height: 37vh;')
 
 colors_count_label=ui.label(f'Most common colors ({colors_count})').classes('mt-7 '+LABEL_CLASSES)
 with ui.row().classes('w-full flex gap-3'):
