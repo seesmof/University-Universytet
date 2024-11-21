@@ -37,6 +37,11 @@ def form_image_colors(
         colors_dataset[image_file_name]=image_colors
     return colors_dataset
 
+def get_average_colors(
+    colors_dataset:dict,
+):
+    return {name:round(colors.mean()) for name,colors in colors_dataset.items()}
+
 root=os.path.dirname(os.path.abspath(__file__))
 images_folder=os.path.join(root,'images')
 app.add_media_files('/images',images_folder)
@@ -46,7 +51,7 @@ image_colors=form_image_colors(
     images_folder=images_folder,
     image_files=image_files
 )
-print(image_colors)
+average_image_colors=get_average_colors(image_colors)
 
 ui.label('Image to process').classes('font-medium text-lg')
 selected_image_file=ui.select(
