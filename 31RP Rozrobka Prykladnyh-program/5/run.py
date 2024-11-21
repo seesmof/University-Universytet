@@ -23,10 +23,30 @@ def get_colors(
     palette=np.uint8(model.cluster_centers_)
     return palette
 
+def form_image_colors(
+    images_folder:str,
+    image_files:list[str],
+):
+    colors_dataset=dict()
+    for image_file_name in image_files:
+        image_path=os.path.join(images_folder,image_file_name)
+        image_colors=get_colors(
+            image_path=image_path,
+            colors_count=colors_count
+        )
+        colors_dataset[image_file_name]=image_colors
+    return colors_dataset
+
 root=os.path.dirname(os.path.abspath(__file__))
 images_folder=os.path.join(root,'images')
 app.add_media_files('/images',images_folder)
 image_files=os.listdir(images_folder)
+colors_count=3
+image_colors=form_image_colors(
+    images_folder=images_folder,
+    image_files=image_files
+)
+print(image_colors)
 
 ui.label('Image to process').classes('font-medium text-lg')
 selected_image_file=ui.select(
@@ -36,6 +56,8 @@ selected_image_file=ui.select(
 ).classes('w-full')
 
 ui.label('Number of colors').classes('mt-7 font-medium text-lg')
-colors_count_slider=ui.slider(min=1,max=3,value=3)
+ui.slider(min=1,max=3,value=colors_count).bind_value(globals(),'colors_count')
+
+ui.button('AMEN',on_click=lambda: print(colors_count))
 
 ui.run(favicon='🖼️',title='Image Colors')
