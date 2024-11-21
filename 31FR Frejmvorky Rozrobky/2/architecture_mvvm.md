@@ -1,4 +1,4 @@
-class Listing:
+class Listing: об'єкт нерухомості
   int id: унікальний ідентифікатор
   User owner: користувач власник
   string name: назва
@@ -11,7 +11,7 @@ class Listing:
   void deleteListing(Listing listing): видалити
   void makeChosen(Listing listing, User user): додати до обраних
 
-class User:
+class User: користувач застосунком
   int id: унікальний ідентифікатор
   string name:
   bool manager:
@@ -24,7 +24,7 @@ class User:
   void editUser(User user): змінити
   void deleteUser(User user): видалити
 
-class Meeting:
+class Meeting: об'єкт зустрічі
   int id: унікальний ідентифікатор
   Listing listing:
   User viewer:
