@@ -60,44 +60,67 @@ def update_image_output():
     results_image.source=os.path.join(images_folder,image_file)
     results_image.update()
 
+def update_colors():
+    colors_count_label.text=f'Most common colors ({colors_count})'
+    colors_count_label.update()
+
+    image_average_color=average_image_colors[image_file]
+    closest_colors=sorted(
+        ((image_name,color_value) for image_name,color_value in average_image_colors.items() if color_value<=image_average_color and image_name!=image_file),
+        key=lambda color: color[1],
+        reverse=True
+    )[:colors_count]
+    print(closest_colors)
+    ui.query(closest_color_one).style('background: #eee')
+    closest_color_one.update()
+    ui.query(closest_color_two).style('background: #eee')
+    closest_color_two.update()
+    ui.query(closest_color_three).style('background: #eee')
+    closest_color_three.update()
+
+    closest_color_image_paths=[
+        os.path.join(images_folder,this_file_name) for this_file_name,this_color_value in closest_colors
+    ]
+    similar_image_one.source=closest_color_image_paths[0]
+    similar_image_one.update()
+    similar_image_two.source=closest_color_image_paths[1]
+    similar_image_two.update()
+    similar_image_three.source=closest_color_image_paths[2]
+    similar_image_three.update()
+
+def update_ui():
+    update_image_output()
+    update_colors()
+
 ui.label('Image to process').classes(LABEL_CLASSES)
 ui.select(
     options=image_files,
     with_input=True,
     value=image_file,
-    on_change=update_image_output,
+    on_change=update_ui,
 ).classes('w-full').bind_value(globals(),'image_file')
 
 ui.label('Number of colors').classes('mt-7 '+LABEL_CLASSES)
 ui.slider(
     min=1,
     max=3,
-    value=colors_count
+    value=colors_count,
+    on_change=update_ui,
 ).bind_value(globals(),'colors_count')
 
-image_average_color=average_image_colors[image_file]
-closest_colors=sorted(
-    ((image_name,color_value) for image_name,color_value in average_image_colors.items() if color_value<=image_average_color and image_name!=image_file),
-    key=lambda color: color[1],
-    reverse=True
-)
+ui.label(f'Results for {image_file}').classes('mt-12 '+LABEL_CLASSES)
+results_image=ui.image(os.path.join(images_folder,image_file)).classes('max-h-96 rounded-md object-cover')
 
-ui.label(f'Results for {image_file}').classes(LABEL_CLASSES)
-results_image=ui.image(os.path.join(images_folder,image_file))
-
-ui.label(f'Most common colors ({colors_count})').classes('mt-7 '+LABEL_CLASSES)
+colors_count_label=ui.label(f'Most common colors ({colors_count})').classes('mt-7 '+LABEL_CLASSES)
 with ui.row().classes('w-full flex gap-3'):
-    ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #37bf37;')
-    ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #7359eb;') if colors_count>=2 else None
-    ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #779bef;') if colors_count>=3 else None
+    closest_color_one=ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #37bf37;')
+    closest_color_two=ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #7359eb;') if colors_count>=2 else None
+    closest_color_three=ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #779bef;') if colors_count>=3 else None
 
-closest_color_image_paths=[
-    os.path.join(images_folder,this_file_name) for this_file_name,this_color_value in closest_colors[:3]
-]
 ui.label(f'Images with similar colors').classes('mt-7 '+LABEL_CLASSES)
 with ui.row().classes('w-full flex gap-3'):
-    ui.image(closest_color_image_paths[0]).classes('flex-1 rounded-md h-full display-cover')
-    ui.image(closest_color_image_paths[1]).classes('flex-1 rounded-md h-full display-cover')
-    ui.image(closest_color_image_paths[2]).classes('flex-1 rounded-md h-full display-cover')
+    similar_image_one=ui.image().classes('flex-1 rounded-md max-h-72 display-cover')
+    similar_image_two=ui.image().classes('flex-1 rounded-md max-h-72 display-cover')
+    similar_image_three=ui.image().classes('flex-1 rounded-md max-h-72 display-cover')
 
 ui.run(favicon='🖼️',title='Image Colors')
