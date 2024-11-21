@@ -23,6 +23,9 @@ class Color:
 
     def get_html_rgb_value(self):
         return f'rgb({self.red},{self.green},{self.blue})'
+    
+    def get_average(self):
+        return (self.red+self.green+self.blue)//3
 
 def get_n_most_common_colors(
     image_path:str,
@@ -51,7 +54,6 @@ def get_n_most_common_colors(
     for c in palette:
         r,g,b=c
         res.append(Color(r,g,b))
-    print(res)
 
     return res
 
@@ -67,12 +69,18 @@ def get_colors_dataset(
             colors_count=colors_count
         )
         colors_dataset[image_file_name]=this_image_colors
+    print(colors_dataset)
     return colors_dataset
 
 def get_average_colors(
     colors_dataset:dict,
 ):
-    return {name:round(colors.mean()) for name,colors in colors_dataset.items()}
+    def get_average_color(
+        colors:list[Color]
+    ):
+        return round(sum([c.get_average() for c in colors])/len(colors))
+
+    return {name:get_average_color(colors) for name,colors in colors_dataset.items()}
 
 ROOT_FOLDER=os.path.dirname(os.path.abspath(__file__))
 LABEL_CLASSES='font-medium text-lg'
@@ -140,7 +148,7 @@ with ui.row().classes('flex justify-between w-full'):
     ui.label(3)
 
 ui.label(f'Results for {image_file}').classes('mt-12 '+LABEL_CLASSES)
-results_image=ui.image(os.path.join(images_folder,image_file)).classes('max-h-96 rounded-md object-cover')
+results_image=ui.image(os.path.join(images_folder,image_file)).classes('max-h-96 rounded-md object-center')
 
 colors_count_label=ui.label(f'Most common colors ({colors_count})').classes('mt-7 '+LABEL_CLASSES)
 color_classes='flex-1 py-7 rounded-md'
