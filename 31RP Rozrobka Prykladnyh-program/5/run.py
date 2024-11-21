@@ -42,8 +42,10 @@ def get_average_colors(
 ):
     return {name:round(colors.mean()) for name,colors in colors_dataset.items()}
 
-root=os.path.dirname(os.path.abspath(__file__))
-images_folder=os.path.join(root,'images')
+ROOT_FOLDER=os.path.dirname(os.path.abspath(__file__))
+LABEL_CLASSES='font-medium text-lg'
+
+images_folder=os.path.join(ROOT_FOLDER,'images')
 app.add_media_files('/images',images_folder)
 image_files=os.listdir(images_folder)
 colors_count=3
@@ -53,22 +55,22 @@ image_colors=get_colors_dataset(
 )
 average_image_colors=get_average_colors(image_colors)
 
-ui.label('Image to process').classes('font-medium text-lg')
+ui.label('Image to process').classes(LABEL_CLASSES)
 selected_image_file=ui.select(
     options=image_files,
     value=image_files[0],
     with_input=True
 ).classes('w-full')
 
-ui.label('Number of colors').classes('mt-7 font-medium text-lg')
+ui.label('Number of colors').classes('mt-7 '+LABEL_CLASSES)
 ui.slider(min=1,max=3,value=colors_count).bind_value(globals(),'colors_count')
 
 with ui.dialog() as result, ui.card():
     ui.label('Results here')
-    ui.label(average_image_colors)
+    ui.label(str(average_image_colors))
     ui.label(colors_count)
     ui.button('AMEN',on_click=result.close)
 
-ui.button('AMEN',on_click=lambda: result.open)
+ui.button('AMEN',on_click=result.open)
 
 ui.run(favicon='🖼️',title='Image Colors')
