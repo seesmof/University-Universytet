@@ -7,9 +7,13 @@ Listing
   deleteListing()
 User 
   manager: bool
+  meetings: list[Meeting]
   listings: list[Listing]
   chosen: list[Listing]
-  meetings: list[Meeting]
+
+  viewDetails()
+  editDetails()
+  
 Meeting 
   status: pending OR visited OR canceled
   score: int 1 to 10
