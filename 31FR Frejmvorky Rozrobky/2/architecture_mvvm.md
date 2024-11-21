@@ -1,3 +1,26 @@
+class Listing:
+  int id:
+  string kind<'Private'|'Flat'|'New'>:
+  int owner<User>:
+  string name:
+  int price:
+
+  void addListing(string kind, string name, int price):
+  Listing viewListing(Listing):
+  void deleteListing(Listing):
+  void editListing(Listing):
+  void makeChosen(Listing, User):
+
+class User:
+  int id:
+  string name:
+  bool manager:
+  list[Listing] listings:
+  list[Listing] chosen:
+  list[Meeting] meetings:
+
+  void editUser(User):
+
 Listing
   type: private OR flat OR new 
   owner: User
@@ -26,9 +49,3 @@ Meeting
   viewDetails()
   editDetails()
   rateMeeting()
-
-confirmMeeting(): Meeting.status=visited
-viewAllMeetings(): return list[Meeting] Meeting.listing.owner==current_user__owner
-viewChosenMeetings(): return [Listing for Listing in viewAllMeetings() if Listing in current_user__owner.chosen]
-cancelMeeting(): Meeting.status=canceled
-editListing(newListingData: Listing): Listing=newListingData
