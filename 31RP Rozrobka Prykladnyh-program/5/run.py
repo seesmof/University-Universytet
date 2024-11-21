@@ -44,11 +44,12 @@ def get_average_colors(
 
 ROOT_FOLDER=os.path.dirname(os.path.abspath(__file__))
 LABEL_CLASSES='font-medium text-lg'
+colors_count=3
 
 images_folder=os.path.join(ROOT_FOLDER,'images')
 app.add_media_files('/images',images_folder)
 image_files=os.listdir(images_folder)
-colors_count=3
+image_file=image_files[0]
 image_colors=get_colors_dataset(
     images_folder=images_folder,
     image_files=image_files
@@ -56,19 +57,45 @@ image_colors=get_colors_dataset(
 average_image_colors=get_average_colors(image_colors)
 
 ui.label('Image to process').classes(LABEL_CLASSES)
-selected_image_file=ui.select(
+ui.select(
     options=image_files,
-    value=image_files[0],
-    with_input=True
-).classes('w-full')
+    with_input=True,
+    value=image_file,
+).classes('w-full').bind_value(globals(),'image_file')
 
 ui.label('Number of colors').classes('mt-7 '+LABEL_CLASSES)
-ui.slider(min=1,max=3,value=colors_count).bind_value(globals(),'colors_count')
+ui.slider(
+    min=1,
+    max=3,
+    value=colors_count
+).bind_value(globals(),'colors_count')
 
 with ui.dialog() as result, ui.card():
-    ui.label('Results here')
-    ui.label(str(average_image_colors))
-    ui.label(colors_count)
+    image_path=os.path.join(images_folder,image_file)
+    image_average_color=average_image_colors[image_file]
+    closest_colors=sorted(
+        ((image_name,color_value) for image_name,color_value in average_image_colors.items() if color_value<=image_average_color and image_name!=image_file),
+        key=lambda color: color[1],
+        reverse=True
+    )
+
+    ui.label(f'Results for {image_file}').classes(LABEL_CLASSES)
+    ui.image(image_path)
+
+    ui.label(f'Most common colors ({colors_count})')
+    with ui.row().classes('w-full'):
+        ui.button().classes()
+
+    closest_color_image_paths=[
+        os.path.join(images_folder,this_file_name) for this_file_name,this_color_value in closest_colors[:3]
+    ]
+    print(closest_color_image_paths)
+    ui.label(f'Images with similar colors')
+    with ui.row().classes('w-full'):
+        ui.image(closest_color_image_paths[0])
+        ui.image(closest_color_image_paths[1])
+        ui.image(closest_color_image_paths[2])
+
     ui.button('AMEN',on_click=result.close)
 
 ui.button('AMEN',on_click=result.open)
