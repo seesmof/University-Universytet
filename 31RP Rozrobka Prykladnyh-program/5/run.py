@@ -97,7 +97,6 @@ average_image_colors=get_average_colors(image_colors)
 
 def update_image_output():
     results_image.source=os.path.join(IMAGE_FOLDER_PATH,image_file)
-    results_image.update()
 
 def update_colors():
     colors_count_label.text=f'The image has {colors_count} most common color{"s" if colors_count>1 else ""}'
@@ -110,10 +109,12 @@ def update_colors():
         reverse=True
     )
 
-    closest_color_one.style('background: #eee;')
-    closest_color_two.style('background: #fef751;')
+    this_image_colors:list[Color]=image_colors[image_file]
+    print(this_image_colors)
+    closest_color_one.style(f'background: {this_image_colors[0].get_html_rgb_value()};')
+    closest_color_two.style(f'background: {this_image_colors[1].get_html_rgb_value()};')
     closest_color_two.visible=colors_count>=2
-    closest_color_three.style('background: #d39203;')
+    closest_color_three.style(f'background: {this_image_colors[2].get_html_rgb_value()};')
     closest_color_three.visible=colors_count>=3
 
     closest_color_image_paths=[
