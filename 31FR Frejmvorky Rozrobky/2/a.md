@@ -5,6 +5,7 @@ User
   type: user OR manager 
   listings: list[Listing]
   chosen: list[Listing]
+  meetings: list[Meeting]
 Meeting 
   status: pending OR visited OR canceled
   score: int 1 to 10
