@@ -1,70 +1,37 @@
 class Listing:
-  int id:
-  User owner:
-  string name:
-  int price:
-  enum['Private' | 'Flat' | 'New'] kind:
+  int id: унікальний ідентифікатор
+  User owner: користувач власник
+  string name: назва
+  int price: вартість
+  enum['Private' | 'Flat' | 'New'] kind: тип
 
-  void addListing(string kind, string name, int price):
-  Listing viewListing(Listing listing):
-  void editListing(Listing listing):
-  void deleteListing(Listing listing):
-  void makeChosen(Listing listing, User user):
-  void setKind(string kind):
+  void addListing(string kind, string name, int price): додати до бази даних
+  Listing viewListing(Listing listing): переглянути
+  void editListing(Listing listing): змінити
+  void deleteListing(Listing listing): видалити
+  void makeChosen(Listing listing, User user): додати до обраних
 
 class User:
-  int id:
+  int id: унікальний ідентифікатор
   string name:
   bool manager:
   list[Listing] listings:
   list[Listing] chosen:
   list[Meeting] meetings:
 
-  void addUser(string name, bool manager):
-  User viewUser(User user):
-  void editUser(User user):
-  void deleteUser(User user):
-  void changeStatus(User user, bool manager):
+  void addUser(string name, bool manager): додати до бази даних
+  User viewUser(User user): переглянути
+  void editUser(User user): змінити
+  void deleteUser(User user): видалити
 
 class Meeting:
-  int id:
+  int id: унікальний ідентифікатор
   Listing listing:
   User viewer:
   int score:
   enum['Private' | 'Flat' | 'New'] status:
 
-  void addMeeting(Listing listing, User viewer):
-  Meeting viewMeeting(Meeting meeting):
-  void editMeeting(Meeting meeting):
-  void deleteMeeting(Meeting meeting):
-  void setScore(int score):
-  void setStatus(string status):
-
-Listing
-  type: private OR flat OR new 
-  owner: User
-
-  viewDetails()
-  editDetails()
-  deleteListing()
-  addListing()
-User 
-  manager: bool
-  meetings: list[Meeting]
-  listings: list[Listing]
-  chosen: list[Listing]
-
-  viewDetails()
-  editDetails()
-  viewListings()
-  viewChosenListings()
-  viewMeetings()
-Meeting 
-  status: pending OR visited OR canceled
-  score: int 1 to 10
-  listing: Listing
-
-  scheduleMeeting()
-  viewDetails()
-  editDetails()
-  rateMeeting()
+  void addMeeting(Listing listing, User viewer): додати до бази даних
+  Meeting viewMeeting(Meeting meeting): переглянути
+  void editMeeting(Meeting meeting): змінити
+  void deleteMeeting(Meeting meeting): видалити
