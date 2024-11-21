@@ -13,11 +13,11 @@ class Listing: об'єкт нерухомості
 
 class User: користувач застосунком
   int id: унікальний ідентифікатор
-  string name:
-  bool manager:
-  list[Listing] listings:
-  list[Listing] chosen:
-  list[Meeting] meetings:
+  string name: ім'я
+  bool manager: статус
+  list[Listing] listings: виставлені об'єкти нерухомості
+  list[Listing] chosen: обрані об'єкти нерухомості
+  list[Meeting] meetings: зустрічі
 
   void addUser(string name, bool manager): додати до бази даних
   User viewUser(User user): переглянути
@@ -26,10 +26,10 @@ class User: користувач застосунком
 
 class Meeting: об'єкт зустрічі
   int id: унікальний ідентифікатор
-  Listing listing:
-  User viewer:
-  int score:
-  enum['Private' | 'Flat' | 'New'] status:
+  Listing listing: об'єкт нерухомості для перегляду
+  User viewer: користувач переглядач
+  int score: оцінка
+  enum['Private' | 'Flat' | 'New'] status: статус
 
   void addMeeting(Listing listing, User viewer): додати до бази даних
   Meeting viewMeeting(Meeting meeting): переглянути
