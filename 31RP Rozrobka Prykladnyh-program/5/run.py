@@ -49,6 +49,7 @@ colors_count=3
 images_folder=os.path.join(ROOT_FOLDER,'images')
 app.add_media_files('/images',images_folder)
 image_files=os.listdir(images_folder)
+# зробити шоб за замовчуванням не було обрано жодного
 image_file=image_files[0]
 image_colors=get_colors_dataset(
     images_folder=images_folder,
@@ -69,14 +70,7 @@ def update_colors():
         ((image_name,color_value) for image_name,color_value in average_image_colors.items() if color_value<=image_average_color and image_name!=image_file),
         key=lambda color: color[1],
         reverse=True
-    )[:colors_count]
-    print(closest_colors)
-    ui.query(closest_color_one).style('background: #eee')
-    closest_color_one.update()
-    ui.query(closest_color_two).style('background: #eee')
-    closest_color_two.update()
-    ui.query(closest_color_three).style('background: #eee')
-    closest_color_three.update()
+    )
 
     closest_color_image_paths=[
         os.path.join(images_folder,this_file_name) for this_file_name,this_color_value in closest_colors
@@ -119,8 +113,8 @@ with ui.row().classes('w-full flex gap-3'):
 
 ui.label(f'Images with similar colors').classes('mt-7 '+LABEL_CLASSES)
 with ui.row().classes('w-full flex gap-3'):
-    similar_image_one=ui.image().classes('flex-1 rounded-md max-h-72 display-cover')
-    similar_image_two=ui.image().classes('flex-1 rounded-md max-h-72 display-cover')
-    similar_image_three=ui.image().classes('flex-1 rounded-md max-h-72 display-cover')
+    similar_image_one=ui.image().classes('flex-1 rounded-md max-h-60 display-cover')
+    similar_image_two=ui.image().classes('flex-1 rounded-md max-h-60 display-cover')
+    similar_image_three=ui.image().classes('flex-1 rounded-md max-h-60 display-cover')
 
 ui.run(favicon='🖼️',title='Image Colors')
