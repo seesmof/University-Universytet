@@ -103,6 +103,10 @@ ui.slider(
     value=colors_count,
     on_change=update_ui,
 ).bind_value(globals(),'colors_count')
+with ui.row().classes('flex justify-between'):
+    ui.label(1)
+    ui.label(2)
+    ui.label(3)
 
 ui.label(f'Results for {image_file}').classes('mt-12 '+LABEL_CLASSES)
 results_image=ui.image(os.path.join(images_folder,image_file)).classes('max-h-96 rounded-md object-cover')
