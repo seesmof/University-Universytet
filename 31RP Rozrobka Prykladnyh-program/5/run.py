@@ -4,6 +4,20 @@ from nicegui import ui, app
 import numpy as np 
 import os
 
+class Color:
+    def __init__(
+        self,
+        r: int,
+        g: int,
+        b: int,
+    ):
+        self.red=r
+        self.green=g
+        self.blue=b
+
+    def get_html_rgb_value(self):
+        return f'rgb({self.red},{self.green},{self.blue})'
+
 def get_n_most_common_colors(
     image_path:str,
     colors_count:int,
@@ -26,6 +40,7 @@ def get_n_most_common_colors(
 
     model=KMeans(n_clusters=colors_count,random_state=40).fit(pixel)
     palette=np.uint8(model.cluster_centers_)
+
     return palette
 
 def get_colors_dataset(
