@@ -11,13 +11,12 @@ namespace _21112024184820_making_and_querying_mysql_database_with_csharp
     {
         static void Main(string[] args)
         {
-            string USER = "root";
-            string PASSWORD = "1313";
-            string HOST = "localhost";
-            string PORT = "3306";
-            string NAME = "data";
-            string SERVER = "localhost";
-            MySqlConnection conn = new MySqlConnection($"server={SERVER};port={PORT};UID={USER};password={PASSWORD};database={NAME};");
+            var USER = "root";
+            var PASSWORD = "1313";
+            var HOST = "localhost";
+            var PORT = "3306";
+            var NAME = "data";
+            var conn = new MySqlConnection($"server={HOST};port={PORT};UID={USER};password={PASSWORD};database={NAME};");
             conn.Open();
             Console.WriteLine("ALLEUJAH JESUS THANK YOU LORD GOD ALMIGHTY AMEN");
             conn.Close();
