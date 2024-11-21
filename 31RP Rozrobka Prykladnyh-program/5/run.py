@@ -15,6 +15,9 @@ class Color:
         self.green=g
         self.blue=b
 
+    def __str__(self):
+        return f'{self.red} {self.green} {self.blue}'
+
     def get_html_rgb_value(self):
         return f'rgb({self.red},{self.green},{self.blue})'
 

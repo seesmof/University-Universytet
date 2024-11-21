@@ -9,6 +9,9 @@ class Color:
         self.green=g
         self.blue=b
 
+    def __str__(self):
+        return f'{self.red} {self.green} {self.blue}'
+
     def get_html_rgb_value(self):
         return f'rgb({self.red},{self.green},{self.blue})'
 
@@ -16,6 +19,7 @@ data=[[199,183,163],[140,97,49],[70,135,170]]
 for c in data:
     r,g,b=c
     color=Color(r,g,b)
+    print(color)
     print(color.get_html_rgb_value())
 
 '''
