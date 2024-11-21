@@ -1,8 +1,12 @@
 Listing
   type: private OR flat OR new 
   owner: User
+
+  viewDetails()
+  editDetails()
+  deleteListing()
 User 
-  type: user OR manager 
+  manager: bool
   listings: list[Listing]
   chosen: list[Listing]
   meetings: list[Meeting]
