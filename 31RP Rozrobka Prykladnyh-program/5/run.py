@@ -37,24 +37,30 @@ def get_n_most_common_colors(
     < colors_count: int 
         number of most common colors to return for a given image 
 
-    > palette: list[list[int]]
+    > palette: list[Color]
         has length of colors_count
-        each element is a color in RGB format:
-            red_value, green_value, blue_value
+        each element is a Color object with values for red, green and blue as ints
     '''
 
+    # Read an image, get it into an object to work with
     image=img.imread(image_path)
+    # Read image's width, height, depth
     w,h,d=tuple(image.shape)
+    # Get a pixel size by reshaping the image into rows
     pixel=np.reshape(image,(w*h,d))
-
+    # Make a K-Means algorithm model, fit it into a pixel
     model=KMeans(n_clusters=colors_count,random_state=40).fit(pixel)
+    # Make a colors palette by extracting cluster centers from the model
     palette=np.uint8(model.cluster_centers_)
-
+    # Make a list for storing Colors data
     res=[]
+    # Go through each color in palette, colors_count times
     for c in palette:
+        # Extract the red, green and blue values for each color
         r,g,b=c
+        # Make and add a Color object for the colors
         res.append(Color(r,g,b))
-
+    # Return the produced list of Colors
     return res
 
 def get_colors_dataset(
