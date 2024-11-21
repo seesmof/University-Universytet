@@ -82,22 +82,23 @@ with ui.dialog() as result, ui.card():
     ui.label(f'Results for {image_file}').classes(LABEL_CLASSES)
     ui.image(image_path)
 
-    ui.label(f'Most common colors ({colors_count})')
-    with ui.row().classes('w-full'):
-        ui.button().classes()
+    ui.label(f'Most common colors ({colors_count})').classes('mt-7 '+LABEL_CLASSES)
+    with ui.row().classes('w-full flex gap-3'):
+        ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #37bf37;')
+        ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #7359eb;')
+        ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #779bef;')
 
     closest_color_image_paths=[
         os.path.join(images_folder,this_file_name) for this_file_name,this_color_value in closest_colors[:3]
     ]
-    print(closest_color_image_paths)
-    ui.label(f'Images with similar colors')
+    ui.label(f'Images with similar colors').classes('mt-7 '+LABEL_CLASSES)
     with ui.row().classes('w-full'):
         ui.image(closest_color_image_paths[0])
         ui.image(closest_color_image_paths[1])
         ui.image(closest_color_image_paths[2])
 
-    ui.button('AMEN',on_click=result.close)
+    ui.button('AMEN',on_click=result.close).classes('w-full')
 
-ui.button('AMEN',on_click=result.open)
+ui.button('AMEN',on_click=result.open).classes('w-full')
 
 ui.run(favicon='🖼️',title='Image Colors')
