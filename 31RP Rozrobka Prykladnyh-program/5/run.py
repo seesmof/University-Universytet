@@ -8,6 +8,18 @@ def get_colors(
     image_path:str,
     colors_count:int,
 ):
+    '''
+    < image_path: str
+        full image path as string 
+    < colors_count: int 
+        number of most common colors to return for a given image 
+
+    > palette: list[list[int]]
+        palette has length of colors_count
+        each element is a color in RGB format:
+        - three values for each element: red_value, green_value, blue_value
+    '''
+
     image=img.imread(image_path)
     w,h,d=tuple(image.shape)
     pixel=np.reshape(image,(w*h,d))
