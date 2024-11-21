@@ -18,6 +18,9 @@ class Color:
     def __str__(self):
         return f'{self.red} {self.green} {self.blue}'
 
+    def __repr__(self):
+        return f'{self.red} {self.green} {self.blue}'
+
     def get_html_rgb_value(self):
         return f'rgb({self.red},{self.green},{self.blue})'
 
@@ -44,7 +47,13 @@ def get_n_most_common_colors(
     model=KMeans(n_clusters=colors_count,random_state=40).fit(pixel)
     palette=np.uint8(model.cluster_centers_)
 
-    return palette
+    res=[]
+    for c in palette:
+        r,g,b=c
+        res.append(Color(r,g,b))
+    print(res)
+
+    return res
 
 def get_colors_dataset(
     images_folder:str,
