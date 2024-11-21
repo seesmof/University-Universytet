@@ -23,11 +23,11 @@ def get_colors_dataset(
     colors_dataset=dict()
     for image_file_name in image_files:
         image_path=os.path.join(images_folder,image_file_name)
-        image_colors=get_colors(
+        this_image_colors=get_colors(
             image_path=image_path,
             colors_count=colors_count
         )
-        colors_dataset[image_file_name]=image_colors
+        colors_dataset[image_file_name]=this_image_colors
     return colors_dataset
 
 def get_average_colors(
@@ -36,22 +36,17 @@ def get_average_colors(
     return {name:round(colors.mean()) for name,colors in colors_dataset.items()}
 
 ROOT_FOLDER=os.path.dirname(os.path.abspath(__file__))
+IMAGE_FOLDER_PATH=os.path.join(ROOT_FOLDER,'images')
+IMAGE_FILENAMES=os.listdir(IMAGE_FOLDER_PATH)
+
 LABEL_CLASSES='font-medium text-lg'
+
+image_file=IMAGE_FILENAMES[0]
+app.add_media_files('/images',IMAGE_FOLDER_PATH)
 colors_count=3
 
-images_folder=os.path.join(ROOT_FOLDER,'images')
-app.add_media_files('/images',images_folder)
-image_files=os.listdir(images_folder)
-# зробити шоб за замовчуванням не було обрано жодного
-image_file=image_files[0]
-image_colors=get_colors_dataset(
-    images_folder=images_folder,
-    image_files=image_files
-)
-average_image_colors=get_average_colors(image_colors)
-
 def update_image_output():
-    results_image.source=os.path.join(images_folder,image_file)
+    results_image.source=os.path.join(IMAGE_FOLDER_PATH,image_file)
     results_image.update()
 
 def update_colors():
@@ -67,8 +62,13 @@ def update_colors():
         reverse=True
     )
 
+    image_colors=get_colors_dataset(
+        images_folder=IMAGE_FOLDER_PATH,
+        image_files=IMAGE_FILENAMES
+    )
+    average_image_colors=get_average_colors(image_colors)
     closest_color_image_paths=[
-        os.path.join(images_folder,this_file_name) for this_file_name,this_color_value in closest_colors
+        os.path.join(IMAGE_FOLDER_PATH,this_file_name) for this_file_name,this_color_value in closest_colors
     ]
     similar_image_one.source=closest_color_image_paths[0]
     similar_image_one.update()
@@ -83,7 +83,7 @@ def update_ui():
 
 ui.label('Image to process').classes(LABEL_CLASSES)
 ui.select(
-    options=image_files,
+    options=IMAGE_FILENAMES,
     with_input=True,
     value=image_file,
     on_change=update_ui,
@@ -102,7 +102,7 @@ with ui.row().classes('flex justify-between w-full'):
     ui.label(3)
 
 ui.label(f'Results for {image_file}').classes('mt-12 '+LABEL_CLASSES)
-results_image=ui.image(os.path.join(images_folder,image_file)).classes('max-h-96 rounded-md object-cover')
+results_image=ui.image(os.path.join(IMAGE_FOLDER_PATH,image_file)).classes('max-h-96 rounded-md object-cover')
 
 colors_count_label=ui.label(f'Most common colors ({colors_count})').classes('mt-7 '+LABEL_CLASSES)
 color_classes='flex-1 py-7 rounded-md'
