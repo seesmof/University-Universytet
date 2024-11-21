@@ -110,7 +110,6 @@ def update_colors():
     )
 
     this_image_colors:list[Color]=image_colors[image_file]
-    print(this_image_colors)
     closest_color_one.style(f'background: {this_image_colors[0].get_html_rgb_value()};')
     closest_color_two.style(f'background: {this_image_colors[1].get_html_rgb_value()};')
     closest_color_two.visible=colors_count>=2
@@ -153,9 +152,9 @@ results_image=ui.image(os.path.join(IMAGE_FOLDER_PATH,image_file)).classes('roun
 
 colors_count_label=ui.label(f'Most common colors ({colors_count})').classes('mt-7 '+LABEL_CLASSES)
 with ui.row().classes('w-full flex gap-3'):
-    closest_color_one=ui.element('span').classes(COLOR_CLASSES).style('background: #37bf37;')
-    closest_color_two=ui.element('span').classes(COLOR_CLASSES).style('background: #7359eb;') if colors_count>=2 else None
-    closest_color_three=ui.element('span').classes(COLOR_CLASSES).style('background: #779bef;') if colors_count>=3 else None
+    closest_color_one=ui.element('span').classes(COLOR_CLASSES)
+    closest_color_two=ui.element('span').classes(COLOR_CLASSES)
+    closest_color_three=ui.element('span').classes(COLOR_CLASSES)
 
 ui.label(f'Images with similar colors').classes('mt-7 '+LABEL_CLASSES)
 with ui.row().classes('w-full flex gap-3'):
