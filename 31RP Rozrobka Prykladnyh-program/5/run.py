@@ -11,9 +11,9 @@ class Color:
         g: int,
         b: int,
     ):
-        self.red=r
-        self.green=g
-        self.blue=b
+        self.red=int(r)
+        self.green=int(g)
+        self.blue=int(b)
 
     def __str__(self):
         return f'{self.red} {self.green} {self.blue}'
@@ -100,7 +100,7 @@ def update_image_output():
     results_image.update()
 
 def update_colors():
-    colors_count_label.text=f'Most common colors ({colors_count})'
+    colors_count_label.text=f'The image has {colors_count} most common color{"s" if colors_count>1 else ""}'
 
     image_average_color=average_image_colors[image_file]
     colors_list=list(set((image_name,color_value) for image_name,color_value in average_image_colors.items() if color_value<=image_average_color and image_name!=image_file))
@@ -109,6 +109,12 @@ def update_colors():
         key=lambda color: color[1],
         reverse=True
     )
+
+    closest_color_one.style('background: #eee;')
+    closest_color_two.style('background: #fef751;')
+    closest_color_two.visible=colors_count>=2
+    closest_color_three.style('background: #d39203;')
+    closest_color_three.visible=colors_count>=3
 
     closest_color_image_paths=[
         os.path.join(IMAGE_FOLDER_PATH,this_file_name) for this_file_name,this_color_value in closest_colors
