@@ -66,8 +66,10 @@ def update_colors():
     colors_count_label.update()
 
     image_average_color=average_image_colors[image_file]
+    colors_list=list(set((image_name,color_value) for image_name,color_value in average_image_colors.items() if color_value<=image_average_color and image_name!=image_file))
+    print(colors_list)
     closest_colors=sorted(
-        ((image_name,color_value) for image_name,color_value in average_image_colors.items() if color_value<=image_average_color and image_name!=image_file),
+        colors_list,
         key=lambda color: color[1],
         reverse=True
     )
@@ -117,4 +119,5 @@ with ui.row().classes('w-full flex gap-3'):
     similar_image_two=ui.image().classes('flex-1 rounded-md max-h-60 display-cover')
     similar_image_three=ui.image().classes('flex-1 rounded-md max-h-60 display-cover')
 
+update_ui()
 ui.run(favicon='🖼️',title='Image Colors')
