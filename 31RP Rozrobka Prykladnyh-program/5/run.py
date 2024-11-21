@@ -103,7 +103,7 @@ ui.slider(
     value=colors_count,
     on_change=update_ui,
 ).bind_value(globals(),'colors_count')
-with ui.row().classes('flex justify-between'):
+with ui.row().classes('flex justify-between w-full'):
     ui.label(1)
     ui.label(2)
     ui.label(3)
@@ -112,10 +112,11 @@ ui.label(f'Results for {image_file}').classes('mt-12 '+LABEL_CLASSES)
 results_image=ui.image(os.path.join(images_folder,image_file)).classes('max-h-96 rounded-md object-cover')
 
 colors_count_label=ui.label(f'Most common colors ({colors_count})').classes('mt-7 '+LABEL_CLASSES)
+color_classes='flex-1 py-7 rounded-md'
 with ui.row().classes('w-full flex gap-3'):
-    closest_color_one=ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #37bf37;')
-    closest_color_two=ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #7359eb;') if colors_count>=2 else None
-    closest_color_three=ui.element('span').classes('flex-1 py-5 rounded-md').style('background: #779bef;') if colors_count>=3 else None
+    closest_color_one=ui.element('span').classes(color_classes).style('background: #37bf37;')
+    closest_color_two=ui.element('span').classes(color_classes).style('background: #7359eb;') if colors_count>=2 else None
+    closest_color_three=ui.element('span').classes(color_classes).style('background: #779bef;') if colors_count>=3 else None
 
 ui.label(f'Images with similar colors').classes('mt-7 '+LABEL_CLASSES)
 with ui.row().classes('w-full flex gap-3'):
