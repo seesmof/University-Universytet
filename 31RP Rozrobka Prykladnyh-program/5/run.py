@@ -4,7 +4,7 @@ from nicegui import ui, app
 import numpy as np 
 import os
 
-def get_colors(
+def get_n_most_common_colors(
     image_path:str,
     colors_count:int,
 ):
@@ -15,9 +15,9 @@ def get_colors(
         number of most common colors to return for a given image 
 
     > palette: list[list[int]]
-        palette has length of colors_count
+        has length of colors_count
         each element is a color in RGB format:
-        - three values for each element: red_value, green_value, blue_value
+            red_value, green_value, blue_value
     '''
 
     image=img.imread(image_path)
@@ -35,7 +35,7 @@ def get_colors_dataset(
     colors_dataset=dict()
     for image_file_name in image_files:
         image_path=os.path.join(images_folder,image_file_name)
-        this_image_colors=get_colors(
+        this_image_colors=get_n_most_common_colors(
             image_path=image_path,
             colors_count=colors_count
         )
