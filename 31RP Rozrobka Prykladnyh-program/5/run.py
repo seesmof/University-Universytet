@@ -83,21 +83,24 @@ def get_average_colors(
     return {name:get_average_color(colors) for name,colors in colors_dataset.items()}
 
 ROOT_FOLDER=os.path.dirname(os.path.abspath(__file__))
+IMAGE_FOLDER_PATH=os.path.join(ROOT_FOLDER,'images')
+
 LABEL_CLASSES='font-medium text-lg'
+COLOR_CLASSES='flex-1 py-7 rounded-md'
+
 colors_count=3
 
-images_folder=os.path.join(ROOT_FOLDER,'images')
-app.add_media_files('/images',images_folder)
-image_files=os.listdir(images_folder)
+app.add_media_files('/images',IMAGE_FOLDER_PATH)
+image_files=os.listdir(IMAGE_FOLDER_PATH)
 image_file=image_files[0]
 image_colors=get_colors_dataset(
-    images_folder=images_folder,
+    images_folder=IMAGE_FOLDER_PATH,
     image_files=image_files
 )
 average_image_colors=get_average_colors(image_colors)
 
 def update_image_output():
-    results_image.source=os.path.join(images_folder,image_file)
+    results_image.source=os.path.join(IMAGE_FOLDER_PATH,image_file)
     results_image.update()
 
 def update_colors():
@@ -114,7 +117,7 @@ def update_colors():
     )
 
     closest_color_image_paths=[
-        os.path.join(images_folder,this_file_name) for this_file_name,this_color_value in closest_colors
+        os.path.join(IMAGE_FOLDER_PATH,this_file_name) for this_file_name,this_color_value in closest_colors
     ]
     similar_image_one.source=closest_color_image_paths[0]
     similar_image_one.update()
@@ -148,14 +151,13 @@ with ui.row().classes('flex justify-between w-full'):
     ui.label(3)
 
 ui.label(f'Results for {image_file}').classes('mt-12 '+LABEL_CLASSES)
-results_image=ui.image(os.path.join(images_folder,image_file)).classes('max-h-96 rounded-md object-center')
+results_image=ui.image(os.path.join(IMAGE_FOLDER_PATH,image_file)).classes('max-h-96 rounded-md object-center')
 
 colors_count_label=ui.label(f'Most common colors ({colors_count})').classes('mt-7 '+LABEL_CLASSES)
-color_classes='flex-1 py-7 rounded-md'
 with ui.row().classes('w-full flex gap-3'):
-    closest_color_one=ui.element('span').classes(color_classes).style('background: #37bf37;')
-    closest_color_two=ui.element('span').classes(color_classes).style('background: #7359eb;') if colors_count>=2 else None
-    closest_color_three=ui.element('span').classes(color_classes).style('background: #779bef;') if colors_count>=3 else None
+    closest_color_one=ui.element('span').classes(COLOR_CLASSES).style('background: #37bf37;')
+    closest_color_two=ui.element('span').classes(COLOR_CLASSES).style('background: #7359eb;') if colors_count>=2 else None
+    closest_color_three=ui.element('span').classes(COLOR_CLASSES).style('background: #779bef;') if colors_count>=3 else None
 
 ui.label(f'Images with similar colors').classes('mt-7 '+LABEL_CLASSES)
 with ui.row().classes('w-full flex gap-3'):
