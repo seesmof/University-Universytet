@@ -22,3 +22,48 @@ use the assert() method to meet the modular testing requirement
 6. Тестування має виконуватися шляхом взаємодії з різними файлами (в яких зберігаються дані) визначеної структури на пристроях з різними апаратними хараткеристиками під керуванням різних операційних систем або версій операційних систем.
 7. Виконати аналіз отриманих результатів тестування. У процесі аналізу отриманих результатів має бути порівняно результати, отримані під керуванням різних операційних систем (або їх версій) та на різних пристроях.
 
+## Database Structure 
+
+TABLE Listing
+  int id
+  User owner
+  string name
+  int price
+  enum['Private' | 'Flat' | 'New'] kind
+
+TABLE User
+  int id
+  string name
+  bool manager
+  list[Listing] listingsнерухомості
+  list[Listing] chosenнерухомості
+  list[Meeting] meetings
+
+TABLE Meeting
+  int id
+  Listing listingперегляду
+  User viewer
+  int score
+  enum['Private' | 'Flat' | 'New'] status
+
+## Program Functions 
+
+class Listing
+  void addListing(string kind, string name, int price)
+    if kind=='New' check if owner.manager
+  Listing viewListing(Listing listing)
+  void editListing(Listing listing)
+  void deleteListing(Listing listing)
+  void makeChosen(Listing listing, User user)
+
+class User
+  void addUser(string name, bool manager)
+  User viewUser(User user)
+  void editUser(User user)
+  void deleteUser(User user)
+
+class Meeting
+  void addMeeting(Listing listing, User viewer)
+  Meeting viewMeeting(Meeting meeting)
+  void editMeeting(Meeting meeting)
+  void deleteMeeting(Meeting meeting)
