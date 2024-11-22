@@ -62,12 +62,12 @@ namespace _22112024153437_trying_database_again
             const string PASSWORD = "1313";
             const string HOST = "localhost";
             const string PORT = "3306";
-            const string DATABASE_NAME = "fr_data";
+            const string DATABASE_NAME = "data";
             string connectionString = $"uid={USER_NAME};pwd={PASSWORD};host={HOST};port={PORT};database={DATABASE_NAME}";
             Console.WriteLine(connectionString);
 
             MySqlConnection conn = new MySqlConnection(connectionString);
-            string query = "select id,name from user";
+            string query = "select id,name from finance_client";
 
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataAdapter adapter = new MySqlDataAdapter();

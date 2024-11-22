@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Universytet\\31FR Frejmvorky Rozrobky\\3\\22112024170049_databasing_is_like_grazing\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2E3DD9A5-1278-4171-A6F6-52F616894722}|22112024170049_databasing_is_like_grazing.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\3\\22112024170049_databasing_is_like_grazing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E3DD9A5-1278-4171-A6F6-52F616894722}|22112024170049_databasing_is_like_grazing.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky Rozrobky\\3\\22112024170049_databasing_is_like_grazing\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\Universytet\\31FR Frejmvorky Rozrobky\\3\\22112024170049_databasing_is_like_grazing\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAUwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T15:02:23.981Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
