@@ -37,6 +37,23 @@ namespace _22112024153437_trying_database_again
     }
     */
 
+    public class Database
+    {
+        public MySqlConnection connection { get; set; }
+        public string connectionString { get; set; }
+
+        public Database(string connectionString)
+        {
+            this.connectionString = connectionString;
+            this.connection = new MySqlConnection(this.connectionString);
+        }
+
+        public void create() { }
+        public void read() { }
+        public void update() { }
+        public void delete() { }
+    }
+
     public class Program
     {
         static void Main(string[] args)
@@ -45,12 +62,12 @@ namespace _22112024153437_trying_database_again
             const string PASSWORD = "1313";
             const string HOST = "localhost";
             const string PORT = "3306";
-            const string DATABASE_NAME = "data";
+            const string DATABASE_NAME = "fr_data";
             string connectionString = $"uid={USER_NAME};pwd={PASSWORD};host={HOST};port={PORT};database={DATABASE_NAME}";
             Console.WriteLine(connectionString);
 
             MySqlConnection conn = new MySqlConnection(connectionString);
-            string query = "select id,name from finance_client";
+            string query = "select id,name from user";
 
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataAdapter adapter = new MySqlDataAdapter();
@@ -63,7 +80,7 @@ namespace _22112024153437_trying_database_again
             {
                 for (int j = 0; j < dt.Columns.Count; j++)
                 {
-                    Console.WriteLine($"ID: {}");
+                    Console.WriteLine(dt.Rows[i][j].ToString());
                 }
             }
 
