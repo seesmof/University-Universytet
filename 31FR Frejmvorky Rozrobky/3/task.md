@@ -40,7 +40,7 @@ Meeting
   INT id PrimaryKey AutoIncrement
   INT score
   VARCHAR(12) status <Pending|Viewed|Canceled>
-  INT listing ForeignKey <Listing.id>
+  INT viewable ForeignKey <Listing.id>
   INT viewer ForeignKey <User.id>
 
 ## Program Functions 
