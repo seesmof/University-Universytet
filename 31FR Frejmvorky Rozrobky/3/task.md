@@ -26,10 +26,10 @@ use the assert() method to meet the modular testing requirement
 
 Listing
   INT id PrimaryKey AutoIncrement
-  INT owner ForeignKey <User.id>
   VARCHAR(127) name
   INT price Unsigned
   VARCHAR(12) kind <Private|Flat|New>
+  INT owner ForeignKey <User.id>
 
 User
   INT id PrimaryKey AutoIncrement
@@ -38,10 +38,10 @@ User
 
 Meeting
   INT id PrimaryKey AutoIncrement
-  INT listing ForeignKey <Listing.id>
-  INT viewer ForeignKey <User.id>
   INT score
   VARCHAR(12) status <Pending|Viewed|Canceled>
+  INT listing ForeignKey <Listing.id>
+  INT viewer ForeignKey <User.id>
 
 ## Program Functions 
 
