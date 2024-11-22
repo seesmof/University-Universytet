@@ -53,14 +53,14 @@ Listing
   deleteListing(Listing listing)
   makeChosen(Listing listing, User user)
 
-User
-  createUser(string name, bool manager)
-  readUser(User user)
-  updateUser(User user)
-  deleteUser(User user)
-
 Meeting
   createMeeting(Listing listing, User viewer)
   readMeeting(Meeting meeting)
   updateMeeting(Meeting meeting)
   deleteMeeting(Meeting meeting)
+
+User
+  createUser(string name, bool manager)
+  readUser(User user)
+  updateUser(User user)
+  deleteUser(User user)
