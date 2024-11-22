@@ -35,13 +35,13 @@ TABLE User
   int id
   string name
   bool manager
-  list[Listing] listingsнерухомості
-  list[Listing] chosenнерухомості
+  list[Listing] listings
+  list[Listing] chosen
   list[Meeting] meetings
 
 TABLE Meeting
   int id
-  Listing listingперегляду
+  Listing listing
   User viewer
   int score
   enum['Private' | 'Flat' | 'New'] status
