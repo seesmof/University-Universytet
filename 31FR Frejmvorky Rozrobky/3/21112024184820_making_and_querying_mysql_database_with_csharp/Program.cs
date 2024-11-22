@@ -14,8 +14,8 @@ public class Program
     var PASSWORD = "1313";
     var HOST = "localhost";
     var PORT = "3306";
-    var NAME = "data";
-    var connectionString = $"server={HOST};port={PORT};UID={USER};password={PASSWORD};database={NAME};";
+    var NAME = "fr_data";
+    var connectionString = $"server={HOST};port={PORT};uid={USER};pwd={PASSWORD};database={NAME};";
     var data = new DataTable();
 
     var query = "SELECT * FROM data.finance_client;";
@@ -45,24 +45,5 @@ public class Program
     Console.ReadKey();
 
     var TABLE_PREFIX = "fr_";
-  }
-}
-
-var query = "SELECT * FROM finance_client;";
-using (var c = new MySqlConnection(connectionString))
-using (var a = new MySqlDataAdapter(query, c))
-{
-  a.Fill(data);
-}
-
-foreach (DataRow row in data.Rows)
-{
-  foreach (var item in row.ItemArray)
-  {
-    Console.WriteLine(item.ToString());
-  }
-  Console.WriteLine();
-}
-Console.ReadKey();
   }
 }
