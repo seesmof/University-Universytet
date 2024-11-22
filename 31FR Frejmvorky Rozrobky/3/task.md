@@ -46,21 +46,21 @@ Meeting
 ## Program Functions 
 
 Listing
-  void addListing(string kind, string name, int price)
+  addListing(string kind, string name, int price)
     if kind=='New' check if owner.manager
-  Listing viewListing(Listing listing)
-  void editListing(Listing listing)
-  void deleteListing(Listing listing)
-  void makeChosen(Listing listing, User user)
+  viewListing(Listing listing)
+  editListing(Listing listing)
+  deleteListing(Listing listing)
+  makeChosen(Listing listing, User user)
 
 User
-  void addUser(string name, bool manager)
-  User viewUser(User user)
-  void editUser(User user)
-  void deleteUser(User user)
+  addUser(string name, bool manager)
+  viewUser(User user)
+  editUser(User user)
+  deleteUser(User user)
 
 Meeting
-  void addMeeting(Listing listing, User viewer)
-  Meeting viewMeeting(Meeting meeting)
-  void editMeeting(Meeting meeting)
-  void deleteMeeting(Meeting meeting)
+  addMeeting(Listing listing, User viewer)
+  viewMeeting(Meeting meeting)
+  editMeeting(Meeting meeting)
+  deleteMeeting(Meeting meeting)
