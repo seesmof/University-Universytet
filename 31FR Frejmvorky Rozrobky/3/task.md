@@ -31,11 +31,6 @@ Listing
   VARCHAR(12) kind <Private|Flat|New>
   INT owner ForeignKey <User.id>
 
-User
-  INT id PrimaryKey AutoIncrement
-  VARCHAR(127) name
-  BOOLEAN manager
-
 Meeting
   INT id PrimaryKey AutoIncrement
   INT score
@@ -43,24 +38,29 @@ Meeting
   INT viewable ForeignKey <Listing.id>
   INT viewer ForeignKey <User.id>
 
+User
+  INT id PrimaryKey AutoIncrement
+  VARCHAR(127) name
+  BOOLEAN manager
+
 ## Program Functions 
 
 Listing
-  addListing(string kind, string name, int price)
+  createListing(string kind, string name, int price)
     if kind=='New' check if owner.manager
-  viewListing(Listing listing)
-  editListing(Listing listing)
+  readListing(Listing listing)
+  updateListing(Listing listing)
   deleteListing(Listing listing)
   makeChosen(Listing listing, User user)
 
 User
-  addUser(string name, bool manager)
-  viewUser(User user)
-  editUser(User user)
+  createUser(string name, bool manager)
+  readUser(User user)
+  updateUser(User user)
   deleteUser(User user)
 
 Meeting
-  addMeeting(Listing listing, User viewer)
-  viewMeeting(Meeting meeting)
-  editMeeting(Meeting meeting)
+  createMeeting(Listing listing, User viewer)
+  readMeeting(Meeting meeting)
+  updateMeeting(Meeting meeting)
   deleteMeeting(Meeting meeting)
