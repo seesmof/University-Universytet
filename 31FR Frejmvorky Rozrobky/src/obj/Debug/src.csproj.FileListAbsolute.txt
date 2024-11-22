@@ -13,3 +13,10 @@ E:\Universytet\31FR Frejmvorky Rozrobky\src\obj\Debug\src.csproj.GenerateResourc
 E:\Universytet\31FR Frejmvorky Rozrobky\src\obj\Debug\src.csproj.CoreCompileInputs.cache
 E:\Universytet\31FR Frejmvorky Rozrobky\src\obj\Debug\src.exe
 E:\Universytet\31FR Frejmvorky Rozrobky\src\obj\Debug\src.pdb
+E:\Universytet\31FR Frejmvorky Rozrobky\src\bin\Debug\MySql.Data.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\src\bin\Debug\System.Memory.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\src\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\src\bin\Debug\System.Numerics.Vectors.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\src\bin\Debug\System.Buffers.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\src\bin\Debug\MySql.Data.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\src\obj\Debug\src.csproj.Up2Date

@@ -6,5 +6,13 @@
         xmlns:local="clr-namespace:src"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid/>
+    <Grid>
+        <TextBox x:Name="User_Name" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="User Name" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="Result" HorizontalAlignment="Left" Margin="135,10,0,0" TextWrapping="Wrap" Text="Result" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="Host" HorizontalAlignment="Left" Margin="10,56,0,0" TextWrapping="Wrap" Text="Host" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="Port" HorizontalAlignment="Left" Margin="10,79,0,0" TextWrapping="Wrap" Text="Port" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="Database_Name" HorizontalAlignment="Left" Margin="10,102,0,0" TextWrapping="Wrap" Text="Database Name" VerticalAlignment="Top" Width="120" />
+        <Button x:Name="Connect" Content="Connect" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Height="21" Width="120" Click="Connect_Click"/>
+    </Grid>
 </Window>
