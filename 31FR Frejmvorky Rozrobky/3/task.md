@@ -24,6 +24,11 @@ use the assert() method to meet the modular testing requirement
 
 ## Database Structure 
 
+User
+  INT id PrimaryKey AutoIncrement
+  VARCHAR(127) name
+  BOOLEAN manager
+
 Listing
   INT id PrimaryKey AutoIncrement
   VARCHAR(127) name
@@ -38,12 +43,15 @@ Meeting
   INT viewable ForeignKey <Listing.id>
   INT viewer ForeignKey <User.id>
 
-User
-  INT id PrimaryKey AutoIncrement
-  VARCHAR(127) name
-  BOOLEAN manager
-
 ## Program Functions 
+
+User
+  createUser(string name, bool manager)
+  readUser(id, name[optional])
+    get by id
+    if not id: get first one by name 
+  updateUser(User user)
+  deleteUser(User user)
 
 Listing
   createListing(name, price, kind)
@@ -64,10 +72,3 @@ Meeting
   updateMeeting(Meeting meeting)
   deleteMeeting(Meeting meeting)
 
-User
-  createUser(string name, bool manager)
-  readUser(id, name[optional])
-    get by id
-    if not id: get first one by name 
-  updateUser(User user)
-  deleteUser(User user)

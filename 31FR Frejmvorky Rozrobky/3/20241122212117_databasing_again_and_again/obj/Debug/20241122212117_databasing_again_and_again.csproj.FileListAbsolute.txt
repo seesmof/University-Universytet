@@ -1,0 +1,14 @@
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\20241122212117_databasing_again_and_again.exe.config
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\20241122212117_databasing_again_and_again.exe
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\20241122212117_databasing_again_and_again.pdb
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\obj\Debug\20241122212117_databasing_again_and_again.csproj.AssemblyReference.cache
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\obj\Debug\20241122212117_databasing_again_and_again.csproj.CoreCompileInputs.cache
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\obj\Debug\20241122212117_databasing_again_and_again.exe
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\obj\Debug\20241122212117_databasing_again_and_again.pdb
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\MySql.Data.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Memory.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Numerics.Vectors.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Buffers.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\MySql.Data.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\obj\Debug\20241122.B940D367.Up2Date
