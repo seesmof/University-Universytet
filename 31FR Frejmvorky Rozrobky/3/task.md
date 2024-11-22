@@ -46,21 +46,28 @@ User
 ## Program Functions 
 
 Listing
-  createListing(string kind, string name, int price)
+  createListing(name, price, kind)
     if kind=='New' check if owner.manager
-  readListing(Listing listing)
+    check kind enum
+  readListing(id, name[optional])
+    get by id 
+    if not id: get first one by name 
   updateListing(Listing listing)
   deleteListing(Listing listing)
   makeChosen(Listing listing, User user)
 
 Meeting
   createMeeting(Listing listing, User viewer)
-  readMeeting(Meeting meeting)
+  readMeeting(id, name[optional])
+    get by id
+    if not id: get first one by name 
   updateMeeting(Meeting meeting)
   deleteMeeting(Meeting meeting)
 
 User
   createUser(string name, bool manager)
-  readUser(User user)
+  readUser(id, name[optional])
+    get by id
+    if not id: get first one by name 
   updateUser(User user)
   deleteUser(User user)
