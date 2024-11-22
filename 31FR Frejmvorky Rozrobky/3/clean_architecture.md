@@ -29,7 +29,7 @@ class Meeting
   Listing listingперегляду
   User viewer
   int score
-  enum['Private' | 'Flat' | 'New'] status
+  enum['Pending' | 'Viewed' | 'Canceled'] status
 
   void addMeeting(Listing listing, User viewer)
   Meeting viewMeeting(Meeting meeting)

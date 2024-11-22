@@ -29,7 +29,7 @@ class Meeting: об'єкт зустрічі
   Listing listing: об'єкт нерухомості для перегляду
   User viewer: користувач переглядач
   int score: оцінка
-  enum['Private' | 'Flat' | 'New'] status: статус
+  enum['Pending' | 'Viewed' | 'Canceled'] status: статус
 
   void addMeeting(Listing listing, User viewer): додати до бази даних
   Meeting viewMeeting(Meeting meeting): переглянути

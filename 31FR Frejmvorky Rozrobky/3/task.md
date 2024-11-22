@@ -24,31 +24,28 @@ use the assert() method to meet the modular testing requirement
 
 ## Database Structure 
 
-TABLE Listing
-  int id
-  User owner
-  string name
-  int price
-  enum['Private' | 'Flat' | 'New'] kind
+Listing
+  INT id PrimaryKey AutoIncrement
+  INT owner ForeignKey <User.id>
+  VARCHAR(127) name
+  INT price Unsigned
+  VARCHAR(12) kind <Private|Flat|New>
 
-TABLE User
-  int id
-  string name
-  bool manager
-  list[Listing] listings
-  list[Listing] chosen
-  list[Meeting] meetings
+User
+  INT id PrimaryKey AutoIncrement
+  VARCHAR(127) name
+  BOOLEAN manager
 
-TABLE Meeting
-  int id
-  Listing listing
-  User viewer
-  int score
-  enum['Private' | 'Flat' | 'New'] status
+Meeting
+  INT id PrimaryKey AutoIncrement
+  INT listing ForeignKey <Listing.id>
+  INT viewer ForeignKey <User.id>
+  INT score
+  VARCHAR(12) status <Pending|Viewed|Canceled>
 
 ## Program Functions 
 
-class Listing
+Listing
   void addListing(string kind, string name, int price)
     if kind=='New' check if owner.manager
   Listing viewListing(Listing listing)
@@ -56,13 +53,13 @@ class Listing
   void deleteListing(Listing listing)
   void makeChosen(Listing listing, User user)
 
-class User
+User
   void addUser(string name, bool manager)
   User viewUser(User user)
   void editUser(User user)
   void deleteUser(User user)
 
-class Meeting
+Meeting
   void addMeeting(Listing listing, User viewer)
   Meeting viewMeeting(Meeting meeting)
   void editMeeting(Meeting meeting)
