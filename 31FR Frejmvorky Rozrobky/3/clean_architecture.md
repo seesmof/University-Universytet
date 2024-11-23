@@ -3,7 +3,7 @@ class Listing
   User owner
   string name
   int price
-  enum['Private' | 'Flat' | 'New'] kind
+  enum['House' | 'Flat' | 'New'] kind
 
   void addListing(string kind, string name, int price)
   Listing viewListing(Listing listing)

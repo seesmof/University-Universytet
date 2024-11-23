@@ -33,7 +33,7 @@ Listing
   id INT PRIMARY_KEY AUTO_INCREMENT
   name VARCHAR(127) NOT_NULL
   price INT Unsigned NOT_NULL
-  kind VARCHAR(12) NOT_NULL <Private|Flat|New>
+  kind VARCHAR(12) NOT_NULL <House|Flat|New>
   owner INT FOREIGN_KEY NOT_NULL <User.id>
 
 Meeting
