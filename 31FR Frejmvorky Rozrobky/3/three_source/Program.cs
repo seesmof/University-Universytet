@@ -21,6 +21,14 @@ namespace three_source
         public string kind { get; set; }
         public User owner { get; set; }
     }
+    public class Meeting
+    {
+        public int id { get; set; }
+        public int score { get; set; }
+        public string status { get; set; } = "Pending";
+        public Listing viweable { get; set; }
+        public User viewer { get; set; }
+    }
     public class UserHandler
     {
         MySqlConnection connection;
@@ -40,7 +48,7 @@ namespace three_source
             var user = new User();
             while (reader.Read())
             {
-                user.id = int.Parse(reader[0].ToString());
+                user.id = reader.GetInt32(0);
                 user.name = name;
                 user.manager = manager;
             }
@@ -55,9 +63,9 @@ namespace three_source
             while (reader.Read())
             {
                 var user = new User();
-                user.id = int.Parse(reader[0].ToString());
-                user.name = reader[1].ToString();
-                user.manager = int.Parse(reader[2].ToString());
+                user.id = reader.GetInt32(0);
+                user.name = reader.GetString(1);
+                user.manager = reader.GetInt32(2);
                 reader.Close();
                 return user;
             }
@@ -77,6 +85,40 @@ namespace three_source
             command.ExecuteNonQuery();
         }
     }
+    public static class Test
+    {
+        public static void testUser(MySqlConnection connection, string userName = "Luke")
+        {
+            // Create
+            var handler = new UserHandler(connection);
+            var user = handler.create(userName);
+            Console.WriteLine($"Created user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
+
+            // Read
+            user = handler.read(user.id);
+            Console.WriteLine($"Read user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
+
+            // Update 
+            user.manager = 1;
+            handler.update(user);
+
+            user = handler.read(user.id);
+            Console.WriteLine($"Updated user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
+
+            // Delete
+            handler.delete(user.id);
+
+            user = handler.read(user.id);
+            if (user != null)
+            {
+                Console.WriteLine($"Deleted user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
+            }
+            else
+            {
+                Console.WriteLine($"Deleted user not found");
+            }
+        }
+    }
     public class Program
     {
         static void Main(string[] args)
@@ -88,27 +130,7 @@ namespace three_source
             MySqlDataReader reader;
             connection.Open();
 
-            // insert new user 
-            var handler = new UserHandler(connection);
-            var user = handler.create("Mark");
-            Console.WriteLine($"user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
-
-            // update user status 
-            user.manager = 1;
-            handler.update(user);
-            user = handler.read(user.id);
-            Console.WriteLine($"user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
-
-            // delete user
-            handler.delete(user.id);
-            var findUser = handler.read(user.id);
-            if (findUser == null)
-            {
-                Console.WriteLine("No user found");
-            } else {
-                Console.WriteLine($"user {findUser.id} name {findUser.name} manager {Convert.ToBoolean(findUser.manager)}");
-            }
-            Console.ReadKey();
+            Test.testUser(connection);
 
             // read all users 
             query = $"SELECT id,name,manager FROM user;";
