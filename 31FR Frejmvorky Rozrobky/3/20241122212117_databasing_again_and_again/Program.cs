@@ -13,7 +13,59 @@ namespace _20241122212117_databasing_again_and_again
     {
         public int id { get; set; }
         public string name { get; set; }
-        public bool manager { get; set; }
+        public bool manager { get; set; } = false;
+    }
+
+    public class UserRepo
+    {
+        MySqlConnection connection;
+        public UserRepo(MySqlConnection connection)
+        {
+            this.connection = connection;
+        }
+        public void create(User user)
+        {
+            string query = $"INSERT INTO user (name, manager) VALUES ('{user.name}', {user.manager});";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.ExecuteNonQuery();
+            }
+        }
+        public User read(int id)
+        {
+            string query = $"SELECT * FROM user WHERE id = {id};";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        User user = new User();
+                        user.id = reader.GetInt32(0);
+                        user.name = reader.GetString(1);
+                        user.manager = reader.GetBoolean(2);
+                        return user;
+                    }
+                }
+            }
+            return null;
+        }
+        public void update(User user)
+        {
+            string query = $"UPDATE user SET name = '{user.name}', manager = {user.manager} WHERE id = {user.id};";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.ExecuteNonQuery();
+            }
+        }
+        public void delete(User user)
+        {
+            string query = $"DELETE FROM user WHERE id = {user.id};";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.ExecuteNonQuery();
+            }
+        }
     }
 
     public class Listing
@@ -25,129 +77,67 @@ namespace _20241122212117_databasing_again_and_again
         public User owner { get; set; }
     }
 
+    public class ListingRepo
+    {
+        MySqlConnection connection;
+        public ListingRepo(MySqlConnection connection)
+        {
+            this.connection = connection;
+        }
+        public void create(Listing listing)
+        {
+            string query = $"INSERT INTO listing (name, price, kind, owner) VALUES ('{listing.name}', {listing.price}, '{listing.kind}', {listing.owner.id});";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.ExecuteNonQuery();
+            }
+        }
+        public Listing read(int id)
+        {
+            string query = $"SELECT * FROM listing WHERE id = {id};";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Listing listing = new Listing();
+                        listing.id = reader.GetInt32(0);
+                        listing.name = reader.GetString(1);
+                        listing.price = reader.GetUInt32(2);
+                        listing.kind = reader.GetString(3);
+                        listing.owner = new UserRepo(connection).read(reader.GetInt32(4));
+                        return listing;
+                    }
+                }
+            }
+            return null;
+        }
+        public void update(Listing listing)
+        {
+            string query = $"UPDATE listing SET name = '{listing.name}', price = {listing.price}, kind = '{listing.kind}', owner = {listing.owner.id} WHERE id = {listing.id};";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.ExecuteNonQuery();
+            }
+        }
+        public void delete(Listing listing)
+        {
+            string query = $"DELETE FROM listing WHERE id = {listing.id};";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+
     public class Meeting
     {
         public int id { get; set; }
         public int score { get; set; }
-        public string status { get; set; }
+        public string status { get; set; } = "Pending";
         public Listing viewable { get; set; }
         public User viewer { get; set; }
-    }
-
-    public class Database
-    {
-        public MySqlConnection connection { get; set; }
-
-        public Database(string connectionString)
-        {
-            connection = new MySqlConnection(connectionString);
-        }
-    }
-
-    public class UserRepository
-    {
-        private readonly Database _db;
-
-        public UserRepository(Database db) { _db = db; }
-
-        public MySqlDataReader getUser(int id)
-        {
-            if (_db.connection.State != ConnectionState.Open) { _db.connection.Open(); }
-            MySqlCommand cmd = new MySqlCommand($"SELECT * FROM user WHERE id = @id", _db.connection);
-            cmd.Parameters.AddWithValue("@id", id);
-            return cmd.ExecuteReader();
-        }
-
-        public void createUser(User user)
-        {
-            if (_db.connection.State != ConnectionState.Open) { _db.connection.Open(); }
-            string query = "INSERT INTO user (name, manager) VALUES (@name, @manager);";
-            MySqlCommand cmd = new MySqlCommand(query, _db.connection);
-            cmd.Parameters.AddWithValue("@name", user.name);
-            cmd.Parameters.AddWithValue("@manager", user.manager);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            _db.connection.Close();
-        }
-
-        public void updateUser(User user)
-        {
-            if (_db.connection.State != ConnectionState.Open) { _db.connection.Open(); }
-            string query = "UPDATE user SET name = @name, manager = @manager WHERE id = @id;";
-            MySqlCommand cmd = new MySqlCommand(query, _db.connection);
-            cmd.Parameters.AddWithValue("@name", user.name);
-            cmd.Parameters.AddWithValue("@manager", user.manager);
-            cmd.Parameters.AddWithValue("@id", user.id);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            _db.connection.Close();
-        }
-
-        public void deleteUser(User user)
-        {
-            if (_db.connection.State != ConnectionState.Open) { _db.connection.Open(); }
-            string query = "DELETE FROM user WHERE id = @id;";
-            MySqlCommand cmd = new MySqlCommand(query, _db.connection);
-            cmd.Parameters.AddWithValue("@id", user.id);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            _db.connection.Close();
-        }
-    }
-
-    public class ListingRepository
-    {
-        private readonly Database _db;
-
-        public ListingRepository(Database db) { _db = db; }
-
-        public MySqlDataReader getListing(int id)
-        {
-            if (_db.connection.State != ConnectionState.Open) { _db.connection.Open(); }
-            MySqlCommand cmd = new MySqlCommand($"SELECT * FROM listing WHERE id = @id", _db.connection);
-            cmd.Parameters.AddWithValue("@id", id);
-            return cmd.ExecuteReader();
-        }
-
-        public void createListing(Listing listing)
-        {
-            if (_db.connection.State != ConnectionState.Open) { _db.connection.Open(); }
-            string query = "INSERT INTO listing (name, price, kind, owner) VALUES (@name, @price, @kind, @owner);";
-            MySqlCommand cmd = new MySqlCommand(query, _db.connection);
-            cmd.Parameters.AddWithValue("@name", listing.name);
-            cmd.Parameters.AddWithValue("@price", listing.price);
-            cmd.Parameters.AddWithValue("@kind", listing.kind);
-            cmd.Parameters.AddWithValue("@owner", listing.owner.id);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            _db.connection.Close();
-        }
-
-        public void updateListing(Listing listing)
-        {
-            if (_db.connection.State != ConnectionState.Open) { _db.connection.Open(); }
-            string query = "UPDATE listing SET name = @name, price = @price, kind = @kind, owner = @owner WHERE id = @id;";
-            MySqlCommand cmd = new MySqlCommand(query, _db.connection);
-            cmd.Parameters.AddWithValue("@name", listing.name);
-            cmd.Parameters.AddWithValue("@price", listing.price);
-            cmd.Parameters.AddWithValue("@kind", listing.kind);
-            cmd.Parameters.AddWithValue("@owner", listing.owner.id);
-            cmd.Parameters.AddWithValue("@id", listing.id);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            _db.connection.Close();
-        }
-
-        public void deleteListing(Listing listing)
-        {
-            if (_db.connection.State != ConnectionState.Open) { _db.connection.Open(); }
-            string query = "DELETE FROM listing WHERE id = @id;";
-            MySqlCommand cmd = new MySqlCommand(query, _db.connection);
-            cmd.Parameters.AddWithValue("@id", listing.id);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            _db.connection.Close();
-        }
     }
 
     public class Program
@@ -160,73 +150,22 @@ namespace _20241122212117_databasing_again_and_again
             const string PORT = "3306";
             const string DATABASE_NAME = "fr_data";
             string connectionString = $"uid={USER_NAME};pwd={PASSWORD};host={HOST};port={PORT};database={DATABASE_NAME}";
-            Console.WriteLine(connectionString);
 
-            Database db = new Database(connectionString);
-            UserRepository ur = new UserRepository(db);
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
 
-            // add test admin user 
-            User admin = new User
+            UserRepo userRepo = new UserRepo(conn);
+            // read all users 
+            var userId = 1;
+            var user = userRepo.read(userId);
+            // show user id and name and status 
+            Console.WriteLine($"User {user.id} {user.name} {user.manager}");
+            while (user != null)
             {
-                id = 1,
-                name = "admin",
-                manager = true
-            };
-            ur.createUser(admin);
-
-            // get all users
-            List<User> users = new List<User>();
-            MySqlDataReader reader = ur.getUser(1);
-            while (reader.Read())
-            {
-                User user = new User
-                {
-                    id = int.Parse(reader["id"].ToString()),
-                    name = reader["name"].ToString(),
-                    manager = reader["manager"].ToString() == "1"
-                };
-                users.Add(user);
+                Console.WriteLine($"User {user.id} {user.name} {user.manager}");
+                userId++;
+                user = userRepo.read(userId);
             }
-            reader.Close();
-
-            // show the data for each user 
-            foreach (User user in users)
-            {
-                Console.WriteLine($"id: {user.id}, name: {user.name}, manager: {user.manager}");
-            }
-
-            // create a new listing for admin 
-            ListingRepository lr = new ListingRepository(db);
-            Listing listing = new Listing
-            {
-                id = 1,
-                name = "test listing",
-                price = 120,
-                kind = "Flat",
-                owner = admin
-            };
-            lr.createListing(listing);
-
-            // show listing data
-            reader = lr.getListing(1);
-            while (reader.Read())
-            {
-                Listing l = new Listing
-                {
-                    id = int.Parse(reader["id"].ToString()),
-                    name = reader["name"].ToString(),
-                    price = uint.Parse(reader["price"].ToString()),
-                    kind = reader["kind"].ToString(),
-                    owner = new User
-                    {
-                        id = int.Parse(reader["owner"].ToString()),
-                        name = reader["name"].ToString(),
-                        manager = reader["manager"].ToString() == "1"
-                    }
-                };
-                Console.WriteLine($"id: {l.id}, name: {l.name}, price: {l.price}, kind: {l.kind}, owner: {l.owner.name}");
-            }
-            reader.Close();
 
             Console.ReadKey();
         }
