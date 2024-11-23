@@ -25,23 +25,23 @@ use the assert() method to meet the modular testing requirement
 ## Database Structure 
 
 User
-  INT id PrimaryKey AutoIncrement
-  VARCHAR(127) name
-  BOOLEAN manager
+  id INT PrimaryKey AutoIncrement
+  name VARCHAR(127) NotNull
+  manager BOOLEAN NotNull
 
 Listing
-  INT id PrimaryKey AutoIncrement
-  VARCHAR(127) name
-  INT price Unsigned
-  VARCHAR(12) kind <Private|Flat|New>
-  INT owner ForeignKey <User.id>
+  id INT PrimaryKey AutoIncrement
+  name VARCHAR(127) NotNull
+  price INT Unsigned NotNull
+  kind VARCHAR(12) NotNull <Private|Flat|New>
+  INT owner ForeignKey NotNull <User.id>
 
 Meeting
-  INT id PrimaryKey AutoIncrement
-  INT score
-  VARCHAR(12) status <Pending|Viewed|Canceled>
-  INT viewable ForeignKey <Listing.id>
-  INT viewer ForeignKey <User.id>
+  id INT PrimaryKey AutoIncrement
+  score INT
+  status VARCHAR(12) default 'Pending' <Pending|Viewed|Canceled>
+  viewable INT ForeignKey NotNull <Listing.id>
+  viewer INT ForeignKey NotNull <User.id>
 
 ## Program Functions 
 
