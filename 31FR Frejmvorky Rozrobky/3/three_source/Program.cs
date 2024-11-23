@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace three_source
 {
+    public class User
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public bool manager { get; set; } = false;
+    }
     public class Program
     {
         static void Main(string[] args)
@@ -24,10 +30,11 @@ namespace three_source
 
                 while (reader.Read())
                 {
-                    int id = int.Parse(reader[0].ToString());
-                    string name = reader[1].ToString();
-                    bool manager = Convert.ToBoolean(Convert.ToInt16(reader[2].ToString()));
-                    Console.WriteLine($"User {id} name {name} manager {manager}");
+                    var user = new User();
+                    user.id = int.Parse(reader[0].ToString());
+                    user.name = reader[1].ToString();
+                    user.manager = Convert.ToBoolean(Convert.ToInt16(reader[2].ToString()));
+                    Console.WriteLine($"User {user.id} name {user.name} manager {user.manager}");
                 }
             } catch (Exception e)
             {
