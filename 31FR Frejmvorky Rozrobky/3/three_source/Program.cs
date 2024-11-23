@@ -31,10 +31,10 @@ namespace three_source
     }
     public class UserHandler
     {
-        MySqlConnection connection;
         string query;
         MySqlCommand command;
         MySqlDataReader reader;
+        MySqlConnection connection;
         public UserHandler(MySqlConnection connection) { this.connection = connection; }
         public User create(string name, int manager = 0)
         {
