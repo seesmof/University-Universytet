@@ -1,20 +1,15 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data;
+using MySql.Data.MySqlClient;
 
-namespace three_source
+const string conStr = "uid=root;pwd=1313;host=localhost;port=3306;database=fr_data";
+using var connection = new MySqlConnection(conStr);
+connection.Open();
+string query = "select id, name, manager from user";
+using var command = new MySqlCommand(query, connection);
+using var reader = command.ExecuteReader();
+
+while (reader.Read())
 {
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            const string conStr = "uid=root;pwd=1313;host=localhost;port=3306;database=fr_data";
-            using MySqlConnection conn = new MySqlConnection(conStr);
-            Console.WriteLine("Connected and disconnected praise JESUS CHRIST my LODR GOD MOST HIGH!");
-            Console.ReadKey();
-        }
-    }
+    Console.WriteLine(reader);
 }
+connection.Close();
