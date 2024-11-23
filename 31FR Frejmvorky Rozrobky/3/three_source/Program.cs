@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace three_source
     {
         string query;
         MySqlCommand command;
-        MySqlDataReader reader;
+        public MySqlDataReader reader { get; set; }
         MySqlConnection connection;
         public UserHandler(MySqlConnection connection) { this.connection = connection; }
         public User create(string name, int manager = 0)
@@ -106,7 +107,7 @@ namespace three_source
     {
         string query;
         MySqlCommand command;
-        MySqlDataReader reader;
+        public MySqlDataReader reader { get; set; }
         MySqlConnection connection;
         List<string> kinds = new List<string>{
             "House",
@@ -192,9 +193,11 @@ namespace three_source
             command.ExecuteNonQuery();
         }
     }
-    public static class Test
+    public class Test
     {
-        public static void testUser(MySqlConnection connection, string userName = "Luke")
+        MySqlConnection connection;
+        public Test(MySqlConnection connection) { this.connection = connection; }
+        public void testUser(string userName = "Luke")
         {
             // Create
             var handler = new UserHandler(connection);
@@ -232,6 +235,48 @@ namespace three_source
             {
                 Console.WriteLine($"User {u.id} name {u.name} manager {Convert.ToBoolean(u.manager)}");
             }
+            handler.reader.Close();
+        }
+        public void testListing(string listingName = "Quiet House in the Countryside", int price = 120, string kind = "House", User owner = null)
+        {
+            // Create
+            var handler = new ListingHandler(connection);
+            var listing = handler.create(listingName, price, kind, owner);
+            Console.WriteLine($"Created listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
+
+            // Read
+            listing = handler.read(listing.id);
+            Console.WriteLine($"Read listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
+
+            // Update 
+            listing.name = "Modern Appartament near Court";
+            listing.kind = "New";
+            handler.update(listing);
+
+            listing = handler.read(listing.id);
+            Console.WriteLine($"Updated listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
+
+            // Delete
+            handler.delete(listing.id);
+
+            listing = handler.read(listing.id);
+            if (listing != null)
+            {
+                Console.WriteLine($"Deleted listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
+            }
+            else
+            {
+                Console.WriteLine($"Deleted listing not found");
+            }
+
+            // Show all
+            var listings = handler.readAll();
+            Console.WriteLine($"All listings ({listings.Count}):");
+            foreach (var u in listings)
+            {
+                Console.WriteLine($"Listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
+            }
+            handler.reader.Close();
         }
     }
     public class Program
@@ -242,7 +287,8 @@ namespace three_source
             var connection = new MySqlConnection(conStr);
             connection.Open();
 
-            Test.testUser(connection);
+            var tester = new Test(connection);
+            tester.testListing(owner: new UserHandler(connection).read(1));
 
             connection.Close();
         }
