@@ -156,7 +156,7 @@ namespace three_source
                 listing.name = reader.GetString(1);
                 listing.price = reader.GetInt32(2);
                 listing.kind = reader.GetString(3);
-                tempOwner= reader.GetInt32(4);
+                tempOwner = reader.GetInt32(4);
             }
             reader.Close();
             listing.owner = new UserHandler(connection).read(tempOwner);
@@ -176,10 +176,14 @@ namespace three_source
                 listing.name = reader.GetString(1);
                 listing.price = reader.GetInt32(2);
                 listing.kind = reader.GetString(3);
-                listing.owner = new UserHandler(connection).read(reader.GetInt32(4));
+                owners.Add(reader.GetInt32(4));
                 listings.Add(listing);
             }
             reader.Close();
+            for (int i = 0; i < listings.Count; i++)
+            {
+                listings[i].owner = new UserHandler(connection).read(owners[i]);
+            }
             return listings;
         }
         public void update(Listing listing)
@@ -261,14 +265,13 @@ namespace three_source
             handler.delete(listing.id);
             Console.WriteLine($"Deleted listing {listing.id}");
 
-            /* 
+            // Show all
             var listings = handler.readAll();
             Console.WriteLine($"All listings ({listings.Count}):");
-            foreach (var u in listings)
+            foreach (var l in listings)
             {
-                Console.WriteLine($"Listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
+                Console.WriteLine($"Listing {l.id} name {l.name} price {l.price} kind {l.kind} owner {l.owner.name}");
             }
-            */
         }
     }
     public class Program
