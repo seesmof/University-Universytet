@@ -12,3 +12,15 @@ E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_ag
 E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Buffers.dll
 E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\MySql.Data.xml
 E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\obj\Debug\20241122.B940D367.Up2Date
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\nunit.framework.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\nunit.framework.legacy.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.ValueTuple.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\nunit.framework.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\nunit.framework.legacy.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Buffers.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Memory.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Numerics.Vectors.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241122212117_databasing_again_and_again\bin\Debug\System.ValueTuple.xml

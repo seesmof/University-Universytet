@@ -30,6 +30,17 @@ namespace _20241122212117_databasing_again_and_again
             {
                 command.ExecuteNonQuery();
             }
+            string id_query = $"SELECT LAST_INSERT_ID();";
+            using (var command = new MySqlCommand(id_query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        user.id = reader.GetInt32(0);
+                    }
+                }
+            }
         }
         public User read(int id)
         {
@@ -90,6 +101,17 @@ namespace _20241122212117_databasing_again_and_again
             using (var command = new MySqlCommand(query, connection))
             {
                 command.ExecuteNonQuery();
+            }
+            string id_query = $"SELECT LAST_INSERT_ID();";
+            using (var command = new MySqlCommand(id_query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        listing.id = reader.GetInt32(0);
+                    }
+                }
             }
         }
         public Listing read(int id)
@@ -154,6 +176,17 @@ namespace _20241122212117_databasing_again_and_again
             {
                 command.ExecuteNonQuery();
             }
+            string id_query = $"SELECT LAST_INSERT_ID();";
+            using (var command = new MySqlCommand(id_query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        meeting.id = reader.GetInt32(0);
+                    }
+                }
+            }
         }
         public Meeting read(int id)
         {
@@ -196,6 +229,63 @@ namespace _20241122212117_databasing_again_and_again
 
     public class Program
     {
+        static void testUser(MySqlConnection conn)
+        {
+            conn.Open();
+            UserRepo userRepo = new UserRepo(conn);
+
+            // Create
+            User user = new User();
+            user.name = "John Doe";
+            user.manager = false;
+            userRepo.create(user);
+
+            // Read
+            user = userRepo.read(user.id);
+            Console.WriteLine($"Created user with id {user.id} and name {user.name} and manager {user.manager}");
+
+            // Update
+            user.manager = true;
+            userRepo.update(user);
+            user = userRepo.read(user.id);
+            Console.WriteLine($"Updated user with id {user.id} and name {user.name} and manager {user.manager}");
+
+            // Delete
+            userRepo.delete(user);
+
+            conn.Close();
+        }
+
+        static void testListing(MySqlConnection conn)
+        {
+            conn.Open();
+            ListingRepo listingRepo = new ListingRepo(conn);
+
+            // Create
+            Listing listing = new Listing();
+            listing.name = "Test Listing";
+            listing.price = 120;
+            listing.kind = "New";
+            listing.owner = new UserRepo(conn).read(1);
+            listingRepo.create(listing);
+
+            // Read
+            listing = listingRepo.read(listing.id);
+            Console.WriteLine($"Created listing with id {listing.id} and name {listing.name} and price {listing.price} and kind {listing.kind} and owner {listing.owner.name}");
+
+            // Update
+            listing.price = 150;
+            listing.kind = "Flat";
+            listingRepo.update(listing);
+            listing = listingRepo.read(listing.id);
+            Console.WriteLine($"Updated listing with id {listing.id} and name {listing.name} and price {listing.price} and kind {listing.kind} and owner {listing.owner.name}");
+
+            // Delete
+            listingRepo.delete(listing);
+
+            conn.Close();
+        }
+
         static void Main(string[] args)
         {
             const string USER_NAME = "root";
@@ -205,40 +295,11 @@ namespace _20241122212117_databasing_again_and_again
             const string DATABASE_NAME = "fr_data";
             string connectionString = $"uid={USER_NAME};pwd={PASSWORD};host={HOST};port={PORT};database={DATABASE_NAME}";
 
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            conn.Open();
+            MySqlConnection userConn = new MySqlConnection(connectionString);
+            testUser(userConn);
+            MySqlConnection listingConn = new MySqlConnection(connectionString);
+            testListing(listingConn);
 
-            UserRepo userRepo = new UserRepo(conn);
-            var userId = 1;
-            User user;
-
-            while ((user = userRepo.read(userId)) != null)
-            {
-                Console.WriteLine($"User {user.id} {user.name} {user.manager}");
-                userId++;
-            }
-
-            ListingRepo listingRepo = new ListingRepo(conn);
-            var listingId = 1;
-            Listing listing;
-
-            while ((listing = listingRepo.read(listingId)) != null)
-            {
-                Console.WriteLine($"Listing {listing.id} {listing.name} {listing.price} {listing.kind} {listing.owner.id}");
-                listingId++;
-            }
-
-            MeetingRepo meetingRepo = new MeetingRepo(conn);
-            var meetingId = 1;
-            Meeting meeting;
-
-            while ((meeting = meetingRepo.read(meetingId)) != null)
-            {
-                Console.WriteLine($"Meeting {meeting.id} {meeting.score} {meeting.status} {meeting.viewable.id} {meeting.viewer.id}");
-                meetingId++;
-            }
-
-            conn.Close();
             Console.ReadKey();
         }
     }
