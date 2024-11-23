@@ -3,6 +3,7 @@ using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,7 +35,7 @@ namespace three_source
     {
         string query;
         MySqlCommand command;
-        public MySqlDataReader reader { get; set; }
+        MySqlDataReader reader;
         MySqlConnection connection;
         public UserHandler(MySqlConnection connection) { this.connection = connection; }
         public User create(string name, int manager = 0)
@@ -107,7 +108,7 @@ namespace three_source
     {
         string query;
         MySqlCommand command;
-        public MySqlDataReader reader { get; set; }
+        MySqlDataReader reader;
         MySqlConnection connection;
         List<string> kinds = new List<string>{
             "House",
@@ -147,19 +148,19 @@ namespace three_source
             query = $"SELECT id,name,price,kind,owner FROM listing WHERE id={id};";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
+            int tempOwner = 0;
+            var listing = new Listing();
             while (reader.Read())
             {
-                var listing = new Listing();
                 listing.id = reader.GetInt32(0);
                 listing.name = reader.GetString(1);
                 listing.price = reader.GetInt32(2);
                 listing.kind = reader.GetString(3);
-                listing.owner = new UserHandler(connection).read(reader.GetInt32(4));
-                reader.Close();
-                return listing;
+                tempOwner= reader.GetInt32(4);
             }
             reader.Close();
-            return null;
+            listing.owner = new UserHandler(connection).read(tempOwner);
+            return listing;
         }
         public List<Listing> readAll()
         {
@@ -167,6 +168,7 @@ namespace three_source
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
             var listings = new List<Listing>();
+            var owners = new List<int>();
             while (reader.Read())
             {
                 var listing = new Listing();
@@ -235,7 +237,6 @@ namespace three_source
             {
                 Console.WriteLine($"User {u.id} name {u.name} manager {Convert.ToBoolean(u.manager)}");
             }
-            handler.reader.Close();
         }
         public void testListing(string listingName = "Quiet House in the Countryside", int price = 120, string kind = "House", User owner = null)
         {
@@ -258,25 +259,16 @@ namespace three_source
 
             // Delete
             handler.delete(listing.id);
+            Console.WriteLine($"Deleted listing {listing.id}");
 
-            listing = handler.read(listing.id);
-            if (listing != null)
-            {
-                Console.WriteLine($"Deleted listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
-            }
-            else
-            {
-                Console.WriteLine($"Deleted listing not found");
-            }
-
-            // Show all
+            /* 
             var listings = handler.readAll();
             Console.WriteLine($"All listings ({listings.Count}):");
             foreach (var u in listings)
             {
                 Console.WriteLine($"Listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
             }
-            handler.reader.Close();
+            */
         }
     }
     public class Program
