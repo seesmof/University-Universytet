@@ -16,7 +16,7 @@ namespace three_source
     public class Listing
     {
         public int id { get; set; }
-        public string name { get; set; }    
+        public string name { get; set; }
         public int price { get; set; }
         public string kind { get; set; }
         public User owner { get; set; }
