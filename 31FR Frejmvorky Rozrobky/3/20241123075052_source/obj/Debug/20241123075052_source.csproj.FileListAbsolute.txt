@@ -1,0 +1,14 @@
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\bin\Debug\20241123075052_source.exe.config
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\bin\Debug\20241123075052_source.exe
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\bin\Debug\20241123075052_source.pdb
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\bin\Debug\MySql.Data.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\bin\Debug\System.Memory.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\bin\Debug\System.Numerics.Vectors.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\bin\Debug\System.Buffers.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\bin\Debug\MySql.Data.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\obj\Debug\20241123075052_source.csproj.AssemblyReference.cache
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\obj\Debug\20241123075052_source.csproj.CoreCompileInputs.cache
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\obj\Debug\20241123.55A0BCB9.Up2Date
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\obj\Debug\20241123075052_source.exe
+E:\Universytet\31FR Frejmvorky Rozrobky\3\20241123075052_source\obj\Debug\20241123075052_source.pdb
