@@ -21,6 +21,19 @@ namespace three_source
         public string kind { get; set; }
         public User owner { get; set; }
     }
+    public class UserHandler
+    {
+        MySqlConnection connection;
+        string query;
+        MySqlCommand command;
+        MySqlDataReader reader;
+        public UserHandler(MySqlConnection connection) { this.connection = connection; }
+        public int create(User user)
+        {
+            query = $"INSERT INTO user (name,manager) VALUES ('{user.name}','{user.manager}');";
+            return user.id;
+        }
+    }
     public class Program
     {
         static void Main(string[] args)
@@ -32,7 +45,7 @@ namespace three_source
             // insert new user 
             var user = new User();
             user.name = "John";
-            var query = $"INSERT INTO user (name, manager) values ('{user.name}', '{user.manager}');";
+            var query = $"INSERT INTO user (name,manager) values ('{user.name}','{user.manager}');";
             var command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
             Console.WriteLine($"Inserted user id {null} name {user.name} manager {user.manager}");
@@ -92,6 +105,25 @@ namespace three_source
             command.ExecuteNonQuery();
             Console.WriteLine($"Deleted user {user.id} name {user.name} manager {user.manager}");
             Console.ReadKey();
+
+            // read all users 
+            query = $"SELECT id,name,manager FROM user;";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            var users = new List<User>();
+            while (reader.Read())
+            {
+                var u = new User();
+                u.id = int.Parse(reader[0].ToString());
+                u.name = reader[1].ToString();
+                u.manager = int.Parse(reader[2].ToString());
+                users.Add(u);
+            }
+            reader.Close();
+            foreach (var u in users)
+            {
+                Console.WriteLine($"User {u.id} name {u.name} manager {u.manager}");
+            }
 
             connection.Close();
         }
