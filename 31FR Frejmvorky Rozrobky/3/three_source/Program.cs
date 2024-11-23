@@ -28,10 +28,53 @@ namespace three_source
         MySqlCommand command;
         MySqlDataReader reader;
         public UserHandler(MySqlConnection connection) { this.connection = connection; }
-        public int create(User user)
+        public User create(string name, int manager = 0)
         {
-            query = $"INSERT INTO user (name,manager) VALUES ('{user.name}','{user.manager}');";
-            return user.id;
+            query = $"INSERT INTO user (name,manager) VALUES ('{name}','{manager}');";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+            
+            query = "SELECT LAST_INSERT_ID();";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            var user = new User();
+            while (reader.Read())
+            {
+                user.id = int.Parse(reader[0].ToString());
+                user.name = name;
+                user.manager = manager;
+            }
+            reader.Close();
+            return user;
+        }
+        public User read(int id)
+        {
+            query = $"SELECT id,name,manager FROM user WHERE id={id};";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                var user = new User();
+                user.id = int.Parse(reader[0].ToString());
+                user.name = reader[1].ToString();
+                user.manager = int.Parse(reader[2].ToString());
+                reader.Close();
+                return user;
+            }
+            reader.Close();
+            return null;
+        }
+        public void update(User user)
+        {
+            query = $"UPDATE user SET name='{user.name}',manager='{user.manager}' WHERE id={user.id};";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+        }
+        public void delete(int id)
+        {
+            query = $"DELETE FROM user WHERE id={id};";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
         }
     }
     public class Program
@@ -40,70 +83,31 @@ namespace three_source
         {
             const string conStr = "uid=root;pwd=1313;host=localhost;port=3306;database=fr_data";
             var connection = new MySqlConnection(conStr);
+            string query;
+            MySqlCommand command;
+            MySqlDataReader reader;
             connection.Open();
 
             // insert new user 
-            var user = new User();
-            user.name = "John";
-            var query = $"INSERT INTO user (name,manager) values ('{user.name}','{user.manager}');";
-            var command = new MySqlCommand(query, connection);
-            command.ExecuteNonQuery();
-            Console.WriteLine($"Inserted user id {null} name {user.name} manager {user.manager}");
-            Console.ReadKey();
-
-            // get user id
-            query = "SELECT LAST_INSERT_ID();";
-            command = new MySqlCommand(query, connection);
-            var reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                var id = reader[0];
-                user.id = int.Parse(id.ToString());
-            }
-            Console.WriteLine($"Read user {user.id} name {user.name} manager {user.manager}");
-            Console.ReadKey();
-            reader.Close();
-
-            // get user data by id 
-            query = $"SELECT id, name, manager FROM user WHERE id = {user.id};";
-            command = new MySqlCommand(query, connection);
-            reader = command.ExecuteReader();
-            var readUser = new User();
-            while (reader.Read())
-            {
-                readUser.id = int.Parse(reader[0].ToString());
-                readUser.name = reader[1].ToString();
-                readUser.manager = int.Parse(reader[2].ToString());
-            }
-            Console.WriteLine($"Read user {readUser.id} name {readUser.name} manager {readUser.manager}");
-            Console.ReadKey();
-            reader.Close();
+            var handler = new UserHandler(connection);
+            var user = handler.create("Mark");
+            Console.WriteLine($"user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
 
             // update user status 
             user.manager = 1;
-            query = $"UPDATE user SET name = '{user.name}', manager = '{user.manager}' WHERE id = {user.id}";
-            command = new MySqlCommand(query, connection);
-            command.ExecuteNonQuery();
-
-            // read updated user 
-            query = $"SELECT id, name, manager FROM user WHERE id = {user.id};";
-            command = new MySqlCommand(query, connection);
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                readUser.id = int.Parse(reader[0].ToString());
-                readUser.name = reader[1].ToString();
-                readUser.manager = int.Parse(reader[2].ToString());
-            }
-            Console.WriteLine($"Read user {readUser.id} name {readUser.name} manager {readUser.manager}");
-            Console.ReadKey();
-            reader.Close();
+            handler.update(user);
+            user = handler.read(user.id);
+            Console.WriteLine($"user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
 
             // delete user
-            query = $"DELETE FROM user WHERE id = {user.id}";
-            command = new MySqlCommand(query, connection);
-            command.ExecuteNonQuery();
-            Console.WriteLine($"Deleted user {user.id} name {user.name} manager {user.manager}");
+            handler.delete(user.id);
+            var findUser = handler.read(user.id);
+            if (findUser == null)
+            {
+                Console.WriteLine("No user found");
+            } else {
+                Console.WriteLine($"user {findUser.id} name {findUser.name} manager {Convert.ToBoolean(findUser.manager)}");
+            }
             Console.ReadKey();
 
             // read all users 
