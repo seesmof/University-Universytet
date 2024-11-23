@@ -39,7 +39,7 @@ Listing
 Meeting
   id INT PRIMARY_KEY AUTO_INCREMENT
   score INT
-  status VARCHAR(12) DEFAULT 'Pending' <Pending|Viewed|Canceled>
+  status VARCHAR(12) DEFAULT "Pending" <Pending|Viewed|Canceled>
   viewable INT FOREIGN_KEY NOT_NULL <Listing.id>
   viewer INT FOREIGN_KEY NOT_NULL <User.id>
 
