@@ -11,7 +11,7 @@ namespace three_source
     {
         public int id { get; set; }
         public string name { get; set; }
-        public bool manager { get; set; } = false;
+        public int manager { get; set; } = 0;
     }
     public class Listing
     {
@@ -27,44 +27,73 @@ namespace three_source
         {
             const string conStr = "uid=root;pwd=1313;host=localhost;port=3306;database=fr_data";
             var connection = new MySqlConnection(conStr);
-            try
-            {
-                Console.WriteLine("Connecting to database...");
-                connection.Open();
+            connection.Open();
 
-                var query = "select id,name,manager from user";
-                var command = new MySqlCommand(query, connection);
-                var reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    var user = new User();
-                    user.id = int.Parse(reader[0].ToString());
-                    user.name = reader[1].ToString();
-                    user.manager = Convert.ToBoolean(Convert.ToInt16(reader[2].ToString()));
-                    Console.WriteLine($"User {user.id} name {user.name} manager {user.manager}");
-                }
-                reader.Close();
+            // insert new user 
+            var user = new User();
+            user.name = "John";
+            var query = $"INSERT INTO user (name, manager) values ('{user.name}', '{user.manager}');";
+            var command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+            Console.WriteLine($"Inserted user id {null} name {user.name} manager {user.manager}");
+            Console.ReadKey();
 
-                query = "select id,name,price,kind,owner from listing";
-                command = new MySqlCommand(query, connection);
-                reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    var listing = new Listing();
-                    listing.id = int.Parse(reader[0].ToString());
-                    listing.name = reader[1].ToString();
-                    listing.price = int.Parse(reader[2].ToString());
-                    listing.kind = reader[3].ToString();
-                    listing.owner = null;
-                    Console.WriteLine($"Listing {listing.name} price {listing.price} kind {listing.kind} owner {reader[4].ToString()}");
-                }
-                reader.Close();
-            } catch (Exception e)
+            // get user id
+            query = "SELECT LAST_INSERT_ID();";
+            command = new MySqlCommand(query, connection);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                Console.WriteLine(e.ToString());
+                var id = reader[0];
+                user.id = int.Parse(id.ToString());
             }
+            Console.WriteLine($"Read user {user.id} name {user.name} manager {user.manager}");
+            Console.ReadKey();
+            reader.Close();
+
+            // get user data by id 
+            query = $"SELECT id, name, manager FROM user WHERE id = {user.id};";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            var readUser = new User();
+            while (reader.Read())
+            {
+                readUser.id = int.Parse(reader[0].ToString());
+                readUser.name = reader[1].ToString();
+                readUser.manager = int.Parse(reader[2].ToString());
+            }
+            Console.WriteLine($"Read user {readUser.id} name {readUser.name} manager {readUser.manager}");
+            Console.ReadKey();
+            reader.Close();
+
+            // update user status 
+            user.manager = 1;
+            query = $"UPDATE user SET name = '{user.name}', manager = '{user.manager}' WHERE id = {user.id}";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+
+            // read updated user 
+            query = $"SELECT id, name, manager FROM user WHERE id = {user.id};";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                readUser.id = int.Parse(reader[0].ToString());
+                readUser.name = reader[1].ToString();
+                readUser.manager = int.Parse(reader[2].ToString());
+            }
+            Console.WriteLine($"Read user {readUser.id} name {readUser.name} manager {readUser.manager}");
+            Console.ReadKey();
+            reader.Close();
+
+            // delete user
+            query = $"DELETE FROM user WHERE id = {user.id}";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+            Console.WriteLine($"Deleted user {user.id} name {user.name} manager {user.manager}");
+            Console.ReadKey();
+
             connection.Close();
-            Console.WriteLine("Disconnected");
         }
     }
 }
