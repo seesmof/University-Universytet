@@ -28,7 +28,7 @@ namespace three_source
         public int id { get; set; }
         public int score { get; set; }
         public string status { get; set; } = "Pending";
-        public Listing viweable { get; set; }
+        public Listing viewable { get; set; }
         public User viewer { get; set; }
     }
     public class UserHandler
@@ -211,7 +211,7 @@ namespace three_source
             "Canceled",
         };
         public MeetingHandler(MySqlConnection connection) { this.connection = connection; }
-        public Meeting create(int score, string status, Listing viweable, User viewer)
+        public Meeting create(Listing viewable, User viewer, int score = 0, string status = "Pending")
         {
             var correctStatus = statuses.Contains(status);
             if (!correctStatus)
@@ -219,77 +219,81 @@ namespace three_source
                 return null;
             }
 
-            query = $"INSERT INTO listing (name,price,kind,owner) VALUES ('{name}','{price}','{kind}','{owner.id}');";
+            query = $"INSERT INTO meeting (score,status,viewable,viewer) VALUES ({score},'{status}',{viewable.id},{viewer.id});";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
             
             query = "SELECT LAST_INSERT_ID();";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
-            var listing = new Meeting();
+            var meeting = new Meeting();
             while (reader.Read())
             {
-                listing.id = reader.GetInt32(0);
-                listing.name = name;
-                listing.price = price;
-                listing.kind = kind;
-                listing.owner = owner;
+                meeting.id = reader.GetInt32(0);
+                meeting.score = score;
+                meeting.status = status;
+                meeting.viewable = viewable;
+                meeting.viewer = viewer;
             }
             reader.Close();
-            return listing;
+            return meeting;
         }
         public Meeting read(int id)
         {
-            query = $"SELECT id,name,price,kind,owner FROM listing WHERE id={id};";
+            query = $"SELECT id,score,status,viewable,viewer FROM meeting WHERE id={id};";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
-            int tempOwner = 0;
-            var listing = new Meeting();
+            var meeting = new Meeting();
+            var tempViewable = 0;
+            var tempViewer = 0;
             while (reader.Read())
             {
-                listing.id = reader.GetInt32(0);
-                listing.name = reader.GetString(1);
-                listing.price = reader.GetInt32(2);
-                listing.kind = reader.GetString(3);
-                tempOwner = reader.GetInt32(4);
+                meeting.id = reader.GetInt32(0);
+                meeting.score = reader.GetInt32(1);
+                meeting.status = reader.GetString(2);
+                tempViewable = reader.GetInt32(3);
+                tempViewer = reader.GetInt32(4);
             }
             reader.Close();
-            listing.owner = new UserHandler(connection).read(tempOwner);
-            return listing;
+            meeting.viewable = new ListingHandler(connection).read(tempViewable);
+            meeting.viewer = new UserHandler(connection).read(tempViewer);
+            return meeting;
         }
         public List<Meeting> readAll()
         {
-            query = "SELECT id,name,price,kind,owner FROM listing;";
+            query = "SELECT id,score,status,viewable,viewer FROM meeting;";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
-            var listings = new List<Meeting>();
-            var owners = new List<int>();
+            var meetings = new List<Meeting>();
+            var viewables = new List<int>();
+            var viewers = new List<int>();
             while (reader.Read())
             {
-                var listing = new Meeting();
-                listing.id = reader.GetInt32(0);
-                listing.name = reader.GetString(1);
-                listing.price = reader.GetInt32(2);
-                listing.kind = reader.GetString(3);
-                owners.Add(reader.GetInt32(4));
-                listings.Add(listing);
+                var meeting = new Meeting();
+                meeting.id = reader.GetInt32(0);
+                meeting.score = reader.GetInt32(1);
+                meeting.status = reader.GetString(2);
+                viewables.Add(reader.GetInt32(3));
+                viewers.Add(reader.GetInt32(4));
+                meetings.Add(meeting);
             }
             reader.Close();
-            for (int i = 0; i < listings.Count; i++)
+            for (int i = 0; i < meetings.Count; i++)
             {
-                listings[i].owner = new UserHandler(connection).read(owners[i]);
+                meetings[i].viewable= new ListingHandler(connection).read(viewables[i]);
+                meetings[i].viewer = new UserHandler(connection).read(viewers[i]);
             }
-            return listings;
+            return meetings;
         }
-        public void update(Meeting listing)
+        public void update(Meeting meeting)
         {
-            query = $"UPDATE listing SET name='{listing.name}',price={listing.price},kind='{listing.kind}',owner={listing.owner.id} WHERE id={listing.id};";
+            query = $"UPDATE meeting SET score={meeting.score},status='{meeting.status}',viewable={meeting.viewable.id},viewer={meeting.viewer.id} WHERE id={meeting.id};";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
         }
         public void delete(int id)
         {
-            query = $"DELETE FROM listing WHERE id={id};";
+            query = $"DELETE FROM meeting WHERE id={id};";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
         }
