@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +25,7 @@ namespace three_source
     public class Meeting
     {
         public int id { get; set; }
-        public int score { get; set; }
+        public int score { get; set; } = 0;
         public string status { get; set; } = "Pending";
         public Listing viewable { get; set; }
         public User viewer { get; set; }
@@ -280,7 +279,7 @@ namespace three_source
             reader.Close();
             for (int i = 0; i < meetings.Count; i++)
             {
-                meetings[i].viewable= new ListingHandler(connection).read(viewables[i]);
+                meetings[i].viewable = new ListingHandler(connection).read(viewables[i]);
                 meetings[i].viewer = new UserHandler(connection).read(viewers[i]);
             }
             return meetings;
@@ -322,23 +321,14 @@ namespace three_source
 
             // Delete
             handler.delete(user.id);
-
-            user = handler.read(user.id);
-            if (user != null)
-            {
-                Console.WriteLine($"Deleted user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
-            }
-            else
-            {
-                Console.WriteLine($"Deleted user not found");
-            }
+            Console.WriteLine($"Deleted user {user.id}");
 
             // Show all
             var users = handler.readAll();
             Console.WriteLine($"All users ({users.Count}):");
             foreach (var u in users)
             {
-                Console.WriteLine($"User {u.id} name {u.name} manager {Convert.ToBoolean(u.manager)}");
+                Console.WriteLine($"- User {u.id} name {u.name} manager {Convert.ToBoolean(u.manager)}");
             }
         }
         public void testListing(string listingName = "Quiet House in the Countryside", int price = 120, string kind = "House", User owner = null)
@@ -369,7 +359,38 @@ namespace three_source
             Console.WriteLine($"All listings ({listings.Count}):");
             foreach (var l in listings)
             {
-                Console.WriteLine($"Listing {l.id} name {l.name} price {l.price} kind {l.kind} owner {l.owner.name}");
+                Console.WriteLine($"- Listing {l.id} name {l.name} price {l.price} kind {l.kind} owner {l.owner.name}");
+            }
+        }
+        public void testMeeting(Listing viewable = null, User viewer = null)
+        {
+            // Create
+            var handler = new MeetingHandler(connection);
+            var meeting = handler.create(viewable, viewer);
+            Console.WriteLine($"Created meeting {meeting.id} score {meeting.score} status {meeting.status} viewable {meeting.viewable.name} viewer {meeting.viewer.name}");
+
+            // Read
+            meeting = handler.read(meeting.id);
+            Console.WriteLine($"Read meeting {meeting.id} score {meeting.score} status {meeting.status} viewable {meeting.viewable.name} viewer {meeting.viewer.name}");
+
+            // Update 
+            meeting.score = 7;
+            meeting.status = "Viewed";
+            handler.update(meeting);
+
+            meeting = handler.read(meeting.id);
+            Console.WriteLine($"Updated meeting {meeting.id} score {meeting.score} status {meeting.status} viewable {meeting.viewable.name} viewer {meeting.viewer.name}");
+
+            // Delete
+            handler.delete(meeting.id);
+            Console.WriteLine($"Deleted meeting {meeting.id}");
+
+            // Show all
+            var meetings = handler.readAll();
+            Console.WriteLine($"All meetings ({meetings.Count}):");
+            foreach (var m in meetings)
+            {
+                Console.WriteLine($"- Meeting {m.id} score {m.score} status {m.status} viewable {m.viewable.name} viewer {m.viewer.name}");
             }
         }
     }
@@ -382,7 +403,12 @@ namespace three_source
             connection.Open();
 
             var tester = new Test(connection);
+            tester.testUser();
+            Console.WriteLine();
             tester.testListing(owner: new UserHandler(connection).read(1));
+            Console.WriteLine();
+            tester.testMeeting(viewable: new ListingHandler(connection).read(1), viewer: new UserHandler(connection).read(1));
+            Console.WriteLine();
 
             connection.Close();
         }
