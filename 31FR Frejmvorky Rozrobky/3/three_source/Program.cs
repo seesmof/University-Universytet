@@ -199,6 +199,101 @@ namespace three_source
             command.ExecuteNonQuery();
         }
     }
+    public class MeetingHandler
+    {
+        string query;
+        MySqlCommand command;
+        MySqlDataReader reader;
+        MySqlConnection connection;
+        List<string> statuses = new List<string>{
+            "Pending",
+            "Viewed",
+            "Canceled",
+        };
+        public MeetingHandler(MySqlConnection connection) { this.connection = connection; }
+        public Meeting create(int score, string status, Listing viweable, User viewer)
+        {
+            var correctStatus = statuses.Contains(status);
+            if (!correctStatus)
+            {
+                return null;
+            }
+
+            query = $"INSERT INTO listing (name,price,kind,owner) VALUES ('{name}','{price}','{kind}','{owner.id}');";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+            
+            query = "SELECT LAST_INSERT_ID();";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            var listing = new Meeting();
+            while (reader.Read())
+            {
+                listing.id = reader.GetInt32(0);
+                listing.name = name;
+                listing.price = price;
+                listing.kind = kind;
+                listing.owner = owner;
+            }
+            reader.Close();
+            return listing;
+        }
+        public Meeting read(int id)
+        {
+            query = $"SELECT id,name,price,kind,owner FROM listing WHERE id={id};";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            int tempOwner = 0;
+            var listing = new Meeting();
+            while (reader.Read())
+            {
+                listing.id = reader.GetInt32(0);
+                listing.name = reader.GetString(1);
+                listing.price = reader.GetInt32(2);
+                listing.kind = reader.GetString(3);
+                tempOwner = reader.GetInt32(4);
+            }
+            reader.Close();
+            listing.owner = new UserHandler(connection).read(tempOwner);
+            return listing;
+        }
+        public List<Meeting> readAll()
+        {
+            query = "SELECT id,name,price,kind,owner FROM listing;";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            var listings = new List<Meeting>();
+            var owners = new List<int>();
+            while (reader.Read())
+            {
+                var listing = new Meeting();
+                listing.id = reader.GetInt32(0);
+                listing.name = reader.GetString(1);
+                listing.price = reader.GetInt32(2);
+                listing.kind = reader.GetString(3);
+                owners.Add(reader.GetInt32(4));
+                listings.Add(listing);
+            }
+            reader.Close();
+            for (int i = 0; i < listings.Count; i++)
+            {
+                listings[i].owner = new UserHandler(connection).read(owners[i]);
+            }
+            return listings;
+        }
+        public void update(Meeting listing)
+        {
+            query = $"UPDATE listing SET name='{listing.name}',price={listing.price},kind='{listing.kind}',owner={listing.owner.id} WHERE id={listing.id};";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+        }
+        public void delete(int id)
+        {
+            query = $"DELETE FROM listing WHERE id={id};";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+        }
+    }
     public class Test
     {
         MySqlConnection connection;
