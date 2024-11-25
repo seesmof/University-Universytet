@@ -1,0 +1,7 @@
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\bin\Debug\four_source.exe.config
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\bin\Debug\four_source.exe
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\bin\Debug\four_source.pdb
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\obj\Debug\four_source.csproj.AssemblyReference.cache
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\obj\Debug\four_source.csproj.CoreCompileInputs.cache
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\obj\Debug\four_source.exe
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\obj\Debug\four_source.pdb
