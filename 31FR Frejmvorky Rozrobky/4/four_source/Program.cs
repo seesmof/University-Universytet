@@ -6,9 +6,23 @@ using System.Threading.Tasks;
 
 namespace four_source
 {
-    public class User { }
-    public class Estate { }
-    public class Meeting { }
+    public class User
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Admin { get; set; } = 0;
+    }
+    public class Estate
+    {
+        public int ID { get; set; }
+        public User Owner { get; set; }
+        public string Title { get; set; }
+        public string Kind { get; set; }
+    }
+    public class Meeting
+    {
+
+    }
     public static class EstateKind
     {
         public static string Home = "Home";
@@ -32,10 +46,9 @@ namespace four_source
         static void Main(string[] args)
         {
             /* 
-            login 
-            if no user then register 
-                keep track of current session with User class 
-            implement all the functions
+            enter user name 
+                if not found in users, create new 
+            load 
             */
             /* 
             while (true)
