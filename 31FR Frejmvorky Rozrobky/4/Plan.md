@@ -38,7 +38,7 @@ user
 estate 
   int id 
   int owner_id
-  string name
+  string title
   string kind (Home or Flat or New)
 meeting 
   int id 
@@ -46,10 +46,6 @@ meeting
   int target_id
   string status (Wait or Done or Skip) = Wait
   string score (Bad or Okay or Fine)
-chosen_estate
-  int id 
-  int user_id
-  int estate_id
 
 ## Classes
 User 
