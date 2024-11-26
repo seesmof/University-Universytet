@@ -52,8 +52,6 @@ User
   int ID 
   string Name 
   bool Admin
-  list<Estate> Owned [all Estate where Owner=User]
-  list<Estate> Chosen [all Estate from chosen_estate where user_id=User.ID]
 Estate 
   int ID 
   User Owner
@@ -65,6 +63,12 @@ Meeting
   Estate Target
   string Status (Wait or Done or Skip) = Wait
   string Score (Bad or Okay or Fine)
+Session
+  bool Entered
+  User Client
+  list<Estate> Owned
+  list<Meeting> Schedule
 
 ## Features 
 - Request User status change 
+- View Meeting's for selected Estate
