@@ -48,20 +48,20 @@ meeting
   string score (Bad or Okay or Fine)
 chosen_estate
   int id 
-  int chosen_owner_id
-  int chosen_estate_id
+  int user_id
+  int estate_id
 
 ## Classes
 User 
   int ID 
   string Name 
   bool Admin
-  list<Estate> Owned
-  list<Estate> Chosen (from Owned)
+  list<Estate> Owned [all Estate where Owner=User]
+  list<Estate> Chosen [all Estate from chosen_estate where user_id=User.ID]
 Estate 
   int ID 
   User Owner
-  string Name
+  string Title
   string Kind (Home or Flat or New)
 Meeting 
   int ID 
