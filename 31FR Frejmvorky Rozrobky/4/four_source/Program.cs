@@ -21,7 +21,11 @@ namespace four_source
     }
     public class Meeting
     {
-
+        public int ID { get; set; }
+        public string Score { get; set; }
+        public string Status { get; set; } = "Wait";
+        public User Sender { get; set; }
+        public Estate Target { get; set; }
     }
     public static class EstateKind
     {

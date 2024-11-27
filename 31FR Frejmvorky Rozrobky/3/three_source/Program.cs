@@ -10,25 +10,24 @@ namespace three_source
 {
     public class User
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public int manager { get; set; } = 0;
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Admin { get; set; } = 0;
     }
-    public class Listing
+    public class Estate
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public int price { get; set; }
-        public string kind { get; set; }
-        public User owner { get; set; }
+        public int ID { get; set; }
+        public string Title { get; set; }
+        public string Kind { get; set; }
+        public User Owner { get; set; }
     }
     public class Meeting
     {
-        public int id { get; set; }
-        public int score { get; set; } = 0;
-        public string status { get; set; } = "Pending";
-        public Listing viewable { get; set; }
-        public User viewer { get; set; }
+        public int ID { get; set; }
+        public string Score { get; set; }
+        public string Status { get; set; } = "Wait";
+        public Estate Target { get; set; }
+        public User Sender { get; set; }
     }
     public class UserHandler
     {
@@ -37,9 +36,9 @@ namespace three_source
         MySqlDataReader reader;
         MySqlConnection connection;
         public UserHandler(MySqlConnection connection) { this.connection = connection; }
-        public User create(string name, int manager = 0)
+        public User create(string name, int admin = 0)
         {
-            query = $"INSERT INTO user (name,manager) VALUES ('{name}',{manager});";
+            query = $"INSERT INTO user (name,admin) VALUES ('{name}',{admin});";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
             
@@ -49,24 +48,24 @@ namespace three_source
             var user = new User();
             while (reader.Read())
             {
-                user.id = reader.GetInt32(0);
-                user.name = name;
-                user.manager = manager;
+                user.ID = reader.GetInt32(0);
+                user.Name = name;
+                user.Admin = admin;
             }
             reader.Close();
             return user;
         }
         public User read(int id)
         {
-            query = $"SELECT id,name,manager FROM user WHERE id={id};";
+            query = $"SELECT id,name,admin FROM user WHERE id={id};";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
             while (reader.Read())
             {
                 var user = new User();
-                user.id = reader.GetInt32(0);
-                user.name = reader.GetString(1);
-                user.manager = reader.GetInt32(2);
+                user.ID = reader.GetInt32(0);
+                user.Name = reader.GetString(1);
+                user.Admin = reader.GetInt32(2);
                 reader.Close();
                 return user;
             }
@@ -75,16 +74,16 @@ namespace three_source
         }
         public List<User> readAll()
         {
-            query = "SELECT id,name,manager FROM user;";
+            query = "SELECT id,name,admin FROM user;";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
             var users = new List<User>();
             while (reader.Read())
             {
                 var user = new User();
-                user.id = reader.GetInt32(0);
-                user.name = reader.GetString(1);
-                user.manager = reader.GetInt32(2);
+                user.ID = reader.GetInt32(0);
+                user.Name = reader.GetString(1);
+                user.Admin = reader.GetInt32(2);
                 users.Add(user);
             }
             reader.Close();
@@ -92,7 +91,7 @@ namespace three_source
         }
         public void update(User user)
         {
-            query = $"UPDATE user SET name='{user.name}',manager={user.manager} WHERE id={user.id};";
+            query = $"UPDATE user SET name='{user.Name}',admin={user.Admin} WHERE id={user.ID};";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
         }
@@ -103,19 +102,19 @@ namespace three_source
             command.ExecuteNonQuery();
         }
     }
-    public class ListingHandler
+    public class EstateHandler
     {
         string query;
         MySqlCommand command;
         MySqlDataReader reader;
         MySqlConnection connection;
         List<string> kinds = new List<string>{
-            "House",
+            "Home",
             "Flat",
             "New",
         };
-        public ListingHandler(MySqlConnection connection) { this.connection = connection; }
-        public Listing create(string name, int price, string kind, User owner)
+        public EstateHandler(MySqlConnection connection) { this.connection = connection; }
+        public Estate create(string name, string kind, User owner)
         {
             var correctKind = kinds.Contains(kind);
             if (!correctKind)
@@ -123,77 +122,74 @@ namespace three_source
                 return null;
             }
 
-            query = $"INSERT INTO listing (name,price,kind,owner) VALUES ('{name}','{price}','{kind}','{owner.id}');";
+            query = $"INSERT INTO estate (title,kind,owner_id) VALUES ('{name}','{kind}',{owner.ID});";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
             
             query = "SELECT LAST_INSERT_ID();";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
-            var listing = new Listing();
+            var estate = new Estate();
             while (reader.Read())
             {
-                listing.id = reader.GetInt32(0);
-                listing.name = name;
-                listing.price = price;
-                listing.kind = kind;
-                listing.owner = owner;
+                estate.ID = reader.GetInt32(0);
+                estate.Title = name;
+                estate.Kind = kind;
+                estate.Owner = owner;
             }
             reader.Close();
-            return listing;
+            return estate;
         }
-        public Listing read(int id)
+        public Estate read(int id)
         {
-            query = $"SELECT id,name,price,kind,owner FROM listing WHERE id={id};";
+            query = $"SELECT id,title,kind,owner_id FROM estate WHERE id={id};";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
             int tempOwner = 0;
-            var listing = new Listing();
+            var estate = new Estate();
             while (reader.Read())
             {
-                listing.id = reader.GetInt32(0);
-                listing.name = reader.GetString(1);
-                listing.price = reader.GetInt32(2);
-                listing.kind = reader.GetString(3);
-                tempOwner = reader.GetInt32(4);
+                estate.ID = reader.GetInt32(0);
+                estate.Title = reader.GetString(1);
+                estate.Kind = reader.GetString(2);
+                tempOwner = reader.GetInt32(3);
             }
             reader.Close();
-            listing.owner = new UserHandler(connection).read(tempOwner);
-            return listing;
+            estate.Owner = new UserHandler(connection).read(tempOwner);
+            return estate;
         }
-        public List<Listing> readAll()
+        public List<Estate> readAll()
         {
-            query = "SELECT id,name,price,kind,owner FROM listing;";
+            query = "SELECT id,title,kind,owner_id FROM estate;";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
-            var listings = new List<Listing>();
+            var estates = new List<Estate>();
             var owners = new List<int>();
             while (reader.Read())
             {
-                var listing = new Listing();
-                listing.id = reader.GetInt32(0);
-                listing.name = reader.GetString(1);
-                listing.price = reader.GetInt32(2);
-                listing.kind = reader.GetString(3);
-                owners.Add(reader.GetInt32(4));
-                listings.Add(listing);
+                var estate = new Estate();
+                estate.ID = reader.GetInt32(0);
+                estate.Title = reader.GetString(1);
+                estate.Kind = reader.GetString(2);
+                owners.Add(reader.GetInt32(3));
+                estates.Add(estate);
             }
             reader.Close();
-            for (int i = 0; i < listings.Count; i++)
+            for (int i = 0; i < estates.Count; i++)
             {
-                listings[i].owner = new UserHandler(connection).read(owners[i]);
+                estates[i].Owner = new UserHandler(connection).read(owners[i]);
             }
-            return listings;
+            return estates;
         }
-        public void update(Listing listing)
+        public void update(Estate estate)
         {
-            query = $"UPDATE listing SET name='{listing.name}',price={listing.price},kind='{listing.kind}',owner={listing.owner.id} WHERE id={listing.id};";
+            query = $"UPDATE estate SET title='{estate.Title}',kind='{estate.Kind}',owner_id={estate.Owner.ID} WHERE id={estate.ID};";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
         }
         public void delete(int id)
         {
-            query = $"DELETE FROM listing WHERE id={id};";
+            query = $"DELETE FROM estate WHERE id={id};";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
         }
@@ -205,20 +201,26 @@ namespace three_source
         MySqlDataReader reader;
         MySqlConnection connection;
         List<string> statuses = new List<string>{
-            "Pending",
-            "Viewed",
-            "Canceled",
+            "Wait",
+            "Done",
+            "Skip",
+        };
+        List<string> scores = new List<string>{
+            "Bad",
+            "Okay",
+            "Fine",
         };
         public MeetingHandler(MySqlConnection connection) { this.connection = connection; }
-        public Meeting create(Listing viewable, User viewer, int score = 0, string status = "Pending")
+        public Meeting create(Estate viewable, User viewer, string score = "Okay", string status = "Wait")
         {
             var correctStatus = statuses.Contains(status);
-            if (!correctStatus)
+            var correctScore = scores.Contains(score);
+            if (!correctScore || !correctStatus)
             {
                 return null;
             }
 
-            query = $"INSERT INTO meeting (score,status,viewable,viewer) VALUES ({score},'{status}',{viewable.id},{viewer.id});";
+            query = $"INSERT INTO meeting (score,status,target_id,sender_id) VALUES ('{score}','{status}',{viewable.ID},{viewer.ID});";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
             
@@ -228,18 +230,18 @@ namespace three_source
             var meeting = new Meeting();
             while (reader.Read())
             {
-                meeting.id = reader.GetInt32(0);
-                meeting.score = score;
-                meeting.status = status;
-                meeting.viewable = viewable;
-                meeting.viewer = viewer;
+                meeting.ID = reader.GetInt32(0);
+                meeting.Score = score;
+                meeting.Status = status;
+                meeting.Target = viewable;
+                meeting.Sender = viewer;
             }
             reader.Close();
             return meeting;
         }
         public Meeting read(int id)
         {
-            query = $"SELECT id,score,status,viewable,viewer FROM meeting WHERE id={id};";
+            query = $"SELECT id,score,status,target_id,sender_id FROM meeting WHERE id={id};";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
             var meeting = new Meeting();
@@ -247,20 +249,20 @@ namespace three_source
             var tempViewer = 0;
             while (reader.Read())
             {
-                meeting.id = reader.GetInt32(0);
-                meeting.score = reader.GetInt32(1);
-                meeting.status = reader.GetString(2);
+                meeting.ID = reader.GetInt32(0);
+                meeting.Score = reader.GetString(1);
+                meeting.Status = reader.GetString(2);
                 tempViewable = reader.GetInt32(3);
                 tempViewer = reader.GetInt32(4);
             }
             reader.Close();
-            meeting.viewable = new ListingHandler(connection).read(tempViewable);
-            meeting.viewer = new UserHandler(connection).read(tempViewer);
+            meeting.Target = new EstateHandler(connection).read(tempViewable);
+            meeting.Sender = new UserHandler(connection).read(tempViewer);
             return meeting;
         }
         public List<Meeting> readAll()
         {
-            query = "SELECT id,score,status,viewable,viewer FROM meeting;";
+            query = "SELECT id,score,status,target_id,sender_id FROM meeting;";
             command = new MySqlCommand(query, connection);
             reader = command.ExecuteReader();
             var meetings = new List<Meeting>();
@@ -269,9 +271,9 @@ namespace three_source
             while (reader.Read())
             {
                 var meeting = new Meeting();
-                meeting.id = reader.GetInt32(0);
-                meeting.score = reader.GetInt32(1);
-                meeting.status = reader.GetString(2);
+                meeting.ID = reader.GetInt32(0);
+                meeting.Score = reader.GetString(1);
+                meeting.Status = reader.GetString(2);
                 viewables.Add(reader.GetInt32(3));
                 viewers.Add(reader.GetInt32(4));
                 meetings.Add(meeting);
@@ -279,14 +281,14 @@ namespace three_source
             reader.Close();
             for (int i = 0; i < meetings.Count; i++)
             {
-                meetings[i].viewable = new ListingHandler(connection).read(viewables[i]);
-                meetings[i].viewer = new UserHandler(connection).read(viewers[i]);
+                meetings[i].Target = new EstateHandler(connection).read(viewables[i]);
+                meetings[i].Sender = new UserHandler(connection).read(viewers[i]);
             }
             return meetings;
         }
         public void update(Meeting meeting)
         {
-            query = $"UPDATE meeting SET score={meeting.score},status='{meeting.status}',viewable={meeting.viewable.id},viewer={meeting.viewer.id} WHERE id={meeting.id};";
+            query = $"UPDATE meeting SET score='{meeting.Score}',status='{meeting.Status}',target_id={meeting.Target.ID},sender_id={meeting.Sender.ID} WHERE id={meeting.ID};";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
         }
@@ -306,91 +308,91 @@ namespace three_source
             // Create
             var handler = new UserHandler(connection);
             var user = handler.create(userName);
-            Console.WriteLine($"Created user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
+            Console.WriteLine($"Created user {user.ID} name {user.Name} manager {Convert.ToBoolean(user.Admin)}");
 
             // Read
-            user = handler.read(user.id);
-            Console.WriteLine($"Read user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
+            user = handler.read(user.ID);
+            Console.WriteLine($"Read user {user.ID} name {user.Name} manager {Convert.ToBoolean(user.Admin)}");
 
             // Update 
-            user.manager = 1;
+            user.Admin = 1;
             handler.update(user);
 
-            user = handler.read(user.id);
-            Console.WriteLine($"Updated user {user.id} name {user.name} manager {Convert.ToBoolean(user.manager)}");
+            user = handler.read(user.ID);
+            Console.WriteLine($"Updated user {user.ID} name {user.Name} manager {Convert.ToBoolean(user.Admin)}");
 
             // Delete
-            handler.delete(user.id);
-            Console.WriteLine($"Deleted user {user.id}");
+            handler.delete(user.ID);
+            Console.WriteLine($"Deleted user {user.ID}");
 
             // Show all
             var users = handler.readAll();
             Console.WriteLine($"All users ({users.Count}):");
             foreach (var u in users)
             {
-                Console.WriteLine($"- User {u.id} name {u.name} manager {Convert.ToBoolean(u.manager)}");
+                Console.WriteLine($"- User {u.ID} name {u.Name} manager {Convert.ToBoolean(u.Admin)}");
             }
         }
-        public void testListing(string listingName = "Quiet House in the Countryside", int price = 120, string kind = "House", User owner = null)
+        public void testEstate(string estateName = "Quiet House in the Countryside", string kind = "Home", User owner = null)
         {
             // Create
-            var handler = new ListingHandler(connection);
-            var listing = handler.create(listingName, price, kind, owner);
-            Console.WriteLine($"Created listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
+            var handler = new EstateHandler(connection);
+            var estate = handler.create(estateName, kind, owner);
+            Console.WriteLine($"Created estate {estate.ID} name {estate.Title} kind {estate.Kind} owner {estate.Owner.Name}");
 
             // Read
-            listing = handler.read(listing.id);
-            Console.WriteLine($"Read listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
+            estate = handler.read(estate.ID);
+            Console.WriteLine($"Read estate {estate.ID} name {estate.Title} kind {estate.Kind} owner {estate.Owner.Name}");
 
             // Update 
-            listing.name = "Modern Appartament near Court";
-            listing.kind = "New";
-            handler.update(listing);
+            estate.Title = "Modern Appartament near Court";
+            estate.Kind = "New";
+            handler.update(estate);
 
-            listing = handler.read(listing.id);
-            Console.WriteLine($"Updated listing {listing.id} name {listing.name} price {listing.price} kind {listing.kind} owner {listing.owner.name}");
+            estate = handler.read(estate.ID);
+            Console.WriteLine($"Updated estate {estate.ID} name {estate.Title} kind {estate.Kind} owner {estate.Owner.Name}");
 
             // Delete
-            handler.delete(listing.id);
-            Console.WriteLine($"Deleted listing {listing.id}");
+            handler.delete(estate.ID);
+            Console.WriteLine($"Deleted estate {estate.ID}");
 
             // Show all
-            var listings = handler.readAll();
-            Console.WriteLine($"All listings ({listings.Count}):");
-            foreach (var l in listings)
+            var estates = handler.readAll();
+            Console.WriteLine($"All estates ({estates.Count}):");
+            foreach (var l in estates)
             {
-                Console.WriteLine($"- Listing {l.id} name {l.name} price {l.price} kind {l.kind} owner {l.owner.name}");
+                Console.WriteLine($"- Estate {l.ID} name {l.Title} kind {l.Kind} owner {l.Owner.Name}");
             }
         }
-        public void testMeeting(Listing viewable = null, User viewer = null)
+        public void testMeeting(Estate viewable = null, User viewer = null)
         {
             // Create
             var handler = new MeetingHandler(connection);
             var meeting = handler.create(viewable, viewer);
-            Console.WriteLine($"Created meeting {meeting.id} score {meeting.score} status {meeting.status} viewable {meeting.viewable.name} viewer {meeting.viewer.name}");
+            Console.WriteLine($"Created meeting {meeting.ID} score {meeting.Score} status {meeting.Status} viewable {meeting.Target.Title} viewer {meeting.Sender.Name}");
 
             // Read
-            meeting = handler.read(meeting.id);
-            Console.WriteLine($"Read meeting {meeting.id} score {meeting.score} status {meeting.status} viewable {meeting.viewable.name} viewer {meeting.viewer.name}");
+            meeting = handler.read(meeting.ID);
+            Console.WriteLine($"Read meeting {meeting.ID} score {meeting.Score} status {meeting.Status} viewable {meeting.Target.Title} viewer {meeting.Sender.Name}");
 
             // Update 
-            meeting.score = 7;
-            meeting.status = "Viewed";
+            meeting.Score = "Fine";
+            meeting.Status = "Done";
             handler.update(meeting);
 
-            meeting = handler.read(meeting.id);
-            Console.WriteLine($"Updated meeting {meeting.id} score {meeting.score} status {meeting.status} viewable {meeting.viewable.name} viewer {meeting.viewer.name}");
+            meeting = handler.read(meeting.ID);
+            Console.WriteLine($"Updated meeting {meeting.ID} score {meeting.Score} status {meeting.Status} viewable {meeting.Target.Title} viewer {meeting.Sender.Name}");
 
             // Delete
-            handler.delete(meeting.id);
-            Console.WriteLine($"Deleted meeting {meeting.id}");
+            handler.delete(meeting.ID);
+            Console.WriteLine($"Deleted meeting {meeting.ID}");
 
             // Show all
             var meetings = handler.readAll();
             Console.WriteLine($"All meetings ({meetings.Count}):");
             foreach (var m in meetings)
             {
-                Console.WriteLine($"- Meeting {m.id} score {m.score} status {m.status} viewable {m.viewable.name} viewer {m.viewer.name}");
+                Console.WriteLine($"- Meeting {m.ID} score {m.Score} status {m.Status} viewable {m.Target.Title} viewer {m.Sender.Name}");
             }
         }
     }
@@ -405,11 +407,11 @@ namespace three_source
             var tester = new Test(connection);
             tester.testUser();
             Console.WriteLine();
-            tester.testListing(owner: new UserHandler(connection).read(1));
+            tester.testEstate(owner: new UserHandler(connection).read(2));
             Console.WriteLine();
-            tester.testMeeting(viewable: new ListingHandler(connection).read(1), viewer: new UserHandler(connection).read(1));
+            tester.testMeeting(viewable: new EstateHandler(connection).read(2), viewer: new UserHandler(connection).read(2));
             Console.WriteLine();
-
+            
             connection.Close();
         }
     }
