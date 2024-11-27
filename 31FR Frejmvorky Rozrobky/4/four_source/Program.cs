@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,65 +30,107 @@ namespace four_source
     }
     public static class EstateKind
     {
-        public static string Home = "Home";
-        public static string Flat = "Flat";
-        public static string New = "New";
+        public const string Home = "Home";
+        public const string Flat = "Flat";
+        public const string New = "New";
     }
     public static class MeetingStatus
     {
-        public static string Wait = "Wait";
-        public static string Done = "Done";
-        public static string Skip = "Skip";
+        public const string Wait = "Wait";
+        public const string Done = "Done";
+        public const string Skip = "Skip";
     }
     public static class MeetingScore
     {
-        public static string Bad = "Bad";
-        public static string Okay = "Okay";
-        public static string Fine = "Fine";
+        public const string Bad = "Bad";
+        public const string Okay = "Okay";
+        public const string Fine = "Fine";
+    }
+    public static class Query
+    {
+        public const string LastCreatedID = "SELECT LAST_INSERT_ID();";
+    }
+    public class Session
+    {
+        public bool Entered { get; set; } = false;
+        public User Client { get; set; }
+        public List<Estate> Owned { get; set; }
+        public List<Meeting> Plan { get; set; }
+    }
+    public class Database
+    {
+        MySqlConnection connection;
+        string query;
+        MySqlCommand command;
+        MySqlDataReader reader;
+        public Database(MySqlConnection connection) { this.connection = connection; }
+        public User getUserByName(string userName)
+        {
+            query = $"SELECT id,name,admin FROM user WHERE name='{userName}';";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                var user = new User();
+                user.ID = reader.GetInt32(0);
+                user.Name = reader.GetString(1);
+                user.Admin = reader.GetInt32(2);
+                reader.Close();
+                return user;
+            }
+            reader.Close();
+            return null;
+        }
+        public User createUser(string userName,int admin = 0)
+        {
+            query = $"INSERT INTO user (name,admin) VALUES ('{userName}',{admin});";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+
+            query = Query.LastCreatedID;
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            var user = new User();
+            while (reader.Read())
+            {
+                user.ID = reader.GetInt32(0);
+                user.Name = userName;
+                user.Admin = admin;
+            }
+            reader.Close();
+            return user;
+        }
     }
     public class Program
     {
         static void Main(string[] args)
         {
-            /* 
-            enter user name 
-                if not found in users, create new 
-            load 
-            */
-            /* 
+            const string connectionString = "uid=root;pwd=1313;host=localhost;port=3306;database=fr_data";
+            var connection = new MySqlConnection(connectionString);
+            var database = new Database(connection);
+            connection.Open();
+            var session = new Session();
             while (true)
             {
-                if (!session.entered)
+                Console.WriteLine("User name:");
+                // enter user name
+                var userName = Console.ReadLine();
+                Console.WriteLine(userName);
+                // check if its in database 
+                User foundUser = database.getUserByName(userName);
+                if (foundUser!=null)
                 {
-                    menu = WELCOME;
+                    session.Client = foundUser;
                 }
+                // if not create new user
                 else
                 {
-                    menu = DEFAULT;
+                    session.Client = database.createUser(userName);
                 }
-                Console.WriteLine(menu);
-                Console.Write("> ");
-                string response = Console.ReadLine();
-                Console.WriteLine();
-
-                int choice = Int32.Parse(response);
-                if (!session.entered)
-                {
-                    if (choice == 1)
-                    {
-                        // login
-                    }
-                    else
-                    {
-                        // register
-                    }
-                }
-                else
-                {
-                    if (choice)
-                }
+                // print user name
+                Console.WriteLine(session.Client.Name);
             }
-            */
+            connection.Close();
         }
     }
 }

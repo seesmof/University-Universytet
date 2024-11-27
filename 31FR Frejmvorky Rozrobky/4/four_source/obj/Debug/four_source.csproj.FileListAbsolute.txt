@@ -5,3 +5,10 @@ E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\obj\Debug\four_source.cspr
 E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\obj\Debug\four_source.csproj.CoreCompileInputs.cache
 E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\obj\Debug\four_source.exe
 E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\obj\Debug\four_source.pdb
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\bin\Debug\MySql.Data.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\bin\Debug\System.Memory.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\bin\Debug\System.Numerics.Vectors.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\bin\Debug\System.Buffers.dll
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\bin\Debug\MySql.Data.xml
+E:\Universytet\31FR Frejmvorky Rozrobky\4\four_source\obj\Debug\four_sou.BE67E6A4.Up2Date

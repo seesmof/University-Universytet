@@ -67,7 +67,7 @@ Session
   bool Entered
   User Client
   list<Estate> Owned
-  list<Meeting> Schedule
+  list<Meeting> Plan
 
 ## Features 
 - Request User status change 
