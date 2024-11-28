@@ -112,23 +112,25 @@ namespace four_source
             var session = new Session();
             while (true)
             {
-                Console.WriteLine("User name:");
-                // enter user name
-                var userName = Console.ReadLine();
-                Console.WriteLine(userName);
-                // check if its in database 
-                User foundUser = database.getUserByName(userName);
-                if (foundUser!=null)
+                if (!session.Entered)
                 {
-                    session.Client = foundUser;
+                    Console.WriteLine("User name:");
+                    var userName = Console.ReadLine();
+                    User foundUser = database.getUserByName(userName);
+                    if (foundUser!=null)
+                    {
+                        session.Client = foundUser;
+                    }
+                    else
+                    {
+                        session.Client = database.createUser(userName);
+                    }
+                    session.Entered=true;
                 }
-                // if not create new user
                 else
                 {
-                    session.Client = database.createUser(userName);
+
                 }
-                // print user name
-                Console.WriteLine(session.Client.Name);
             }
             connection.Close();
         }

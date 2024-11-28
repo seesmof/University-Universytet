@@ -404,13 +404,8 @@ namespace three_source
             var connection = new MySqlConnection(conStr);
             connection.Open();
 
-            var tester = new Test(connection);
-            tester.testUser();
-            Console.WriteLine();
-            tester.testEstate(owner: new UserHandler(connection).read(2));
-            Console.WriteLine();
-            tester.testMeeting(viewable: new EstateHandler(connection).read(2), viewer: new UserHandler(connection).read(2));
-            Console.WriteLine();
+            var handler = new UserHandler(connection);
+            handler
             
             connection.Close();
         }
