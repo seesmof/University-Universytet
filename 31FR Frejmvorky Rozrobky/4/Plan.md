@@ -71,4 +71,23 @@ Session
 
 ## Features 
 - Request User status change 
-- View Meeting's for selected Estate
+- User buy Estate
+- Owner sell Estate
+  - of kind New only by Admin 
+- User set Meeting for Estate 
+- Owner see Meeting's for selected Estate
+- Owner see Meetings for all Estate
+- Owner change Meeting status 
+- Owner remove Estate 
+- Owner change Estate 
+
+```
+1 Edit profile
+2 Buy estate
+3 Sell estate
+4 Edit estate
+5 Remove estate
+6 Set meeting
+7 See scheduled meetings
+```
+
