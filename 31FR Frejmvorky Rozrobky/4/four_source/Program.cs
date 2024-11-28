@@ -64,6 +64,15 @@ namespace four_source
             return status;
         }
     }
+    public class Helper 
+    {
+        public bool checkEstateKind(string kind){
+            if (kind!=EstateKind.Home && kind!=EstateKind.Flat && kind!=EstateKind.New) {
+                return false;
+            }
+            return true;
+        }
+    }
     public class Database
     {
         MySqlConnection connection;
@@ -171,8 +180,54 @@ namespace four_source
             estate.Owner=this.getUserById(ownerId);
             return estate;
         }
+        public List<Estate> getEstatesByOwnerId(int id)
+        {
+            query = $"SELECT id,title,kind FROM estate WHERE owner_id={id};";
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            var estates = new List<Estate>();
+            while (reader.Read())
+            {
+                var estate=new Estate();
+                estate.ID=reader.GetInt32(0);
+                estate.Title=reader.GetString(1);
+                estate.Kind=reader.GetString(2);
+                estates.Add(estate);
+            }
+            reader.Close();
+            foreach (var estate in estates){
+                estate.Owner=this.getUserById(id);
+            }
+            return estates;
+        }
         public void updateEstate(Estate estate)
         {
+            query = $"UPDATE estate SET owner_id={estate.Owner.ID},title='{estate.Title}',kind='{estate.Kind}' WHERE id={estate.ID};";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+        }
+        public Estate createEstate(string title,string kind,User owner){
+            query = $"INSERT INTO estate (title,kind,owner_id) VALUES ('{title}','{kind}',{owner.ID});";
+            command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+
+            query = Query.LastCreatedID;
+            command = new MySqlCommand(query, connection);
+            reader = command.ExecuteReader();
+            var estate = new Estate();
+            while (reader.Read())
+            {
+                estate.ID = reader.GetInt32(0);
+                estate.Title=title;
+                estate.Kind=kind;
+                estate.Owner=owner;
+            }
+            reader.Close();
+            return estate;
+        }
+        public void deleteEstate(int id)
+        {
+            // TODO implement this
             query = $"UPDATE estate SET owner_id={estate.Owner.ID},title='{estate.Title}',kind='{estate.Kind}' WHERE id={estate.ID};";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
@@ -185,6 +240,7 @@ namespace four_source
             const string connectionString = "uid=root;pwd=1313;host=localhost;port=3306;database=fr_data";
             var connection = new MySqlConnection(connectionString);
             var database = new Database(connection);
+            var helper=new Helper();
             connection.Open();
             var session = new Session();
             while (true)
@@ -225,6 +281,7 @@ namespace four_source
                     {
                         break;
                     }
+                    Console.WriteLine();
 
                     if (point == 1)
                     {
@@ -237,10 +294,26 @@ namespace four_source
                         string userStatus = session.getUserStatus();
                         Console.WriteLine($"User name: {session.Client.Name}\nUser status: {userStatus}");
 
+                        // show all owned property
+                        var estates = database.getEstatesByOwnerId(session.Client.ID);
+                        Console.WriteLine($"Owned property ({estates.Count})");
+                        foreach (var estate in estates)
+                        {
+                            Console.WriteLine($"{estate.ID}. {estate.Title} of kind {estate.Kind} owned by {estate.Owner.Name}");
+                        }
+
                         string options = "1 Change name\n2 Change status";
                         Console.WriteLine(options);
                         choice = Console.ReadLine();
-                        point = int.Parse(choice);
+                        try
+                        {
+                            point = int.Parse(choice);
+                        }
+                        catch (Exception e)
+                        {
+                            continue;
+                        }
+                        Console.WriteLine();
 
                         if (point == 1)
                         {
@@ -310,14 +383,101 @@ namespace four_source
                     else if (point == 3)
                     {
                         // SELL ESTATE
+                        // get all the estate details 
+                        // add new estate to database 
+
+                        Console.WriteLine("Estate title:");
+                        var title=Console.ReadLine();
+                        if (session.Client.Admin==1){
+                            Console.WriteLine($"Estate kind ({EstateKind.Home} or {EstateKind.Flat} or {EstateKind.New})");
+                        }
+                        else{
+                            Console.WriteLine($"Estate kind ({EstateKind.Home} or {EstateKind.Flat})");
+                        }
+                        var kind=Console.ReadLine();
+                        if (helper.checkEstateKind(kind)==false){
+                            Console.WriteLine("Wrong estate kind, please select from a list");
+                            continue;
+                        }
+                        else if (kind==EstateKind.New && session.Client.Admin==0){
+                            Console.WriteLine($"Estate of kind {EstateKind.New} may be added only by managers");
+                            continue;
+                        }
+                        var estate = database.createEstate(title, kind, session.Client);
                     }
                     else if (point == 4)
                     {
                         // EDIT ESTATE
+                        // get all estate by owner 
+                        // get estate id from user 
+                        // get option to edit in estate 
+                        // update estate in a database 
+
+                        var estates = database.getEstatesByOwnerId(session.Client.ID);
+                        foreach (var e in estates)
+                        {
+                            Console.WriteLine($"{e.ID}. {e.Title} of kind {e.Kind} owned by {e.Owner.Name}");
+                        }
+
+                        Console.WriteLine("Select estate ID to edit:");
+                        var estateIdString = Console.ReadLine();
+                        int estateId;
+                        try{
+                            estateId=int.Parse(estateIdString);
+                        } catch (Exception e){
+                            continue;
+                        }
+                        var estate=database.getEstateById(estateId);
+
+                        Console.WriteLine("1 Title\n2 Kind");
+                        choice=Console.ReadLine();
+                        try{
+                            point=int.Parse(choice);
+                        } catch (Exception e){
+                            continue;
+                        }
+
+                        if (point==1){
+                            Console.Write("Enter new estate title please: ");
+                            var newTitle=Console.ReadLine();
+                            estate.Title=newTitle;
+                        } 
+                        else if (point==2){
+                            if (session.Client.Admin==0){
+                                Console.Write($"Enter new kind please ({EstateKind.Home} or {EstateKind.Flat} or {EstateKind.New}): ");
+                            } else {
+                                Console.Write($"Enter new kind please ({EstateKind.Home} or {EstateKind.Flat}): ");
+                            }
+                            var newKind = Console.ReadLine();
+                            estate.Kind = newKind;
+                        }
+                        database.updateEstate(estate);
                     }
                     else if (point == 5)
                     {
                         // REMOVE ESTATE
+                        // show all owned estates 
+                        // get estate id to delete 
+
+                        var estates = database.getEstatesByOwnerId(session.Client.ID);
+                        foreach (var e in estates)
+                        {
+                            Console.WriteLine($"{e.ID}. {e.Title} of kind {e.Kind} owned by {e.Owner.Name}");
+                        }
+
+                        Console.WriteLine("Select estate ID to delete:");
+                        var estateIdString = Console.ReadLine();
+                        int estateId;
+                        try
+                        {
+                            estateId = int.Parse(estateIdString);
+                        }
+                        catch (Exception e)
+                        {
+                            continue;
+                        }
+
+                        database.deleteEstate(estateId);
                     }
                     else if (point == 6)
                     {
@@ -332,6 +492,7 @@ namespace four_source
                         break;
                     }
                 }
+                Console.WriteLine();
             }
             connection.Close();
         }
