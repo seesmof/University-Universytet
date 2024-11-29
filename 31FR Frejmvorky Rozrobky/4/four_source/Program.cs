@@ -452,6 +452,7 @@ namespace four_source
                         {
                             Console.WriteLine($"Owned property ({estates.Count})");
                             foreach (var estate in estates)
+
                             {
                                 Console.WriteLine($"{estate.ID}. {estate.Title} of kind {estate.Kind} owned by {estate.Owner.Name}");
                             }
