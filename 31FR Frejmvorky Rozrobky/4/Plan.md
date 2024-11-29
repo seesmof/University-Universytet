@@ -87,7 +87,8 @@ Session
 3 Sell estate
 4 Edit estate
 5 Remove estate
-6 Set meeting
-7 See scheduled meetings
+6 Schedule meeting
+7 Rate meeting (Viewer)
+8 Process meeting (Owner)
 ```
 
