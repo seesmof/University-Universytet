@@ -1,0 +1,16 @@
+﻿<Page x:Class="seven.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:seven"
+      mc:Ignorable="d"
+      Title="LoginPage" Height="85" Width="199">
+
+    <Grid>
+        <TextBox x:Name="UserNameInput" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19" FontFamily="Verdana"/>
+        <Button Content="Log in" HorizontalAlignment="Left" Margin="135,40,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="47" Click="Button_Click"/>
+        <Label Content="User name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="90" FontStretch="Normal"/>
+
+    </Grid>
+</Page>
