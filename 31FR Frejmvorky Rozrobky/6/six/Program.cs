@@ -12,12 +12,14 @@ namespace six
         public int ID { get; set; }
         public string Name { get; set; }
         public int Admin { get; set; } = 0;
+        public int Balance { get; set; } = 0;
     }
     public class Estate {
         public int ID { get; set; }
         public User Owner { get; set; }
         public string Title { get; set; }
         public string Kind { get; set; }
+        public int Price { get; set; } = 0;
     }
     public class Meeting {
         public int ID { get; set; }
@@ -65,20 +67,21 @@ namespace six
         }
 
         // CREATE
-        public User createUser(string name, int admin = 0) {
-            write($"INSERT INTO user (name,admin) VALUES ('{name}',{admin});");
+        public User createUser(string name, int admin = 0, int balance=0) {
+            write($"INSERT INTO user (name,admin,balance) VALUES ('{name}',{admin},{balance});");
             reader=read(LastCreatedID);
             var user = new User();
             while (reader.Read()) {
                 user.ID = reader.GetInt32(0);
                 user.Name = name;
                 user.Admin = admin;
+                user.Balance=balance;
             }
             reader.Close();
             return user;
         }
-        public Estate createEstate(string title, string kind, User owner) {
-            write($"INSERT INTO estate (title,kind,owner_id) VALUES ('{title}','{kind}',{owner.ID});");
+        public Estate createEstate(string title, string kind, User owner, int price) {
+            write($"INSERT INTO estate (title,kind,owner_id,price) VALUES ('{title}','{kind}',{owner.ID},{price});");
             reader=read(LastCreatedID);
             var estate = new Estate();
             while (reader.Read()) {
@@ -86,6 +89,7 @@ namespace six
                 estate.Title = title;
                 estate.Kind = kind;
                 estate.Owner = owner;
+                estate.Price=price;
             }
             reader.Close();
             return estate;
@@ -105,13 +109,14 @@ namespace six
 
         // READ
         public List<User> getUsers(){
-            reader=read("SELECT id,name,admin FROM user;");
+            reader=read("SELECT id,name,admin,balance FROM user;");
             var users=new List<User>();
             while (reader.Read()) {
                 var user = new User();
                 user.ID = reader.GetInt32(0);
                 user.Name = reader.GetString(1);
                 user.Admin = reader.GetInt32(2);
+                user.Balance=reader.GetInt32(3);
                 users.Add(user);
             }
             reader.Close();
@@ -121,7 +126,7 @@ namespace six
             return getUsers().Where(u=>u.ID==id).ToList().ElementAtOrDefault(0);
         }
         public List<Estate> getEstates(){
-            reader=read("SELECT id,owner_id,title,kind FROM estate;");
+            reader=read("SELECT id,owner_id,title,kind,price FROM estate;");
             var estates=new List<Estate>();
             var owners=new List<int>();
             while (reader.Read()){
@@ -130,6 +135,7 @@ namespace six
                 owners.Add(reader.GetInt32(1));
                 estate.Title=reader.GetString(2);
                 estate.Kind=reader.GetString(3);
+                estate.Price=reader.GetInt32(4);
                 estates.Add(estate);
             }
             reader.Close();
@@ -168,10 +174,10 @@ namespace six
 
         // UPDATE
         public void updateUser(User user) {
-            write($"UPDATE user SET name='{user.Name}',admin={user.Admin} WHERE id={user.ID};");
+            write($"UPDATE user SET name='{user.Name}',admin={user.Admin},balance={user.Balance} WHERE id={user.ID};");
         }
         public void updateEstate(Estate estate) {
-            write($"UPDATE estate SET owner_id={estate.Owner.ID},title='{estate.Title}',kind='{estate.Kind}' WHERE id={estate.ID};");
+            write($"UPDATE estate SET owner_id={estate.Owner.ID},title='{estate.Title}',kind='{estate.Kind}',price={estate.Price} WHERE id={estate.ID};");
         }
         public void updateMeeting(Meeting meeting) {
             write($"UPDATE meeting SET sender_id={meeting.Sender.ID},target_id={meeting.Target.ID},score='{meeting.Score}',status='{meeting.Status}' WHERE id={meeting.ID};");
@@ -227,7 +233,7 @@ namespace six
                 Console.WriteLine($"{header} estates ({estates.Count})");
             }
             foreach (var e in estates) {
-                Console.WriteLine($"{e.ID}. {e.Title} of kind {e.Kind} owned by {e.Owner.Name}");
+                Console.WriteLine($"{e.ID}. {e.Title} of kind {e.Kind} price {e.Price} owned by {e.Owner.Name}");
             }
         }
         public bool showOwnedEstates(Database db,User user){
@@ -314,13 +320,13 @@ namespace six
                 // EDIT PROFILE
                 if (point == 1) {
                     string status = helper.getUserStatusString(session.Client);
-                    Console.WriteLine($"User name: {session.Client.Name}\nUser status: {status}");
+                    Console.WriteLine($"Name: {session.Client.Name}\nStatus: {status}\nBalance: {session.Client.Balance}");
 
                     helper.showOwnedEstates(database,session.Client);
                     helper.showIncomingMeetings(database,session.Client);
                     helper.showOutgoingMeetings(database,session.Client);
 
-                    point=helper.getInputNumber("1 Change name\n2 Change status\n3 Delete profile\n");
+                    point=helper.getInputNumber("1 Change name\n2 Change status\n3 Delete profile\n4 Change balance\n");
                     if (point==-1){
                         continue;
                     }
@@ -333,6 +339,12 @@ namespace six
                         } else { 
                             session.Client.Admin = 1;
                         }
+                    } else if (point==4){
+                        point=helper.getInputNumber("New balance");
+                        if (point==-1){
+                            continue;
+                        }
+                        session.Client.Balance=point;
                     }
                     database.updateUser(session.Client);
                     if (point==3){
@@ -354,14 +366,22 @@ namespace six
                     if (estate==null){
                         Console.WriteLine("Estate not found");
                         continue;
+                    } else if (session.Client.Balance<estate.Price){
+                        Console.WriteLine("Not enough money to buy this estate");
+                        continue;
                     }
                     estate.Owner = session.Client;
+                    session.Client.Balance-=estate.Price;
                     database.updateEstate(estate);
                 }
                 // SELL ESTATE
                 else if (point == 3) {
                     var title=helper.getInputString("Title");
                     var kind=helper.getInputString(helper.getEstateKindString(session.Client));
+                    var price=helper.getInputNumber("Price (default 0)");
+                    if (price==-1){
+                        price=0;
+                    }
 
                     if (helper.checkEstateKind(kind) == false) {
                         Console.WriteLine("Wrong estate kind, please select from a list");
@@ -370,7 +390,7 @@ namespace six
                         Console.WriteLine($"Estate of kind {EstateKind.New} may be added only by managers");
                         continue;
                     }
-                    database.createEstate(title, kind, session.Client);
+                    database.createEstate(title, kind, session.Client, price);
                 }
                 // EDIT ESTATE
                 else if (point == 4) {
@@ -387,7 +407,7 @@ namespace six
                         continue;
                     }
 
-                    point = helper.getInputNumber("1 Title\n2 Kind\n");
+                    point = helper.getInputNumber("1 Title\n2 Kind\n3 Price\n");
                     if (point==-1){
                         continue;
                     }
@@ -401,6 +421,12 @@ namespace six
                             continue;
                         }
                         estate.Kind = kind;
+                    } else if (point==3){
+                        var price=helper.getInputNumber("Price (default 0)");
+                        if (price==-1){
+                            price=0;
+                        }
+                        estate.Price=price;
                     }
                     database.updateEstate(estate);
                 }

@@ -1,0 +1,14 @@
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\bin\Debug\six.exe.config
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\bin\Debug\six.exe
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\bin\Debug\six.pdb
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\bin\Debug\MySql.Data.dll
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\bin\Debug\System.Memory.dll
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\bin\Debug\System.Numerics.Vectors.dll
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\bin\Debug\System.Buffers.dll
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\bin\Debug\MySql.Data.xml
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\obj\Debug\six.csproj.AssemblyReference.cache
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\obj\Debug\six.csproj.CoreCompileInputs.cache
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\obj\Debug\six.csproj.Up2Date
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\obj\Debug\six.exe
+E:\Universytet\31FR Frejmvorky rozrobky\6\six\obj\Debug\six.pdb
