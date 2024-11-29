@@ -400,7 +400,7 @@ namespace four_source
                 int point;
                 if (!session.Entered)
                 {
-                    Console.WriteLine("User name:");
+                    Console.Write("User name: ");
                     var userName = Console.ReadLine();
                     User foundUser = database.getUserByName(userName);
                     if (foundUser!=null)
@@ -492,7 +492,7 @@ namespace four_source
 
                         if (point == 1)
                         {
-                            Console.WriteLine("Enter new user name:");
+                            Console.Write("Enter new user name: ");
                             var newName = Console.ReadLine();
                             session.Client.Name = newName;
                             database.updateUser(session.Client);
@@ -529,7 +529,7 @@ namespace four_source
                             Console.WriteLine($"{estate.ID}. {estate.Title} of kind {estate.Kind} owned by {estate.Owner.Name}");
                         }
 
-                        Console.WriteLine("Enter estate ID to buy:");
+                        Console.Write("Enter estate ID to buy: ");
                         choice = Console.ReadLine();
                         int estateId;
                         try
@@ -552,13 +552,13 @@ namespace four_source
                         // get all the estate details 
                         // add new estate to database 
 
-                        Console.WriteLine("Estate title:");
+                        Console.Write("Estate title: ");
                         var title=Console.ReadLine();
                         if (session.Client.Admin==1){
-                            Console.WriteLine($"Estate kind ({EstateKind.Home} or {EstateKind.Flat} or {EstateKind.New})");
+                            Console.Write($"Estate kind ({EstateKind.Home} or {EstateKind.Flat} or {EstateKind.New}): ");
                         }
                         else{
-                            Console.WriteLine($"Estate kind ({EstateKind.Home} or {EstateKind.Flat})");
+                            Console.Write($"Estate kind ({EstateKind.Home} or {EstateKind.Flat}): ");
                         }
                         var kind=Console.ReadLine();
                         if (helper.checkEstateKind(kind)==false){
@@ -585,7 +585,7 @@ namespace four_source
                             Console.WriteLine($"{e.ID}. {e.Title} of kind {e.Kind} owned by {e.Owner.Name}");
                         }
 
-                        Console.WriteLine("Select estate ID to edit:");
+                        Console.Write("Select estate ID to edit: ");
                         var estateIdString = Console.ReadLine();
                         int estateId;
                         try{
@@ -631,7 +631,7 @@ namespace four_source
                             Console.WriteLine($"{e.ID}. {e.Title} of kind {e.Kind} owned by {e.Owner.Name}");
                         }
 
-                        Console.WriteLine("Select estate ID to delete:");
+                        Console.Write("Select estate ID to delete: ");
                         var estateIdString = Console.ReadLine();
                         int estateId;
                         try
