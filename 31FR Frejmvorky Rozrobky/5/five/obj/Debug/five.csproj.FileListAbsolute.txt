@@ -1,0 +1,14 @@
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\bin\Debug\five.exe.config
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\bin\Debug\five.exe
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\bin\Debug\five.pdb
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\bin\Debug\MySql.Data.dll
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\bin\Debug\System.Memory.dll
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\bin\Debug\System.Numerics.Vectors.dll
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\bin\Debug\System.Buffers.dll
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\bin\Debug\MySql.Data.xml
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\obj\Debug\five.csproj.AssemblyReference.cache
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\obj\Debug\five.csproj.CoreCompileInputs.cache
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\obj\Debug\five.csproj.Up2Date
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\obj\Debug\five.exe
+E:\Universytet\31FR Frejmvorky rozrobky\5\five\obj\Debug\five.pdb
