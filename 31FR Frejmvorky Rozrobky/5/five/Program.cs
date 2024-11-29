@@ -210,6 +210,9 @@ namespace five
         public string getUserStatusString(User client) {
             return client.Admin==0 ? "Client" : "Manager";
         }
+        public string getEstateKindString(User client){
+            return client.Admin==0 ? $"Estate kind ({EstateKind.Home} or {EstateKind.Flat})" : $"Estate kind ({EstateKind.Home} or {EstateKind.Flat} or {EstateKind.New})";
+        }
 
         // DISPLAYS
         // Estate
@@ -337,15 +340,17 @@ namespace five
                         continue;
                     }
                     var estate = database.getEstate(point);
+                    if (estate==null){
+                        Console.WriteLine("Estate not found");
+                        continue;
+                    }
                     estate.Owner = session.Client;
                     database.updateEstate(estate);
                 }
                 // SELL ESTATE
                 else if (point == 3) {
-                    string kindPrompt=session.Client.Admin==0 ? $"Estate kind ({EstateKind.Home} or {EstateKind.Flat})" : $"Estate kind ({EstateKind.Home} or {EstateKind.Flat} or {EstateKind.New})";
-
                     var title=helper.getInputString("Title");
-                    var kind=helper.getInputString(kindPrompt);
+                    var kind=helper.getInputString(helper.getEstateKindString(session.Client));
 
                     if (helper.checkEstateKind(kind) == false) {
                         Console.WriteLine("Wrong estate kind, please select from a list");
@@ -366,6 +371,10 @@ namespace five
                         continue;
                     }
                     var estate = database.getEstate(point);
+                    if (estate==null){
+                        Console.WriteLine("Estate not found");
+                        continue;
+                    }
 
                     point = helper.getInputNumber("1 Title\n2 Kind\n");
                     if (point==-1){
@@ -375,9 +384,11 @@ namespace five
                         var newTitle=helper.getInputString("New estate title");
                         estate.Title = newTitle;
                     } else if (point == 2) {
-                        var kindPrompt=session.Client.Admin==0 ? $"New kind ({EstateKind.Home} or {EstateKind.Flat})" : $"New kind ({EstateKind.Home} or {EstateKind.Flat} or {EstateKind.New})";
-
-                        var kind=helper.getInputString(kindPrompt);
+                        var kind=helper.getInputString(helper.getEstateKindString(session.Client));
+                        if (helper.checkEstateKind(kind) == false) {
+                            Console.WriteLine("Wrong estate kind, please select from a list");
+                            continue;
+                        }
                         estate.Kind = kind;
                     }
                     database.updateEstate(estate);
@@ -403,149 +414,80 @@ namespace five
                         continue;
                     }
                     var estate = database.getEstate(point);
+                    if (estate==null){
+                        Console.WriteLine("Estate not found");
+                        continue;
+                    }
                     database.createMeeting(session.Client, estate);
                 }
-                /*
                 // RATE MEETING FOR VIEWER
                 else if (point == 7) {
                     if (helper.showOutgoingMeetings(database,session.Client)==false){
                         continue;
                     }
-
-                    var foundMeetings = database.getOutgoingMeetings(session.Client);
-                    var meetings = new List<Meeting>();
-                    foreach (var m in foundMeetings)
-                    {
-                        if (m.Status == MeetingStatus.Done)
-                        {
-                            meetings.Add(m);
-                        }
-                    }
-                    if (meetings.Count < 1)
-                    {
-                        Console.WriteLine("No meetings to rate");
+                    point = helper.getInputNumber("Meeting ID to rate");
+                    if (point==-1){
                         continue;
                     }
-                    foreach (var m in meetings)
-                    {
-                        Console.WriteLine($"{m.ID}. For {m.Target.Title} to {m.Target.Owner.Name} rated {m.Score} status {m.Status}");
-                    }
-
-                    Console.Write("Enter meeting ID to rate please: ");
-                    var response = Console.ReadLine();
-                    int meetingId;
-                    try
-                    {
-                        meetingId = int.Parse(response);
-                    }
-                    catch (Exception e)
-                    {
+                    var meeting=database.getMeeting(point);
+                    if (meeting==null){
+                        Console.WriteLine("Meeting not found");
                         continue;
                     }
 
-                    Console.Write($"Enter meeting rating ({MeetingScore.Bad} or {MeetingScore.Okay} or {MeetingScore.Fine}): ");
-                    var meetingScore = Console.ReadLine();
-                    if (helper.checkMeetingScore(meetingScore) == false)
-                    {
+                    var score=helper.getInputString($"Meeting rating ({MeetingScore.Bad} or {MeetingScore.Okay} or {MeetingScore.Fine})");
+                    if (helper.checkMeetingScore(score) == false) {
                         Console.WriteLine("Incorrect score, please select from the list");
                         continue;
                     }
-                    var meeting = database.getMeetingById(meetingId);
-                    meeting.Score = meetingScore;
-                    database.updateMeeting(meeting.ID, meeting.Score, meeting.Status, meeting.Sender, meeting.Target);
+                    meeting.Score = score;
+                    database.updateMeeting(meeting);
                 }
+                // PROCESS MEETING FOR OWNER
                 else if (point == 8)
                 {
-                    // PROCESS MEETING FOR OWNER
-                    // see for all estate or only for selected 
-
-                    Console.WriteLine("Would you like to see incoming meetings for all estate or only for selected?");
-                    Console.WriteLine("1 All\n2 Selected");
-                    choice = Console.ReadLine();
-                    try
-                    {
-                        point = int.Parse(choice);
-                    }
-                    catch (Exception e)
-                    {
+                    point=helper.getInputNumber("Would you like to see incoming meetings for all estate or only for selected?\n1 All\n2 Selected\n");
+                    if (point==-1){
                         continue;
                     }
 
-                    if (point == 1)
-                    {
-                        var incomingMeetings = database.getIncomingMeetings(session.Client);
-                        if (incomingMeetings.Count > 0)
-                        {
-                            Console.WriteLine($"Incoming meetings ({incomingMeetings.Count})");
-                            foreach (var m in incomingMeetings)
-                            {
-                                Console.WriteLine($"{m.ID}. For {m.Target.Title} by {m.Sender.Name} rated {m.Score} status {m.Status}");
-                            }
+                    if (point == 1) {
+                        if (helper.showIncomingMeetings(database,session.Client)==false){
+                            continue;
                         }
-                        else
-                        {
-                            Console.WriteLine("No meetings found");
-                        }
-                    }
-                    else
-                    {
-                        var estates = database.getEstatesByOwnerId(session.Client.ID);
-                        foreach (var e in estates)
-                        {
-                            Console.WriteLine($"{e.ID}. {e.Title} of kind {e.Kind} owned by {e.Owner.Name}");
-                        }
-                        Console.Write("Please enter estate ID to see meetings for: ");
-                        var estateIdString = Console.ReadLine();
-                        int estateId;
-                        try
-                        {
-                            estateId = int.Parse(estateIdString);
-                        }
-                        catch (Exception e)
-                        {
+                    } else if (point==2) {
+                        if (helper.showOwnedEstates(database,session.Client)==false){
                             continue;
                         }
 
-                        var incomingMeetings = database.getMeetingsByTargetId(estateId);
-                        var estate = database.getEstateById(estateId);
-                        if (incomingMeetings.Count > 0)
-                        {
-                            Console.WriteLine($"Incoming meetings for {estate.Title} ({incomingMeetings.Count})");
-                            foreach (var m in incomingMeetings)
-                            {
-                                Console.WriteLine($"{m.ID}. By {m.Sender.Name} rated {m.Score} status {m.Status}");
-                            }
+                        point=helper.getInputNumber("Estate ID to see meetings for");
+                        if (point==-1){
+                            continue;
                         }
-                        else
-                        {
-                            Console.WriteLine("No meetings found");
+
+                        if (helper.showIncomingMeetings(database,session.Client)==false){
+                            continue;
                         }
                     }
 
-                    Console.Write("Enter meeting ID to change status for please: ");
-                    choice = Console.ReadLine();
-                    int meetingId;
-                    try
-                    {
-                        meetingId = int.Parse(choice);
-                    }
-                    catch (Exception e)
-                    {
+                    point=helper.getInputNumber("Meeting ID to change status for");
+                    if (point==-1){
                         continue;
                     }
-                    var meeting = database.getMeetingById(meetingId);
+                    var meeting = database.getMeeting(point);
+                    if (meeting==null){
+                        Console.WriteLine("Meeting not found");
+                        continue;
+                    }
 
-                    Console.Write($"Please enter new meeting status ({MeetingStatus.Done} or {MeetingStatus.Skip} or {MeetingStatus.Wait}): ");
-                    var status = Console.ReadLine();
-                    if (helper.checkMeetingStatus(status) == false)
-                    {
-                        Console.WriteLine("Incorrect meeting status, please select from a list");
+                    var status=helper.getInputString($"New meeting status ({MeetingStatus.Done} or {MeetingStatus.Skip} or {MeetingStatus.Wait})");
+                    if (helper.checkMeetingStatus(status) == false) {
+                        Console.WriteLine("Incorrect meeting status, please select from the list");
                         continue;
                     }
                     meeting.Status = status;
-                    database.updateMeeting(meeting.ID, meeting.Score, meeting.Status, meeting.Sender, meeting.Target);
+                    database.updateMeeting(meeting);
                 }
-                */
             }
             connection.Close();
         }
