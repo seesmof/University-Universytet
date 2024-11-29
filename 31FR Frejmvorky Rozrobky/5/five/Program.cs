@@ -178,8 +178,14 @@ namespace five
         }
 
         // DELETE
+        public void deleteUser(int id) {
+            write($"DELETE FROM user WHERE id={id};");
+        }
         public void deleteEstate(int id) {
             write($"DELETE FROM estate WHERE id={id};");
+        }
+        public void deleteMeeting(int id) {
+            write($"DELETE FROM meeting WHERE id={id};");
         }
     }
     public class Helper {
@@ -300,7 +306,7 @@ namespace five
                     continue;
                 }
             
-                int point=helper.getInputNumber("1 Edit profile\n2 Buy estate\n3 Sell estate\n4 Edit estate\n5 Remove estate\n6 Schedule meeting\n7 Rate meeting (Viewer)\n8 Process meeting (Owner)\n");
+                int point=helper.getInputNumber("1 Edit profile\n2 Buy estate\n3 Sell estate\n4 Edit estate\n5 Remove estate\n6 Schedule meeting\n7 Rate meeting (Viewer)\n8 Process meeting (Owner)\n9 Delete meeting\n");
                 if (point==-1){
                     break;
                 }
@@ -314,7 +320,7 @@ namespace five
                     helper.showIncomingMeetings(database,session.Client);
                     helper.showOutgoingMeetings(database,session.Client);
 
-                    point=helper.getInputNumber("1 Change name\n2 Change status\n");
+                    point=helper.getInputNumber("1 Change name\n2 Change status\n3 Delete profile\n");
                     if (point==-1){
                         continue;
                     }
@@ -329,6 +335,11 @@ namespace five
                         }
                     }
                     database.updateUser(session.Client);
+                    if (point==3){
+                        database.deleteUser(session.Client);
+                        session.Entered=false;
+                        break;
+                    }
                 }
                 // BUY ESTATE
                 else if (point == 2) {
@@ -487,6 +498,17 @@ namespace five
                     }
                     meeting.Status = status;
                     database.updateMeeting(meeting);
+                }
+                // DELETE MEETING
+                else if (point==9){
+                    if (helper.showOutgoingMeetings(database,session.Client)==false){
+                        continue;
+                    }
+                    point=helper.getInputNumber("Meeting ID to remove");
+                    if (point==-1){
+                        continue;
+                    }
+                    database.deleteMeeting(point);
                 }
             }
             connection.Close();
