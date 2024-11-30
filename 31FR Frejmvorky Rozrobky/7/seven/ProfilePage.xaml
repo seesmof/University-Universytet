@@ -7,14 +7,57 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage">
-
-    <Grid Height="450" VerticalAlignment="Top">
-        <Label x:Name="UserNameLabel" Content="User name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
-        <Label x:Name="UserBalanceLabel" Content="Current balance" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
-        <Button x:Name="ChangeNameButton" Content="Change" HorizontalAlignment="Left" Margin="135,40,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeNameButton_Click"/>
-        <TextBox x:Name="UserNameBox" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
-        <TextBox x:Name="UserBalanceBox" HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
-        <Button x:Name="ChangeBalanceButton" Content="Change" HorizontalAlignment="Left" Margin="135,92,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeBalanceButton_Click"/>
-        <CheckBox x:Name="UserStatusToggle" Content="Manager?" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Click="UserStatusToggle_Click" />
-    </Grid>
+    <TabControl>
+        <TabItem Header="User">
+            <Grid Background="White">
+                <TabControl>
+                    <TabItem Selector.Selected="UserDataTabOpened" Header="Data">
+                        <Grid Background="White">
+                            <Label x:Name="UserNameLabel" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
+                            <Label x:Name="UserBalanceLabel" Content="Balance" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
+                            <Button x:Name="ChangeNameButton" Content="Change" HorizontalAlignment="Left" Margin="135,41,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeNameButton_Click"/>
+                            <TextBox x:Name="UserNameBox" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
+                            <TextBox x:Name="UserBalanceBox" HorizontalAlignment="Left" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
+                            <Button x:Name="ChangeBalanceButton" Content="Change" HorizontalAlignment="Left" Margin="135,93,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeBalanceButton_Click"/>
+                            <CheckBox x:Name="UserStatusToggle" Content="Manager?" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Click="UserStatusToggle_Click" />
+                            <Label x:Name="UserManagerLabel" Content="Status" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Selector.Selected="UserPropertyTabOpened" Header="Property">
+                        <Grid Background="White">
+                            <DataGrid Background="White">
+                                <DataGrid.Columns>
+                                    <DataGridCheckBoxColumn Header="Edit"/>
+                                    <DataGridTextColumn FontFamily="Verdana" Header="Title"/>
+                                    <DataGridTextColumn FontFamily="Verdana" Header="Kind"/>
+                                    <DataGridTextColumn FontFamily="Verdana" Header="Price"/>
+                                    <DataGridTextColumn Header="Owner"/>
+                                    <DataGridHyperlinkColumn Header="Delete"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Market">
+            <Grid Background="White"/>
+        </TabItem>
+        <TabItem Header="Meetings">
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="131*"/>
+                    <ColumnDefinition Width="663*"/>
+                </Grid.ColumnDefinitions>
+                <TabControl Grid.ColumnSpan="2">
+                    <TabItem Header="Incoming (to you)">
+                        <Grid Background="White"/>
+                    </TabItem>
+                    <TabItem Header="Outgoing (by you)">
+                        <Grid Background="White"/>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </Page>

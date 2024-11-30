@@ -25,33 +25,39 @@ namespace seven
         public User client;
         public MySqlConnection connection = new MySqlConnection(UtilityVariables.connectionString);
         public UtilityFunctions helper = new UtilityFunctions();
-        Database db;
+        public Database database;
         public ProfilePage(string userName) {
             InitializeComponent();
             connection.Open();
-            db = new Database(connection);
+            database = new Database(connection);
 
             // fetch user here
-            User found=db.getUsers().Where(u => u.Name == userName).ToList().ElementAtOrDefault(0);
+            User found=database.getUsers().Where(u => u.Name == userName).ToList().ElementAtOrDefault(0);
             if (found != null) {
                 client = found;
             } else {
-                client = db.createUser(userName);
+                client = database.createUser(userName);
             }
-
-            // set client info to textboxes here
-            showUserDetails();
         }
-        public void showUserDetails() {
+        public void showUserData() {
             UserNameBox.Text=client.Name;
             UserBalanceBox.Text= client.Balance.ToString();
             UserStatusToggle.IsChecked=Convert.ToBoolean(client.Admin);
         }
+        private void UserDataTabOpened(object sender, RoutedEventArgs e){
+            showUserData();
+        }
+        public void showUserEstates(){
+            
+        }
+        private void UserPropertyTabOpened(object sender, RoutedEventArgs e){
+            showUserEstates();
+        }
         private void ChangeNameButton_Click(object sender, RoutedEventArgs e) {
             var name = UserNameBox.Text;
             client.Name = name;
-            db.updateUser(client);
-            client = db.getUser(client.ID);
+            database.updateUser(client);
+            client = database.getUser(client.ID);
             UserNameBox.Text = client.Name;
         }
         private void ChangeBalanceButton_Click(object sender, RoutedEventArgs e) {
@@ -60,15 +66,15 @@ namespace seven
                 balance = Convert.ToInt32(UserBalanceBox.Text);
             } catch { MessageBox.Show("Wrong balance. Please enter a number"); }
             client.Balance = balance;
-            db.updateUser(client);
-            client = db.getUser(client.ID);
+            database.updateUser(client);
+            client = database.getUser(client.ID);
             UserBalanceBox.Text = client.Balance.ToString();
         }
         private void UserStatusToggle_Click(object sender, RoutedEventArgs e) {
             var status = UserStatusToggle.IsChecked;
             client.Admin = Convert.ToInt32(status);
-            db.updateUser(client);
-            client = db.getUser(client.ID);
+            database.updateUser(client);
+            client = database.getUser(client.ID);
             UserStatusToggle.IsChecked = Convert.ToBoolean(client.Admin);
         }
     }

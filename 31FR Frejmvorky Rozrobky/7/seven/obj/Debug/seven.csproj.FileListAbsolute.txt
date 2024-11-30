@@ -22,3 +22,4 @@ E:\Universytet\31FR Frejmvorky rozrobky\7\seven\bin\Debug\System.Numerics.Vector
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\bin\Debug\System.Buffers.dll
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\bin\Debug\MySql.Data.xml
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\seven.csproj.Up2Date
+E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\GeneratedInternalTypeHelper.g.cs
