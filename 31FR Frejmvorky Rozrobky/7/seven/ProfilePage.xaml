@@ -18,25 +18,23 @@
                 <Button x:Name="ChangeBalanceButton" Content="Change" HorizontalAlignment="Left" Margin="195,48,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeBalanceButton_Click"/>
                 <CheckBox x:Name="UserStatusToggle" Content="Manager?" HorizontalAlignment="Left" Margin="59,74,0,0" VerticalAlignment="Top" Click="UserStatusToggle_Click" />
                 <Label x:Name="UserManagerLabel" Content="Status" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
-                <ListBox x:Name="IncomingMeetingsContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="405,10,182,269" FontFamily="Verdana"/>
-                <ListBox x:Name="OutgoingMeetingsContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="405,158,182,120" FontFamily="Verdana"/>
             </Grid>
         </TabItem>
         <TabItem Selector.Selected="availableEstatesTabOpened" x:Name="AvailableEstatesTab" Header="Available Estate">
             <Grid Background="White">
                 <ListBox x:Name="AvailableEstatesContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,35,0,0" FontFamily="Verdana"/>
                 <Button x:Name="BuyEstateButton" Content="Buy" HorizontalAlignment="Left" Margin="531,7,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="43" Click="BuyEstateButton_Click" Height="20"/>
-                <Button x:Name="SetMeetingButton" Content="View" HorizontalAlignment="Left" Margin="579,7,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="43" Click="BuyEstateButton_Click" Height="20"/>
-                <TextBox x:Name="AeTitleInput" HorizontalAlignment="Left" Margin="44,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontFamily="Verdana" Height="20"/>
-                <TextBox x:Name="AePriceInput" HorizontalAlignment="Left" Margin="189,7,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="57" FontFamily="Verdana" Height="20"/>
-                <ComboBox x:Name="AeKindInput" HorizontalAlignment="Left" Margin="251,7,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
+                <Button x:Name="SetMeetingButton" Content="View" HorizontalAlignment="Left" Margin="579,7,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="43" Height="20" Click="SetMeetingButton_Click"/>
+                <TextBox x:Name="SellTitleInput" HorizontalAlignment="Left" Margin="44,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontFamily="Verdana" Height="20"/>
+                <TextBox x:Name="SellPriceInput" HorizontalAlignment="Left" Margin="189,7,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="57" FontFamily="Verdana" Height="20"/>
+                <ComboBox x:Name="SellKindInput" HorizontalAlignment="Left" Margin="251,7,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
                     <ComboBoxItem Content="Home" IsSelected="True"/>
                     <ComboBoxItem Content="Flat"/>
                     <ComboBoxItem Content="New"/>
                 </ComboBox>
-                <Button x:Name="AeSellButton" Content="Sell" HorizontalAlignment="Left" Margin="333,7,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48" Click="AeSellButton_Click"/>
+                <Button x:Name="SellButton" Content="Sell" HorizontalAlignment="Left" Margin="333,7,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48" Click="AeSellButton_Click"/>
                 <Label x:Name="AeSelectedHeading" Content="Selected" HorizontalAlignment="Left" Margin="460,5,0,0" VerticalAlignment="Top" FontFamily="Verdana" FontWeight="Bold"/>
-                <Label x:Name="AeSellHeading" Content="Sell" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="SellHeading" Content="Sell" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
             </Grid>
         </TabItem>
         <TabItem Selector.Selected="ownedEstatesTabOpened" x:Name="OwnedEstatesTab" Header="Owned Estate">
@@ -45,22 +43,42 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <ListBox x:Name="OwnedEstatesContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,34,0,0" FontFamily="Verdana" SelectionChanged="OwnedEstatesContainer_SelectionChanged"/>
-                <TextBox x:Name="OeTitleInput" HorizontalAlignment="Left" Margin="51,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontFamily="Verdana" Height="20"/>
-                <TextBox x:Name="OePriceInput" HorizontalAlignment="Left" Margin="196,6,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="57" FontFamily="Verdana" Height="20"/>
-                <ComboBox x:Name="OeKindInput" HorizontalAlignment="Left" Margin="258,6,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
+                <TextBox x:Name="EditTitleInput" HorizontalAlignment="Left" Margin="51,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontFamily="Verdana" Height="20"/>
+                <TextBox x:Name="EditPriceInput" HorizontalAlignment="Left" Margin="196,6,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="57" FontFamily="Verdana" Height="20"/>
+                <ComboBox x:Name="EditKindInput" HorizontalAlignment="Left" Margin="258,6,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
                     <ComboBoxItem Content="Home" IsSelected="True"/>
                     <ComboBoxItem Content="Flat"/>
                     <ComboBoxItem Content="New"/>
                 </ComboBox>
-                <Button x:Name="OeEditButton" Content="Edit" HorizontalAlignment="Left" Margin="340,6,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48" Click="OeEditButton_Click"/>
-                <Label x:Name="OeEditHeading" Content="Edit" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Verdana"/>
+                <Button x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="340,6,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48" Click="OeEditButton_Click"/>
+                <Label x:Name="EditHeading" Content="Edit" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Verdana"/>
             </Grid>
         </TabItem>
-        <TabItem Header="Meetings">
+        <TabItem Selector.Selected="incomingMeetingsTabOpened" x:Name="IncomingMeetingsTab" Header="Incoming Meetings">
             <Grid Background="White">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                <ListBox x:Name="IncomingMeetingsContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,40,0,0" FontFamily="Verdana" SelectionChanged="IncomingMeetingsContainer_SelectionChanged"/>
+                <Button x:Name="ProcessButton" Content="Process" HorizontalAlignment="Left" Margin="162,12,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48" Click="ProcessButton_Click"/>
+                <Label x:Name="ProcessHeading" Content="Process" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Verdana"/>
+                <ComboBox x:Name="ProcessInput" HorizontalAlignment="Left" Margin="80,12,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
+                    <ComboBoxItem Content="Wait" IsSelected="True" FontFamily="Verdana"/>
+                    <ComboBoxItem Content="Done" FontFamily="Verdana"/>
+                    <ComboBoxItem Content="Skip" FontFamily="Verdana"/>
+                </ComboBox>
+            </Grid>
+        </TabItem>
+        <TabItem Selector.Selected="outgoingMeetingsTabOpened" x:Name="OutgoingMeetingsTab" Header="Outgoing Meetings">
+            <Grid Background="White">
+                <ListBox x:Name="OutgoingMeetingsContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,38,0,0" FontFamily="Verdana" SelectionChanged="OutgoingMeetingsContainer_SelectionChanged"/>
+                <Button x:Name="RateButton" Content="Rate" HorizontalAlignment="Left" Margin="138,10,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48" Click="RateButton_Click"/>
+                <Label x:Name="RateHeading" Content="Rate" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Verdana"/>
+                <ComboBox x:Name="RateInput" HorizontalAlignment="Left" Margin="56,10,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
+                    <ComboBoxItem Content="Bad" FontFamily="Verdana"/>
+                    <ComboBoxItem Content="Okay" FontFamily="Verdana" IsSelected="True"/>
+                    <ComboBoxItem Content="Fine" FontFamily="Verdana"/>
+                </ComboBox>
             </Grid>
         </TabItem>
     </TabControl>
