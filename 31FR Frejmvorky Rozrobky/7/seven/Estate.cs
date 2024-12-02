@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace seven
-{
+﻿namespace seven {
     public class Estate {
         public int ID { get; set; }
         public User Owner { get; set; }
