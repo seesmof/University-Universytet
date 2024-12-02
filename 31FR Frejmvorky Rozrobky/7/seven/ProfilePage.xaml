@@ -8,55 +8,59 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage">
     <TabControl>
-        <TabItem Header="User">
+        <TabItem Selector.Selected="homeTabOpened" x:Name="HomeTab" Header="Home">
             <Grid Background="White">
-                <TabControl>
-                    <TabItem Selector.Selected="UserDataTabOpened" Header="Data">
-                        <Grid Background="White">
-                            <Label x:Name="UserNameLabel" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
-                            <Label x:Name="UserBalanceLabel" Content="Balance" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
-                            <Button x:Name="ChangeNameButton" Content="Change" HorizontalAlignment="Left" Margin="135,41,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeNameButton_Click"/>
-                            <TextBox x:Name="UserNameBox" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
-                            <TextBox x:Name="UserBalanceBox" HorizontalAlignment="Left" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
-                            <Button x:Name="ChangeBalanceButton" Content="Change" HorizontalAlignment="Left" Margin="135,93,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeBalanceButton_Click"/>
-                            <CheckBox x:Name="UserStatusToggle" Content="Manager?" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Click="UserStatusToggle_Click" />
-                            <Label x:Name="UserManagerLabel" Content="Status" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
-                        </Grid>
-                    </TabItem>
-                    <TabItem Selector.Selected="UserPropertyTabOpened" Header="Property">
-                        <Grid Background="White">
-                            <DataGrid Background="White">
-                                <DataGrid.Columns>
-                                    <DataGridCheckBoxColumn Header="Edit"/>
-                                    <DataGridTextColumn FontFamily="Verdana" Header="Title"/>
-                                    <DataGridTextColumn FontFamily="Verdana" Header="Kind"/>
-                                    <DataGridTextColumn FontFamily="Verdana" Header="Price"/>
-                                    <DataGridTextColumn Header="Owner"/>
-                                    <DataGridHyperlinkColumn Header="Delete"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                    </TabItem>
-                </TabControl>
+                <Label x:Name="UserNameLabel" Content="Name" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
+                <Label x:Name="UserBalanceLabel" Content="Balance" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
+                <Button x:Name="ChangeNameButton" Content="Change" HorizontalAlignment="Left" Margin="181,19,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeNameButton_Click"/>
+                <TextBox x:Name="UserNameBox" HorizontalAlignment="Left" Margin="56,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
+                <TextBox x:Name="UserBalanceBox" HorizontalAlignment="Left" Margin="70,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
+                <Button x:Name="ChangeBalanceButton" Content="Change" HorizontalAlignment="Left" Margin="195,48,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeBalanceButton_Click"/>
+                <CheckBox x:Name="UserStatusToggle" Content="Manager?" HorizontalAlignment="Left" Margin="59,74,0,0" VerticalAlignment="Top" Click="UserStatusToggle_Click" />
+                <Label x:Name="UserManagerLabel" Content="Status" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
+                <ListBox x:Name="IncomingMeetingsContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="405,10,182,269" FontFamily="Verdana"/>
+                <ListBox x:Name="OutgoingMeetingsContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="405,158,182,120" FontFamily="Verdana"/>
             </Grid>
         </TabItem>
-        <TabItem Header="Market">
-            <Grid Background="White"/>
+        <TabItem Selector.Selected="availableEstatesTabOpened" x:Name="AvailableEstatesTab" Header="Available Estate">
+            <Grid Background="White">
+                <ListBox x:Name="AvailableEstatesContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,35,0,0" FontFamily="Verdana"/>
+                <Button x:Name="BuyEstateButton" Content="Buy" HorizontalAlignment="Left" Margin="531,7,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="43" Click="BuyEstateButton_Click" Height="20"/>
+                <Button x:Name="SetMeetingButton" Content="View" HorizontalAlignment="Left" Margin="579,7,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="43" Click="BuyEstateButton_Click" Height="20"/>
+                <TextBox x:Name="AeTitleInput" HorizontalAlignment="Left" Margin="44,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontFamily="Verdana" Height="20"/>
+                <TextBox x:Name="AePriceInput" HorizontalAlignment="Left" Margin="189,7,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="57" FontFamily="Verdana" Height="20"/>
+                <ComboBox x:Name="AeKindInput" HorizontalAlignment="Left" Margin="251,7,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
+                    <ComboBoxItem Content="Home" IsSelected="True"/>
+                    <ComboBoxItem Content="Flat"/>
+                    <ComboBoxItem Content="New"/>
+                </ComboBox>
+                <Button x:Name="AeSellButton" Content="Sell" HorizontalAlignment="Left" Margin="333,7,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48" Click="AeSellButton_Click"/>
+                <Label x:Name="AeSelectedHeading" Content="Selected" HorizontalAlignment="Left" Margin="460,5,0,0" VerticalAlignment="Top" FontFamily="Verdana" FontWeight="Bold"/>
+                <Label x:Name="AeSellHeading" Content="Sell" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            </Grid>
+        </TabItem>
+        <TabItem Selector.Selected="ownedEstatesTabOpened" x:Name="OwnedEstatesTab" Header="Owned Estate">
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ListBox x:Name="OwnedEstatesContainer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,34,0,0" FontFamily="Verdana" SelectionChanged="OwnedEstatesContainer_SelectionChanged"/>
+                <TextBox x:Name="OeTitleInput" HorizontalAlignment="Left" Margin="51,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontFamily="Verdana" Height="20"/>
+                <TextBox x:Name="OePriceInput" HorizontalAlignment="Left" Margin="196,6,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="57" FontFamily="Verdana" Height="20"/>
+                <ComboBox x:Name="OeKindInput" HorizontalAlignment="Left" Margin="258,6,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
+                    <ComboBoxItem Content="Home" IsSelected="True"/>
+                    <ComboBoxItem Content="Flat"/>
+                    <ComboBoxItem Content="New"/>
+                </ComboBox>
+                <Button x:Name="OeEditButton" Content="Edit" HorizontalAlignment="Left" Margin="340,6,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48" Click="OeEditButton_Click"/>
+                <Label x:Name="OeEditHeading" Content="Edit" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Verdana"/>
+            </Grid>
         </TabItem>
         <TabItem Header="Meetings">
             <Grid Background="White">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="131*"/>
-                    <ColumnDefinition Width="663*"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TabControl Grid.ColumnSpan="2">
-                    <TabItem Header="Incoming (to you)">
-                        <Grid Background="White"/>
-                    </TabItem>
-                    <TabItem Header="Outgoing (by you)">
-                        <Grid Background="White"/>
-                    </TabItem>
-                </TabControl>
             </Grid>
         </TabItem>
     </TabControl>
