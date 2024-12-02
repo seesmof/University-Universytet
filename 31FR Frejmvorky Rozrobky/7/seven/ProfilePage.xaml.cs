@@ -62,8 +62,9 @@ namespace seven {
                 AvailableEstatesContainer.Items.Add($"{e.ID}. {e.Title} of kind {e.Kind} price {e.Price} owned by {e.Owner.Name}");
             }
         }
-        public void showIncomingMeetings(){
+        public void showIncomingMeetings(bool onlyPending=false){
             var data = database.getMeetings().Where(m => m.Target.Owner.ID == client.ID).OrderBy(m=>m.ID).Reverse().ToList();
+            if (onlyPending) { data = data.Where(m => m.Status == MeetingStatus.Wait && m.Score == "Unrated").ToList(); }
             IncomingMeetingsContainer.Items.Clear();
             foreach (var m in data){
                 IncomingMeetingsContainer.Items.Add($"{m.ID}. For {m.Target.Title} by {m.Sender.Name} to {m.Target.Owner.Name} rated {m.Score} status {m.Status}");
@@ -212,6 +213,10 @@ namespace seven {
             var meeting = database.getMeeting(int.Parse(id));
 
             RateInput.Text = meeting.Score;
+        }
+        private void CheckBox_Click(object sender, RoutedEventArgs e) {
+            var status = Convert.ToBoolean(pendingMeetingsToggle.IsChecked);
+            showIncomingMeetings(status);
         }
     }
 }

@@ -3,7 +3,19 @@
   "WorkspaceRootPath": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\utilityvariables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\profilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:profilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\utilityvariables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:utilityvariables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -13,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\profilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:profilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\meetingstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\meeting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:meeting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -55,7 +55,7 @@
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -66,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,20 +74,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MeetingStatus.cs",
-              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\MeetingStatus.cs",
-              "RelativeDocumentMoniker": "MeetingStatus.cs",
-              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\MeetingStatus.cs",
-              "RelativeToolTip": "MeetingStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:13:12.771Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "ProfilePage.xaml",
               "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ProfilePage.xaml",
               "RelativeDocumentMoniker": "ProfilePage.xaml",
@@ -99,20 +86,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "ProfilePage.xaml.cs",
               "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ProfilePage.xaml.cs",
               "RelativeDocumentMoniker": "ProfilePage.xaml.cs",
               "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ProfilePage.xaml.cs",
               "RelativeToolTip": "ProfilePage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAKwAAAAAAAAAAAAuwNwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-29T18:35:55.082Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "User.cs",
               "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\User.cs",
               "RelativeDocumentMoniker": "User.cs",
@@ -120,12 +107,11 @@
               "RelativeToolTip": "User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:14:07.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:14:07.664Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "UtilityFunctions.cs",
               "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\UtilityFunctions.cs",
               "RelativeDocumentMoniker": "UtilityFunctions.cs",
@@ -133,12 +119,11 @@
               "RelativeToolTip": "UtilityFunctions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:14:17.708Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:14:17.708Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "UtilityVariables.cs",
               "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\UtilityVariables.cs",
               "RelativeDocumentMoniker": "UtilityVariables.cs",
@@ -151,7 +136,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginPage.xaml.cs",
+              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\LoginPage.xaml.cs",
+              "RelativeDocumentMoniker": "LoginPage.xaml.cs",
+              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\LoginPage.xaml.cs",
+              "RelativeToolTip": "LoginPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T14:12:25.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "MeetingStatus.cs",
+              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\MeetingStatus.cs",
+              "RelativeDocumentMoniker": "MeetingStatus.cs",
+              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\MeetingStatus.cs",
+              "RelativeToolTip": "MeetingStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T14:13:12.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "MeetingScore.cs",
               "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\MeetingScore.cs",
               "RelativeDocumentMoniker": "MeetingScore.cs",
@@ -159,12 +169,11 @@
               "RelativeToolTip": "MeetingScore.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:13:00.563Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:13:00.563Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Meeting.cs",
               "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Meeting.cs",
               "RelativeDocumentMoniker": "Meeting.cs",
@@ -172,21 +181,7 @@
               "RelativeToolTip": "Meeting.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:12:52.434Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LoginPage.xaml.cs",
-              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\LoginPage.xaml.cs",
-              "RelativeDocumentMoniker": "LoginPage.xaml.cs",
-              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\LoginPage.xaml.cs",
-              "RelativeToolTip": "LoginPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:12:25.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:12:52.434Z"
             },
             {
               "$type": "Document",
@@ -210,8 +205,7 @@
               "RelativeToolTip": "EstateKind.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:12:00.541Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:12:00.541Z"
             },
             {
               "$type": "Document",
@@ -223,8 +217,7 @@
               "RelativeToolTip": "App.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T17:24:41.332Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T17:24:41.332Z"
             },
             {
               "$type": "Document",
@@ -236,8 +229,7 @@
               "RelativeToolTip": "Database.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:11:40.156Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:11:40.156Z"
             },
             {
               "$type": "Document",
@@ -249,8 +241,7 @@
               "RelativeToolTip": "Estate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:11:38.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:11:38.273Z"
             }
           ]
         }
