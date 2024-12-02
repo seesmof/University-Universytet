@@ -61,6 +61,9 @@ namespace seven {
             foreach (var e in data){
                 AvailableEstatesContainer.Items.Add($"{e.ID}. {e.Title} of kind {e.Kind} price {e.Price} owned by {e.Owner.Name}");
             }
+            SellTitleInput.Text = "";
+            SellPriceInput.Text = "0";
+            SellKindInput.Text = "Home";
         }
         public void showIncomingMeetings(bool onlyPending=false){
             var data = database.getMeetings().Where(m => m.Target.Owner.ID == client.ID).OrderBy(m=>m.ID).Reverse().ToList();

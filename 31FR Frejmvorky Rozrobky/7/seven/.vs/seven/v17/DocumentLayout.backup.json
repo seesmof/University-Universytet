@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\utilityvariables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\utilityvariables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:utilityvariables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -81,8 +81,7 @@
               "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ProfilePage.xaml",
               "RelativeToolTip": "ProfilePage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-29T18:44:59.135Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-29T18:44:59.135Z"
             },
             {
               "$type": "Document",
@@ -90,9 +89,9 @@
               "Title": "ProfilePage.xaml.cs",
               "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ProfilePage.xaml.cs",
               "RelativeDocumentMoniker": "ProfilePage.xaml.cs",
-              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ProfilePage.xaml.cs",
-              "RelativeToolTip": "ProfilePage.xaml.cs",
-              "ViewState": "AgIAAKwAAAAAAAAAAAAuwNwAAAAFAAAAAAAAAA==",
+              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ProfilePage.xaml.cs*",
+              "RelativeToolTip": "ProfilePage.xaml.cs*",
+              "ViewState": "AgIAABYAAAAAAAAAAAAIwEAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-29T18:35:55.082Z",
               "EditorCaption": ""
@@ -131,8 +130,7 @@
               "RelativeToolTip": "UtilityVariables.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:14:43.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:14:43.612Z"
             },
             {
               "$type": "Document",
@@ -144,8 +142,7 @@
               "RelativeToolTip": "LoginPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:12:25.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:12:25.83Z"
             },
             {
               "$type": "Document",
@@ -192,8 +189,7 @@
               "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\LoginPage.xaml",
               "RelativeToolTip": "LoginPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-02T14:12:12.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T14:12:12.113Z"
             },
             {
               "$type": "Document",
