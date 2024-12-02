@@ -6,11 +6,11 @@ namespace seven {
     /// Interaction logic for LoginPage.xaml
     /// </summary>
     public partial class LoginPage : Page {
-        public LoginPage() {
+        public LoginPage(){
             InitializeComponent();
             UserNameInput.Focus();
         }
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void Button_Click(object sender, RoutedEventArgs e){
             var userName = UserNameInput.Text;
             this.NavigationService.Navigate(new ProfilePage(userName));
         }

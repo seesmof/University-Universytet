@@ -11,7 +11,7 @@ namespace seven {
         public const string LastCreatedID="SELECT LAST_INSERT_ID();";
 
         // SYSTEM
-        public Database(MySqlConnection connection) { this.connection = connection; }
+        public Database(MySqlConnection connection){ this.connection = connection; }
         public MySqlDataReader read(string query){
             command=new MySqlCommand(query,connection);
             return command.ExecuteReader();
@@ -22,11 +22,11 @@ namespace seven {
         }
 
         // CREATE
-        public User createUser(string name, int admin = 0, int balance=0) {
+        public User createUser(string name, int admin = 0, int balance=0){
             write($"INSERT INTO user (name,admin,balance) VALUES ('{name}',{admin},{balance});");
             reader=read(LastCreatedID);
             var user = new User();
-            while (reader.Read()) {
+            while (reader.Read()){
                 user.ID = reader.GetInt32(0);
                 user.Name = name;
                 user.Admin = admin;
@@ -35,11 +35,11 @@ namespace seven {
             reader.Close();
             return user;
         }
-        public Estate createEstate(string title, string kind, User owner, int price) {
+        public Estate createEstate(string title, string kind, User owner, int price){
             write($"INSERT INTO estate (title,kind,owner_id,price) VALUES ('{title}','{kind}',{owner.ID},{price});");
             reader=read(LastCreatedID);
             var estate = new Estate();
-            while (reader.Read()) {
+            while (reader.Read()){
                 estate.ID = reader.GetInt32(0);
                 estate.Title = title;
                 estate.Kind = kind;
@@ -53,7 +53,7 @@ namespace seven {
             write($"INSERT INTO meeting (sender_id,target_id) VALUES ({sender.ID},{target.ID});");
             reader=read(LastCreatedID);
             var meeting = new Meeting();
-            while (reader.Read()) {
+            while (reader.Read()){
                 meeting.ID = reader.GetInt32(0);
                 meeting.Sender=sender;
                 meeting.Target=target;
@@ -66,7 +66,7 @@ namespace seven {
         public List<User> getUsers(){
             reader=read("SELECT id,name,admin,balance FROM user;");
             var users=new List<User>();
-            while (reader.Read()) {
+            while (reader.Read()){
                 var user = new User();
                 user.ID = reader.GetInt32(0);
                 user.Name = reader.GetString(1);
@@ -107,7 +107,7 @@ namespace seven {
             var meetings=new List<Meeting>();
             var senders = new List<int>();
             var targets = new List<int>();
-            while (reader.Read()) {
+            while (reader.Read()){
                 var meeting = new Meeting();
                 meeting.ID = reader.GetInt32(0);
                 senders.Add(reader.GetInt32(1));
@@ -117,7 +117,7 @@ namespace seven {
                 meetings.Add(meeting);
             }
             reader.Close();
-            for (int i = 0; i < meetings.Count; i++) {
+            for (int i = 0; i < meetings.Count; i++){
                 meetings[i].Sender = getUser(senders[i]);
                 meetings[i].Target = getEstate(targets[i]);
             }
@@ -128,24 +128,24 @@ namespace seven {
         }
 
         // UPDATE
-        public void updateUser(User user) {
+        public void updateUser(User user){
             write($"UPDATE user SET name='{user.Name}',admin={user.Admin},balance={user.Balance} WHERE id={user.ID};");
         }
-        public void updateEstate(Estate estate) {
+        public void updateEstate(Estate estate){
             write($"UPDATE estate SET owner_id={estate.Owner.ID},title='{estate.Title}',kind='{estate.Kind}',price={estate.Price} WHERE id={estate.ID};");
         }
-        public void updateMeeting(Meeting meeting) {
+        public void updateMeeting(Meeting meeting){
             write($"UPDATE meeting SET sender_id={meeting.Sender.ID},target_id={meeting.Target.ID},score='{meeting.Score}',status='{meeting.Status}' WHERE id={meeting.ID};");
         }
 
         // DELETE
-        public void deleteUser(int id) {
+        public void deleteUser(int id){
             write($"DELETE FROM user WHERE id={id};");
         }
-        public void deleteEstate(int id) {
+        public void deleteEstate(int id){
             write($"DELETE FROM estate WHERE id={id};");
         }
-        public void deleteMeeting(int id) {
+        public void deleteMeeting(int id){
             write($"DELETE FROM meeting WHERE id={id};");
         }
     }

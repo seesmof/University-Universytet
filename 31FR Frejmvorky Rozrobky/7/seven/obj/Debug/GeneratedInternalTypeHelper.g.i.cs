@@ -22,7 +22,7 @@ namespace XamlGeneratedNamespace {
         /// <summary>
         /// CreateInstance
         /// </summary>
-        protected override object CreateInstance(System.Type type, System.Globalization.CultureInfo culture) {
+        protected override object CreateInstance(System.Type type, System.Globalization.CultureInfo culture){
             return System.Activator.CreateInstance(type, ((System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic) 
                             | (System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.CreateInstance)), null, null, culture);
         }
@@ -30,21 +30,21 @@ namespace XamlGeneratedNamespace {
         /// <summary>
         /// GetPropertyValue
         /// </summary>
-        protected override object GetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, System.Globalization.CultureInfo culture) {
+        protected override object GetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, System.Globalization.CultureInfo culture){
             return propertyInfo.GetValue(target, System.Reflection.BindingFlags.Default, null, null, culture);
         }
         
         /// <summary>
         /// SetPropertyValue
         /// </summary>
-        protected override void SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture) {
+        protected override void SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture){
             propertyInfo.SetValue(target, value, System.Reflection.BindingFlags.Default, null, null, culture);
         }
         
         /// <summary>
         /// CreateDelegate
         /// </summary>
-        protected override System.Delegate CreateDelegate(System.Type delegateType, object target, string handler) {
+        protected override System.Delegate CreateDelegate(System.Type delegateType, object target, string handler){
             return ((System.Delegate)(target.GetType().InvokeMember("_CreateDelegate", (System.Reflection.BindingFlags.InvokeMethod 
                             | (System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)), null, target, new object[] {
                         delegateType,
@@ -54,7 +54,7 @@ namespace XamlGeneratedNamespace {
         /// <summary>
         /// AddEventHandler
         /// </summary>
-        protected override void AddEventHandler(System.Reflection.EventInfo eventInfo, object target, System.Delegate handler) {
+        protected override void AddEventHandler(System.Reflection.EventInfo eventInfo, object target, System.Delegate handler){
             eventInfo.AddEventHandler(target, handler);
         }
     }

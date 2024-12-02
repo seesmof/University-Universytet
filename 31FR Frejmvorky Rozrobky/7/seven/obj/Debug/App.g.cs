@@ -45,7 +45,7 @@ namespace seven {
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
-        public void InitializeComponent() {
+        public void InitializeComponent(){
             
             #line 5 "..\..\App.xaml"
             this.StartupUri = new System.Uri("LoginPage.xaml", System.UriKind.Relative);
@@ -60,7 +60,7 @@ namespace seven {
         [System.STAThreadAttribute()]
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
-        public static void Main() {
+        public static void Main(){
             seven.App app = new seven.App();
             app.InitializeComponent();
             app.Run();
