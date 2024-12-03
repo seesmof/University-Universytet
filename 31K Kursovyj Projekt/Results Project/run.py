@@ -216,8 +216,12 @@ with ui.row().classes('flex gap-3'):
                     disk_tables[partition_name]['disk']=ui.table(columns=common_columns,rows=get_rows(disk_data),row_key='name',title=f'{partition_name} Data')
                     disk_tables[partition_name]['space']=ui.table(columns=common_columns,rows=get_rows(space_data),row_key='name',title=f'{partition_name} Space')
                     # TODO add some diagram showing how much space is available
-            total_read_label=ui.label(f'Total Read: {get_formatted_size(disk_io.read_bytes)}')
-            total_write_label=ui.label(f'Total Write: {get_formatted_size(disk_io.write_bytes)}')
+            
+            disks_data={
+                'read':get_formatted_size(disk_io.read_bytes),
+                'write':get_formatted_size(disk_io.write_bytes),
+            }
+            disks_table=ui.table(columns=common_columns,rows=get_rows(disks_data),row_key='name').classes('w-full')
     with ui.column():
         with ui.card():
             ui.label('Network').classes('q-table__title')
@@ -232,9 +236,12 @@ with ui.row().classes('flex gap-3'):
                     }
                     with ui.expansion(interface_name):
                         network_tables[interface_name]=ui.table(columns=common_columns,rows=get_rows(network_data),row_key='name',title=f'{interface_name} Data')
-                        # TODO add some diagram showing how much space is available
-            total_sent_label=ui.label(f'Total sent: {get_formatted_size(net_io.bytes_sent)}')
-            total_received_label=ui.label(f'Total received: {get_formatted_size(net_io.bytes_recv)}')
+            network_data={
+                'sent':get_formatted_size(net_io.bytes_sent),
+                'received':get_formatted_size(net_io.bytes_recv),
+            }
+            network_table=ui.table(columns=common_columns,rows=get_rows(network_data),row_key='name').classes('w-full')
+            # TODO add network usage plot
 
 ui.timer(1,update_ui,active=True)
 ui.run()
