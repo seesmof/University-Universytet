@@ -5,99 +5,23 @@ import platform
 import psutil
 import win32api
 
-'''
-processor 
-    name 
-    clock speed 
-    cores 
-    threads 
-    temperature 
-'''
+HEADING_CLASSES='font-bold text-xl'
+COLUMNS=[
+    {'name':'property','label':'Property','field':'property','align':'left'},
+    {'name':'value','label':'Value','field':'value','sortable':True},
+]
 
-def get_formatted_size(bytes,suffix='B'):
-    '''
-    Scale bytes to proper format 
-        1253656 > '1.20MB'
-        1253656678 > '1.17GB'
-    '''
-    factor=1024
-    for unit in ['','K','M','G','T','P']:
-        if bytes<factor: return f'{bytes:.2f} {unit}{suffix}'
-        bytes/=factor
-
-print()
-uname=platform.uname()
-print('system',uname.system)
-print('node name',uname.node)
-print('release',uname.release)
-print('version',uname.version)
-print('machine',uname.machine)
-print('processor',uname.processor)
 # TODO get cpu name using cpuinfo probably JESUS please help 
-
-print()
+uname=platform.uname()
 boot_time_stamp=psutil.boot_time()
 boot_time=datetime.fromtimestamp(boot_time_stamp)
-print('boot time',f'{boot_time.day}.{boot_time.month}.{boot_time.year} {boot_time.hour:02d}:{boot_time.minute:02d}:{boot_time.second:02d}')
-
-print()
-print('physical cores',psutil.cpu_count(logical=False))
-print('total cores',psutil.cpu_count(logical=True))
 cpu_frequency=psutil.cpu_freq()
-print('max frequency',f'{cpu_frequency.max:.2f}MHz')
-print('min frequency',f'{cpu_frequency.min:.2f}MHz')
-print('current frequency',f'{cpu_frequency.current:.2f}MHz')
-print('cpu usage per core')
-for i,percentage in enumerate(psutil.cpu_percent(percpu=True,interval=1)):
-    print('core',i,f'{percentage}%')
-print('total cpu usage',f'{psutil.cpu_percent()}%')
-
-print()
 system_virtual_memory=psutil.virtual_memory()
-print('total',get_formatted_size(system_virtual_memory.total))
-print('available',get_formatted_size(system_virtual_memory.available))
-print('used',get_formatted_size(system_virtual_memory.used))
-print('percentage',f'{system_virtual_memory.percent}%')
 swap=psutil.swap_memory()
-print('total',get_formatted_size(swap.total))
-print('free',get_formatted_size(swap.free))
-print('used',get_formatted_size(swap.used))
-print('percentage',f'{swap.percent}%')
-
-print()
 partitions=psutil.disk_partitions()
-for partition in partitions:
-    print('device',partition.device)
-    print('mountpoint',partition.mountpoint)
-    drive_name=win32api.GetVolumeInformation(partition.device)[0]
-    print('name',drive_name)
-    print('file system type',partition.fstype)
-    try: partition_usage=psutil.disk_usage(partition.mountpoint)
-    except: continue
-    print('total',get_formatted_size(partition_usage.total))
-    print('used',get_formatted_size(partition_usage.used))
-    print('free',get_formatted_size(partition_usage.free))
-    print('percentage',f'{partition_usage.percent}%')
 disk_io=psutil.disk_io_counters()
-print('total read',get_formatted_size(disk_io.read_bytes))
-print('total write',get_formatted_size(disk_io.write_bytes))
-
-print()
 if_addrs=psutil.net_if_addrs()
-for interface_name,interface_addresses in if_addrs.items():
-    for address in interface_addresses:
-        print(interface_name,address.family.name)
-        if address.family.name=='AF_INET':
-            print('ip address',address.address)
-            print('netmask',address.netmask)
-            print('broadcast ip',address.broadcast)
-        elif address.family.name=='AF_PACKET':
-            print('mac address',address.address)
-            print('netmask',address.netmask)
-            print('broadcast mac',address.broadcast)
 net_io=psutil.net_io_counters()
-print('total bytes sent',get_formatted_size(net_io.bytes_sent))
-print('total bytes received',get_formatted_size(net_io.bytes_recv))
 
 def get_rows(data:dict):
     return [{'property':k.capitalize(),'value':v} for k,v in data.items()]
@@ -137,12 +61,16 @@ def update_ui():
     }
     swap_memory_table.rows=get_rows(swap_memory_data)
 
-
-HEADING_CLASSES='font-bold text-xl'
-common_columns=[
-{'name':'property','label':'Property','field':'property','align':'left'},
-{'name':'value','label':'Value','field':'value','sortable':True},
-]
+def get_formatted_size(bytes,suffix='B'):
+    '''
+    Scale bytes to proper format 
+        1253656 > '1.20MB'
+        1253656678 > '1.17GB'
+    '''
+    factor=1024
+    for unit in ['','K','M','G','T','P']:
+        if bytes<factor: return f'{bytes:.2f} {unit}{suffix}'
+        bytes/=factor
 
 with ui.row().classes('flex gap-3'):
     with ui.column():
@@ -154,7 +82,7 @@ with ui.row().classes('flex gap-3'):
             'machine':uname.machine,
             'booted':f'{boot_time.day}.{boot_time.month}.{boot_time.year} {boot_time.hour:02d}:{boot_time.minute:02d}:{boot_time.second:02d}'
         }
-        system_table=ui.table(columns=common_columns,rows=get_rows(system_data),row_key='name',title='System')
+        system_table=ui.table(columns=COLUMNS,rows=get_rows(system_data),row_key='name',title='System')
     with ui.column():
         processor_data={
             'name':uname.processor,
@@ -162,7 +90,7 @@ with ui.row().classes('flex gap-3'):
             'cores':psutil.cpu_count(logical=False),
             'threads':psutil.cpu_count(logical=True),
         }
-        processor_table=ui.table(columns=common_columns,rows=get_rows(processor_data),row_key='name',title='Processor')
+        processor_table=ui.table(columns=COLUMNS,rows=get_rows(processor_data),row_key='name',title='Processor')
 
         with ui.row().classes('flex w-full'):
             processor_frequencies_data={
@@ -170,13 +98,13 @@ with ui.row().classes('flex gap-3'):
                 'max':cpu_frequency.max,
                 'current':cpu_frequency.current,
             }
-            processor_frequencies_table=ui.table(columns=common_columns,rows=get_rows(processor_frequencies_data),row_key='name',title='Frequencies (MHz)')
+            processor_frequencies_table=ui.table(columns=COLUMNS,rows=get_rows(processor_frequencies_data),row_key='name',title='Frequencies (MHz)')
 
             processor_usage_data={
                 f'Core {i}': usage
                 for i,usage in enumerate(psutil.cpu_percent(percpu=True))
             }
-            processor_usage_table=ui.table(columns=common_columns,rows=get_rows(processor_usage_data),row_key='name',title='Usage (%)').classes('flex-1')
+            processor_usage_table=ui.table(columns=COLUMNS,rows=get_rows(processor_usage_data),row_key='name',title='Usage (%)').classes('flex-1')
     with ui.column():
         virtual_memory_data={
             'total':get_formatted_size(system_virtual_memory.total),
@@ -184,7 +112,7 @@ with ui.row().classes('flex gap-3'):
             'used':get_formatted_size(system_virtual_memory.used),
             'percentage':f'{system_virtual_memory.percent}%',
         }
-        virtual_memory_table=ui.table(columns=common_columns,rows=get_rows(virtual_memory_data),row_key='name',title='Virtual Memory').classes('w-full')
+        virtual_memory_table=ui.table(columns=COLUMNS,rows=get_rows(virtual_memory_data),row_key='name',title='Virtual Memory').classes('w-full')
 
         swap_memory_data={
             'total':get_formatted_size(swap.total),
@@ -192,7 +120,7 @@ with ui.row().classes('flex gap-3'):
             'used':get_formatted_size(swap.used),
             'percentage':f'{swap.percent}%',
         }
-        swap_memory_table=ui.table(columns=common_columns,rows=get_rows(swap_memory_data),row_key='name',title='Swap Memory')
+        swap_memory_table=ui.table(columns=COLUMNS,rows=get_rows(swap_memory_data),row_key='name',title='Swap Memory')
     with ui.column():
         with ui.card():
             ui.label('Disks').classes('q-table__title')
@@ -213,15 +141,15 @@ with ui.row().classes('flex gap-3'):
                     'percentage':f'{usage_data.percent}%',
                 }
                 with ui.expansion(partition_name):
-                    disk_tables[partition_name]['disk']=ui.table(columns=common_columns,rows=get_rows(disk_data),row_key='name',title=f'{partition_name} Data')
-                    disk_tables[partition_name]['space']=ui.table(columns=common_columns,rows=get_rows(space_data),row_key='name',title=f'{partition_name} Space')
+                    disk_tables[partition_name]['disk']=ui.table(columns=COLUMNS,rows=get_rows(disk_data),row_key='name',title=f'{partition_name} Data')
+                    disk_tables[partition_name]['space']=ui.table(columns=COLUMNS,rows=get_rows(space_data),row_key='name',title=f'{partition_name} Space')
                     # TODO add some diagram showing how much space is available
             
             disks_data={
                 'read':get_formatted_size(disk_io.read_bytes),
                 'write':get_formatted_size(disk_io.write_bytes),
             }
-            disks_table=ui.table(columns=common_columns,rows=get_rows(disks_data),row_key='name').classes('w-full')
+            disks_table=ui.table(columns=COLUMNS,rows=get_rows(disks_data),row_key='name').classes('w-full')
     with ui.column():
         with ui.card():
             ui.label('Network').classes('q-table__title')
@@ -235,12 +163,12 @@ with ui.row().classes('flex gap-3'):
                         'Broadcast IP' if address.family.name=='AF_INET' else 'Broadcast MAC':address.broadcast,
                     }
                     with ui.expansion(interface_name):
-                        network_tables[interface_name]=ui.table(columns=common_columns,rows=get_rows(network_data),row_key='name',title=f'{interface_name} Data')
+                        network_tables[interface_name]=ui.table(columns=COLUMNS,rows=get_rows(network_data),row_key='name',title=f'{interface_name} Data')
             network_data={
                 'sent':get_formatted_size(net_io.bytes_sent),
                 'received':get_formatted_size(net_io.bytes_recv),
             }
-            network_table=ui.table(columns=common_columns,rows=get_rows(network_data),row_key='name').classes('w-full')
+            network_table=ui.table(columns=COLUMNS,rows=get_rows(network_data),row_key='name').classes('w-full')
             # TODO add network usage plot
 
 ui.timer(1,update_ui,active=True)
