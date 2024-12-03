@@ -98,10 +98,17 @@ net_io=psutil.net_io_counters()
 print('total bytes sent',get_formatted_size(net_io.bytes_sent))
 print('total bytes received',get_formatted_size(net_io.bytes_recv))
 
+def get_rows(data:dict):
+    return [{'property':k.capitalize(),'value':v} for k,v in data.items()]
+
 def update_ui():
-    system_data['type']=uname.system
-    system_data['user']=uname.node
-    system_table.rows=[{'property':k.capitalize(),'value':v} for k,v in system_data.items()]
+    processor_frequencies_data={
+    'min':cpu_frequency.min,
+    'max':cpu_frequency.max,
+    'current':cpu_frequency.current,
+    }
+    processor_frequencies_table.rows=get_rows(processor_frequencies_data)
+
 
 HEADING_CLASSES='font-bold text-xl'
 common_columns=[
@@ -118,15 +125,24 @@ with ui.row().classes('flex gap-3'):
             'version':uname.version,
             'machine':uname.machine,
         }
-        system_table_rows=[{'property':k.capitalize(),'value':v} for k,v in system_data.items()]
-        system_table=ui.table(columns=common_columns,rows=system_table_rows,row_key='name',title='System')
+        system_table=ui.table(columns=common_columns,rows=get_rows(system_data),row_key='name',title='System')
+
         boot_time_label=ui.label(f'Booted: {boot_time.day}.{boot_time.month}.{boot_time.year} {boot_time.hour:02d}:{boot_time.minute:02d}:{boot_time.second:02d}')
     with ui.column():
         processor_data={
             'name':uname.processor,
+            'platform':uname.machine,
+            'cores':psutil.cpu_count(logical=False),
+            'threads':psutil.cpu_count(logical=True),
         }
-        processor_table_rows=[{'property':k.capitalize(),'value':v} for k,v in processor_data.items()]
-        processor_table=ui.table(columns=common_columns,rows=processor_table_rows,row_key='name',title='Processor')
+        processor_table=ui.table(columns=common_columns,rows=get_rows(processor_data),row_key='name',title='Processor')
+
+        processor_frequencies_data={
+            'min':cpu_frequency.min,
+            'max':cpu_frequency.max,
+            'current':cpu_frequency.current,
+        }
+        processor_frequencies_table=ui.table(columns=common_columns,rows=get_rows(processor_frequencies_data),row_key='name',title='Frequencies (MHz)')
     with ui.column():
         ui.label('Memory').classes(HEADING_CLASSES)
         ui.label('Name')
