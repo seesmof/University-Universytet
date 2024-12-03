@@ -104,6 +104,11 @@ def update_ui():
     system_table.rows=[{'property':k.capitalize(),'value':v} for k,v in system_data.items()]
 
 HEADING_CLASSES='font-bold text-xl'
+common_columns=[
+{'name':'property','label':'Property','field':'property'},
+{'name':'value','label':'Value','field':'value'},
+]
+
 with ui.row().classes('flex gap-3'):
     with ui.column():
         system_data={
@@ -114,22 +119,14 @@ with ui.row().classes('flex gap-3'):
             'machine':uname.machine,
         }
         system_table_rows=[{'property':k.capitalize(),'value':v} for k,v in system_data.items()]
-        system_table_columns=[
-            {'name':'property','label':'Property','field':'property'},
-            {'name':'value','label':'Value','field':'value'},
-        ]
-        system_table=ui.table(columns=system_table_columns,rows=system_table_rows,row_key='name',title='System')
+        system_table=ui.table(columns=common_columns,rows=system_table_rows,row_key='name',title='System')
         boot_time_label=ui.label(f'Booted: {boot_time.day}.{boot_time.month}.{boot_time.year} {boot_time.hour:02d}:{boot_time.minute:02d}:{boot_time.second:02d}')
     with ui.column():
         processor_data={
             'name':uname.processor,
         }
         processor_table_rows=[{'property':k.capitalize(),'value':v} for k,v in processor_data.items()]
-        processor_table_columns=[
-            {'name':'property','label':'Property','field':'property'},
-            {'name':'value','label':'Value','field':'value'},
-        ]
-        processor_table=ui.table(columns=processor_table_columns,rows=processor_table_rows,row_key='name',title='Processor')
+        processor_table=ui.table(columns=common_columns,rows=processor_table_rows,row_key='name',title='Processor')
     with ui.column():
         ui.label('Memory').classes(HEADING_CLASSES)
         ui.label('Name')
