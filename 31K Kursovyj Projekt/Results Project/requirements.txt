@@ -2,3 +2,4 @@ psutil
 wmi
 nicegui
 pywin32
+gputil
