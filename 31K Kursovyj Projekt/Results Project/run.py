@@ -103,11 +103,17 @@ def get_rows(data:dict):
 
 def update_ui():
     processor_frequencies_data={
-    'min':cpu_frequency.min,
-    'max':cpu_frequency.max,
-    'current':cpu_frequency.current,
+        'min':cpu_frequency.min,
+        'max':cpu_frequency.max,
+        'current':cpu_frequency.current,
     }
     processor_frequencies_table.rows=get_rows(processor_frequencies_data)
+
+    processor_usage_data={
+        f'Core {i}': usage
+        for i,usage in enumerate(psutil.cpu_percent(percpu=True))
+    }
+    processor_usage_table.rows=get_rows(processor_usage_data)
 
 
 HEADING_CLASSES='font-bold text-xl'
@@ -137,12 +143,19 @@ with ui.row().classes('flex gap-3'):
         }
         processor_table=ui.table(columns=common_columns,rows=get_rows(processor_data),row_key='name',title='Processor')
 
-        processor_frequencies_data={
-            'min':cpu_frequency.min,
-            'max':cpu_frequency.max,
-            'current':cpu_frequency.current,
-        }
-        processor_frequencies_table=ui.table(columns=common_columns,rows=get_rows(processor_frequencies_data),row_key='name',title='Frequencies (MHz)')
+        with ui.row():
+            processor_frequencies_data={
+                'min':cpu_frequency.min,
+                'max':cpu_frequency.max,
+                'current':cpu_frequency.current,
+            }
+            processor_frequencies_table=ui.table(columns=common_columns,rows=get_rows(processor_frequencies_data),row_key='name',title='Frequencies (MHz)')
+
+            processor_usage_data={
+                f'Core {i}': usage
+                for i,usage in enumerate(psutil.cpu_percent(percpu=True))
+            }
+            processor_usage_table=ui.table(columns=common_columns,rows=get_rows(processor_usage_data),row_key='name',title='Usage (%)')
     with ui.column():
         ui.label('Memory').classes(HEADING_CLASSES)
         ui.label('Name')
