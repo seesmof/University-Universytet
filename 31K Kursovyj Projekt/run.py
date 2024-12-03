@@ -1,46 +1,40 @@
+from datetime import datetime
 from nicegui import ui
+import platform
+import psutil
 
-generic_memory__load__memory='74,9%'
-generic_memory__data__used_memory='11,9 GB'
-generic_memory__data__available_memory='4,0 GB'
-tree_data=[
-    {'id':'Generic Memory', 'children': [
-        {'id':'Load','children':[
-            {'id':f'Memory: {generic_memory__load__memory}'}
-        ]},
-        {'id':'Data','children':[
-            {'id':f'Used Memory: {generic_memory__data__used_memory}'},
-            {'id':f'Available Memory: {generic_memory__data__available_memory}'},
-        ]}
-    ]}
-]
+'''
+processor 
+    name 
+    clock speed 
+    cores 
+    threads 
+    temperature 
+'''
 
-def update_data():
-    global generic_memory__load__memory
-    global generic_memory__data__available_memory
-    global generic_memory__data__used_memory
-    generic_memory__load__memory='77,7%'
-    generic_memory__data__used_memory='12,3 GB'
-    generic_memory__data__available_memory='3,7 GB'
-    global tree_data
-    tree_data=[
-        {'id':'Generic Memory', 'children': [
-            {'id':'Load','children':[
-                {'id':f'Memory: {generic_memory__load__memory}'}
-            ]},
-            {'id':'Data','children':[
-                {'id':f'Used Memory: {generic_memory__data__used_memory}'},
-                {'id':f'Available Memory: {generic_memory__data__available_memory}'},
-            ]}
-        ]}
-    ]
-    t.update()
+def get_size(bytes,suffix='B'):
+    '''
+    Scale bytes to proper format 
+        1253656 > '1.20MB'
+        1253656678 > '1.17GB'
+    '''
+    factor=1024
+    for unit in ['','K','M','G','T','P']:
+        if bytes<factor: return f'{bytes:.2f}{unit}{suffix}'
+        bytes/=factor
 
-t=ui.tree(tree_data, label_key='id').expand()
-ui.button('Update',on_click=update_data)
-t.bind_visibility_from(tree_data)
+print()
+uname=platform.uname()
+print('system',uname.system)
+print('node name',uname.node)
+print('release',uname.release)
+print('version',uname.version)
+print('machine',uname.machine)
+print('processor',uname.processor)
 
-l=ui.label('ALLELUJAH')
-ui.button('AMEN',on_click=lambda: l.text('PRAISE JESUS'))
+print()
+boot_time_stamp=psutil.boot_time()
+boot_time=datetime.fromtimestamp(boot_time_stamp)
+print('boot time',f'{boot_time.day}.{boot_time.month}.{boot_time.year} {boot_time.hour:02d}:{boot_time.minute:02d}:{boot_time.second:02d}')
 
 ui.run()
