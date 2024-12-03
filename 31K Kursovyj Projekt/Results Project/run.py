@@ -109,11 +109,32 @@ def update_ui():
     }
     processor_frequencies_table.rows=get_rows(processor_frequencies_data)
 
+    cpu_usage=psutil.cpu_percent(percpu=True)
+    # TODO add color highlight on higher usage: yellow if more than 60% and red if more than 77%
+    # user query tool here somehow JESUS please help 
     processor_usage_data={
         f'Core {i}': usage
-        for i,usage in enumerate(psutil.cpu_percent(percpu=True))
+        for i,usage in enumerate(cpu_usage)
     }
     processor_usage_table.rows=get_rows(processor_usage_data)
+
+    system_virtual_memory=psutil.virtual_memory()
+    virtual_memory_data={
+        'total':get_formatted_size(system_virtual_memory.total),
+        'available':get_formatted_size(system_virtual_memory.available),
+        'used':get_formatted_size(system_virtual_memory.used),
+        'percentage':f'{system_virtual_memory.percent}%',
+    }
+    virtual_memory_table.rows=get_rows(virtual_memory_data)
+
+    swap=psutil.swap_memory()
+    swap_memory_data={
+        'total':get_formatted_size(swap.total),
+        'free':get_formatted_size(swap.free),
+        'used':get_formatted_size(swap.used),
+        'percentage':f'{swap.percent}%',
+    }
+    swap_memory_table.rows=get_rows(swap_memory_data)
 
 
 HEADING_CLASSES='font-bold text-xl'
@@ -143,7 +164,7 @@ with ui.row().classes('flex gap-3'):
         }
         processor_table=ui.table(columns=common_columns,rows=get_rows(processor_data),row_key='name',title='Processor')
 
-        with ui.row():
+        with ui.row().classes('flex w-full'):
             processor_frequencies_data={
                 'min':cpu_frequency.min,
                 'max':cpu_frequency.max,
@@ -155,10 +176,23 @@ with ui.row().classes('flex gap-3'):
                 f'Core {i}': usage
                 for i,usage in enumerate(psutil.cpu_percent(percpu=True))
             }
-            processor_usage_table=ui.table(columns=common_columns,rows=get_rows(processor_usage_data),row_key='name',title='Usage (%)')
+            processor_usage_table=ui.table(columns=common_columns,rows=get_rows(processor_usage_data),row_key='name',title='Usage (%)').classes('flex-1')
     with ui.column():
-        ui.label('Memory').classes(HEADING_CLASSES)
-        ui.label('Name')
+        virtual_memory_data={
+            'total':get_formatted_size(system_virtual_memory.total),
+            'available':get_formatted_size(system_virtual_memory.available),
+            'used':get_formatted_size(system_virtual_memory.used),
+            'percentage':f'{system_virtual_memory.percent}%',
+        }
+        virtual_memory_table=ui.table(columns=common_columns,rows=get_rows(virtual_memory_data),row_key='name',title='Virtual Memory')
+
+        swap_memory_data={
+            'total':get_formatted_size(swap.total),
+            'free':get_formatted_size(swap.free),
+            'used':get_formatted_size(swap.used),
+            'percentage':f'{swap.percent}%',
+        }
+        swap_memory_table=ui.table(columns=common_columns,rows=get_rows(swap_memory_data),row_key='name',title='Swap Memory')
     with ui.column():
         ui.label('Disks').classes(HEADING_CLASSES)
         ui.label('Name')
