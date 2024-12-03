@@ -175,10 +175,8 @@ with ui.row().classes('flex gap-3'):
             network_table=ui.table(columns=COLUMNS,rows=get_rows(network_data),row_key='name').classes('w-full')
             # TODO add network usage plot
 with ui.row():
-    processor_usage_plot=ui.line_plot(n=1).with_legend(['CPU Usage %'],loc='upper center',ncol=1)
+    processor_usage_plot=ui.line_plot(n=1,figsize=(3,7)).with_legend(['CPU Usage %'],loc='upper center',ncol=1).classes('w-full')
     processor_usage_plot.push([datetime.now().timestamp()],[[100]])
-
-
 
 ui.timer(1,update_ui,active=True)
 ui.run()
