@@ -140,8 +140,8 @@ def update_ui():
 
 HEADING_CLASSES='font-bold text-xl'
 common_columns=[
-{'name':'property','label':'Property','field':'property'},
-{'name':'value','label':'Value','field':'value'},
+{'name':'property','label':'Property','field':'property','align':'left'},
+{'name':'value','label':'Value','field':'value','sortable':True},
 ]
 
 with ui.row().classes('flex gap-3'):
@@ -152,10 +152,9 @@ with ui.row().classes('flex gap-3'):
             'release':uname.release,
             'version':uname.version,
             'machine':uname.machine,
+            'booted':f'{boot_time.day}.{boot_time.month}.{boot_time.year} {boot_time.hour:02d}:{boot_time.minute:02d}:{boot_time.second:02d}'
         }
         system_table=ui.table(columns=common_columns,rows=get_rows(system_data),row_key='name',title='System')
-
-        boot_time_label=ui.label(f'Booted: {boot_time.day}.{boot_time.month}.{boot_time.year} {boot_time.hour:02d}:{boot_time.minute:02d}:{boot_time.second:02d}')
     with ui.column():
         processor_data={
             'name':uname.processor,
@@ -220,8 +219,22 @@ with ui.row().classes('flex gap-3'):
             total_read_label=ui.label(f'Total Read: {get_formatted_size(disk_io.read_bytes)}')
             total_write_label=ui.label(f'Total Write: {get_formatted_size(disk_io.write_bytes)}')
     with ui.column():
-        ui.label('Network').classes(HEADING_CLASSES)
-        ui.label('Name')
+        with ui.card():
+            ui.label('Network').classes('q-table__title')
+            network_tables=defaultdict(str)
+            for interface_name,interface_addresses in if_addrs.items():
+                interface_addresses=[a for a in interface_addresses if a.family.name=='AF_INET' or a.family.name=='AF_PACKET']
+                for address in interface_addresses:
+                    network_data={
+                        'IP Address' if address.family.name=='AF_INET' else 'MAC Address':address.address,
+                        'netmask':address.netmask,
+                        'Broadcast IP' if address.family.name=='AF_INET' else 'Broadcast MAC':address.broadcast,
+                    }
+                    with ui.expansion(interface_name):
+                        network_tables[interface_name]=ui.table(columns=common_columns,rows=get_rows(network_data),row_key='name',title=f'{interface_name} Data')
+                        # TODO add some diagram showing how much space is available
+            total_sent_label=ui.label(f'Total sent: {get_formatted_size(net_io.bytes_sent)}')
+            total_received_label=ui.label(f'Total received: {get_formatted_size(net_io.bytes_recv)}')
 
 ui.timer(1,update_ui,active=True)
 ui.run()
