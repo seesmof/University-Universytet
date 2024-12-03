@@ -1,3 +1,4 @@
+from collections import defaultdict
 from datetime import datetime
 from nicegui import ui
 import platform
@@ -194,8 +195,30 @@ with ui.row().classes('flex gap-3'):
         }
         swap_memory_table=ui.table(columns=common_columns,rows=get_rows(swap_memory_data),row_key='name',title='Swap Memory')
     with ui.column():
-        ui.label('Disks').classes(HEADING_CLASSES)
-        ui.label('Name')
+        with ui.card():
+            ui.label('Disks').classes('q-table__title')
+            disk_tables=defaultdict(dict)
+            for partition in partitions:
+                try: usage_data=psutil.disk_usage(partition.mountpoint)
+                except: continue
+                partition_name=win32api.GetVolumeInformation(partition.device)[0]
+                disk_data={
+                    'device':partition.device,
+                    'name':partition_name,
+                    'file system':partition.fstype,
+                }
+                space_data={
+                    'total':get_formatted_size(usage_data.total),
+                    'used':get_formatted_size(usage_data.used),
+                    'free':get_formatted_size(usage_data.free),
+                    'percentage':f'{usage_data.percent}%',
+                }
+                with ui.expansion(partition_name):
+                    disk_tables[partition_name]['disk']=ui.table(columns=common_columns,rows=get_rows(disk_data),row_key='name',title=f'{partition_name} Data')
+                    disk_tables[partition_name]['space']=ui.table(columns=common_columns,rows=get_rows(space_data),row_key='name',title=f'{partition_name} Space')
+                    # TODO add some diagram showing how much space is available
+            total_read_label=ui.label(f'Total Read: {get_formatted_size(disk_io.read_bytes)}')
+            total_write_label=ui.label(f'Total Write: {get_formatted_size(disk_io.write_bytes)}')
     with ui.column():
         ui.label('Network').classes(HEADING_CLASSES)
         ui.label('Name')
