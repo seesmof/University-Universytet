@@ -43,6 +43,10 @@ def update_ui():
     }
     processor_usage_table.rows=get_rows(processor_usage_data)
 
+    cpu_usage=psutil.cpu_percent()
+    x=datetime.now().timestamp()
+    processor_usage_plot.push([x],[[cpu_usage]])
+
     system_virtual_memory=psutil.virtual_memory()
     virtual_memory_data={
         'total':get_formatted_size(system_virtual_memory.total),
@@ -105,6 +109,9 @@ with ui.row().classes('flex gap-3'):
                 for i,usage in enumerate(psutil.cpu_percent(percpu=True))
             }
             processor_usage_table=ui.table(columns=COLUMNS,rows=get_rows(processor_usage_data),row_key='name',title='Usage (%)').classes('flex-1')
+
+            processor_usage_plot=ui.line_plot(n=1).with_legend(['CPU Usage'],loc='upper center',ncol=1)
+            processor_usage_plot.push([datetime.now().timestamp()],[[100]])
     with ui.column():
         virtual_memory_data={
             'total':get_formatted_size(system_virtual_memory.total),

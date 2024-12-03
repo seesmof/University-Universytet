@@ -1,3 +1,4 @@
+matplotlib
 nicegui
 pywin32
 gputil
