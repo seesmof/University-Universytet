@@ -184,7 +184,7 @@ with ui.row().classes('flex gap-3'):
             'used':get_formatted_size(system_virtual_memory.used),
             'percentage':f'{system_virtual_memory.percent}%',
         }
-        virtual_memory_table=ui.table(columns=common_columns,rows=get_rows(virtual_memory_data),row_key='name',title='Virtual Memory')
+        virtual_memory_table=ui.table(columns=common_columns,rows=get_rows(virtual_memory_data),row_key='name',title='Virtual Memory').classes('w-full')
 
         swap_memory_data={
             'total':get_formatted_size(swap.total),
