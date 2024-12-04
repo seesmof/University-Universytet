@@ -11,7 +11,6 @@ COLUMNS=[
     {'name':'value','label':'Value','field':'value','sortable':True},
 ]
 
-# TODO get cpu name using cpuinfo probably JESUS please help 
 uname=platform.uname()
 boot_time_stamp=psutil.boot_time()
 boot_time=datetime.fromtimestamp(boot_time_stamp)
@@ -22,6 +21,7 @@ partitions=psutil.disk_partitions()
 disk_io=psutil.disk_io_counters()
 if_addrs=psutil.net_if_addrs()
 net_io=psutil.net_io_counters()
+sent,recv=net_io.bytes_sent,net_io.bytes_recv
 
 def get_rows(data:dict):
     return [{'property':k.capitalize(),'value':v} for k,v in data.items()]
@@ -35,8 +35,6 @@ def update_ui():
     processor_frequencies_table.rows=get_rows(processor_frequencies_data)
 
     cpu_usage=psutil.cpu_percent(percpu=True)
-    # TODO add color highlight on higher usage: yellow if more than 60% and red if more than 77%
-    # user query tool here somehow JESUS please help 
     processor_usage_data={
         f'Core {i}': usage
         for i,usage in enumerate(cpu_usage)
@@ -57,7 +55,6 @@ def update_ui():
     virtual_memory_table.rows=get_rows(virtual_memory_data)
     virtual_memory_circle.value=system_virtual_memory.percent
     memory_usage_plot.push([this_time],[[system_virtual_memory.percent]])
-    print(system_virtual_memory.percent)
 
     swap=psutil.swap_memory()
     swap_memory_data={
@@ -69,12 +66,13 @@ def update_ui():
     swap_memory_table.rows=get_rows(swap_memory_data)
     swap_memory_circle.value=swap.percent
 
+    global sent,recv
+    new_network_io=psutil.net_io_counters()
+    us,ds=new_network_io.bytes_sent-sent,new_network_io.bytes_recv-recv
+    network_speed_plot.push([this_time],[[ds/1],[us/1]])
+    sent,recv=new_network_io.bytes_sent,new_network_io.bytes_recv
+
 def get_formatted_size(bytes,suffix='B'):
-    '''
-    Scale bytes to proper format 
-        1253656 > '1.20MB'
-        1253656678 > '1.17GB'
-    '''
     factor=1024
     for unit in ['','K','M','G','T','P']:
         if bytes<factor: return f'{bytes:.2f} {unit}{suffix}'
@@ -188,19 +186,18 @@ with ui.row().classes('flex gap-3'):
                 'received':get_formatted_size(net_io.bytes_recv),
             }
             network_table=ui.table(columns=COLUMNS,rows=get_rows(network_data),row_key='name').classes('w-full')
-            # TODO add network usage plot
 with ui.row():
-    processor_usage_plot=ui.line_plot(n=1,figsize=(4.7,3)).with_legend(['CPU Usage %'],loc='upper center',ncol=1)
+    processor_usage_plot=ui.line_plot(n=1,figsize=(4.7,2.47)).with_legend(['CPU Usage %'],loc='upper center',ncol=1)
     processor_usage_plot.push([datetime.now().timestamp()],[[0]])
     processor_usage_plot.push([datetime.now().timestamp()],[[100]])
 
-    memory_usage_plot=ui.line_plot(n=1,figsize=(4.7,3)).with_legend(['RAM Usage %'],loc='upper center',ncol=1)
+    memory_usage_plot=ui.line_plot(n=1,figsize=(4.7,2.47)).with_legend(['RAM Usage %'],loc='upper center',ncol=1)
     memory_usage_plot.push([datetime.now().timestamp()],[[0]])
     memory_usage_plot.push([datetime.now().timestamp()],[[100]])
 
-    network_speed_plot=ui.line_plot(n=2,figsize=(4.7,3)).with_legend(['Download Speed','Upload Speed'],loc='upper center',ncol=2)
+    network_speed_plot=ui.line_plot(n=2,figsize=(4.7,2.47)).with_legend(['Download Speed','Upload Speed'],loc='upper center',ncol=2)
     network_speed_plot.push([datetime.now().timestamp()],[[0],[0]])
     network_speed_plot.push([datetime.now().timestamp()],[[100],[100]])
 
 ui.timer(1,update_ui,active=True)
-ui.run()
+ui.run(title='System Resources Analysis',favicon='💻')
