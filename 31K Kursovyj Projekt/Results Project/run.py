@@ -44,8 +44,8 @@ def update_ui():
     processor_usage_table.rows=get_rows(processor_usage_data)
 
     cpu_usage=psutil.cpu_percent()
-    x=datetime.now().timestamp()
-    processor_usage_plot.push([x],[[cpu_usage]])
+    this_time=datetime.now().timestamp()
+    processor_usage_plot.push([this_time],[[cpu_usage]])
 
     system_virtual_memory=psutil.virtual_memory()
     virtual_memory_data={
@@ -56,6 +56,8 @@ def update_ui():
     }
     virtual_memory_table.rows=get_rows(virtual_memory_data)
     virtual_memory_circle.value=system_virtual_memory.percent
+    memory_usage_plot.push([this_time],[[system_virtual_memory.percent]])
+    print(system_virtual_memory.percent)
 
     swap=psutil.swap_memory()
     swap_memory_data={
@@ -115,9 +117,6 @@ with ui.row().classes('flex gap-3'):
                 for i,usage in enumerate(psutil.cpu_percent(percpu=True))
             }
             processor_usage_table=ui.table(columns=COLUMNS,rows=get_rows(processor_usage_data),row_key='name',title='Usage (%)').classes('flex-1')
-        
-        processor_usage_plot=ui.line_plot(n=1,figsize=(3,2)).with_legend(['CPU Usage %'],loc='upper center',ncol=1).classes('w-full')
-        processor_usage_plot.push([datetime.now().timestamp()],[[100]])
     with ui.column():
         virtual_memory_data={
             'total':get_formatted_size(system_virtual_memory.total),
@@ -190,6 +189,18 @@ with ui.row().classes('flex gap-3'):
             }
             network_table=ui.table(columns=COLUMNS,rows=get_rows(network_data),row_key='name').classes('w-full')
             # TODO add network usage plot
+with ui.row():
+    processor_usage_plot=ui.line_plot(n=1,figsize=(4.7,3)).with_legend(['CPU Usage %'],loc='upper center',ncol=1)
+    processor_usage_plot.push([datetime.now().timestamp()],[[0]])
+    processor_usage_plot.push([datetime.now().timestamp()],[[100]])
+
+    memory_usage_plot=ui.line_plot(n=1,figsize=(4.7,3)).with_legend(['RAM Usage %'],loc='upper center',ncol=1)
+    memory_usage_plot.push([datetime.now().timestamp()],[[0]])
+    memory_usage_plot.push([datetime.now().timestamp()],[[100]])
+
+    network_speed_plot=ui.line_plot(n=2,figsize=(4.7,3)).with_legend(['Download Speed','Upload Speed'],loc='upper center',ncol=2)
+    network_speed_plot.push([datetime.now().timestamp()],[[0],[0]])
+    network_speed_plot.push([datetime.now().timestamp()],[[100],[100]])
 
 ui.timer(1,update_ui,active=True)
 ui.run()
