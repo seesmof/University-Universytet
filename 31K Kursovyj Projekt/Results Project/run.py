@@ -1,9 +1,9 @@
 from collections import defaultdict
 from datetime import datetime
 from nicegui import ui
+import win32api
 import platform
 import psutil
-import win32api
 
 HEADING_CLASSES='font-bold text-xl'
 COLUMNS=[
