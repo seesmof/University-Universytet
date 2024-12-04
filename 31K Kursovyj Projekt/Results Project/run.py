@@ -55,6 +55,7 @@ def update_ui():
         'percentage':f'{system_virtual_memory.percent}%',
     }
     virtual_memory_table.rows=get_rows(virtual_memory_data)
+    virtual_memory_circle.value=system_virtual_memory.percent
 
     swap=psutil.swap_memory()
     swap_memory_data={
@@ -64,6 +65,7 @@ def update_ui():
         'percentage':f'{swap.percent}%',
     }
     swap_memory_table.rows=get_rows(swap_memory_data)
+    swap_memory_circle.value=swap.percent
 
 def get_formatted_size(bytes,suffix='B'):
     '''
@@ -97,12 +99,16 @@ with ui.row().classes('flex gap-3'):
         processor_table=ui.table(columns=COLUMNS,rows=get_rows(processor_data),row_key='name',title='Processor')
 
         with ui.row().classes('flex w-full'):
-            processor_frequencies_data={
-                'min':cpu_frequency.min,
-                'max':cpu_frequency.max,
-                'current':cpu_frequency.current,
-            }
-            processor_frequencies_table=ui.table(columns=COLUMNS,rows=get_rows(processor_frequencies_data),row_key='name',title='Frequencies (MHz)')
+            with ui.column():
+                processor_frequencies_data={
+                    'min':cpu_frequency.min,
+                    'max':cpu_frequency.max,
+                    'current':cpu_frequency.current,
+                }
+                processor_frequencies_table=ui.table(columns=COLUMNS,rows=get_rows(processor_frequencies_data),row_key='name',title='Frequencies (MHz)')
+
+                ui.label('Processor Frequency')
+                processor_frequencies_circle=ui.circular_progress(min=cpu_frequency.min,max=cpu_frequency.max,value=cpu_frequency.current)
 
             processor_usage_data={
                 f'Core {i}': usage
@@ -121,6 +127,9 @@ with ui.row().classes('flex gap-3'):
         }
         virtual_memory_table=ui.table(columns=COLUMNS,rows=get_rows(virtual_memory_data),row_key='name',title='Virtual Memory').classes('w-full')
 
+        ui.label('Virtual Memory Usage')
+        virtual_memory_circle=ui.circular_progress(value=system_virtual_memory.percent,max=100)
+
         swap_memory_data={
             'total':get_formatted_size(swap.total),
             'free':get_formatted_size(swap.free),
@@ -128,6 +137,9 @@ with ui.row().classes('flex gap-3'):
             'percentage':f'{swap.percent}%',
         }
         swap_memory_table=ui.table(columns=COLUMNS,rows=get_rows(swap_memory_data),row_key='name',title='Swap Memory')
+
+        ui.label('Swap Memory Usage')
+        swap_memory_circle=ui.circular_progress(value=swap.percent,max=100)
     with ui.column():
         with ui.card():
             ui.label('Disks').classes('q-table__title')
@@ -150,7 +162,8 @@ with ui.row().classes('flex gap-3'):
                 with ui.expansion(partition_name):
                     disk_tables[partition_name]['disk']=ui.table(columns=COLUMNS,rows=get_rows(disk_data),row_key='name',title=f'{partition_name} Data')
                     disk_tables[partition_name]['space']=ui.table(columns=COLUMNS,rows=get_rows(space_data),row_key='name',title=f'{partition_name} Space')
-                    # TODO add some diagram showing how much space is available
+                    ui.label(f'{partition_name} Usage')
+                    ui.circular_progress(value=usage_data.percent,max=100,min=0)
             
             disks_data={
                 'read':get_formatted_size(disk_io.read_bytes),
