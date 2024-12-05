@@ -82,6 +82,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
