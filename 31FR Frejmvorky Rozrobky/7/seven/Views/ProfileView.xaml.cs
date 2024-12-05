@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using MySql.Data.MySqlClient;
 using System.Windows.Controls;
+using seven.ViewModels;
 
 namespace seven {
     /// <summary>
@@ -10,20 +11,12 @@ namespace seven {
     /// </summary>
     public partial class ProfileView : Page
     {
-        public User client;
-        public MySqlConnection connection = new MySqlConnection(UtilityVariables.connectionString);
-        public Database database;
+        ProfileViewModel viewModel = new ProfileViewModel();
         public ProfileView(string userName){
+            DataContext = viewModel;
             InitializeComponent();
-            connection.Open();
-            database = new Database(connection);
-
-            User found=database.getUsers().Where(u => u.Name == userName).ToList().ElementAtOrDefault(0);
-            if (found != null){
-                client = found;
-            } else {
-                client = database.createUser(userName);
-            }
+            viewModel.userName = userName;
+            viewModel.setClient();
         }
         public void homeTabOpened(object sender, RoutedEventArgs e){
             showUserData();

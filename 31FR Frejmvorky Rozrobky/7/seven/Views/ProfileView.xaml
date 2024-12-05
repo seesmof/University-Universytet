@@ -13,7 +13,7 @@
                 <Label x:Name="UserNameLabel" Content="Name" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
                 <Label x:Name="UserBalanceLabel" Content="Balance" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
                 <Button x:Name="ChangeNameButton" Content="Change" HorizontalAlignment="Left" Margin="181,19,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeNameButton_Click"/>
-                <TextBox x:Name="UserNameBox" HorizontalAlignment="Left" Margin="56,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
+                <TextBox Text="{Binding Path=userName}" x:Name="UserNameBox" HorizontalAlignment="Left" Margin="56,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
                 <TextBox x:Name="UserBalanceBox" HorizontalAlignment="Left" Margin="70,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Verdana"/>
                 <Button x:Name="ChangeBalanceButton" Content="Change" HorizontalAlignment="Left" Margin="195,48,0,0" VerticalAlignment="Top" Height="17" Width="53" FontFamily="Verdana" FontSize="11" Click="ChangeBalanceButton_Click"/>
                 <CheckBox x:Name="UserStatusToggle" Content="Manager?" HorizontalAlignment="Left" Margin="59,74,0,0" VerticalAlignment="Top" Click="UserStatusToggle_Click" />
