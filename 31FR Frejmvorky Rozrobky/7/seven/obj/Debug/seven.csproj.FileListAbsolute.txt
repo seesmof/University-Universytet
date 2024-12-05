@@ -11,10 +11,6 @@ E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\seven.csproj.GenerateR
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\seven.csproj.CoreCompileInputs.cache
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\seven.exe
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\seven.pdb
-E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\LoginPage.g.cs
-E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\LoginPage.baml
-E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\ProfilePage.g.cs
-E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\ProfilePage.baml
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\bin\Debug\MySql.Data.dll
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\bin\Debug\System.Memory.dll
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\bin\Debug\System.Threading.Tasks.Extensions.dll
@@ -22,4 +18,7 @@ E:\Universytet\31FR Frejmvorky rozrobky\7\seven\bin\Debug\System.Numerics.Vector
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\bin\Debug\System.Buffers.dll
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\bin\Debug\MySql.Data.xml
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\seven.csproj.Up2Date
-E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\Views\LoginView.g.cs
+E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\Views\ProfileView.g.cs
+E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\Views\LoginView.baml
+E:\Universytet\31FR Frejmvorky rozrobky\7\seven\obj\Debug\Views\ProfileView.baml

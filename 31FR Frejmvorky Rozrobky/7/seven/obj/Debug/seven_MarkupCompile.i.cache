@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Universytet\31FR Frejmvorky rozrobky\7\seven\App.xaml
-2628974680
+2-1847573976
 
-161227728470
+18-895897178
 14-2045898965
-LoginPage.xaml;ProfilePage.xaml;
+Views\LoginView.xaml;Views\ProfileView.xaml;
 
 False
 

@@ -63,30 +63,32 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Database.cs" />
-    <Compile Include="Estate.cs" />
-    <Compile Include="EstateKind.cs" />
-    <Compile Include="Meeting.cs" />
-    <Compile Include="MeetingScore.cs" />
-    <Compile Include="MeetingStatus.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UtilityFunctions.cs" />
-    <Compile Include="UtilityVariables.cs" />
-    <Page Include="LoginPage.xaml">
+    <Compile Include="Models\Database.cs" />
+    <Compile Include="Models\Estate.cs" />
+    <Compile Include="Models\EstateKind.cs" />
+    <Compile Include="Models\Meeting.cs" />
+    <Compile Include="Models\MeetingScore.cs" />
+    <Compile Include="Models\MeetingStatus.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UtilityFunctions.cs" />
+    <Compile Include="Models\UtilityVariables.cs" />
+    <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProfilePage.xaml">
+    <Page Include="Views\ProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    <Compile Include="Views\ProfileView.xaml.cs">
+      <DependentUpon>ProfileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

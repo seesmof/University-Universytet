@@ -6,14 +6,14 @@ using System.Windows.Controls;
 
 namespace seven {
     /// <summary>
-    /// Interaction logic for ProfilePage.xaml
+    /// Interaction logic for ProfileView.xaml
     /// </summary>
-    public partial class ProfilePage : Page
+    public partial class ProfileView : Page
     {
         public User client;
         public MySqlConnection connection = new MySqlConnection(UtilityVariables.connectionString);
         public Database database;
-        public ProfilePage(string userName){
+        public ProfileView(string userName){
             InitializeComponent();
             connection.Open();
             database = new Database(connection);
