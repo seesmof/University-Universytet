@@ -107,8 +107,8 @@ with ui.row().classes('flex gap-3'):
                 }
                 processor_frequencies_table=ui.table(columns=COLUMNS,rows=get_rows(processor_frequencies_data),row_key='name',title='Frequencies (MHz)')
 
-                ui.label('Processor Frequency')
-                processor_frequencies_circle=ui.circular_progress(min=cpu_frequency.min,max=cpu_frequency.max,value=cpu_frequency.current)
+                ui.label('Processor Frequency').classes('w-full text-center')
+                processor_frequencies_circle=ui.circular_progress(min=cpu_frequency.min,max=cpu_frequency.max,value=cpu_frequency.current).classes('w-full self-center')
 
             processor_usage_data={
                 f'Core {i}': usage
@@ -124,8 +124,8 @@ with ui.row().classes('flex gap-3'):
         }
         virtual_memory_table=ui.table(columns=COLUMNS,rows=get_rows(virtual_memory_data),row_key='name',title='Virtual Memory').classes('w-full')
 
-        ui.label('Virtual Memory Usage')
-        virtual_memory_circle=ui.circular_progress(value=system_virtual_memory.percent,max=100)
+        ui.label('Virtual Memory Usage').classes('w-full text-center')
+        virtual_memory_circle=ui.circular_progress(value=system_virtual_memory.percent,max=100).classes('w-full self-center')
 
         swap_memory_data={
             'total':get_formatted_size(swap.total),
@@ -135,8 +135,8 @@ with ui.row().classes('flex gap-3'):
         }
         swap_memory_table=ui.table(columns=COLUMNS,rows=get_rows(swap_memory_data),row_key='name',title='Swap Memory')
 
-        ui.label('Swap Memory Usage')
-        swap_memory_circle=ui.circular_progress(value=swap.percent,max=100)
+        ui.label('Swap Memory Usage').classes('w-full text-center')
+        swap_memory_circle=ui.circular_progress(value=swap.percent,max=100).classes('w-full self-center')
     with ui.column():
         with ui.card():
             ui.label('Disks').classes('q-table__title')
@@ -159,8 +159,9 @@ with ui.row().classes('flex gap-3'):
                 with ui.expansion(partition_name):
                     disk_tables[partition_name]['disk']=ui.table(columns=COLUMNS,rows=get_rows(disk_data),row_key='name',title=f'{partition_name} Data')
                     disk_tables[partition_name]['space']=ui.table(columns=COLUMNS,rows=get_rows(space_data),row_key='name',title=f'{partition_name} Space')
-                    ui.label(f'{partition_name} Usage')
-                    ui.circular_progress(value=usage_data.percent,max=100,min=0)
+
+                    ui.label(f'{partition_name} Usage').classes('w-full text-center')
+                    ui.circular_progress(value=usage_data.percent,max=100,min=0).classes('w-full self-center')
             
             disks_data={
                 'read':get_formatted_size(disk_io.read_bytes),
