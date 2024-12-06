@@ -1,5 +1,4 @@
-from nicegui import ui 
+import psutil
 
-ui.label('ALLELUJAH')
-
-ui.run(on_air='')
+print(psutil.cpu_percent(percpu=True))
+print(psutil.cpu_percent())
