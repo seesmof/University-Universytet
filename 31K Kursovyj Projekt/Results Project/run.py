@@ -69,7 +69,9 @@ def update_ui():
     global sent,recv
     new_network_io=psutil.net_io_counters()
     us,ds=new_network_io.bytes_sent-sent,new_network_io.bytes_recv-recv
-    network_speed_plot.push([this_time],[[ds/1],[us/1]])
+    BITS_TO_KILOBITS=10**-3
+    download_speed,upload_speed=ds/1*BITS_TO_KILOBITS,us/1*BITS_TO_KILOBITS
+    network_speed_plot.push([this_time],[[download_speed],[upload_speed]])
     sent,recv=new_network_io.bytes_sent,new_network_io.bytes_recv
 
 def get_formatted_size(bytes,suffix='B'):
@@ -157,8 +159,8 @@ with ui.row().classes('flex gap-3'):
                     'percentage':f'{usage_data.percent}%',
                 }
                 with ui.expansion(partition_name):
-                    disk_tables[partition_name]['disk']=ui.table(columns=COLUMNS,rows=get_rows(disk_data),row_key='name',title=f'{partition_name} Data')
-                    disk_tables[partition_name]['space']=ui.table(columns=COLUMNS,rows=get_rows(space_data),row_key='name',title=f'{partition_name} Space')
+                    disk_tables[partition_name]['disk']=ui.table(columns=COLUMNS,rows=get_rows(disk_data),row_key='name',title=f'{partition_name} Data').classes('w-full')
+                    disk_tables[partition_name]['space']=ui.table(columns=COLUMNS,rows=get_rows(space_data),row_key='name',title=f'{partition_name} Space').classes('w-full')
 
                     ui.label(f'{partition_name} Usage').classes('w-full text-center')
                     ui.circular_progress(value=usage_data.percent,max=100,min=0).classes('w-full self-center')
