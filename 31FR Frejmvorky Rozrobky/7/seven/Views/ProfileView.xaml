@@ -72,16 +72,22 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ListBox x:Name="IncomingMeetingsContainer" Margin="0,40,0,0" FontFamily="Verdana">
-                </ListBox>
-                <Button x:Name="ProcessButton" Content="Process" HorizontalAlignment="Left" Margin="162,12,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48"/>
+                <Button Command="{Binding processMeetingCommand}" x:Name="ProcessButton" Content="Process" HorizontalAlignment="Left" Margin="162,12,0,0" VerticalAlignment="Top" Height="20" FontFamily="Verdana" Width="48"/>
                 <Label x:Name="ProcessHeading" Content="Process" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Verdana"/>
-                <ComboBox x:Name="ProcessInput" HorizontalAlignment="Left" Margin="80,12,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
+                <ComboBox Text="{Binding selectedIncomingMeeting.Status}" x:Name="ProcessInput" HorizontalAlignment="Left" Margin="80,12,0,0" VerticalAlignment="Top" Width="77" Height="20" FontFamily="Verdana">
                     <ComboBoxItem Content="Wait" IsSelected="True" FontFamily="Verdana"/>
                     <ComboBoxItem Content="Done" FontFamily="Verdana"/>
                     <ComboBoxItem Content="Skip" FontFamily="Verdana"/>
                 </ComboBox>
                 <CheckBox x:Name="pendingMeetingsToggle" Content="Only pending?" HorizontalAlignment="Left" Margin="255,15,0,0" VerticalAlignment="Top" />
+                <DataGrid x:Name="incomingMeetingsGrid" ItemsSource="{Binding incomingMeetings}" Margin="0,40,0,0" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=3}" Background="White" GridLinesVisibility="None" HeadersVisibility="Column" IsReadOnly="True" SelectionChanged="incomingMeetingsGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Sender" Binding="{Binding Sender.Name}"/>
+                        <DataGridTextColumn Header="Target" Binding="{Binding Target.Title}"/>
+                        <DataGridTextColumn Header="Score" Binding="{Binding Score}"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
         <TabItem Selector.Selected="outgoingMeetingsTabOpened" x:Name="OutgoingMeetingsTab" Header="Outgoing Meetings">

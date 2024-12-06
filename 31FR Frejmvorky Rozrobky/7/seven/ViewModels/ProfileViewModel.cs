@@ -31,6 +31,12 @@ namespace seven.ViewModels{
             set => SetProperty(ref _availableEstates, value);
         }
 
+        private ObservableCollection<Meeting> _incomingMeetings;
+        public ObservableCollection<Meeting> incomingMeetings{
+            get => _incomingMeetings;
+            set => SetProperty(ref _incomingMeetings, value);
+        }
+
         private Estate _selectedOwnedEstate;
         public Estate selectedOwnedEstate{
             get => _selectedOwnedEstate;
@@ -49,6 +55,12 @@ namespace seven.ViewModels{
             set => SetProperty(ref _selectedAvailableEstate, value);
         }
 
+        private Meeting _selectedIncomingMeeting;
+        public Meeting selectedIncomingMeeting{
+            get => _selectedIncomingMeeting;
+            set => SetProperty(ref _selectedIncomingMeeting, value);
+        }
+
         private MySqlConnection connection = new MySqlConnection(UtilityVariables.connectionString);
         private Database database;
 
@@ -65,6 +77,9 @@ namespace seven.ViewModels{
         }
         public void setAvailableEstates(){
             availableEstates = new ObservableCollection<Estate>(database.getEstates().Where(e => e.Owner.ID != client.ID));
+        }
+        public void setIncomingMeetings(){
+            incomingMeetings = new ObservableCollection<Meeting>(database.getMeetings().Where(m => m.Target.Owner.ID == client.ID).OrderBy(m => m.ID).Reverse());
         }
         private void _updateUser(){
             database.updateUser(client);
@@ -119,6 +134,13 @@ namespace seven.ViewModels{
         }
         public ICommand buyEstateCommand => _buyEstateCommand;
 
+        private DelegateCommand _processMeetingCommand;
+        private void _changeMeetingStatus(object p){
+            database.updateMeeting(selectedIncomingMeeting);
+            setIncomingMeetings();
+        }
+        public ICommand processMeetingCommand => _processMeetingCommand;
+
         public ProfileViewModel(){
             connection.Open();
             database = new Database(connection);
@@ -128,6 +150,7 @@ namespace seven.ViewModels{
             _selectedOwnedEstateChange = new DelegateCommand(_updateSelectedOwnedEstate);
             _newEstateCommand = new DelegateCommand(_addNewEstate);
             _buyEstateCommand = new DelegateCommand(_buyEstate);
+            _processMeetingCommand = new DelegateCommand(_changeMeetingStatus);
         }
     }
 }

@@ -7,15 +7,15 @@
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\views\\profileview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\views\\profileview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:views\\profileview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\views\\profileview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\views\\profileview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:views\\profileview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "Views\\ProfileView.xaml.cs",
               "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\ProfileView.xaml.cs",
               "RelativeToolTip": "Views\\ProfileView.xaml.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAADgvzMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-06T06:19:58.475Z",
               "EditorCaption": ""
@@ -65,7 +65,7 @@
               "RelativeDocumentMoniker": "ViewModels\\ProfileViewModel.cs",
               "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ViewModels\\ProfileViewModel.cs",
               "RelativeToolTip": "ViewModels\\ProfileViewModel.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAADwv3UAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAAwIoAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-06T06:18:34.716Z",
               "EditorCaption": ""

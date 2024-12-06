@@ -23,17 +23,18 @@ namespace seven {
         }
         public void ownedEstatesTabOpened(object sender, RoutedEventArgs e){
             viewModel.setOwnedEstates();
-            viewModel.selectedOwnedEstate = null;
+            viewModel.selectedOwnedEstate = new Estate();
         }
         public void availableEstatesTabOpened(object sender, RoutedEventArgs e){
             viewModel.setAvailableEstates();
             viewModel.newEstate = new Estate();
         }
         public void incomingMeetingsTabOpened(object sender, RoutedEventArgs e){
-            //showIncomingMeetings();
+            viewModel.setIncomingMeetings();
+            viewModel.selectedIncomingMeeting = new Meeting();
         }
         public void outgoingMeetingsTabOpened(object sender, RoutedEventArgs e){
-            //showOutgoingMeetings();
+            //viewModel.setOutgoingMeetings();
         }
         private void ownedEstatesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e){
             if (ownedEstatesGrid.SelectedIndex < 0) { return; }
@@ -45,6 +46,12 @@ namespace seven {
             if (availableEstatesGrid.SelectedIndex < 0) { return; }
             try{
                 viewModel.selectedAvailableEstate = viewModel.availableEstates[availableEstatesGrid.SelectedIndex];
+            } catch { return; }
+        }
+        private void incomingMeetingsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e){
+            if (incomingMeetingsGrid.SelectedIndex < 0) { return; }
+            try{
+                viewModel.selectedIncomingMeeting = viewModel.incomingMeetings[incomingMeetingsGrid.SelectedIndex];
             } catch { return; }
         }
     }
