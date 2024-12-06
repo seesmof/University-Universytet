@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\views\\profileview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:views\\profileview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\views\\profileview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:views\\profileview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\views\\profileview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:views\\profileview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|e:\\universytet\\31fr frejmvorky rozrobky\\7\\seven\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\viewmodels\\delegatecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:viewmodels\\delegatecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\viewmodels\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A824A9AD-733E-4A9A-9E87-E87F48868C93}|seven.csproj|solutionrelative:viewmodels\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,24 +26,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProfileView.xaml.cs",
-              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\ProfileView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\ProfileView.xaml.cs",
-              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\ProfileView.xaml.cs",
-              "RelativeToolTip": "Views\\ProfileView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T14:49:59.708Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -66,70 +41,46 @@
               "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\ProfileView.xaml",
               "RelativeToolTip": "Views\\ProfileView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-05T14:46:52.115Z",
+              "WhenOpened": "2024-12-06T06:22:13.214Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "LoginView.xaml.cs",
-              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\LoginView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\LoginView.xaml.cs",
-              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\LoginView.xaml.cs",
-              "RelativeToolTip": "Views\\LoginView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Title": "ProfileView.xaml.cs",
+              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\ProfileView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\ProfileView.xaml.cs",
+              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\ProfileView.xaml.cs",
+              "RelativeToolTip": "Views\\ProfileView.xaml.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAADgvzMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T14:18:38.928Z",
+              "WhenOpened": "2024-12-06T06:19:58.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProfileViewModel.cs",
+              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ViewModels\\ProfileViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ProfileViewModel.cs",
+              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ViewModels\\ProfileViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ProfileViewModel.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAgwFwAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T06:18:34.716Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ViewModels\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
-              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ViewModels\\LoginViewModel.cs",
-              "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T14:17:21.891Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "LoginView.xaml",
               "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\LoginView.xaml",
               "RelativeDocumentMoniker": "Views\\LoginView.xaml",
               "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\Views\\LoginView.xaml",
               "RelativeToolTip": "Views\\LoginView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-05T14:20:07.657Z",
+              "WhenOpened": "2024-12-06T06:17:40.194Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ViewModelBase.cs",
-              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ViewModels\\ViewModelBase.cs",
-              "RelativeDocumentMoniker": "ViewModels\\ViewModelBase.cs",
-              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ViewModels\\ViewModelBase.cs",
-              "RelativeToolTip": "ViewModels\\ViewModelBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T14:25:09.95Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DelegateCommand.cs",
-              "DocumentMoniker": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ViewModels\\DelegateCommand.cs",
-              "RelativeDocumentMoniker": "ViewModels\\DelegateCommand.cs",
-              "ToolTip": "E:\\Universytet\\31FR Frejmvorky rozrobky\\7\\seven\\ViewModels\\DelegateCommand.cs",
-              "RelativeToolTip": "ViewModels\\DelegateCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T14:35:31.584Z"
             }
           ]
         }
