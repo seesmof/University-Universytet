@@ -13,7 +13,7 @@ namespace seven {
             InitializeComponent();
             UserNameInput.Focus();
         }
-        private void Button_Click(object sender, RoutedEventArgs e){
+        private void LoginButton_Click(object sender, RoutedEventArgs e){
             NavigationService.Navigate(new ProfileView(viewModel.userName));
         }
     }

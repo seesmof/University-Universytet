@@ -12,29 +12,32 @@ namespace seven {
     public partial class ProfileView : Page
     {
         ProfileViewModel viewModel = new ProfileViewModel();
+        private string givenUserName = "";
         public ProfileView(string userName){
             DataContext = viewModel;
             InitializeComponent();
-            viewModel.userName = userName;
-            viewModel.setClient();
+            givenUserName = userName;
+            viewModel.setClient(givenUserName);
         }
-        public void homeTabOpened(object sender, RoutedEventArgs e){
-            viewModel.setClient();
+        private void homeTabOpened(object sender, RoutedEventArgs e){
+            viewModel.setClient(givenUserName);
         }
-        public void ownedEstatesTabOpened(object sender, RoutedEventArgs e){
+        private void ownedEstatesTabOpened(object sender, RoutedEventArgs e){
             viewModel.setOwnedEstates();
             viewModel.selectedOwnedEstate = new Estate();
         }
-        public void availableEstatesTabOpened(object sender, RoutedEventArgs e){
+        private void availableEstatesTabOpened(object sender, RoutedEventArgs e){
             viewModel.setAvailableEstates();
             viewModel.newEstate = new Estate();
         }
-        public void incomingMeetingsTabOpened(object sender, RoutedEventArgs e){
+        private void incomingMeetingsTabOpened(object sender, RoutedEventArgs e){
             viewModel.setIncomingMeetings();
             viewModel.selectedIncomingMeeting = new Meeting();
+            viewModel.onlyPendingMeetings = false;
         }
-        public void outgoingMeetingsTabOpened(object sender, RoutedEventArgs e){
-            //viewModel.setOutgoingMeetings();
+        private void outgoingMeetingsTabOpened(object sender, RoutedEventArgs e){
+            viewModel.setOutgoingMeetings();
+            viewModel.selectedOutgoingMeeting = new Meeting();
         }
         private void ownedEstatesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e){
             if (ownedEstatesGrid.SelectedIndex < 0) { return; }
@@ -52,6 +55,12 @@ namespace seven {
             if (incomingMeetingsGrid.SelectedIndex < 0) { return; }
             try{
                 viewModel.selectedIncomingMeeting = viewModel.incomingMeetings[incomingMeetingsGrid.SelectedIndex];
+            } catch { return; }
+        }
+        private void outgoingMeetingsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e){
+            if (outgoingMeetingsGrid.SelectedIndex < 0) { return; }
+            try{
+                viewModel.selectedOutgoingMeeting = viewModel.outgoingMeetings[outgoingMeetingsGrid.SelectedIndex];
             } catch { return; }
         }
     }

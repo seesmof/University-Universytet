@@ -8,9 +8,8 @@
       Title="LoginView" Height="85" Width="199">
 
     <Grid>
-        <TextBox Text="{Binding Path=userName}" x:Name="UserNameInput" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19" FontFamily="Verdana"/>
-        <Button Content="Log in" HorizontalAlignment="Left" Margin="135,40,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="47" Click="Button_Click"/>
-        <Label Content="User name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="90" FontStretch="Normal"/>
-
+        <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="172" FontStretch="Normal"/>
+        <TextBox Text="{Binding userName}" x:Name="UserNameInput" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19" FontFamily="Verdana"/>
+        <Button x:Name="LoginButton" Content="Log in" HorizontalAlignment="Left" Margin="135,40,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="47" Click="LoginButton_Click"/>
     </Grid>
 </Page>

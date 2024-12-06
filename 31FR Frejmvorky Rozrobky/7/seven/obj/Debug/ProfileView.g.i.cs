@@ -107,7 +107,7 @@ namespace seven {
         
         #line 20 "..\..\ProfileView.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label UserManagerLabel;
+        internal System.Windows.Controls.Label UserStatusLabel;
         
         #line default
         #line hidden
@@ -139,7 +139,7 @@ namespace seven {
         
         #line 27 "..\..\ProfileView.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button SetMeetingButton;
+        internal System.Windows.Controls.Button ViewEstateButton;
         
         #line default
         #line hidden
@@ -415,7 +415,7 @@ namespace seven {
             #line hidden
             return;
             case 9:
-            this.UserManagerLabel = ((System.Windows.Controls.Label)(target));
+            this.UserStatusLabel = ((System.Windows.Controls.Label)(target));
             return;
             case 10:
             this.AvailableEstatesTab = ((System.Windows.Controls.TabItem)(target));
@@ -439,10 +439,10 @@ namespace seven {
             #line hidden
             return;
             case 13:
-            this.SetMeetingButton = ((System.Windows.Controls.Button)(target));
+            this.ViewEstateButton = ((System.Windows.Controls.Button)(target));
             
             #line 27 "..\..\ProfileView.xaml"
-            this.SetMeetingButton.Click += new System.Windows.RoutedEventHandler(this.SetMeetingButton_Click);
+            this.ViewEstateButton.Click += new System.Windows.RoutedEventHandler(this.ViewEstateButton_Click);
             
             #line default
             #line hidden
