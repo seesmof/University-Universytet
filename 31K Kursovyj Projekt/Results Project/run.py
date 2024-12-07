@@ -5,8 +5,8 @@ import win32api
 import platform
 import psutil
 
-CENTER_CLASSES='-center w-full'
-COLUMNS=[
+CENTER_CLASSES: str = '-center w-full'
+COLUMNS: list[dict] = [
     {'id':'property','label':'Property','field':'property','align':'left'},
     {'id':'value','label':'Value','field':'value','sortable':True},
 ]
@@ -53,11 +53,6 @@ processor_frequencies_data=ProcessorFrequencies(
     current=cpu_frequencies.current,
 )
 
-processor_usage_data={
-    f'Core {index}': usage
-    for index,usage in enumerate(psutil.cpu_percent(percpu=True))
-}
-
 VirtualMemory=namedtuple('VirtualMemory','total available used percentage')
 virtual_memory_data=VirtualMemory(
     total=get_formatted_size(virtual_memory.total),
@@ -72,6 +67,18 @@ swap_memory_data=SwapMemory(
     free=get_formatted_size(swap_memory.free),
     used=get_formatted_size(swap_memory.used),
     percentage=f'{swap_memory.percent}%',
+)
+
+Disks=namedtuple('Disks','read write')
+disks_data=Disks(
+    read=get_formatted_size(disks.read_bytes),
+    write=get_formatted_size(disks.write_bytes),
+)
+
+Network=namedtuple('Network','sent received')
+network_data=Network(
+    sent=get_formatted_size(network.bytes_sent),
+    received=get_formatted_size(network.bytes_recv),
 )
 
 def get_rows(data:dict):
@@ -120,17 +127,19 @@ def update_ui():
     swap_memory_table.rows=get_rows(swap_memory_data._asdict())
     swap_memory_circle.value=swap_memory.percent
 
-    global network_sent,network_received
-    new_network_io=psutil.net_io_counters()
-    us,ds=new_network_io.bytes_sent-network_sent,new_network_io.bytes_recv-network_received
     BITS_TO_KILOBITS=10**-3
-    download_speed,upload_speed=ds/1*BITS_TO_KILOBITS,us/1*BITS_TO_KILOBITS
+    global network_sent,network_received
+    current_network=psutil.net_io_counters()
+    current_sent,current_received=current_network.bytes_sent,current_network.bytes_recv
+    download_speed,upload_speed=(current_received-network_received)/1,(current_sent-network_sent)/1
+    download_speed,upload_speed=download_speed*BITS_TO_KILOBITS,upload_speed*BITS_TO_KILOBITS
     network_speed_plot.push([current_time],[[download_speed],[upload_speed]])
-    network_sent,network_received=new_network_io.bytes_sent,new_network_io.bytes_recv
+    network_sent,network_received=current_sent,current_received
 
 with ui.row().classes('flex gap-3'):
     with ui.column():
         ui.table(columns=COLUMNS,rows=get_rows(system_data._asdict()),title='System')
+
     with ui.column():
         ui.table(columns=COLUMNS,rows=get_rows(processor_data._asdict()),title='Processor')
 
@@ -141,7 +150,12 @@ with ui.row().classes('flex gap-3'):
                 ui.label('Processor Frequency').classes('text'+CENTER_CLASSES)
                 processor_frequencies_circle=ui.circular_progress(min=cpu_frequencies.min,max=cpu_frequencies.max,value=cpu_frequencies.current).classes('self'+CENTER_CLASSES)
 
+            processor_usage_data={
+                f'Core {index}': usage
+                for index,usage in enumerate(psutil.cpu_percent(percpu=True))
+            }
             processor_usage_table=ui.table(columns=COLUMNS,rows=get_rows(processor_usage_data),title='Usage (%)').classes('flex-1')
+
     with ui.column():
         virtual_memory_table=ui.table(columns=COLUMNS,rows=get_rows(virtual_memory_data._asdict()),title='Virtual Memory').classes('w-full')
 
@@ -152,6 +166,7 @@ with ui.row().classes('flex gap-3'):
 
         ui.label('Swap Memory Usage').classes('text'+CENTER_CLASSES)
         swap_memory_circle=ui.circular_progress(value=swap_memory.percent,max=100).classes('self'+CENTER_CLASSES)
+
     with ui.column():
         with ui.card():
             ui.label('Disks').classes('q-table__title')
@@ -178,11 +193,8 @@ with ui.row().classes('flex gap-3'):
                     ui.label(f'{partition_name} Usage').classes('text'+CENTER_CLASSES)
                     ui.circular_progress(value=usage_data.percent,max=100,min=0).classes('self'+CENTER_CLASSES)
             
-            disks_data={
-                'read':get_formatted_size(disks.read_bytes),
-                'write':get_formatted_size(disks.write_bytes),
-            }
-            disks_table=ui.table(columns=COLUMNS,rows=get_rows(disks_data),row_key='name').classes('w-full')
+            disks_table=ui.table(columns=COLUMNS,rows=get_rows(disks_data._asdict()),row_key='name').classes('w-full')
+
     with ui.column():
         with ui.card():
             ui.label('Network').classes('q-table__title')
@@ -190,18 +202,15 @@ with ui.row().classes('flex gap-3'):
             for interface_name,interface_addresses in networks.items():
                 interface_addresses=[a for a in interface_addresses if a.family.name=='AF_INET' or a.family.name=='AF_PACKET']
                 for address in interface_addresses:
-                    network_data={
+                    interface_data={
                         'IP Address' if address.family.name=='AF_INET' else 'MAC Address':address.address,
                         'netmask':address.netmask,
                         'Broadcast IP' if address.family.name=='AF_INET' else 'Broadcast MAC':address.broadcast,
                     }
                     with ui.expansion(interface_name):
-                        network_tables[interface_name]=ui.table(columns=COLUMNS,rows=get_rows(network_data),title=f'{interface_name} Data')
-            network_data={
-                'sent':get_formatted_size(network.bytes_sent),
-                'received':get_formatted_size(network.bytes_recv),
-            }
-            network_table=ui.table(columns=COLUMNS,rows=get_rows(network_data),row_key='name').classes('w-full')
+                        network_tables[interface_name]=ui.table(columns=COLUMNS,rows=get_rows(interface_data),title=f'{interface_name} Data')
+            network_table=ui.table(columns=COLUMNS,rows=get_rows(network_data._asdict()),row_key='name').classes('w-full')
+
 with ui.row():
     processor_usage_plot=ui.line_plot(n=1,figsize=(4.7,2.47)).with_legend(['CPU Usage %'],loc='upper center',ncol=1)
     processor_usage_plot.push([datetime.now().timestamp()],[[0]])
@@ -215,5 +224,6 @@ with ui.row():
     network_speed_plot.push([datetime.now().timestamp()],[[0],[0]])
     network_speed_plot.push([datetime.now().timestamp()],[[100],[100]])
 
-ui.timer(1,update_ui,active=True)
-ui.run(title='System Resources Analysis',favicon='💻')
+if __name__ in {"__main__","__mp_main__"}:
+    ui.timer(1,update_ui,active=True)
+    ui.run(title='System Resources Analysis',favicon='💻')
