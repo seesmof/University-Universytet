@@ -19,17 +19,13 @@ void setup(){
 int phase_wait_time=3000;
 int delay_time=1000;
 
-void cars_red_phase(bool plus_delay = false){
+void cars_red_phase(){
   digitalWrite(cars_red,HIGH);
   digitalWrite(cars_yellow,LOW);
   digitalWrite(cars_green,LOW);
   digitalWrite(pedestrians_red,LOW);
   digitalWrite(pedestrian_green,HIGH);
-  if (!plus_delay) {
-    delay(phase_wait_time-delay_time);
-  } else {
-    delay(phase_wait_time+delay_time);
-  }
+  delay(phase_wait_time-delay_time);
 }
 
 void cars_yellow_phase(){
@@ -52,9 +48,7 @@ void cars_green_phase(){
 
 void loop(){
   int is_button_pressed=digitalRead(button);
-  if (is_button_pressed==1){
-    cars_red_phase(true);
-  } else { cars_red_phase(); }
+  cars_red_phase();
   cars_yellow_phase();
   cars_green_phase();
 }
