@@ -1,10 +1,10 @@
-int cm;
+int distanceInCm;
 const int distanceThreshold = 100;
 
 const int ultrasonicPin = 7;
 const int ledPin = 2;
 
-long readUltrasonicDistance(int triggerPin, int echoPin)
+long getDistanceFromSensor(int triggerPin, int echoPin)
 {
   // without this part the LED is constantly lit
   pinMode(triggerPin, OUTPUT);
@@ -28,14 +28,14 @@ void setup()
 
 void loop()
 {
-  cm = readUltrasonicDistance(ultrasonicPin, ultrasonicPin);
-  Serial.print(cm);
+  distanceInCm = getDistanceFromSensor(ultrasonicPin, ultrasonicPin);
+  Serial.print(distanceInCm);
   Serial.print(" cm\n");
-  if (cm > distanceThreshold)
+  if (distanceInCm > distanceThreshold)
   {
     digitalWrite(ledPin, LOW);
   }
-  if (cm <= distanceThreshold)
+  else
   {
     digitalWrite(ledPin, HIGH);
   }
