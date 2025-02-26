@@ -1,26 +1,5 @@
-#include <Servo.h>
-Servo servo;
-
-bool on = false;
-
-const int servoPin = 12;
-
-void setup()
-{
-  Serial.begin(9600);
-  servo.attach(servoPin);
-}
-
-void loop()
-{
-  if (on)
-  {
-    servo.write(180);
-  }
-  else
-  {
-    servo.write(-180);
-    on = false;
-  }
-  delay(2000);
-}
+const int blueLedPin=0;
+const int greenLedPin=1;
+const int yellowLedPin=2;
+const int orangeLedPin=3;
+const int redLedPin=4;
