@@ -1,6 +1,6 @@
 class a {
   public static void main(String[] args) {
-    float pi = 3.14f;
-    System.err.println(pi);
+    int one = (int) 1.2d;
+    System.err.println(one);
   }
 }
