@@ -17,7 +17,7 @@ long getDistanceData()
 
   pinMode(sensorPin, INPUT);
   long dur = pulseIn(sensorPin, HIGH);
-  long cm = dur = 29 / 2;
+  long cm = dur / 29 / 2;
   return cm;
 }
 
