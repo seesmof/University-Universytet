@@ -1,38 +1,27 @@
-int cm;
-const int distanceThreshold=100;
-long readUltrasonicDistance(
-  int triggerPin,
-  int echoPin
-){
-  pinMode(triggerPin, OUTPUT);
-  digitalWrite(triggerPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(triggerPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(triggerPin, LOW);
-  pinMode(echoPin, INPUT);
+#include <Servo.h>
+Servo servo;
 
-  long duration=pulseIn(echoPin, HIGH);
-  long cmDistance=duration/29/2;
-  return cmDistance;
-}
+bool on = false;
+
+const int servoPin = 12;
+const int switchPin = 11;
 
 void setup()
 {
   Serial.begin(9600);
-  pinMode(2, OUTPUT);
+  servo.attach(servoPin);
 }
 
 void loop()
 {
-  cm=readUltrasonicDistance(7,7);
-  Serial.print(cm);
-  Serial.print("cm, ");
-  if (cm>distanceThreshold){
-    digitalWrite(2, LOW);
-  } 
-  if (cm<=distanceThreshold){
-    digitalWrite(2, HIGH);
+  if (on)
+  {
+    servo.write(180);
   }
-  delay(100);
+  else
+  {
+    servo.write(-180);
+    on = true;
+  }
+  delay(2000);
 }
