@@ -1,12 +1,7 @@
-const int redLedPin = 4;
-const int orangeLedPin = 3;
-const int yellowLedPin = 2;
-const int greenLedPin = 1;
-const int blueLedPin = 0;
+const int sensorPin = 12;
+const int ledPin = 3;
 
-const int sensorPin = 7;
-
-long getDistanceData()
+long getDistance()
 {
   pinMode(sensorPin, OUTPUT);
   digitalWrite(sensorPin, LOW);
@@ -21,65 +16,31 @@ long getDistanceData()
   return cm;
 }
 
+long convertDistanceRange(long oldValue)
+{
+  const long oldMin = 0;
+  const long oldMax = 300;
+  const long newMin = 0;
+  const long newMax = 255;
+
+  long oldRange = (oldMax - oldMin);
+  long newRange = (newMax - newMin);
+  long newValue = (((oldValue - oldMin) * newRange) / oldRange) + newMin;
+
+  return newValue;
+}
+
 void setup()
 {
-  pinMode(redLedPin, OUTPUT);
-  pinMode(orangeLedPin, OUTPUT);
-  pinMode(yellowLedPin, OUTPUT);
-  pinMode(greenLedPin, OUTPUT);
-  pinMode(blueLedPin, OUTPUT);
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
 }
 
 void loop()
 {
-  long distance_to_object = getDistanceData();
-  if (distance_to_object < 50)
-  {
-    digitalWrite(redLedPin, HIGH);
-    digitalWrite(orangeLedPin, HIGH);
-    digitalWrite(yellowLedPin, HIGH);
-    digitalWrite(greenLedPin, HIGH);
-    digitalWrite(blueLedPin, HIGH);
-  }
-  else if (distance_to_object > 50 && distance_to_object <= 100)
-  {
-    digitalWrite(redLedPin, LOW);
-    digitalWrite(orangeLedPin, HIGH);
-    digitalWrite(yellowLedPin, HIGH);
-    digitalWrite(greenLedPin, HIGH);
-    digitalWrite(blueLedPin, HIGH);
-  }
-  else if (distance_to_object > 100 && distance_to_object <= 150)
-  {
-    digitalWrite(redLedPin, LOW);
-    digitalWrite(orangeLedPin, LOW);
-    digitalWrite(yellowLedPin, HIGH);
-    digitalWrite(greenLedPin, HIGH);
-    digitalWrite(blueLedPin, HIGH);
-  }
-  else if (distance_to_object > 150 && distance_to_object <= 200)
-  {
-    digitalWrite(redLedPin, LOW);
-    digitalWrite(orangeLedPin, LOW);
-    digitalWrite(yellowLedPin, LOW);
-    digitalWrite(greenLedPin, HIGH);
-    digitalWrite(blueLedPin, HIGH);
-  }
-  else if (distance_to_object > 200 && distance_to_object <= 300)
-  {
-    digitalWrite(redLedPin, LOW);
-    digitalWrite(orangeLedPin, LOW);
-    digitalWrite(yellowLedPin, LOW);
-    digitalWrite(greenLedPin, LOW);
-    digitalWrite(blueLedPin, HIGH);
-  }
-  else
-  {
-    digitalWrite(redLedPin, LOW);
-    digitalWrite(orangeLedPin, LOW);
-    digitalWrite(yellowLedPin, LOW);
-    digitalWrite(greenLedPin, LOW);
-    digitalWrite(blueLedPin, LOW);
-  }
-  delay(1000);
+  long distance = getDistance();
+  Serial.print(distance);
+  Serial.print(" cm\n");
+  delay(500);
+  analogWrite(ledPin, -convertDistanceRange(distance));
 }
