@@ -4,14 +4,15 @@ long readUltrasonicDistance(
   int triggerPin,
   int echoPin
 ){
+  // without this part the LED is constantly lit
   pinMode(triggerPin, OUTPUT);
   digitalWrite(triggerPin, LOW);
   delayMicroseconds(2);
   digitalWrite(triggerPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(triggerPin, LOW);
+  
   pinMode(echoPin, INPUT);
-
   long duration=pulseIn(echoPin, HIGH);
   long cmDistance=duration/29/2;
   return cmDistance;
@@ -27,7 +28,7 @@ void loop()
 {
   cm=readUltrasonicDistance(7,7);
   Serial.print(cm);
-  Serial.print("cm, ");
+  Serial.print(" cm\n");
   if (cm>distanceThreshold){
     digitalWrite(2, LOW);
   } 
