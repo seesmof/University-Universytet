@@ -4,7 +4,6 @@ Servo servo;
 bool on = false;
 
 const int servoPin = 12;
-const int switchPin = 11;
 
 void setup()
 {
@@ -21,7 +20,7 @@ void loop()
   else
   {
     servo.write(-180);
-    on = true;
+    on = false;
   }
   delay(2000);
 }
