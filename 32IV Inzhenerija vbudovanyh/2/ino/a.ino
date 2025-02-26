@@ -4,9 +4,35 @@ const int yellowLedPin = 2;
 const int greenLedPin = 1;
 const int blueLedPin = 0;
 
+const int sensorPin = 7;
+
+long getDistanceData()
+{
+  pinMode(sensorPin, OUTPUT);
+  digitalWrite(sensorPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(sensorPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(sensorPin, LOW);
+
+  pinMode(sensorPin, INPUT);
+  long dur = pulseIn(sensorPin, HIGH);
+  long cm = dur = 29 / 2;
+  return cm;
+}
+
+void setup()
+{
+  pinMode(redLedPin, OUTPUT);
+  pinMode(orangeLedPin, OUTPUT);
+  pinMode(yellowLedPin, OUTPUT);
+  pinMode(greenLedPin, OUTPUT);
+  pinMode(blueLedPin, OUTPUT);
+}
+
 void loop()
 {
-  int distance_to_object = 200;
+  long distance_to_object = getDistanceData();
   if (distance_to_object < 50)
   {
     digitalWrite(redLedPin, HIGH);
@@ -15,7 +41,7 @@ void loop()
     digitalWrite(greenLedPin, HIGH);
     digitalWrite(blueLedPin, HIGH);
   }
-  else if (distance_to_object > 50 && distance_to_object < 100)
+  else if (distance_to_object > 50 && distance_to_object <= 100)
   {
     digitalWrite(redLedPin, LOW);
     digitalWrite(orangeLedPin, HIGH);
@@ -23,7 +49,7 @@ void loop()
     digitalWrite(greenLedPin, HIGH);
     digitalWrite(blueLedPin, HIGH);
   }
-  else if (distance_to_object > 100 && distance_to_object < 150)
+  else if (distance_to_object > 100 && distance_to_object <= 150)
   {
     digitalWrite(redLedPin, LOW);
     digitalWrite(orangeLedPin, LOW);
@@ -31,7 +57,7 @@ void loop()
     digitalWrite(greenLedPin, HIGH);
     digitalWrite(blueLedPin, HIGH);
   }
-  else if (distance_to_object > 150 && distance_to_object < 200)
+  else if (distance_to_object > 150 && distance_to_object <= 200)
   {
     digitalWrite(redLedPin, LOW);
     digitalWrite(orangeLedPin, LOW);
@@ -39,7 +65,7 @@ void loop()
     digitalWrite(greenLedPin, HIGH);
     digitalWrite(blueLedPin, HIGH);
   }
-  else if (distance_to_object > 200 && distance_to_object < 300)
+  else if (distance_to_object > 200 && distance_to_object <= 300)
   {
     digitalWrite(redLedPin, LOW);
     digitalWrite(orangeLedPin, LOW);
@@ -55,4 +81,5 @@ void loop()
     digitalWrite(greenLedPin, LOW);
     digitalWrite(blueLedPin, LOW);
   }
+  delay(1000);
 }
