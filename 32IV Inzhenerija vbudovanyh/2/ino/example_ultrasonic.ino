@@ -1,9 +1,11 @@
 int cm;
-const int distanceThreshold=100;
-long readUltrasonicDistance(
-  int triggerPin,
-  int echoPin
-){
+const int distanceThreshold = 100;
+
+const int ultrasonicPin = 7;
+const int ledPin = 2;
+
+long readUltrasonicDistance(int triggerPin, int echoPin)
+{
   // without this part the LED is constantly lit
   pinMode(triggerPin, OUTPUT);
   digitalWrite(triggerPin, LOW);
@@ -11,29 +13,31 @@ long readUltrasonicDistance(
   digitalWrite(triggerPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(triggerPin, LOW);
-  
+
   pinMode(echoPin, INPUT);
-  long duration=pulseIn(echoPin, HIGH);
-  long cmDistance=duration/29/2;
+  long duration = pulseIn(echoPin, HIGH);
+  long cmDistance = duration / 29 / 2;
   return cmDistance;
 }
 
 void setup()
 {
   Serial.begin(9600);
-  pinMode(2, OUTPUT);
+  pinMode(ledPin, OUTPUT);
 }
 
 void loop()
 {
-  cm=readUltrasonicDistance(7,7);
+  cm = readUltrasonicDistance(ultrasonicPin, ultrasonicPin);
   Serial.print(cm);
   Serial.print(" cm\n");
-  if (cm>distanceThreshold){
-    digitalWrite(2, LOW);
-  } 
-  if (cm<=distanceThreshold){
-    digitalWrite(2, HIGH);
+  if (cm > distanceThreshold)
+  {
+    digitalWrite(ledPin, LOW);
+  }
+  if (cm <= distanceThreshold)
+  {
+    digitalWrite(ledPin, HIGH);
   }
   delay(100);
 }
