@@ -1,9 +1,19 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class a {
   public static void main(String[] args) {
-    int one = 2;
-    if (one != 2)
-      System.err.println("None");
+    Map<Integer, Integer> testCases = new HashMap<Integer, Integer>();
+  }
+
+  public static int testTarget(int value, int target) {
+    int result = 0;
+    if (value > target)
+      result = +1;
+    else if (value < target)
+      result = -1;
     else
-      System.err.println("True");
+      result = 0;
+    return result;
   }
 }
