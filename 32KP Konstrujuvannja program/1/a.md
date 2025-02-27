@@ -105,3 +105,26 @@ else
   System.err.println("True");
 
 При спробі створити словник (як це називається в Python) було виявлено, що примітивні типи не можна використовувати у колекціях.
+
+Для ітерації через геш-таблицю Java до об'єкта можна застосувати метод forEach:
+
+Map<Integer, Integer> testCases = Map.of(1, 1, 2, 4, 7, 3);
+testCases.forEach((k, v) -> {
+  System.err.println(k + " and " + v);
+});
+> 1 and 1
+> 2 and 4
+> 7 and 3
+
+Якщо метод розташований нижче у класі, його все одно можна використати у методах, які знаходяться вище по класу:
+
+public static void main(String[] args) {
+  ...
+  testCases.forEach((k, v) -> {
+    int res = testTarget(k, v);
+  ...
+
+public static int testTarget(int value, int target) {
+  int result = 0;
+  ...
+

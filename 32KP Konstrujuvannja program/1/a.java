@@ -4,7 +4,8 @@ class a {
   public static void main(String[] args) {
     Map<Integer, Integer> testCases = Map.of(1, 1, 2, 4, 7, 3);
     testCases.forEach((k, v) -> {
-      System.err.println(k + " and " + v);
+      int res = testTarget(k, v);
+      System.err.println(k + " and " + v + " result in " + res);
     });
   }
 
