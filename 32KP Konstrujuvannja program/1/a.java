@@ -1,9 +1,11 @@
-import java.util.HashMap;
 import java.util.Map;
 
 class a {
   public static void main(String[] args) {
-    Map<Integer, Integer> testCases = new HashMap<Integer, Integer>();
+    Map<Integer, Integer> testCases = Map.of(1, 1, 2, 4, 7, 3);
+    testCases.forEach((k, v) -> {
+      System.err.println(k + " and " + v);
+    });
   }
 
   public static int testTarget(int value, int target) {
