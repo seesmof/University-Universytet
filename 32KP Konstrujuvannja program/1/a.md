@@ -128,3 +128,20 @@ public static int testTarget(int value, int target) {
   int result = 0;
   ...
 
+В мові Java мітки можна використовувати для завершення зовнішнього циклу у внутрішньому, на приклад:
+
+outer: for (int i = 0; i < 3; i++) {
+  inner: for (int j = 1; j <= 3; j++) {
+    if (i == 2)
+      continue outer;
+    else
+      System.err.println(i + " and " + j);
+  }
+}
+> 0 and 1
+> 0 and 2
+> 0 and 3
+> 1 and 1
+> 1 and 2
+> 1 and 3
+
