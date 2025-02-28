@@ -1,16 +1,19 @@
 class a {
   public static void main(String[] args) {
-    boolean check = false;
-    outer: while (!check) {
-      System.err.println("False");
-      boolean other = false;
-      inner: while (!other) {
-        System.err.println("False" + " False");
-        // Множення рядків не працює. Якщо писати "False"*2, видасть помилку
-        other = true;
-        if (other) {
-          break outer;
-        }
+    for (int i = 0; i <= 3; i++) {
+      switch (i) {
+        case 0:
+          System.err.println("One");
+          break;
+        case 1:
+          System.err.println("Two");
+          break;
+        case 2:
+          System.err.println("Three");
+          break;
+
+        default:
+          break;
       }
     }
   }
