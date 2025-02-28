@@ -5,8 +5,6 @@ int cars_green=0;
 int pedestrians_red=8;
 int pedestrian_green=7;
 
-int button=4;
-
 void setup(){
   pinMode(cars_red,OUTPUT);
   pinMode(cars_yellow,OUTPUT);
@@ -47,7 +45,6 @@ void cars_green_phase(){
 }
 
 void loop(){
-  int is_button_pressed=digitalRead(button);
   cars_red_phase();
   cars_yellow_phase();
   cars_green_phase();
