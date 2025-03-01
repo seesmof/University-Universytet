@@ -1,8 +1,9 @@
 class a {
   public static void main(String[] args) {
-    // Якщо написати i<=2, j<=3 працювати не буде
-    for (int i = 0, j = 1; i <= 2 && j <= 3; i++, j++) {
-      System.err.println(i + " and " + j);
-    }
+    String[] texts = new String[3];
+    texts[0] = "One";
+    texts[1] = "Two";
+    texts[2] = "Three";
+
   }
 }
