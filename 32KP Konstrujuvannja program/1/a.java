@@ -1,20 +1,31 @@
+class Car {
+  public boolean isLoaded = false;
+}
+
+class Account {
+  public boolean isDeleted = false;
+  public int balance = 0;
+}
+
+class User {
+  public boolean isLoggedIn = false;
+  public boolean isRegistered = false;
+}
+
 class a {
   public static void main(String[] args) {
-    int[][] grid = new int[3][3];
-    int counter = 0;
-    for (int i = 0; i < grid.length; i++) {
-      for (int j = 0; j < grid.length; j++) {
-        grid[i][j] = counter;
-        counter += 1;
-      }
-    }
+    Account account = new Account();
+    User user = new User();
+    Car car = new Car();
 
-    System.err.println("Grid:");
-    for (int i = 0; i < grid.length; i++) {
-      for (int j = 0; j < grid.length; j++) {
-        System.err.print(grid[i][j] + " ");
-      }
-      System.err.println();
-    }
+    // АБО
+    if (account.isDeleted || account.balance == 0)
+      System.out.println("Cannot perform");
+    // ТА
+    if (user.isLoggedIn && user.isRegistered)
+      System.out.println("Welcome");
+    // НІ
+    if (!car.isLoaded)
+      System.out.println("Not loaded");
   }
 }
