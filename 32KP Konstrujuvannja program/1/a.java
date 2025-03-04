@@ -1,10 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 class a {
   public static boolean isNumberPalindrome(int number) {
     String stringNumber = Integer.toString(number);
     System.out.println(stringNumber);
-    return false;
+
+    String reversedNumber = "";
+    for (int reverseCounter = stringNumber.length(), counter = 0; reverseCounter >= 0
+        && counter < stringNumber.length(); reverseCounter--, counter++) {
+
+    }
   }
 
   public static void main(String[] args) {
@@ -21,17 +28,17 @@ class a {
       numbersArray[i] = thisNumber;
     }
 
-    boolean palindromeNumberFound = false;
-    int[] palindromeNumbers = new int[numberOfDigits];
-    for (int i = 0; i < palindromeNumbers.length; i++) {
+    List<Integer> palindromeNumbers = new ArrayList<Integer>();
+    for (int i = 0; i < numbersArray.length; i++) {
       int thisNumber = numbersArray[i];
       boolean isThisNumberPalindrome = isNumberPalindrome(thisNumber);
       if (isThisNumberPalindrome)
-        palindromeNumberFound = true;
+        palindromeNumbers.add(thisNumber);
     }
 
-    if (palindromeNumberFound) {
-      System.out.println("Palindrome numbers:");
+    System.out.println("Palindrome numbers:");
+    for (Integer thisNumber : palindromeNumbers) {
+      System.err.println(thisNumber);
     }
   }
 }
