@@ -1,31 +1,18 @@
-class Car {
-  public boolean isLoaded = false;
-}
-
-class Account {
-  public boolean isDeleted = false;
-  public int balance = 0;
-}
-
-class User {
-  public boolean isLoggedIn = true;
-  public boolean isRegistered = true;
-}
+import java.util.Scanner;
 
 class a {
   public static void main(String[] args) {
-    Account account = new Account();
-    User user = new User();
-    Car car = new Car();
+    Scanner inputScanner = new Scanner(System.in);
 
-    // АБО
-    if (account.isDeleted || account.balance == 0)
-      System.out.println("Cannot perform");
-    // ТА
-    if (user.isLoggedIn && user.isRegistered)
-      System.out.println("Welcome");
-    // НІ
-    if (!car.isLoaded)
-      System.out.println("Not loaded");
+    System.out.print("Please enter N, number of digits: ");
+    int numberOfDigits = inputScanner.nextInt();
+
+    int[] numbersArray = new int[numberOfDigits];
+    for (int i = 0; i < numbersArray.length; i++) {
+      int readableNumber = i + 1;
+      System.out.print("Please enter digit number " + readableNumber + ": ");
+      int thisNumber = inputScanner.nextInt();
+      numbersArray[i] = thisNumber;
+    }
   }
 }
