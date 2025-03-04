@@ -8,8 +8,8 @@ class Account {
 }
 
 class User {
-  public boolean isLoggedIn = false;
-  public boolean isRegistered = false;
+  public boolean isLoggedIn = true;
+  public boolean isRegistered = true;
 }
 
 class a {
