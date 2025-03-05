@@ -1,17 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 class One {
   public static boolean isNumberPalindrome(int number) {
-    String stringNumber = Integer.toString(number);
-    String reversedNumber = "";
+    String stringNumber = "" + number;
+    String reversedString = new StringBuilder(stringNumber).reverse().toString();
 
-    for (int i = stringNumber.length() - 1; i >= 0; i--) {
-      reversedNumber += stringNumber.charAt(i);
-    }
-
-    if (stringNumber.equals(reversedNumber))
+    if (stringNumber.equals(reversedString))
       return true;
     else
       return false;
@@ -32,17 +26,12 @@ class One {
     }
     inputScanner.close();
 
-    List<Integer> palindromeNumbers = new ArrayList<Integer>();
+    System.out.println("\nPalindrome numbers:");
     for (int i = 0; i < numbersArray.length; i++) {
       int thisNumber = numbersArray[i];
       boolean isThisNumberPalindrome = isNumberPalindrome(thisNumber);
       if (isThisNumberPalindrome)
-        palindromeNumbers.add(thisNumber);
-    }
-
-    System.out.println("\nPalindrome numbers:");
-    for (int i = 0; i < palindromeNumbers.size(); i++) {
-      System.out.println("- " + palindromeNumbers.get(i));
+        System.out.println("- " + thisNumber);
     }
   }
 }
