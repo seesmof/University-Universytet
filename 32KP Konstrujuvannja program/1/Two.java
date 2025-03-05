@@ -17,6 +17,7 @@ class Two {
       }
     }
 
+    System.err.println("\nEntered matrix:");
     for (int i = 0; i < givenMatrix.length; i++) {
       for (int j = 0; j < givenMatrix.length; j++) {
         System.out.print(givenMatrix[i][j] + " ");
