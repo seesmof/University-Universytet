@@ -5,13 +5,16 @@ import java.util.Scanner;
 class a {
   public static boolean isNumberPalindrome(int number) {
     String stringNumber = Integer.toString(number);
-    System.out.println(stringNumber);
-
     String reversedNumber = "";
-    for (int reverseCounter = stringNumber.length(), counter = 0; reverseCounter >= 0
-        && counter < stringNumber.length(); reverseCounter--, counter++) {
 
+    for (int i = stringNumber.length() - 1; i >= 0; i--) {
+      reversedNumber += stringNumber.charAt(i);
     }
+
+    if (stringNumber.equals(reversedNumber))
+      return true;
+    else
+      return false;
   }
 
   public static void main(String[] args) {
@@ -36,9 +39,11 @@ class a {
         palindromeNumbers.add(thisNumber);
     }
 
-    System.out.println("Palindrome numbers:");
-    for (Integer thisNumber : palindromeNumbers) {
-      System.err.println(thisNumber);
+    System.out.println("\nPalindrome numbers:");
+    for (int i = 0; i < palindromeNumbers.size(); i++) {
+      System.out.println("- " + palindromeNumbers.get(i));
     }
+
+    inputScanner.close();
   }
 }
