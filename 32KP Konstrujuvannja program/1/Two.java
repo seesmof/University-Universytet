@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -35,7 +34,6 @@ class Two {
     int[] largestNumbers = new int[matrixSize];
     for (int i = 0; i < largestNumbers.length; i++) {
       largestNumbers[i] = allNumbers.get(i);
-      System.out.println(largestNumbers[i]);
     }
 
     inputReader.close();
