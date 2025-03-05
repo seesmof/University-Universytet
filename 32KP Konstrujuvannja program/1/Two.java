@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 class Two {
@@ -5,6 +7,7 @@ class Two {
     Scanner inputReader = new Scanner(System.in);
     System.out.print("Please enter matrix dimensions: ");
     int matrixSize = inputReader.nextInt();
+    List<Integer> allNumbers = new ArrayList<Integer>();
 
     int[][] givenMatrix = new int[matrixSize][matrixSize];
     for (int i = 0; i < matrixSize; i++) {
@@ -14,6 +17,7 @@ class Two {
         System.out.print("Enter matrix's element on row " + readableRow + ", column " + readableColumn + ": ");
         int givenNumber = inputReader.nextInt();
         givenMatrix[i][j] = givenNumber;
+        allNumbers.add(givenNumber);
       }
     }
 
@@ -25,6 +29,7 @@ class Two {
       System.out.println();
     }
 
-    int[] largestNumbers = new int[matrixSize];
+    List<Integer> largest
+    inputReader.close();
   }
 }
