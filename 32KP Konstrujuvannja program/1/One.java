@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class a {
+class One {
   public static boolean isNumberPalindrome(int number) {
     String stringNumber = Integer.toString(number);
     String reversedNumber = "";
