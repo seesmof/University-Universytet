@@ -1,14 +1,16 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 class Two {
   public static void main(String[] args) {
     Scanner inputReader = new Scanner(System.in);
     System.out.print("Please enter matrix dimensions: ");
     int matrixSize = inputReader.nextInt();
-    HashMap<Integer,String> placedNumbers=
+    TreeMap<Integer, String> placedNumbers = new TreeMap<Integer, String>(Collections.reverseOrder());
 
     int[][] givenMatrix = new int[matrixSize][matrixSize];
     for (int i = 0; i < matrixSize; i++) {
@@ -18,7 +20,9 @@ class Two {
         System.out.print("Enter matrix's element on row " + readableRow + ", column " + readableColumn + ": ");
         int givenNumber = inputReader.nextInt();
         givenMatrix[i][j] = givenNumber;
-        allNumbers.add(givenNumber);
+
+        String numberPosition = i + "," + j;
+        placedNumbers.put(givenNumber, numberPosition);
       }
     }
 
@@ -30,10 +34,8 @@ class Two {
       System.out.println();
     }
 
-    allNumbers.sort(Comparator.reverseOrder());
-    int[] largestNumbers = new int[matrixSize];
-    for (int i = 0; i < largestNumbers.length; i++) {
-      largestNumbers[i] = allNumbers.get(i);
+    for (int i = 0; i < givenMatrix.length; i++) {
+
     }
 
     // check each number's position
