@@ -8,7 +8,7 @@ class Two {
     Scanner inputReader = new Scanner(System.in);
     System.out.print("Please enter matrix dimensions: ");
     int matrixSize = inputReader.nextInt();
-    List<Integer> allNumbers = new ArrayList<Integer>();
+    HashMap<Integer,String> placedNumbers=
 
     int[][] givenMatrix = new int[matrixSize][matrixSize];
     for (int i = 0; i < matrixSize; i++) {
@@ -35,6 +35,9 @@ class Two {
     for (int i = 0; i < largestNumbers.length; i++) {
       largestNumbers[i] = allNumbers.get(i);
     }
+
+    // check each number's position
+    // first move UP/DOWN then LEFT/RIGHT
 
     inputReader.close();
   }
