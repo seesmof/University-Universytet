@@ -34,8 +34,8 @@ class Two {
       System.out.println();
     }
 
-    for (int i = 0; i < givenMatrix.length; i++) {
-
+    for (int i = 0; i < matrixSize; i++) {
+      System.out.println(placedNumbers.get(givenMatrix));
     }
 
     // check each number's position
