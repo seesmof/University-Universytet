@@ -12,3 +12,7 @@ formula=(sqrt(width**2+height**2))/(size)
 print(formula)
 
 PPI=157.3505121487356
+
+print(PPI*2.54)
+
+print(399.6703008577884/50)
