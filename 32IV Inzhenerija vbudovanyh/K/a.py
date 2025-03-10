@@ -11,8 +11,10 @@ size: int = 28
 formula=(sqrt(width**2+height**2))/(size)
 print(formula)
 
-PPI=157.3505121487356
+pixels_per_cm=formula*2.54
+print(pixels_per_cm)
 
-print(PPI*2.54)
-
-print(399.6703008577884/50)
+line_length_px=50
+line_length_mm=pixels_per_cm/line_length_px
+line_length_cm=line_length_mm/10
+print(line_length_cm)
