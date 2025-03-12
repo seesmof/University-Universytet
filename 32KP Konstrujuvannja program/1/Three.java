@@ -1,6 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -34,21 +31,9 @@ class Three {
         matrix[row][col] = givenElement;
       }
     }
-    /*
-     * int[][] matrix = new int[3][3];
-     * matrix[0][0] = 0;
-     * matrix[0][1] = 1;
-     * matrix[0][2] = 1;
-     * matrix[1][0] = 1;
-     * matrix[1][1] = 1;
-     * matrix[1][2] = 1;
-     * matrix[2][0] = 1;
-     * matrix[2][1] = 1;
-     * matrix[2][2] = 0;
-     */
     showMatrix(matrix);
 
-    TreeMap<Integer, String> mins = new TreeMap<Integer, String>();
+    TreeMap<String, Integer> mins = new TreeMap<String, Integer>();
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
         int thisElement = matrix[i][j];
@@ -92,19 +77,19 @@ class Three {
         if (thisElement < topLeft && thisElement < top && thisElement < topRight && thisElement < right
             && thisElement < bottom && thisElement < bottomRight && thisElement < bottomLeft && thisElement < left) {
           String position = i + "," + j;
-          mins.put(thisElement, position);
+          mins.put(position, thisElement);
         }
       }
     }
 
     System.out.println("Local minimums:");
-    for (Integer key : mins.keySet()) {
-      String value = mins.get(key);
-      String[] valueParts = value.split(",");
+    for (String key : mins.keySet()) {
+      Integer value = mins.get(key);
+      String[] valueParts = key.split(",");
       int row = Integer.parseInt(valueParts[0]) + 1;
       int col = Integer.parseInt(valueParts[1]) + 1;
 
-      System.out.println("- Element " + key + " on row " + row + " and col " + col);
+      System.out.println("- Element " + value + " on row " + row + " and col " + col);
     }
 
     inputReader.close();
