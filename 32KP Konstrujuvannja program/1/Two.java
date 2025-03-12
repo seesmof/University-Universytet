@@ -55,13 +55,16 @@ class Two {
       int neededCol = matrixSizeCounter;
       System.out.println("Needs to be on row " + neededRow + " and on col " + neededCol);
       String neededPosition = neededRow + "," + neededCol;
-      numbers.put(key, neededPosition);
 
-      String newValue = numbers.get(key);
-      String[] newPositionParts = newValue.split(",");
-      int newPositionRow = Integer.parseInt(newPositionParts[0]);
-      int newPositionCol = Integer.parseInt(newPositionParts[1]);
-      System.out.println("Now on row " + newPositionRow + " and on col " + newPositionCol);
+      int swappedElement = matrix[neededRow][neededCol];
+      int currentElement = matrix[positionRow][positionCol];
+      matrix[neededRow][neededCol] = currentElement;
+      matrix[positionRow][positionCol] = swappedElement;
+
+      System.out.println();
+      showMatrix(matrix);
+      System.out.println();
+      numbers.put(key, neededPosition);
 
       matrixSizeCounter += 1;
     }
