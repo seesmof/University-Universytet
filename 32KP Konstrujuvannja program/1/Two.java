@@ -1,8 +1,18 @@
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Map;
 import java.util.TreeMap;
 
 class Two {
+  public static void showMatrix(int[][] matrix) {
+    for (int i = 0; i < matrix.length; i++) {
+      for (int j = 0; j < matrix.length; j++) {
+        System.out.print(matrix[i][j] + " ");
+      }
+      System.out.println();
+    }
+  }
+
   public static void main(String[] args) {
     int matrixSize = 3;
     int[][] matrix = new int[matrixSize][matrixSize];
@@ -28,8 +38,15 @@ class Two {
       System.out.println();
     }
 
-    for (int i = 0; i < matrixSize; i++) {
-
+    int counter = 0;
+    for (Integer key : numbers.keySet()) {
+      if (counter >= matrixSize) {
+        break;
+      }
+      String value = numbers.get(key);
+      String[] positionParts = value.split(",");
+      System.out.println(key + ": " + positionParts[0] + " and " + positionParts[1]);
+      counter += 1;
     }
   }
 }
