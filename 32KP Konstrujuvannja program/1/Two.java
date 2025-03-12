@@ -38,9 +38,9 @@ class Two {
       System.out.println();
     }
 
-    int outputMatrixSize = 0;
+    int matrixSizeCounter = 0;
     for (Integer key : numbers.keySet()) {
-      if (outputMatrixSize >= matrixSize) {
+      if (matrixSizeCounter >= matrixSize) {
         break;
       }
 
@@ -51,34 +51,19 @@ class Two {
 
       System.out.println(key + ": row " + positionRow + " and col " + positionCol);
 
-      int neededRow = outputMatrixSize;
-      int neededCol = outputMatrixSize;
+      int neededRow = matrixSizeCounter;
+      int neededCol = matrixSizeCounter;
       System.out.println("Needs to be on row " + neededRow + " and on col " + neededCol);
-      while (positionRow != neededRow) {
-        if (positionRow < neededRow) {
-          int swappedElement = matrix[positionRow + 1][positionCol];
-          int currentElement = matrix[positionRow][positionCol];
+      String neededPosition = neededRow + "," + neededCol;
+      numbers.put(key, neededPosition);
 
-          matrix[positionRow][positionCol] = swappedElement;
-          matrix[positionRow + 1][positionCol] = currentElement;
-          positionRow += 1;
-          numbers.put(key, positionRow + "," + positionCol);
-        } else if (positionRow > neededRow) {
-          int swappedElement = matrix[positionRow - 1][positionCol];
-          int currentElement = matrix[positionRow][positionCol];
+      String newValue = numbers.get(key);
+      String[] newPositionParts = newValue.split(",");
+      int newPositionRow = Integer.parseInt(newPositionParts[0]);
+      int newPositionCol = Integer.parseInt(newPositionParts[1]);
+      System.out.println("Now on row " + newPositionRow + " and on col " + newPositionCol);
 
-          matrix[positionRow][positionCol] = swappedElement;
-          matrix[positionRow - 1][positionCol] = currentElement;
-          positionRow -= 1;
-          numbers.put(key, positionRow + "," + positionCol);
-        }
-
-        System.out.println();
-        showMatrix(matrix);
-        System.out.println();
-      }
-
-      outputMatrixSize += 1;
+      matrixSizeCounter += 1;
     }
   }
 }
