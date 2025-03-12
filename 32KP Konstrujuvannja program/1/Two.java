@@ -7,7 +7,11 @@ class Two {
     System.out.println();
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
-        System.out.print(matrix[i][j] + " ");
+        if (i == j) {
+          System.out.print("\033[0;1m" + matrix[i][j] + "\033[0m ");
+        } else {
+          System.out.print(matrix[i][j] + " ");
+        }
       }
       System.out.println();
     }
@@ -17,29 +21,27 @@ class Two {
   public static void main(String[] args) {
     Scanner inputReader = new Scanner(System.in);
 
+    // Отримання розміру матриці
     int matrixSize;
     System.out.print("Please enter matrix size: ");
     matrixSize = inputReader.nextInt();
 
+    // Заповнення
     int[][] matrix = new int[matrixSize][matrixSize];
+    TreeMap<Integer, String> numbers = new TreeMap<Integer, String>(Collections.reverseOrder());
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
         int readableRow = i + 1;
         int readableCol = j + 1;
         System.out.print("Please enter element on row " + readableRow + " and col " + readableCol + ": ");
+
         int givenElement = inputReader.nextInt();
         matrix[i][j] = givenElement;
-      }
-    }
-
-    TreeMap<Integer, String> numbers = new TreeMap<Integer, String>(Collections.reverseOrder());
-    for (int i = 0; i < matrix.length; i++) {
-      for (int j = 0; j < matrix.length; j++) {
-        int currentElement = matrix[i][j];
         String position = i + "," + j;
-        numbers.put(currentElement, position);
+        numbers.put(givenElement, position);
       }
     }
+    System.out.println();
 
     int matrixSizeCounter = 0;
     for (Integer key : numbers.keySet()) {
