@@ -1,41 +1,44 @@
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Map;
+import java.util.Scanner;
 import java.util.TreeMap;
 
 class Two {
   public static void showMatrix(int[][] matrix) {
+    System.out.println();
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
         System.out.print(matrix[i][j] + " ");
       }
       System.out.println();
     }
+    System.out.println();
   }
 
   public static void main(String[] args) {
-    int matrixSize = 3;
+    Scanner inputReader = new Scanner(System.in);
+
+    int matrixSize;
+    System.out.print("Please enter matrix size: ");
+    matrixSize = inputReader.nextInt();
+
     int[][] matrix = new int[matrixSize][matrixSize];
-    matrix[0][0] = 1;
-    matrix[0][1] = 3;
-    matrix[0][2] = 1;
-    matrix[1][0] = 5;
-    matrix[1][1] = 1;
-    matrix[1][2] = 1;
-    matrix[2][0] = 1;
-    matrix[2][1] = 7;
-    matrix[2][2] = 1;
-
-    TreeMap<Integer, String> numbers = new TreeMap<Integer, String>(Collections.reverseOrder());
-
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
-        int el = matrix[i][j];
-        System.out.print(el + " ");
-        String position = i + "," + j;
-        numbers.put(el, position);
+        int readableRow = i + 1;
+        int readableCol = j + 1;
+        System.out.print("Please enter element on row " + readableRow + " and col " + readableCol + ": ");
+        int givenElement = inputReader.nextInt();
+        matrix[i][j] = givenElement;
       }
-      System.out.println();
+    }
+
+    TreeMap<Integer, String> numbers = new TreeMap<Integer, String>(Collections.reverseOrder());
+    for (int i = 0; i < matrix.length; i++) {
+      for (int j = 0; j < matrix.length; j++) {
+        int currentElement = matrix[i][j];
+        String position = i + "," + j;
+        numbers.put(currentElement, position);
+      }
     }
 
     int matrixSizeCounter = 0;
@@ -61,12 +64,12 @@ class Two {
       matrix[neededRow][neededCol] = currentElement;
       matrix[positionRow][positionCol] = swappedElement;
 
-      System.out.println();
       showMatrix(matrix);
-      System.out.println();
       numbers.put(key, neededPosition);
 
       matrixSizeCounter += 1;
     }
+
+    inputReader.close();
   }
 }
