@@ -31,22 +31,27 @@ class Two {
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
         int el = matrix[i][j];
-        System.out.print(el);
+        System.out.print(el + " ");
         String position = i + "," + j;
         numbers.put(el, position);
       }
       System.out.println();
     }
 
-    int counter = 0;
+    int outputMatrixSize = 0;
     for (Integer key : numbers.keySet()) {
-      if (counter >= matrixSize) {
+      if (outputMatrixSize >= matrixSize) {
         break;
       }
+
       String value = numbers.get(key);
       String[] positionParts = value.split(",");
-      System.out.println(key + ": " + positionParts[0] + " and " + positionParts[1]);
-      counter += 1;
+      int positionRow = Integer.parseInt(positionParts[0]);
+      int positionCol = Integer.parseInt(positionParts[1]);
+
+      System.out.println(key + ": row " + positionRow + " and col " + positionCol);
+
+      outputMatrixSize += 1;
     }
   }
 }
