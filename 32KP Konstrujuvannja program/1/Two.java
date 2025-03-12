@@ -56,10 +56,24 @@ class Two {
       System.out.println("Needs to be on row " + neededRow + " and on col " + neededCol);
       while (positionRow != neededRow) {
         if (positionRow < neededRow) {
+          int swappedElement = matrix[positionRow + 1][positionCol];
+          int currentElement = matrix[positionRow][positionCol];
 
+          matrix[positionRow][positionCol] = swappedElement;
+          matrix[positionRow + 1][positionCol] = currentElement;
+          positionRow += 1;
         } else if (positionRow > neededRow) {
+          int swappedElement = matrix[positionRow - 1][positionCol];
+          int currentElement = matrix[positionRow][positionCol];
 
+          matrix[positionRow][positionCol] = swappedElement;
+          matrix[positionRow - 1][positionCol] = currentElement;
+          positionRow -= 1;
         }
+
+        System.out.println();
+        showMatrix(matrix);
+        System.out.println();
       }
 
       outputMatrixSize += 1;
