@@ -51,6 +51,17 @@ class Two {
 
       System.out.println(key + ": row " + positionRow + " and col " + positionCol);
 
+      int neededRow = outputMatrixSize;
+      int neededCol = outputMatrixSize;
+      System.out.println("Needs to be on row " + neededRow + " and on col " + neededCol);
+      while (positionRow != neededRow) {
+        if (positionRow < neededRow) {
+
+        } else if (positionRow > neededRow) {
+
+        }
+      }
+
       outputMatrixSize += 1;
     }
   }
