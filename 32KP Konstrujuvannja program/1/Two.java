@@ -62,6 +62,7 @@ class Two {
           matrix[positionRow][positionCol] = swappedElement;
           matrix[positionRow + 1][positionCol] = currentElement;
           positionRow += 1;
+          numbers.put(key, positionRow + "," + positionCol);
         } else if (positionRow > neededRow) {
           int swappedElement = matrix[positionRow - 1][positionCol];
           int currentElement = matrix[positionRow][positionCol];
@@ -69,6 +70,7 @@ class Two {
           matrix[positionRow][positionCol] = swappedElement;
           matrix[positionRow - 1][positionCol] = currentElement;
           positionRow -= 1;
+          numbers.put(key, positionRow + "," + positionCol);
         }
 
         System.out.println();
