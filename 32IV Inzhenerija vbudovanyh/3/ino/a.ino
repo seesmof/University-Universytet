@@ -1,21 +1,23 @@
-int redPin=11;
-int greenPin=9;
-int bluePin=10;
+int MIN_VALUE=85;
+int MAX_VALUE=385;
+
+int smokePin=A0;
+int ledPin=3;
 
 void setup()
 {
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
-  pinMode(bluePin, OUTPUT);
-
-  digitalWrite(redPin, HIGH);
-  digitalWrite(greenPin, HIGH);
-  digitalWrite(bluePin, HIGH);
+  pinMode(ledPin, OUTPUT);
+  pinMode(smokePin, INPUT);
 }
 
 void loop()
 {
-  analogWrite(redPin,255);
-  analogWrite(greenPin,213);
-  analogWrite(bluePin,139);
+  int smokeValue=analogRead(smokePin);
+  int convertedValue=map(smokeValue, MIN_VALUE, MAX_VALUE, 0, 100);
+  if (convertedValue>50){
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+  delay(100);
 }
