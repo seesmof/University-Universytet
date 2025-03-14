@@ -14,7 +14,7 @@ void loop()
 {
   int smokeValue=analogRead(smokePin);
   int convertedValue=map(smokeValue, MIN_VALUE, MAX_VALUE, 0, 100);
-  if (convertedValue>50){
+  if (convertedValue>30){
     digitalWrite(ledPin, HIGH);
   } else {
     digitalWrite(ledPin, LOW);
