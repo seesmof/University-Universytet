@@ -4,14 +4,18 @@ int bluePin=10;
 
 void setup()
 {
+  pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
   pinMode(bluePin, OUTPUT);
-  pinMode(redPin, OUTPUT);
+
+  digitalWrite(redPin, HIGH);
+  digitalWrite(greenPin, HIGH);
+  digitalWrite(bluePin, HIGH);
 }
 
 void loop()
 {
+  analogWrite(redPin,255);
   analogWrite(greenPin,213);
   analogWrite(bluePin,139);
-  analogWrite(redPin,255);
 }
