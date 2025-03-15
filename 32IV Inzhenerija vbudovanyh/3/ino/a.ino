@@ -2,12 +2,20 @@ int MIN_VALUE=85;
 int MAX_VALUE=385;
 
 int smokePin=A0;
-int ledPin=3;
+int redPin=9;
+int greenPin=11;
+int bluePin=10;
 
 void setup()
 {
-  pinMode(ledPin, OUTPUT);
   pinMode(smokePin, INPUT);
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+
+  digitalWrite(redPin, HIGH);
+  digitalWrite(greenPin, HIGH);
+  digitalWrite(bluePin, HIGH);
 }
 
 void loop()
