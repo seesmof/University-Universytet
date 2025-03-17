@@ -23,5 +23,18 @@ void loop()
   int convertedValue = map(smokeValue, MIN_VALUE, MAX_VALUE, 0, 100);
   Serial.println(convertedValue);
   delayTime=convertedValue*10;
-  delay(delayTime);
+  if (appState) {
+    digitalWrite(ledPin, HIGH);
+    digitalWrite(piezoPin, HIGH);
+    appState=false;
+  } else {
+    digitalWrite(ledPin, LOW);
+    digitalWrite(piezoPin, LOW);
+    appState=true;
+  }
+  if (convertedValue<=0 || convertedValue>100){
+    delay(1000);
+  } else {
+    delay(-delayTime);
+  }
 }
