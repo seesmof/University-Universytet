@@ -1,17 +1,19 @@
-int redPin=11;
-int greenPin=9;
-int bluePin=10;
+int MIN_VALUE=85;
+int MAX_VALUE=385;
+
+int smokePin=A0;
 
 void setup()
 {
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
-  pinMode(bluePin, OUTPUT);
+  pinMode(smokePin, INPUT);
+
+  Serial.begin(9600);
 }
 
 void loop()
 {
-  digitalWrite(redPin, 255);
-  digitalWrite(greenPin, 0);
-  digitalWrite(bluePin, 0);
+  int smokeValue = analogRead(smokePin);
+  int convertedValue = map(smokeValue, MIN_VALUE, MAX_VALUE, 0, 100);
+  Serial.println(convertedValue);
+  delay(100);
 }
