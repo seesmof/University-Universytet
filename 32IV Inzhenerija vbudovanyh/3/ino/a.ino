@@ -2,10 +2,17 @@ int MIN_VALUE=85;
 int MAX_VALUE=385;
 
 int smokePin=A0;
+int ledPin=7;
+int piezoPin=3;
+
+int delayTime=1000;
+bool appState=true;
 
 void setup()
 {
   pinMode(smokePin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(piezoPin, OUTPUT);
 
   Serial.begin(9600);
 }
@@ -15,5 +22,6 @@ void loop()
   int smokeValue = analogRead(smokePin);
   int convertedValue = map(smokeValue, MIN_VALUE, MAX_VALUE, 0, 100);
   Serial.println(convertedValue);
-  delay(100);
+  delayTime=convertedValue*10;
+  delay(delayTime);
 }
