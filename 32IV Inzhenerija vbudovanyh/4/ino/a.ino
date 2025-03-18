@@ -1,20 +1,30 @@
-const int MIN_PHOTORESISTOR=6;
-const int MAX_PHOTORESISTOR=679;
+#define DECODE_NEC
+#include <IRremote.hpp>
 
-const int PHOTORESISTOR_PIN=A0;
-const int LED_PIN=9;
-
+const int RECEIVER_PIN=3;
 void setup()
 {
-  pinMode(PHOTORESISTOR_PIN, INPUT);
   Serial.begin(9600);
+  IrReceiver.begin(RECEIVER_PIN);
 }
 
 void loop()
 {
-  int photoresistorValue=analogRead(PHOTORESISTOR_PIN);
-  int convertedValue=map(photoresistorValue, MIN_PHOTORESISTOR, MAX_PHOTORESISTOR, 0, 255);
-  Serial.println(convertedValue);
-  analogWrite(LED_PIN, convertedValue);
-  delay(100);
+  receiveSignal();
+}
+
+uint16_t receiveSignal(){
+  uint16_t received{0};
+
+  if (IrReceiver.decode()){
+    if (IrReceiver.decodedIRData.protocol==UNKNOWN){
+      IrReceiver.printIRResultRawFormatted(&Serial,true);
+    }
+    if (IrReceiver.decodedIRData.protocol==NEC){
+      received=IrReceiver.decodedIRData.command;
+      Serial.println(received,HEX);
+    }
+    IrReceiver.resume();
+  }
+  return received;
 }
