@@ -1,27 +1,23 @@
-int MIN_VALUE=85;
-int MAX_VALUE=385;
-
-int smokePin=A0;
-int ledPin=7;
-int piezoPin=3;
+const int RED_PIN=11;
+const int GREEN_PIN=9;
+const int BLUE_PIN=10;
+const int BUTTON_PIN=7;
 
 void setup()
 {
-  pinMode(smokePin, INPUT);
-  pinMode(ledPin, OUTPUT);
-  pinMode(piezoPin, OUTPUT);
+  pinMode(RED_PIN, OUTPUT);
+  pinMode(GREEN_PIN, OUTPUT);
+  pinMode(BLUE_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT);
+}
+
+void writeRgb(int redValue, int greenValue, int blueValue){
+  digitalWrite(RED_PIN, redValue);
+  digitalWrite(GREEN_PIN, greenValue);
+  digitalWrite(BLUE_PIN, blueValue);
 }
 
 void loop()
 {
-  int smokeValue = analogRead(smokePin);
-  int convertedValue = map(smokeValue, MIN_VALUE, MAX_VALUE, 1, 100);
-  int delayTime=map(convertedValue, 100, 1, 1, 100);
-  delayTime=abs(-delayTime*10);
-  digitalWrite(ledPin, HIGH);
-  digitalWrite(piezoPin, HIGH);
-  delay(delayTime);
-  digitalWrite(ledPin, LOW);
-  digitalWrite(piezoPin, LOW);
-  delay(delayTime);
+  
 }
