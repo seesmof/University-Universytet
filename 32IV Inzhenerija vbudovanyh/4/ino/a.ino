@@ -1,20 +1,23 @@
-#define DECODE_NEC
-#include <IRremote.hpp>
+#include <Servo.h>
 
-const unsigned int RECEIVER_PIN=3;
+const int SERVO_PIN=7;
+Servo servo;
+int angle=0;
 
 void setup()
 {
+  servo.attach(SERVO_PIN);
   Serial.begin(9600);
-  IrReceiver.begin(RECEIVER_PIN);
+
+  servo.write(angle);
 }
 
 void loop()
 {
-  if (IrReceiver.decode()){
-    auto data=IrReceiver.decodedIRData.command;
-    Serial.println(data,HEX);
-    IrReceiver.resume();
+  int angle=servo.read();
+  for (int i=angle;i<=360*2;i++){
+    servo.write(i);
+    Serial.println(i);
   }
-  delay(100);
+  delay(1000);
 }
