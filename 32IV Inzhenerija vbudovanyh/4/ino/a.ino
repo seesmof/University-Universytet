@@ -1,38 +1,63 @@
-#include <Servo.h>
+#define DECODE_NEC
+#include <IRremote.hpp>
 
-const int SERVO_PIN=7;
-const int LEFT_PHOTORESISTOR_PIN=A0;
-const int RIGHT_PHOTORESISTOR_PIN=A1;
+const unsigned int RECEIVER_PIN=3;
 
-const int ROTATE_RIGHT=87;
-const int ROTATE_LEFT=97;
-const int STOP_ROTATION=93;
-const int MIN_SENSOR=6;
-const int MAX_SENSOR=679;
-
-Servo servo;
+const int GREEN_LED_PIN=13;
+const int ORANGE_LED_PIN=12;
+const int RED_LED_PIN=11;
+const int YELLOW_LED_PIN=10;
+const int BLUE_LED_PIN=9;
+const int WHITE_LED_PIN=8;
 
 void setup()
 {
-  servo.attach(SERVO_PIN);
   Serial.begin(9600);
+  IrReceiver.begin(RECEIVER_PIN);
+  pinMode(GREEN_LED_PIN, OUTPUT);
+  pinMode(ORANGE_LED_PIN, OUTPUT);
+  pinMode(RED_LED_PIN, OUTPUT);
+  pinMode(YELLOW_LED_PIN, OUTPUT);
+  pinMode(BLUE_LED_PIN, OUTPUT);
+  pinMode(WHITE_LED_PIN, OUTPUT);
+}
+
+void turnLedsOff(){
+  digitalWrite(GREEN_LED_PIN, LOW);
+  digitalWrite(ORANGE_LED_PIN, LOW);
+  digitalWrite(RED_LED_PIN, LOW);
+  digitalWrite(YELLOW_LED_PIN, LOW);
+  digitalWrite(BLUE_LED_PIN, LOW);
+  digitalWrite(WHITE_LED_PIN, LOW);
 }
 
 void loop()
 {
-  int leftValue=analogRead(LEFT_PHOTORESISTOR_PIN);
-  int rightValue=analogRead(RIGHT_PHOTORESISTOR_PIN);
-  Serial.println("Left value: ");
-  Serial.println(leftValue);
-  Serial.println("Right value: ");
-  Serial.println(rightValue);
-  Serial.println("Servo value: ");
-  Serial.println(servo.read());
-  if (leftValue>rightValue)
-    servo.write(ROTATE_LEFT);
-  else if (rightValue>leftValue)
-    servo.write(ROTATE_RIGHT);
-  else
-    servo.write(STOP_ROTATION);
-  delay(300);
+  if (IrReceiver.decode()){
+    auto data=IrReceiver.decodedIRData.command;
+    Serial.println(data,HEX);
+    turnLedsOff();
+    // 1
+    if (data==0x10){
+      digitalWrite(ORANGE_LED_PIN, HIGH);
+      digitalWrite(GREEN_LED_PIN, HIGH);
+    }
+    // 2
+    else if (data==0x11){
+      digitalWrite(WHITE_LED_PIN, HIGH);
+      digitalWrite(RED_LED_PIN, HIGH);
+    }
+    // 3
+    else if (data==0x12){
+      digitalWrite(YELLOW_LED_PIN, HIGH);
+      digitalWrite(BLUE_LED_PIN, HIGH);
+    }
+    // 4
+    else if (data==0x14){
+      digitalWrite(GREEN_LED_PIN, HIGH);
+      digitalWrite(WHITE_LED_PIN, HIGH);
+    }
+    IrReceiver.resume();
+  }
+  delay(100);
 }
