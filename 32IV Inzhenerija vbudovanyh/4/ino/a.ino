@@ -4,7 +4,7 @@
 const unsigned int RECEIVER_PIN=5;
 const unsigned int SWITCH_PIN=2;
 const unsigned int LED_PIN=3;
-int brightness=1;
+int brightness=25;
 int switchValue=0;
 
 void setup()
@@ -30,19 +30,20 @@ void loop()
     if (data==0x0){
       if (brightness>1) brightness=0;
       else brightness=255;
+      changeLed();
     }
     // +
     else if (data==0x1) {
       if (brightness<230) brightness+=25;
+      changeLed();
     }
     // -
     else if (data==0x9){
       if (brightness>25) brightness-=25;
+      changeLed();
     }
     
     IrReceiver.resume();
   }
-  Serial.println(brightness);
-  analogWrite(LED_PIN, brightness);
   delay(300);
 }
