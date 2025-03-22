@@ -1,49 +1,48 @@
-#define DECODE_NEC
-#include <IRremote.hpp>
+int switchPin=12;
+int ledPin=5;
+int powerPin=4;
+int plusPin=3;
+int minusPin=2;
 
-const unsigned int RECEIVER_PIN=5;
-const unsigned int SWITCH_PIN=2;
-const unsigned int LED_PIN=3;
-int brightness=25;
-int switchValue=0;
+int brightness=0;
 
 void setup()
 {
+  pinMode(switchPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(powerPin, INPUT);
+  pinMode(plusPin, INPUT);
+  pinMode(minusPin, INPUT);
   Serial.begin(9600);
-  IrReceiver.begin(RECEIVER_PIN);
-  pinMode(SWITCH_PIN, INPUT);
-  pinMode(LED_PIN, OUTPUT);
 }
 
-void changeLed(int brightness){
-  analogWrite(LED_PIN, brightness);
+void writeLed() {
+  analogWrite(ledPin, brightness);
   Serial.println(brightness);
 }
 
 void loop()
 {
-  switchValue=digitalRead(SWITCH_PIN);
-  if (IrReceiver.decode() && switchValue==1){
-    auto data=IrReceiver.decodedIRData.command;
-
-    // Power
-    if (data==0x0){
-      if (brightness>1) brightness=0;
-      else brightness=255;
-      changeLed();
+  int switchState=digitalRead(switchPin);
+  if (switchState==1) {
+    if (digitalRead(powerPin)==1) {
+      Serial.println("Power");
+      if (brightness>0)
+        brightness=0;
+      else 
+        brightness=130;
+      writeLed();
     }
-    // +
-    else if (data==0x1) {
+    else if (digitalRead(plusPin)==1) {
+      Serial.println("Plus");
       if (brightness<230) brightness+=25;
-      changeLed();
+      writeLed();
     }
-    // -
-    else if (data==0x9){
+    else if (digitalRead(minusPin)==1) {
+      Serial.println("Minus");
       if (brightness>25) brightness-=25;
-      changeLed();
+      writeLed();
     }
-    
-    IrReceiver.resume();
   }
-  delay(300);
+  delay(100);
 }
