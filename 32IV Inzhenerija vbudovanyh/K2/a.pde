@@ -1,6 +1,7 @@
-int circleHorizontal=0;
+int ballHorizontal=0;
+int ballVertical=0;
 int speed=7;
-boolean goingRight=true;
+boolean goingUp=false;
 
 void setup() {
   size(512, 512);
@@ -9,18 +10,18 @@ void setup() {
 void draw() {
   background(255);
   noStroke();
-  fill(137, 203, 37);
+  fill(25, 130, 196);
 
-  ellipse(circleHorizontal, height/2, 33, 33);
-  if (goingRight && circleHorizontal<width) {
-    circleHorizontal+=speed;
-  } else if (circleHorizontal>=width && goingRight) {
-    goingRight=false;
-    circleHorizontal-=speed;
-  } else if (!goingRight && circleHorizontal>0) {
-    circleHorizontal-=speed;
-  } else if (!goingRight && circleHorizontal<=0) {
-    circleHorizontal+=speed;
-    goingRight=true;
+  ellipse(ballHorizontal, ballVertical, 33, 33);
+  if (ballHorizontal<=height && ballVertical<=width) {
+    if (goingUp) {
+      goingUp=false;
+      ballHorizontal+=speed;
+      ballVertical+=speed;
+    } else {
+      ballHorizontal-=speed;
+      ballVertical-=speed;
+    }
   }
+  println(ballHorizontal,ballVertical,width,height);
 }
