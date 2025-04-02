@@ -4,7 +4,10 @@ void setup() {
 
 void draw() {
   background(255);
+
   stroke(177, 187, 57);
-  line(0, 0, width, height);
+  fill(255);
+
+  ellipse(mouseX, mouseY, height, 100);
   println(pmouseX,pmouseY);
 }
