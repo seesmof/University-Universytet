@@ -1,6 +1,6 @@
-int x=23;
-int h=17;
-int y=23;
+int x=0;
+int speed=7;
+boolean goingRight = true;
 
 void setup() {
   size(512, 512);
@@ -8,12 +8,20 @@ void setup() {
 
 void draw() {
   background(255);
+  noStroke();
+  fill(137, 203, 37);
 
-  stroke(177, 187, 57);
-  fill(255);
-  println(pmouseX,pmouseY);
-
-  for (int i = 0; i < 7; ++i) {
-    ellipse(i*22, i*23, i*7, i*12);
+  ellipse(x, height/2, 33, 33);
+  if (goingRight && x<width) {
+    x+=speed;
+  } else if (x>=width && goingRight) {
+    goingRight=false;
+    x-=speed;
+  } else if (!goingRight && x>0) {
+    x-=speed;
+  } else if (!goingRight && x<=0) {
+    x+=speed;
+    goingRight=true;
   }
+  println(x,width);
 }
