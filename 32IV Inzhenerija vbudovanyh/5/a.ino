@@ -1,22 +1,61 @@
-bool ledOn=false;
-int sensorPin=3;
+#include <Keypad.h>
+#include <Servo.h>
+
+const byte rowsNum=4;
+const byte colsNum=4;
+
+char keys[rowsNum][colsNum]={
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'},
+};
+
+byte rowPins[rowsNum]={12,11,10,9};
+byte colPins[colsNum]={7,6,5,4};
+
+Keypad k=Keypad(makeKeymap(keys),rowPins,colPins,rowsNum,colsNum);
+Servo servo;
+
+int servoPin=3;
 int ledPin=13;
+
+char keysPressed[5];
+
+void lock() {
+  servo.write(90);
+  digitalWrite(ledPin, HIGH);
+}
+
+void open() {
+  servo.write(0);
+  digitalWrite(ledPin, LOW);
+}
+
+void clearCache() {
+  keysPressed[0]='';
+  keysPressed[1]='';
+  keysPressed[2]='';
+  keysPressed[3]='';
+  keysPressed[4]='';
+}
 
 void setup()
 {
-  pinMode(sensorPin, INPUT);
-  pinMode(ledPin, OUTPUT);
   Serial.begin(9600);
+  servo.attach(servoPin);
+  lock();
 }
 
 void loop()
 {
-  int sensorPosition=digitalRead(sensorPin);
-  if (sensorPosition==HIGH){
-    ledOn=!ledOn;
+  char key=k.getKey();
+  if (key!=NO_KEY) {
+    Serial.println(key);
+    if (key=='1') {
+      Serial.println("pressed 1");
+      keysPressed[0]=key;
+    } else if ()
   }
-  if (ledOn) digitalWrite(ledPin, HIGH);
-  else digitalWrite(ledPin, LOW);
-  Serial.println(ledOn);
   delay(100);
 }
