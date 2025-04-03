@@ -20,10 +20,11 @@ Servo servo;
 int servoPin=3;
 int ledPin=13;
 int piezoPin=A0;
-int movementPin=0;
+int movementPin=2;
 
 char keysPressed[5];
 char lastKey;
+bool isLocked=true;
 
 void lock() {
   servo.write(90);
@@ -48,6 +49,7 @@ void setup()
   Serial.begin(9600);
   servo.attach(servoPin);
   lock();
+  isLocked=true;
 }
 
 void loop()
@@ -72,9 +74,11 @@ void loop()
       Serial.println("Opened");
       open();
       clearCache();
+      isLocked=false;
     } else if (key=='C') {
       clearCache();
       lock();
+      isLocked=true;
       Serial.println("Locked");
     } else if (key=='D' && !(lastKey=='4' && keysPressed[0]=='1' && keysPressed[1]=='2' && keysPressed[2]=='3')) {
       clearCache();
@@ -83,6 +87,14 @@ void loop()
       clearCache();
     }
     lastKey=key;
+  }
+  
+  int movement=digitalRead(movementPin);
+  if (movement==HIGH && isLocked==true) {
+    Serial.println("Movement when locked");
+    tone(piezoPin, 1000, 1000);
+  } else {
+    digitalWrite(piezoPin, LOW);
   }
   delay(30);
 }
