@@ -1,22 +1,16 @@
-int sensorPostiion=0;
-int sensorPin=3;
-int ledPin=13;
+#include <Keypad.h>
 
-void setup()
-{
-  pinMode(sensorPin, INPUT);
-  pinMode(ledPin, OUTPUT);
-  Serial.begin(9600);
+int rowsNum=4;
+int colsNum=4;
+
+char keys[rowsNum][colsNum]={
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'},
 }
 
-void loop()
-{
-  sensorPostiion=digitalRead(sensorPin);
-  if (sensorPostiion==HIGH){
-    digitalWrite(ledPin, HIGH);
-    Serial.println("Sensor on");
-  } else {
-    digitalWrite(ledPin, LOW);
-  }
-  delay(120);
-}
+int rowPins[rowsNum]={12,11,10,9};
+int colPins[colsNum]={7,6,5,4};
+
+Keypad k=
