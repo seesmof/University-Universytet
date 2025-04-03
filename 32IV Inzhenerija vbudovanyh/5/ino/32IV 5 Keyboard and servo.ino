@@ -19,8 +19,6 @@ Servo servo;
 
 int servoPin=3;
 int ledPin=13;
-int piezoPin=A0;
-int movementPin=0;
 
 char keysPressed[5];
 char lastKey;
