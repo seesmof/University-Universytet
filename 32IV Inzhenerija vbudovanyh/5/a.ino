@@ -1,7 +1,7 @@
 #include <Keypad.h>
 
-int rowsNum=4;
-int colsNum=4;
+const byte rowsNum=4;
+const byte colsNum=4;
 
 char keys[rowsNum][colsNum]={
   {'1','2','3','A'},
@@ -10,7 +10,20 @@ char keys[rowsNum][colsNum]={
   {'*','0','#','D'},
 }
 
-int rowPins[rowsNum]={12,11,10,9};
-int colPins[colsNum]={7,6,5,4};
+byte rowPins[rowsNum]={12,11,10,9};
+byte colPins[colsNum]={7,6,5,4};
 
-Keypad k=
+Keypad k=Keypad(makeKeymap(keys),rowPins,colPins,rowsNum,colsNum);
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  char key=k.getKey();
+  if (key!=NO_KEY) {
+    Serial.println(key);
+  }
+}
