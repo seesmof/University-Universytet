@@ -1,4 +1,4 @@
-int sensorPostiion=0;
+int sensorPosition=0;
 int sensorPin=3;
 int ledPin=13;
 
@@ -11,8 +11,8 @@ void setup()
 
 void loop()
 {
-  sensorPostiion=digitalRead(sensorPin);
-  if (sensorPostiion==HIGH){
+  sensorPosition=digitalRead(sensorPin);
+  if (sensorPosition==HIGH){
     digitalWrite(ledPin, HIGH);
     Serial.println("Sensor on");
   } else {
