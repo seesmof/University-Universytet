@@ -3,14 +3,19 @@ int yellowLed=11;
 int orangeLed=7;
 int tempPin=A0;
 
-int getTemperatureInDegrees() {
+int getTempMap() {
   int value=analogRead(tempPin);
-  int percents=(double) value/1024;
-  Serial.println(percents);
-  int voltage=percents*5;
-  int minusOffset=voltage-0.5;
-  int degreesCelcius=minusOffset*100;
+  int degreesCelcius=map(((value-20)*3.04), 0, 1023, -40, 125);
   return degreesCelcius;
+}
+
+int getTempManual() {
+  int value=analogRead(tempPin);
+  float volts=value*5.0;
+  float percents=volts/1024.0;
+  float minusOffset=percents-0.5;
+  int degrees=minusOffset*100;
+  return degrees;
 }
 
 void setup()
@@ -24,6 +29,7 @@ void setup()
 
 void loop()
 {
-  int temperature=getTemperatureInDegrees();
+  int temperature=getTempManual();
+  Serial.println(temperature);
   delay(100);
 }
