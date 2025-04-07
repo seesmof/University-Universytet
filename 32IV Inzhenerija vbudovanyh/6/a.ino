@@ -1,11 +1,7 @@
-int greenLed=7;
-int redLed=9;
-int blueLed=8;
-int tempPin=A0;
+#include <Adafruit_LiquidCrystal.h>
 
-int blue=18;
-int green=49;
-int red=50;
+Adafruit_LiquidCrystal lcd(0);
+int tempPin=A5;
 
 int getTempManual() {
   int value=analogRead(tempPin);
@@ -16,18 +12,15 @@ int getTempManual() {
   return degrees;
 }
 
-void showRgb(int red, int green, int blue) {
-  digitalWrite(redLed, red);
-  digitalWrite(greenLed, green);
-  digitalWrite(blueLed, blue);
-}
-
 void setup()
 {
-  pinMode(greenLed, OUTPUT);
-  pinMode(redLed, OUTPUT);
-  pinMode(blueLed, OUTPUT);
   pinMode(tempPin, INPUT);
+  lcd.begin(16, 2);
+  lcd.setBacklight(1);
+
+  lcd.print("0 C");
+  lcd.setCursor(0,1);
+  lcd.print("-");
   Serial.begin(9600);
 }
 
@@ -35,15 +28,5 @@ void loop()
 {
   int temperature=getTempManual();
   Serial.println(temperature);
-  if (temperature<blue) {
-    // Blue
-    showRgb(0,0,255);
-  } else if (temperature>=blue && temperature<=green) {
-    // Green
-    showRgb(0,255,0);
-  } else if (temperature>=red) {
-    // Red
-    showRgb(255,0,0);
-  }
   delay(100);
 }
