@@ -1,22 +1,49 @@
-#include <Adafruit_LiquidCrystal.h>
+int greenLed=7;
+int redLed=9;
+int blueLed=8;
+int tempPin=A0;
 
-Adafruit_LiquidCrystal lcd(0);
+int blue=18;
+int green=49;
+int red=50;
+
+int getTempManual() {
+  int value=analogRead(tempPin);
+  float volts=value*5.0;
+  float percents=volts/1024.0;
+  float minusOffset=percents-0.5;
+  int degrees=minusOffset*100;
+  return degrees;
+}
+
+void showRgb(int red, int green, int blue) {
+  digitalWrite(redLed, red);
+  digitalWrite(greenLed, green);
+  digitalWrite(blueLed, blue);
+}
 
 void setup()
 {
-  lcd.begin(16, 2);
-  lcd.setBacklight(1);
-
-  lcd.print("Some");
-  lcd.setCursor(0,1);
-  lcd.print("here");
-  delay(500);
+  pinMode(greenLed, OUTPUT);
+  pinMode(redLed, OUTPUT);
+  pinMode(blueLed, OUTPUT);
+  pinMode(tempPin, INPUT);
+  Serial.begin(9600);
 }
 
 void loop()
 {
-  lcd.setCursor(0, 1);
-  lcd.print("text");
-  lcd.setBacklight(1);
-  delay(500);
+  int temperature=getTempManual();
+  Serial.println(temperature);
+  if (temperature<blue) {
+    // Blue
+    showRgb(0,0,255);
+  } else if (temperature>=blue && temperature<=green) {
+    // Green
+    showRgb(0,255,0);
+  } else if (temperature>=red) {
+    // Red
+    showRgb(255,0,0);
+  }
+  delay(100);
 }

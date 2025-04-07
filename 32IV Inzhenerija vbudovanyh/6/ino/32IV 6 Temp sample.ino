@@ -3,9 +3,9 @@ int yellowLed=11;
 int orangeLed=7;
 int tempPin=A0;
 
-int firstLevel=20;
-int secondLevel=40;
-int thirdLevel=70;
+int blue=20;
+int green=40;
+int red=70;
 
 int getTempMap() {
   int value=analogRead(tempPin);
@@ -35,17 +35,17 @@ void loop()
 {
   int temperature=getTempManual();
   Serial.println(temperature);
-  if (temperature>=firstLevel || temperature<=firstLevel) {
+  if (temperature>=blue || temperature<=blue) {
     digitalWrite(greenLed, HIGH);
   } else {
     digitalWrite(greenLed, LOW);
   }
-  if (temperature>=secondLevel) {
+  if (temperature>=green) {
     digitalWrite(yellowLed, HIGH);
   } else {
     digitalWrite(yellowLed, LOW);
   }
-  if (temperature>=thirdLevel) {
+  if (temperature>=red) {
     digitalWrite(orangeLed, HIGH);
   } else {
     digitalWrite(orangeLed, LOW);
