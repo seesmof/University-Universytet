@@ -3,13 +3,10 @@
 Adafruit_LiquidCrystal lcd(0);
 int tempPin=A5;
 
-int getTempManual() {
+int getTempMap() {
   int value=analogRead(tempPin);
-  float volts=value*5.0;
-  float percents=volts/1024.0;
-  float minusOffset=percents-0.5;
-  int degrees=minusOffset*100;
-  return degrees;
+  int degreesCelcius=map(((value-20)*3.04), 0, 1023, -40, 125);
+  return degreesCelcius;
 }
 
 void setup()
@@ -26,7 +23,7 @@ void setup()
 
 void loop()
 {
-  int temperature=getTempManual();
+  int temperature=getTempMap();
   Serial.println(temperature);
   delay(100);
 }
