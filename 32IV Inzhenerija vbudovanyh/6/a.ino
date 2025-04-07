@@ -38,6 +38,13 @@ void loop()
   int goPressed=digitalRead(goPin);
   int backPressed=digitalRead(backPin);
 
+  if (upPressed) {
+    if (cursorRow>0) cursorRow-=1;
+  }
+  if (downPressed) {
+    if (cursorRow<1) cursorRow+=1;
+  }
+
   showFirstMenu();
   updateCursor();
 
