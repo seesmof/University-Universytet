@@ -3,6 +3,7 @@
 LiquidCrystal lcd(13,12,11,10,9,8);
 int upPin=7,downPin=6,goPin=5,backPin=4;
 int cursorRow=0;
+bool choseOpen=true;
 bool firstMenu=true;
 
 void setup()
@@ -54,8 +55,20 @@ void loop()
   }
 
   if (goPressed) {
-    if (firstMenu) firstMenu=false;
-    else Serial.println("Cannot move further");
+    if (firstMenu) {
+      firstMenu=false;
+      if (cursorRow==0) choseOpen=true;
+      if (cursorRow==1) choseOpen=false;
+    } else {
+      if (cursorRow==0) {
+        if (choseOpen) Serial.println("Opened door");
+        else Serial.println("Closed door");
+      }
+      if (cursorRow==1) {
+        if (choseOpen) Serial.println("Opened window");
+        else Serial.println("Closed window");
+      }
+    }
   }
   if (backPressed) {
     if (!firstMenu) firstMenu=true;
