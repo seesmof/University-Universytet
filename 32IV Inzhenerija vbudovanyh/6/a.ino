@@ -1,29 +1,24 @@
-#include <Adafruit_LiquidCrystal.h>
+#include <LiquidCrystal.h>
 
-Adafruit_LiquidCrystal lcd(0);
 int tempPin=A5;
-
-int getTempMap() {
-  int value=analogRead(tempPin);
-  int degreesCelcius=map(((value-20)*3.04), 0, 1023, -40, 125);
-  return degreesCelcius;
-}
+int rs=12,en=11,d4=5,d5=4,d6=3,d7=2;
+LiquidCrystal lcd(rs,en,d4,d5,d6,d7);
 
 void setup()
 {
   pinMode(tempPin, INPUT);
-  lcd.begin(16, 2);
-  lcd.setBacklight(1);
-
-  lcd.print("0 C");
-  lcd.setCursor(0,1);
-  lcd.print("-");
   Serial.begin(9600);
 }
 
 void loop()
 {
-  int temperature=getTempMap();
+  int temperature=analogRead(tempPin)*0.004882814;
+  temperature=(temperature-0.5)*100;
   Serial.println(temperature);
+
+  lcd.setCursor(0,1);
+  lcd.print(temperature);
+  lcd.print(" C");
   delay(100);
+  lcd.clear();
 }
