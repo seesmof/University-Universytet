@@ -1,22 +1,22 @@
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
+#include <Adafruit_LiquidCrystal.h>
 
-LiquidCrystal_I2C lcd(0x20,16,2);
+Adafruit_LiquidCrystal lcd(0);
 
 void setup()
 {
-  lcd.init();
-  lcd.backlight();
+  lcd.begin(16, 2);
+  lcd.setBacklight(1);
 
-  lcd.print("Grace");
+  lcd.print("Some");
   lcd.setCursor(0,1);
-  lcd.print("To you");
-  delay(10);
+  lcd.print("here");
+  delay(500);
 }
 
 void loop()
 {
-  lcd.setCursor(0,1);
-  lcd.print("From GOD our Father");
-  delay(10);
+  lcd.setCursor(0, 1);
+  lcd.print("text");
+  lcd.setBacklight(1);
+  delay(500);
 }
