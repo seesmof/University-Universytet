@@ -1,31 +1,33 @@
 #include <LiquidCrystal.h>
 
-int tempPin=A1;
-int rs=12,en=11,d4=5,d5=4,d6=3,d7=2;
-LiquidCrystal lcd(rs,en,d4,d5,d6,d7);
+LiquidCrystal lcd(13,12,11,10,9,8);
+int upPin=7,downPin=6,leftPin=5,rightPin=4;
+
+int getTemperature() {
+  float temperature=analogRead(tempPin)*0.004882814;
+  temperature=(temperature-0.5)*100.0;
+  int tmp=round(temperature);
+  return tmp;
+}
 
 void setup()
 {
   lcd.begin(16,2);
   pinMode(tempPin, INPUT);
+  pinMode(upPin, INPUT);
+  pinMode(downPin, INPUT);
+  pinMode(leftPin, INPUT);
+  pinMode(rightPin, INPUT);
   Serial.begin(9600);
 }
 
 void loop()
 {
-  float temperature=analogRead(tempPin)*0.004882814;
-  temperature=(temperature-0.5)*100.0;
-  int tmp=round(temperature);
-  
+  int temperature = getTemperature();
   lcd.setCursor(0,0);
-  lcd.print(tmp);
+  lcd.print(temperature);
   lcd.print(" C");
   
-  int filled=map(tmp, -40, 125, 1, 100);
-  lcd.setCursor(0,1);
-  lcd.print(filled);
-  lcd.print(" %");
-
   delay(100);
   lcd.clear();
 }
