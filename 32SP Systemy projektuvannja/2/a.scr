@@ -1,15 +1,16 @@
+erase all 
 -osnap off
 snap off
 ltscale 0.15
 lwdisplay 1
 -linetype s bylayer
 
--lweight 0.30  
+-lweight 0.70  
 zoom w 75,235 145,165
 circle 110,200 d 50
 -linetype s center
 
--lweight 0.15  
+-lweight 0.30  
 line 97,200 87,200 
 -osnap nea
 rotate 95,200  110,200 -60
@@ -23,13 +24,14 @@ circle 110,200 18
 circle 101.0,215.6 5  92.0,200.0   101.0,184.4 
 -linetype s bylayer
 
--lweight 0.30  
+-lweight 0.70  
 circle 101.0,215.6 d 6.5  92.0,200.0   101.0,184.4   110,200 d 14
 trim 93.4472,207.0805 109.5387,182.0005 118.6485,184.2066 127.7583,203.1478 108.0887,217.8657 94.1560,191.3293 
 erase 88.5,203.5 96.0,215.6 96.0,184.4 
 arc c 110,200 @18<-60 a 120
 -osnap end+per
-line 119.0,215.6 122.5,221.7 
+line 119.0,215.5885 122.4787,221.6628 
 -osnap nea+cen+end
 mirror 120.8,218.6  110,200 140,200 
 -osnap nea+mid
+trim 130.8997,213.7571 130.6022,185.7967  
