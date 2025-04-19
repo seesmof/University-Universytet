@@ -1,36 +1,38 @@
-OSNAP OFF
-SNAP OFF
-LTSCALE 0.15
-LWDISPLAY 1
-LINETYPE S BYLAYER  LWEIGHT 0.7
-ZOOM WINDOW 75,235 145,165
-CIRCLE 110,200 D 50
-LINETYPE S CENTER  LWEIGHT 0.3
-LINE 97,200 87,200 
-OSNAP NEA
-ROTATE 95,200  110,200 -60
-MIRROR 101,215  110,200 95,200 N
-XLINE 110,200 110,150 150,200 
-CIRCLE 110,200 30
-TRIM 131.2,178.8  145,200 75,200 110,235 110,165 
-ERASE 131.2,178.8 
-CIRCLE 110,200 18
-OSNAP INT+END
-CIRCLE 101.0,215.6 5
- 92.0,200.0 
- 101.0,184.4 
-LINETYPE S BYLAYER  LWEIGHT 0.7
-CIRCLE 101.0,215.6 D 6.5
- 92.0,200.0 
- 101.0,184.4 
- 110,200 D 14
-TRIM 88.5,203.5 96.0,215.6 96.0,184.4 
-94.4,209.0 94.4,191.0 122.7,212.7 
-ERASE 88.5,203.5 96.0,215.6 96.0,184.4 
-ARC C 110,200 @18<-60 A 120
-OSNAP END+PER
-LINE 119.0,215.6 122.5,221.7 
-OSNAP NEA+CEN+END
-MIRROR 120.8,218.6  110,200 140,200 
-OSNAP NEA+MID
-TRIM 120.8,218.6 120.8,181.4  131.7,212.5 
+(defun c:gasket ()
+  (command "OSNAP" "OFF")
+  (command "SNAP" "OFF")
+  (command "LTSCALE" 0.15)
+  (command "LWDISPLAY" 1)
+  (command "LINETYPE" S BYLAYER  LWEIGHT 0.7)
+  (command "ZOOM" WINDOW (list 75 235) (list 145 165))
+  (command "CIRCLE" (list 110 200) D 50)
+  (command "LINETYPE" S CENTER  LWEIGHT 0.3)
+  (command "LINE" (list 97 200) (list 87 200) )
+  (command "OSNAP" NEA)
+  (command "ROTATE" (list 95 200)  (list 110 200) -60)
+  (command "MIRROR" (list 101 215)  (list 110 200) (list 95 200) N)
+  (command "XLINE" (list 110 200) (list 110 150) (list 150 200) )
+  (command "CIRCLE" (list 110 200) 30)
+  (command "TRIM" (list 131.2 178.8)  (list 145 200) (list 75 200) (list 110 235) (list 110 165) )
+  (command "ERASE" (list 131.2 178.8) )
+  (command "CIRCLE" (list 110 200) 18)
+  (command "OSNAP" INT+END)
+  (command "CIRCLE" (list 101.0 215.6) 5)
+  (command (list 92.0 200.0) )
+  (command (list 101.0 184.4) )
+  (command "LINETYPE" S BYLAYER  LWEIGHT 0.7)
+  (command "CIRCLE" (list 101.0 215.6) D 6.5)
+  (command (list 92.0 200.0) )
+  (command (list 101.0 184.4) )
+  (command (list 110 200) D 14)
+  (command "TRIM" (list 88.5 203.5) (list 96.0 215.6) (list 96.0 184.4) )
+  (command (list 94.4 209.0) (list 94.4 191.0) (list 122.7 212.7) )
+  (command "ERASE" (list 88.5 203.5) (list 96.0 215.6) (list 96.0 184.4) )
+  (command "ARC" C (list 110 200) @18<-60 A 120)
+  (command "OSNAP" END+PER)
+  (command "LINE" (list 119.0 215.6) (list 122.5 221.7) )
+  (command "OSNAP" NEA+CEN+END)
+  (command "MIRROR" (list 120.8 218.6)  (list 110 200) (list 140 200) )
+  (command "OSNAP" NEA+MID)
+  (command "TRIM" (list 120.8 218.6) (list 120.8 181.4)  (list 131.7 212.5) )
+)
