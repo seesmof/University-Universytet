@@ -26,7 +26,7 @@
   (command "CIRCLE" (list 101.0 184.4) "")
   (command "CIRCLE" (list 110 200) "D" 14)
   (command "TRIM" (list 88.5 203.5) (list 96.0 215.6) (list 96.0 184.4) "")
-  (command "TRIM" (list 94.4 209.0) (list 94.4 191.0) (list 122.7 212.7) "")
+  (command (list 94.4 209.0) (list 94.4 191.0) (list 122.7 212.7) "")
   (command "ERASE" (list 88.5 203.5) (list 96.0 215.6) (list 96.0 184.4) "")
   (command "ARC" "C" (list 110 200) "@18<-60" "A" 120)
   (command "OSNAP" "END+PER")
