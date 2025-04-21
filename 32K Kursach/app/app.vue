@@ -11,10 +11,6 @@ const todos = ref([
   { id: id++, text: "Learn Vue", done: false },
 ]);
 
-const filteredTodos = computed(() => {
-  return [...todos.value].filter((t) => (t.done ? !hideCompleted.value : t));
-});
-
 function addTodo() {
   todos.value.push({ id: id++, text: newTodo.value, done: false });
   newTodo.value = "";
@@ -23,6 +19,10 @@ function addTodo() {
 function removeTodo(todo) {
   todos.value = todos.value.filter((t) => t !== todo);
 }
+
+const filteredTodos = computed(() => {
+  return hideCompleted.value ? todos.value.filter((t) => !t.done) : todos.value;
+});
 </script>
 
 <template>
