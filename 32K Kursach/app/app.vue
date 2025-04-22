@@ -7,5 +7,6 @@ const greets = ref("Allelujah");
 
 <template>
   <input type="text" name="message" id="message" v-model="greets" />
-  <ChildComp :message="greets" />
+  <p>{{ greets }}</p>
+  <ChildComp :message="greets" @msg="(msg) => (greets = msg)" />
 </template>
