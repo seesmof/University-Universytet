@@ -1,12 +1,10 @@
 <script setup>
-import ChildComp from "./ChildComp.vue";
+import ChildComp from "./ChildComp";
 import { ref } from "vue";
-
-const greets = ref("Allelujah");
+const message = ref("");
 </script>
 
 <template>
-  <input type="text" name="message" id="message" v-model="greets" />
-  <p>{{ greets }}</p>
-  <ChildComp :message="greets" @msg="(msg) => (greets = msg)" />
+  <input type="text" name="message" id="messageInput" v-model="message" />
+  <ChildComp>{{ message || "No message" }}</ChildComp>
 </template>
