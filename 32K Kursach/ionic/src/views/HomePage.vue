@@ -1,12 +1,37 @@
 <template>
   <ion-page>
-    <ion-content>
-      <ion-icon :icon="heart"></ion-icon>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Ionic Blank</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <img :src="imageSrc" alt="Couldn't view" />
+      <ion-button @click="takePhoto()">Take Photo</ion-button>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup>
-import { heart } from "ionicons/icons";
-import { IonContent, IonIcon, IonPage } from "@ionic/vue";
+import {
+  IonHeader,
+  IonPage,
+  IonButton,
+  IonContent,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/vue";
+import { ref } from "vue";
+import { Camera, CameraResultType } from "@capacitor/camera";
+
+const imageSrc = ref("");
+const takePhoto = async () => {
+  const image = await Camera.getPhoto({
+    quality: 90,
+    allowEditing: true,
+    resultType: CameraResultType.Uri,
+  });
+
+  imageSrc.value = image.webPath;
+};
 </script>
