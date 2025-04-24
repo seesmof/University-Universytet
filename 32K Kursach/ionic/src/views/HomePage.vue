@@ -23,6 +23,12 @@
           <ion-badge color="primary" slot="end">2 weeks</ion-badge>
         </ion-item>
       </ion-list>
+
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button @click="() => router.push('/new')">
+          <ion-icon :icon="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
     </ion-content>
   </ion-page>
 </template>
@@ -32,7 +38,10 @@ import {
   IonBadge,
   IonCheckbox,
   IonContent,
+  IonFab,
+  IonFabButton,
   IonHeader,
+  IonIcon,
   IonItem,
   IonList,
   IonNote,
@@ -40,6 +49,9 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/vue";
+import { add } from "ionicons/icons";
+import { useRouter } from "vue-router";
+const router = useRouter();
 </script>
 
 <style scoped>
