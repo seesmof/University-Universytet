@@ -1,15 +1,26 @@
-const mongoose = require("mongoose");
+import { Bunch } from "./models/Bunch";
+
 const user = "seesmof";
 const password = "p0zBE5e|";
 const uri = `mongodb+srv://${user}:${password}@cluster0.y7yhp7s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
+mongoose.connect(uri);
+
 const run = async () => {
   try {
-    await mongoose.connect(uri);
-    await mongoose.connection.db.admin().command({ ping: 1 });
-    console.log("Pinged deployment");
+    const bunch = await Bunch.create({
+      grapesCount: 37,
+      outsideDamaged: false,
+      overlySoft: false,
+      unstableForm: true,
+      insectDamaged: false,
+      sugarImbalanced: true,
+    });
+  } catch (err) {
+    console.log(err);
   } finally {
-    await mongoose.disconnect();
+    console.log(bunch);
   }
 };
-run().catch(console.dir);
+
+run();
