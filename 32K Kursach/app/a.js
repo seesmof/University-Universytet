@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const uri =
-  "mongodb+srv://seesmof:p0zBE5e|@cluster0.y7yhp7s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const user = "seesmof";
+const password = "p0zBE5e|";
+const uri = `mongodb+srv://${user}:${password}@cluster0.y7yhp7s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 const run = async () => {
   try {
