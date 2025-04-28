@@ -9,7 +9,7 @@
     {% if bunches %}
     <ul>
       {% for bunch in bunches %}
-      <li><a href="/bunches/{{ bunch.id }}">{{ bunch.count }}</a></li>
+      <li><a href="{% url 'grapes:bunch' bunch.id %}">{{ bunch.count }}</a></li>
       {% endfor %}
     </ul>
     {% else %}
