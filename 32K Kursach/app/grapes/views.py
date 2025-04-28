@@ -7,3 +7,6 @@ from grapes.models import Bunch
 def index(request):
     all_bunches=Bunch.objects.all()
     return render(request, "index.html", {"bunches": all_bunches})
+
+def bunches(request, id):
+    return HttpResponse(id)
