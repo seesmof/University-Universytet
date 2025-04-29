@@ -1,34 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grapes</title>
+{% extends "base.html" %} 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <a id="newBunch" class="btn btn-success col mt-3" href={% url 'grapes:new_bunch' %}>Add new bunch</a>
-      </div>
+{% block title %} Grapes {% endblock %}
 
-      <div class="row mt-3 gap-3">
-        {% if bunches %}
-          {% for bunch in bunches %}
-          <div class="card col">
-            <article class="card-body">
-              <strong class="card-title">Bunch {{ bunch.id }}</strong>
-              <p class="card-subtitle text-body-secondary">Stage:</p>
-              <a class="card-link" href="{% url 'grapes:bunch' bunch.id %}">See results</a>
-            </article>
-          </div>
-          {% endfor %}
-        {% else %}
-        <p>No grapes found</p>
-        {% endif %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <a id="newBunch" class="btn btn-success col mt-3" href={% url 'grapes:new_bunch' %}>Add new bunch</a>
+  </div>
+
+  <div class="row mt-3 gap-3">
+    {% if bunches %}
+      {% for bunch in bunches %}
+      <div class="card col">
+        <article class="card-body">
+          <strong class="card-title">Bunch {{ bunch.id }}</strong>
+          <p class="card-subtitle text-body-secondary">Stage:</p>
+          <a class="card-link" href="{% url 'grapes:bunch' bunch.id %}">See results</a>
+        </article>
       </div>
-    </div>
-  </body>
-</html>
+      {% endfor %}
+    {% else %}
+    <p>No grapes found</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
