@@ -12,4 +12,4 @@ def bunches(request, id):
     return HttpResponse(id)
 
 def new_bunch(request):
-    return HttpResponse('Fill in')
+    return render(request,'new_bunch.html', {})
