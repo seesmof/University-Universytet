@@ -9,13 +9,12 @@ class Bunch(models.Model):
     color=models.BooleanField(blank=False)
     processed=models.BooleanField()
     stage_options={
-    'NO':'Processing...',
     'JU':'Juice',
     'RS':'Raisins',
     'GR':'Grapes',
     'JL':'Jelly',
     'WN':'Wine'}
-    stage=models.CharField(max_length=7,choices=stage_options,default=stage_options['NO'])
+    stage=models.CharField(max_length=7,choices=stage_options,blank=True)
 
     def __str__(self):
         return f'{self.count} grapes: outside {"damaged" if self.outside else "okay"}, sugar {"imbalanced" if self.sugar else "okay"}, shape {"uneven" if self.shape else "okay"}, color {"changed" if self.color else "okay"}'
