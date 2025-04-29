@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -73,14 +76,22 @@ WSGI_APPLICATION = 'runner.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+load_dotenv()
+
+USER=os.getenv('USER')
+PASSWORD=os.getenv('PASSWORD')
+HOST=os.getenv('HOST')
+PORT=os.getenv('PORT')
+NAME=os.getenv('NAME')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'root',
-        'PASSWORD': '1313',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'NAME': 'grapes_app',
+        'USER': USER,
+        'PASSWORD': PASSWORD,
+        'HOST': HOST,
+        'PORT': PORT,
+        'NAME': NAME,
     }
 }
 
