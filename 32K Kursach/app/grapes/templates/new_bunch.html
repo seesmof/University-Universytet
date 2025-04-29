@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <button class="btn btn-success">Fill in</button>
-  </div>
+<form method="post" class="form">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-success">Add new bunch</button>
+</form>
 {% endblock %}
