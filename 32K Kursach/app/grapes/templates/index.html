@@ -4,10 +4,28 @@
   Grapes
 {% endblock %}
 
+{% block code %}
+import { createApp } from 'https://unpkg.com/petite-vue?module'
+
+createApp({
+  query: "",
+}).mount()
+{% endblock %}
+
 {% block content %}
 <div class="row">
   <a id="newBunch" class="btn btn-success col" href="{% url 'grapes:new_bunch' %}">Add new bunch</a>
 </div>
+
+<hr>
+<div v-scope>
+  <div class="form-floating">
+    <input type="text" id="bunchesSearch" v-model="query">
+    <label for="bunchesSearch"></label>
+  </div>
+  <p>{{ query }}</p>
+</div>
+
 
 <div class="my-3 row gap-3">
   {% if bunches %}
