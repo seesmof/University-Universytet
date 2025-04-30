@@ -1,13 +1,8 @@
-from django.contrib.auth.models import Group,User
-from rest_framework import seralizers
+from rest_framework import serializers
 
-class UserSerializer(seralizers.HyperlinkedModelSerializer):
+from grapes.models import Bunch
+
+class BunchSerializer(serializers.ModelSerializer):
     class Meta:
-        model=User
-        fields=['url','username','email','groups']
-
-class GroupSerializer(seralizers.HyperlinkedModelSerializer):
-    class Meta:
-        model=Group
-        fields=['url','name']
-
+        model=Bunch
+        fields="__all__"
