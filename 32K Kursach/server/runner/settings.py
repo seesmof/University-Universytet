@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'grapes.apps.GrapesConfig',
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
