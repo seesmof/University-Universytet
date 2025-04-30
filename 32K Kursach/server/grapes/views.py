@@ -49,3 +49,11 @@ def bunches_list(request):
         bunches=Bunch.objects.all()
         serializer=BunchSerializer(bunches,many=True)
         return JsonResponse(serializer.data,safe=False)
+
+    elif request.method=='POST':
+        data=JSONParser().parse(request)
+        serializer=BunchSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors,status=400)
