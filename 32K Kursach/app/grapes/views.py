@@ -8,6 +8,8 @@ from grapes.utils import process_bunch
 # Create your views here.
 def index(request):
     all_bunches=Bunch.objects.all()
+    for bunch in all_bunches:
+        if bunch.stage=="NO": bunch.stage="Processing..."
     return render(request, "index.html", {"bunches": all_bunches})
 
 def bunch(request, id):

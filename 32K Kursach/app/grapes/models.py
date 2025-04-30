@@ -17,5 +17,5 @@ class Bunch(models.Model):
     stage=models.CharField(max_length=7,choices=Stage,blank=True)
 
     def __str__(self):
-        return f'{self.count} grapes: outside {"damaged" if self.outside else "okay"}, sugar {"imbalanced" if self.sugar else "okay"}, shape {"uneven" if self.shape else "okay"}, color {"changed" if self.color else "okay"}'
+        return f'{self.count} grapes: outside {self.outside}, shape {self.shape}, color {self.color}, sugar {self.sugar}. Stage: {self.stage}'
     
