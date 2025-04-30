@@ -16,22 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from rest_framework import routers,serializers,viewsets
-from django.contrib.auth.models import User
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model=User
-        fields=['url','username','email','is_staff']
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset=User.objects.all()
-    serializer_class=UserSerializer
-
-router=routers.DefaultRouter()
-router.register(r'users',UserViewSet)
 
 urlpatterns = [
-    path('api/', include('rest_framework.urls',namespace='rest_framework')),
+    path('', include('grapes.urls')),
     path('admin/', admin.site.urls),
 ]

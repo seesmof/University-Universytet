@@ -1,8 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from rest_framework import permissions,viewsets
+from django.contrib.auth.models import Group,User
 
 from grapes.forms import BunchForm
 from grapes.models import Bunch
+from grapes.serializers import GroupSerializer, UserSerializer
 from grapes.utils import process_bunch, visualize_bunch
 
 # Create your views here.
@@ -40,3 +43,13 @@ def new_bunch(request):
         form=BunchForm()
 
     return render(request,"new_bunch.html",{"form":form})
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset=User.objects.all().order_by('-date_joined')
+    serializer_class=UserSerializer
+    permission_classes=[permissions.IsAuthenticated]
+
+class GroupViewSet(viewsets.ModelViewSet):
+    queryset=Group.objects.all().order_by('name')
+    serializer_class=GroupSerializer
+    permission_classes=[permissions.IsAuthenticated]
