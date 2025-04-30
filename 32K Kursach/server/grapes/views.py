@@ -1,14 +1,13 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
-from rest_framework import permissions,viewsets
-from django.contrib.auth.models import Group,User
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
 
 from grapes.forms import BunchForm
 from grapes.models import Bunch
-from grapes.serializers import GroupSerializer, UserSerializer
+from grapes.serializers import BunchSerializer
 from grapes.utils import process_bunch, visualize_bunch
 
-# Create your views here.
 def index(request):
     all_bunches=Bunch.objects.all()
     for bunch in all_bunches:
@@ -44,12 +43,9 @@ def new_bunch(request):
 
     return render(request,"new_bunch.html",{"form":form})
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset=User.objects.all().order_by('-date_joined')
-    serializer_class=UserSerializer
-    permission_classes=[permissions.IsAuthenticated]
-
-class GroupViewSet(viewsets.ModelViewSet):
-    queryset=Group.objects.all().order_by('name')
-    serializer_class=GroupSerializer
-    permission_classes=[permissions.IsAuthenticated]
+@csrf_exempt
+def bunches_list(request):
+    if request.method=='GET':
+        bunches=Bunch.objects.all()
+        serializer=BunchSerializer(bunches,many=True)
+        return JsonResponse(serializer.data,safe=False)
