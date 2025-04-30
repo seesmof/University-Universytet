@@ -10,7 +10,7 @@ def index(request):
     all_bunches=Bunch.objects.all()
     return render(request, "index.html", {"bunches": all_bunches})
 
-def bunches(request, id):
+def bunch(request, id):
     return HttpResponse(id)
 
 def new_bunch(request):
@@ -28,8 +28,8 @@ def new_bunch(request):
             )
             # process data and make stage
             processed_bunch=process_bunch(bunch)
-            print(processed_bunch.stage)
-            return HttpResponseRedirect('/')
+            processed_bunch.save()
+            return HttpResponseRedirect(f'/bunch/{processed_bunch.id}')
     else:
         form=BunchForm()
 
