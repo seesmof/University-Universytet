@@ -9,15 +9,15 @@
   <a id="newBunch" class="btn btn-success col" href="{% url 'grapes:new_bunch' %}">Add new bunch</a>
 </div>
 
-<div class="row my-3 gap-3">
+<div class="my-3 row gap-3">
   {% if bunches %}
     {% for bunch in bunches %}
-      <div class="card col">
-        <article class="card-body">
+      <div class="card col-50">
+        <div class="card-body">
           <strong class="card-title">Bunch {{ bunch.id }}</strong>
           <p class="card-subtitle text-body-secondary">Stage: {{ bunch.stage }}</p>
           <a class="card-link text-success" href="{% url 'grapes:bunch' bunch.id %}">See results</a>
-        </article>
+        </div>
       </div>
     {% endfor %}
   {% else %}

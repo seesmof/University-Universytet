@@ -20,6 +20,11 @@
     ></script>
   </head>
   <body>
+    <nav class="navbar bg-body-tertiary">
+    <div class="container">
+      <a href="{% url 'grapes:index' %}" class="navbar-brand">Grapes Checker</a>
+    </div>
+    </nav>
     <div class="container my-3">
       {% block content %}{% endblock content %}
     </div>
