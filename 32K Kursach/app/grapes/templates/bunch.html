@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Bunch {{ bunch.id }}
+{% endblock %}
+
+{% block content %}
+<h3> Bunch #{{ bunch.id }}</h1>
+<p class="">Has {{ bunch.count }} grapes</p>
+
+<h5>Statistics</h2>
+<ul class="list-group">
+  <li class="list-group-item p-3">Shape {{ bunch.shape }}</li>
+  <li class="list-group-item p-3">Outside {{ bunch.outside }}</li>
+  <li class="list-group-item p-3">Color {{ bunch.color }}</li>
+  <li class="list-group-item p-3">Sugar {{ bunch.sugar }}</li>
+</ul>
+
+<p class="fw-medium mt-3">Processed to stage: {{ bunch.stage }}</p>
+{% endblock %}

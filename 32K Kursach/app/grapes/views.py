@@ -3,17 +3,21 @@ from django.shortcuts import render
 
 from grapes.forms import BunchForm
 from grapes.models import Bunch
-from grapes.utils import process_bunch
+from grapes.utils import process_bunch, visualize_bunch
 
 # Create your views here.
 def index(request):
     all_bunches=Bunch.objects.all()
     for bunch in all_bunches:
-        if bunch.stage=="NO": bunch.stage="Processing..."
+        processed_bunch=process_bunch(bunch)
+        bunch.stage=processed_bunch.stage
+        bunch.save()
     return render(request, "index.html", {"bunches": all_bunches})
 
 def bunch(request, id):
-    return HttpResponse(id)
+    bunch=Bunch.objects.get(pk=id)
+    visual_bunch=visualize_bunch(bunch)
+    return render(request, "bunch.html", {"bunch": visual_bunch})
 
 def new_bunch(request):
     if request.method=="POST":

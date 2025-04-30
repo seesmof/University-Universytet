@@ -5,28 +5,23 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <div class="row">
-      <a id="newBunch" class="btn btn-success col mt-3" href="{% url 'grapes:new_bunch' %}">Add new bunch</a>
-    </div>
+<div class="row">
+  <a id="newBunch" class="btn btn-success col" href="{% url 'grapes:new_bunch' %}">Add new bunch</a>
+</div>
 
-    <div class="row mt-3 gap-3">
-      {% if bunches %}
-        {% for bunch in bunches %}
-          <div class="card col">
-            <article class="card-body">
-              <strong class="card-title">Bunch {{ bunch.id }}</strong>
-              <p class="card-subtitle text-body-secondary">Stage: {{ bunch.stage|default:"⌛" }}</p>
-              <ul>
-                <li></li>
-              </ul>
-              <a class="card-link text-success" href="{% url 'grapes:bunch' bunch.id %}">See results</a>
-            </article>
-          </div>
-        {% endfor %}
-      {% else %}
-        <p>No grapes found</p>
-      {% endif %}
-    </div>
-  </div>
+<div class="row my-3 gap-3">
+  {% if bunches %}
+    {% for bunch in bunches %}
+      <div class="card col">
+        <article class="card-body">
+          <strong class="card-title">Bunch {{ bunch.id }}</strong>
+          <p class="card-subtitle text-body-secondary">Stage: {{ bunch.stage }}</p>
+          <a class="card-link text-success" href="{% url 'grapes:bunch' bunch.id %}">See results</a>
+        </article>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No grapes found</p>
+  {% endif %}
+</div>
 {% endblock %}

@@ -14,3 +14,14 @@ def process_bunch(b: Bunch):
         b.stage=Bunch.Stage.Jelly
     
     return b
+
+def visualize_bunch(b: Bunch):
+    OK="👍🏼"
+    NO="👎🏼"
+
+    b.outside=OK if not b.outside else NO
+    b.shape=OK if not b.shape else NO
+    b.color=OK if not b.color else NO
+    b.sugar=OK if not b.sugar else NO
+
+    return b
