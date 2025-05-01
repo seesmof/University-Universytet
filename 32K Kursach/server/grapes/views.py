@@ -1,7 +1,9 @@
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
+
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from grapes.forms import BunchForm
 from grapes.models import Bunch
@@ -43,17 +45,35 @@ def new_bunch(request):
 
     return render(request,"new_bunch.html",{"form":form})
 
-@csrf_exempt
-def bunches_list(request):
+@api_view(['GET','POST'])
+def bunches_list(request, format=None):
     if request.method=='GET':
         bunches=Bunch.objects.all()
         serializer=BunchSerializer(bunches,many=True)
-        return JsonResponse(serializer.data,safe=False)
-
+        return Response(serializer.data)
     elif request.method=='POST':
-        data=JSONParser().parse(request)
-        serializer=BunchSerializer(data=data)
+        serializer=BunchSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors,status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET','PUT','DELETE'])
+def bunch_detail(request, pk, format=None):
+    try:
+        bunch=Bunch.objects.get(pk=pk)
+    except Bunch.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method=='GET':
+        serializer=BunchSerializer(bunch)
+        return Response(serializer.data)
+    elif request.method=='POST':
+        serializer=BunchSerializer(bunch,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    if request.method=='DELETE':
+        bunch.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

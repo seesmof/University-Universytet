@@ -2,11 +2,11 @@ from django.db import models
 
 # Create your models here.
 class Bunch(models.Model):
-    count=models.IntegerField(blank=False)
-    outside=models.BooleanField(blank=False)
-    shape=models.BooleanField(blank=False)
-    color=models.BooleanField(blank=False)
-    sugar=models.BooleanField(blank=False)
+    count=models.IntegerField(default=0)
+    outside=models.BooleanField(default=False)
+    shape=models.BooleanField(default=False)
+    color=models.BooleanField(default=False)
+    sugar=models.BooleanField(default=False)
 
     class Stage(models.TextChoices):
         Juice='Juice'
