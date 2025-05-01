@@ -1,20 +1,20 @@
 <script setup>
+import { onMounted } from "vue";
+
 defineProps({
   msg: {
     type: String,
     required: true,
   },
-})
+});
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vite.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+  <div class="h-screen flex flex-row">
+    <div class="flex-2/5 bg-green-700 text-white">
+      <p class="p-5">This is example</p>
+    </div>
+    <div class="flex-3/5 p-3"></div>
   </div>
 </template>
 
