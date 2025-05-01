@@ -1,23 +1,14 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import { watch, ref } from "vue";
+import { watch, ref, created } from "vue";
 
 const bunches = ref([]);
 
-const getBunches = async () => {
-  let response = await fetch("http://127.0.0.1:8000/bunches");
-  return await response.json();
+created(){
+  fetch("http://127.0.0.1:8000/bunches", {
+    mode: "no-cors"
+  }).then((response) => response.json()).then((data) => (bunches.value = data));
 };
-
-const fetchData = async () => {
-  try {
-    bunches.value = await getBunches();
-  } catch (err) {
-    console.log(err.toString());
-  }
-};
-
-fetchData();
 </script>
 
 <template>

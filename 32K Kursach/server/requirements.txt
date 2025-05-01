@@ -4,4 +4,4 @@ python-dotenv
 django-crispy-forms
 crispy-bootstrap5
 djangorestframework
-httpie
+django-cors-headers
