@@ -69,7 +69,7 @@ def bunch_detail(request, pk, format=None):
     if request.method=='GET':
         serializer=BunchSerializer(bunch)
         return Response(serializer.data)
-    elif request.method=='POST':
+    elif request.method=='PUT':
         serializer=BunchSerializer(bunch,data=request.data)
         if serializer.is_valid():
             serializer.save()
