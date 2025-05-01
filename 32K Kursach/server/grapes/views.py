@@ -62,6 +62,7 @@ def bunches_list(request, format=None):
 def bunch_detail(request, pk, format=None):
     try:
         bunch=Bunch.objects.get(pk=pk)
+        if not bunch.stage: bunch=process_bunch(bunch)
     except Bunch.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     
