@@ -6,4 +6,4 @@ from grapes.models import Bunch
 class BunchForm(ModelForm):
     class Meta:
         model=Bunch
-        fields=('count','outside','sugar','shape','color')
+        fields=('count','outside','shape','color','sugar')
