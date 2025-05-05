@@ -10,6 +10,6 @@ urlpatterns = [
     path('profile',views.profile,name='profile'),
 
     path('bunches/',views.bunches_list),
-    path('bunches/<int:pk>',views.bunch_detail)
+    path('bunches/<int:pk>',views.bunch_detail),
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)
