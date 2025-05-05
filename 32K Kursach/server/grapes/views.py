@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -10,6 +11,12 @@ from grapes.models import Bunch
 from grapes.serializers import BunchSerializer
 from grapes.utils import process_bunch, visualize_bunch
 
+@login_required
+def profile(request):
+    user=request.user
+    return render(request, "profile.html", {"user": user})
+
+@login_required
 def index(request):
     all_bunches=Bunch.objects.all()
     for bunch in all_bunches:
@@ -18,11 +25,13 @@ def index(request):
         bunch.save()
     return render(request, "index.html", {"bunches": all_bunches})
 
+@login_required
 def bunch(request, id):
     bunch=Bunch.objects.get(pk=id)
     visual_bunch=visualize_bunch(bunch)
     return render(request, "bunch.html", {"bunch": visual_bunch})
 
+@login_required
 def new_bunch(request):
     if request.method=="POST":
         form=BunchForm(request.POST)

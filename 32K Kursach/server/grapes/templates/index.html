@@ -35,13 +35,18 @@
 {% endblock %}
 
 {% block code %}
+const activeButton=1;
 const gridContainer=document.querySelector("#gridContainer");
 
 const oneButton=document.querySelector("#one");
 const twoButton=document.querySelector("#two");
 const threeButton=document.querySelector("#three");
 
-oneButton.classList.add("active");
+const activateButton=()=>{
+  if (activeButton===1) oneButton.classList.add("active");
+  else if (activeButton===2) twoButton.classList.add("active");
+  else if (activeButton===3) threeButton.classList.add("active");
+}
 
 const cleanContainer = ()=>{
   gridContainer.classList.remove("row-cols-3");
@@ -76,4 +81,6 @@ threeButton.addEventListener("click",()=>{
   threeButton.classList.add("active");
   gridContainer.classList.add("row-cols-3");
 })
+
+window.addEventListener("load", activateButton);
 {% endblock %}

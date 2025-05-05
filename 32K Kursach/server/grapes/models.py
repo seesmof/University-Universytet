@@ -18,4 +18,3 @@ class Bunch(models.Model):
 
     def __str__(self):
         return f'{self.count} grapes: outside {self.outside}, shape {self.shape}, color {self.color}, sugar {self.sugar}. Stage: {self.stage}'
-    
