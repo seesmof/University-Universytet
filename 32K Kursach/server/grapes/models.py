@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Bunch(models.Model):
+    owner=models.ManyToManyField(User)
     count=models.IntegerField(default=0)
     outside=models.BooleanField(default=False)
     shape=models.BooleanField(default=False)

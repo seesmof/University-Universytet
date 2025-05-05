@@ -5,11 +5,39 @@ User {{ user }}
 {% endblock %}
 
 {% block content %}
-<p>Name: {{ user.username }}</p>
-<p>Password: {{ user.password }}</p>
-
+<h5>This is {{ user.username }}'s profile.</h5>
 <form action="{% url 'logout' %}" method="post">
   {% csrf_token %}
-  <button class="btn btn-success" type="submit">Log out</button>
+  <button class="btn btn-success mt-1" type="submit">Log out</button>
 </form>
+
+<table class="table my-3">
+<caption class="caption-top">Bunches processed: {{ bunches|length }}</caption>
+<caption>🍊 is damaged and 🍏 is good</caption>
+<thead>
+  <tr>
+    <th>Owner</th>
+    <th>Number of grapes</th>
+    <th>Is outside damaged?</th>
+    <th>Is shape unstable?</th>
+    <th>Is color uneven?</th>
+    <th>Is sugar irregular?</th>
+    <th>Details</th>
+  </tr>
+</thead>
+<tbody>
+  {% for b in bunches%}
+  <tr>
+    <td>{{ user }}</td>
+    <td>{{ b.count }}</td>
+    <td>{% if b.outside %}🍊{% else %}🍏{% endif %}</td>
+    <td>{% if b.shape %}🍊{% else %}🍏{% endif %}</td>
+    <td>{% if b.color %}🍊{% else %}🍏{% endif %}</td>
+    <td>{% if b.sugar %}🍊{% else %}🍏{% endif %}</td>
+    <td><a href="{% url 'grapes:bunch' b.id %}" class="text-success">See</a></td>
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+<a class="btn btn-primary" href="{% url 'grapes:new_bunch' %}">Add new bunch</a>
 {% endblock %}

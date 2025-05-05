@@ -14,14 +14,17 @@ from grapes.utils import process_bunch, visualize_bunch
 @login_required
 def profile(request):
     user=request.user
-    return render(request, "profile.html", {"user": user})
+    bunches=Bunch.objects.filter(owner=request.user)
+    return render(request, "profile.html", {"user": user, "bunches": bunches})
 
 def index(request):
-    all_bunches=Bunch.objects.all()
-    for bunch in all_bunches:
-        processed_bunch=process_bunch(bunch)
-        bunch.stage=processed_bunch.stage
-        bunch.save()
+    all_bunches=list()
+    if request.user.is_authenticated:
+        all_bunches=Bunch.objects.filter(owner=request.user)
+        for bunch in all_bunches:
+            processed_bunch=process_bunch(bunch)
+            bunch.stage=processed_bunch.stage
+            bunch.save()
     return render(request, "index.html", {"bunches": all_bunches, "user": request.user})
 
 @login_required
@@ -47,12 +50,16 @@ def new_bunch(request):
             # process data and make stage
             processed_bunch=process_bunch(bunch)
             processed_bunch.save()
+            # add owner
+            bunch.owner.add(request.user)
+            processed_bunch.save()
             return HttpResponseRedirect(f'/bunch/{processed_bunch.id}')
     else:
         form=BunchForm()
 
     return render(request,"new_bunch.html",{"form":form})
 
+'''
 @api_view(['GET','POST'])
 def bunches_list(request, format=None):
     if request.method=='GET':
@@ -86,3 +93,4 @@ def bunch_detail(request, pk, format=None):
     if request.method=='DELETE':
         bunch.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+'''
