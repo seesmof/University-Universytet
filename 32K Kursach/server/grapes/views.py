@@ -16,14 +16,13 @@ def profile(request):
     user=request.user
     return render(request, "profile.html", {"user": user})
 
-@login_required
 def index(request):
     all_bunches=Bunch.objects.all()
     for bunch in all_bunches:
         processed_bunch=process_bunch(bunch)
         bunch.stage=processed_bunch.stage
         bunch.save()
-    return render(request, "index.html", {"bunches": all_bunches})
+    return render(request, "index.html", {"bunches": all_bunches, "user": request.user})
 
 @login_required
 def bunch(request, id):
