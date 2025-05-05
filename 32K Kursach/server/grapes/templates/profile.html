@@ -16,25 +16,23 @@ User {{ user }}
 <caption>🍊 is damaged and 🍏 is good</caption>
 <thead>
   <tr>
-    <th>Owner</th>
+    <th>№</th>
     <th>Number of grapes</th>
     <th>Is outside damaged?</th>
     <th>Is shape unstable?</th>
     <th>Is color uneven?</th>
     <th>Is sugar irregular?</th>
-    <th>Details</th>
   </tr>
 </thead>
 <tbody>
   {% for b in bunches%}
   <tr>
-    <td>{{ user }}</td>
+    <td><a href="{% url 'grapes:bunch' b.id %}" class="text-success">{{ b.id }}.</a></td>
     <td>{{ b.count }}</td>
     <td>{% if b.outside %}🍊{% else %}🍏{% endif %}</td>
     <td>{% if b.shape %}🍊{% else %}🍏{% endif %}</td>
     <td>{% if b.color %}🍊{% else %}🍏{% endif %}</td>
     <td>{% if b.sugar %}🍊{% else %}🍏{% endif %}</td>
-    <td><a href="{% url 'grapes:bunch' b.id %}" class="text-success">See</a></td>
   </tr>
   {% endfor %}
 </tbody>
