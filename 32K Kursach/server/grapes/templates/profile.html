@@ -7,4 +7,9 @@ User {{ user }}
 {% block content %}
 <p>Name: {{ user.username }}</p>
 <p>Password: {{ user.password }}</p>
+
+<form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+  <button class="btn btn-success" type="submit">Log out</button>
+</form>
 {% endblock %}
