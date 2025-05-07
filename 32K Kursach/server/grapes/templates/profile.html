@@ -22,6 +22,7 @@ User {{ user }}
     <th>Is shape unstable?</th>
     <th>Is color uneven?</th>
     <th>Is sugar irregular?</th>
+    <th>Stage</th>
   </tr>
 </thead>
 <tbody>
@@ -33,6 +34,7 @@ User {{ user }}
     <td>{% if b.shape %}🍊{% else %}🍏{% endif %}</td>
     <td>{% if b.color %}🍊{% else %}🍏{% endif %}</td>
     <td>{% if b.sugar %}🍊{% else %}🍏{% endif %}</td>
+    <td>{{ b.stage }}</td>
   </tr>
   {% endfor %}
 </tbody>

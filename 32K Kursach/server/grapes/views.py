@@ -1,14 +1,9 @@
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-
 from grapes.forms import BunchForm
 from grapes.models import Bunch
-from grapes.serializers import BunchSerializer
 from grapes.utils import process_bunch, visualize_bunch
 
 @login_required
@@ -58,39 +53,3 @@ def new_bunch(request):
         form=BunchForm()
 
     return render(request,"new_bunch.html",{"form":form})
-
-'''
-@api_view(['GET','POST'])
-def bunches_list(request, format=None):
-    if request.method=='GET':
-        bunches=Bunch.objects.all()
-        serializer=BunchSerializer(bunches,many=True)
-        return Response(serializer.data)
-    elif request.method=='POST':
-        serializer=BunchSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-    
-@api_view(['GET','PUT','DELETE'])
-def bunch_detail(request, pk, format=None):
-    try:
-        bunch=Bunch.objects.get(pk=pk)
-        if not bunch.stage: bunch=process_bunch(bunch)
-    except Bunch.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-    
-    if request.method=='GET':
-        serializer=BunchSerializer(bunch)
-        return Response(serializer.data)
-    elif request.method=='PUT':
-        serializer=BunchSerializer(bunch,data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-    if request.method=='DELETE':
-        bunch.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-'''
