@@ -3,5 +3,3 @@ mysqlclient
 python-dotenv
 django-crispy-forms
 crispy-bootstrap5
-djangorestframework
-django-cors-headers

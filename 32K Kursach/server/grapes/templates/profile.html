@@ -11,6 +11,7 @@ User {{ user }}
   <button class="btn btn-success mt-1" type="submit">Log out</button>
 </form>
 
+<div class="table-responsive">
 <table class="table my-3">
 <caption class="caption-top">Bunches processed: {{ bunches|length }}</caption>
 <caption>🍊 is damaged and 🍏 is good</caption>
@@ -39,5 +40,6 @@ User {{ user }}
   {% endfor %}
 </tbody>
 </table>
+</div>
 <a class="btn btn-primary" href="{% url 'grapes:new_bunch' %}">Add new bunch</a>
 {% endblock %}
