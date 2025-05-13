@@ -46,60 +46,52 @@ Grapes app
 {% endblock %}
 
 {% block code %}
-const processColumnChanges = () => {
-  const activeButton=1;
-  const gridContainer=document.querySelector("#gridContainer");
+const activeButton=1;
+const gridContainer=document.querySelector("#gridContainer");
 
-  const oneButton=document.querySelector("#one");
-  const twoButton=document.querySelector("#two");
-  const threeButton=document.querySelector("#three");
+const oneButton=document.querySelector("#one");
+const twoButton=document.querySelector("#two");
+const threeButton=document.querySelector("#three");
 
-  const activateButton=()=>{
-    if (activeButton===1) oneButton.classList.add("active");
-    else if (activeButton===2) twoButton.classList.add("active");
-    else if (activeButton===3) threeButton.classList.add("active");
-  }
-
-  const cleanContainer = ()=>{
-    gridContainer.classList.remove("row-cols-3");
-    gridContainer.classList.remove("row-cols-2");
-    gridContainer.classList.remove("row-cols-1");
-  }
-
-  const removeActiveButton=()=>{
-    oneButton.classList.remove("active");
-    twoButton.classList.remove("active");
-    threeButton.classList.remove("active");
-  }
-
-  oneButton.addEventListener("click",()=>{
-    console.log("one column");
-    cleanContainer();
-    removeActiveButton();
-    oneButton.classList.add("active");
-    gridContainer.classList.add("row-cols-1");
-  })
-  twoButton.addEventListener("click",()=>{
-    console.log("two column");
-    cleanContainer();
-    removeActiveButton();
-    twoButton.classList.add("active");
-    gridContainer.classList.add("row-cols-2");
-  })
-  threeButton.addEventListener("click",()=>{
-    console.log("three column");
-    cleanContainer();
-    removeActiveButton();
-    threeButton.classList.add("active");
-    gridContainer.classList.add("row-cols-3");
-  })
-
-  window.addEventListener("load", activateButton);
+const activateButton=()=>{
+  if (activeButton===1) oneButton.classList.add("active");
+  else if (activeButton===2) twoButton.classList.add("active");
+  else if (activeButton===3) threeButton.classList.add("active");
 }
 
-try {
-  processColumnChanges();
-} catch (e) {
-  console.error(e);
+const cleanContainer = ()=>{
+  gridContainer.classList.remove("row-cols-3");
+  gridContainer.classList.remove("row-cols-2");
+  gridContainer.classList.remove("row-cols-1");
 }
+
+const removeActiveButton=()=>{
+  oneButton.classList.remove("active");
+  twoButton.classList.remove("active");
+  threeButton.classList.remove("active");
+}
+
+oneButton.addEventListener("click",()=>{
+  console.log("one column");
+  cleanContainer();
+  removeActiveButton();
+  oneButton.classList.add("active");
+  gridContainer.classList.add("row-cols-1");
+})
+twoButton.addEventListener("click",()=>{
+  console.log("two column");
+  cleanContainer();
+  removeActiveButton();
+  twoButton.classList.add("active");
+  gridContainer.classList.add("row-cols-2");
+})
+threeButton.addEventListener("click",()=>{
+  console.log("three column");
+  cleanContainer();
+  removeActiveButton();
+  threeButton.classList.add("active");
+  gridContainer.classList.add("row-cols-3");
+})
+
+window.addEventListener("load", activateButton);
 {% endblock %}
