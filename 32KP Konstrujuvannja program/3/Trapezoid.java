@@ -1,26 +1,26 @@
 public class Trapezoid {
-  private int height;
-  private Coordinate a;
-  private Coordinate b;
-  private Coordinate c;
-  private Coordinate d;
+  public Coordinate a;
+  public Coordinate b;
+  public Coordinate c;
+  public Coordinate d;
+  public double height;
 
-  private int lowerBase;
-  private int upperBase;
+  private double _lowerBase;
+  private double _upperBase;
 
   public Trapezoid(int height, Coordinate a, Coordinate b, Coordinate c, Coordinate d) {
-    this.height = height;
     this.a = a;
     this.b = b;
     this.c = c;
     this.d = d;
+    this.height = height;
 
-    this.lowerBase = c.x - d.x;
-    this.upperBase = b.x - a.x;
+    this._lowerBase = Math.abs(c.x - d.x);
+    this._upperBase = Math.abs(b.x - a.x);
   }
 
   public double getArea() {
-    return (upperBase + lowerBase) * height / 2;
+    return (_upperBase + _lowerBase) * height / 2;
   }
 
   public double getRadiusOfInscribedCircle(double sideLength, double cornerToCatenary) {

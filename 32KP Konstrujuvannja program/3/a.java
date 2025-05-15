@@ -1,10 +1,13 @@
 public class a {
   public static void main(String[] args) {
-    Coordinate a = new Coordinate(0, 0);
-    Coordinate b = new Coordinate(7, 0);
-    Coordinate c = new Coordinate(2, 5);
-    Coordinate d = new Coordinate(5, 5);
-    Trapezoid g = new Trapezoid(3, a, b, c, d);
-    System.out.println(g.getArea());
+    int radius = 3;
+    int height = 5;
+    Cylinder cylinder = new Cylinder(radius, height);
+
+    double area = cylinder.area();
+    double volume = cylinder.volume();
+
+    System.out.println("Area: " + area);
+    System.out.println("Volume: " + volume);
   }
 }
