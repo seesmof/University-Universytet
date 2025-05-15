@@ -1,13 +1,18 @@
 public class a {
   public static void main(String[] args) {
-    int radius = 3;
     int height = 5;
-    Cylinder cylinder = new Cylinder(radius, height);
+    Coordinate a = new Coordinate(3, 0);
+    Coordinate b = new Coordinate(7, 0);
+    Coordinate d = new Coordinate(4, height);
+    Coordinate c = new Coordinate(10, height);
+    Trapezoid trapezoid = new Trapezoid(height, a, b, c, d);
 
-    double area = cylinder.area();
-    double volume = cylinder.volume();
+    double area = trapezoid.getArea();
+    double sideLength = 5;
+    double cornerToCatenary = 3;
+    double circleRadius = trapezoid.getRadiusOfInscribedCircle(sideLength, cornerToCatenary);
 
     System.out.println("Area: " + area);
-    System.out.println("Volume: " + volume);
+    System.out.println("Circle radius: " + circleRadius);
   }
 }
