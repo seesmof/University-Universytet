@@ -3,7 +3,6 @@ int pirPin=A4;
 int photoPin=A3;
 int distancePin=A2;
 int smokePin=A1;
-int moisturePin=A0;
 
 int getTemperature() {
   int help=analogRead(tempPin);
@@ -46,12 +45,6 @@ int getSmoke(){
   return converted;
 }
 
-int getMoisture(){
-  int help=analogRead(moisturePin);
-  int converted=map(help, 0, 876, 0, 100);
-  return converted;
-}
-
 void setup()
 {
   pinMode(tempPin, INPUT);
@@ -59,7 +52,6 @@ void setup()
   pinMode(photoPin, INPUT);
   pinMode(distancePin, INPUT);
   pinMode(smokePin, INPUT);
-  pinMode(moisturePin, INPUT);
   Serial.begin(9600);
 }
 
@@ -70,7 +62,6 @@ void loop()
   int illumination=getIllumination();
   long distance=getDistance();
   int smoke=getSmoke();
-  int moisture=getMoisture();
 
   Serial.print("Temperature: ");
   Serial.println(temperature);
@@ -82,8 +73,6 @@ void loop()
   Serial.println(distance);
   Serial.print("Smoke: ");
   Serial.println(smoke);
-  Serial.print("Moisture: ");
-  Serial.println(moisture);
   Serial.println();
 
   delay(500);
