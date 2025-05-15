@@ -1,151 +1,79 @@
-int A=12;
-int B=11;
-int C=10;
-int D=9;
-int E=8;
-int F=7;
-int G=6;
+int tempPin=A5;
+int pirPin=A4;
+int photoPin=A3;
+int distancePin=A2;
+int smokePin=A1;
+
+int getTemperature() {
+  int help=analogRead(tempPin);
+  float volts=help*5.0;
+  float percents=volts/1024.0;
+  float minusOffset=percents-0.5;
+  int degrees=minusOffset*100;
+  return degrees;
+}
+
+bool getMotion(){
+  bool help=(bool) digitalRead(pirPin);
+  return help;
+}
+
+int getIllumination(){
+  int help=analogRead(photoPin);
+  int converted=map(help, 6, 679, 1, 100);
+  return converted;
+}
+
+long getDistance()
+{
+  pinMode(distancePin, OUTPUT);
+  digitalWrite(distancePin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(distancePin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(distancePin, LOW);
+
+  pinMode(distancePin, INPUT);
+  long duration = pulseIn(distancePin, HIGH);
+  long cmDistance = duration / 29 / 2;
+  return cmDistance;
+}
+
+int getSmoke(){
+  int help=analogRead(smokePin);
+  int converted=map(help, 85, 385, 0, 100);
+  return converted;
+}
 
 void setup()
 {
-  pinMode(A, OUTPUT);
-  pinMode(B, OUTPUT);
-  pinMode(C, OUTPUT);
-  pinMode(D, OUTPUT);
-  pinMode(E, OUTPUT);
-  pinMode(F, OUTPUT);
-  pinMode(G, OUTPUT);
-}
-
-void zero(){
-  digitalWrite(A, HIGH);
-  digitalWrite(B, HIGH);
-  digitalWrite(C, HIGH);
-  digitalWrite(D, HIGH);
-  digitalWrite(E, HIGH);
-  digitalWrite(F, HIGH);
-  digitalWrite(G, LOW);
-}
-
-void one(){
-  digitalWrite(A, LOW);
-  digitalWrite(B, HIGH);
-  digitalWrite(C, HIGH);
-  digitalWrite(D, LOW);
-  digitalWrite(E, LOW);
-  digitalWrite(F, LOW);
-  digitalWrite(G, LOW);
-}
-
-void two(){
-  digitalWrite(A, HIGH);
-  digitalWrite(B, HIGH);
-  digitalWrite(C, LOW);
-  digitalWrite(D, HIGH);
-  digitalWrite(E, HIGH);
-  digitalWrite(F, LOW);
-  digitalWrite(G, HIGH);
-}
-
-void three(){
-  digitalWrite(A, HIGH);
-  digitalWrite(B, HIGH);
-  digitalWrite(C, HIGH);
-  digitalWrite(D, HIGH);
-  digitalWrite(E, LOW);
-  digitalWrite(F, LOW);
-  digitalWrite(G, HIGH);
-}
-
-void four(){
-  digitalWrite(A, LOW);
-  digitalWrite(B, HIGH);
-  digitalWrite(C, HIGH);
-  digitalWrite(D, LOW);
-  digitalWrite(E, LOW);
-  digitalWrite(F, HIGH);
-  digitalWrite(G, HIGH);
-}
-
-void five(){
-  digitalWrite(A, HIGH);
-  digitalWrite(B, LOW);
-  digitalWrite(C, HIGH);
-  digitalWrite(D, HIGH);
-  digitalWrite(E, LOW);
-  digitalWrite(F, HIGH);
-  digitalWrite(G, HIGH);
-}
-
-void six(){
-  digitalWrite(A, HIGH);
-  digitalWrite(B, LOW);
-  digitalWrite(C, HIGH);
-  digitalWrite(D, HIGH);
-  digitalWrite(E, HIGH);
-  digitalWrite(F, HIGH);
-  digitalWrite(G, HIGH);
-}
-
-void seven(){
-  digitalWrite(A, HIGH);
-  digitalWrite(B, HIGH);
-  digitalWrite(C, HIGH);
-  digitalWrite(D, LOW);
-  digitalWrite(E, LOW);
-  digitalWrite(F, LOW);
-  digitalWrite(G, LOW);
-}
-
-void eight(){
-  digitalWrite(A, HIGH);
-  digitalWrite(B, HIGH);
-  digitalWrite(C, HIGH);
-  digitalWrite(D, HIGH);
-  digitalWrite(E, HIGH);
-  digitalWrite(F, HIGH);
-  digitalWrite(G, HIGH);
-}
-
-void nine(){
-  digitalWrite(A, HIGH);
-  digitalWrite(B, HIGH);
-  digitalWrite(C, HIGH);
-  digitalWrite(D, HIGH);
-  digitalWrite(E, LOW);
-  digitalWrite(F, HIGH);
-  digitalWrite(G, HIGH);
+  pinMode(tempPin, INPUT);
+  pinMode(pirPin, INPUT);
+  pinMode(photoPin, INPUT);
+  pinMode(distancePin, INPUT);
+  pinMode(smokePin, INPUT);
+  Serial.begin(9600);
 }
 
 void loop()
 {
-  zero();
-  delay(1000);
+  int temperature=getTemperature();
+  bool isMoving=getMotion();
+  int illumination=getIllumination();
+  long distance=getDistance();
+  int smoke=getSmoke();
 
-  one();
-  delay(1000);
+  Serial.print("Temperature: ");
+  Serial.println(temperature);
+  Serial.print("Movement: ");
+  Serial.println(isMoving);
+  Serial.print("Illumination: ");
+  Serial.println(illumination);
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  Serial.print("Smoke: ");
+  Serial.println(smoke);
+  Serial.println();
 
-  two();
-  delay(1000);
-
-  three();
-  delay(1000);
-
-  four();
-  delay(1000);
-
-  five();
-  delay(1000);
-
-  six();
-  delay(1000);
-
-  seven();
-  delay(1000);
-
-  eight();
-  delay(1000);
-
-  nine();
-  delay(1000);
+  delay(500);
 }
