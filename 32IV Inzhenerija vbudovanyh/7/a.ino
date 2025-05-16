@@ -6,6 +6,16 @@ int E=8;
 int F=7;
 int G=6;
 
+int leftPin=4;
+int rightPin=3;
+
+int counter=0;
+
+bool getMotion(int pin){
+  bool help=(bool) digitalRead(pin);
+  return help;
+}
+
 const int DIGITS_NUMBER=7;
 int digits[DIGITS_NUMBER]={A,B,C,D,E,F,G};
 
@@ -111,35 +121,44 @@ void nine(){
   }
 }
 
+void chooseNumber(int counterNow) {
+  switch (counterNow)
+  {
+  case 0: zero(); break;
+  case 1: one(); break;
+  case 2: two(); break;
+  case 3: three(); break;
+  case 4: four(); break;
+  case 5: five(); break;
+  case 6: six(); break;
+  case 7: seven(); break;
+  case 8: eight(); break;
+  case 9: nine(); break;
+  
+  default: break;
+  }
+}
+
 void loop()
 {
-  zero();
-  delay(1000);
+  bool left=getMotion(leftPin);
+  bool right=getMotion(rightPin);
 
-  one();
-  delay(1000);
+  if (left) {
+    if (counter<9) {
+      counter++;
+    } else if (counter>=9) {
+      counter=0;
+    }
+    chooseNumber(counter);
+  } else if (right) {
+    if (counter>0) {
+      counter--;
+    } else if (counter<=0) {
+      counter=9;
+    }
+    chooseNumber(counter);
+  }
 
-  two();
-  delay(1000);
-
-  three();
-  delay(1000);
-
-  four();
-  delay(1000);
-
-  five();
-  delay(1000);
-
-  six();
-  delay(1000);
-
-  seven();
-  delay(1000);
-
-  eight();
-  delay(1000);
-
-  nine();
-  delay(1000);
+  delay(100);
 }
