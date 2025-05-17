@@ -1,4 +1,4 @@
-package Company;
+package four;
 
 public class Human {
   String lastName;
