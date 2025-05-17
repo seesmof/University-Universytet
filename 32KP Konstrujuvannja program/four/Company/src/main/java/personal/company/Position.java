@@ -15,8 +15,8 @@ import personal.company.Employee;
  */
 public class Position extends Departament {
   String positionName;
-  Vector<String> positionResponsibilities;
-  Vector<Employee> positionEmployees;
+  Vector<String> positionResponsibilities = new Vector<>();
+  Vector<Employee> positionEmployees = new Vector<>();
 
   void giveOrder(Employee employee, String order) {
     System.out.println(employee.firstName + " is given an order to " + order.toLowerCase() + ".");
