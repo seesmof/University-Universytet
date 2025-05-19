@@ -90,5 +90,14 @@ public class a {
     getCotangent(1.0f, 3.0f);
     System.out.print("Cotangent Long: ");
     getCotangent(Long.valueOf(9), Long.valueOf(3));
+
+    System.out.println("");
+    Boolean isValid = Boolean.valueOf(false);
+    System.out.println(isValid.equals(Boolean.FALSE));
+    System.out.println(isValid.compareTo(true));
+    System.out.println(isValid.booleanValue());
+
+    Character t = new Character('t');
+    System.out.println(t);
   }
 }
