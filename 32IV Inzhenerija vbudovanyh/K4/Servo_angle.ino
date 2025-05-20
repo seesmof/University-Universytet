@@ -11,12 +11,10 @@ void setup()
 
 void loop()
 {
-  Serial.println("Enter angle: ");
+  Serial.print("Enter angle. ");
   while (Serial.available()==0) {}
-  long number=Serial.parseInt(SKIP_ALL);
-  
-  String given=Serial.readString();
-  given.trim();
-  Serial.println(given);
-  delay(1000);
+  long angle=Serial.parseInt(SKIP_ALL);
+  Serial.println(angle);
+  servo.write(angle);
+  delay(100);
 }
