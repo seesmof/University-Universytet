@@ -16,9 +16,4 @@ current_folder = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(current_folder, 'train.csv')
 df = pd.read_csv(file_path)
 
-print(f'{X_train.shape = }')
-print(f'{X_test.shape = }')
-print(f'{y_train.shape = }')
-print(f'{y_test.shape = }')
-
-from sklearn
+X_train,X_test,y_train,y_test=train_test_split()

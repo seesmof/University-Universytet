@@ -1,20 +1,21 @@
-import javax.swing.JOptionPane;
-int angle = 0;
+// Example by Tom Igoe
+
+import processing.serial.*;
+
+Serial myPort;  // The serial port
 
 void setup() {
-  size(512, 512);
+  // List all the available serial ports:
+  printArray(Serial.list());
+  // Open the port you are using at the rate you want:
+  myPort = new Serial(this, Serial.list()[0], 9600);
 }
 
 void draw() {
-  background(255);
-  noStroke();
-
-  String enteredAngle = JOptionPane.showInputDialog(null, "Enter servo angle", "Enter", JOptionPane.PLAIN_MESSAGE);
-  try {
-    angle = Integer.parseInt(enteredAngle);
-  } catch(NumberFormatException e) {
-    JOptionPane.getRootFrame().dispose();
+  while (myPort.available() > 0) {
+    String inBuffer = myPort.readString();   
+    if (inBuffer != null) {
+      println(inBuffer);
+    }
   }
-
-  println("Servo at angle:", angle);
 }

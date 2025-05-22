@@ -16,5 +16,5 @@ void draw() {
     JOptionPane.getRootFrame().dispose();
   }
 
-  println("Servo at angle:", angle);
+  println(angle);
 }
