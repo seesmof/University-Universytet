@@ -13,6 +13,9 @@ needed='Name,Age,Sex,Survived'.split(',')
 df=df[needed].dropna()
 le=LabelEncoder()
 df['Sex']=le.fit_transform(df['Sex'])
+
+target=df.Survived
+df=df.drop(['Survived'],axis=1)
 print(df)
 
 '''
