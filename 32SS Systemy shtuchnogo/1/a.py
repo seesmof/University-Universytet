@@ -7,4 +7,6 @@ file_path = os.path.join(current_folder, 'train.csv')
 df = pd.read_csv(file_path)
 needed='Survived,Name,Age'.split(',')
 df=df[needed].dropna()
-print(df)
+
+train,test=train_test_split(df,test_size=0.3)
+print(train['Age'].mean(),test['Age'].mean(),['Age'].mean())
