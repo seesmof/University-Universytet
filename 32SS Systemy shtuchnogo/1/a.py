@@ -1,8 +1,10 @@
 import os
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
 from sklearn.cluster import KMeans
 from sklearn.model_selection import train_test_split
-import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
 current_folder = os.path.dirname(os.path.abspath(__file__))
