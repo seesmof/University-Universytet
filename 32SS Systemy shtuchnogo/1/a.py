@@ -9,20 +9,17 @@ current_folder = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(current_folder, 'train.csv')
 df = pd.read_csv(file_path)
 
-needed='Name,Age,Sex,Survived'.split(',')
+needed='Name,Age,Survived'.split(',')
 df=df[needed].dropna()
 le=LabelEncoder()
-df['Sex']=le.fit_transform(df['Sex'])
 
 target=df.Survived
 df=df.drop(['Survived'],axis=1)
-print(df)
-
-'''
+df=df.drop(['Name'],axis=1)
 
 train,test=train_test_split(df,test_size=0.3)
-print(train)
-model=KMeans()
+model=KMeans(n_clusters=3)
 model.fit(train)
-res=model.predict(test)
-'''
+print(f'{model.cluster_centers_ = }')
+prediction_results=model.predict(test)
+print(f'{prediction_results = }')
