@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 from sklearn.cluster import KMeans
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, normalize
 
 current_folder = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(current_folder, 'train.csv')
@@ -54,3 +54,8 @@ for data_row in range(1,size):
     input_array.append(row)
 output_array=np.array(input_array)
 print(f'{output_array = }')
+
+# 1.3 Нормування
+
+normalized_array=normalize(output_array)
+print(f'{normalized_array = }')
