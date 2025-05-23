@@ -40,6 +40,7 @@ print(df)
 
 # Split dataset
 target_feature=df.Survived.to_numpy()
+survived_scores=pd.DataFrame(target_feature,columns=['Survived'])
 df=df.drop(['Survived'],axis=1)
 X_train,X_test,y_train,y_test=train_test_split(df,target_feature)
 
@@ -62,17 +63,28 @@ print(f"{forest_results = }")
 logistic_model=LogisticRegression()
 logistic_model.fit(X_train,y_train)
 logistic_results=logistic_model.predict(X_test)
-print(logistic_results)
+print(f'{logistic_results = }')
 
 svc_model=SVC()
 svc_model.fit(X_train,y_train)
 svc_results=svc_model.predict(X_test)
-print(svc_results)
+print(f'{svc_results = }')
 
 # Comparing models
 testing_indeces=list(X_test.index)
-corrects=[df.iloc[i] for i in testing_indeces]
+corrects=[int(survived_scores.iloc[i].Survived) for i in testing_indeces]
+print(corrects)
 
-# Showing results
-dispaly=RocCurveDisplay.from_predictions()
+# Show the graphs
+plt.figure(figsize=(10,10))
+plt.scatter(corrects,svc_results,c='g')
+plt.yscale('log')
+plt.xscale('log')
+
+p1=max(max(svc_results),max(corrects))
+p2=min(min(svc_results),min(corrects))
+plt.plot([p1,p2],[p1,p2],'b-')
+plt.xlabel('True',fontsize=15)
+plt.xlabel('Predicts',fontsize=15)
+plt.axis('equal')
 plt.show()
