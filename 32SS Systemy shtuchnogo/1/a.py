@@ -32,6 +32,10 @@ print(f'{prediction_results = }')
 
 # 1.2 Вибірка
 
+def get_target_feature(row: list[int]):
+    if row[0]**2+row[1]**2 < variant**2+0.04*size**2: return 0
+    elif row[0]**2+row[1]**2 >= variant**2+0.04*size**2: return 1
+
 variant=19
 size=5*variant
 number_of_features=3*variant
@@ -39,7 +43,6 @@ number_of_features=3*variant
 ones_range=range(1,size,4)
 twos_range=range(2,size,4)
 threes_range=range(3,size,4)
-
 features_input=[]
 targets_input=[]
 for data_row in range(1,size):
@@ -53,9 +56,7 @@ for data_row in range(1,size):
             result=feature_col*random.random()
         row.append(result)
 
-    if row[0]**2+row[1]**2 < variant**2+0.04*size**2: targets_input.append(0)
-    elif row[0]**2+row[1]**2 >= variant**2+0.04*size**2: targets_input.append(1)
-
+    targets_input.append(get_target_feature(row=row))
     features_input.append(row)
 features=np.array(features_input)
 targets=np.array(targets_input)
@@ -90,10 +91,45 @@ print(f'{prediction_time = }')
 
 # 1.6 Помилка
 
-rounded_features=[round(sum(l)) for l in normalized_features]
-prediction_error=model.score(features_test)
+first_prediction_error=model.score(features_test)
+print(f'{first_prediction_error = }')
+first_error_probability=first_prediction_error/size*number_of_features
+first_right_probability=1-first_error_probability
+print(f'{first_error_probability = }')
+print(f'{first_right_probability = }')
+
+# 1.7 Нова вибірка
+
+new_features=[row[variant] for row in features_input]
+print(f'{new_features = }')
+new_center=int(result[variant])
+print(f'{new_center = }')
+new_target=get_target_feature(row=new_features)
+print(f'{new_target = }')
+
+# 1.8 Розпізнавання
+
+new_features=np.array(new_features).reshape(-1,1)
+model=model.fit(new_features)
+result=model.predict(new_features)
+print(f'{result = }')
+
+# 1.9 Помилка
+
+prediction_error=model.score(new_features)
 print(f'{prediction_error = }')
-error_probability=prediction_error/size*number_of_features
+error_probability=prediction_error/len(new_features)*1
 right_probability=1-error_probability
 print(f'{error_probability = }')
 print(f'{right_probability = }')
+
+# 1.10 Порівняння
+
+prediction_error_difference=abs(first_prediction_error-prediction_error)
+error_probability_difference=abs(first_error_probability-error_probability)
+right_probability_difference=abs(first_right_probability-right_probability)
+print(f'{prediction_error_difference = }')
+print(f'{error_probability_difference = }')
+print(f'{right_probability_difference = }')
+
+print('У другому випадку помилка більше. Тому, чим більше екземплярів, тим менша помилка.')
