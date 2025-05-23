@@ -1,5 +1,4 @@
 import os
-import random
 import time
 import pandas as pd
 import numpy as np
@@ -15,7 +14,7 @@ from sklearn.preprocessing import LabelEncoder, normalize
 from sklearn.svm import SVC
 
 current_folder = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(current_folder, 'train.csv')
+file_path = os.path.join(current_folder,'..', 'train.csv')
 df = pd.read_csv(file_path)
 
 # Remove unnecessary columns
@@ -45,8 +44,9 @@ X_train,X_test,y_train,y_test=train_test_split(df,target_feature)
 
 # Modeling results
 kmeans_model=KMeans()
-kmeans_model.fit_predict(X_train)
+kmeans_model.fit(X_train)
 kmeans_results=kmeans_model.predict(X_test)
+print(f'{kmeans_model.cluster_centers_ = }')
 print(f'{kmeans_results = }')
 
 kneighbors_model=KNeighborsClassifier(n_neighbors=7)
@@ -73,9 +73,10 @@ print(f'{svc_results = }')
 testing_indeces=list(X_test.index)
 corrects=[int(survived_scores.iloc[i].Survived) for i in testing_indeces]
 
+# Plotting graphs
 models=['KNeighbors','RandomForest','Logistic','SVC']
 accuracies=[sum([int(abs(corrects[i]-model[i])) for i in range(len(corrects))]) for model in [kneighbors_results,forest_results,logistic_results,svc_results]]
-print(accuracies)
+print("Errors in each model:",{m:a for m in models for a in accuracies})
 plt.title('How unnaccurate is each model')
 plt.bar(models,accuracies,color='g')
 plt.show()
