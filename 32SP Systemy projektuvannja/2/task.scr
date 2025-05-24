@@ -10,7 +10,7 @@ OSNAP INT+END
 
 -LAYER LTYPE Continuous Axis
 
--LAYER COLOR Truecolor 255,146,76 Axis
+-LAYER COLOR Truecolor 255,107,15 Axis
 
 -LAYER LWEIGHT 0.3 Axis
  
@@ -18,7 +18,7 @@ OSNAP INT+END
 
 -LAYER LTYPE Center Dimensions
 
--LAYER COLOR Truecolor 32,169,255 Dimensions
+-LAYER COLOR Truecolor 0,132,214 Dimensions
 
 -LAYER LWEIGHT 0.3 Dimensions
  
