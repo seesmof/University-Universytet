@@ -1,3 +1,9 @@
+DIMTXT
+DIMASZ
+  GOST type A
+15
+text align iso
+
 (defun c:gasket ()
   (command "OSNAP" "OFF")
   (command "SNAP" "OFF")
