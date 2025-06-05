@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -47,11 +49,16 @@ public class Customer {
     System.out.println();
     String min = "2222 0000 0000 0000";
     String max = "7777 0000 0000 0000";
-    System.out.println("Customers with cards above " + min + " and below " + max);
+    System.out.println("Customers with cards within [" + min + ", " + max + "]:");
     for (Map<String, String> map : customers) {
       if (Integer.parseInt(min.split(" ")[0]) <= Integer.valueOf(map.get("cardNumber").split(" ")[0])
           && Integer.parseInt(max.split(" ")[0]) >= Integer.valueOf(map.get("cardNumber").split(" ")[0]))
         System.out.println("- " + map.get("name") + ", " + map.get("cardNumber"));
     }
+
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("\nEnter a number: ");
+    String number = scanner.nextLine();
+    System.out.println(number);
   }
 }
