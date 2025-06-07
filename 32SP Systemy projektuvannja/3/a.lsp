@@ -1,0 +1,1 @@
+^C^CLOAD "E:/University-Universytet/32SP Systemy projektuvannja/2/task.lsp";gasket
