@@ -1,16 +1,20 @@
 from matplotlib import pyplot as plt
-import numpy as np
+import pandas as pd
 from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
 
-data,target,target_names=load_iris()['data'],load_iris()['target'],load_iris()['target_names']
+iris=load_iris()
+data=pd.DataFrame(iris.data,columns=iris.feature_names)
+data['species']=pd.Categorical.from_codes(iris.target,iris.target_names)
 
-sepal_lengths=data[:,np.array([True,False,False,False])]
-sepal_widths=data[:,np.array([False,True,False,False])]
-petal_lenghts=data[:,np.array([False,False,True,False])]
-petal_widths=data[:,np.array([False,False,False,True])]
+features=iris.feature_names
+feature_pairs=[(i,j) for i in range(len(features)) for j in range(i+1,len(features))]
 
-plt.scatter(sepal_lengths,sepal_widths,c=target,cmap='berlin')
-
-plt.legend(target_names)
+fig,axes=plt.subplots(2,3,figsize=(20,12),tight_layout=True)
+for ax,(feature_one,feature_two) in zip(axes.flatten(),feature_pairs):
+    for species in data['species'].unique():
+        subset=data[data['species']==species]
+        ax.scatter(subset[features[feature_one]],subset[features[feature_two]],label=species,alpha=0.8)
+        ax.set_xlabel(features[feature_one])
+        ax.set_ylabel(features[feature_two])
+fig.legend(data['species'].unique(),loc='upper center',ncol=3,fontsize='medium')
 plt.show()
