@@ -1,3 +1,57 @@
-h2 {
-  margin-top: 3rem;
+/* General */
+
+:root {
+  --accent: #22c3e7;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* Header */
+
+header {
+  position: sticky;
+  height: max-content;
+  top: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img {
+  width: 50%;
+}
+
+header nav ul {
+  display: flex;
+  gap: 3rem;
+}
+
+header nav ul li:hover {
+  text-decoration: underline;
+}
+
+header > a.button {
+  display: inherit;
+}
+
+/* Classes */
+
+.button {
+  background-color: var(--accent);
+  text-transform: uppercase;
+  color: #e5faff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 3rem;
+  font-weight: 600;
 }
