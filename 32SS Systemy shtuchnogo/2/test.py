@@ -7,7 +7,7 @@ X=iris['data']
 df=pd.DataFrame(X,columns=iris.feature_names)
 print(iris['feature_names'])
 
-plt.plot(X[:,0],c="g")
+plt.scatter(X[:,0],X[:,1])
 plt.xlabel(iris['feature_names'][0])
-plt.ylabel('Value')
+plt.ylabel(iris['feature_names'][1])
 plt.show()
