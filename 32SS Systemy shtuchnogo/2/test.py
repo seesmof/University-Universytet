@@ -1,19 +1,13 @@
-# importing modules
-import numpy as np
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
+import pandas as pd
+from sklearn.datasets import load_iris
 
-# Y-axis values
-y1 = [2, 3, 4.5]
+iris=load_iris()
+X=iris['data']
+df=pd.DataFrame(X,columns=iris.feature_names)
+print(iris['feature_names'])
 
-# Y-axis values
-y2 = [1, 1.5, 5]
-
-# Function to plot
-plt.plot(y1)
-plt.plot(y2)
-
-# Function add a legend
-plt.legend(["blue", "green"], loc="lower right")
-
-# function to show the plot
+plt.plot(X[:,0],c="g")
+plt.xlabel(iris['feature_names'][0])
+plt.ylabel('Value')
 plt.show()
