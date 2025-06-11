@@ -7,7 +7,7 @@
 (defun SizeStyle ()
   (command "LINETYPE" "S" "BYLAYER" "" "LWEIGHT" 0.2 "" "COLOR" 140)
 )
-(defun c:gasket ()
+(defun c:two ()
   (setq top_left_vertical_axis_point (list 0 75))
   (setq bottom_left_vertical_axis_point (list 0 -75))
   (setq top_right_vertical_axis_point (list 200 45))
