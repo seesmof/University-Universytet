@@ -16,10 +16,15 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 li {
   list-style-type: none;
+}
+
+article {
+  padding: 0 3rem;
 }
 
 /* Header */
@@ -32,6 +37,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 3rem;
 }
 
 header img {
@@ -57,15 +63,13 @@ header > a.button {
   background-image: url("./hero.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
 }
 
 #hero article {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding-top: 10rem;
-  padding-left: 3rem;
+  padding: 10rem 3rem;
   max-width: 40vw;
 }
 
@@ -74,7 +78,7 @@ header > a.button {
   color: white;
   font-size: 2rem;
   font-weight: 800;
-  line-height: 2.2rem;
+  line-height: 2.3rem;
 }
 
 #hero p {
@@ -87,6 +91,36 @@ header > a.button {
   color: #000;
   display: block;
   width: fit-content;
+}
+
+@media screen and (min-width: 1024px) {
+  #hero h1 {
+    font-size: 3rem;
+    line-height: 3.3rem;
+  }
+}
+
+@media screen and (min-width: 2055px) {
+  #hero h1 {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+
+  #hero article {
+    padding: 20rem 3rem;
+    gap: 3rem;
+  }
+
+  #hero p {
+    font-size: 1rem;
+  }
+}
+
+/* Work Intro */
+
+#work_intro h2 {
+  font-weight: normal;
+  text-transform: uppercase;
 }
 
 /* Classes */
