@@ -45,6 +45,41 @@ header > a.button {
   display: inherit;
 }
 
+/* Hero */
+
+#hero {
+  background-image: url("./hero.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+#hero article {
+  padding: 5rem 2rem;
+  margin-right: 30rem;
+}
+
+#hero h1 {
+  text-transform: uppercase;
+  color: white;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 2.2rem;
+}
+
+#hero p {
+  font-size: 0.85rem;
+  line-height: 0.9rem;
+}
+
+#hero .button {
+  background: white;
+  color: #000;
+  margin-top: 1rem;
+  display: block;
+  width: fit-content;
+}
+
 /* Classes */
 
 .button {
@@ -53,5 +88,4 @@ header > a.button {
   color: #e5faff;
   padding: 0.5rem 1.5rem;
   border-radius: 3rem;
-  font-weight: 600;
 }
