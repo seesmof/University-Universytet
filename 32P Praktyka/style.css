@@ -142,6 +142,11 @@ header > a.button {
 
 /* Work Intro */
 
+.work article {
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
 .work_intro {
   text-align: center;
   flex-direction: column;
@@ -209,3 +214,48 @@ header > a.button {
   border-radius: 0.3rem;
   object-fit: cover;
 }
+
+/* Mission */
+
+article.mission {
+  margin: 5rem auto;
+  position: relative;
+}
+
+.mission p {
+  font-size: 1.1rem;
+  padding-right: 50%;
+}
+
+.mission #mission_fragment {
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  bottom: 2.5rem;
+  transform: rotate(-7deg);
+}
+
+.mission #mission_image_container {
+  position: absolute;
+  left: 57%;
+  bottom: -0.2rem;
+}
+
+.mission #mission_image {
+  width: 57%;
+}
+
+@media screen and (min-width: 850px) {
+  article.mission {
+    margin-top: 15rem;
+  }
+
+  .mission #mission_fragment {
+    width: 40%;
+    left: 55%;
+    transform: rotate(10deg);
+    bottom: 0.1rem;
+  }
+}
+
+/* Work goal */
