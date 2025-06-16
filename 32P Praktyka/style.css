@@ -259,3 +259,36 @@ article.mission {
 }
 
 /* Work goal */
+
+.work_goal {
+  text-align: center;
+  flex-direction: column;
+  padding: 5rem 5rem;
+}
+
+.work_goal h2 {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.work_goal strong {
+  font-weight: normal;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+.work_goal .work_goal_counter {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 auto;
+  margin-top: 0.7rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.work_goal .work_goal_counter hr {
+  border-color: var(--accent);
+  border-width: 0.01rem;
+}

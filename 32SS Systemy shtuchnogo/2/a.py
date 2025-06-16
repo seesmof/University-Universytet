@@ -1,14 +1,24 @@
 from matplotlib import pyplot as plt
+from sklearn.cluster import AgglomerativeClustering, KMeans
 from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
 
 iris=load_iris()
-X=iris['data']
-pairs=[(i,j) for i in range(len(iris['feature_names'])) for j in range(i+1,len(iris['feature_names']))]
+X=iris.data
+y=iris.target
+X_train,X_test,y_train,y_test=train_test_split(X,y)
+print(X_train,y_train)
 
-for i,(f1,f2) in enumerate(pairs):
-    fig=plt.figure(figsize=(8,5),tight_layout=True)
-    plot=plt.scatter(X[:,f1],X[:,f2],cmap="berlin",c=iris['target'])
-    plt.xlabel(iris['feature_names'][f1])
-    plt.ylabel(iris['feature_names'][f2])
-    fig.legend(plot.legend_elements()[0], iris.target_names.tolist())
-    plt.show()
+kmeans=KMeans(n_clusters=2)
+kmeans_trains=kmeans.fit(X_train)
+kmeans_results=kmeans.predict(X_test)
+kmeans_score=kmeans.score(X_test)/len(X_test)
+
+agglomerative=AgglomerativeClustering()
+agglomerative_results=agglomerative.fit_predict(X_test)
+agglomerative_score=sum([agglomerative_results[i]!=kmeans_results[i] for i in range(len(kmeans_results))])
+
+print(f'{kmeans_results = }')
+print(f'{kmeans_score = }')
+print(f'{agglomerative_results = }')
+print(f'{agglomerative_score = }')
