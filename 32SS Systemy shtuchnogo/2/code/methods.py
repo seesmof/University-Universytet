@@ -1,22 +1,27 @@
+# Кількість кластерів та ознак
+CLUSTERS=3
+FEATURES=2
+
 from matplotlib import pyplot as plt
 from sklearn.cluster import AgglomerativeClustering, KMeans
 from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 
 iris=load_iris()
 X=iris.data
-X=X[:,:2]
-print(X,iris.feature_names[:2])
+X_reduced=PCA(n_components=FEATURES).fit_transform(X)
+print(X_reduced)
 y=iris.target
 # Розбиття вибірки на тестову та тренувальну
-X_train,X_test,y_train,y_test=train_test_split(X,y)
+X_train,X_test,y_train,y_test=train_test_split(X_reduced,y)
 
-kmeans=KMeans(n_clusters=2)
+kmeans=KMeans(n_clusters=CLUSTERS)
 kmeans_results=kmeans.fit_predict(X_test)
 # Оцінка похибки методу
 kmeans_score=kmeans.score(X_test)/len(X_test)
 
-agglomerative=AgglomerativeClustering()
+agglomerative=AgglomerativeClustering(n_clusters=CLUSTERS)
 agglomerative_results=agglomerative.fit_predict(X_test)
 # Кількість розбіжностей між результатами двох методів
 agglomerative_score=sum([agglomerative_results[i]!=kmeans_results[i] for i in range(len(kmeans_results))])
