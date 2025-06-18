@@ -1,12 +1,14 @@
 # Кількість кластерів та ознак
-CLUSTERS=3
-FEATURES=2
+CLUSTERS=4
+FEATURES=4
 
 from matplotlib import pyplot as plt
 from sklearn.cluster import AgglomerativeClustering, KMeans
 from sklearn.datasets import load_iris
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
+
+cluster_names=[f'Cluster {number}' for number in range(CLUSTERS)]
 
 iris=load_iris()
 X=iris.data
@@ -31,6 +33,8 @@ print(f'K-Means clustering accuracy: {kmeans_score}')
 print(f'\n{agglomerative_results = }')
 print(f'Hierarchical clustering results difference: {agglomerative_score}')
 
-plot=plt.scatter(X_test[:,0],X_test[:,1],c=kmeans_results,cmap='viridis')
-plt.legend(plot.legend_elements()[0], iris.target_names.tolist())
+fig,ax=plt.subplots(nrows=1,ncols=2,figsize=(10,5),tight_layout=True)
+for axis,result in zip(ax,[kmeans_results,agglomerative_results]):
+    plot=axis.scatter(X_test[:,0],X_test[:,1],c=result,cmap='viridis')
+fig.legend(plot.legend_elements()[0], cluster_names, loc='upper left')
 plt.show()
