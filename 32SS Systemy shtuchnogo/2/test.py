@@ -1,3 +1,9 @@
+from collections import namedtuple
+import pprint
+import random
+from matplotlib import pyplot as plt
+from pandas import DataFrame
+
 names = [
     "Liam",
     "Olivia",
@@ -10,12 +16,6 @@ names = [
     "James",
     "Mia",
 ]
-
-from collections import namedtuple
-import pprint
-import random
-from matplotlib import pyplot as plt
-from pandas import DataFrame
 
 Instance = namedtuple("Instance", "name, age, height, chosen_car")
 
@@ -32,3 +32,5 @@ pprint.pprint(data)
 
 df = DataFrame(data, columns=Instance._fields)
 print(df.head())
+df.plot(kind="scatter", x="age", y="chosen_car")
+plt.show()
