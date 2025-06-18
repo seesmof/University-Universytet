@@ -1,31 +1,17 @@
 from matplotlib import pyplot as plt
+from sklearn import preprocessing
 from sklearn.cluster import AgglomerativeClustering, KMeans
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 
-iris=load_iris()
-X=iris.data
-X=X[:,:2]
-print(X,iris.feature_names[:2])
-y=iris.target
-# Розбиття вибірки на тестову та тренувальну
-X_train,X_test,y_train,y_test=train_test_split(X,y)
+iris = load_iris()
+X = iris.data
+y = iris.target
 
-kmeans=KMeans(n_clusters=2)
-kmeans_results=kmeans.fit_predict(X_test)
-# Оцінка похибки методу
-kmeans_score=kmeans.score(X_test)/len(X_test)
-
-agglomerative=AgglomerativeClustering()
-agglomerative_results=agglomerative.fit_predict(X_test)
-# Кількість розбіжностей між результатами двох методів
-agglomerative_score=sum([agglomerative_results[i]!=kmeans_results[i] for i in range(len(kmeans_results))])
-
-print(f'\n{kmeans_results = }')
-print(f'K-Means clustering accuracy: {kmeans_score}')
-print(f'\n{agglomerative_results = }')
-print(f'Hierarchical clustering results difference: {agglomerative_score}')
-
-plot=plt.scatter(X_test[:,0],X_test[:,1],c=kmeans_results,cmap='viridis')
-plt.legend(plot.legend_elements()[0], iris.target_names.tolist())
-plt.show()
+model = KMeans(n_clusters=3)
+model.fit(X[2:-1])
+print(X[0], y[0], iris.target_names[y[0]])
+print(X[1], y[1], iris.target_names[y[1]])
+print(X[0:2])
+results = model.predict(X[0:2])
+print(results, iris.target_names[results])
