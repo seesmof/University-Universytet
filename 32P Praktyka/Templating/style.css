@@ -6,6 +6,7 @@
   --accent: #22c3e7;
   --text: #73a6b1;
   --box: #f1fdff;
+  --yellow: #fff864;
 }
 
 * {
@@ -50,6 +51,13 @@ article {
   border-radius: 0.5rem;
   background-color: var(--box);
   padding: 3rem;
+}
+
+.slim_heading {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  padding-bottom: 0.5rem;
 }
 
 /* Header */
@@ -153,13 +161,6 @@ header > a.button {
   padding: 5rem 5rem;
 }
 
-.work_intro h2 {
-  font-weight: normal;
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  padding-bottom: 0.5rem;
-}
-
 .work_intro p {
   padding-top: 0.3rem;
 }
@@ -260,10 +261,11 @@ article.mission {
 
 /* Work goal */
 
-.work_goal {
+article.work_goal {
   text-align: center;
   flex-direction: column;
   padding: 5rem 5rem;
+  margin-bottom: 10%;
 }
 
 .work_goal h2 {
@@ -291,4 +293,22 @@ article.mission {
 .work_goal .work_goal_counter hr {
   border-color: var(--accent);
   border-width: 0.01rem;
+}
+
+/* Contacts */
+
+footer {
+  background-color: var(--yellow);
+}
+
+.footer_top {
+  padding: 3rem 3rem;
+}
+
+.footer_top h2 {
+  flex: 1;
+}
+
+.footer_info {
+  max-width: 50%;
 }
