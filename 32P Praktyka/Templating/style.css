@@ -259,7 +259,7 @@ article.mission {
 }
 
 .mission #mission_image {
-  width: 57%;
+  width: 58%;
 }
 
 @media screen and (min-width: 850px) {
@@ -272,6 +272,16 @@ article.mission {
     left: 55%;
     transform: rotate(10deg);
     bottom: 0.1rem;
+  }
+
+  .mission #mission_image {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  article.mission {
+    margin-top: 20rem;
   }
 }
 
