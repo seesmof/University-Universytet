@@ -55,7 +55,7 @@ article {
 .blue_box {
   border-radius: 0.5rem;
   background-color: var(--box);
-  padding: 3rem;
+  padding: 2rem 3rem;
 }
 
 .slim_heading {
