@@ -4,6 +4,7 @@
 
 :root {
   --accent: #22c3e7;
+  --accentHover: #1fa9c7;
   --text: #73a6b1;
   --box: #f1fdff;
   --yellow: #f9fadf;
@@ -41,6 +42,10 @@ article {
   border-radius: 3rem;
 }
 
+.button:hover {
+  background-color: var(--accentHover);
+}
+
 .blue_text {
   color: var(--text);
   font-weight: 300;
@@ -63,6 +68,7 @@ article {
 /* Header */
 
 header {
+  z-index: 3;
   position: sticky;
   height: max-content;
   top: 0;
@@ -125,6 +131,10 @@ header > a.button {
   width: fit-content;
 }
 
+.hero .button:hover {
+  background-color: var(--box);
+}
+
 @media screen and (min-width: 1024px) {
   .hero h1 {
     font-size: 3rem;
@@ -159,6 +169,12 @@ header > a.button {
   text-align: center;
   flex-direction: column;
   padding: 5rem 5rem;
+}
+
+@media screen and (min-width: 2055px) {
+  .work_intro {
+    padding: 10rem 5rem;
+  }
 }
 
 .work_intro p {
@@ -299,10 +315,19 @@ article.work_goal {
 
 footer {
   background-color: var(--yellow);
+  padding-bottom: 5rem;
+}
+
+footer .icon_link {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.7);
+  margin-top: 1rem;
 }
 
 .footer_top {
-  padding: 3rem 3rem;
+  padding: 3rem;
   max-width: 70rem;
   margin: 0 auto;
   display: flex;
@@ -316,13 +341,14 @@ footer {
   max-width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 .footer_info article {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 0;
 }
 
 .footer_info p a {
@@ -337,4 +363,53 @@ footer {
 .footer_info_images img {
   width: 1.5rem;
   object-fit: contain;
+}
+
+.footer_contact {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.footer_box {
+  background-color: white;
+  display: flex;
+  padding: 3.75rem;
+  gap: 5rem;
+}
+
+.footer_box .email_image_container {
+  flex: 1;
+}
+
+.email_image_container img {
+  width: 100%;
+}
+
+.footer_box .footer_form {
+  width: 50%;
+}
+
+.footer_form p {
+  font-size: 1.2rem;
+}
+
+.footer_form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+form button.button {
+  border: none;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+
+form input {
+  background-color: var(--yellow);
+  border-radius: 3rem;
+  border: none;
+  padding: 1rem 2rem;
 }
