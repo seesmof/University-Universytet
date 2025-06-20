@@ -11,19 +11,18 @@ from sklearn.preprocessing import LabelEncoder, normalize
 
 current_folder = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(current_folder, "train.csv")
-df = pd.read_csv(file_path)
+data = pd.read_csv(file_path)
 
 # 1.1 Еталони
 
 needed = "Name,Age,Survived".split(",")
-df = df[needed].dropna()
-le = LabelEncoder()
+data = data[needed].dropna()
 
-target_feature = df.Survived.to_numpy()
-df = df.drop(["Survived"], axis=1)
-df = df.drop(["Name"], axis=1)
+survived_label = data.Survived.to_numpy()
+data = data.drop(["Survived"], axis=1)
+data = data.drop(["Name"], axis=1)
 
-X_train, X_test, y_train, y_test = train_test_split(df, target_feature, test_size=0.3)
+X_train, X_test, y_train, y_test = train_test_split(data, survived_label)
 model = KMeans(n_clusters=3)
 model.fit(X_train)
 print(f"{model.cluster_centers_ = }")
