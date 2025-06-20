@@ -1,4 +1,4 @@
-from math import inf
+from math import inf, sqrt
 import pprint
 import random
 from matplotlib import pyplot as plt
@@ -24,16 +24,16 @@ def get_max(arr):
 
 data = [[random.randint(150, 170) for _ in range(10)] for _ in range(1)]
 for i, row in enumerate(data):
-    low = get_min(row) - 30
-    high = get_max(row) + 30
+    low = min(row) - 30
+    high = max(row) + 30
     data[i] = sorted([low] + row + [high])
 data = np.array(data)
 print(data)
 
 print()
 for i, row in enumerate(data):
-    print(sum(row))
+    print(sqrt(sum([e**2 for e in row])))
 
-scaler = Normalizer(norm="max")
+scaler = Normalizer(norm="l2")
 normalized_data = scaler.fit_transform(data)
 print(normalized_data)
