@@ -6,7 +6,7 @@
   --accent: #22c3e7;
   --text: #73a6b1;
   --box: #f1fdff;
-  --yellow: #fff864;
+  --yellow: #f9fadf;
 }
 
 * {
@@ -265,7 +265,7 @@ article.work_goal {
   text-align: center;
   flex-direction: column;
   padding: 5rem 5rem;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
 
 .work_goal h2 {
@@ -303,6 +303,9 @@ footer {
 
 .footer_top {
   padding: 3rem 3rem;
+  max-width: 70rem;
+  margin: 0 auto;
+  display: flex;
 }
 
 .footer_top h2 {
@@ -311,4 +314,27 @@ footer {
 
 .footer_info {
   max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.footer_info article {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer_info p a {
+  font-weight: bold;
+}
+
+.footer_info_images {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer_info_images img {
+  width: 1.5rem;
+  object-fit: contain;
 }
