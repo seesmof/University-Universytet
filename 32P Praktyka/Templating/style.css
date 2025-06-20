@@ -321,6 +321,12 @@ article.work_goal {
   border-width: 0.01rem;
 }
 
+.work_goal a {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
 /* Contacts */
 
 footer {
@@ -334,6 +340,10 @@ footer .icon_link {
   font-size: 0.7rem;
   color: rgba(0, 0, 0, 0.7);
   margin-top: 1rem;
+}
+
+.icon_link a:hover {
+  text-decoration: underline;
 }
 
 .footer_top {
@@ -422,4 +432,5 @@ form input {
   border-radius: 3rem;
   border: none;
   padding: 1rem 2rem;
+  outline-color: var(--accent);
 }
