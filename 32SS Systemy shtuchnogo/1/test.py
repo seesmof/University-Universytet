@@ -1,9 +1,9 @@
-import random
-
 from matplotlib import pyplot as plt
+from sklearn.datasets import load_iris
+import seaborn as sns
 
 
-ages = [random.randint(30, 70) for _ in range(10)]
-print(ages)
-plt.plot(ages)
+iris = load_iris(as_frame=True)
+iris.frame["target"] = iris.target_names[iris.target]
+_ = sns.pairplot(iris.frame, hue="target")
 plt.show()

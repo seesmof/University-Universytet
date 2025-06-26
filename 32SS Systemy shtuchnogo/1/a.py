@@ -68,75 +68,8 @@ print(f"{targets = }")
 
 # 1.3 Нормування
 
-normalized_features = normalize(features)
-print(f"{normalized_features = }")
-
-# 1.4 Побудова моделі
-
-features_train, features_test, targets_train, targets_test = train_test_split(
-    normalized_features, targets
-)
-
-start_time = time.perf_counter()
-model = KMeans(n_clusters=number_of_features)
-model.fit(features_train)
-end_time = time.perf_counter()
-learning_time = end_time - start_time
-print(f"{learning_time = }")
-print(f"{model.cluster_centers_ = }")
-
-# 1.5 Розпізнавання
-
-start_time = time.perf_counter()
-result = model.predict(features_test)
-print(f"{result = }")
-end_time = time.perf_counter()
-prediction_time = end_time - start_time
-print(f"{prediction_time = }")
-
-# 1.6 Помилка
-
-first_prediction_error = model.score(features_test)
-print(f"{first_prediction_error = }")
-first_error_probability = first_prediction_error / size * number_of_features
-first_right_probability = 1 - first_error_probability
-print(f"{first_error_probability = }")
-print(f"{first_right_probability = }")
-
-# 1.7 Нова вибірка
-
-new_features = [row[variant] for row in features_input]
-print(f"{new_features = }")
-new_center = int(result[variant])
-print(f"{new_center = }")
-new_target = get_target_feature(row=new_features)
-print(f"{new_target = }")
-
-# 1.8 Розпізнавання
-
-new_features = np.array(new_features).reshape(-1, 1)
-model = model.fit(new_features)
-result = model.predict(new_features)
-print(f"{result = }")
-
-# 1.9 Помилка
-
-prediction_error = model.score(new_features)
-print(f"{prediction_error = }")
-error_probability = prediction_error / len(new_features) * 1
-right_probability = 1 - error_probability
-print(f"{error_probability = }")
-print(f"{right_probability = }")
-
-# 1.10 Порівняння
-
-prediction_error_difference = abs(first_prediction_error - prediction_error)
-error_probability_difference = abs(first_error_probability - error_probability)
-right_probability_difference = abs(first_right_probability - right_probability)
-print(f"{prediction_error_difference = }")
-print(f"{error_probability_difference = }")
-print(f"{right_probability_difference = }")
-
-print(
-    "У другому випадку помилка більше. Тому, чим більше екземплярів, тим менша помилка."
-)
+normalized_features = normalize(features, norm="max")
+print([float(round(n, 3)) for n in sorted(features[0])])
+print([float(round(n, 3)) for n in sorted(normalized_features[0])])
+max_max = max([max(features[i]) for i in range(len(features))])
+print(max_max)
