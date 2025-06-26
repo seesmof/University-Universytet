@@ -29,5 +29,5 @@ for column_number in range(COLUMNS):
     for el in column_data:
         value = el - get_mean(column_data)
         value /= get_standard_deviation(column_data)
-        pprint.pprint(float(value))
+        print(el, float(value))
     print()
