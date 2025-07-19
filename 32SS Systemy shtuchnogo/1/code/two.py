@@ -85,6 +85,6 @@ for index in range(len(models)):
     a = accuracies[index] / len(testing_indeces)
     resulting_dictionary[m] = a
 print("Errors in each model:", resulting_dictionary)
-plt.title("How unnaccurate is each model")
+plt.title("Number of errors in each model")
 plt.bar(models, accuracies, color="g")
 plt.show()
