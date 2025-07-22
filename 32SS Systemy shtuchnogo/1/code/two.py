@@ -1,16 +1,14 @@
 import os
-import time
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 
 from sklearn.cluster import KMeans
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.impute import KNNImputer, SimpleImputer
+from sklearn.impute import KNNImputer
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.preprocessing import LabelEncoder, normalize
+from sklearn.preprocessing import LabelEncoder
 from sklearn.svm import SVC
 
 current_folder = os.path.dirname(os.path.abspath(__file__))
@@ -76,9 +74,15 @@ corrects = [int(survived_scores.iloc[i].Survived) for i in testing_indeces]
 # Plotting graphs
 models = ["KNeighbors", "RandomForest", "Logistic", "SVC"]
 accuracies = [
-    sum([int(abs(corrects[i] - model[i])) for i in range(len(corrects))])
-    for model in [kneighbors_results, forest_results, logistic_results, svc_results]
+    sum([int(abs(corrects[i] - model_result[i])) for i in range(len(corrects))])
+    for model_result in [
+        kneighbors_results,
+        forest_results,
+        logistic_results,
+        svc_results,
+    ]
 ]
+
 resulting_dictionary = dict()
 for index in range(len(models)):
     m = models[index]
