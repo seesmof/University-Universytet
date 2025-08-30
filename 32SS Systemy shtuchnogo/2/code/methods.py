@@ -27,7 +27,7 @@ agglomerative = AgglomerativeClustering(n_clusters=CLUSTERS)
 agglomerative_results = agglomerative.fit_predict(X_test)
 agglomerative_score = sum(
     [agglomerative_results[i] != kmeans_results[i] for i in range(len(kmeans_results))]
-)
+) / len(kmeans_results)
 
 print(f"\n{kmeans_results = }")
 print(f"K-Means clustering accuracy: {kmeans_score}")
