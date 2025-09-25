@@ -1,10 +1,9 @@
-import pprint
 import string
 
 
-letters_data = dict(enumerate(string.ascii_uppercase, 1))
-numbers_data = dict(reversed(item) for item in letters_data.items())
-print(numbers_data)
+get_letter = dict(enumerate(string.ascii_uppercase, 1))
+get_number = dict(reversed(item) for item in get_letter.items())
+print(get_number)
 
 key: int = 3
 input_text = "Some unimportant stuff"
@@ -17,8 +16,19 @@ def transform_text(given_text: str):
 transformed_text = transform_text(input_text)
 result: str = str()
 for letter in transformed_text:
-    new_number = numbers_data[letter] + key
-    new_letter = letters_data[new_number]
+    new_number = get_number[letter] + key
+    new_letter = get_letter[new_number]
     result += new_letter
 print(transformed_text)
 print(result)
+
+key = "some"
+length = 17
+keystream: str = str()
+iterator: int = 0
+while length > 0:
+    keystream += key[iterator]
+
+    length -= 1
+    iterator = (iterator + 1) % len(key)
+print(keystream)
