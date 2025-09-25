@@ -26,3 +26,14 @@ for index, letter in enumerate(given_text):
 print(answer)
 
 decrypted: str = str()
+for index, letter in enumerate(answer):
+    key_letter = key[index]
+
+    key_letter_number = get_number[key_letter]
+    letter_number = get_number[letter]
+
+    new_letter_number = (letter_number - key_letter_number) % len(get_letter.keys())
+    new_letter = get_letter[new_letter_number]
+
+    decrypted += new_letter
+print(decrypted)
