@@ -10,14 +10,14 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch("/api/vigenere", {
+    fetch("/api/encrypt", {
       method: "POST",
       body: JSON.stringify({ message, key }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        setEncrypted(data.encrypted);
-      });
+      .then((data) =>
+        setEncrypted(data.encrypted || "Failed to encrypt the message")
+      );
   };
 
   return (
@@ -26,7 +26,7 @@ export default function Home() {
         <h2 className="mb-7 border-l-2 border-sky-300 pl-3 text-xl">
           Data for the app
         </h2>
-        <form className="flex flex-col gap-7">
+        <form className="flex flex-col gap-7" onSubmit={handleSubmit}>
           <div className="flex flex-row gap-3">
             <label htmlFor="givenTextInput" className="self-center text-4xl">
               📃
@@ -74,6 +74,7 @@ export default function Home() {
             placeholder=""
             className="w-full rounded-md p-3 outline-2 outline-sky-200"
             readOnly
+            value={encrypted}
           />
         </div>
       </div>
