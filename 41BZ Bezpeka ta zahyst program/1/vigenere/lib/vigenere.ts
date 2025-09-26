@@ -1,6 +1,10 @@
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-export function vigenereEncrypt(message: string, key: string): string {
+export function vigenereProcess(
+  message: string,
+  key: string,
+  encrypt: boolean = false
+): string {
   let result = "";
 
   if (!message || !key) {
@@ -22,11 +26,18 @@ export function vigenereEncrypt(message: string, key: string): string {
       continue;
     }
 
+    if (!encrypt) {
+      const decryptedIndex =
+        (charIndex - keyIndex + alphabet.length) % alphabet.length;
+      const decryptedChar = alphabet[decryptedIndex];
+      result += decryptedChar;
+      continue;
+    }
+
     const encryptedIndex = (charIndex + keyIndex) % alphabet.length;
     const encryptedChar = alphabet[encryptedIndex];
     result += encryptedChar;
   }
-  console.log(result);
 
   return result;
 }

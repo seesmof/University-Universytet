@@ -1,4 +1,4 @@
-import { vigenereEncrypt } from "@/lib/vigenere";
+import { vigenereProcess } from "@/lib/vigenere";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     return new Response("Missing message or key", { status: 400 });
   }
 
-  const encrypted = vigenereEncrypt(message, key);
+  const encrypted = vigenereProcess(message, key);
   const data = { encrypted };
 
   return NextResponse.json(data);
