@@ -1,39 +1,66 @@
-UKRAINIAN = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ"
-ENGLISH = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+import os
+import streamlit as st
+from nicegui import ui
 
-# given_text: str = input("Enter the input text: ")
-# key: str = input("Enter the key text: ")
-given_text = "hey help hello"
-key = "hep"
 
-get_letter = dict(enumerate(ENGLISH, 1))
-get_number = dict(reversed(pair) for pair in get_letter.items())
+def vigenere(text: str, key: str, decrypt: bool = False) -> str:
+    """
+    Encrypts or decrypts text using the Vigenère cipher.
 
-given_text = given_text.replace(" ", "").upper()
-key = (key * len(given_text))[: len(given_text)].upper()
+    :param text: The input string (plaintext or ciphertext).
+    :param key: The keyword used for encryption/decryption.
+    :param decrypt: If True, performs decryption; otherwise encryption.
+    :return: The resulting string.
+    """
+    result = []
+    key = key.lower()
+    key_len = len(key)
+    key_index = 0
 
-answer: str = str()
-for index, letter in enumerate(given_text):
-    key_letter = key[index]
+    for char in text:
+        if char.isalpha():
+            # Shift amount based on key letter
+            shift = ord(key[key_index % key_len]) - ord("a")
+            if decrypt:
+                shift = -shift
 
-    key_letter_number = get_number[key_letter]
-    letter_number = get_number[letter]
+            # Preserve case
+            base = ord("A") if char.isupper() else ord("a")
+            new_char = chr((ord(char) - base + shift) % 26 + base)
+            result.append(new_char)
 
-    new_letter_number = (key_letter_number + letter_number) % len(get_letter.keys())
-    new_letter = get_letter[new_letter_number]
+            key_index += 1  # Only advance key on letters
+        else:
+            result.append(char)  # Leave non-letters unchanged
 
-    answer += new_letter
-print(answer)
+    return "".join(result)
 
-decrypted: str = str()
-for index, letter in enumerate(answer):
-    key_letter = key[index]
 
-    key_letter_number = get_number[key_letter]
-    letter_number = get_number[letter]
+# --- NiceGUI Interface ---
+with ui.card().classes("w-2/3 mx-auto mt-10 p-6"):
+    ui.label("🔐 Vigenère Cipher Tool").classes("text-2xl font-bold mb-4")
 
-    new_letter_number = (letter_number - key_letter_number) % len(get_letter.keys())
-    new_letter = get_letter[new_letter_number]
+    text_area = ui.textarea("Enter text").props("outlined").classes("w-full h-40")
+    key_input = ui.input("Enter key").props("outlined").classes("w-full")
 
-    decrypted += new_letter
-print(decrypted)
+    result_area = (
+        ui.textarea("Result").props("outlined readonly").classes("w-full h-40")
+    )
+
+    with ui.row().classes("justify-between w-full mt-4"):
+        with ui.row():
+            ui.button(
+                "Encrypt",
+                on_click=lambda: result_area.set_value(
+                    vigenere(text_area.value, key_input.value, decrypt=False)
+                ),
+            )
+            ui.button(
+                "Decrypt",
+                on_click=lambda: result_area.set_value(
+                    vigenere(text_area.value, key_input.value, decrypt=True)
+                ),
+            )
+        ui.button("Copy", on_click=lambda: os.system(f"echo {result_area.value}| clip"))
+
+ui.run()
