@@ -1,3 +1,5 @@
+from nicegui import ui
+
 UKRAINIAN = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ"
 ENGLISH = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -37,3 +39,14 @@ for index, letter in enumerate(answer):
 
     decrypted += new_letter
 print(decrypted)
+
+with ui.card().classes("max-w-2xl mx-auto"):
+    text_input = ui.input(label="Input text").classes("w-full").props("outlined")
+    key_input = ui.input(label="Key").classes("w-full").props("filled readonly")
+
+    with ui.button_group().classes("w-full"):
+        ui.button("Encode")
+        ui.button("Decode")
+        ui.button("Copy")
+
+ui.run()

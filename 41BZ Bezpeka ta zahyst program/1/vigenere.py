@@ -36,7 +36,6 @@ def vigenere(text: str, key: str, decrypt: bool = False) -> str:
     return "".join(result)
 
 
-# --- NiceGUI Interface ---
 with ui.card().classes("w-2/3 mx-auto mt-10 p-6"):
     ui.label("🔐 Vigenère Cipher Tool").classes("text-2xl font-bold mb-4")
 
