@@ -1,3 +1,9 @@
+# /// script
+# dependencies = [
+#   'nicegui',
+# ]
+# ///
+
 import re
 from nicegui import ui
 
@@ -111,5 +117,5 @@ with ui.card().classes("max-w-2xl mx-auto mt-[20vh]"):
         with ui.tab_panel(Lang.UKR):
             render_ui(lang=Lang.UKR)
 
-if __name__ == "__main__":
+if __name__ in {"__main__", "__mp_main__"}:
     ui.run(title="Шифр Віженера", favicon="🔐")
