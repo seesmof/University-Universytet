@@ -23,6 +23,7 @@ def vigenere(text: str, key: str, alphabet: str, to_decode: bool = False) -> str
 
     for letter in text:
         if letter.upper() in letter_to_num:
+            # Повторювати літери ключа
             key_letter: str = clean_key[key_index % len(clean_key)]
 
             key_number: int = letter_to_num.get(key_letter, -1)
