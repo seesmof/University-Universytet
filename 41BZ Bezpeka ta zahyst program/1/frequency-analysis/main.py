@@ -13,6 +13,8 @@ def frequency_analysis(text: str, original_text: str = "", log_process: bool = F
     common_letters = [
         letter for letter, _ in collections.Counter(clean_text).most_common()
     ]
+    print(common_letters)
+    print(list(FREQUENT))
 
     """
     Співставляє найбільш використані літери наданого тексту (text)
@@ -49,9 +51,11 @@ def calculate_error(deciphered_text: str, original_text: str):
     return mismatches / len(clean_original)
 
 
+original_text = org_text
 original_text = "Це текст"
 print(original_text)
 
+given_text = cph_text
 given_text = "Їф шхуяш"
 deciphered_text = frequency_analysis(given_text, original_text, True)
 print(deciphered_text)
