@@ -1,44 +1,47 @@
+import re
 from nicegui import ui
 
-UKRAINIAN = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ"
-ENGLISH = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-# given_text: str = input("Enter the input text: ")
-# key: str = input("Enter the key text: ")
-given_text = "be"
-key = "god"
+class Alphabet:
+    ENG = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    UKR = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ"
 
-get_letter = dict(enumerate(ENGLISH, 1))
-get_number = dict(reversed(pair) for pair in get_letter.items())
 
-given_text = given_text.replace(" ", "").upper()
-key = (key * len(given_text))[: len(given_text)].upper()
+def vigenere(text: str, key: str, alphabet: Alphabet, to_decode: bool = False) -> str:
+    if not text or not key:
+        return ""
 
-answer: str = str()
-for index, letter in enumerate(given_text):
-    key_letter = key[index]
+    num_to_letter = dict(enumerate(alphabet))
+    letter_to_num = dict(reversed(pair) for pair in num_to_letter.items())
 
-    key_letter_number = get_number[key_letter]
-    letter_number = get_number[letter]
+    # Заміняє всі символи, яких немає в алфавіті
+    non_letters_pattern = rf"[^{alphabet.upper()}{alphabet.lower()}]"
+    clean_key = re.sub(non_letters_pattern, "", key).upper()
 
-    new_letter_number = (key_letter_number + letter_number) % len(get_letter.keys())
-    new_letter = get_letter[new_letter_number]
+    resulting_string: str = str()
+    key_index: int = 0
 
-    answer += new_letter
-print(answer)
+    for letter in text:
+        if letter.upper() in letter_to_num:
+            key_letter = clean_key[key_index % len(clean_key)]
 
-decrypted: str = str()
-for index, letter in enumerate(answer):
-    key_letter = key[index]
+            key_number = letter_to_num.get(key_letter)
+            letter_number = letter_to_num.get(letter.upper())
 
-    key_letter_number = get_number[key_letter]
-    letter_number = get_number[letter]
+            if not to_decode:
+                new_number = (letter_number + key_number) % len(alphabet)
+            else:
+                new_number = (letter_number - key_number) % len(alphabet)
 
-    new_letter_number = (letter_number - key_letter_number) % len(get_letter.keys())
-    new_letter = get_letter[new_letter_number]
+            new_letter = num_to_letter.get(new_number)
+            new_letter = new_letter if letter == letter.upper() else new_letter.lower()
 
-    decrypted += new_letter
-print(decrypted)
+            resulting_string += new_letter
+        else:
+            resulting_string += letter
+        key_index += 1
+
+    return resulting_string
 
 
 class Lang:
@@ -47,26 +50,51 @@ class Lang:
 
 
 def render_ui(lang: Lang) -> None:
+    is_english: bool = lang == Lang.ENG
+
     text_input = (
-        ui.input(label="Input text" if lang == Lang.ENG else "Текст для кодування")
+        ui.input(label="📃 " + ("Input text" if is_english else "Текст для кодування"))
         .classes("w-full")
-        .props("outlined")
+        .props("outlined clearable")
     )
     key_input = (
-        ui.input(label="Key" if lang == Lang.ENG else "Ключ")
+        ui.input(label="🧷 " + ("Key" if is_english else "Ключ"))
         .classes("w-full")
-        .props("filled")
+        .props("outlined clearable")
     )
-    result_output = ui.code(content="").classes("w-full h-11 pt-1")
+    with ui.input(
+        label="⌨️ " + ("Encoded text" if is_english else "Шифротекст")
+    ).classes("w-full").props("filled readonly") as result_output:
+        result_copy_button = ui.button(
+            icon="o_copy",
+            on_click=lambda: ui.clipboard.write(result_output.value),
+        ).props("dense flat")
+
+    def process_text(to_decode: bool = False):
+        resulting_string: str = vigenere(
+            text_input.value,
+            key_input.value,
+            alphabet=Alphabet.ENG if is_english else Alphabet.UKR,
+            to_decode=True if to_decode else False,
+        )
+        result_output.value = resulting_string
 
     with ui.button_group().classes("w-full"):
         encode_button = (
-            ui.button("Encode" if lang == Lang.ENG else "Кодувати", color="lime-500")
+            ui.button(
+                "Encode" if is_english else "Кодувати",
+                color="lime-500",
+                on_click=lambda: process_text(True),
+            )
             .props("text-color=white")
             .classes("w-full")
         )
         decode_button = (
-            ui.button("Decode" if lang == Lang.ENG else "Декодувати", color="sky-400")
+            ui.button(
+                "Decode" if is_english else "Декодувати",
+                color="sky-400",
+                on_click=lambda: process_text(False),
+            )
             .props("text-color=white")
             .classes("w-full")
         )
@@ -83,4 +111,5 @@ with ui.card().classes("max-w-2xl mx-auto mt-[20vh]"):
         with ui.tab_panel(Lang.UKR):
             render_ui(lang=Lang.UKR)
 
-ui.run()
+if __name__ == "__main__":
+    ui.run(title="Шифр Віженера", favicon="🔐")
