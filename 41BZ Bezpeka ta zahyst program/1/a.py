@@ -60,23 +60,24 @@ def render_ui(lang: Lang) -> None:
     result_output = ui.code(content="").classes("w-full h-11 pt-1")
 
     with ui.button_group().classes("w-full"):
-        ui.button(
-            "Encode" if lang == Lang.ENG else "Кодувати", color="green-500"
-        ).props("text-color=white")
-        ui.button(
-            "Decode" if lang == Lang.ENG else "Декодувати", color="teal-500"
-        ).props("text-color=white")
-        ui.button("Copy" if lang == Lang.ENG else "Копіювати", color="sky-500").props(
-            "text-color=white"
+        encode_button = (
+            ui.button("Encode" if lang == Lang.ENG else "Кодувати", color="lime-500")
+            .props("text-color=white")
+            .classes("w-full")
+        )
+        decode_button = (
+            ui.button("Decode" if lang == Lang.ENG else "Декодувати", color="sky-400")
+            .props("text-color=white")
+            .classes("w-full")
         )
 
 
 with ui.card().classes("max-w-2xl mx-auto mt-[20vh]"):
     with ui.tabs().classes("w-full") as tabs:
-        eng = ui.tab(Lang.ENG, label="English")
-        ukr = ui.tab(Lang.UKR, label="Українська")
+        eng_tab = ui.tab(Lang.ENG)
+        ukr_tab = ui.tab(Lang.UKR)
 
-    with ui.tab_panels(tabs, value=eng).classes("w-full"):
+    with ui.tab_panels(tabs, value=eng_tab).classes("w-full"):
         with ui.tab_panel(Lang.ENG):
             render_ui(lang=Lang.ENG)
         with ui.tab_panel(Lang.UKR):
