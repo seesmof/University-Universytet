@@ -40,13 +40,46 @@ for index, letter in enumerate(answer):
     decrypted += new_letter
 print(decrypted)
 
-with ui.card().classes("max-w-2xl mx-auto"):
-    text_input = ui.input(label="Input text").classes("w-full").props("outlined")
-    key_input = ui.input(label="Key").classes("w-full").props("filled readonly")
+
+class Lang:
+    ENG = "English"
+    UKR = "Українська"
+
+
+def render_ui(lang: Lang) -> None:
+    text_input = (
+        ui.input(label="Input text" if lang == Lang.ENG else "Текст для кодування")
+        .classes("w-full")
+        .props("outlined")
+    )
+    key_input = (
+        ui.input(label="Key" if lang == Lang.ENG else "Ключ")
+        .classes("w-full")
+        .props("filled")
+    )
+    result_output = ui.code(content="").classes("w-full h-11 pt-1")
 
     with ui.button_group().classes("w-full"):
-        ui.button("Encode")
-        ui.button("Decode")
-        ui.button("Copy")
+        ui.button(
+            "Encode" if lang == Lang.ENG else "Кодувати", color="green-500"
+        ).props("text-color=white")
+        ui.button(
+            "Decode" if lang == Lang.ENG else "Декодувати", color="teal-500"
+        ).props("text-color=white")
+        ui.button("Copy" if lang == Lang.ENG else "Копіювати", color="sky-500").props(
+            "text-color=white"
+        )
+
+
+with ui.card().classes("max-w-2xl mx-auto mt-[20vh]"):
+    with ui.tabs().classes("w-full") as tabs:
+        eng = ui.tab(Lang.ENG, label="English")
+        ukr = ui.tab(Lang.UKR, label="Українська")
+
+    with ui.tab_panels(tabs, value=eng).classes("w-full"):
+        with ui.tab_panel(Lang.ENG):
+            render_ui(lang=Lang.ENG)
+        with ui.tab_panel(Lang.UKR):
+            render_ui(lang=Lang.UKR)
 
 ui.run()
