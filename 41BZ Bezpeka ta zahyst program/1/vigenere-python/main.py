@@ -1,9 +1,3 @@
-# /// script
-# dependencies = [
-#   'nicegui',
-# ]
-# ///
-
 import re
 from nicegui import ui
 
