@@ -1,5 +1,0 @@
-1,Barabash,Anton,Volodymyrovych,Zrazkova 74,5348 7892 8954 2348,37,21,120,10
-2,Bgan,Vladyslav,Sergiyovych,Futbol'na 52,1238 5849 2193 9543,28,54,50,0
-3,Bugar,Maksym,Sergiyovych,Final'na 22,6582 4389 1284 6589,95,12,40,60
-4,Other,Name,Here,Mlynova 32,9652 5849 1298 5478,127,0,60,0
-5,Some,Other,Name,Berezhna 71,1203 6584 2340 6540,54,5,70,10

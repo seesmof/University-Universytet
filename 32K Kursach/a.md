@@ -1,6 +1,0 @@
-- `id` INT NotNull AutoIncrement,
-- `count` INT NotNull: Number of grapes
-- `outside` BOOL NotNull: Is outside damaged?
-- `sugar` BOOL NotNull: Is sugar out of ideal?
-- `shape` BOOL NotNull: Is shape uneven?
-- `color` BOOL NotNull: Is color changing?

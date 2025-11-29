@@ -1,3 +1,0 @@
-Lord Jesus Christ our Holy GOD Most High need help, cant do nothing without You Lord Jesus i cannot do anything on my own i need You Lord Jesus Christ, if you wanna please help ✝️💗🙏
-
-There are a number of objects on the stand. Some of them are moving. The user throws a set of objects at them. Each of them has its own physical characteristics (acceleration, accuracy). Each object can be thrown only once. Each object on the stand, if hit, brings a certain number of points. Falling objects can knock down other objects, bringing additional points. The goal is to score the maximum number of points. The user's results are saved.

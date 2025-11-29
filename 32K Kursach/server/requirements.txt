@@ -1,5 +1,0 @@
-django
-mysqlclient
-python-dotenv
-django-crispy-forms
-crispy-bootstrap5

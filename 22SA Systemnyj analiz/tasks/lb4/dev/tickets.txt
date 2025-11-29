@@ -1,4 +1,0 @@
-﻿user,Zaporizhzhia Airport - Choctaw Airport,90,11-05-2024,5,true,false,false,true,false
-new,Zaporizhzhia Airport - Kootenai Airport,152,13-05-2024,1,false,true,true,false,true
-admin,Zaporizhzhia Airport - Kootenai Airport,70,13-05-2024,7,true,false,false,true,false
-neww,Zaporizhzhia Airport - Kootenai Airport,162,13-05-2024,4,true,false,true,true,true

@@ -1,9 +1,0 @@
-[project]
-name = "vigenere-python"
-version = "1.0.0"
-description = "A tool to encrypt and decrypt text using Vigenere cipher."
-readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "nicegui>=2.24.2",
-]

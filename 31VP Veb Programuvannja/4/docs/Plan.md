@@ -1,5 +1,0 @@
-- add sidebars: make three columns 
-  - left sidebar for navigation between pages 
-  - right sidebar for navigation inside the page by headings 
-- style navbar section 
-- apply warmer theme to all pages 

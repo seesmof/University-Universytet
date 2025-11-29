@@ -1,1 +1,0 @@
-https://www.geeksforgeeks.org/extract-dominant-colors-of-an-image-using-python/

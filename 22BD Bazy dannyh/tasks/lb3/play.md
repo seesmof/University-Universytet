@@ -1,4 +1,0 @@
-- get average salary for each department
-- count all employees grouped by gender
-- insert new employee Abram into office
-- update Abram's name to Abraham

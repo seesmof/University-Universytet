@@ -1,5 +1,0 @@
-1,Barabash,Anton,Volodymyrovych,19-05-2005,Zrazkova 74,5348 7892 8954 2348,428
-2,Bgan,Vladyslav,Sergiyovych,17-02-2004,Futbol'na 52,1238 5849 2193 9543,128
-3,Bugar,Maksym,Sergiyovych,02-05-2005,Final'na 22,6582 4389 1284 6589,125
-4,Other,Name,Here,01-02-2005,Mlynova 32,9652 5849 1298 5478,453
-5,Some,Other,Name,05-03-2004,Berezhna 71,1203 6584 2340 6540,218

@@ -1,5 +1,0 @@
-1,Potato,Farm #1,52,13,12
-2,Tomato,Yard #3,24,43,51
-3,Grapes,Vineyard #4,82,12,32
-4,Tomato,Farm #5,72,18,17
-5,Potato,Yard #3,82,58,82
