@@ -1,0 +1,7 @@
+﻿Zaporizhzhia Airport - Choctaw Airport,50,11-05-2024,77
+Zaporizhzhia Airport - Sandpoint Airport,40,12-05-2024,77
+Zaporizhzhia Airport - Kootenai Airport,30,13-05-2024,77
+Kyiv Airport - Chernihiv Airport,60,14-05-2024,77
+Poltava Airport - Kryvyi Rih Airport,77,15-05-2024,77
+Zhytomyr Airport - Chernivtsi Airport,70,16-05-2024,77
+Lviv Airport - Kharkiv Airport,67,17-05-2024,77

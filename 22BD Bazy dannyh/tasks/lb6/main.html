@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&Rcy;&iecy;&zcy;&yucy;&mcy;&iecy;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <div align="center">
+  <h3>Звіт з Лабораторної Роботи №6</h3>
+  <p>Виконав <strong>Онищенко Олег</strong>, студент групи <strong>КНТ-122</strong></p>
+</div>
+<h4 id="резюме">Резюме</h4>
+<p>В рамках лабораторної роботи 6 було спроектовано 3 макроси до бази даних з предметної області <strong>автоматизована система розрахунку заробітної плати</strong>. Деталі макросів наведені нижче.</p>
+<ul>
+<li>запуск форми меню при запуску програми</li>
+<li>запуск декількох форм з головного меню</li>
+<li>закриття головного меню при натисканні Escape</li>
+</ul>
+<h4 id="макроси-бази-даних">Макроси бази даних</h4>
+<h5 id="макрос-запуску-форми-меню">Макрос Запуску форми меню</h5>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczO4968KUJSW2C2n61uxrW8qoPSzfguM5qK_SJh4tLPWryAirXB9OsPzP_qHQd5Q52qBaTHEVzKLzK6GD2xpl0bnBBz6OObFExNzISxvqins4BswTL8nU7tH7rCo8y_yiI3i0UbNvg_ofhsA1g0VRg3jYhmGoaAlc7v3wQE35aTsM1bYkaNhyM9zzSfqkowaitMmbqOfiC5XIAjLK2JyQlA-GS-q1WHFNclMraQtRNGALU5wsK3bNnhVW7TX7XmpcD8n3lBqa3JaOvKUzo3T0vi8_sd8I7pRAheZlff8YxfLNyAs8eIsx5ZbLVWFgXjdJvsTrDETyvCLZlu2YX9MMtgixp3S3Qkpz3u_c8NfOUh73lClnCNBtKdqxwRWPNKMt5Asyt1WHLTc3qeZEOM8nAA2WdGk-uR4xMC1yfe91E-y7pUeadMkx18b2xDjKx91LoKl8pSKq1VCafnjsrSDut5v3PZuTi7hWAShcO_DIPs_CKaLlXFeLaVdaZuPK1uSgRQAa8dizMf5H5B_lBeVwC0nhBGbPnqTKxxNPav65Eiqn1KjhuVpnXK_Zg7ZgjHxBDEvySguxhzFov0CrNkHlV0eFQzkEf9LxiHmIbK2QEzFeA2WCvVCUT0pqd3jF2IOspZ477qnoX_upciDwrI4ko5J6Dx3RspAvX7kIB16Y5O2IMm8riAZehyDVX1lBTe7Lc8x1zyOUvXLKsNqdvcSJCtzhQ_t9oappv9OnprQM0NkjMLYdjkVLyLa7mzPkiNBTpZLKJczYCsMEtTvFAna71FuMooGjdptFIwbisAGnX44Ro3VTcMo2FAL86aHWxvkxKKvNXk3Sf4TFDWUKfM98OU4EtZGPI7de-5y8SzGJjop4mRcQUoW_OwE7DB6yH3A4Nr131S1BA7rXpPcqTQqN4fv6nUqAlwp6pM4LCN3uRoQ4QRFvTHj3EICBH60=w1005-h404-s-no?authuser=1" alt="Glory to Jesus Christ"></p>
+<p>Завдяки тому, що макрос має ім'я AutoExec (без урахування регістру), він запускається при старті, тому ми отримуємо форму головного меню, щойно відкриваємо програму.</p>
+<h5 id="макрос-запуску-декількох-форм-з-головного-меню">Макрос Запуску декількох форм з головного меню</h5>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczPfi_CttLqHueGXO1frxDX-3XTecx0P7W6vmIo2qkM-kH7P72WZ8KShoDchtRGKD_meILGSRTWVV6H6Em7Q9d0ltcDMwgzgD4zyw6KtTnBTu7hii1KUL96XynINUhh0xRJsEaMgtI5M-mDS_WEcdatVCYLWAqeEFTqd0hft8uGAWIY9NZl7BxZMG8OSKHdl1Wrlu0gxqz0Bx2PlnBrIbqLThmw8F1Zd0x2cTEK-8P55OAHCUnoirs32UCod5V0dcL0W43Icrs0Zku4NVazSdvYWlQPOjXbtImFLkPO4fFwaV_ipr9loRO4ctqaUGYSjAp26WpDMbvEANyKgc3Tm3SmmE8TXfeyN482KksCIVugvJzUXsr0HCoAufUPqh7aWeDILzxjShBoGqGspFu0Z74OBC9dkcFHX1yghzrcPdYkIc6_ZUwWFutTsalbY0TO-aluj1LxBQlxDGIl2-CwsOGp2CgnOuIfbw6-kUO3bVThpch6XX2-e79O9Q-rIzXOWBdEkElE_adfZZJWJLeG5unKjXkkbKMLH8k3NPwL7tz1TxmI2QGxYE5bQWKmvebzf9CLrW-6wa-6egd1vzShoVdjVSzF7HMTw_9N4PiN32ttBcZ9i6FdFaaXR4Yn3uTMBfXoaL5YiHPckm7RFPAdSYoI2Y4npSAjVtGPDquNPVwXXcQbAnKFpR2XaBnYIats-jWkrv34YYcNB2jfYsmchnV7w7qH96GDzEWaqxiuuhz2Lxq4Sv0GhPeMcc_bAhkT1FYxFVFhmv4_wKIKq_S-bmSi38_dg3SYEPINn78fuoI5GZ80Bo0GbazOcctxsusYl1-UOUXZGqduprjsLyg7BBXRdkCY3B0BrxbdtaiR3qO02G0eL5SrKjHjfYBoSQ-Yx4wRfa__YdWz5KZ8ZSAdak2L5CTlW06cfOseYja5ZA5J5txSMds9P3-s0lOfj8Q=w1361-h566-s-no?authuser=1" alt="Glory to Jesus Christ"></p>
+<p>Спочатку ми створимо сам макрос, який відкриє нашу форму &quot;Працівник&quot;, а також звіт &quot;Кількість працівників&quot;</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczN2s-wqHO3Jcbbk5s2TIv2exPNk0lDRmsg3dKWTwDBc0FSY_GzYJ5TchCMr0siBwyQz7nLXx7sNm5iMsd65eGyJy0dnoWWOo4SjyMM1q3wm8Twhbbsv8il05ecC1nYToj3WsrVCeo-Nu52wOdVnGoYGAIZtJOe8yLLMxjjMgrUfDHoqQYgUkKiaW0NfWDU0nxbVqy0eRe6ApLeprrRUIR3IQqZuU6AHwuoe-74fLHOn8W8f9LN7RQUaZ1VaBTg9WkBIJMpf1fd3t2zs9idyww9xMqmq9xbEFlICtvdmyy7OMemi7__lJO7eGQZCt3nuH-nBNG39p8cJaCq36P-7LZiNBC-t-jOxrtcrTRIvJ-muxWsfQ8bvVyRJnOzwQFy5LYKtKP3RvBLY2SYwEtgOLViRXbxRETD2ha6oB6psKmMUg_IQWdfIBxiKdZKwD2M8gIxxRozoRKyy7HfyINciFKSGXybqnJiCrLRdnwNNKD-R_jHpmhRhFgUBhBQMU91LW8zoDRCyjFxVAxewZ6dQPSc_VLvRmOBHwIbuf5cd_vqVl0SD1qFB3-EApt4kOxywJRqpqsIG6KB00c3ZoXuchg3pWWDKZfk1Whg1yAi9Lob58injdvrzovD9GprrIqhD1V_xgcwZBDiFdaFqJrZSh9vOUluHf8LH40gOp7PQD_-Vi3jTaGPyBftkVWv2oAFQMlohkbEpyYsn_OKa_waJrgqwllNmHSbksG1gtwLkuOaAXGEXWcISy5wBX5ZJPmveG79BfJv5huBXPvWdJ0Q1Oe_8PfcTwKeUpymqlIPRCkr0OnsFUJA6W3aobL6l-bDJja1VZeYTBG6RPTSGcSOfuUknSw-kcuje5u6lNmozFjRCTbYLaQNYNS0bD7UblY5kLPeXMAIJDtNo2RLwO6sqjUF5nGHI88s1mDlvrWeovRA7Zo8u85V13QSTmj0-Ww=w1145-h778-s-no?authuser=1" alt="John 3:16"></p>
+<p>Тоді нам потрібно прив'язати наш макрос до події OnClick бажаної кнопки головного меню, щоб щоразу, коли ми натискаємо на кнопку, виконувався наш макрос.</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczNKGZH78xa_MxWevZjSbPANLkrZjHzd3tIN68t8kRVAOAhFMcXoSSjPl3N7Bk9u9Umpvnc7WzEpJ2f7hzJPEcGXC2p_LnNjvzHx6dW19qsU-omHA8TA-8JkcVO6w4tdSir5-owv8b5z994Z3I2F1McQyVccWYAUGGODqshY4XIT0pusxy6r03XEqCx88H7noOGDpfWxkkPNEB4bgYdxn3yLLwNJv3z980isu9O4jbRYaeVv0618i_ku2bU3kNudGe6F7pePKOXFWce-IUXg0vTb1AhUzE25vGwKMroXzmaf-QIjvv1N-wiiBUMM2hSAX0Ka8gbnWIiIKHY5QIzQBRjZoxtZcsdkDHQETFDlqT7Ej3G-3dJP-9J0IvTYi4kY-vmVZ4qv57CnxKi55axkJTHCNRhpzNF5qpHdysVp4EwZecipKtTyBNCn_f_r91n8mVVDQ8MSilBB_0dc3r7ak6ZNQpsGC7Gm8LsDp-RBhe0l2kHXwRV0QgyZRPx6I-kx9EdgNywPyCKkzv8-s4sAIpfq6HvfeY0knoKKJQ2GAMefPEid6K0QeKy6B9D33apY9UdjMfjHQNY-8eXugXbdJOf5hLLnwgFN3A70uJ5xQRR2W9axau7-2wDy08rCJpjkFfc2E25GC1OYGdJ-dxoflbj6Ncl8zX5EWdAr26X3-wEnE176JHd3HAGOFBZFJofKWVt_ExmPFXzfDJ7wXfzHcmRxK8e3b5WqW011UkzDUNNt_W-BgojgyJlsyu4DEavIlBxexBujtgSJt-OVQXgHNOKLj8dsNtmoQ2QsLGnQzbzAtqI9hJS42wCI_nrw9vgRgA3b-iLLSJ3IFEbQa8DbNSec3FS0KrAfDTSmEesI5SzAFyboiyy03MD-85O8S2JwkOtLetHqVCHHM0rfj2qOOHcz3b5e3_wXaRbqR7XQ-uERer19nFOCKHvrHgnaUw=w1817-h1546-s-no?authuser=1" alt="praise Jesus Christ our Holy Lord Almighty Living GOD Most High"></p>
+<p>Тепер, коли ми натискаємо кнопку головного меню &quot;Працівники&quot;, відкривається як форма, так і звіт.</p>
+<h5 id="макрос-закриття-форми-меню">Макрос Закриття форми меню</h5>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczMxxvAikOvOSSKGtK4fIMmlT3NG8jSC5c1PSXOyX7LTPVZMJx1a9FGeFuYES7PTiGvRMMNqZKwXcl82ErODDvOUC6WycxiatQV4ekBBR4l44v2miXjTUCQn-1YXDGXUHUkP3-KbyYVw3J3xQK-4gTgXvgD8Jp2H1fQaf1u_xEfcxBAUrfb2r6Uf0fof20cCgnc9bL73B24nTlzNXn3UR4B_juSGgQRhohrEdy0wMsD_NBOIm7_iP-yBx9qd74DPCoxRxFbidMCMo8EaHC03trxk33_pVXoNdh4o9MjCyGWfjo-b242wDrVZprPw0Fet3PYxfGkWxFsscIfcOQLNOaHendk0KGfF6_A8r5bqdiW1yvDaXiw0_3sLHK8FWdBffU5kdECaLOCqk6J9M_3H6TqtO-TkDD69gXAqvQKjGrgBETLxYuzJwRdypb7qhKOK6ABW-mUUa2AVCS-NYwzry-rp37h5iO6c3Qxj6VijIoP3DAx9QNzRTlIvpWUQ6PfrtnPlG6KCgE-PNdkazx_2_DIMc5ndXavsSI7Ljaonhvj8_GpW0oc_PsJRtJrDJ6d5TExIf_wCWKPkrn1-yiuhohV_0BRn1vSRvvT-43hfnO0JqBE06nFkuPuzamaGXU7SZQsRxxJXj3gD18Mgg_IJB7_72gjgdiVdv0loM0cr3-B5oTrePeC1v6VDD9saqPJ2GX9KR1ogmdyAMZoUv9tVbXJQqtcv-QVTMyhtGf3UexPf7cvGYfhh1uRnelzppsie3tw8IFTMeWfPtxTF9MFegJP5GgNO9Vk5VbZGj75uZiI3vvW0s2RRLQaILebv9Sufz1PxMFE8VLWyac1k6ynqJpQS8F7gkBFHMYMNMeL29tISg6FWEsy1MIat962uAWqsufluu2jtwTjGwv0egOvtIXcbQBcdXswCF-HOyVd5N0ihYi3h38pxk08VvY0pgI-MGqWzqI5iB4AmVGF7qC44Yw3EmGT_RreOwt7ZohRIQYaKqB_7hwnlWAruuyRLC0yWdYtY5mxEtkbmiuSePFI6RkCIzlY=w1297-h270-s-no?authuser=1" alt="Hallelujah thank You Jesus Christ our Holy Lord Almighty Living GOD Most High"></p>
+<p>Спочатку нам потрібно створити сам макрос</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczNOd3jJLca7onjPtxT5NDQNvxfa7am9UnkY7JMTk40PBgZ4D-ES3sMp5Asu4XiNTeHwKe5EsG-JI1BH2t2vI8gobAelN8CQF-sFNaVezXsdNyCnkv666j72BEqhjeHAane_8E2_B1fQT8GvyMp30wVeKtf7DIdo_gOJ7URNMo4Pozt76wSYUkASDO7J8RU0Sog-7suaSw78aoZ993VTctQW0gBTgExT3LQQk8yuutDVZ6QQwMVdMvidKjx3J_7cCnOf7rYhoaWRegKp2hImJxjUDoLYowYqhNIJB7HVPhesl3_7vk3TtSRedLQbwiELoifW2NFPhfUQyBlDGTQBxZs66JvGLDf-pZLtmeT1SwHaYmsC6NEFQ-TU9zTdz9XWRADS6aCnmzmnqkNfxeBGvPg5Jzib2JMS3OSV5B4GTJgOxkugMd7M7eBL19kQFINP6eqHSJzqnaBs1N3IhjDZN35EEdguPnSiju2aCO5UZfO6Tt4KP3M6k72oD5knbcrGqwFQKi_9T6jxCBdZMBlLOesECcKiYVuA0eAqCQfGFILgGyrnmUZgWSv6-Yrn2167dmRmk2x5MQFoW9hW8L4yGp_J4Qo59oHSRjY8pSsRegsn-GGK3GH7CmQIeyUXEvfDIScBfsrj3t0sEn_UJb-pjAcpQhBVodT-LikZyfq3DFNMOysiNU1uwcyKPqPLw-IzfPu_emODlKYWGZW_fk58CfaET5Uu8hzAEOly8mIGljIJmWYUUHPPnzRYQz7ClQfd6-GFodtDDfOBvhdM8QkweTveJMJv0cttCTgj7IORbO2SyOu_UCvZfm6IpqGd68JvN-17ODVtguy_AVhjhij8ScpA6u_3_NGDzWf5Ih3h02x3d98VGFZvj7KH3G29rZhRNAaoL43Taf5KLplcCoRsyYOJQsuGDvhsVazUG_BFI6KA75RtPhQZQQ1G5nH5JA=w1190-h399-s-no?authuser=1" alt="Praise Jesus Christ our Holy Lord GOD Almighty"></p>
+<p>Переходимо до подій форми і на події Key Press переходимо до конструктора коду</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczO9ORzopb438QOTZljcQvhuDAHERfrxl8e8Tn3GX7FsxmmQngjgOu42SdASw1Ma_DAfeHwaZRoj2ODEb6OzSxLmGWbF7o88W-origH_Q2Qx2tmgGTTiZGQHrHrgki8gSSy1TR7csoUqldO1rHgMm5-r8h3uepBI_JaAGLIjYYt9lds1YLvc75L55sA7v9D1ad2rOzNmQM_CKKMuaVpG4zry9_S_1cKrm6kOB9Cie7Kzy4dbWDdKUlOxeCQenu9wQFf1MGTL9hg9hoevWijzQPUA1i4l_yyC0mHFfek0to3jWmXfxTnSc6CsHQajFheSsRVvD-URK9wm_xl405RH-L4-bkB2aYJwgv6pN0_itw_coxcwk-GjqCxDJu0RbxRuj9yNIbAxQUp6TNo1tvYQag5T4a-sXQGoujZKzKdZhBWkoaJpuXwThtGHIIDr9Psulh2f3DvJnGXKnxP-mqutNS1uVtwREtqrJOPKKxgYp7JZEdVFNibLtQUr3eny2gqM-OrTAULWHhT4ACeOl1dU9bsJ2ZnFoL7FcLgYRtfoeh7C6g7j1tKszPonmN6zPf8sxm8FQ8t55gbRlg3G-Vf1y-rHUEY3RikchWZpofF4dR3lZTIW7cZVOTjK9eYboSOGdviZNDNa-zd3FNTfTNQuS7JjlVzIrJA1trDmMhaPTWAOUX0e7jeeulU2ICDUVWka5iKzzkCA7zADZCZ7FwFc4syGZQR7XZ5ij-qqgwzSn6arywQ4YjvexiaoNhX4HACwpKvW-bumgf6Y3oJvbp3AF4EEJBSkw3v5xaNqFlhkwDRrg8ZGRUes2hkFu3P_YIMfgbJ3MucM4DYULdcg3RO1KSh0Syq5hspqCEJlJCt92ioa2JtptLkjEqG7PR15tiWn3Msm8D1ULlniNqUItYhDVpC3tRZnxxE8EyEYvRHSdncUicV-KgixLvI6eTCp=w896-h438-s-no?authuser=1" alt="Hallelujah thank You Jesus Christ our Holy Lord Almighty Living GOD Most High"></p>
+<p>У вікні, що відкрилося, змінюємо текст функції на наступний:</p>
+<pre><code class="language-VBA">Private Sub Form_KeyPress(KeyAscii As Integer)
+  If KeyAscii = vbKeyEscape Then
+    DoCmd.RunMacro &quot;Close_Main_Menu_Macro&quot;
+  End If
+End Sub
+</code></pre>
+
+            
+            
+        </body>
+        </html>

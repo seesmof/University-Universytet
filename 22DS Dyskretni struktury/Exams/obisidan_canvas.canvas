@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"7256b2a424d9d892","type":"file","file":"🎓 DS lecture notes.md","x":-1120,"y":-250,"width":540,"height":710},
+		{"id":"50b23ba03ffc31ba","type":"text","text":"watch videos three times:\n- [x] just watch and try paying attention\n- [x] watch and note down important things\n- [ ] read the notes and watch the lectures","x":-1120,"y":-440,"width":540,"height":180},
+		{"id":"423417c9d2d218d1","type":"text","text":"read the book three times:\n- [x] just read and try paying attention\n- [ ] read and note down important things\n- [ ] read the notes and then read the book","x":-560,"y":-440,"width":540,"height":180},
+		{"id":"c3247937f3723364","type":"file","file":"🎓 DS reading notes.md","x":-560,"y":-250,"width":540,"height":710},
+		{"id":"774f3502215e5f54","type":"text","text":"read the video and reading notes, then combine everything together\n\nHallelujah thank YOU Jesus Christ our Holy Lord GOD Almighty KING of kings and LORD of lords ✝️❣️🤲🏼","x":0,"y":-440,"width":540,"height":180},
+		{"id":"6c8f60eddcca9838","type":"file","file":"🎓 DS combined notes.md","x":0,"y":-250,"width":540,"height":710},
+		{"id":"9d6e691e30a245aa","type":"text","text":"DS means Discrete Structures and Knowledge Representation","x":-1120,"y":-520,"width":1660,"height":60,"color":"2"},
+		{"id":"8e8ee869965e1a5f","type":"text","text":"![](https://i.imgur.com/4b5fYJT.jpeg)","x":-1120,"y":480,"width":540,"height":440},
+		{"id":"73b86c5d99f5306e","type":"text","text":"![](https://i.imgur.com/OJTFlPa.jpeg)","x":-1120,"y":940,"width":540,"height":260},
+		{"id":"b3ec17b2c8740ecb","type":"text","text":"![](https://i.imgur.com/iYjBeZF.jpeg)","x":-1120,"y":1220,"width":540,"height":220},
+		{"id":"fa1de16ed11a4e4b","type":"link","url":"https://youtu.be/cUqL9isajZ8","x":-1120,"y":-1040,"width":240,"height":500},
+		{"id":"1b556adc8f8bf868","type":"link","url":"https://youtu.be/wltFgCrP5ls","x":-880,"y":-1040,"width":240,"height":500},
+		{"id":"8086ef47f6e88bdb","type":"link","url":"https://youtu.be/V313v9Oezgo","x":-640,"y":-1040,"width":240,"height":500},
+		{"id":"f4d607a72517ee26","type":"link","url":"https://youtu.be/K61D09ER_zY","x":-400,"y":-1040,"width":240,"height":500},
+		{"id":"9a7ce1fad46538ee","type":"link","url":"https://youtu.be/Gxqkutxt7wM","x":-160,"y":-1040,"width":240,"height":500},
+		{"id":"a9399125f15ebf16","type":"link","url":"https://youtu.be/TsZrLNZDPHo","x":80,"y":-1040,"width":240,"height":500},
+		{"id":"4277d26c67dafb8c","type":"link","url":"https://youtu.be/i2aG7ujqPSs","x":320,"y":-1040,"width":220,"height":500},
+		{"id":"2a77ebafae4a1e9e","type":"file","file":"files/методичка_лекції.pdf","x":-1120,"y":-1660,"width":1660,"height":620}
+	],
+	"edges":[]
+}

@@ -1,0 +1,413 @@
+<!-- index.html - Resume -->
+
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Резюме - Онищенко Олег</title>
+    <meta name="description" content="Це сторінка мого особистого резюме." />
+    <meta
+      name="keywords"
+      content="резюме, онищенко олег, олег онищенко, олег онищенко резюме,"
+    />
+  </head>
+  <body>
+    <div
+      style="background-color: antiquewhite; min-height: 100vh"
+      class="container-fluid p-3"
+    >
+      <!-- PAGE CONTAINER -->
+      <div class="container">
+        <!-- NAVBAR CONTAINER -->
+        <div class="row mb-3">
+          <nav class="navbar navbar-expand-lg navbar-light bg-white rounded">
+            <!-- LOGO -->
+            <a class="navbar-brand" href="./index.html" style="font-weight: 500"
+              >Resume</a
+            >
+
+            <!-- TOGGLE BUTTON -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- NAVIGATION CONTAINER -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a href="https://github.com/seesmof" class="nav-link active">
+                    Github</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="mailto:seesmwork@gmail.com" class="nav-link active">
+                    Email
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <main class="bg-white rounded p-3 mb-3 row">
+          <img
+            src="./logo.jpg"
+            alt="personal logo image"
+            style="max-height: 30vh; object-fit: cover; margin-top: 1rem"
+            class="mb-3 mb-lg-4"
+          />
+          <section>
+            <h2 class="h5">Особисті дані</h2>
+            <ul>
+              <li>Прізвище: Онищенко</li>
+              <li>Ім&#39;я: Олег</li>
+              <li>По батькові: Антонович</li>
+              <li>Дата народження: 21.09.2005</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="h5">Освіта</h2>
+            <ul>
+              <li>
+                <h3 class="h6">
+                  Національний університет &quot;Запорізька політехніка&quot;
+                </h3>
+                <div>Факультет Комп&#39;ютерних наук та технологій</div>
+                <div>Інженерія програмного забезпечення</div>
+                <em>2022 - 2026</em>
+              </li>
+              <li class="mt-2">
+                <h3 class="h6">Запорізька гімназія №47</h3>
+                <div>Одинадцять класів шкільної освіти</div>
+                <em>2011 - 2022</em>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="h5">Професійні навички</h2>
+            <ol>
+              <li>Загальний рівень володіння комп&#39;ютером - високий</li>
+              <li>
+                Відомі офісні програми -
+                <ol>
+                  <li>
+                    Microsoft Office
+                    <div>Рівень володіння - високий</div>
+                  </li>
+                  <li>
+                    Adobe Photoshop
+                    <div>Рівень володіння - середній</div>
+                  </li>
+                  <li>
+                    Figma
+                    <div>Рівень володіння - низький</div>
+                  </li>
+                  <li>
+                    Canva
+                    <div>Рівень володіння - середній</div>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                Відомі середовища розробки -
+                <ol>
+                  <li>
+                    Microsoft Visual Studio
+                    <div>Рівень володіння - низький</div>
+                  </li>
+                  <li>
+                    Microsoft Visual Studio Code
+                    <div>Рівень володіння - високий</div>
+                  </li>
+                  <li>
+                    Sublime Text
+                    <div>Рівень володіння - середній</div>
+                  </li>
+                  <li>
+                    Notepad++
+                    <div>Рівень володіння - високий</div>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                Мови програмування -
+                <ol>
+                  <li>TypeScript</li>
+                  <li>Python</li>
+                  <li>C++</li>
+                </ol>
+              </li>
+            </ol>
+          </section>
+          <section id="contacts">
+            <article>
+              <h2 class="h5">Контактна інформація</h2>
+              <div>Мобільний телефон: +380680077147</div>
+              <div>
+                Електронна пошта:
+                <a class="link-dark" href="mailto:seesmwork@gmail.com"
+                  >seesmwork@gmail.com</a
+                >
+              </div>
+              <div>
+                Посилання на Github:
+                <a class="link-dark" href="https://github.com/seesmof"
+                  >seesmof</a
+                >
+              </div>
+            </article>
+            <article>
+              <h3 class="h6 mt-2">Соціальні мережі</h3>
+
+              <div id="social">
+                <a
+                  class="link-dark row"
+                  style="margin-left: 0.1rem"
+                  href="https://github.com/seesmof"
+                  title="Open Twitter profile"
+                  target="_self"
+                >
+                  Twitter
+                </a>
+                <a
+                  class="link-dark row"
+                  style="margin-left: 0.1rem"
+                  href="https://github.com/seesmof"
+                  title="Open LinkedIn profile"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  class="link-dark row"
+                  style="margin-left: 0.1rem"
+                  href="https://github.com/seesmof"
+                  title="Open Medium profile"
+                >
+                  Medium
+                </a>
+                <a
+                  class="link-dark row"
+                  style="margin-left: 0.1rem"
+                  href="https://github.com/seesmof"
+                  title="Open Reddit profile"
+                >
+                  Reddit
+                </a>
+              </div>
+            </article>
+          </section>
+          <section>
+            <h2 class="h5 mt-3">Контактна форма</h2>
+            <form method="post" class="needs-validation" id="form">
+              <label class="form-label mt-2" for="name"> Ім&#39;я </label>
+              <input
+                class="form-control mb-3"
+                type="text"
+                id="name"
+                placeholder="John Doe"
+                name="name"
+                required
+              />
+
+              <label class="form-label" for="email"> Електронна пошта </label>
+              <input
+                class="form-control mb-3"
+                type="email"
+                id="email"
+                placeholder="example@company.com"
+                name="email"
+                required
+              />
+
+              <label class="form-label" for="phone"> Телефон </label>
+              <input
+                class="form-control mb-3"
+                type="tel"
+                id="phone"
+                placeholder="+13544110833"
+                name="phone"
+                required
+              />
+
+              <label class="form-label" for="message">
+                Повідомлення. Довжина:
+                <span id="number-of-characters">0</span>
+              </label>
+              <textarea
+                name="message"
+                id="message"
+                rows="4"
+                placeholder="Введіть ваше повідомлення тут..."
+                style="font-family: inherit"
+                required
+                class="form-control mb-3"
+              ></textarea>
+
+              <button type="submit" id="form-submit" class="btn btn-primary">
+                Відправити
+              </button>
+            </form>
+          </section>
+        </main>
+
+        <div class="row">
+          <footer
+            class="col-12 p-3 bg-white rounded d-flex align-items-center justify-content-between"
+          >
+            <hr />
+            <a class="link-dark" href="./table.html">
+              Я вмію створювати таблиці
+            </a>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(document).ready(function () {
+        const nameInput = $("#name");
+        const emailInput = $("#email");
+        const phoneInput = $("#phone");
+        const messageInput = $("#message");
+        const form = $("#form");
+
+        messageInput.on("input", function (e) {
+          var value = $(this).val();
+          $("#number-of-characters").text(value.length);
+        });
+
+        const clearInputs = () => {
+          nameInput.val("");
+          emailInput.val("");
+          phoneInput.val("");
+          $("#message").val("");
+        };
+
+        const validateName = () => {
+          const regex = /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\s]+$/;
+
+          if (!regex.test(nameInput.val())) {
+            const paragraph =
+              "Ім'я має містити лише Українські або Англійські літери.";
+
+            return {
+              valid: false,
+              message: paragraph,
+            };
+          } else {
+            return {
+              valid: true,
+              message: "",
+            };
+          }
+        };
+
+        const validateEmail = () => {
+          const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+          if (!regex.test(emailInput.val())) {
+            const paragraph =
+              "Електронна пошта має бути у форматі example@company.com.";
+
+            return {
+              valid: false,
+              message: paragraph,
+            };
+          } else {
+            return {
+              valid: true,
+              message: "",
+            };
+          }
+        };
+
+        const validatePhone = () => {
+          const regex = /^[\s\d()+-]+$/;
+
+          if (!regex.test(phoneInput.val())) {
+            const paragraph =
+              "Телефон має містити лише цифри, пробіли або знаки +, -, ().";
+
+            return {
+              valid: false,
+              message: paragraph,
+            };
+          } else {
+            return {
+              valid: true,
+              message: "",
+            };
+          }
+        };
+
+        $("#form-submit").on("click", function (event) {
+          event.preventDefault();
+
+          var nameResults = validateName(nameInput);
+          var nameValid = nameResults.valid;
+          var nameMessage = nameResults.message;
+
+          var emailResults = validateEmail(emailInput);
+          var emailValid = emailResults.valid;
+          var emailMessage = emailResults.message;
+
+          var phoneResults = validatePhone(phoneInput);
+          var phoneValid = phoneResults.valid;
+          var phoneMessage = phoneResults.message;
+
+          var inputsEmpty = false;
+          var errorParagraphMessage = `${nameMessage} ${emailMessage} ${phoneMessage}`;
+          console.log(errorParagraphMessage);
+
+          if (nameInput.val() === "" || !nameValid) {
+            inputsEmpty = true;
+            nameInput.addClass("is-invalid");
+          }
+          if (emailInput.val() === "" || !emailValid) {
+            inputsEmpty = true;
+            emailInput.addClass("is-invalid");
+          }
+          if (phoneInput.val() === "" || !phoneValid) {
+            inputsEmpty = true;
+            emailInput.addClass("is-invalid");
+          }
+
+          if (!nameValid || !emailValid || !phoneValid) {
+            alert(errorParagraphMessage);
+          } else if (!inputsEmpty && nameValid && emailValid && phoneValid) {
+            nameInput.addClass("is-valid");
+            emailInput.addClass("is-valid");
+            phoneInput.addClass("is-valid");
+            messageInput.addClass("is-valid");
+            clearInputs();
+          }
+          console.log(phoneInput, phoneValid);
+        });
+      });
+    </script>
+  </body>
+</html>

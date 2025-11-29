@@ -1,0 +1,14 @@
+{
+  "startingTime": 0,
+  "timeToTakeParts": 4,
+  "timeToWork": 480,
+  "parts": {
+    "red": { "mass": 2, "interval": 3, "holes": 0 },
+    "heavyRed": { "mass": 2.4, "interval": 5, "holes": 0 },
+    "green": { "mass": 3, "interval": 20, "temperature": 85, "holes": 2 }
+  },
+  "machines": {
+    "drilling machine": { "duration": 15, "parts": ["red", "heavyRed"] },
+    "lathe": { "duration": 20, "parts": ["green"] }
+  }
+}

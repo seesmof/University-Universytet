@@ -1,0 +1,14 @@
+All the Assembly code the LORD JESUS helped me find:
+- https://portal.abuad.edu.ng/lecturer/documents/1595337617Advanced.pdf
+- http://www.petesqbsite.com/sections/tutorials/tuts/doorknob/asm_tutorial1.html
+- https://cse.hkust.edu.hk/~cktang/cs180/tasm.htm
+- https://github.com/britovski/tasm_hello/blob/main/hello.asm
+- https://github.com/fredimachado/Assembly/blob/master/tasm/01/hello.asm
+- https://tshahab.com/assembly-language/print-a-single-character-on-screen/
+- https://stackoverflow.com/questions/74151478/how-to-output-string-char-by-char-in-tasm
+- http://bitsavers.informatik.uni-stuttgart.de/pdf/borland/turbo_assembler/Turbo_Assembler_Version_5_Users_Guide.pdf
+- https://board.flatassembler.net/topic.php?t=14049
+- https://github.com/tisnik/8bit-fame/blob/f200da90d61ab649e78e1ffab2a41d232102b1b6/Speccy-asm/106-direct-speaker-di.asm
+- https://www.daniweb.com/programming/software-development/threads/152406/assembly-code-for-countdown-timer
+- https://stackoverflow.com/questions/17252257/generating-sound-in-assembly-8086
+- https://github.com/ishaanag/8051-Alarm-Clock/blob/master/ISR_example.asm

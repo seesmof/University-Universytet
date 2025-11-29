@@ -1,0 +1,7 @@
+matplotlib
+nicegui
+pywin32
+gputil
+psutil
+pandas
+wmi

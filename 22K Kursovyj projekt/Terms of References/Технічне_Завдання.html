@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&Rcy;&iecy;&zcy;&yucy;&mcy;&iecy;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <div align="center">
+  <h1>Технічне Завдання</h1>
+  <h3>Автоматизована система розрахунку заробітної плати</h3>
+  <p>Виконано Онищенко Олегом, студентом групи КНТ-122</p>
+</div>
+<h3 id="резюме">Резюме</h3>
+<p>База даних призначена для розрахунку заробітної плати працівників фірми</p>
+<p>Система передбачає автоматичний розрахунок заробітної плати працівників фірми з урахуванням податків</p>
+<h3 id="звязки">Зв'язки</h3>
+<table>
+<thead>
+<tr>
+<th>Назва</th>
+<th>Клас</th>
+<th>Ступінь</th>
+<th>Ключ</th>
+<th>Зв'язана</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employee_Table</td>
+<td>Обов'язковий</td>
+<td>1:N</td>
+<td>Employee_ID</td>
+<td>Payroll_Table.Employee_ID</td>
+</tr>
+<tr>
+<td>Employee_Table</td>
+<td>Обов'язковий</td>
+<td>1:N</td>
+<td>Employee_ID</td>
+<td>Deductions_Table.Employee_ID</td>
+</tr>
+<tr>
+<td>Employee_Table</td>
+<td>Обов'язковий</td>
+<td>1:N</td>
+<td>Employee_ID</td>
+<td>Bonuses_Table.Employee_ID</td>
+</tr>
+<tr>
+<td>Employee_Table</td>
+<td>Обов'язковий</td>
+<td>N:1</td>
+<td>Employee_Position</td>
+<td>Position_Table.Position_ID</td>
+</tr>
+<tr>
+<td>Position_Table</td>
+<td>Обов'язковий</td>
+<td>N:1</td>
+<td>Position_Department</td>
+<td>Department_Table.Department_ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="атрибути">Атрибути</h3>
+<table>
+<thead>
+<tr>
+<th>Назва</th>
+<th>Ключ?</th>
+<th>Тип</th>
+<th>Обов'язковий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Payroll_Table</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Payroll_ID</td>
+<td>primary</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Employee_ID</td>
+<td>foreign</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Monthly_Salary</td>
+<td>-</td>
+<td>money</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Total_Tax_Rate</td>
+<td>-</td>
+<td>float</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Total_Tax</td>
+<td>-</td>
+<td>money</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Bonuses</td>
+<td>-</td>
+<td>money</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Deductions</td>
+<td>-</td>
+<td>money</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Net_Pay</td>
+<td>-</td>
+<td>money</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Current_Date</td>
+<td>-</td>
+<td>date</td>
+<td>+</td>
+</tr>
+<tr>
+<td><em>Tax_Rate_Table</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Tax_ID</td>
+<td>primary</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Tax_Type</td>
+<td>-</td>
+<td>varchar</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Tax_Rate</td>
+<td>-</td>
+<td>float</td>
+<td>+</td>
+</tr>
+<tr>
+<td><em>Employee_Table</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Employee_ID</td>
+<td>primary</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Employee_Name</td>
+<td>-</td>
+<td>varchar</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Employee_Position</td>
+<td>-</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Employee_Gender</td>
+<td>-</td>
+<td>varchar</td>
+<td>-</td>
+</tr>
+<tr>
+<td><em>Deductions_Table</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Deduction_ID</td>
+<td>primary</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Employee_ID</td>
+<td>foreign</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Deduction_Amount</td>
+<td>-</td>
+<td>money</td>
+<td>+</td>
+</tr>
+<tr>
+<td><em>Bonuses_Table</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bonus_ID</td>
+<td>primary</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Employee_ID</td>
+<td>foreign</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Bonus_Amount</td>
+<td>-</td>
+<td>money</td>
+<td>+</td>
+</tr>
+<tr>
+<td><em>Postion_Table</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Position_ID</td>
+<td>primary</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Position_Name</td>
+<td>-</td>
+<td>varchar</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Position_Department</td>
+<td>foreign</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Position_Monthly_Salary</td>
+<td>-</td>
+<td>money</td>
+<td>+</td>
+</tr>
+<tr>
+<td><em>Department_Table</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Department_ID</td>
+<td>primary</td>
+<td>int</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Department_Name</td>
+<td>-</td>
+<td>varchar</td>
+<td>+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="схема-даних">Схема даних</h3>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczOJtRru31C4MFAfvXuPnC3LB2UjiY5580EcKH1Er9Um5sBxoH4t2pQ1ZWZiV7apXrh60Nfc6sm0hUxdVI9P2LxdFzt-9BlhsikEuc64J6Xrtss5fisL8M9h3hnz2rFHDyeLPiYmU8fRdeSPJgO-PCgHGVLDWQhz6RG2tK6ClhrcdCOB-26pRC9FsWG5C2zJojPPtNQfuYPnOvIihgEDfTXCfRPIgMqYoAAoy1jtRkTnt4lOVjQ1ghJwavAbHBGQb0xavpYnu31vtuNqkYzRTJn2lvkxKs7w2JhdQ_PvcxDCjiKsMmyMiPI8QcIjTAJ4a4JxilKLcMkOBDF27TUxLUal8ZAwrS6Zwib4oBAzP4A3Py80Cjszlvex1sYjKQo_Y2votQfiKnMBb8bagYLYuw60FKXxl0lwF110A_BkAvw0CHhiSRmAMj4R6sF5h5WCKkVdhNVmue-oyO9p7l3dHp6j78RPqtGpVJLinLIdJZTSKcnlckdU7dVECDNyld8UYiBvaYpLDpjkXIye_QeHi_NNUKO6TbF0w2AbcD9Dv4fiNx7Kwl0BVXQHdSnIAMuh9Z4INiXyqx5R2yGcpxRgUPGa4qxkS-ySX_lExoQWU8y-0sL0SICCoxz7fYacjLIQafw6rfFTSelIocQuF1Ch25iFiclaWwcoG2q-G6U8CVqpDhoqKbuem-yHLePNiohbgMdBWvFeoTJSJ7pjHx5e2F69H3DNvbf0iC45FQ8ux5Xp-JiwKbrPthjAjhgWl2bpd8VtxXTClO-qptE5GDWD5jxv1WRE5Eee4Ym2FFBpjsC0a6MXNxC0yjC03xNuicSMPKvDhfJ__O3VbPsNMVQavH1NLQRPd54HOEKIEsZAHUk5LvqrFvgeN7RUBxT2xj_Odes9QKvlq1_6nHffwsWpLp6OLwAUAzWFwTyF6j75m1dsszXWcj0MKvgrxEn5iA=w810-h499-s-no?authuser=1" alt="Слава Ісусу Христу"></p>
+<h3 id="запити">Запити</h3>
+<ul>
+<li>New_Payroll_Record_Query: Запит для створення нової зарплати працівника</li>
+<li>Employee_Data_Query: Запит на додаткову інформацію про працівника</li>
+<li>Total_Tax_Rate_Query: Запит на загальний відсоток податку</li>
+</ul>
+<h3 id="макроси">Макроси</h3>
+<ul>
+<li>Close_Employee_Form_Macro: Закриває форму працівника</li>
+<li>Close_Payroll_Form_Macro: Закриває форму зарплати</li>
+<li>Close_Payroll_Report_Macro: Закриває звіт зарплати</li>
+</ul>
+<h3 id="форми">Форми</h3>
+<ul>
+<li>Bonuses_Form: Форма бонусів</li>
+<li>Deductions_Form: Форма відрахувань</li>
+<li>Employee_Data_Form: Форма додаткової інформації про працівників</li>
+<li>Employee_Form: Форма працівника</li>
+<li>Menu_Form: Форма меню</li>
+<li>Payroll_Form: Форма зарплати</li>
+<li>Tax_Rate_Form: Форма відсотків податку</li>
+</ul>
+<h3 id="звіти">Звіти</h3>
+<ul>
+<li>Employee_Data_Report: Звіт додаткової інформації про працівників</li>
+<li>Payroll_Report: Звіт зарплати</li>
+<li>Tax_Rates_Report: Звіт відсотків податку</li>
+</ul>
+
+            
+            
+        </body>
+        </html>

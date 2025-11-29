@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Grapes app
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="row row-cols-1">
+<div class="col">
+  <a id="newBunch" style="width: 100%;" class="btn btn-success col" href="{% url 'grapes:new_bunch' %}">Add new bunch</a>
+</div>
+
+<div class="col">
+  <hr class="mt-3">
+  <em>Number of columns</em>
+  <div style="display: block;" class="btn-group mt-1" role="group">
+    <button id="one" type="button" class="btn btn-success">One</button>
+    <button id="two" type="button" class="btn btn-success">Two</button>
+    <button id="three" type="button" class="btn btn-success">Three</button>
+  </div>
+</div>
+</div>
+
+<div style="padding: 0 .5rem;" class="my-3 row row-cols-1 g-3" id="gridContainer">
+  {% if bunches %}
+    {% for bunch in bunches %}
+      <div class="card col-50">
+        <div class="card-body">
+          <strong class="card-title">Bunch {{ bunch.id }}</strong>
+          <p class="card-subtitle text-body-secondary">Stage: {{ bunch.stage }}</p>
+          <a class="card-link text-success" href="{% url 'grapes:bunch' bunch.id %}">See results</a>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No grapes found</p>
+  {% endif %}
+</div>
+{% else %}
+<h3>This is grapes quality control app.</h3>
+
+<a href="{% url 'login' %}" class="btn btn-success mt-3">Log in</a>
+<a href="{% url 'signup' %}" class="btn btn-primary mt-3">Don't have an account?</a>
+{% endif %}
+{% endblock %}
+
+{% block code %}
+const activeButton=1;
+const gridContainer=document.querySelector("#gridContainer");
+
+const oneButton=document.querySelector("#one");
+const twoButton=document.querySelector("#two");
+const threeButton=document.querySelector("#three");
+
+const activateButton=()=>{
+  if (activeButton===1) oneButton.classList.add("active");
+  else if (activeButton===2) twoButton.classList.add("active");
+  else if (activeButton===3) threeButton.classList.add("active");
+}
+
+const cleanContainer = ()=>{
+  gridContainer.classList.remove("row-cols-3");
+  gridContainer.classList.remove("row-cols-2");
+  gridContainer.classList.remove("row-cols-1");
+}
+
+const removeActiveButton=()=>{
+  oneButton.classList.remove("active");
+  twoButton.classList.remove("active");
+  threeButton.classList.remove("active");
+}
+
+oneButton.addEventListener("click",()=>{
+  console.log("one column");
+  cleanContainer();
+  removeActiveButton();
+  oneButton.classList.add("active");
+  gridContainer.classList.add("row-cols-1");
+})
+twoButton.addEventListener("click",()=>{
+  console.log("two column");
+  cleanContainer();
+  removeActiveButton();
+  twoButton.classList.add("active");
+  gridContainer.classList.add("row-cols-2");
+})
+threeButton.addEventListener("click",()=>{
+  console.log("three column");
+  cleanContainer();
+  removeActiveButton();
+  threeButton.classList.add("active");
+  gridContainer.classList.add("row-cols-3");
+})
+
+window.addEventListener("load", activateButton);
+{% endblock %}

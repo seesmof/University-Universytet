@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Фонд підтримки постраждалих від війни</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/index.html">
+        <img src="./images/logo.png" alt="Блакитна іконка гори" />
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#contacts">Контакти</a></li>
+          <li><a href="#hero">Головна</a></li>
+          <li><a href="#work">З чим працюємо</a></li>
+        </ul>
+      </nav>
+      <a href="#support" class="button">Підтримати фонд</a>
+    </header>
+    <main>
+      <section class="hero" id="hero">
+        <article class="hero_container">
+          <h1>Фонд підтримки постраждалих від війни</h1>
+          <p>Ми хочемо допомогти кожному, хто постраждав під час війни</p>
+          <a href="#support" class="button">Підтримати фонд</a>
+        </article>
+      </section>
+      <section class="work" id="work">
+        <article class="work_intro">
+          <h2 class="slim_heading">
+            Ми – фонд підтримки постраждалих від війни
+          </h2>
+          <p class="work_intro_goal">
+            Наша мета – психологічна та гуманітарна допомога українцям
+          </p>
+          <p class="blue_text">
+            Кожен, хто звернеться, отримає допомогу, яка у наших силах
+          </p>
+        </article>
+        <article class="work_boxes">
+          <div class="blue_box">
+            <div class="box_content">
+              <h3>Реабілітаційний центр</h3>
+              <p>
+                Ми допомагаємо людям, які постраждали, знайти правильне
+                лікування. У нашому фонді є чотири напрями: фізичної та
+                реабілітаційної медицини, терапевтичне, неврологічне та
+                хірургічне. Ми маємо заклади-партнери, де швидко та якісно
+                можуть надати допомогу.
+              </p>
+            </div>
+            <div class="box_image">
+              <img src="./images/rehabBoxImage.png" alt="Image of the box" />
+            </div>
+          </div>
+          <div class="blue_box">
+            <div class="box_content">
+              <h3>Робота за дітьми</h3>
+              <p>
+                Діти – найвразливіша частина суспільства, і їм особливо потрібна
+                підтримка дорослих. Тому наш фонд збирає речі для дітей,
+                проводить літні й зимові табори, майстер-класи та за потреби –
+                дитячих психотерапевтів.
+              </p>
+            </div>
+            <div class="box_image">
+              <img src="./images/kidsBoxImage.png" alt="Image of the box" />
+            </div>
+          </div>
+          <a href="#support" class="button">Дізнатися більше</a>
+        </article>
+        <article class="mission">
+          <div class="blue_box">
+            <p>
+              Наша місія – щоб кожен українець мав можливсіть отримати допомогу
+              й не залишився наодинці зі своїми проблемами
+            </p>
+            <img
+              src="./images/blueFragment.png"
+              alt="Неважливе декоративне зображення для стилізації секції місії"
+              id="mission_fragment"
+            />
+            <div id="mission_image_container">
+              <img
+                src="./images/kidsImage.png"
+                alt="Зображення дітей"
+                id="mission_image"
+              />
+            </div>
+          </div>
+        </article>
+        <article class="work_goal">
+          <h2 class="slim_heading">Підтримайте нашу роботу!</h2>
+          <p class="blue_text">
+            Усі ваші донати йдуть на роботу фонду, заробітні плати ми виплачуємо
+            з коштів грантодавців
+          </p>
+          <strong> Наша мета 10 000 000 гривень! </strong>
+          <div class="work_goal_counter">
+            <span>00</span>
+            <hr />
+            <span>230</span>
+            <hr />
+            <span>025</span>
+          </div>
+          <a href="#support" class="button">Дізнатися більше</a>
+        </article>
+      </section>
+    </main>
+    <footer id="contacts">
+      <section class="footer_top">
+        <h2 class="slim_heading">Контакти</h2>
+        <div class="footer_info">
+          <article>
+            <div class="footer_info_images">
+              <a href="#">
+                <img src="./images/phone_icon.png" alt="Іконка телефону" />
+              </a>
+            </div>
+            <p>
+              Якщо у вас виникають питання – телефонуйте за номером
+              <a href="#">+380 68 41 59 697</a>
+            </p>
+          </article>
+          <article>
+            <div class="footer_info_images">
+              <a href="#">
+                <img src="./images/telegram_icon.png" alt="Іконка Telegram" />
+              </a>
+              <a href="#">
+                <img src="./images/whatsapp_icon.png" alt="Іконка WhatsApp" />
+              </a>
+            </div>
+            <p>Або пишіть нам у чат-бот</p>
+          </article>
+        </div>
+      </section>
+      <section class="footer_contact">
+        <div class="footer_box">
+          <div class="email_image_container">
+            <img
+              src="./images/email.png"
+              alt="Картинка жовтого конверту зі сповіщенням та кількох менш помітних конвертів навколо нього ззаду"
+            />
+          </div>
+          <div class="footer_form">
+            <p>
+              Щоб отримувати звіти та оновлення фонду, підпишіться на розсилку
+            </p>
+            <form method="POST">
+              <input
+                type="text"
+                name="userName"
+                id="nameInput"
+                placeholder="Імʼя"
+              />
+              <input
+                type="email"
+                name="userEmail"
+                id="emailInput"
+                placeholder="Емейл"
+                required
+              />
+              <button class="button">Підписатися</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <div class="icon_link">
+        <a target="_blank" href="https://icons8.com/icon/49261/mountain"
+          >Mountain</a
+        >
+        icon by <a target="_blank" href="https://icons8.com">Icons8</a> (іконка
+        шапки)
+      </div>
+    </footer>
+  </body>
+</html>

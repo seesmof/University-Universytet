@@ -1,0 +1,3 @@
+- embed map 
+- place a marker on a town 
+- on marker hover show some text 
