@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 # Load data
 root_folder = os.path.dirname(os.path.abspath(__file__))
 file_name = "breast-cancer.csv"
-file_path = os.path.join(root_folder, file_name)
+file_path = os.path.join(root_folder, "data", file_name)
 
 # Print table
 data = pd.read_csv(file_path, na_values=["?"])
@@ -22,4 +22,12 @@ data["breast"].replace({"left": 1, "right": 0}, inplace=True)
 data["irradiat"].replace({"yes": 1, "no": 0}, inplace=True)
 print(data.head())
 
-# pie, hist, scatter, bar
+# Pie
+data.head().plot(kind="pie", y="deg-malig")
+# Hist
+data.hist(column="deg-malig")
+# Scatter
+data.plot(kind="scatter", x="age", y="tumor-size")
+# Bar
+data.head().plot(kind="bar", y="deg-malig")
+plt.show()
