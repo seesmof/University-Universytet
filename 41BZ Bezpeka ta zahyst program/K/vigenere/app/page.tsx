@@ -29,7 +29,7 @@ export default function Home() {
       {/* Header */}
       <div className="rounded-md bg-white border-2 border-sky-300 flex w-1/4 p-3 gap-3">
         <span>🔐</span>
-        <h1>Vigenere Cipherer</h1>
+        <h1>Vigenere Cipher/Decipher</h1>
       </div>
 
       {/* Main App */}
