@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 from matplotlib import pyplot as plt
+from sklearn.model_selection import KFold, train_test_split
+from sklearn.neighbors import KNeighborsClassifier
 
 # Load data
 root_folder = os.path.dirname(os.path.abspath(__file__))
@@ -16,7 +18,14 @@ print()
 data["node-caps"] = data["node-caps"].fillna(data["node-caps"].mode())
 print(data.info())
 
-# -- REPORT --
+y = data["Class"]
+X = data.drop(["Class"], axis=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
+
 # Classifiers
+# KNN
+KNN = KNeighborsClassifier(n_neighbors=3)
+KNN.fit
+
 # Optimized
 # Comparison
