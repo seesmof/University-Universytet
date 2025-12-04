@@ -42,10 +42,8 @@ def main():
         primary="#5898d4", secondary="#26a69a", accent="#9c27b0", positive="#21ba45"
     )
 
-    with ui.column().classes(
-        "w-full h-[97vh] items-center justify-center bg-sky-50 dark:bg-slate-900 rounded-md"
-    ):
-        with ui.card().classes("w-full max-w-lg p-6 shadow-xl rounded-xl"):
+    with ui.column().classes("w-full h-[97vh] items-center justify-center"):
+        with ui.card().classes("w-full max-w-lg p-6 shadow-xl border-md rounded-xl"):
             with ui.row().classes("w-full justify-center mb-4"):
                 ui.icon("lock", size="3em", color="primary")
             ui.label("Vigenère Cipher").classes(

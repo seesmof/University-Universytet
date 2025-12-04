@@ -1,3 +1,4 @@
 nicegui
 flet
 niceguicrud
+django
