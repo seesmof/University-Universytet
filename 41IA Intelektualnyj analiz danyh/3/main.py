@@ -1,31 +1,36 @@
-import os
 import pandas as pd
 from matplotlib import pyplot as plt
-from sklearn.model_selection import KFold, train_test_split
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.dummy import DummyClassifier
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
 
-# Load data
-root_folder = os.path.dirname(os.path.abspath(__file__))
-file_name = "breast-cancer.csv"
-file_path = os.path.join(root_folder, "data", file_name)
 
-# Print table
-data = pd.read_csv(file_path, na_values=["?"])
-print(data.head())
-print()
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y)
 
-# Fill missing values
-data["node-caps"] = data["node-caps"].fillna(data["node-caps"].mode())
-print(data.info())
+classifiers = {
+    "ZeroRule": DummyClassifier(strategy="most_frequent"),
+    "K-Nearest Neighbors": KNeighborsClassifier(n_neighbors=5),
+    "Decision Tree": DecisionTreeClassifier(max_depth=5),
+    "Gaussian Naive Bayes": GaussianNB(),
+    "Linear SVM": SVC(kernel="linear", C=0.025),
+}
 
-y = data["Class"]
-X = data.drop(["Class"], axis=1)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
+results = dict()
 
-# Classifiers
-# KNN
-KNN = KNeighborsClassifier(n_neighbors=3)
-KNN.fit
+for model in classifiers:
+    classifiers[model].fit(X_train, y_train)
+    y_predict = classifiers[model].predict(X_test)
+    results[model] = accuracy_score(y_test, y_predict)
 
-# Optimized
-# Comparison
+results_table = pd.Series(results)
+print(results_table)
+
+results_table.plot(kind="bar")
+plt.show()
