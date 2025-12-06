@@ -9,13 +9,13 @@ export default function Home() {
 
   const baseUrl = "http://127.0.0.1:42248";
   const handleEncrypt = async () => {
-    let url = `${baseUrl}/encrypt/?text=${givenText}&key=${key}`;
-    let result = await (await fetch(url)).text();
+    const url = `${baseUrl}/encrypt/?text=${givenText}&key=${key}`;
+    const result = await (await fetch(url)).text();
     setOutput(result);
   };
   const handleDecrypt = async () => {
-    let url = `${baseUrl}/decrypt/?text=${givenText}&key=${key}`;
-    let result = await (await fetch(url)).text();
+    const url = `${baseUrl}/decrypt/?text=${givenText}&key=${key}`;
+    const result = await (await fetch(url)).text();
     setOutput(result);
   };
 
