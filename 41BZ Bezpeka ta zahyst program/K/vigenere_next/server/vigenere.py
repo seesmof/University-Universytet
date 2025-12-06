@@ -1,13 +1,29 @@
 from flask import Flask, request
 from flask_cors import CORS
 
-
+app = Flask(__name__)
+CORS(app)
+app.config["CORS_HEADERS"] = "Content-Type"
 ASCII_LENGTH = 128
 
 
 class Mode:
     ENCRYPT = "encrypt"
     DECRYPT = "decrypt"
+
+
+@app.route("/encrypt/")
+def encrypt():
+    query = request.args.to_dict()
+    result = vigenere(query["text"], query["key"], Mode.ENCRYPT)
+    return result
+
+
+@app.route("/decrypt/")
+def decrypt():
+    query = request.args.to_dict()
+    result = vigenere(query["text"], query["key"], Mode.DECRYPT)
+    return result
 
 
 def vigenere(message: str, key: str, mode: str = "encrypt") -> str:
@@ -35,24 +51,5 @@ def vigenere(message: str, key: str, mode: str = "encrypt") -> str:
     return result
 
 
-def test_vigener():
-    key = "G0D"
-    encrypted = vigenere("This, some message!", key, Mode.ENCRYPT)
-    decrypted = vigenere(encrypted, key, Mode.DECRYPT)
-    print(encrypted)
-    print(decrypted)
-
-
-def main():
-    app = Flask(__name__)
-    CORS(app)
-    app.config["CORS_HEADERS"] = "Content-Type"
-
-
-@app.route("/encrypt/")
-def encrypt_vigenere():
-    props = request.args.to_dict()
-
-
 if __name__ == "__main__":
-    main()
+    app.run(host="0.0.0.0", port=501000, debug=True)

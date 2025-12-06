@@ -1,6 +1,4 @@
-nicegui
-flet
-niceguicrud
-django
 flask
 flask-cors
+fastapi
+nicegui

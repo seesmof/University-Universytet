@@ -1,6 +1,4 @@
-from flask import Flask, request
-from flask_cors import CORS
-
+from nicegui import ui, app
 
 ASCII_LENGTH = 128
 
@@ -41,18 +39,3 @@ def test_vigener():
     decrypted = vigenere(encrypted, key, Mode.DECRYPT)
     print(encrypted)
     print(decrypted)
-
-
-def main():
-    app = Flask(__name__)
-    CORS(app)
-    app.config["CORS_HEADERS"] = "Content-Type"
-
-
-@app.route("/encrypt/")
-def encrypt_vigenere():
-    props = request.args.to_dict()
-
-
-if __name__ == "__main__":
-    main()
