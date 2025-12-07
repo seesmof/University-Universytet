@@ -33,7 +33,7 @@ def vigenere(message: str, key: str, mode: str = "encrypt") -> str:
     return result
 
 
-def test_vigener():
+def test_vigenere():
     key = "G0D"
     encrypted = vigenere("This, some message!", key, Mode.ENCRYPT)
     decrypted = vigenere(encrypted, key, Mode.DECRYPT)
