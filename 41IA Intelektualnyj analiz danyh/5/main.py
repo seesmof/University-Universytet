@@ -11,12 +11,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-file_name = "data.csv"
+file_name = "marketbasket.csv"
 file_path = os.path.join(current_dir, file_name)
 
 df = pd.read_csv(file_path)
-df = df.fillna(df.mean())
-Y = df["class"]
-X = df.drop(["class"], axis=1)
-X_train, X_test, y_train, y_test = train_test_split(X, Y)
-
+df = df.fillna(0)
+for column in df.columns:
+    df[column] = df[column].astype("bool")
+print(df.head())
