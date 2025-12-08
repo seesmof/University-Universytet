@@ -10,8 +10,6 @@ file_name = "vehicle.csv"
 file_path = os.path.join(current_dir, file_name)
 
 df = pd.read_csv(file_path)
-df = df.dropna()
-
 TARGET_FEATURE = "Class"
 Y = df[TARGET_FEATURE]
 X = df.drop([TARGET_FEATURE], axis=1)
