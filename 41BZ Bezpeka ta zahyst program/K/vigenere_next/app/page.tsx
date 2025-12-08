@@ -17,18 +17,11 @@ export default function Home() {
     const url = `${baseUrl}/decrypt/?text=${text}&key=${key}`;
     const result = await (await fetch(url)).text();
     setOutput(result);
+    console.log(key);
   };
-  const handleFile = async (e) => {
-    const file = e.target.files[0];
-    console.log(file);
-    if (!file) return;
-    if (!file.name.endsWith(".json")) return;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const text = e.target?.result as string;
-      console.log(JSON.parse(text));
-    };
+  const handlePaste = async () => {
+    const data = await navigator.clipboard.readText();
+    setText(data);
   };
 
   const copyResult = () => {
@@ -45,22 +38,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-sky-50 flex gap-3 flex-col items-center justify-center">
       {/* Header */}
-      <div className="rounded-md bg-white border-2 border-sky-300 flex w-1/4 p-3 gap-3">
+      <div className="rounded-md bg-white border-2 border-sky-300 flex p-3 gap-3">
         <span>🔐</span>
         <h1>Vigenere Cipher/Decipher</h1>
       </div>
 
       {/* Main App */}
-      <div className="rounded-md bg-white border-2 border-sky-300 flex flex-col p-3 gap-4 w-1/4">
-        <input
-          type="file"
-          name="fileUpload"
-          id="fileUpload"
-          className={BUTTON_CLASSES}
-          onChange={handleFile}
-          accept="json"
-        />
-
+      <div className="rounded-md bg-white border-2 border-sky-300 flex flex-col p-3 gap-4">
+        <button className={BUTTON_CLASSES} onClick={handlePaste}>
+          Paste
+        </button>
         <div className="flex flex-col gap-1">
           <label htmlFor="givenText">Given text</label>
           <textarea
@@ -86,7 +73,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex flex-row gap-3">
+        <div className="flex flex-row gap-3" hidden={!text || !key}>
           <button className={BUTTON_CLASSES} onClick={handleEncrypt}>
             Encrypt
           </button>
@@ -124,7 +111,7 @@ export default function Home() {
       </div>
 
       {/* Bible */}
-      <div className="rounded-md bg-white border-2 border-sky-300 flex flex-col w-1/4 p-3">
+      <div className="rounded-md bg-white border-2 border-sky-300 flex flex-col p-3 w-60">
         <span
           className="italic text-justify cursor-copy"
           onClick={() => navigator.clipboard.writeText(BibleVerse)}
