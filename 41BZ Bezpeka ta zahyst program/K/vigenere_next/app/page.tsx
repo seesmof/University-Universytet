@@ -3,24 +3,30 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [givenText, setGivenText] = useState("");
+  const [text, setText] = useState("");
   const [key, setKey] = useState("");
   const [output, setOutput] = useState("");
 
   const baseUrl = "http://127.0.0.1:42248";
   const handleEncrypt = async () => {
-    const url = `${baseUrl}/encrypt/?text=${givenText}&key=${key}`;
+    const url = `${baseUrl}/encrypt/?text=${text}&key=${key}`;
     const result = await (await fetch(url)).text();
     setOutput(result);
   };
   const handleDecrypt = async () => {
-    const url = `${baseUrl}/decrypt/?text=${givenText}&key=${key}`;
+    const url = `${baseUrl}/decrypt/?text=${text}&key=${key}`;
     const result = await (await fetch(url)).text();
     setOutput(result);
   };
 
-  const inputClasses =
+  const copyResult = () => {
+    setText(output);
+  };
+
+  const INPUT_CLASSES =
     "outline-2 rounded-md outline-sky-300 focus:outline-sky-500 px-2";
+  const BUTTON_CLASSES =
+    "bg-sky-50 p-1 hover:bg-sky-200 w-full rounded-md cursor-pointer";
   const BibleVerse =
     "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish, but have eternal life.";
 
@@ -34,16 +40,24 @@ export default function Home() {
 
       {/* Main App */}
       <div className="rounded-md bg-white border-2 border-sky-300 flex flex-col p-3 gap-4 w-1/4">
+        <input
+          type="file"
+          name="upload"
+          id="fileUpload"
+          className={BUTTON_CLASSES}
+        />
+
         <div className="flex flex-col gap-1">
           <label htmlFor="givenText">Given text</label>
-          <input
-            type="text"
-            id="givenText"
-            className={inputClasses}
+          <textarea
+            name="inputText"
+            id="inputText"
+            className={`${INPUT_CLASSES} resize-none`}
+            rows={3}
             placeholder="For example, Some text..."
-            value={givenText}
-            onChange={(e) => setGivenText(e.target.value)}
-          />
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          ></textarea>
         </div>
 
         <div className="flex flex-col gap-1">
@@ -51,7 +65,7 @@ export default function Home() {
           <input
             type="text"
             id="keyInput"
-            className={inputClasses}
+            className={INPUT_CLASSES}
             placeholder="For example, GOD"
             value={key}
             onChange={(e) => setKey(e.target.value.toUpperCase())}
@@ -59,16 +73,10 @@ export default function Home() {
         </div>
 
         <div className="flex flex-row gap-3">
-          <button
-            className="bg-sky-50 p-1 hover:bg-sky-200 w-full rounded-md"
-            onClick={handleEncrypt}
-          >
+          <button className={BUTTON_CLASSES} onClick={handleEncrypt}>
             Encrypt
           </button>
-          <button
-            className="bg-sky-50 p-1 hover:bg-sky-200 w-full rounded-md"
-            onClick={handleDecrypt}
-          >
+          <button className={BUTTON_CLASSES} onClick={handleDecrypt}>
             Decrypt
           </button>
         </div>
@@ -77,19 +85,27 @@ export default function Home() {
           <textarea
             name="ciphetOutput"
             id="ciphetOutput"
-            className={`${inputClasses} resize-none`}
+            className={`${INPUT_CLASSES} resize-none`}
             rows={3}
             placeholder="Output will be here..."
             value={output}
             readOnly
             onClick={(e) => navigator.clipboard.writeText(output)}
           ></textarea>
-          <button
-            className="bg-sky-50 rounded-md self-end w-fit py-1 px-2"
-            onClick={(e) => navigator.clipboard.writeText(output)}
-          >
-            Copy
-          </button>
+          <div className="flex flex-row justify-end gap-2">
+            <button
+              className="bg-sky-50 rounded-md self-end w-fit py-1 px-2"
+              onClick={copyResult}
+            >
+              Reverse
+            </button>
+            <button
+              className="bg-sky-50 rounded-md self-end w-fit py-1 px-2"
+              onClick={(e) => navigator.clipboard.writeText(output)}
+            >
+              Copy
+            </button>
+          </div>
         </div>
       </div>
 
