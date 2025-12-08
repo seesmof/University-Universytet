@@ -18,6 +18,18 @@ export default function Home() {
     const result = await (await fetch(url)).text();
     setOutput(result);
   };
+  const handleFile = async (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    if (!file) return;
+    if (!file.name.endsWith(".json")) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const text = e.target?.result as string;
+      console.log(JSON.parse(text));
+    };
+  };
 
   const copyResult = () => {
     setText(output);
@@ -42,9 +54,11 @@ export default function Home() {
       <div className="rounded-md bg-white border-2 border-sky-300 flex flex-col p-3 gap-4 w-1/4">
         <input
           type="file"
-          name="upload"
+          name="fileUpload"
           id="fileUpload"
           className={BUTTON_CLASSES}
+          onChange={handleFile}
+          accept="json"
         />
 
         <div className="flex flex-col gap-1">
@@ -90,7 +104,7 @@ export default function Home() {
             placeholder="Output will be here..."
             value={output}
             readOnly
-            onClick={(e) => navigator.clipboard.writeText(output)}
+            onClick={() => navigator.clipboard.writeText(output)}
           ></textarea>
           <div className="flex flex-row justify-end gap-2">
             <button
@@ -101,7 +115,7 @@ export default function Home() {
             </button>
             <button
               className="bg-sky-50 rounded-md self-end w-fit py-1 px-2"
-              onClick={(e) => navigator.clipboard.writeText(output)}
+              onClick={() => navigator.clipboard.writeText(output)}
             >
               Copy
             </button>
@@ -113,7 +127,7 @@ export default function Home() {
       <div className="rounded-md bg-white border-2 border-sky-300 flex flex-col w-1/4 p-3">
         <span
           className="italic text-justify cursor-copy"
-          onClick={(e) => navigator.clipboard.writeText(BibleVerse)}
+          onClick={() => navigator.clipboard.writeText(BibleVerse)}
         >
           {BibleVerse}
         </span>
