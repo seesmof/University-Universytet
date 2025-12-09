@@ -32,5 +32,6 @@ for model in classifiers:
 results_table = pd.Series(results)
 print(results_table)
 
+plt.tight_layout()
 results_table.plot(kind="bar")
 plt.show()
