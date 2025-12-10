@@ -38,9 +38,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-sky-50 flex gap-3 flex-col items-center justify-center">
       {/* Header */}
-      <div className="rounded-md bg-white border-2 border-sky-300 flex p-3 gap-3">
+      <div className="rounded-md bg-white border-2 border-sky-300 flex p-3 gap-3 w-60">
         <span>🔐</span>
-        <h1>Vigenere Cipher/Decipher</h1>
+        <h1>
+          <a
+            href="https://en.wikipedia.org/wiki/Vigenère_cipher"
+            className="underline underline-offset-2"
+          >
+            Vigenere Cipher
+          </a>
+        </h1>
       </div>
 
       {/* Main App */}
