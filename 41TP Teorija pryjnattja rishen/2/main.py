@@ -16,7 +16,7 @@ X_4 = 8.6
 Xs = [X_1, X_2, X_3, X_4]
 
 
-def thickness(x: int, y: int) -> float:
+def w_x_y(x: int, y: int) -> float:
     first_part = 1 / (2 * np.pi * SIGMA_X * SIGMA_Y * np.sqrt(1 - R2))
     exponent_outer = -1 * (2 * (1 - R2))
     exponent_inner = (
@@ -25,3 +25,11 @@ def thickness(x: int, y: int) -> float:
         + ((y - MY) ** 2) / SIGMA_Y**2
     )
     return first_part * np.exp(exponent_outer * exponent_inner)
+
+
+def w_x(x: int) -> float:
+    w_x_y(x, y)
+    sp.integrate.quad()
+
+
+def w_y(y: int) -> float: ...
