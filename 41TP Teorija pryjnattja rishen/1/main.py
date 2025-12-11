@@ -15,14 +15,14 @@ df["noise"] = df["noise"] * VARIANT
 threshold: float = df["coef"].mean()
 print(df)
 
+# Correlation field
 X = df["noise"]
 Y = df["coef"]
-
 plt.scatter(X, Y)
 plt.xlabel("Noise")
 plt.ylabel("Alpha")
 plt.tight_layout()
 plt.show()
 
-actual_classes = np.where(Y <= threshold, "K1", "K2")
-print(actual_classes)
+df["class"] = np.where(df["coef"] <= threshold, "K1", "K2")
+print(df)
