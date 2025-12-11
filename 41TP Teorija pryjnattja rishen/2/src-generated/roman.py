@@ -113,134 +113,137 @@ class BivariateNormalAnalysis:
         print("\nЗначення кривої безумовної густини W(y):")
         print(table)
 
+    def run_optimization_comparison(self):
+        print("\n--- 3. Порівняння методів оптимізації ---")
 
-def run_optimization_comparison(self):
-    print("\n--- 3. Порівняння методів оптимізації ---")
+        target_x = self.X_observations[1]
+        target_r = self.R_values[0]
 
-    target_x = self.X_observations[1]
-    target_r = self.R_values[0]
+        analytical_y_opt = self.get_conditional_mean(target_x, target_r)
+        print(f"Аналітична оптимальна оцінка Y* = {analytical_y_opt:.10f}")
 
-    analytical_y_opt = self.get_conditional_mean(target_x, target_r)
-    print(f"Аналітична оптимальна оцінка Y* = {analytical_y_opt:.10f}")
+        objective_function = lambda y: -self.bivariate_pdf(target_x, y, target_r)
 
-    objective_function = lambda y: -self.bivariate_pdf(target_x, y, target_r)
-
-    def objective_gradient(y):
-        h = 1e-6
-        y_val = y[0] if isinstance(y, (list, np.ndarray)) else y
-        grad = (objective_function(y_val + h) - objective_function(y_val - h)) / (2 * h)
-        return np.array([grad])
-
-    y_start = self.mean_y
-    search_bounds = (self.mean_y - 5 * self.std_y, self.mean_y + 5 * self.std_y)
-
-    res_bounded = minimize_scalar(
-        objective_function, bounds=search_bounds, method="bounded"
-    )
-    res_newton = minimize(
-        objective_function, x0=[y_start], method="Newton-CG", jac=objective_gradient
-    )
-    res_powell = minimize(objective_function, x0=y_start, method="Powell")
-
-    methods_results = {
-        "Інтервальний (bounded)": res_bounded.x,
-        "Ньютон-CG (jac)": res_newton.x[0],
-        "Powell": res_powell.x.item(),
-    }
-
-    table = PrettyTable()
-    table.field_names = [
-        "Метод",
-        "y_opt (чисельний)",
-        "Абс. похибка",
-        "Відн. похибка (%)",
-    ]
-
-    for method_name, y_numerical in methods_results.items():
-        abs_e, rel_e = self._calculate_error(y_numerical, analytical_y_opt)
-        table.add_row(
-            [method_name, f"{y_numerical:.10f}", f"{abs_e:.10f}", f"{rel_e:.8f}"]
-        )
-
-    print("\nОцінка точності методів оптимізації:")
-    print(table)
-
-
-def run_conditional_density_analysis(self):
-    print("\n--- 4. Аналіз та візуалізація умовних густин W(y|x_j) ---")
-
-    table = PrettyTable()
-    table.field_names = ["X_j", "R", "Y", "W(Y|X_j)"]
-
-    plt.figure(figsize=(12, 7))
-
-    plot_styles = [
-        {"color": "orange", "linestyle": "-"},
-        {"color": "orange", "linestyle": "--"},
-        {"color": "green", "linestyle": "-"},
-        {"color": "green", "linestyle": "--"},
-        {"color": "red", "linestyle": "-"},
-        {"color": "red", "linestyle": "--"},
-        {"color": "purple", "linestyle": "-"},
-        {"color": "purple", "linestyle": "--"},
-    ]
-    style_index = 0
-
-    for i, x_val in enumerate(self.X_observations):
-        for j, r_val in enumerate(self.R_values):
-            cond_mean = self.get_conditional_mean(x_val, r_val)
-            cond_var = self.get_conditional_variance(r_val)
-            cond_std = np.sqrt(cond_var)
-
-            for k in self.k_factors:
-                for sign in [-1, 1]:
-                    y_point = cond_mean + sign * k * cond_std
-                    w_val = self.univariate_pdf(y_point, cond_mean, cond_var)
-                    table.add_row(
-                        [
-                            f"{x_val:.2f}",
-                            f"{r_val:.2f}",
-                            f"{y_point:.3f}",
-                            f"{w_val:.6f}",
-                        ]
-                    )
-
-            y_plot_range = np.linspace(
-                cond_mean - 4 * cond_std, cond_mean + 4 * cond_std, 50
+        def objective_gradient(y):
+            h = 1e-6
+            y_val = y[0] if isinstance(y, (list, np.ndarray)) else y
+            grad = (objective_function(y_val + h) - objective_function(y_val - h)) / (
+                2 * h
             )
-            w_plot_values = [
-                self.univariate_pdf(y, cond_mean, cond_var) for y in y_plot_range
-            ]
+            return np.array([grad])
 
-            label = f"W(y|X{i + 1}={x_val}, R{j + 1}={r_val})"
-            style = plot_styles[style_index]
-            plt.plot(y_plot_range, w_plot_values, label=label, **style, linewidth=1.5)
-            style_index += 1
+        y_start = self.mean_y
+        search_bounds = (self.mean_y - 5 * self.std_y, self.mean_y + 5 * self.std_y)
 
-    print("\nЗначення умовної щільності W(y|x_j):")
-    print(table)
+        res_bounded = minimize_scalar(
+            objective_function, bounds=search_bounds, method="bounded"
+        )
+        res_newton = minimize(
+            objective_function, x0=[y_start], method="Newton-CG", jac=objective_gradient
+        )
+        res_powell = minimize(objective_function, x0=y_start, method="Powell")
 
-    y_base_range = np.linspace(
-        self.mean_y - 4 * self.std_y, self.mean_y + 4 * self.std_y, 50
-    )
-    w_base_values = [
-        self.univariate_pdf(y, self.mean_y, self.var_y) for y in y_base_range
-    ]
+        methods_results = {
+            "Інтервальний (bounded)": res_bounded.x,
+            "Ньютон-CG (jac)": res_newton.x[0],
+            "Powell": res_powell.x.item(),
+        }
 
-    plt.plot(
-        y_base_range,
-        w_base_values,
-        label="Безумовна W(y)",
-        color="blue",
-        linestyle=":",
-        marker="x",
-        markersize=4,
-    )
-    plt.title("Графіки умовних W(y|x_j) та безумовної W(y) густин")
-    plt.xlabel("Значення параметра y")
-    plt.ylabel("Густина ймовірності W(...)")
-    plt.grid(True)
-    plt.legend(fontsize="small", loc="upper right")
+        table = PrettyTable()
+        table.field_names = [
+            "Метод",
+            "y_opt (чисельний)",
+            "Абс. похибка",
+            "Відн. похибка (%)",
+        ]
+
+        for method_name, y_numerical in methods_results.items():
+            abs_e, rel_e = self._calculate_error(y_numerical, analytical_y_opt)
+            table.add_row(
+                [method_name, f"{y_numerical:.10f}", f"{abs_e:.10f}", f"{rel_e:.8f}"]
+            )
+
+        print("\nОцінка точності методів оптимізації:")
+        print(table)
+
+    def run_conditional_density_analysis(self):
+        print("\n--- 4. Аналіз та візуалізація умовних густин W(y|x_j) ---")
+
+        table = PrettyTable()
+        table.field_names = ["X_j", "R", "Y", "W(Y|X_j)"]
+
+        plt.figure(figsize=(12, 7))
+
+        plot_styles = [
+            {"color": "orange", "linestyle": "-"},
+            {"color": "orange", "linestyle": "--"},
+            {"color": "green", "linestyle": "-"},
+            {"color": "green", "linestyle": "--"},
+            {"color": "red", "linestyle": "-"},
+            {"color": "red", "linestyle": "--"},
+            {"color": "purple", "linestyle": "-"},
+            {"color": "purple", "linestyle": "--"},
+        ]
+        style_index = 0
+
+        for i, x_val in enumerate(self.X_observations):
+            for j, r_val in enumerate(self.R_values):
+                cond_mean = self.get_conditional_mean(x_val, r_val)
+                cond_var = self.get_conditional_variance(r_val)
+                cond_std = np.sqrt(cond_var)
+
+                for k in self.k_factors:
+                    for sign in [-1, 1]:
+                        y_point = cond_mean + sign * k * cond_std
+                        w_val = self.univariate_pdf(y_point, cond_mean, cond_var)
+                        table.add_row(
+                            [
+                                f"{x_val:.2f}",
+                                f"{r_val:.2f}",
+                                f"{y_point:.3f}",
+                                f"{w_val:.6f}",
+                            ]
+                        )
+
+                y_plot_range = np.linspace(
+                    cond_mean - 4 * cond_std, cond_mean + 4 * cond_std, 50
+                )
+                w_plot_values = [
+                    self.univariate_pdf(y, cond_mean, cond_var) for y in y_plot_range
+                ]
+
+                label = f"W(y|X{i + 1}={x_val}, R{j + 1}={r_val})"
+                style = plot_styles[style_index]
+                plt.plot(
+                    y_plot_range, w_plot_values, label=label, **style, linewidth=1.5
+                )
+                style_index += 1
+
+        print("\nЗначення умовної щільності W(y|x_j):")
+        print(table)
+
+        y_base_range = np.linspace(
+            self.mean_y - 4 * self.std_y, self.mean_y + 4 * self.std_y, 50
+        )
+        w_base_values = [
+            self.univariate_pdf(y, self.mean_y, self.var_y) for y in y_base_range
+        ]
+
+        plt.plot(
+            y_base_range,
+            w_base_values,
+            label="Безумовна W(y)",
+            color="blue",
+            linestyle=":",
+            marker="x",
+            markersize=4,
+        )
+        plt.title("Графіки умовних W(y|x_j) та безумовної W(y) густин")
+        plt.xlabel("Значення параметра y")
+        plt.ylabel("Густина ймовірності W(...)")
+        plt.grid(True)
+        plt.legend(fontsize="small", loc="upper right")
+
     plt.tight_layout()
     plt.show()
 
