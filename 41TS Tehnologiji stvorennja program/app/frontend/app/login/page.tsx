@@ -1,4 +1,17 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Login() {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    sessionStorage.setItem("user", name);
+    sessionStorage.setItem("password", password);
+    window.location.href = "/main";
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       {/* Card */}
@@ -9,9 +22,11 @@ export default function Login() {
             <span className="text-sm font-medium text-gray-700"> Login </span>
           </label>
           <input
-            type="email"
+            type="name"
             id="login"
             className="mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm p-2"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
           ></input>
         </div>
         {/* Input Group */}
@@ -23,6 +38,8 @@ export default function Login() {
             type="password"
             id="password"
             className="mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm p-2"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
           ></input>
         </div>
         {/* Signup Link */}
@@ -33,7 +50,10 @@ export default function Login() {
           Not registered yet?
         </a>
         {/* Button */}
-        <button className="inline-block rounded-sm border border-sky-600 bg-sky-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-sky-600 cursor-pointer">
+        <button
+          className="inline-block rounded-sm border border-sky-600 bg-sky-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-sky-600 cursor-pointer"
+          onClick={handleLogin}
+        >
           Login
         </button>
       </div>
