@@ -1,9 +1,16 @@
 "use client";
 
-import { products } from "@/data/products";
+import { cartProducts } from "@/data/cart";
+import { Product, products } from "@/data/products";
 import Image from "next/image";
 
 export default function Main() {
+  const addItem = (id: number) => {
+    const requiredItem: Product = products.find((product) => product.id === id);
+    cartProducts.push(requiredItem);
+    console.log(requiredItem);
+  };
+
   return (
     <>
       <div className="flex flex-row flex-wrap gap-3 p-3">
@@ -21,13 +28,7 @@ export default function Main() {
               <p className="">${product.price}</p>
               <button
                 className="w-min bg-sky-500 text-sky-50 rounded-md px-3 py-1 cursor-pointer"
-                onClick={() => {
-                  sessionStorage.setItem("cart", [
-                    ...sessionStorage.getItem("cart"),
-                    product.id,
-                  ]);
-                  console.log(product.name);
-                }}
+                onClick={() => addItem(product.id)}
               >
                 +
               </button>
