@@ -1,7 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
 
 # Create your views here.
-def index():
-    HttpResponse("Jesus Christ is LORD")
+def index(request):
+    return render(request, "index.html")
