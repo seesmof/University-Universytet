@@ -1,4 +1,8 @@
-{% extends "base.html" %} {% block title %}Home Page - My Website{% endblock %}
+{% extends "base.html" %}
+{% block title %}Біблійний пошук{% endblock %}
 {% block content %}
-<h1>Christ Jesus is LORD</h1>
+<form action="{% url "search" %}" method="POST">
+    {% csrf_token %}
+    <input type="text" id="search" name="search" placeholder="Search here..." class="input w-full" />
+</form>
 {% endblock %}
