@@ -25,10 +25,10 @@ def index(request):
 
         base_url = f"https://bolls.life/v2/find/UBIO?search={text}&limit=10"
         response = requests.get(base_url)
-        data = response.json()
+        data = response.json()["results"]
         print(data)
 
-        context = {"verses": data}
+        context = {"verses": data, "request": text}
         return render(request, "verses.html", context)
 
     else:
