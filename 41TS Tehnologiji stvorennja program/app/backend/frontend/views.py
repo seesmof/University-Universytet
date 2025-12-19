@@ -1,12 +1,17 @@
 from django.shortcuts import render
 import requests
 
+from .models import HistoryItem
 from .consts import BIBLE_BOOK_NUMBER_TO_HOMENKO_BIBLE_NAME
 
 
 def index(request):
     if request.method == "POST":
         text = request.POST.get("search")
+
+        # Remember search text
+        history_item = HistoryItem.objects.create(text=text)
+        history_item.save()
 
         base_url = f"https://bolls.life/v2/find/UBIO?search={text}&limit=10"
         response = requests.get(base_url)
@@ -18,10 +23,12 @@ def index(request):
             Book_name = BIBLE_BOOK_NUMBER_TO_HOMENKO_BIBLE_NAME[Book_number]
 
             verse["reference"] = f"{Book_name} {verse['chapter']}:{verse['verse']}"
-            print(verse["reference"])
 
         context = {"verses": data, "request": text}
         return render(request, "verses.html", context)
 
     else:
-        return render(request, "index.html", {})
+        history = HistoryItem.objects.all()
+
+        context = {"history": history}
+        return render(request, "index.html", context)

@@ -1,5 +1,6 @@
-{% extends "base.html" %} {% block title %}Результати для "{{ request
-}}"{%endblock %} {% block content %}
+{% extends "base.html" %}
+{% block title %}Результати для "{{ request}}"{%endblock %}
+{% block content %}
 <h1 class="text-xl py-4 font-medium"><a href="{% url "index" %}">Біблійний пошук</a></h1>
 <h2 class="text-lg italic">Пошук для запиту: {{ request|capfirst }}</h2>
 <span class="divider"></span>

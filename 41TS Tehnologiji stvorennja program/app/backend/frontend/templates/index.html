@@ -6,4 +6,16 @@
     {% csrf_token %}
     <input type="text" id="search" name="search" placeholder="Search here..." class="input w-full" />
 </form>
+<span class="divider"></span>
+<h2 class="text-lg italic py-2">Попередні пошуки</h2>
+<ul class="list">
+{% for item in history %}
+    <li 
+        class="list-row shadow-md" 
+        onclick="navigator.clipboard.writeText('{{ item.text|escapejs }}')"
+    >
+        {{ item.text }}
+    </li>
+{% endfor %}
+</ul>
 {% endblock %}
