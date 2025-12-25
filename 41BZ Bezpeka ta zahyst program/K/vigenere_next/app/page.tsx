@@ -32,7 +32,7 @@ export default function Home() {
     "outline-2 rounded-md outline-sky-300 focus:outline-sky-500 px-2";
   const BUTTON_CLASSES =
     "bg-sky-50 p-1 hover:bg-sky-200 w-full rounded-md cursor-pointer";
-  const BibleVerse =
+  const BIBLE_VERSE =
     "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish, but have eternal life.";
 
   return (
@@ -76,7 +76,12 @@ export default function Home() {
             className={INPUT_CLASSES}
             placeholder="For example, GOD"
             value={key}
-            onChange={(e) => setKey(e.target.value.toUpperCase())}
+            onChange={(e) => {
+              const keyValue = e.target.value;
+              const upperKey = keyValue.toUpperCase();
+              const keyWithNoSymbols = upperKey.replace(/[^a-zA-Z]/g, "");
+              setKey(keyWithNoSymbols);
+            }}
           />
         </div>
 
@@ -121,9 +126,9 @@ export default function Home() {
       <div className="rounded-md bg-white border-2 border-sky-300 flex flex-col p-3 w-60">
         <span
           className="italic text-justify cursor-copy"
-          onClick={() => navigator.clipboard.writeText(BibleVerse)}
+          onClick={() => navigator.clipboard.writeText(BIBLE_VERSE)}
         >
-          {BibleVerse}
+          {BIBLE_VERSE}
         </span>
         <span className="self-end">
           (
