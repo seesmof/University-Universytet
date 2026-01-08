@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="flex flex-row gap-3 p-3">
-        <input className="input" placeholder="Reference"></input>
-        <input className="input" placeholder="Verse Text"></input>
+        <input className="input flex-1" placeholder="Reference"></input>
+        <input className="input flex-1" placeholder="Verse Text"></input>
         <button className="btn">Add</button>
       </div>
       <div className="flex flex-row flex-wrap gap-3 p-3">
