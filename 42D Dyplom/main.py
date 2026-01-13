@@ -1,18 +1,20 @@
-from nicegui import ui, app
+from nicegui import ui
 
-money: int = 0
-rate: int = 1
-interval: float = 1.0
+with ui.tabs().classes("w-full") as main_page_tabs:
+    tools_tab_name = "Tools"
+    field_tab_name = "Field"
+    store_tab_name = "Store"
+    tools_tab = ui.tab(tools_tab_name, icon="build")
+    field_tab = ui.tab(field_tab_name, icon="grass")
+    store_tab = ui.tab(store_tab_name, icon="local_grocery_store")
+
+with ui.tab_panels(tabs=main_page_tabs, value=tools_tab_name):
+    with ui.tab_panel(tools_tab):
+        ui.label(tools_tab_name)
+    with ui.tab_panel(field_tab):
+        ui.label(field_tab_name)
+    with ui.tab_panel(store_tab):
+        ui.label(store_tab_name)
 
 
-def add_money(rate: int):
-    global money
-    money = money + rate
-    ui.update()
-    timer.update()
-
-
-timer = ui.timer(interval=interval, callback=lambda: add_money(rate=rate))
-
-ui.label(f"{money = }")
 ui.run(title="Agriculture Tycoon", favicon="🚜")
