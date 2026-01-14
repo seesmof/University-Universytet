@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Agriculture Tycoon{% endblock title %}</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {% block extra_head %}{% endblock extra_head %}
+  </head>
+  <body class="bg-gray-50 flex flex-col min-h-screen">
+    <nav class="bg-blue-600 text-white p-4 shadow-md">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-xl font-bold tracking-tight">DjangoApp</a>
+        <ul class="flex space-x-6">
+          <li><a href="#" class="hover:text-blue-200 transition">Home</a></li>
+          <li><a href="#" class="hover:text-blue-200 transition">About</a></li>
+          <li>
+            <a href="#" class="hover:text-blue-200 transition">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container mx-auto flex-grow p-6">
+      {% if messages %}
+      <div class="mb-4">
+        {% for message in messages %}
+        <div
+          class="p-4 mb-2 rounded {% if message.tags == 'success' %}bg-green-100 text-green-700{% else %}bg-blue-100 text-blue-700{% endif %}"
+        >
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %} {% block content %} {% endblock content %}
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-6 mt-auto">
+      <div class="container mx-auto text-center">
+        <p>&copy; {% now "Y" %} My Django Project. All rights reserved.</p>
+      </div>
+    </footer>
+
+    {% block extra_scripts %}{% endblock extra_scripts %}
+  </body>
+</html>
