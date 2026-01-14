@@ -16,3 +16,4 @@ D:\University-Universytet\42D Dyplom\app\obj\Debug\net10.0-windows\app.pdb
 D:\University-Universytet\42D Dyplom\app\obj\Debug\net10.0-windows\app.genruntimeconfig.cache
 D:\University-Universytet\42D Dyplom\app\obj\Debug\net10.0-windows\ref\app.dll
 D:\University-Universytet\42D Dyplom\app\obj\Debug\net10.0-windows\app.LoginForm.resources
+D:\University-Universytet\42D Dyplom\app\obj\Debug\net10.0-windows\app.SignUpForm.resources

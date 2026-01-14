@@ -1,1 +1,0 @@
-- [Where to get the Bible from](https://get.bible/bible-data-sets/)
