@@ -63,6 +63,7 @@
             userNameTextBox.PlaceholderText = "Your username here...";
             userNameTextBox.Size = new Size(297, 31);
             userNameTextBox.TabIndex = 2;
+            userNameTextBox.TextChanged += userNameTextBox_TextChanged;
             // 
             // passwordLabel
             // 
@@ -82,6 +83,7 @@
             passwordTextBox.PlaceholderText = "Your password here...";
             passwordTextBox.Size = new Size(297, 31);
             passwordTextBox.TabIndex = 4;
+            passwordTextBox.TextChanged += passwordTextBox_TextChanged;
             // 
             // loginButton
             // 
@@ -91,6 +93,7 @@
             loginButton.TabIndex = 5;
             loginButton.Text = "Log In";
             loginButton.UseVisualStyleBackColor = true;
+            loginButton.Click += loginButton_Click;
             // 
             // LoginForm
             // 

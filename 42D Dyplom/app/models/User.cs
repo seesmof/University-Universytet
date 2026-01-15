@@ -6,7 +6,15 @@ namespace app.models
 {
     public class User
     {
-        public string name { get; set; }
-        public string password { get; set; }
+        public string Name { get; set; } = "";
+        public string Password { get; set; } = "";
+        public string Admin { get; set; } = "no";
+
+        public User(string name, string password, string admin)
+        {
+            Name = name;
+            Password = password;
+            Admin = admin;
+        }
     }
 }
