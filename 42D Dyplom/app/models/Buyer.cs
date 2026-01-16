@@ -4,17 +4,18 @@ using System.Text;
 
 namespace app.models
 {
-    public class User
+    public class Buyer
     {
         public string Name { get; set; } = "";
         public string Password { get; set; } = "";
-        public string Admin { get; set; } = "no";
+        public bool IsAdmin { get; set; } = false;
 
-        public User(string name, string password, string admin)
+        public Buyer() { }
+        public Buyer(string name, string password, bool admin)
         {
             Name = name;
             Password = password;
-            Admin = admin;
+            IsAdmin = admin;
         }
     }
 }

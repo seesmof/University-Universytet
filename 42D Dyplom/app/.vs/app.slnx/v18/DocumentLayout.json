@@ -3,32 +3,52 @@
   "WorkspaceRootPath": "D:\\University-Universytet\\42D Dyplom\\app\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\data\\buyers.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:data\\buyers.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\controllers\\buyercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:controllers\\buyercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5931D576-A3C5-4321-8832-F97254600BC0}|app.csproj|D:\\University-Universytet\\42D Dyplom\\app\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5931D576-A3C5-4321-8832-F97254600BC0}|app.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\signupform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:signupform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\controllers\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:controllers\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\models\\buyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:models\\buyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,90 +66,162 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "SignUpForm.cs [Design]",
-              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\SignUpForm.cs",
-              "RelativeDocumentMoniker": "SignUpForm.cs",
-              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\SignUpForm.cs [Design]",
-              "RelativeToolTip": "SignUpForm.cs [Design]",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\SignUpForm.cs",
+              "RelativeDocumentMoniker": "views\\SignUpForm.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\SignUpForm.cs [Design]",
+              "RelativeToolTip": "views\\SignUpForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T17:00:32.461Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SignUpForm.cs",
-              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\SignUpForm.cs",
-              "RelativeDocumentMoniker": "SignUpForm.cs",
-              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\SignUpForm.cs",
-              "RelativeToolTip": "SignUpForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T17:01:20.214Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginForm.cs [Design]",
-              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\LoginForm.cs",
-              "RelativeDocumentMoniker": "LoginForm.cs",
-              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\LoginForm.cs [Design]",
-              "RelativeToolTip": "LoginForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T17:06:07.937Z",
+              "WhenOpened": "2026-01-16T11:52:32.065Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LoginForm.cs",
-              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\LoginForm.cs",
-              "RelativeDocumentMoniker": "LoginForm.cs",
-              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\LoginForm.cs",
-              "RelativeToolTip": "LoginForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAMAAAAAAAAAA==",
+              "Title": "MainWindow.cs [Design]",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.cs",
+              "RelativeDocumentMoniker": "views\\MainWindow.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.cs [Design]",
+              "RelativeToolTip": "views\\MainWindow.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T16:56:52.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SignUpForm.Designer.cs",
-              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\SignUpForm.Designer.cs",
-              "RelativeDocumentMoniker": "SignUpForm.Designer.cs",
-              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\SignUpForm.Designer.cs",
-              "RelativeToolTip": "SignUpForm.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T17:04:16.337Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-16T11:49:23.24Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "LoginForm.Designer.cs",
-              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\LoginForm.Designer.cs",
-              "RelativeDocumentMoniker": "LoginForm.Designer.cs",
-              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\LoginForm.Designer.cs",
-              "RelativeToolTip": "LoginForm.Designer.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAYwEUAAAA3AAAAAAAAAA==",
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.cs",
+              "RelativeDocumentMoniker": "views\\LoginForm.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.cs [Design]",
+              "RelativeToolTip": "views\\LoginForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T16:56:56.077Z",
+              "WhenOpened": "2026-01-16T11:40:44.695Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "buyers.txt",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\data\\buyers.txt",
+              "RelativeDocumentMoniker": "data\\buyers.txt",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\data\\buyers.txt",
+              "RelativeToolTip": "data\\buyers.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-01-16T15:56:40.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Utilities.cs",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\controllers\\Utilities.cs",
+              "RelativeDocumentMoniker": "controllers\\Utilities.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\controllers\\Utilities.cs",
+              "RelativeToolTip": "controllers\\Utilities.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T12:27:28.257Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "LoginForm.cs [Design]",
-              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\LoginForm.cs",
-              "RelativeDocumentMoniker": "LoginForm.cs",
-              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\LoginForm.cs [Design]",
-              "RelativeToolTip": "LoginForm.cs [Design]",
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.cs",
+              "RelativeDocumentMoniker": "views\\LoginForm.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.cs",
+              "RelativeToolTip": "views\\LoginForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T16:55:33.648Z"
+              "WhenOpened": "2026-01-16T11:40:57.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SignUpForm.cs",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\SignUpForm.cs",
+              "RelativeDocumentMoniker": "views\\SignUpForm.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\SignUpForm.cs",
+              "RelativeToolTip": "views\\SignUpForm.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAqwDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T12:09:18.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BuyerController.cs",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\controllers\\BuyerController.cs",
+              "RelativeDocumentMoniker": "controllers\\BuyerController.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\controllers\\BuyerController.cs",
+              "RelativeToolTip": "controllers\\BuyerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T11:41:43.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.cs",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.cs",
+              "RelativeDocumentMoniker": "views\\MainWindow.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.cs",
+              "RelativeToolTip": "views\\MainWindow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T11:49:26.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MainWindow.Designer.cs",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.Designer.cs",
+              "RelativeDocumentMoniker": "views\\MainWindow.Designer.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.Designer.cs",
+              "RelativeToolTip": "views\\MainWindow.Designer.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAYwFgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T12:19:40.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Buyer.cs",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\models\\Buyer.cs",
+              "RelativeDocumentMoniker": "models\\Buyer.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\models\\Buyer.cs",
+              "RelativeToolTip": "models\\Buyer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T15:44:18.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginForm.Designer.cs",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.Designer.cs",
+              "RelativeDocumentMoniker": "views\\LoginForm.Designer.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.Designer.cs",
+              "RelativeToolTip": "views\\LoginForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T11:52:24.803Z",
+              "EditorCaption": ""
             }
           ]
         }

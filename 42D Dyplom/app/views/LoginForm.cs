@@ -1,4 +1,5 @@
-﻿using app.models;
+﻿using app.controllers;
+using app.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace app
 {
     public partial class LoginForm : Form
     {
-        string userName;
+        string buyername;
         string password;
 
         public LoginForm()
@@ -21,9 +22,9 @@ namespace app
             InitializeComponent();
         }
 
-        private void userNameLabel_Click(object sender, EventArgs e)
+        private void buyerNameLabel_Click(object sender, EventArgs e)
         {
-            userNameTextBox.Focus();
+            buyerNameTextBox.Focus();
         }
 
         private void passwordLabel_Click(object sender, EventArgs e)
@@ -38,9 +39,9 @@ namespace app
             this.Hide();
         }
 
-        private void userNameTextBox_TextChanged(object sender, EventArgs e)
+        private void buyerNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            userName = userNameTextBox.Text;
+            buyername = buyerNameTextBox.Text;
         }
 
         private void passwordTextBox_TextChanged(object sender, EventArgs e)
@@ -50,22 +51,26 @@ namespace app
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (userNameTextBox.Text == String.Empty)
+            List<string> errors = new List<string>();
+            if (buyerNameTextBox.Text == String.Empty)
             {
-                MessageBox.Show("Please enter your user's name","Empty username",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                errors.Add("Please enter your buyer's name");
             }
             if (passwordTextBox.Text == String.Empty)
             {
-                MessageBox.Show("Please enter your password","Empty password",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                errors.Add("Please enter your password");
             }
+            Utilities.ShowErrors(errors);
 
-            string filePath = "D:\\University-Universytet\\42D Dyplom\\app\\data\\users.txt";
-            var lines = File.ReadLines(filePath);
-            foreach (string line in lines)
+            UserController buyerController = new UserController();
+            List<Buyer> buyers = buyerController.GetUsers();
+
+            var buyer = buyers.FirstOrDefault(buyer => buyer.Name == buyername && buyer.Password == password);
+            if (buyer != null)
             {
-                var data = line.Split(",");
-                User user = new User(data[0], data[1], data[2]);
-                Console.WriteLine(user.Name);
+                MainWindow window = new MainWindow(buyer);
+                window.Show();
+                this.Hide();
             }
         }
     }

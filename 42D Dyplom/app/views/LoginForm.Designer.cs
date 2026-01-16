@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             signUpLinkButton = new Button();
-            userNameLabel = new Label();
-            userNameTextBox = new TextBox();
+            buyerNameLabel = new Label();
+            buyerNameTextBox = new TextBox();
             passwordLabel = new Label();
             passwordTextBox = new TextBox();
             loginButton = new Button();
@@ -41,29 +41,29 @@
             signUpLinkButton.Location = new Point(12, 164);
             signUpLinkButton.Name = "signUpLinkButton";
             signUpLinkButton.Size = new Size(124, 34);
-            signUpLinkButton.TabIndex = 0;
+            signUpLinkButton.TabIndex = 3;
             signUpLinkButton.Text = "Sign Up";
             signUpLinkButton.UseVisualStyleBackColor = true;
             signUpLinkButton.Click += signUpLinkButton_Click;
             // 
-            // userNameLabel
+            // buyerNameLabel
             // 
-            userNameLabel.AutoSize = true;
-            userNameLabel.Location = new Point(12, 9);
-            userNameLabel.Name = "userNameLabel";
-            userNameLabel.Size = new Size(91, 25);
-            userNameLabel.TabIndex = 1;
-            userNameLabel.Text = "Username";
-            userNameLabel.Click += userNameLabel_Click;
+            buyerNameLabel.AutoSize = true;
+            buyerNameLabel.Location = new Point(12, 9);
+            buyerNameLabel.Name = "buyerNameLabel";
+            buyerNameLabel.Size = new Size(91, 25);
+            buyerNameLabel.TabIndex = 1;
+            buyerNameLabel.Text = "Username";
+            buyerNameLabel.Click += buyerNameLabel_Click;
             // 
-            // userNameTextBox
+            // buyerNameTextBox
             // 
-            userNameTextBox.Location = new Point(12, 37);
-            userNameTextBox.Name = "userNameTextBox";
-            userNameTextBox.PlaceholderText = "Your username here...";
-            userNameTextBox.Size = new Size(297, 31);
-            userNameTextBox.TabIndex = 2;
-            userNameTextBox.TextChanged += userNameTextBox_TextChanged;
+            buyerNameTextBox.Location = new Point(12, 37);
+            buyerNameTextBox.Name = "buyerNameTextBox";
+            buyerNameTextBox.PlaceholderText = "Your buyername here...";
+            buyerNameTextBox.Size = new Size(297, 31);
+            buyerNameTextBox.TabIndex = 0;
+            buyerNameTextBox.TextChanged += buyerNameTextBox_TextChanged;
             // 
             // passwordLabel
             // 
@@ -82,7 +82,7 @@
             passwordTextBox.PasswordChar = '*';
             passwordTextBox.PlaceholderText = "Your password here...";
             passwordTextBox.Size = new Size(297, 31);
-            passwordTextBox.TabIndex = 4;
+            passwordTextBox.TabIndex = 1;
             passwordTextBox.TextChanged += passwordTextBox_TextChanged;
             // 
             // loginButton
@@ -90,7 +90,7 @@
             loginButton.Location = new Point(142, 164);
             loginButton.Name = "loginButton";
             loginButton.Size = new Size(167, 34);
-            loginButton.TabIndex = 5;
+            loginButton.TabIndex = 2;
             loginButton.Text = "Log In";
             loginButton.UseVisualStyleBackColor = true;
             loginButton.Click += loginButton_Click;
@@ -103,8 +103,8 @@
             Controls.Add(loginButton);
             Controls.Add(passwordTextBox);
             Controls.Add(passwordLabel);
-            Controls.Add(userNameTextBox);
-            Controls.Add(userNameLabel);
+            Controls.Add(buyerNameTextBox);
+            Controls.Add(buyerNameLabel);
             Controls.Add(signUpLinkButton);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginForm";
@@ -116,8 +116,8 @@
         #endregion
 
         private Button signUpLinkButton;
-        private Label userNameLabel;
-        private TextBox userNameTextBox;
+        private Label buyerNameLabel;
+        private TextBox buyerNameTextBox;
         private Label passwordLabel;
         private TextBox passwordTextBox;
         private Button loginButton;

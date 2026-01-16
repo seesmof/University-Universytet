@@ -30,11 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             splitContainer1 = new SplitContainer();
-            storeButton = new Button();
-            ownedButton = new Button();
             logOutButton = new Button();
+            ownedButton = new Button();
+            storeButton = new Button();
+            buyerWelcomeLabel = new Label();
+            appDescriptionLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             SuspendLayout();
             // 
@@ -49,18 +52,24 @@
             splitContainer1.Panel1.Controls.Add(logOutButton);
             splitContainer1.Panel1.Controls.Add(ownedButton);
             splitContainer1.Panel1.Controls.Add(storeButton);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(appDescriptionLabel);
+            splitContainer1.Panel2.Controls.Add(buyerWelcomeLabel);
             splitContainer1.Size = new Size(778, 544);
             splitContainer1.SplitterDistance = 214;
             splitContainer1.TabIndex = 0;
             // 
-            // storeButton
+            // logOutButton
             // 
-            storeButton.Location = new Point(12, 12);
-            storeButton.Name = "storeButton";
-            storeButton.Size = new Size(199, 70);
-            storeButton.TabIndex = 0;
-            storeButton.Text = "Store";
-            storeButton.UseVisualStyleBackColor = true;
+            logOutButton.Location = new Point(12, 462);
+            logOutButton.Name = "logOutButton";
+            logOutButton.Size = new Size(199, 70);
+            logOutButton.TabIndex = 2;
+            logOutButton.Text = "Log Out";
+            logOutButton.UseVisualStyleBackColor = true;
+            logOutButton.Click += logOutButton_Click;
             // 
             // ownedButton
             // 
@@ -71,14 +80,33 @@
             ownedButton.Text = "Owned";
             ownedButton.UseVisualStyleBackColor = true;
             // 
-            // logOutButton
+            // storeButton
             // 
-            logOutButton.Location = new Point(12, 462);
-            logOutButton.Name = "logOutButton";
-            logOutButton.Size = new Size(199, 70);
-            logOutButton.TabIndex = 2;
-            logOutButton.Text = "Log Out";
-            logOutButton.UseVisualStyleBackColor = true;
+            storeButton.Location = new Point(12, 12);
+            storeButton.Name = "storeButton";
+            storeButton.Size = new Size(199, 70);
+            storeButton.TabIndex = 0;
+            storeButton.Text = "Store";
+            storeButton.UseVisualStyleBackColor = true;
+            // 
+            // buyerWelcomeLabel
+            // 
+            buyerWelcomeLabel.AutoSize = true;
+            buyerWelcomeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buyerWelcomeLabel.Location = new Point(3, 9);
+            buyerWelcomeLabel.Name = "buyerWelcomeLabel";
+            buyerWelcomeLabel.Size = new Size(208, 32);
+            buyerWelcomeLabel.TabIndex = 1;
+            buyerWelcomeLabel.Text = "Welcome, {buyer}!";
+            // 
+            // appDescriptionLabel
+            // 
+            appDescriptionLabel.AutoSize = true;
+            appDescriptionLabel.Location = new Point(3, 57);
+            appDescriptionLabel.Name = "appDescriptionLabel";
+            appDescriptionLabel.Size = new Size(461, 25);
+            appDescriptionLabel.TabIndex = 2;
+            appDescriptionLabel.Text = "This is an app for selling and buying semi-trucks (lorries).";
             // 
             // MainWindow
             // 
@@ -91,6 +119,8 @@
             Name = "MainWindow";
             Text = "Trucks Store";
             splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             ResumeLayout(false);
@@ -102,5 +132,7 @@
         private Button storeButton;
         private Button ownedButton;
         private Button logOutButton;
+        private Label buyerWelcomeLabel;
+        private Label appDescriptionLabel;
     }
 }

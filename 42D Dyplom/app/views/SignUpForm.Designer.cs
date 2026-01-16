@@ -28,33 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            userNameLabel = new Label();
-            userNameTextBox = new TextBox();
+            buyerNameLabel = new Label();
+            buyerNameTextBox = new TextBox();
             passwordLabel = new Label();
             passwordTextBox = new TextBox();
             loginButton = new Button();
             signUpButton = new Button();
             passwordConfirmLabel = new Label();
             passwordConfirmTextBox = new TextBox();
+            adminCheckBox = new CheckBox();
             SuspendLayout();
             // 
-            // userNameLabel
+            // buyerNameLabel
             // 
-            userNameLabel.AutoSize = true;
-            userNameLabel.Location = new Point(12, 9);
-            userNameLabel.Name = "userNameLabel";
-            userNameLabel.Size = new Size(91, 25);
-            userNameLabel.TabIndex = 0;
-            userNameLabel.Text = "Username";
-            userNameLabel.Click += userNameLabel_Click;
+            buyerNameLabel.AutoSize = true;
+            buyerNameLabel.Location = new Point(12, 9);
+            buyerNameLabel.Name = "buyerNameLabel";
+            buyerNameLabel.Size = new Size(91, 25);
+            buyerNameLabel.TabIndex = 0;
+            buyerNameLabel.Text = "Username";
+            buyerNameLabel.Click += buyerNameLabel_Click;
             // 
-            // userNameTextBox
+            // buyerNameTextBox
             // 
-            userNameTextBox.Location = new Point(12, 37);
-            userNameTextBox.Name = "userNameTextBox";
-            userNameTextBox.PlaceholderText = "Your username here...";
-            userNameTextBox.Size = new Size(289, 31);
-            userNameTextBox.TabIndex = 1;
+            buyerNameTextBox.Location = new Point(12, 37);
+            buyerNameTextBox.Name = "buyerNameTextBox";
+            buyerNameTextBox.PlaceholderText = "Your buyername here...";
+            buyerNameTextBox.Size = new Size(289, 31);
+            buyerNameTextBox.TabIndex = 0;
+            buyerNameTextBox.TextChanged += buyerNameTextBox_TextChanged;
             // 
             // passwordLabel
             // 
@@ -73,26 +75,28 @@
             passwordTextBox.PasswordChar = '*';
             passwordTextBox.PlaceholderText = "Your password here...";
             passwordTextBox.Size = new Size(289, 31);
-            passwordTextBox.TabIndex = 3;
+            passwordTextBox.TabIndex = 1;
+            passwordTextBox.TextChanged += passwordTextBox_TextChanged;
             // 
             // loginButton
             // 
-            loginButton.Location = new Point(12, 245);
+            loginButton.Location = new Point(12, 285);
             loginButton.Name = "loginButton";
             loginButton.Size = new Size(105, 34);
-            loginButton.TabIndex = 4;
+            loginButton.TabIndex = 5;
             loginButton.Text = "Login";
             loginButton.UseVisualStyleBackColor = true;
             loginButton.Click += loginButton_Click;
             // 
             // signUpButton
             // 
-            signUpButton.Location = new Point(123, 245);
+            signUpButton.Location = new Point(123, 285);
             signUpButton.Name = "signUpButton";
             signUpButton.Size = new Size(178, 34);
-            signUpButton.TabIndex = 5;
+            signUpButton.TabIndex = 4;
             signUpButton.Text = "Sign Up";
             signUpButton.UseVisualStyleBackColor = true;
+            signUpButton.Click += signUpButton_Click;
             // 
             // passwordConfirmLabel
             // 
@@ -111,21 +115,34 @@
             passwordConfirmTextBox.PasswordChar = '*';
             passwordConfirmTextBox.PlaceholderText = "Your password once again...";
             passwordConfirmTextBox.Size = new Size(289, 31);
-            passwordConfirmTextBox.TabIndex = 7;
+            passwordConfirmTextBox.TabIndex = 2;
+            passwordConfirmTextBox.TextChanged += passwordConfirmTextBox_TextChanged;
+            // 
+            // adminCheckBox
+            // 
+            adminCheckBox.AutoSize = true;
+            adminCheckBox.Location = new Point(12, 239);
+            adminCheckBox.Name = "adminCheckBox";
+            adminCheckBox.Size = new Size(114, 29);
+            adminCheckBox.TabIndex = 3;
+            adminCheckBox.Text = "Is admin?";
+            adminCheckBox.UseVisualStyleBackColor = true;
+            adminCheckBox.CheckedChanged += adminCheckBox_CheckedChanged;
             // 
             // SignUpForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(316, 308);
+            ClientSize = new Size(316, 341);
+            Controls.Add(adminCheckBox);
             Controls.Add(passwordConfirmTextBox);
             Controls.Add(passwordConfirmLabel);
             Controls.Add(signUpButton);
             Controls.Add(loginButton);
             Controls.Add(passwordTextBox);
             Controls.Add(passwordLabel);
-            Controls.Add(userNameTextBox);
-            Controls.Add(userNameLabel);
+            Controls.Add(buyerNameTextBox);
+            Controls.Add(buyerNameLabel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "SignUpForm";
             Text = "Sign Up";
@@ -135,13 +152,14 @@
 
         #endregion
 
-        private Label userNameLabel;
-        private TextBox userNameTextBox;
+        private Label buyerNameLabel;
+        private TextBox buyerNameTextBox;
         private Label passwordLabel;
         private TextBox passwordTextBox;
         private Button loginButton;
         private Button signUpButton;
         private Label passwordConfirmLabel;
         private TextBox passwordConfirmTextBox;
+        private CheckBox adminCheckBox;
     }
 }
