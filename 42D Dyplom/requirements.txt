@@ -1,2 +1,6 @@
 django
 django-ninja
+ai4free
+streamlit
+faiss-cpu
+sentence-transformers
