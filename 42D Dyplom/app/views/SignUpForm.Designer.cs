@@ -46,7 +46,7 @@
             buyerNameLabel.Name = "buyerNameLabel";
             buyerNameLabel.Size = new Size(91, 25);
             buyerNameLabel.TabIndex = 0;
-            buyerNameLabel.Text = "Username";
+            buyerNameLabel.Text = "Buyersname";
             buyerNameLabel.Click += buyerNameLabel_Click;
             // 
             // buyerNameTextBox

@@ -33,8 +33,9 @@
             logOutButton = new Button();
             ownedButton = new Button();
             storeButton = new Button();
-            buyerWelcomeLabel = new Label();
             appDescriptionLabel = new Label();
+            buyerWelcomeLabel = new Label();
+            usersButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -49,6 +50,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(usersButton);
             splitContainer1.Panel1.Controls.Add(logOutButton);
             splitContainer1.Panel1.Controls.Add(ownedButton);
             splitContainer1.Panel1.Controls.Add(storeButton);
@@ -89,16 +91,6 @@
             storeButton.Text = "Store";
             storeButton.UseVisualStyleBackColor = true;
             // 
-            // buyerWelcomeLabel
-            // 
-            buyerWelcomeLabel.AutoSize = true;
-            buyerWelcomeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            buyerWelcomeLabel.Location = new Point(3, 9);
-            buyerWelcomeLabel.Name = "buyerWelcomeLabel";
-            buyerWelcomeLabel.Size = new Size(208, 32);
-            buyerWelcomeLabel.TabIndex = 1;
-            buyerWelcomeLabel.Text = "Welcome, {buyer}!";
-            // 
             // appDescriptionLabel
             // 
             appDescriptionLabel.AutoSize = true;
@@ -107,6 +99,25 @@
             appDescriptionLabel.Size = new Size(461, 25);
             appDescriptionLabel.TabIndex = 2;
             appDescriptionLabel.Text = "This is an app for selling and buying semi-trucks (lorries).";
+            // 
+            // buyerWelcomeLabel
+            // 
+            buyerWelcomeLabel.AutoSize = true;
+            buyerWelcomeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buyerWelcomeLabel.Location = new Point(3, 9);
+            buyerWelcomeLabel.Name = "buyerWelcomeLabel";
+            buyerWelcomeLabel.Size = new Size(207, 32);
+            buyerWelcomeLabel.TabIndex = 1;
+            buyerWelcomeLabel.Text = "Welcome, buyer!";
+            // 
+            // usersButton
+            // 
+            usersButton.Location = new Point(12, 164);
+            usersButton.Name = "usersButton";
+            usersButton.Size = new Size(199, 70);
+            usersButton.TabIndex = 3;
+            usersButton.Text = "Users";
+            usersButton.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -134,5 +145,6 @@
         private Button logOutButton;
         private Label buyerWelcomeLabel;
         private Label appDescriptionLabel;
+        private Button usersButton;
     }
 }

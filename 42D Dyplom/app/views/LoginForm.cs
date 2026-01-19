@@ -62,8 +62,8 @@ namespace app
             }
             Utilities.ShowErrors(errors);
 
-            UserController buyerController = new UserController();
-            List<Buyer> buyers = buyerController.GetUsers();
+            BuyerController buyerController = new BuyerController();
+            List<Buyer> buyers = buyerController.GetBuyers();
 
             var buyer = buyers.FirstOrDefault(buyer => buyer.Name == buyername && buyer.Password == password);
             if (buyer != null)

@@ -76,20 +76,14 @@ namespace app
             }
             Utilities.ShowErrors(errors);
 
-            UserController controller = new UserController();
-            Buyer buyer;
-
-            bool buyerExists = controller.DoesUserExist(buyername);
-            if (buyerExists)
+            BuyerController controller = new BuyerController();
+            bool buyerExists = controller.DoesBuyersExist(buyername);
+            if (!buyerExists)
             {
-                buyer = controller.GetUser(buyername, password);
+                controller.CreateBuyers(buyername, password, isAdmin);
             }
-            else
-            {
-                controller.CreateUser(buyername, password, isAdmin);
-                buyer = controller.GetUser(buyername, password);
-            }
-
+            
+            Buyer buyer = controller.GetBuyers(buyername, password);
             MainWindow window = new MainWindow(buyer);
             window.Show();
             this.Hide();
