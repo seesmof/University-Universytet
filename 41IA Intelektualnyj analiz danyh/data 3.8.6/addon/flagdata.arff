@@ -1,0 +1,42 @@
+% A small dataset of Countries (Socio-Economic, Country Flag) created by Richard Forsyth
+
+@RELATION Eurodata
+
+@ATTRIBUTE flagred {0, 1}
+@ATTRIBUTE flagreen {0, 1}
+@ATTRIBUTE flagblue {0, 1}
+@ATTRIBUTE flagyog {0, 1}
+@ATTRIBUTE flagblack {0, 1}
+@ATTRIBUTE flagwhite {0, 1}
+@ATTRIBUTE flagcross {0, 1}
+@ATTRIBUTE flagbars {0, 2, 3}
+@ATTRIBUTE flagstripes {0, 2, 3, 9}
+@ATTRIBUTE flagicon {0, 1}
+@ATTRIBUTE Country {Austria,Belgium,Cyprus,CzechRep,Denmark,Estonia,Finland,France,Germany,Greece,Hungary,Ireland,Italy,Latvia,Lithuania,Luxembourg,Malta,Netherlands,Poland,Portugal,Slovakia,Slovenia,Spain,Sweden,UK}
+
+@DATA
+1,0,0,0,0,1,0,0,3,0,Austria
+1,0,0,1,1,0,0,3,0,0,Belgium
+0,1,0,1,0,1,0,0,0,1,Cyprus
+1,0,1,0,0,1,0,0,0,0,CzechRep
+1,0,0,0,0,1,1,0,0,0,Denmark
+0,0,1,0,1,1,0,0,3,0,Estonia
+0,0,1,0,0,1,1,0,0,0,Finland
+1,0,1,0,0,1,0,3,0,0,France
+1,0,0,1,1,0,0,0,3,0,Germany
+0,0,1,0,0,1,1,0,9,0,Greece
+1,1,0,0,0,1,0,0,3,0,Hungary
+0,1,0,1,0,1,0,3,0,0,Ireland
+1,1,0,0,0,1,0,3,0,0,Italy
+1,0,0,0,0,1,0,0,3,0,Latvia
+1,1,0,1,0,0,0,0,3,0,Lithuania
+1,0,1,0,0,1,0,0,3,0,Luxembourg
+1,0,0,0,0,1,1,2,0,1,Malta
+1,0,1,0,0,1,0,0,3,0,Netherlands
+1,0,0,0,0,1,0,0,2,0,Poland
+1,1,1,1,0,1,1,2,0,1,Portugal
+1,0,1,0,0,1,1,0,3,1,Slovakia
+1,0,1,0,0,1,0,0,3,1,Slovenia
+1,0,0,1,0,0,0,0,3,1,Spain
+0,0,1,1,0,0,1,0,0,0,Sweden
+1,0,1,0,0,1,1,0,0,0,UK

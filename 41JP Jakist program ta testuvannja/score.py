@@ -12,7 +12,7 @@ labs = {
     "11": 30,
     "12": 20,
 }
-rgz = 20
+rgz = 0
 test = 70
 
 labs_result = sum(labs.values()) / 12

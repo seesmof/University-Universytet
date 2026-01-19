@@ -1,0 +1,29 @@
+% ARFF file for the market basket data on DM Ch. 5, slide 7.
+% Run Weka -> Explorer -> Open file -> Associate
+@relation marketData
+
+% The absence/presence of an item is indicated by 0/1.
+@attribute itemA {0, 1}
+@attribute itemB {0, 1}
+@attribute itemC {0, 1}
+@attribute itemD {0, 1}
+@attribute itemE {0, 1}
+@attribute itemF {0, 1}
+
+% 5 transactions: attribute values are listed successively.
+@data
+1, 1, 0, 1, 0, 0
+1, 0, 1, 1, 0, 0
+1, 0, 0, 1, 1, 0
+0, 1, 0, 0, 1, 1
+0, 1, 1, 1, 1, 1
+
+% Alternate data format for sparse transactions (= many 0s)
+% List only 1s in the form {attributeIndex 1, attributeIndex 1, ...}
+% Attribute index starts from 0.
+%@data
+%{0 1, 1 1, 3 1}
+%{0 1, 2 1, 3 1}
+%{0 1, 3 1, 4 1}
+%{1 1, 4 1, 5 1}
+%{1 1, 2 1, 3 1, 4 1, 5 1}

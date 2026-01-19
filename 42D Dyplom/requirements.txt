@@ -1,0 +1,6 @@
+django
+django-ninja
+flask
+flask-cors
+nicegui
+streamlit

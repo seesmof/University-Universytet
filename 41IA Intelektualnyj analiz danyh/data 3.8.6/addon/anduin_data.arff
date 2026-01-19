@@ -1,0 +1,135 @@
+% This is an ARFF file generated from the Anduin bookstore database
+% 
+% Each data-instance is a user, and the attributes are as follows: 
+% 
+% customerid   - the customerid as an INT
+% customername - the customer username
+% sum          - the total number of books bought by this user
+% class        - the purchase class of this user: low, medium or high
+%  
+% The remaining attributes represent the different books, the boolean value 
+% tells us whether or not this user has bought that book. 
+%
+% Have fun :) 
+
+
+@relation anduin.purchasedata
+
+
+@attribute customerid	real
+@attribute customername	 {ggrimnes, progg, gandalf, bob, linus, mary, brad, bd, sandy, steveW, eric, test, pedwards, BillCat, Opus, Michael, gunnar, Wallace, sonja}
+@attribute sum	real
+@attribute class	{ low, high, medium }
+@attribute '1896522203 - Progressive Rock'	{ yes, no }
+@attribute '0815411901 - Captain Beefheart  The Biography'	{ yes, no }
+@attribute '0875421210 - Earth Power Techniques of Natural Magic'	{ yes, no }
+@attribute '0007123817 - The Lord of the Rings'	{ yes, no }
+@attribute '0261102427 - The Silmarillion'	{ yes, no }
+@attribute '000711544X - The Hobbit'	{ yes, no }
+@attribute '0007132840 - JRR Tolkien'	{ yes, no }
+@attribute '0752817116 - The Hanging Garden'	{ yes, no }
+@attribute '0728203502 - An Introduction to Property Valuation'	{ yes, no }
+@attribute '0297607588 - The Meaning of Things'	{ yes, no }
+@attribute '0672318989 - Sams Teach Yourself Ecommerce Programming with ASP in  Days'	{ yes, no }
+@attribute '1903112338 - Computing Projects in Visual Basic'	{ yes, no }
+@attribute '0078824761 - C the Complete Reference'	{ yes, no }
+@attribute '0201350882 - Algorithms in C Parts '	{ yes, no }
+@attribute '0201924889 - Effective C'	{ yes, no }
+@attribute '1565921526 - Learning GNU Emacs'	{ yes, no }
+@attribute '0716782189 - Common LISP'	{ yes, no }
+@attribute '0130224960 - Solaris Internals Core Kernel Architecture'	{ yes, no }
+@attribute '0671854216 - The Magic of Thinking Big'	{ yes, no }
+@attribute '0879305436 - Micro COs Real Time Kernel II'	{ yes, no }
+@attribute '1587990806 - Just For Fun The Story of an Accidental Revolutionary'	{ yes, no }
+@attribute '0201719754 - Linux Kernel Internals'	{ yes, no }
+@attribute '0596000251 - Linux in a Nutshell'	{ yes, no }
+@attribute '156592469X - Running Linux'	{ yes, no }
+@attribute '1565923359 - Oracle PLSQL Programming'	{ yes, no }
+@attribute '0782127347 - Linux Apache Web Server Administration'	{ yes, no }
+@attribute '0072127732 - Hacking Linux Exposed'	{ yes, no }
+@attribute '0201633612 - Design Patterns'	{ yes, no }
+@attribute '1565921488 - Practical UNIX and Internet Security'	{ yes, no }
+@attribute '078214036X - Linux Complete'	{ yes, no }
+@attribute '0563537353 - quotGround Forcequot Garden Handbook'	{ yes, no }
+@attribute '0563384522 - quotGround Forcequot Weekend Workbook'	{ yes, no }
+@attribute '0563551135 - quotGround Forcequot Water Garden Workbook'	{ yes, no }
+@attribute '0706378199 -  Best Small Gardens'	{ yes, no }
+@attribute '0600603121 - Garden Lighting'	{ yes, no }
+@attribute '1841881139 - The Ultimate Garden Designer'	{ yes, no }
+@attribute '0140446044 - The Complete Essays'	{ yes, no }
+@attribute '0582798035 - American Kernel Lessons Beginning AKLBeginning Cass  ONLL'	{ yes, no }
+@attribute '0743400232 - XMen Magneto Chaos Engine Book '	{ yes, no }
+@attribute '0471254541 - The Economics of Strategy nd Edition'	{ yes, no }
+@attribute '0205130771 - ECONOMICS SOFTWARE'	{ yes, no }
+@attribute '0750635703 - Visual C Programming Made Simple'	{ yes, no }
+@attribute '1861003730 - Beginning PHP Programming'	{ yes, no }
+@attribute '0077095855 - Database Design and Programming with Access SQL and Visual Basi'	{ yes, no }
+@attribute '0471345083 - Expert Trading Systems Modeling Financial Markets with Kernel R'	{ yes, no }
+@attribute '0192838725 - Capital'	{ yes, no }
+@attribute '0333900715 - Just Capital'	{ yes, no }
+@attribute '0415228549 - A History of Western Philosophy'	{ yes, no }
+@attribute '0582356717 - America in the Progressive Era    Seminar Studies in'	{ yes, no }
+@attribute '0752847295 - Stovolds Mornington Crescent Almanac '	{ yes, no }
+@attribute '0674006712 - Empire'	{ yes, no }
+@attribute '1853264717 - Tao Te Ching'	{ yes, no }
+@attribute '0596001657 - NET Framework Essentials'	{ yes, no }
+@attribute '1861003234 - ASP  Programmers Reference'	{ yes, no }
+@attribute '0192835459 - The Flowers of Evil'	{ yes, no }
+@attribute '0789716356 - Using Visual C '	{ yes, no }
+@attribute '0596000022 - Understanding the Linux Kernel'	{ yes, no }
+@attribute '0333752260 - Soup and Beyond Soups Beans and Other Things'	{ yes, no }
+@attribute '0749921730 - Tree Medicine'	{ yes, no }
+@attribute '000219984X - Collins How to Identify Edible Mushrooms'	{ yes, no }
+@attribute '1855383446 - Introducing NLP NeuroLinguistic Programming'	{ yes, no }
+@attribute '0826328091 - The Education of Little Tree'	{ yes, no }
+@attribute '0744000505 - The Art of quotFinal Fantasy IXquot'	{ yes, no }
+@attribute '0416195261 - The Tao of Pooh and the Te of Piglet'	{ yes, no }
+@attribute '1853043168 - Garfield Pocket Books No  Says It with Flowers'	{ yes, no }
+@attribute '1861002971 - Beginning Linux Programming nd Edition'	{ yes, no }
+@attribute '073571052X - C and XML'	{ yes, no }
+@attribute '1555580416 - Common LISP the Language'	{ yes, no }
+@attribute '0201675234 - The Korn Shell'	{ yes, no }
+@attribute '0782127355 - Linux System Administration'	{ yes, no }
+@attribute '024114051X - Sliced Iguana Travels in Unknown Mexico'	{ yes, no }
+@attribute '0747552843 - The Official Spinal Tap Companion'	{ yes, no }
+@attribute '1841951854 - The Great Metal Discography'	{ yes, no }
+@attribute '0261103709 - The History of the quotLord of the Ringsquot   book set'	{ yes, no }
+@attribute '0590660543 - Northern Lights'	{ yes, no }
+@attribute '0590112899 - The Subtle Knife'	{ yes, no }
+@attribute '043999358X - The Amber Spyglass'	{ yes, no }
+@attribute '0747532745 - Harry Potter and the Philosophers Stone'	{ yes, no }
+@attribute '0747550999 - Harry Potter and the Goblet of Fire'	{ yes, no }
+@attribute '0747538484 - Harry Potter and the Chamber of Secrets'	{ yes, no }
+@attribute '0201361183 - Algorithms in C Part  Graph Algorithms'	{ yes, no }
+@attribute '0007105045 - Tree and Leaf'	{ yes, no }
+@attribute '0261103180 - Map of Tolkiens Middleearth'	{ yes, no }
+@attribute '0261104012 - JRR Tolkien Author of the Century'	{ yes, no }
+@attribute '1871730120 - Progressive Grammar of German  Categories and Their Exponents'	{ yes, no }
+@attribute '0670887684 - The English Garden'	{ yes, no }
+@attribute '0195852699 - Oxford Progressive English Readers Grade   Headwords qu'	{ yes, no }
+
+
+
+@data
+
+
+1, 'ggrimnes', 0, low, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+2, 'progg', 2, low, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+3, 'gandalf', 5, medium, no, no, yes, yes, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+4, 'bob', 5, medium, no, no, no, no, no, no, no, yes, yes, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+5, 'linus', 18, high, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+6, 'mary', 10, high, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+7, 'brad', 4, low, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+8, 'bd', 8, medium, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, yes, yes, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+9, 'sandy', 4, low, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+10, 'steveW', 6, medium, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+11, 'eric', 1, low, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+12, 'test', 0, low, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+13, 'pedwards', 5, medium, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+14, 'BillCat', 5, medium, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+15, 'Opus', 10, high, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, no, no, no, no, yes, yes, yes, yes, yes, yes, yes, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+16, 'Michael', 8, medium, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, yes, yes, yes, yes, no, no, no, no, no, no, no
+17, 'gunnar', 8, medium, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, no, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes, yes, no, no, no
+18, 'Wallace', 1, low, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no
+19, 'sonja', 3, low, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, yes, yes, yes
+
