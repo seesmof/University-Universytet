@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-export default function Home() {
+export default function Owned() {
   return (
     <div className="dock">
-      <Link href="owned/">
+      <Link href="owned/" className="dock-active">
         <span className="dock-label">Owned</span>
       </Link>
 
-      <Link href="/" className="dock-active">
+      <Link href="/">
         <span className="dock-label">Store</span>
       </Link>
 
