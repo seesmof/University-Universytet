@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\University-Universytet\\42D Dyplom\\app\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\models\\truck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:models\\truck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\models\\truck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:models\\truck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,7 +19,7 @@
       "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:models\\buyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\storeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|D:\\University-Universytet\\42D Dyplom\\app\\views\\storeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\storeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -82,12 +82,11 @@
               "RelativeToolTip": "models\\Buyer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T15:44:18.023Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-16T15:44:18.023Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.cs [Design]",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.cs",
               "RelativeDocumentMoniker": "views\\MainWindow.cs",
@@ -106,8 +105,7 @@
               "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\SignUpForm.cs [Design]",
               "RelativeToolTip": "views\\SignUpForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T11:52:32.065Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-16T11:52:32.065Z"
             },
             {
               "$type": "Document",
@@ -118,8 +116,7 @@
               "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.cs [Design]",
               "RelativeToolTip": "views\\LoginForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T11:40:44.695Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-16T11:40:44.695Z"
             }
           ]
         },
@@ -129,7 +126,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Truck.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\models\\Truck.cs",
               "RelativeDocumentMoniker": "models\\Truck.cs",
@@ -149,8 +146,7 @@
               "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\StoreForm.cs [Design]",
               "RelativeToolTip": "views\\StoreForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T09:07:06.641Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-19T09:07:06.641Z"
             },
             {
               "$type": "Document",
@@ -162,8 +158,7 @@
               "RelativeToolTip": "views\\MainWindow.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T11:49:26.75Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-16T11:49:26.75Z"
             },
             {
               "$type": "Document",
@@ -175,8 +170,7 @@
               "RelativeToolTip": "data\\buyers.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2026-01-16T15:56:40.24Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-16T15:56:40.24Z"
             },
             {
               "$type": "Document",
@@ -188,8 +182,7 @@
               "RelativeToolTip": "views\\SignUpForm.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAArwFUAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T12:09:18.188Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-16T12:09:18.188Z"
             },
             {
               "$type": "Document",
@@ -201,8 +194,7 @@
               "RelativeToolTip": "controllers\\BuyerController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAIA8wCYAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T11:41:43.652Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-16T11:41:43.652Z"
             },
             {
               "$type": "Document",
@@ -251,8 +243,7 @@
               "RelativeToolTip": "views\\LoginForm.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T11:52:24.803Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-16T11:52:24.803Z"
             }
           ]
         }

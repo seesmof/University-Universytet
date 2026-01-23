@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             splitContainer1 = new SplitContainer();
+            usersButton = new Button();
             logOutButton = new Button();
             ownedButton = new Button();
             storeButton = new Button();
             appDescriptionLabel = new Label();
             buyerWelcomeLabel = new Label();
-            usersButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -62,6 +62,16 @@
             splitContainer1.Size = new Size(778, 544);
             splitContainer1.SplitterDistance = 214;
             splitContainer1.TabIndex = 0;
+            // 
+            // usersButton
+            // 
+            usersButton.Location = new Point(12, 164);
+            usersButton.Name = "usersButton";
+            usersButton.Size = new Size(199, 70);
+            usersButton.TabIndex = 3;
+            usersButton.Text = "Users";
+            usersButton.UseVisualStyleBackColor = true;
+            usersButton.Click += usersButton_Click;
             // 
             // logOutButton
             // 
@@ -109,15 +119,6 @@
             buyerWelcomeLabel.Size = new Size(207, 32);
             buyerWelcomeLabel.TabIndex = 1;
             buyerWelcomeLabel.Text = "Welcome, buyer!";
-            // 
-            // usersButton
-            // 
-            usersButton.Location = new Point(12, 164);
-            usersButton.Name = "usersButton";
-            usersButton.Size = new Size(199, 70);
-            usersButton.TabIndex = 3;
-            usersButton.Text = "Users";
-            usersButton.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 

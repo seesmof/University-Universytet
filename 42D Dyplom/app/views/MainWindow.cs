@@ -47,5 +47,10 @@ namespace app
                 this.Hide();
             }
         }
+
+        private void usersButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

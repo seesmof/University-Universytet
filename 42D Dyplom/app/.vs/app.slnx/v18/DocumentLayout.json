@@ -3,6 +3,34 @@
   "WorkspaceRootPath": "D:\\University-Universytet\\42D Dyplom\\app\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|D:\\University-Universytet\\42D Dyplom\\app\\views\\storeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\storeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|D:\\University-Universytet\\42D Dyplom\\app\\views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\storeform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\storeform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\storeform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\storeform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -11,16 +39,8 @@
       "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:models\\truck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\models\\buyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:models\\buyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|D:\\University-Universytet\\42D Dyplom\\app\\views\\storeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\storeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\data\\buyers.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -39,20 +59,12 @@
       "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|D:\\University-Universytet\\42D Dyplom\\app\\views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\controllers\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:controllers\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\mainwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|solutionrelative:views\\mainwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4195E981-2360-7259-32C6-BB2CA129A715}|app.csproj|d:\\university-universytet\\42d dyplom\\app\\views\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 211,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,7 +86,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "MainWindow.resx",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.resx",
+              "RelativeDocumentMoniker": "views\\MainWindow.resx",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.resx",
+              "RelativeToolTip": "views\\MainWindow.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-01-22T16:03:10.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Buyer.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\models\\Buyer.cs",
               "RelativeDocumentMoniker": "models\\Buyer.cs",
@@ -86,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "MainWindow.cs [Design]",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.cs",
               "RelativeDocumentMoniker": "views\\MainWindow.cs",
@@ -98,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "SignUpForm.cs [Design]",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\SignUpForm.cs",
               "RelativeDocumentMoniker": "views\\SignUpForm.cs",
@@ -109,24 +133,50 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "LoginForm.cs [Design]",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.cs",
               "RelativeDocumentMoniker": "views\\LoginForm.cs",
               "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.cs [Design]",
               "RelativeToolTip": "views\\LoginForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T11:40:44.695Z"
+              "WhenOpened": "2026-01-16T11:40:44.695Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StoreForm.resx",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\StoreForm.resx",
+              "RelativeDocumentMoniker": "views\\StoreForm.resx",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\StoreForm.resx",
+              "RelativeToolTip": "views\\StoreForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-01-22T16:03:10.164Z",
+              "EditorCaption": ""
             }
           ]
         },
         {
           "DockedWidth": 189,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "StoreForm.Designer.cs",
+              "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\StoreForm.Designer.cs",
+              "RelativeDocumentMoniker": "views\\StoreForm.Designer.cs",
+              "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\StoreForm.Designer.cs",
+              "RelativeToolTip": "views\\StoreForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T16:03:10.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Truck.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\models\\Truck.cs",
               "RelativeDocumentMoniker": "models\\Truck.cs",
@@ -134,23 +184,23 @@
               "RelativeToolTip": "models\\Truck.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T09:16:46.907Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-19T09:16:46.907Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "StoreForm.cs [Design]",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\StoreForm.cs",
               "RelativeDocumentMoniker": "views\\StoreForm.cs",
               "ToolTip": "D:\\University-Universytet\\42D Dyplom\\app\\views\\StoreForm.cs [Design]",
               "RelativeToolTip": "views\\StoreForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T09:07:06.641Z"
+              "WhenOpened": "2026-01-19T09:07:06.641Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "MainWindow.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.cs",
               "RelativeDocumentMoniker": "views\\MainWindow.cs",
@@ -158,11 +208,12 @@
               "RelativeToolTip": "views\\MainWindow.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T11:49:26.75Z"
+              "WhenOpened": "2026-01-16T11:49:26.75Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "buyers.txt",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\data\\buyers.txt",
               "RelativeDocumentMoniker": "data\\buyers.txt",
@@ -174,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "SignUpForm.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\SignUpForm.cs",
               "RelativeDocumentMoniker": "views\\SignUpForm.cs",
@@ -186,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "BuyerController.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\controllers\\BuyerController.cs",
               "RelativeDocumentMoniker": "controllers\\BuyerController.cs",
@@ -198,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "LoginForm.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.cs",
               "RelativeDocumentMoniker": "views\\LoginForm.cs",
@@ -210,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Utilities.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\controllers\\Utilities.cs",
               "RelativeDocumentMoniker": "controllers\\Utilities.cs",
@@ -222,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 5,
               "Title": "MainWindow.Designer.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\MainWindow.Designer.cs",
               "RelativeDocumentMoniker": "views\\MainWindow.Designer.cs",
@@ -235,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "LoginForm.Designer.cs",
               "DocumentMoniker": "D:\\University-Universytet\\42D Dyplom\\app\\views\\LoginForm.Designer.cs",
               "RelativeDocumentMoniker": "views\\LoginForm.Designer.cs",
@@ -243,7 +294,8 @@
               "RelativeToolTip": "views\\LoginForm.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T11:52:24.803Z"
+              "WhenOpened": "2026-01-16T11:52:24.803Z",
+              "EditorCaption": ""
             }
           ]
         }
