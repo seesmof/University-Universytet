@@ -49,6 +49,8 @@ def load_trucks() -> list[Truck]:
         for index, line in enumerate(lines)
         if index != 0
     ]
+    for truck in lines:
+        truck.price = int(truck.price)
     return lines
 
 
@@ -68,6 +70,33 @@ def take_loan(amount: int):
     money_label.update()
 
 
+def buy_truck(truck: Truck):
+    if State.money < truck.price:
+        ui.notify("Not enough money", close_button="Sad")
+        return
+
+    State.money -= truck.price
+    State.owned_trucks.append(truck)
+
+    money_label.set_text(f"💸 {State.money}")
+    owned_trucks_grid.refresh()
+    ui.notify(f"Bought {truck.name}!")
+
+
+@ui.refreshable
+def owned_trucks_grid():
+    with ui.grid(columns=3):
+        for truck in State.owned_trucks:
+            with ui.card().tight():
+                image_path: str = os.path.join(
+                    Const.CURRENT_FOLDER, "images", f"{truck.picture}.jpg"
+                )
+                ui.image(image_path)
+                with ui.card_section():
+                    ui.label(truck.name).classes("text-lg font-medium")
+                    ui.label(truck.category).classes("italic")
+
+
 State.trucks = load_trucks()
 loans_data = [
     Loan(amount=3_000, duration=12),
@@ -84,16 +113,7 @@ with ui.tabs().classes("w-full") as main_tabs:
     bank_tab = ui.tab(TabName.BANK)
 with ui.tab_panels(tabs=main_tabs, value=store_tab).classes("w-full"):
     with ui.tab_panel(owned_tab):
-        with ui.grid(columns=3):
-            for truck in State.owned_trucks:
-                with ui.card().tight():
-                    image_path: str = os.path.join(
-                        Const.CURRENT_FOLDER, "images", f"{truck.picture}.jpg"
-                    )
-                    ui.image(image_path)
-                    with ui.card_section():
-                        ui.label(truck.name).classes("text-lg font-medium")
-                        ui.label(truck.category).classes("italic")
+        owned_trucks_grid()
 
     with ui.tab_panel(store_tab):
         with ui.grid(columns=3):
@@ -110,7 +130,9 @@ with ui.tab_panels(tabs=main_tabs, value=store_tab).classes("w-full"):
                             "justify-between flex flex-row w-full mt-2"
                         ):
                             ui.label(f"$ {truck.price}").classes("font-bold ")
-                            ui.button("Buy").props("outline")
+                            ui.button(
+                                "Buy", on_click=lambda t=truck: buy_truck(t)
+                            ).props("outline")
 
     with ui.tab_panel(bank_tab):
         with ui.grid(columns=3):
