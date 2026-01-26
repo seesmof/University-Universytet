@@ -147,5 +147,4 @@ with ui.tab_panels(tabs=main_tabs, value=store_tab).classes("w-full"):
                                 "Take", on_click=lambda l=loan: take_loan(l.amount)
                             )
 
-
-ui.run()
+ui.run(title="Trucks Store", favicon="🚛")
