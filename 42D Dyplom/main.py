@@ -121,7 +121,9 @@ with ui.tab_panels(tabs=main_tabs, value=store_tab).classes("w-full"):
                         ui.label(convert_months_to_years(loan.duration))
                         with ui.row().classes("mt-2"):
                             ui.label(f"$ {loan.amount}")
-                            ui.button("Take", on_click=lambda: take_loan(loan.amount))
+                            ui.button(
+                                "Take", on_click=lambda l=loan: take_loan(l.amount)
+                            )
 
 
 ui.run()
