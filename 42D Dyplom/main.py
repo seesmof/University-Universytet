@@ -100,6 +100,8 @@ def update_money():
 def sell_truck(truck: Truck):
     found_truck: Truck = [t for t in State.owned_trucks if t.name == truck.name][0]
     State.owned_trucks.remove(found_truck)
+    owned_trucks_view.refresh()
+    ui.notify(f"Sold {truck.name}!")
 
     State.money += truck.price
     update_money()
@@ -116,7 +118,8 @@ def owned_trucks_view():
                 ui.image(image_path)
                 with ui.card_section():
                     ui.label(truck.name).classes("text-lg font-medium")
-                    ui.label(truck.category).classes("italic")
+                    ui.label(truck.category).classes("italic py-2")
+                    ui.button("Sell", on_click=lambda t=truck: sell_truck(t))
 
 
 @ui.refreshable
@@ -128,7 +131,7 @@ def store_view():
                     Const.CURRENT_FOLDER, "images", f"{truck.picture}.jpg"
                 )
                 ui.image(image_path)
-                with ui.card_section():
+                with ui.card_section().classes("w-full"):
                     ui.label(truck.name).classes("text-lg font-medium")
                     ui.label(truck.category).classes("italic")
                     with ui.row().classes("justify-between flex flex-row w-full mt-2"):
