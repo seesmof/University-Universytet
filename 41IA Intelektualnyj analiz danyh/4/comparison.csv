@@ -1,0 +1,5 @@
+Модель,Коефіцієнт
+Functions.LinearRegression,0.92
+Trees.M5P,0.97
+Functions.SMOreg,0.93
+Lazy.IBK,0.95
