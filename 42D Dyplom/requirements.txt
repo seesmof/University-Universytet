@@ -5,3 +5,7 @@ flask-cors
 nicegui
 streamlit
 mysqlclient
+sqlalchemy
+mysql-connector-python
+pymysql
+psycopg
