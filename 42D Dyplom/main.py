@@ -14,7 +14,7 @@ class Truck:
 @dataclass
 class Loan:
     amount: int
-    duration: int = 12
+    duration: int
 
 
 @dataclass
