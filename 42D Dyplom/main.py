@@ -28,7 +28,7 @@ class BankName:
 @dataclass
 class Truck:
     name: str
-    category: str
+    category: TruckCategory
     price: int
     picture: str
 
@@ -351,7 +351,6 @@ with ui.tabs().classes("w-full") as main_tabs:
     store_tab = ui.tab(TabName.STORE, icon="o_store")
     bank_tab = ui.tab(TabName.BANK, icon="o_account_balance")
     orders_tab = ui.tab(TabName.ORDERS, icon="o_list_alt")
-
 with ui.tab_panels(tabs=main_tabs, value=store_tab).classes("w-full"):
     with ui.tab_panel(loans_tab):
         loans_view()
