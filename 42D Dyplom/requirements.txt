@@ -9,3 +9,5 @@ sqlalchemy
 mysql-connector-python
 pymysql
 psycopg
+tortoise-orm
+aiosqlite
