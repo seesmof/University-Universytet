@@ -114,10 +114,12 @@ def buy_truck(truck: Truck):
         return
 
     State.money -= truck.price
-    State.owned_trucks.append(truck)
-
     update_money()
+
+    State.owned_trucks.append(truck)
     owned_trucks_view.refresh()
+
+    select_truck(truck)
     ui.notify(f"Bought {truck.name}!")
 
 
@@ -131,7 +133,8 @@ def sell_truck(truck: Truck):
 
 
 def select_truck(truck: Truck):
-    selected_truck_label.text(f"🚛 {truck.name}")
+    State.selected_truck = truck
+    selected_truck_label.set_text(f"🚛 {State.selected_truck.name}")
     selected_truck_label.update()
 
 
@@ -188,13 +191,16 @@ def owned_trucks_view():
                 ui.image(image_path)
                 with ui.card_section():
                     ui.label(truck.name).classes("text-lg font-medium")
-                    ui.label(truck.category).classes("italic py-2")
-                    ui.button(
-                        "Select", on_click=lambda this_truck: select_truck(this_truck)
-                    )
-                    ui.button(
-                        "Sell", on_click=lambda this_truck=truck: sell_truck(this_truck)
-                    )
+                    ui.label(truck.category)
+                    with ui.row().classes("flex flex-row gap-2 mt-4"):
+                        ui.button(
+                            "Select",
+                            on_click=lambda this_truck=truck: select_truck(this_truck),
+                        )
+                        ui.button(
+                            "Sell",
+                            on_click=lambda this_truck=truck: sell_truck(this_truck),
+                        )
 
 
 @ui.refreshable
