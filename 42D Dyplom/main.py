@@ -96,6 +96,13 @@ def update_money():
     money_label.update()
 
 
+def update_selected_truck():
+    selected_truck_label.set_text(
+        f"🚛 {State.selected_truck.name}" if State.selected_truck else ""
+    )
+    selected_truck_label.update()
+
+
 def perform_order(order: Order, map):
     if State.selected_truck is None:
         ui.notify("No selected truck", close_button="Sad")
@@ -124,6 +131,9 @@ def buy_truck(truck: Truck):
 
 
 def sell_truck(truck: Truck):
+    State.selected_truck = None
+    update_selected_truck()
+
     State.owned_trucks.remove(truck)
     owned_trucks_view.refresh()
     ui.notify(f"Sold {truck.name}!")
@@ -134,8 +144,7 @@ def sell_truck(truck: Truck):
 
 def select_truck(truck: Truck):
     State.selected_truck = truck
-    selected_truck_label.set_text(f"🚛 {State.selected_truck.name}")
-    selected_truck_label.update()
+    update_selected_truck()
 
 
 def take_loan(loan: Loan):
@@ -331,10 +340,11 @@ def orders_view():
 
 State.trucks = load_trucks()
 
-selected_truck_label = ui.label(
-    f"🚛 {State.selected_truck.name}" if State.selected_truck else "🚛"
-).classes("self-end")
-money_label = ui.label(f"💸 {State.money}").classes("self-end")
+with ui.row().classes("flex flex-row gap-4 self-end"):
+    selected_truck_label = ui.label(
+        f"🚛 {State.selected_truck.name}" if State.selected_truck else ""
+    )
+    money_label = ui.label(f"💸 {State.money}")
 with ui.tabs().classes("w-full") as main_tabs:
     loans_tab = ui.tab(TabName.LOANS)
     owned_tab = ui.tab(TabName.OWNED)
