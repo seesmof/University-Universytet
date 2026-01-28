@@ -346,11 +346,11 @@ with ui.row().classes("flex flex-row gap-4 self-end"):
     )
     money_label = ui.label(f"💸 {State.money}")
 with ui.tabs().classes("w-full") as main_tabs:
-    loans_tab = ui.tab(TabName.LOANS)
-    owned_tab = ui.tab(TabName.OWNED)
-    store_tab = ui.tab(TabName.STORE)
-    bank_tab = ui.tab(TabName.BANK)
-    orders_tab = ui.tab(TabName.ORDERS)
+    loans_tab = ui.tab(TabName.LOANS, icon="o_credit_score")
+    owned_tab = ui.tab(TabName.OWNED, icon="o_warehouse")
+    store_tab = ui.tab(TabName.STORE, icon="o_store")
+    bank_tab = ui.tab(TabName.BANK, icon="o_account_balance")
+    orders_tab = ui.tab(TabName.ORDERS, icon="o_list_alt")
 
 with ui.tab_panels(tabs=main_tabs, value=store_tab).classes("w-full"):
     with ui.tab_panel(loans_tab):
