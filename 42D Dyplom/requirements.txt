@@ -11,3 +11,4 @@ pymysql
 psycopg
 tortoise-orm
 aiosqlite
+peewee
