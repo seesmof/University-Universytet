@@ -34,14 +34,72 @@ class Order(BaseModel):
 
 
 db.connect()
-loans_data = [
-    Loan(amount=1_000, duration=6, bank=BankName.CREDIT_AGRICOLE),
-    Loan(amount=3_000, duration=12, bank=BankName.PRIVAT),
-    Loan(amount=6_000, duration=24, bank=BankName.RAIFFEISEN),
-    Loan(amount=8_000, duration=32, bank=BankName.UNIVERSAL),
-    Loan(amount=12_000, duration=64, bank=BankName.UKR_GAS_BANK),
-    Loan(amount=24_000, duration=128, bank=BankName.PRIVAT),
+orders_data = [
+    Order(
+        price=3_000,
+        location="Berlin",
+        coordinates=(52.518744170403735, 13.406213091838993),
+    ),
+    Order(
+        price=4_000,
+        location="London",
+        coordinates=(51.5067928552932, -0.12607730720849492),
+    ),
+    Order(
+        price=6_000,
+        location="Warsaw",
+        coordinates=(52.23561758864598, 21.018099697575668),
+    ),
+    Order(
+        price=7_000,
+        location="Kyiv",
+        coordinates=(50.458441369448394, 30.53985208331925),
+    ),
+    Order(
+        price=3_000,
+        location="Hannover",
+        coordinates=(52.385944377042954, 9.727804834523267),
+    ),
+    Order(
+        price=2_000,
+        location="Hamburg",
+        coordinates=(53.55052975065959, 9.992920102015772),
+    ),
+    Order(
+        price=9_000,
+        location="Lviv",
+        coordinates=(49.841397119257735, 24.032740882395462),
+    ),
+    Order(
+        price=4_000,
+        location="Katowice",
+        coordinates=(50.254720297302, 18.697951949786837),
+    ),
+    Order(
+        price=6_000,
+        location="Kharkiv",
+        coordinates=(50.00195062385631, 36.29946397006903),
+    ),
+    Order(
+        price=8_000,
+        location="Zaporizhzhia",
+        coordinates=(47.839790847405894, 35.13965215348557),
+    ),
+    Order(
+        price=9_000,
+        location="Prague",
+        coordinates=(50.0733649767132, 14.434635200695334),
+    ),
+    Order(
+        price=10_000,
+        location="Paris",
+        coordinates=(48.85755675929906, 2.352366598522737),
+    ),
 ]
-for loan in loans_data:
-    l = Loan.create(amount=loan.amount, duration=loan.duration, bank=loan.bank)
-    print(l.amount)
+for order in orders_data:
+    o = Order.create(
+        price=order.price,
+        location=order.location,
+        coordinates=f"{order.coordinates[0]},{order.coordinates[1]}",
+    )
+    print(o.coordinates)
