@@ -37,11 +37,11 @@ def convert_months_to_years(duration: int):
     months = duration % MONTHS_IN_A_YEAR
 
     return (
-        f"{years} years, {months} months"
+        f"{years} років, {months} місяців"
         if months and years
-        else f"{years} years"
+        else f"{years} років"
         if years
-        else f"{months} months"
+        else f"{months} місяців"
     )
 
 
@@ -65,7 +65,7 @@ def update_selected_truck():
 
 def perform_order(order: IOrder, map):
     if State.selected_truck is None:
-        ui.notify("No selected truck", close_button="Sad")
+        ui.notify("Немає обраної вантажівки.", close_button="Добре")
         return
 
     State.money += order.price
@@ -85,7 +85,7 @@ def select_truck(truck: ITruck):
 
 def buy_truck(truck: ITruck):
     if State.money < truck.price:
-        ui.notify("Not enough money", close_button="Sad")
+        ui.notify("Недостатньо коштів.", close_button="Добре")
         return
 
     State.money -= truck.price
@@ -95,7 +95,7 @@ def buy_truck(truck: ITruck):
     owned_trucks_view.refresh()
 
     select_truck(truck)
-    ui.notify(f"Bought {truck.name}!")
+    ui.notify(f"Куплено {truck.category.lower()} під назвою {truck.name}!")
 
 
 def sell_truck(truck: ITruck):
@@ -104,7 +104,7 @@ def sell_truck(truck: ITruck):
 
     State.owned_trucks.remove(truck)
     owned_trucks_view.refresh()
-    ui.notify(f"Sold {truck.name}!")
+    ui.notify(f"Продано {truck.category.lower()} під назвою {truck.name}!")
 
     State.money += truck.price
     update_money()
@@ -118,13 +118,13 @@ def take_loan(loan: ILoan):
     State.taken_loans.append(loan)
 
     update_money()
-    ui.notify(f"Taken a loan for {loan.amount} from {loan.bank}")
+    ui.notify(f"Взято кредит на ₴ {loan.amount} від {loan.bank}")
     loans_view.refresh()
 
 
 def pay_loan(loan: ILoan):
     if State.money < loan.amount:
-        ui.notify("Not enough money to pay.", close_button="Sad")
+        ui.notify("Недостатньо коштів для сплати.", close_button="Добре")
         return
 
     State.money -= loan.amount
@@ -133,7 +133,7 @@ def pay_loan(loan: ILoan):
     update_money()
     bank_view.refresh()
     loans_view.refresh()
-    ui.notify(f"Payed a loan for {loan.amount} from {loan.bank}")
+    ui.notify(f"Сплачено кредит на ₴ {loan.amount} від {loan.bank}")
 
 
 # --- UI VIEWS ---
@@ -142,15 +142,15 @@ def pay_loan(loan: ILoan):
 @ui.refreshable
 def loans_view():
     if not State.taken_loans:
-        ui.label("No loans taken yet.")
+        ui.label("Немає взятих кредитів.")
     with ui.grid(columns=2).classes("w-full"):
         for loan in State.taken_loans:
             with ui.card().tight():
                 with ui.card_section():
-                    ui.label(f"Loan @ {loan.bank}").classes("font-medium")
+                    ui.label(f"Кредит у {loan.bank}").classes("font-medium")
                     ui.label(convert_months_to_years(loan.duration))
                     with ui.row().classes("mt-4"):
-                        ui.label(f"$ {loan.amount}")
+                        ui.label(f"₴ {loan.amount}")
                         ui.button(
                             "Pay", on_click=lambda this_loan=loan: pay_loan(this_loan)
                         )
@@ -159,7 +159,7 @@ def loans_view():
 @ui.refreshable
 def owned_trucks_view():
     if not State.owned_trucks:
-        ui.label("No trucks bought yet.")
+        ui.label("Немає придбаних вантажівок.")
     with ui.grid(columns=3).classes("w-full"):
         for truck in State.owned_trucks:
             with ui.card().tight():
@@ -172,11 +172,11 @@ def owned_trucks_view():
                     ui.label(truck.category)
                     with ui.row().classes("flex flex-row gap-2 mt-4"):
                         ui.button(
-                            "Select",
+                            "Обрати",
                             on_click=lambda this_truck=truck: select_truck(this_truck),
                         )
                         ui.button(
-                            "Sell",
+                            "Продати",
                             on_click=lambda this_truck=truck: sell_truck(this_truck),
                         )
 
@@ -194,9 +194,9 @@ def store_view():
                     ui.label(truck.name).classes("text-lg font-medium")
                     ui.label(truck.category)
                     with ui.row().classes("justify-between flex flex-row w-full mt-4"):
-                        ui.label(f"$ {truck.price}").classes("font-bold ")
+                        ui.label(f"₴ {truck.price}").classes("font-bold ")
                         ui.button(
-                            "Buy",
+                            "Купити",
                             on_click=lambda this_truck=truck: buy_truck(this_truck),
                         )
 
@@ -207,12 +207,12 @@ def bank_view():
         for index, loan in enumerate(State.loans, start=1):
             with ui.card().tight():
                 with ui.card_section():
-                    ui.label(f"Loan @ {loan.bank}").classes("font-medium text-lg")
+                    ui.label(f"Кредит у {loan.bank}").classes("font-medium text-lg")
                     ui.label(convert_months_to_years(loan.duration))
                     with ui.row().classes("mt-4"):
-                        ui.label(f"$ {loan.amount}")
+                        ui.label(f"₴ {loan.amount}")
                         ui.button(
-                            "Take",
+                            "Взяти",
                             on_click=lambda this_loan=loan: take_loan(this_loan),
                         )
 
@@ -224,11 +224,11 @@ def orders_view():
     with ui.grid(columns=3).classes("w-full"):
         for order in State.orders:
             with ui.card():
-                with ui.card_section():
+                with ui.card_section().classes("w-full"):
                     ui.label(order.location).classes("text-lg font-medium")
-                    ui.label(f"$ {order.price}").classes("mb-4")
+                    ui.label(f"₴ {order.price}").classes("mb-4")
                     ui.button(
-                        "Perform",
+                        "Виконати",
                         on_click=lambda this_order=order: perform_order(
                             this_order, map
                         ),
@@ -263,4 +263,4 @@ with ui.tab_panels(tabs=main_tabs, value=store_tab).classes("w-full"):
         orders_view()
 
 if __name__ in {"__main__", "__mp_main__"}:
-    ui.run(title="Trucks Store", favicon="🚛")
+    ui.run(title="Магазин вантажівок", favicon="🚛")

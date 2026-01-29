@@ -3,25 +3,25 @@ from peewee import *
 
 
 class TabName:
-    LOANS = "Loans"
-    OWNED = "Trucks"
-    STORE = "Store"
-    BANK = "Bank"
-    ORDERS = "Orders"
+    LOANS = "Кредити"
+    OWNED = "Гараж"
+    STORE = "Автосалон"
+    BANK = "Банк"
+    ORDERS = "Замовлення"
 
 
 class TruckCategory:
-    LOCAL = "Local"
-    LORRY = "Lorry"
-    OFFORAD = "Offroad"
+    LOCAL = "Бус"
+    LORRY = "Вантажівка"
+    OFFORAD = "Всюдихід"
 
 
 class BankName:
-    PRIVAT = "Privat Bank"
-    RAIFFEISEN = "Raiffeisen Bank"
-    CREDIT_AGRICOLE = "Crédit Agricole"
-    UNIVERSAL = "Universal Bank"
-    UKR_GAS_BANK = "Ukrgasbank"
+    PRIVAT = "Приват Банк"
+    RAIFFEISEN = "Райфайзен Банк"
+    CREDIT_AGRICOLE = "Кредит Агріколь"
+    UNIVERSAL = "Банк Універсал"
+    UKR_GAS_BANK = "Укргазбанк"
 
 
 @dataclass
