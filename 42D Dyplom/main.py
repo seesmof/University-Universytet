@@ -148,7 +148,7 @@ def loans_view():
             with ui.card().tight():
                 with ui.card_section():
                     ui.label(f"Loan @ {loan.bank}").classes("font-medium")
-                    ui.label(f"Duration: {loan.duration}")
+                    ui.label(convert_months_to_years(loan.duration))
                     with ui.row().classes("mt-4"):
                         ui.label(f"$ {loan.amount}")
                         ui.button(
@@ -209,7 +209,7 @@ def bank_view():
                 with ui.card_section():
                     ui.label(f"Loan @ {loan.bank}").classes("font-medium text-lg")
                     ui.label(convert_months_to_years(loan.duration))
-                    with ui.row().classes("mt-4 w-full"):
+                    with ui.row().classes("mt-4"):
                         ui.label(f"$ {loan.amount}")
                         ui.button(
                             "Take",
@@ -226,7 +226,7 @@ def orders_view():
             with ui.card():
                 with ui.card_section():
                     ui.label(order.location).classes("text-lg font-medium")
-                    ui.label(f"$ {order.price}").classes("italic py-4")
+                    ui.label(f"$ {order.price}").classes("mb-4")
                     ui.button(
                         "Perform",
                         on_click=lambda this_order=order: perform_order(
