@@ -27,7 +27,7 @@ class Const:
     CURRENT_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
 
-# --- HELPER ---
+# --- ПОМІЧНИКИ ---
 
 
 def convert_months_to_years(duration: int):
@@ -45,7 +45,7 @@ def convert_months_to_years(duration: int):
     )
 
 
-# --- UPDATES ---
+# --- ОНОВЛЕННЯ ---
 
 
 def update_money():
@@ -60,7 +60,7 @@ def update_selected_truck():
     selected_truck_label.update()
 
 
-# --- ORDERS ---
+# --- ЗАМОВЛЕННЯ ---
 
 
 def perform_order(order: IOrder, map):
@@ -75,7 +75,7 @@ def perform_order(order: IOrder, map):
     map.update()
 
 
-# --- TRUCKS ---
+# --- ВАНТАЖІВКИ ---
 
 
 def select_truck(truck: ITruck):
@@ -110,7 +110,7 @@ def sell_truck(truck: ITruck):
     update_money()
 
 
-# --- LOANS ---
+# --- КРЕДИТИ ---
 
 
 def take_loan(loan: ILoan):
@@ -136,7 +136,7 @@ def pay_loan(loan: ILoan):
     ui.notify(f"Сплачено кредит на ₴ {loan.amount} від {loan.bank}")
 
 
-# --- UI VIEWS ---
+# --- ПРЕДСТАВЛЕННЯ ІНТЕРФЕЙСУ ---
 
 
 @ui.refreshable
@@ -152,7 +152,8 @@ def loans_view():
                     with ui.row().classes("mt-4"):
                         ui.label(f"₴ {loan.amount}")
                         ui.button(
-                            "Pay", on_click=lambda this_loan=loan: pay_loan(this_loan)
+                            "Сплатити",
+                            on_click=lambda this_loan=loan: pay_loan(this_loan),
                         )
 
 
