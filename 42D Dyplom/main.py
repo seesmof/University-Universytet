@@ -363,4 +363,5 @@ with ui.tab_panels(tabs=main_tabs, value=store_tab).classes("w-full"):
     with ui.tab_panel(orders_tab):
         orders_view()
 
-ui.run(title="Trucks Store", favicon="🚛")
+if __name__ in {"__main__", "__mp_main__"}:
+    ui.run(title="Trucks Store", favicon="🚛")
