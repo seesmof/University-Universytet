@@ -2,56 +2,14 @@ from dataclasses import dataclass
 from nicegui import ui
 import os
 
-
-class TabName:
-    LOANS = "Loans"
-    OWNED = "Trucks"
-    STORE = "Store"
-    BANK = "Bank"
-    ORDERS = "Orders"
-
-
-class TruckCategory:
-    LOCAL = "Local"
-    LORRY = "Lorry"
-    OFFORAD = "Offroad"
-
-
-class BankName:
-    PRIVAT = "Privat Bank"
-    RAIFFEISEN = "Raiffeisen Bank"
-    CREDIT_AGRICOLE = "Crédit Agricole"
-    UNIVERSAL = "Universal Bank"
-    UKR_GAS_BANK = "Ukrgasbank"
-
-
-@dataclass
-class Truck:
-    name: str
-    category: TruckCategory
-    price: int
-    picture: str
-
-
-@dataclass
-class Loan:
-    amount: int
-    duration: int
-    bank: BankName
-
-
-@dataclass
-class Order:
-    price: int
-    location: str
-    coordinates: tuple[float, float]
+from data import BankName, ILoan, IOrder, TabName, ITruck
 
 
 class State:
-    trucks: list[Truck] = list()
-    owned_trucks: list[Truck] = list()
-    selected_truck: Truck = None
-    taken_loans: list[Loan] = list()
+    trucks: list[ITruck] = list()
+    owned_trucks: list[ITruck] = list()
+    selected_truck: ITruck = None
+    taken_loans: list[ILoan] = list()
     money: int = 0
 
 
@@ -59,14 +17,14 @@ class Const:
     CURRENT_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
 
-def load_trucks() -> list[Truck]:
+def load_trucks() -> list[ITruck]:
     file_name: str = "trucks.csv"
     file_path: str = os.path.join(Const.CURRENT_FOLDER, file_name)
 
     with open(file_path, encoding="utf-8", mode="r") as f:
         lines = f.readlines()
     lines = [
-        Truck(*line.strip().split(","))
+        ITruck(*line.strip().split(","))
         for index, line in enumerate(lines)
         if index != 0
     ]
@@ -103,7 +61,7 @@ def update_selected_truck():
     selected_truck_label.update()
 
 
-def perform_order(order: Order, map):
+def perform_order(order: IOrder, map):
     if State.selected_truck is None:
         ui.notify("No selected truck", close_button="Sad")
         return
@@ -115,7 +73,7 @@ def perform_order(order: Order, map):
     map.update()
 
 
-def buy_truck(truck: Truck):
+def buy_truck(truck: ITruck):
     if State.money < truck.price:
         ui.notify("Not enough money", close_button="Sad")
         return
@@ -130,7 +88,7 @@ def buy_truck(truck: Truck):
     ui.notify(f"Bought {truck.name}!")
 
 
-def sell_truck(truck: Truck):
+def sell_truck(truck: ITruck):
     State.selected_truck = None
     update_selected_truck()
 
@@ -142,12 +100,12 @@ def sell_truck(truck: Truck):
     update_money()
 
 
-def select_truck(truck: Truck):
+def select_truck(truck: ITruck):
     State.selected_truck = truck
     update_selected_truck()
 
 
-def take_loan(loan: Loan):
+def take_loan(loan: ILoan):
     State.money += loan.amount
     State.taken_loans.append(loan)
 
@@ -156,7 +114,7 @@ def take_loan(loan: Loan):
     loans_view.refresh()
 
 
-def pay_loan(loan: Loan):
+def pay_loan(loan: ILoan):
     if State.money < loan.amount:
         ui.notify("Not enough money to pay.", close_button="Sad")
         return
@@ -235,12 +193,12 @@ def store_view():
 @ui.refreshable
 def bank_view():
     loans_data = [
-        Loan(amount=1_000, duration=6, bank=BankName.CREDIT_AGRICOLE),
-        Loan(amount=3_000, duration=12, bank=BankName.PRIVAT),
-        Loan(amount=6_000, duration=24, bank=BankName.RAIFFEISEN),
-        Loan(amount=8_000, duration=32, bank=BankName.UNIVERSAL),
-        Loan(amount=12_000, duration=64, bank=BankName.UKR_GAS_BANK),
-        Loan(amount=24_000, duration=128, bank=BankName.PRIVAT),
+        ILoan(amount=1_000, duration=6, bank=BankName.CREDIT_AGRICOLE),
+        ILoan(amount=3_000, duration=12, bank=BankName.PRIVAT),
+        ILoan(amount=6_000, duration=24, bank=BankName.RAIFFEISEN),
+        ILoan(amount=8_000, duration=32, bank=BankName.UNIVERSAL),
+        ILoan(amount=12_000, duration=64, bank=BankName.UKR_GAS_BANK),
+        ILoan(amount=24_000, duration=128, bank=BankName.PRIVAT),
     ]
 
     with ui.grid(columns=2).classes("w-full"):
@@ -260,65 +218,65 @@ def bank_view():
 @ui.refreshable
 def orders_view():
     orders_data = [
-        Order(
+        IOrder(
             price=3_000,
             location="Berlin",
             coordinates=(52.518744170403735, 13.406213091838993),
         ),
-        Order(
+        IOrder(
             price=4_000,
             location="London",
             coordinates=(51.5067928552932, -0.12607730720849492),
         ),
-        Order(
+        IOrder(
             price=6_000,
             location="Warsaw",
             coordinates=(52.23561758864598, 21.018099697575668),
         ),
-        Order(
+        IOrder(
             price=7_000,
             location="Kyiv",
             coordinates=(50.458441369448394, 30.53985208331925),
         ),
-        Order(
+        IOrder(
             price=3_000,
             location="Hannover",
             coordinates=(52.385944377042954, 9.727804834523267),
         ),
-        Order(
+        IOrder(
             price=2_000,
             location="Hamburg",
             coordinates=(53.55052975065959, 9.992920102015772),
         ),
-        Order(
+        IOrder(
             price=9_000,
             location="Lviv",
             coordinates=(49.841397119257735, 24.032740882395462),
         ),
-        Order(
+        IOrder(
             price=4_000,
             location="Katowice",
             coordinates=(50.254720297302, 18.697951949786837),
         ),
-        Order(
+        IOrder(
             price=6_000,
             location="Kharkiv",
             coordinates=(50.00195062385631, 36.29946397006903),
         ),
-        Order(
+        IOrder(
             price=8_000,
             location="Zaporizhzhia",
             coordinates=(47.839790847405894, 35.13965215348557),
         ),
-        Order(
+        IOrder(
             price=9_000,
             location="Prague",
             coordinates=(50.0733649767132, 14.434635200695334),
         ),
-        Order(
+        IOrder(
             price=10_000,
             location="Paris",
-            coordinates=(48.85755675929906, 2.352366598522737),
+            coordinates=["48.85755675929906", "2.352366598522737"],
         ),
     ]
 
