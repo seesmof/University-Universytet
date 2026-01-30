@@ -148,7 +148,7 @@ def loans_view():
             with ui.card().tight():
                 with ui.card_section():
                     ui.label(f"Кредит у {loan.bank}").classes("font-medium")
-                    ui.label(convert_months_to_years(loan.duration))
+                    ui.label(f"на {convert_months_to_years(loan.duration)}")
                     with ui.row().classes("mt-4"):
                         ui.label(f"₴ {loan.amount}")
                         ui.button(
