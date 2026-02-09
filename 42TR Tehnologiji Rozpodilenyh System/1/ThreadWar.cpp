@@ -47,7 +47,7 @@ void writeat(int x, int y, char c)
     WaitForSingleObject(screenlock, INFINITE);
     COORD pos = {x, y};
     DWORD res;
-    WriteConsoleOutputCharacter(conout, &c, 1, pos, &res);
+    WriteConsoleOutputCharacterA(conout, &c, 1, pos, &res);
     ReleaseMutex(screenlock);
 }
 
@@ -90,7 +90,7 @@ int getat(int x, int y)
 
     // Блокувати доступ до консолі доти, поки процедура не буде виконана
     WaitForSingleObject(screenlock, INFINITE);
-    ReadConsoleOutputCharacter(conout, &c, 1, org, &res);
+    ReadConsoleOutputCharacterA(conout, &c, 1, org, &res);
     ReleaseMutex(screenlock); // unlock
     return c;
 }
@@ -99,13 +99,13 @@ int getat(int x, int y)
 void score(void)
 {
     char s[128];
-    sprintf(s, "Thread War!  Hit: %d   Miss : %d", hit, miss);
-    SetConsoleTitle(s);
+    sprintf_s(s, "Thread War!  Hit: %d   Miss : %d", hit, miss);
+    SetConsoleTitleA(s);
     if (miss >= 30)
     {
         EnterCriticalSection(&gameover);
         SuspendThread(mainthread); // призупинити головний потік
-        MessageBox(NULL, "Game Over!", "Thread War", MB_OK | MB_SETFOREGROUND);
+        MessageBoxA(NULL, "Game Over!", "Thread War", MB_OK | MB_SETFOREGROUND);
         exit(0); // не виходить із критичної секції
     }
     if ((hit + miss) % 20 == 0)
@@ -201,7 +201,7 @@ void bullet(void *_xy_)
     // якщо семафор дорівнює 0, пострілу  не відбувається
     if (WaitForSingleObject(bulletsem, 0) == WAIT_TIMEOUT)
         return;
-    while (-іxy.Y)
+    while (-xy.Y)
     {
         writeat(xy.X, xy.Y, '*'); // відобразити кулю
         Sleep(100);
@@ -269,7 +269,7 @@ void main()
         case VK_RIGHT: // команда "вправо!"; логіка та ж
             SetEvent(startevt);
             writeat(x, y, ' ');
-            while (ct - і)
+            while (ct)
                 if (x != info.dwSize.X - 1)
                     x++;
             break;
