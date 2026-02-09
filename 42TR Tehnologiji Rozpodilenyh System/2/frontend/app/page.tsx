@@ -1,6 +1,6 @@
 "use client";
 
-import { powerModular } from "@/helper/main";
+import { powerModular } from "@/helper/power";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 

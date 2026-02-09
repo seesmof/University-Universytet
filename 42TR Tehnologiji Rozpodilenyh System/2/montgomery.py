@@ -1,4 +1,5 @@
 import threading
+from nicegui import ui
 
 
 class MontgomeryReducer:
@@ -53,6 +54,8 @@ def task(name, a, b, n):
     print(f"[Потік {name}] Результат {a} * {b} mod {n} = {result}")
 
 
+"""
+
 # Параметри
 n = 7919  # Просте число
 data = [(123, 456), (789, 101)]
@@ -67,3 +70,17 @@ for i, (a, b) in enumerate(data):
 # Очікування завершення
 for t in threads:
     t.join()
+"""
+
+with ui.card().classes("mt-80 mx-auto"):
+    with ui.row().classes("w-full"):
+        ui.input(label="Simple Number").classes("w-full")
+    with ui.row().classes("w-full"):
+        ui.input(label="First Pair, First")
+        ui.input(label="First Pair, Second")
+    with ui.row().classes("w-full"):
+        ui.input(label="Second Pair, First")
+        ui.input(label="Second Pair, Second")
+    ui.button(text="Calculate").classes("w-full")
+
+ui.run(title="TR2. Montgomery", favicon="🔬")
