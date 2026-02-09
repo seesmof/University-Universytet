@@ -1,21 +1,29 @@
-export const powerModular = (a: number, n: number, m: number): number => {
-  /*
-   * Обчислює (a^e)%m за допомогою бінарного методу.
-   *
-   * @param a: основа, base
-   * @param n: ступінь, exponent
-   * @param m: модуль, modulus
-   */
-
-  if (m === 1) return 0;
-  let result: number = 1;
-  a = a % m;
-
-  while (n > 0) {
-    if (n % 2 === 1) result = (result * a) % m;
-    n = Math.floor(n / 2);
-    a = (a * a) % m;
+export default function modularExponentiation(
+  a: bigint,
+  n: bigint,
+  m: bigint,
+): bigint {
+  // 1. Якщо n = 1, повертаємо a mod m
+  if (n === 1n) {
+    return a % m;
   }
 
-  return result;
-};
+  // 2. Визначаємо довжину N та ініціалізуємо змінні
+  const binaryN = n.toString(2);
+  const N = binaryN.length;
+  let y = a % m;
+
+  // 3-5. Цикл від k = N-2 до 0
+  for (let k = N - 2; k >= 0; k--) {
+    // 4. Квадрування
+    y = (y * y) % m;
+
+    // 5. Перевірка i-го біта (зліва направо)
+    if ((n >> BigInt(k)) & 1n) {
+      y = (y * a) % m;
+    }
+  }
+
+  // 6-7. Повернення результату
+  return y;
+}

@@ -1,26 +1,26 @@
 "use client";
 
-import { powerModular } from "@/helper/power";
+import modularExponentiation from "@/helper/power";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 export default function Home() {
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState<bigint>(0n);
 
-  const [base, setBase] = useState(0);
-  const [exponent, setExponent] = useState(0);
-  const [modulus, setModulus] = useState(0);
+  const [base, setBase] = useState<bigint>(0n);
+  const [exponent, setExponent] = useState<bigint>(0n);
+  const [modulus, setModulus] = useState<bigint>(0n);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    setResult(powerModular(base, exponent, modulus));
+    setResult(modularExponentiation(base, exponent, modulus));
   };
 
   return (
     <div className="min-h-screen bg-linear-to-br to-sky-50 p-3 flex flex-col gap-3 items-center justify-center">
       <section className="bg-white rounded-md p-3 flex flex-col w-64 shadow">
-        <h1 className="font-bold">TR2. Binary Exponent</h1>
+        <h1 className="font-bold">TR2. Modular Exponentiation</h1>
       </section>
       <section className="bg-white rounded-md p-3 flex flex-col w-64 shadow">
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
@@ -32,8 +32,8 @@ export default function Home() {
               id="baseInput"
               className="input"
               type="text"
-              value={base}
-              onChange={(e) => setBase(+e.target.value)}
+              value={base.toString()}
+              onChange={(e) => setBase(BigInt(e.target.value))}
             />
           </div>
 
@@ -45,8 +45,8 @@ export default function Home() {
               id="exponentInput"
               className="input"
               type="text"
-              value={exponent}
-              onChange={(e) => setExponent(+e.target.value)}
+              value={exponent.toString()}
+              onChange={(e) => setExponent(BigInt(e.target.value))}
             />
           </div>
 
@@ -58,8 +58,8 @@ export default function Home() {
               id="modulusInput"
               className="input"
               type="text"
-              value={modulus}
-              onChange={(e) => setModulus(+e.target.value)}
+              value={modulus.toString()}
+              onChange={(e) => setModulus(BigInt(e.target.value))}
             />
           </div>
 
@@ -75,7 +75,7 @@ export default function Home() {
           <textarea
             name="output"
             id="output"
-            value={result}
+            value={result.toString()}
             readOnly
             className="textarea resize-none"
           ></textarea>
