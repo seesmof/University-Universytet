@@ -1,3 +1,9 @@
+/**
+ * @param a base,
+ * @param n exponent,
+ * @param m modulus.
+ */
+
 export default function modularExponentiation(
   a: bigint,
   n: bigint,
