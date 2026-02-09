@@ -1,6 +1,7 @@
 "use client";
 
 import { powerModular } from "@/helper/main";
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 export default function Home() {
@@ -80,6 +81,18 @@ export default function Home() {
           ></textarea>
         </div>
       </section>
+
+      <nav className="bg-white rounded-md p-3 flex flex-row w-64 shadow justify-between">
+        <Link className="underline underline-offset-4" href={"/"}>
+          Binary
+        </Link>
+        <Link className="hover:underline underline-offset-4" href={"/mont/"}>
+          Montgomery
+        </Link>
+        <Link className="hover:underline underline-offset-4" href={"/ridge/"}>
+          Ridge
+        </Link>
+      </nav>
     </div>
   );
 }
