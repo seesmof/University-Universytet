@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-linear-to-br to-sky-50 p-3 flex flex-col gap-3 items-center justify-center">
       <section className="bg-white rounded-md p-3 flex flex-col w-64 shadow">
-        <h1 className="font-bold">TR2. Montgomery</h1>
+        <h1 className="font-bold">TR2. Montgomery Descent</h1>
       </section>
       <section className="bg-white rounded-md p-3 flex flex-col w-64 shadow">
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
