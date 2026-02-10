@@ -1,0 +1,18 @@
+﻿  two.cpp
+one.obj : error LNK2005: main already defined in app.obj
+two.obj : error LNK2005: main already defined in app.obj
+one.obj : error LNK2019: unresolved external symbol MPI_Barrier referenced in function main
+two.obj : error LNK2001: unresolved external symbol MPI_Barrier
+one.obj : error LNK2019: unresolved external symbol MPI_Comm_size referenced in function main
+two.obj : error LNK2001: unresolved external symbol MPI_Comm_size
+one.obj : error LNK2019: unresolved external symbol MPI_Comm_rank referenced in function main
+two.obj : error LNK2001: unresolved external symbol MPI_Comm_rank
+one.obj : error LNK2019: unresolved external symbol MPI_Init referenced in function main
+two.obj : error LNK2001: unresolved external symbol MPI_Init
+one.obj : error LNK2019: unresolved external symbol MPI_Finalize referenced in function main
+two.obj : error LNK2001: unresolved external symbol MPI_Finalize
+two.obj : error LNK2019: unresolved external symbol MPI_Send referenced in function main
+two.obj : error LNK2019: unresolved external symbol MPI_Recv referenced in function main
+two.obj : error LNK2019: unresolved external symbol MPI_Get_count referenced in function main
+two.obj : error LNK2019: unresolved external symbol MPI_Abort referenced in function main
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\3\app\x64\Debug\app.exe : fatal error LNK1120: 9 unresolved externals
