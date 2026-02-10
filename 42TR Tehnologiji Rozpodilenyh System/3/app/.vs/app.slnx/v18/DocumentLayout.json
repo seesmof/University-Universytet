@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "two.cpp",
               "ToolTip": "D:\\University-Universytet\\42TR Tehnologiji Rozpodilenyh System\\3\\app\\two.cpp",
               "RelativeToolTip": "two.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-02-10T12:33:04.756Z",
               "EditorCaption": ""
@@ -49,7 +49,7 @@
               "RelativeDocumentMoniker": "one.cpp",
               "ToolTip": "D:\\University-Universytet\\42TR Tehnologiji Rozpodilenyh System\\3\\app\\one.cpp",
               "RelativeToolTip": "one.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-02-10T12:32:25.769Z",
               "EditorCaption": ""
@@ -64,8 +64,7 @@
               "RelativeToolTip": "app.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-10T12:32:07.406Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T12:32:07.406Z"
             }
           ]
         }
