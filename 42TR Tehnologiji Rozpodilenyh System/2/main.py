@@ -1,3 +1,4 @@
+import time
 from nicegui import ui
 import multiprocessing
 from workers import power_worker
@@ -106,6 +107,35 @@ def handle_ridge(base, exponent, modulus, processors):
     ridge_output.update()
 
 
+def calculate_times():
+    base = 3
+    exponent = 10
+    modulus = 7
+    processors = 4
+
+    binary_start = time.perf_counter()
+    binary(base, exponent, modulus)
+    binary_end = time.perf_counter()
+    binary_time = binary_end - binary_start
+
+    montgomery_start = time.perf_counter()
+    montgomery(base, exponent, modulus)
+    montgomery_end = time.perf_counter()
+    montgomery_time = montgomery_end - montgomery_start
+
+    ridge_start = time.perf_counter()
+    ridge(base, exponent, modulus, processors)
+    ridge_end = time.perf_counter()
+    ridge_time = ridge_end - ridge_start
+
+    data = [
+        {"method": TabNames.BINARY, "time": binary_time},
+        {"method": TabNames.MONTGOMERY, "time": montgomery_time},
+        {"method": TabNames.RIDGE, "time": ridge_time},
+    ]
+    comparison_table.update_rows(data)
+
+
 class TabNames:
     BINARY = "Binary"
     MONTGOMERY = "Montgomery"
@@ -160,7 +190,26 @@ with ui.tab_panels(main_tabs, value=TabNames.BINARY).classes("w-full"):
         ).classes("w-full")
         ridge_output = ui.input(label="Result").classes("w-full")
     with ui.tab_panel(TabNames.COMPARISON):
-        ui.label("Comparison")
-
+        ui.button(text="Calculate", on_click=lambda: calculate_times())
+        cols = [
+            {
+                "name": "Method",
+                "label": "Method",
+                "field": "method",
+                "required": True,
+                "align": "left",
+            },
+            {"name": "Time", "label": "Time", "field": "time", "required": True},
+        ]
+        data = [
+            {"method": TabNames.BINARY, "time": 0.0},
+            {"method": TabNames.MONTGOMERY, "time": 0.0},
+            {"method": TabNames.RIDGE, "time": 0.0},
+        ]
+        comparison_table = ui.table(
+            columns=cols,
+            rows=data,
+            row_key="method",
+        )
 
 ui.run(title="TR2", favicon="🔬")
