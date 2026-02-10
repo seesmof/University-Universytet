@@ -10,32 +10,22 @@ with ui.card().classes("mx-auto"):
 
 
 def binary(a: int, n: int, m: int) -> int:
-    """
-    Бінарний метод піднесення до степені.
+    if m == 1:
+        return 0
 
-    :param a: base
-    :type a: int
-    :param n: exponent
-    :type n: int
-    :param m: modulus
-    :type m: int
-    """
+    result = 1
+    a = a % m  # Обробляємо випадок, коли база більша за модуль
 
-    if n == 0:
-        return 1
-    if n == 1:
-        return a % m
+    while n > 0:
+        # Якщо поточний біт (наймолодший) дорівнює 1
+        if n % 2 == 1:
+            result = (result * a) % m
 
-    binary_N = int(bin(n)[2:])
-    y = a % m
+        # Підносимо базу до квадрата і зсуваємо степінь вправо
+        a = (a * a) % m
+        n //= 2
 
-    for k in range(binary_N - 2, 0, -1):
-        y = (y * y) % m
-
-        if (n >> k) & 1:
-            y = (y * a) % m
-
-    return y
+    return result
 
 
 def montgomery(a: int, n: int, m: int) -> int:
@@ -44,15 +34,15 @@ def montgomery(a: int, n: int, m: int) -> int:
     y1 = a % m
     y2 = (a * a) % m
 
-    for k in range(binary_N - 2, 0, -1):
-        bit = (n >> k) & 1
+    for i in range(binary_N - 2, 0, -1):
+        bit = (n >> i) & 1
 
         if bit == 1:
             y1 = (y1 * y2) % m
             y2 = (y2 * y2) % m
         else:
-            y1 = (y1 * y2) % m
-            y2 = (y1 * y1) % m
+            y1 = (y1 * y1) % m
+            y2 = (y1 * y2) % m
 
     return y1
 
@@ -137,10 +127,10 @@ def calculate_times():
 
 
 class TabNames:
-    BINARY = "Binary"
-    MONTGOMERY = "Montgomery"
-    RIDGE = "Ridge"
-    COMPARISON = "Comparison"
+    BINARY = "Бінарний"
+    MONTGOMERY = "Монтгомері"
+    RIDGE = "Гребінь"
+    COMPARISON = "Порівняння"
 
 
 with ui.tabs().classes("w-full") as main_tabs:
@@ -151,36 +141,36 @@ with ui.tabs().classes("w-full") as main_tabs:
 with ui.tab_panels(main_tabs, value=TabNames.BINARY).classes("w-full"):
     with ui.tab_panel(TabNames.BINARY):
         with ui.row():
-            bin_base = ui.input(label="Base")
-            bin_exponent = ui.input(label="Exponent")
-            bin_modulus = ui.input(label="Modulus")
+            bin_base = ui.input(label="Основа")
+            bin_exponent = ui.input(label="Експонент")
+            bin_modulus = ui.input(label="Модуль")
         ui.button(
-            text="Calculate",
+            text="Розрахувати",
             on_click=lambda: handle_binary(
                 bin_base.value, bin_exponent.value, bin_modulus.value
             ),
         ).classes("w-full")
-        binary_output = ui.input(label="Result").classes("w-full")
+        binary_output = ui.input(label="Результат").classes("w-full")
     with ui.tab_panel(TabNames.MONTGOMERY):
         with ui.row():
-            mont_base = ui.input(label="Base")
-            mont_exponent = ui.input(label="Exponent")
-            mont_modulus = ui.input(label="Modulus")
+            mont_base = ui.input(label="Основа")
+            mont_exponent = ui.input(label="Експонент")
+            mont_modulus = ui.input(label="Модуль")
         ui.button(
-            text="Calculate",
+            text="Розрахувати",
             on_click=lambda: handle_montgomery(
                 mont_base.value, mont_exponent.value, mont_modulus.value
             ),
         ).classes("w-full")
-        montgomery_output = ui.input(label="Result").classes("w-full")
+        montgomery_output = ui.input(label="Результат").classes("w-full")
     with ui.tab_panel(TabNames.RIDGE):
         with ui.row():
-            ridge_base = ui.input(label="Base")
-            ridge_exponent = ui.input(label="Exponent")
-            ridge_modulus = ui.input(label="Modulus")
-            ridge_processors = ui.input(label="Processors")
+            ridge_base = ui.input(label="Основа")
+            ridge_exponent = ui.input(label="Експонент")
+            ridge_modulus = ui.input(label="Модуль")
+            ridge_processors = ui.input(label="Процесорів")
         ui.button(
-            text="Calculate",
+            text="Розрахувати",
             on_click=lambda: handle_ridge(
                 ridge_base.value,
                 ridge_exponent.value,
@@ -188,18 +178,18 @@ with ui.tab_panels(main_tabs, value=TabNames.BINARY).classes("w-full"):
                 ridge_processors.value,
             ),
         ).classes("w-full")
-        ridge_output = ui.input(label="Result").classes("w-full")
+        ridge_output = ui.input(label="Результат").classes("w-full")
     with ui.tab_panel(TabNames.COMPARISON):
-        ui.button(text="Calculate", on_click=lambda: calculate_times())
+        ui.button(text="Протестувати", on_click=lambda: calculate_times())
         cols = [
             {
                 "name": "Method",
-                "label": "Method",
+                "label": "Метод",
                 "field": "method",
                 "required": True,
                 "align": "left",
             },
-            {"name": "Time", "label": "Time", "field": "time", "required": True},
+            {"name": "Time", "label": "Час", "field": "time", "required": True},
         ]
         data = [
             {"method": TabNames.BINARY, "time": 0.0},
@@ -212,4 +202,4 @@ with ui.tab_panels(main_tabs, value=TabNames.BINARY).classes("w-full"):
             row_key="method",
         )
 
-ui.run(title="TR2", favicon="🔬")
+ui.run(title="ТР2. Алгоритми піднесення до степеня", favicon="📈")
