@@ -1,22 +1,18 @@
 from mpi4py import MPI
+import numpy as np
 
 comm = MPI.COMM_WORLD
-
 size = comm.Get_size()
 rank = comm.Get_rank()
 
-total_data_size = 1000
+array_size = rank * size
 
-chunk_size = total_data_size // size
-start_index = rank * chunk_size
-end_index = (rank + 1) * chunk_size if rank != size - 1 else total_data_size
+data_array = np.zeros(array_size, dtype=int)
 
-print(
-    f"[Процес {rank}/{size}]: Працюю з індексами від {start_index} до {end_index - 1}"
-)
+print(f"Процес {rank}: Розмір масиву = {rank} * {size} = {array_size}")
+print(f"Пам'ять виділено за адресою: {data_array.__array_interface__['data'][0]}")
 
-local_sum = sum(range(start_index, end_index))
-total_sum = comm.reduce(local_sum, op=MPI.SUM, root=0)
-
-if rank == 0:
-    print(f"\nЗагальна сума, зібрана з {size} процесів: {total_sum}")
+if array_size > 0:
+    print(f"\t-> Перші елементи процесу {rank}: {data_array[:5]}...")
+else:
+    print(f"\t-> Процес {rank} має порожній масив, (бо rank = 0))")
