@@ -20,14 +20,14 @@ def main():
 
     if size < 2:
         if rank == 0:
-            print("Потрібно принаймні 2 процеси.")
+            print("At least 2 processes needed.")
         return
 
     if rank == 1:
         # Процес 1: Посилка
         # Створити масив даних типу Long (int64)
         data = np.arange(elements_to_send, dtype=np.int64) + 100
-        print(f"Процес {rank}: Надсилаю {len(data)} елементів: {data}")
+        print(f"Process {rank}: Sending {len(data)} elements: {data}")
         comm.Send([data, MPI.LONG], dest=0, tag=77)
 
     elif rank == 0:
@@ -38,10 +38,10 @@ def main():
         comm.Recv([recv_buffer, MPI.LONG], source=1, tag=77, status=status)
 
         actual_count = status.Get_count(MPI.LONG)
-        print("Процес 0: Отримано дані")
-        print(f"Фактична кількість прийнятих елементів: {actual_count}")
+        print("Process 0: Receiving data")
+        print(f"Actual amount of received elements: {actual_count}")
         print(
-            f"Вміст буфера (перші {actual_count} елементів): {recv_buffer[:actual_count]}"
+            f"Buffere size (first {actual_count} elements): {recv_buffer[:actual_count]}"
         )
 
 

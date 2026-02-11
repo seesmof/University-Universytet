@@ -11,14 +11,14 @@ def main():
     size = comm.Get_size()
     rank = comm.Get_rank()
 
-    parity = "парний" if rank % 2 == 0 else "непарний"
-    print(f"Процес {rank} з {size} є {parity}")
+    parity = "even" if rank % 2 == 0 else "odd"
+    print(f"Process {rank} of {size} is {parity}")
 
     comm.Barrier()
 
     if rank == 0:
-        print(f"\nВсього процесів: {size}")
-        print("Вміст командного рядку для першого процесу:")
+        print(f"\nTotal processes: {size}")
+        print(f"CommandLine for {rank} process:")
         for i, arg in enumerate(sys.argv):
             print(f"{i}: {arg}")
 

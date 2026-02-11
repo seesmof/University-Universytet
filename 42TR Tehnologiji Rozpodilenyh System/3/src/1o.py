@@ -9,14 +9,14 @@ def main():
     rank = comm.Get_rank()
 
     if rank == 0:
-        print(f"Всього процесів: {size}")
+        print(f"Total processes: {size}")
 
-    print(f"Число у MPI_COMM_WORLD: {rank}")
+    print(f"Number in MPI_COMM_WORLD: {rank}")
 
     comm.Barrier()
 
     if rank == 0:
-        print("Вміст командного рядку для першого процесу:")
+        print(f"CommandLine for {rank}:")
         for i, arg in enumerate(sys.argv):
             print(f"{i}: {arg}")
 

@@ -19,7 +19,7 @@ def main():
 
     if size < 2:
         if rank == 0:
-            print("Потрібно принаймні 2 процеси.")
+            print("At least 2 processes needed.")
         return
 
     if rank == 1:
@@ -31,11 +31,13 @@ def main():
         for i in range(elements_to_send):
             send_data[i] = i + 100
 
-        print(f"Процес {rank}: Динамічно створений масив розміром {elements_to_send}")
-        print(f"Процес {rank}: Надсилаю дані: {send_data}")
+        print(
+            f"Process {rank}: Dynamically created an array of {elements_to_send} elements."
+        )
+        print(f"Process {rank}: Sending data: {send_data}")
 
         # Передача даних
-        comm.send([send_data, MPI.LONG], dest=0, tag=77)
+        comm.Send([send_data, MPI.LONG], dest=0, tag=77)
 
     elif rank == 0:
         # Динамічне всиділення пам'яті для буфера обміну
@@ -50,10 +52,10 @@ def main():
         actual_count = status.Get_count(MPI.LONG)
 
         print(
-            f"Процес 0: Отримано дані у динамічний буфер (розмір буфера: {buffer_size})"
+            f"Process 0: Received data into a dynamic buffer (buffer size: {buffer_size})"
         )
-        print(f"Фактична кількість прийнятих елементів: {actual_count}")
-        print(f"Вміст отриманих даних: {recv_buffer[:actual_count]}")
+        print(f"Actual amount of received processes: {actual_count}")
+        print(f"Contents of received data: {recv_buffer[:actual_count]}")
 
     # Явне звільнення пам'яті в Python відбувається автоматично (Garbage Collector)
 
