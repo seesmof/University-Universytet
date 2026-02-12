@@ -1,7 +1,3 @@
-"""
-code taken from https://github.com/MolSSI-Education/parallel-programming/blob/main/examples/mpi4py/example2/example2.py
-"""
-
 from mpi4py import MPI
 import numpy as np
 
@@ -9,23 +5,16 @@ N: int = 240000
 
 
 def main():
-    N: int = 10_000_000
-    a = np.ones(N)
-    b = np.zeros(N)
-    c: list[float] = list()
+    comm = MPI.COMM_WORLD
+    size = comm.Get_size()
+    rank = comm.Get_rank()
 
-    for i in range(N):
-        b[i] = 1.0 + i
-
-    for i in range(N):
-        c.append(a[i] + b[i])
-
-    sum: float = 0.0
-    average: float = 0
-    for i in range(N):
-        sum += c[i]
-    average = sum // N
-    print(f"{average=}")
+    start_time = MPI.Wtime()
+    a: list[float] = np.ones(N)
+    end_time = MPI.Wtime()
+    time_taken = end_time - start_time
+    if rank == 0:
+        print(f"Init time: {time_taken}")
 
 
 if __name__ == "__main__":
