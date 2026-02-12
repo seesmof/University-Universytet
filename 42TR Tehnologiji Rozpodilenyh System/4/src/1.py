@@ -9,12 +9,29 @@ def main():
     size = comm.Get_size()
     rank = comm.Get_rank()
 
-    start_time = MPI.Wtime()
-    a: list[float] = np.ones(N)
-    end_time = MPI.Wtime()
-    time_taken = end_time - start_time
+    if size != 2:
+        if rank == 0:
+            print("ERROR: Required 2 processes to run correctly.")
+        return
+
     if rank == 0:
-        print(f"Init time: {time_taken}")
+        data = {
+            "result": "Jesus is LORD",
+            "code": 200,
+        }
+        comm.send(data, dest=1)
+        print(f"Process 0: Sending data - {data}")
+
+        response = comm.recv(source=1)
+        print(f"Process 0: Received a response - {response}")
+
+    if rank == 1:
+        data = ["Jesus is Lord", "Amen"]
+        comm.send(data, dest=0)
+        print(f"Process 1: Sending data - {data}")
+
+        response = comm.recv(source=0)
+        print(f"Process 1: Received response - {response}")
 
 
 if __name__ == "__main__":
