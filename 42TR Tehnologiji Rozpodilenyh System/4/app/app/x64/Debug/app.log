@@ -1,0 +1,17 @@
+﻿  2.c
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(25,15): warning C4013: 'malloc' undefined; assuming extern returning int
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(25,8): warning C4312: 'type cast': conversion from 'int' to 'int *' of greater size
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(31,13): warning C4312: 'type cast': conversion from 'int' to 'int *' of greater size
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(61,7): warning C4312: 'type cast': conversion from 'int' to 'double *' of greater size
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(67,7): warning C4312: 'type cast': conversion from 'int' to 'double *' of greater size
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(71,4): warning C4013: 'free' undefined; assuming extern returning int
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(74,3): warning C4013: 'srand' undefined; assuming extern returning int
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(74,19): warning C4013: 'time' undefined; assuming extern returning int
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(77,27): warning C4013: 'rand' undefined; assuming extern returning int
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(83,7): warning C4312: 'type cast': conversion from 'int' to 'double *' of greater size
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(89,7): warning C4312: 'type cast': conversion from 'int' to 'double *' of greater size
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(18,13): warning C4101: 'status': unreferenced local variable
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(56,1): error C4703: potentially uninitialized local pointer variable 'pn' used
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(57,1): error C4703: potentially uninitialized local pointer variable 'poffset' used
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(100,1): error C4703: potentially uninitialized local pointer variable 'x' used
+D:\University-Universytet\42TR Tehnologiji Rozpodilenyh System\4\app\2.c(101,1): error C4703: potentially uninitialized local pointer variable 'a' used
