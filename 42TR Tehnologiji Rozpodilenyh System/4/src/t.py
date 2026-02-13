@@ -1,16 +1,10 @@
-from mpi4py import MPI
-import numpy as np
+import math
+import random
 
-
-comm = MPI.COMM_WORLD
-rank = comm.Get_rank()
-size = comm.Get_size()
-
-data = np.arange(5)
-result = np.zeros_like(data)
-
-comm.Reduce(data, result)
-
-if rank == 0:
-    print(f"Data before reduction:\n{data}")
-    print(f"Results after reduction:\n{result}")
+N = 240_000
+sum: float = 0.0
+for i in range(N):
+    a_i = random.uniform(-1, 1)
+    x_i = 0.0001 * i
+    sum += a_i * math.sin(x_i)
+print(f"{sum = }")

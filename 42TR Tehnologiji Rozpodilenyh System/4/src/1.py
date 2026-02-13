@@ -22,4 +22,4 @@ def custom_sin(x, K=500):
     return s
 
 
-random_value = random.uniform(-1, 1)
+a_i = random.uniform(-1, 1)
