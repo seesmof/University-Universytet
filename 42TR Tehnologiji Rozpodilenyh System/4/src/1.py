@@ -1,38 +1,25 @@
+import random
 from mpi4py import MPI
 import numpy as np
 
-N: int = 240000
+N: int = 240_000
+
+comm = MPI.COMM_WORLD
+size = comm.Get_size()
+rank = comm.Get_rank()
 
 
-def main():
-    comm = MPI.COMM_WORLD
-    size = comm.Get_size()
-    rank = comm.Get_rank()
+def custom_sin(x, K=500):
+    y = x
+    s = y
+    k = 1
 
-    if size != 2:
-        if rank == 0:
-            print("ERROR: Required 2 processes to run correctly.")
-        return
+    while k <= K:
+        y = -(x**2 / ((k + 1) * (k + 2))) * y
+        s = s + y
+        k = k + 2
 
-    if rank == 0:
-        data = {
-            "result": "Jesus is LORD",
-            "code": 200,
-        }
-        comm.send(data, dest=1)
-        print(f"Process 0: Sending data - {data}")
-
-        response = comm.recv(source=1)
-        print(f"Process 0: Received a response - {response}")
-
-    if rank == 1:
-        data = ["Jesus is Lord", "Amen"]
-        comm.send(data, dest=0)
-        print(f"Process 1: Sending data - {data}")
-
-        response = comm.recv(source=0)
-        print(f"Process 1: Received response - {response}")
+    return s
 
 
-if __name__ == "__main__":
-    main()
+random_value = random.uniform(-1, 1)

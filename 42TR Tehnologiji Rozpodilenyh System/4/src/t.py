@@ -1,12 +1,16 @@
-import time
 from mpi4py import MPI
 import numpy as np
 
-N: int = 400000
-M = np.array(0, dtype="i")
 
-np.random.seed(int(time.time()))
-x = (-1.073741824 + np.random.rand(N) * 1e-9).astype("f8")
-a = ((-1.073741824 + np.random.rand(N) * 1e-9) * 0.1).astype("f8")
-M.fill(N // 4)
-print(a)
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+size = comm.Get_size()
+
+data = np.arange(5)
+result = np.zeros_like(data)
+
+comm.Reduce(data, result)
+
+if rank == 0:
+    print(f"Data before reduction:\n{data}")
+    print(f"Results after reduction:\n{result}")
