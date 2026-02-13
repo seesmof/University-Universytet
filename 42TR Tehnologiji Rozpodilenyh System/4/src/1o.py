@@ -23,7 +23,7 @@ def main():
         M = N / P
 
     if myrank == 0:
-        start_time = time.perf_counter()
+        start_time = MPI.Wtime()
     comm.bcast(M, root=1)
     comm.scatter(x, M, 0)
     comm.scatter(a, M, 0)
@@ -33,9 +33,8 @@ def main():
 
     comm.barrier()
     comm.reduce([sum, total], MPI.SUM, root=0)
-
     if myrank == 0:
-        end_time = time.perf_counter()
+        end_time = MPI.Wtime()
         eval_time = end_time - start_time
         print(f"time = {eval_time:.3f}")
         print(f"sum in {P} processes: {total:.5f}")

@@ -1,10 +1,7 @@
-from mpi4py import MPI
+import random
+import time
+import numpy as np
 
-comm = MPI.COMM_WORLD
-size = comm.Get_size()
-rank = comm.Get_rank()
-
-data = {"message": "Jesus is LORD", "status": 200}
-result = {}
-comm.Scatterv(data, result)
-print(result)
+N = 240_000
+arr = np.array([random.uniform(-1, 1) for _ in range(N)], dtype="d")
+print(arr)
