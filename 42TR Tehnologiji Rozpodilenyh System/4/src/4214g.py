@@ -44,9 +44,6 @@ plt.ticklabel_format(
     style="sci", axis="y", scilimits=(0, 0)
 )  # Для зручного відображення малих чисел
 plt.legend()
-
-# Збереження
-plt.savefig("scatter_time_graph.png")
 plt.show()
 
 print(
