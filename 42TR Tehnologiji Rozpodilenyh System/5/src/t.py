@@ -15,7 +15,7 @@ def rectangle_method(a, b, n):
 
 start = 0
 end = 3
-steps = 1_000
+steps = 100
 
 result = rectangle_method(start, end, steps)
 
