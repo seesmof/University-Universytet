@@ -1,16 +1,22 @@
-import matplotlib.pyplot as plt
-import numpy as np
+def f(x):
+    return x**2
 
-x = np.linspace(-5, 5, 100)
-y = 2 * x**2 + 3 * x + 10
 
-plt.figure(figsize=(8, 4))
-plt.plot(x, y, label="y = 2x^2 + 3x + 10")
+def rectangle_method(a, b, n):
+    h = (b - a) / n
 
-plt.title("LInear Function: y = 2x^2 + 3x + 10")
-plt.xlabel("x")
-plt.ylabel("y")
-plt.grid(True)
-plt.legend()
+    mid_sum = 0
+    for i in range(n):
+        x_mid = a + (i + 0.5) * h
+        mid_sum += f(x_mid)
 
-plt.show()
+    return mid_sum * h
+
+
+start = 0
+end = 3
+steps = 1_000
+
+result = rectangle_method(start, end, steps)
+
+print(f"Results using central rectangles method: {result:.4f}")
