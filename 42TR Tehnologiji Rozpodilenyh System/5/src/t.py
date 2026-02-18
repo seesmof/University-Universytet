@@ -1,22 +1,7 @@
-def f(x):
-    return x**2
+from mpi4py import MPI
 
+comm = MPI.COMM_WORLD
+size = comm.Get_size()
+rank = comm.Get_rank()
 
-def rectangle_method(a, b, n):
-    h = (b - a) / n
-
-    mid_sum = 0
-    for i in range(n):
-        x_mid = a + (i + 0.5) * h
-        mid_sum += f(x_mid)
-
-    return mid_sum * h
-
-
-start = 0
-end = 3
-steps = 100
-
-result = rectangle_method(start, end, steps)
-
-print(f"Results using central rectangles method: {result:.4f}")
+print(f"Jesus is LORD! This is process {rank} from size {size}.")
