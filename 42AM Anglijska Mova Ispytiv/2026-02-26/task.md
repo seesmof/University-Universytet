@@ -15,7 +15,7 @@ test 3 tasks 5-6
 
 ## Task 6
 
-### Paris Aims to change fashion face by 2024
+### Paris aims to change fashion face by 2024
 
 33. D
 34. D
