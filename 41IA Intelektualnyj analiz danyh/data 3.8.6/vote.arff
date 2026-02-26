@@ -209,7 +209,7 @@
 @attribute 'crime' { 'n', 'y'}
 @attribute 'duty-free-exports' { 'n', 'y'}
 @attribute 'export-administration-act-south-africa' { 'n', 'y'}
-@attribute 'Class' { 'democrat', 'republican'}
+@attribute 'Class' { 'republican', 'democrat'}
 @data
 'n','y','n','y','y','y','n','n','n','y',?,'y','y','y','n','y','republican'
 'n','y','n','y','y','y','n','n','n','n','n','y','y','y','n',?,'republican'
