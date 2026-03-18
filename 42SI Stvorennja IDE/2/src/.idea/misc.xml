@@ -6,7 +6,7 @@
         <PerGrammarGenerationSettings>
           <option name="fileName" value="$PROJECT_DIR$/src/Main.g4" />
           <option name="autoGen" value="true" />
-          <option name="outputDir" value="D:\University-Universytet\42SI Stvorennja IDE\2\src" />
+          <option name="outputDir" value="D:\University-Universytet\42SI Stvorennja IDE\2\src\gen" />
           <option name="libDir" value="" />
           <option name="encoding" value="" />
           <option name="pkg" value="" />

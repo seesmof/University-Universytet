@@ -6,3 +6,4 @@ expression: INT | expression (PLUS | MINUS) expression;
 PLUS: '+';
 MINUS: '-';
 INT: '0'..'9'+;
+WS: [ \r\t\n] -> channel(HIDDEN);

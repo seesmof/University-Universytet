@@ -1,10 +1,15 @@
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.CharStreams;
+import gen.MainParser;
+import gen.MainLexer;
+
 public
 class Main {
     public static void main(String[] args) {
-        System.out.println("Jesus is LORD");
+        MainLexer lexer = new MainLexer(CharStreams.fromString("5+2+3"));
+        MainParser parser = new MainParser(new CommonTokenStream(lexer));
 
-        for (int i = 1; i <= 10; i++) {
-            System.out.printf("Jesus is King, %d\n", i);
-        }
+        parser.start();
+        System.out.println("executed");
     }
 }
