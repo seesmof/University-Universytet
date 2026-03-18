@@ -1,10 +1,8 @@
 grammar Main;
 
-start: line+ EOF;
-line: KEYWORD (NUM UNIT)+ NL;
+expr: expr ('+' | '-') expr | INT;
 
-KEYWORD: ('Lithium' | 'Potassium');
-NUM: [0-9]+ ('.' [0-9]+)?;
-UNIT: 'g/ml' | 'km' | 'W';
-NL: '\n';
-UNKNOWN: . -> skip;
+start: expr EOF;
+
+INT: [0-9]+;
+WS: [ \t\r\n]+ -> skip;
