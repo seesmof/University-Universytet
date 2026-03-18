@@ -1,9 +1,10 @@
 grammar Main;
 
-start: expression EOF;
+start: line+ EOF;
+line: KEYWORD (NUM UNIT)+ NL;
 
-expression: INT | expression (PLUS | MINUS) expression;
-PLUS: '+';
-MINUS: '-';
-INT: '0'..'9'+;
-WS: [ \r\t\n] -> channel(HIDDEN);
+KEYWORD: ('Lithium' | 'Potassium');
+NUM: [0-9]+ ('.' [0-9]+)?;
+UNIT: 'g/ml' | 'km' | 'W';
+NL: '\n';
+UNKNOWN: . -> skip;
