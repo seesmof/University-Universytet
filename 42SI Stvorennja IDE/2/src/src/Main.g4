@@ -1,6 +1,8 @@
 grammar Main;
 
-start: LBRACE EXPR RBRACE;
-EXPR: '0'..'9'+;
-LBRACE: '(';
-RBRACE: ')';
+start: expression EOF;
+
+expression: INT | expression (PLUS | MINUS) expression;
+PLUS: '+';
+MINUS: '-';
+INT: '0'..'9'+;
