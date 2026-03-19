@@ -1,8 +1,17 @@
+/*
+ вбудовані типи даних, функції, вектори, записи, методи, цикли,
+ умовні оператори, зв’язування
+ змінних, арифметичні оператори
+ */
+
 grammar Main;
 
-expr: expr ('+' | '-') expr | INT;
+start: int | uint | function;
 
-start: expr EOF;
+int: 'i8' | 'i16' | 'i32' | 'i64' | 'i128';
+uint: 'u8' | 'u16' | 'u32' | 'u64' | 'u128';
 
-INT: [0-9]+;
-WS: [ \t\r\n]+ -> skip;
+function: 'fn' name '(' id? ')' block;
+
+name: [a-zA-Z_]+;
+block: '{' .*? '}';
