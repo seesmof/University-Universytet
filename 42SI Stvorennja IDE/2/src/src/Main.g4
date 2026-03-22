@@ -1,37 +1,40 @@
-/*
- вбудовані типи даних, функції,
- вектори, записи, методи, цикли,
- умовні оператори, зв’язування
- змінних, арифметичні оператори
- */
-
 grammar Main;
 
-start: function | vector | method | block | params;
-function: 'fn' NAME '(' NAME? ')' block;
-vector: 'vec![' .*? ']';
-method: 'impl' NAME block;
-for: 'for' NAME 'in' NUMBER '..' NUMBER block;
-loop: 'loop' block;
-while: 'while' condition block;
-condition: NAME COMPARISON_OPERATOR NUMBER;
-if: 'if' NAME COMPARISON_OPERATOR NUMBER block;
-let: 'let' NAME ('mut')? (':' type)? '=' NUMBER | NAME;
-type: INT | UNT | FLOAT | BOOL | STR;
-block: '{' .*? '}';
-params: '(' .*? ')';
-
-INT: 'i8' | 'i16' | 'i32' | 'i64' | 'i128';
-UNT: 'u8' | 'u16' | 'u32' | 'u64' | 'u128';
-FLOAT: 'f32' | 'f64';
-BOOL: 'bool';
-STR: 'str';
-NUMBER: [0-9]+;
-NAME: [a-zA-Z_]+;
-COMPARISON_OPERATOR: '<' | '<=' | '>' | '>=' | '==' | '!=';
-ARITHMETIC: '+' | '-' | '*' | '/';
-WS: [ \r\t\n] -> skip;
+program: item* EOF;
+item: function | structDef | implBlock;
+function: 'fn' ID '(' paramList? ')' ('->' type_)? block;
+paramList: param (',' param)*;
+param: ID ':' type_;
+type_: primitiveType | 'Vec' '<' type_ '>' | ID;
+primitiveType: 'i32' | 'bool' | 'String';
+structDef: 'struct' ID '{' fieldList? '}';
+fieldList: field (',' field)*;
+field: ID ':' type_;
+implBlock: 'impl' ID '{' method* '}';
+method: function;
+block: '{' statement* '}';
+statement: letStmt | expr ';'? | ifStmt | forLoop | whileLoop | ';';
+letStmt: 'let' ID (':' type_)? '=' expr ';';
+ifStmt: 'if' expr block ('else' (block | ifStmt))?;
+forLoop: 'for' ID 'in' expr '..' expr block;
+whileLoop: 'while' expr block;
+expr
+    : expr binOp expr               # binaryExpr
+    | unOp expr                     # unaryExpr
+    | ID '(' exprList? ')'          # callExpr
+    | expr '.' ID '(' exprList? ')' # methodCallExpr
+    | expr '.' ID                   # fieldAccess
+    | 'vec!' '[' exprList? ']'      # vecLiteral
+    | literal                       # litExpr
+    | ID                            # varExpr
+    | '(' expr ')'                  # parenExpr
+    ;
+exprList: expr (',' expr)*;
+literal: INT | STRING | 'true' | 'false';
+binOp: '+' | '-' | '*' | '/' | '%' | '==' | '!=' | '<' | '>' | '<=' | '>=' | '&&' | '||';
+unOp: '-' | '!';
+ID: [a-zA-Z_][a-zA-Z0-9_]*;
+INT: [0-9]+;
 STRING: '"' .*? '"';
-SEMICOLON: ';';
-LEFT_CURLY_BRACE: '{';
-RIGHT_CURLY_BRACE: '}';
+WS: [ \t\r\n] -> skip;
+COMMENT: '//' ~[\r\n]* -> skip;
