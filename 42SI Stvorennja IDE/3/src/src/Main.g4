@@ -1,7 +1,9 @@
 grammar Main;
 
 program: statement* EOF;
-statement: letBinding | functionDecl | structDecl | ifStatement | loopStatement | breakStmt | continueStmt | expression ';';
+statement: letBinding | functionDecl | structDecl | ifStatement
+         | loopStatement | forStatement | breakStmt | continueStmt | expression ';';
+forStatement: 'for' ID 'in' expression block;
 letBinding: 'let' 'mut'? ID (':' type)? '=' expression ';';
 structDecl: 'struct' ID '{' (structField (',' structField)*)? '}';
 structField: ID ':' type;
