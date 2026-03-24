@@ -34,7 +34,7 @@ for rate in learning_rates:
 # Побудова графіка
 plt.figure(figsize=(8, 4))
 plt.plot(learning_rates, train_times, marker="o", color="blue")
-plt.title("Залежність чассу навчання від кроку (LR)")
+plt.title("Залежність часу навчання від кроку (LR)")
 plt.xlabel("Learning Rate")
 plt.ylabel("Час (с)")
 plt.grid(True)
