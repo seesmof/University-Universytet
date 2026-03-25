@@ -1,9 +1,12 @@
 grammar Main;
 
 program: statement* EOF;
-statement: letBinding | functionDecl | structDecl | ifStatement
+statement: letBinding | functionDecl | structDecl | ifStatement | whileStatement
+         | printStatement
          | loopStatement | forStatement | breakStmt | continueStmt | expression ';';
 forStatement: 'for' ID 'in' expression block;
+whileStatement: 'while' expression block;
+printStatement: 'println!' '(' STRING (',' expression)* ')' ';';
 letBinding: 'let' 'mut'? ID (':' type)? '=' expression ';';
 structDecl: 'struct' ID '{' (structField (',' structField)*)? '}';
 structField: ID ':' type;
@@ -21,7 +24,7 @@ expression: ID '(' arguments? ')'               # CallExpr
           | expression '[' expression ']'       # IndexExpr
           | expression op=('*'|'/') expression  # BinaryExpr
           | expression op=('+'|'-') expression  # BinaryExpr
-          | expression op=('=='|'!='|'<'|'>') expression # CompareExpr
+          | expression op=('=='|'!='|'<'|'>'|'<='|'>=') expression # CompareExpr
           | '(' expression ')'                  # GroupExpr
           | ID                                  # IdExpr
           | INT                                 # IntLiteral

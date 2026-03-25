@@ -1,4 +1,5 @@
-package gen;// Generated from D:/University-Universytet/42SI Stvorennja IDE/3/src/src/Main.g4 by ANTLR 4.13.2
+// Generated from D:/University-Universytet/42SI Stvorennja IDE/3/src/src/Main.g4 by ANTLR 4.13.2
+package gen;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -27,6 +28,18 @@ public interface MainVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitForStatement(MainParser.ForStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MainParser#whileStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileStatement(MainParser.WhileStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MainParser#printStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintStatement(MainParser.PrintStatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MainParser#letBinding}.
 	 * @param ctx the parse tree

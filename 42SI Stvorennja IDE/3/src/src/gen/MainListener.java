@@ -1,4 +1,5 @@
-package gen;// Generated from D:/University-Universytet/42SI Stvorennja IDE/3/src/src/Main.g4 by ANTLR 4.13.2
+// Generated from D:/University-Universytet/42SI Stvorennja IDE/3/src/src/Main.g4 by ANTLR 4.13.2
+package gen;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -36,6 +37,26 @@ public interface MainListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitForStatement(MainParser.ForStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MainParser#whileStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhileStatement(MainParser.WhileStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MainParser#whileStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhileStatement(MainParser.WhileStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MainParser#printStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrintStatement(MainParser.PrintStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MainParser#printStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrintStatement(MainParser.PrintStatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MainParser#letBinding}.
 	 * @param ctx the parse tree

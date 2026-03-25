@@ -51,6 +51,7 @@ public class SemanticAnalyzer extends MainBaseListener {
         }
     }
 
+    @Override public void enterWhileStatement(MainParser.WhileStatementContext context) { loopDepth++; }
     @Override public void enterLoopStatement(MainParser.LoopStatementContext context) { loopDepth++; }
     @Override public void exitLoopStatement(MainParser.LoopStatementContext context) { loopDepth--; }
 
@@ -62,6 +63,24 @@ public class SemanticAnalyzer extends MainBaseListener {
         Type idxType = types.get(context.expression(1));
         if (idxType != Type.I32) {
             reportError(context.getStart(), "Array index must be an integer (i32).");
+        }
+    }
+
+    @Override
+    public void enterPrintStatement(MainParser.PrintStatementContext context) {
+//        1. Отримати текст рядка
+        String string = context.STRING().getText();
+
+//        2. Рахувати кількість аргументів у виклику
+        int argsCount = context.expression().size();
+
+//        3. Семантична перевірка аргументів (чи всі вони оголошені)
+        for (MainParser.ExpressionContext expression : context.expression()) {
+            visit(expression);
+        }
+
+        if (argsCount == 0 && string.contains("{}")) {
+            warnings.add("WARNING ["+context.getStart().getLine()+"]: println! contains placeholder '{}', but no arguments provided.");
         }
     }
 }

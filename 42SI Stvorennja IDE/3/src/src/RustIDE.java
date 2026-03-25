@@ -1,3 +1,4 @@
+import com.sun.tools.jconsole.JConsoleContext;
 import gen.MainLexer;
 import gen.MainParser;
 import org.antlr.v4.runtime.CharStreams;
@@ -7,6 +8,9 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 public class RustIDE extends JFrame {
     private JTextArea codeArea = new JTextArea();
@@ -17,14 +21,20 @@ public class RustIDE extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        JButton btn = new JButton("Run Full Analysis");
-        btn.addActionListener(e -> analyze());
+        JPanel toolBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JButton openBtn = new JButton("Open file");
+        JButton analyzeBtn = new JButton("Run Semantic Analysis");
+        toolBar.add(openBtn);
+        toolBar.add(analyzeBtn);
+
+        openBtn.addActionListener(e -> openFile());
+        analyzeBtn.addActionListener(e-> analyze());
 
         codeArea.setFont(new Font("Consolas", Font.PLAIN, 14));
 
         add(new JScrollPane(codeArea), BorderLayout.CENTER);
         add(new JScrollPane(outputArea), BorderLayout.SOUTH);
-        add(btn, BorderLayout.NORTH);
+        add(toolBar, BorderLayout.NORTH);
         outputArea.setPreferredSize(new Dimension(800, 200));
         outputArea.setEditable(false);
     }
@@ -44,6 +54,20 @@ public class RustIDE extends JFrame {
         } else {
             for (String err : analyzer.errors) outputArea.append(err + "\n");
             for (String warn : analyzer.warnings) outputArea.append(warn + "\n");
+        }
+    }
+
+    private void openFile(){
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(this);
+        if (result==JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            try {
+                String content = Files.readString(selectedFile.toPath());
+                codeArea.setText(content);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error reading file: "+e.getMessage());
+            }
         }
     }
 
