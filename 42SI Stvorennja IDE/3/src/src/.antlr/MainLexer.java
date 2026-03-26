@@ -1,4 +1,4 @@
-// Generated from d:/University-Universytet/42SI Stvorennja IDE/4/src/src/Main.g4 by ANTLR 4.13.1
+// Generated from d:/University-Universytet/42SI Stvorennja IDE/3/src/src/Main.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

@@ -28,21 +28,35 @@ public class SemanticAnalyzer extends MainBaseListener {
                 warnings.add("WARNING ["+s.line+":"+s.charPos+"]: Variable '"+s.name+"' is never used.");
             }
         }
-        currentScope = currentScope.getEnclosingScope();
+        if (currentScope.getEnclosingScope() != null) {
+            currentScope = currentScope.getEnclosingScope();
+        }
     }
 
     @Override public void enterLetBinding(MainParser.LetBindingContext context) {
         String name = context.ID().getText();
+
+//        Перевірка повторного оголошення в тій же області
         if (currentScope.resolveLocal(name) != null) {
             reportError(context.ID().getSymbol(), "Identifier '"+name+"' already declared in this scope.");
+            return;
         }
-        Type t = context.type() != null ? Type.valueOf(context.type().getText().toUpperCase()) : Type.UNKNOWN;
+
+        Type t = Type.UNKNOWN;
+        if (context.type() != null) {
+            try {
+                t = Type.valueOf(context.type().getText().toUpperCase());
+            } catch (IllegalArgumentException e) {
+                t=Type.UNKNOWN;
+            }
+        }
         currentScope.define(new Symbol(name, t, context.ID().getSymbol().getLine(), context.ID().getSymbol().getCharPositionInLine()));
     }
 
     @Override public void enterIdExpr(MainParser.IdExprContext context) {
         String name = context.ID().getText();
         Symbol s = currentScope.resolve(name);
+
         if (s==null) {
             reportError(context.ID().getSymbol(), "Variable '"+name+"' used without declaration");
         } else {
