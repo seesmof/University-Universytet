@@ -1,5 +1,4 @@
 import random
-
 from sklearn.datasets import load_iris
 from sklearn.linear_model import Perceptron
 from sklearn.metrics import classification_report
