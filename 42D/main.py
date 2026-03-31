@@ -290,9 +290,8 @@ def bank_view():
 
 @ui.refreshable
 def orders_view():
-    with ui.row().classes("w-full"):
-        # Зробити віджет мапи
-        map = ui.leaflet(center=State.orders[0].coordinates, zoom=10)
+    # Зробити віджет мапи
+    map = ui.leaflet(center=State.orders[0].coordinates, zoom=10)
     with ui.grid(columns=3).classes("w-full"):
         # Для кожного замовлення у всіх замовленнях
         for order in State.orders:
