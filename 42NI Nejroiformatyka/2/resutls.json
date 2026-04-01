@@ -1,0 +1,23 @@
+{
+  "Elman": {
+    "layers": 2,
+    "neurons": [
+      8,
+      1
+    ],
+    "activation": "sigmoid",
+    "train_time": 0.7140271663665771,
+    "train_error": 0.0,
+    "test_error": 0.0
+  },
+  "Hopfield": {
+    "layers": 1,
+    "neurons": [
+      18
+    ],
+    "activation": "sign",
+    "train_time": 0.0018939971923828125,
+    "train_error": 0.57,
+    "test_error": 0.58
+  }
+}
