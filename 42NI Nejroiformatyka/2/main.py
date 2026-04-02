@@ -1,9 +1,7 @@
 import numpy as np
 import random
 
-# зробити порогову функцію
 X = np.random.rand(500, 18)
-# зробити діапазон [-1, 1]
 y = [random.choice([-1, 1]) for _ in range(500)]
 
 for row_i, row in enumerate(X):
