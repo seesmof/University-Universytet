@@ -1,10 +1,6 @@
-from matplotlib import pyplot as plt
-import numpy as np
+import string
 
-
-x = np.arange(-5 * np.pi, 5 * np.pi, 0.1)
-y = np.tanh(x)
-
-plt.plot(x, y, color="green")
-plt.grid()
-plt.show()
+char = "j"
+index = string.ascii_lowercase.index(char)
+output = [float(x) for x in "{:05b}".format(index)]
+print(output)

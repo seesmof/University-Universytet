@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from peewee import *
+from peewee import SqliteDatabase, Model, CharField, IntegerField
 
 
 class TabName:
@@ -77,19 +77,17 @@ class Order(BaseModel):
 db.connect()
 
 
-def load_orders() -> list[IOrder]:
-    orders: list[IOrder] = list()
+def load_trucks() -> list[ITruck]:
+    trucks: list[ITruck] = list()
 
-    all_orders_query = Order.select()
-    for row in all_orders_query:
-        order = IOrder(
-            price=row.price,
-            location=row.location,
-            coordinates=row.coordinates.split(","),
+    all_trucks_query = Truck.select()
+    for row in all_trucks_query:
+        truck = ITruck(
+            name=row.name, category=row.category, price=row.price, picture=row.picture
         )
-        orders.append(order)
+        trucks.append(truck)
 
-    return orders
+    return trucks
 
 
 def load_loans() -> list[ILoan]:
@@ -103,14 +101,16 @@ def load_loans() -> list[ILoan]:
     return loans
 
 
-def load_trucks() -> list[ITruck]:
-    trucks: list[ITruck] = list()
+def load_orders() -> list[IOrder]:
+    orders: list[IOrder] = list()
 
-    all_trucks_query = Truck.select()
-    for row in all_trucks_query:
-        truck = ITruck(
-            name=row.name, category=row.category, price=row.price, picture=row.picture
+    all_orders_query = Order.select()
+    for row in all_orders_query:
+        order = IOrder(
+            price=row.price,
+            location=row.location,
+            coordinates=row.coordinates.split(","),
         )
-        trucks.append(truck)
+        orders.append(order)
 
-    return trucks
+    return orders
