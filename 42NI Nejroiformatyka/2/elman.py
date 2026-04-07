@@ -19,10 +19,12 @@ output_size = 1
 epochs = 1000
 learning_rate = 0.01
 
+# Перетворення на тензори
 X_train = torch.tensor(X_train, dtype=torch.float32).view(-1, 1)
 y_train = torch.tensor(y_train, dtype=torch.float32).view(-1, 1)
 
 
+# Нейромережа Ельмана
 class ElmanNN(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(ElmanNN, self).__init__()
@@ -38,6 +40,7 @@ class ElmanNN(nn.Module):
         return output, hidden
 
 
+# Ініціалізація мережі
 model = ElmanNN(input_size, hidden_size, output_size)
 criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
@@ -55,12 +58,14 @@ for epoch in range(epochs):
     if epoch % 100 == 0:
         print(f"Epoch {epoch}, Loss: {loss.item():.4f}")
 
+# Перевірка результату
 predictions = []
 hidden = torch.zeros(1, hidden_size)
 for i in range(len(X_train)):
     output, hidden = model(X_train[i].view(1, -1), hidden)
     predictions.append(output.item())
 
+# Візуалізація
 plt.plot(X_train.numpy(), y_train.numpy(), label="Реальні дані", color="blue")
 plt.plot(
     X_train.numpy(),
