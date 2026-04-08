@@ -5,4 +5,4 @@ scikit-learn
 torch
 pandas
 cellpylib
-torch
+keras
