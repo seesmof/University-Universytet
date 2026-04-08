@@ -1,23 +1,8 @@
 import numpy as np
-from keras.models import Sequential
-from keras.layers import SimpleRNN, Dense
+import neurolab as nl
 
-# 1000 прикладів, 10 кроків, 1 ознака
-X_train = np.random.rand(1000, 10, 1)
-y_train = np.sum(X_train, axis=1)
-
-model = Sequential(
-    [
-        SimpleRNN(10, activation="tanh", return_sequences=False, input_shape=(10, 1)),
-        Dense(1, activation="linear"),
-    ]
-)
-
-model.compile(optimizer="adam", loss="mse")
-
-model.fit(X_train, y_train, epochs=20, batch_size=16)
-
-X_test = np.random.rand(10, 10, 1)
-y_pred = model.predict(X_test)
-
-print(f"Predicted value: {y_pred.flatten()}")
+input = np.random.uniform(-0.5, 0.5, (10, 2))
+target = (input[:, 0] + input[:, 1]).reshape(10, 1)
+net = nl.net.newff([[-0.5, 0.5], [-0.5, 0.5]], [5, 1])
+err = net.train(input, target, show=15)
+net.sim([[0.2, 0.1]])

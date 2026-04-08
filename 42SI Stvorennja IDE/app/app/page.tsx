@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [value, setValue] = useState<string>(
-    "fn main() {\n  let x: u32 = 30;\n}",
+    "fn main() {\n  let y: i32 = 30;\n}",
   );
 
   return (
@@ -24,6 +24,12 @@ export default function Home() {
         rows={7}
         value={value}
       />
+      <section className="flex flex-row gap-3 w-full">
+        <button className="flex-1 btn">Lexical</button>
+        <button className="flex-1 btn">Syntactic</button>
+        <button className="flex-1 btn">Semantic</button>
+        <button className="flex-1 btn">Run</button>
+      </section>
     </div>
   );
 }

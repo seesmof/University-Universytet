@@ -6,3 +6,4 @@ torch
 pandas
 cellpylib
 keras
+neurolab
