@@ -1,8 +1,22 @@
 import numpy as np
-import neurolab as nl
 
-input = np.random.uniform(-0.5, 0.5, (10, 2))
-target = (input[:, 0] + input[:, 1]).reshape(10, 1)
-net = nl.net.newff([[-0.5, 0.5], [-0.5, 0.5]], [5, 1])
-err = net.train(input, target, show=15)
-net.sim([[0.2, 0.1]])
+
+class Coordinates:
+    x: int
+    y: int
+
+    def __init__(self, x: int, y: int):
+        self.x = y
+        self.y = y
+
+
+def euclidean_distance(one: Coordinates, two: Coordinates):
+    first_part = (two.x - one.x) ** 2
+    second_part = (two.y - one.y) ** 2
+    return np.sqrt(first_part + second_part)
+
+
+one = Coordinates(x=0, y=5)
+two = Coordinates(x=12, y=1)
+distance = euclidean_distance(one, two)
+print(distance)
