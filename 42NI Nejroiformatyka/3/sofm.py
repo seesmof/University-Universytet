@@ -32,7 +32,6 @@ som.random_weights_init(X_train)
 
 # --- Маркування нейронів ---
 # Кожен нейрон отримує мітку за більшістю зразків, які до нього потрапили
-
 neuron_labels = np.zeros(map_size)
 neuron_counts = np.zeros(map_size)
 
