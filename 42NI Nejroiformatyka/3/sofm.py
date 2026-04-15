@@ -3,6 +3,8 @@ from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 from minisom import MiniSom
 import numpy as np
+import json
+import os
 
 # Генерація даних
 N = 500
@@ -126,9 +128,14 @@ for i in range(map_size[0]):
             )
         else:
             plt.text(j, i, "?", ha="center", va="center", color="gray", fontsize=8)
-
 plt.show()
 
 """
 Червоні зі знаком питання на графіку це нейрони, які жодного разу не стали переможцями.
 """
+
+data = {"Train Accuracy": train_acc, "Test Accuracy": test_acc}
+current_folder = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(current_folder, "sofm_output.json")
+with open(file_path, encoding="utf-8", mode="w") as f:
+    json.dump(data, f, indent=2)

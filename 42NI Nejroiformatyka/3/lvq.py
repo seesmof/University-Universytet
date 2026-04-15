@@ -1,6 +1,8 @@
-import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+import numpy as np
+import json
+import os
 
 
 class LVQ:
@@ -165,3 +167,9 @@ for label in [0, 1]:
 500 зразків, 5 прототипів, 20 епох
 - 80/20: навчальна 86%, тестова 49%
 """
+
+data = {"Train Accuracy": train_acc, "Test Accuracy": test_acc}
+current_folder = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(current_folder, "lvq_output.json")
+with open(file_path, encoding="utf-8", mode="w") as f:
+    json.dump(data, f, indent=2)
