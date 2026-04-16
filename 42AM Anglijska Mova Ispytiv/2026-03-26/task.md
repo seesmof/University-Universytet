@@ -22,3 +22,11 @@ test 7 tasks 5-6
 35. D
 36. A
 37. B
+
+### How Pigeons Really Get Home
+
+38. C
+39. A
+40. C
+41. B
+42. A
