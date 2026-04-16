@@ -17,4 +17,8 @@ test 7 tasks 5-6
 
 ### Why did Ancient Egyptians Build Pyramids?
 
-33.
+33. A
+34. B
+35. D
+36. A
+37. B
