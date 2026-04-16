@@ -1,6 +1,8 @@
 test 5 tasks 5-6
 
-## The science of laughter
+## Task 5
+
+### The science of laughter
 
 23. A
 24. C
@@ -13,10 +15,20 @@ test 5 tasks 5-6
 31. C
 32. C
 
-## Mary Kingsley
+## Task 6
+
+### Mary Kingsley
 
 33. C
 34. C
 35. C
 36. B
 37. D
+
+### Typhoons Trick Japan’s Cherry Trees into Blooming Months Early
+
+38. A
+39. D
+40. B
+41. D
+42. A
