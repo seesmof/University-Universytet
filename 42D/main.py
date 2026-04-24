@@ -37,11 +37,11 @@ class Const:
 # --- ПОМІЧНИКИ ---
 
 
-def convert_months_to_years(duration: int):
+def convert_months_to_years(duration_in_months: int) -> str:
     MONTHS_IN_A_YEAR = 12
 
-    years = duration // MONTHS_IN_A_YEAR
-    months = duration % MONTHS_IN_A_YEAR
+    years = duration_in_months // MONTHS_IN_A_YEAR
+    months = duration_in_months % MONTHS_IN_A_YEAR
 
     return (
         # Повернути роки та місяці
