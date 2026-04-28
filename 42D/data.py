@@ -13,7 +13,7 @@ class TabName:
 class TruckCategory:
     LOCAL = "Бус"
     LORRY = "Вантажівка"
-    OFFORAD = "Всюдихід"
+    OFFROAD = "Всюдихід"
 
 
 class BankName:
@@ -80,7 +80,11 @@ db.connect()
 def load_trucks() -> list[ITruck]:
     trucks: list[ITruck] = list()
 
-    all_trucks_query = Truck.select()
+    try:
+        all_trucks_query = Truck.select()
+    except Exception:
+        print("ERROR: Failed to fetch the database.")
+        return
     for row in all_trucks_query:
         truck = ITruck(
             name=row.name, category=row.category, price=row.price, picture=row.picture
@@ -93,7 +97,11 @@ def load_trucks() -> list[ITruck]:
 def load_loans() -> list[ILoan]:
     loans: list[ILoan] = list()
 
-    all_loans_query = Loan.select()
+    try:
+        all_loans_query = Loan.select()
+    except Exception:
+        print("ERROR: Failed to fetch the database.")
+        return
     for row in all_loans_query:
         loan = ILoan(amount=row.amount, duration=row.duration, bank=row.bank)
         loans.append(loan)
@@ -104,12 +112,18 @@ def load_loans() -> list[ILoan]:
 def load_orders() -> list[IOrder]:
     orders: list[IOrder] = list()
 
-    all_orders_query = Order.select()
+    try:
+        all_orders_query = Order.select()
+    except Exception:
+        print("ERROR: Failed to fetch the database.")
+        return
     for row in all_orders_query:
         order = IOrder(
             price=row.price,
             location=row.location,
-            coordinates=row.coordinates.split(","),
+            coordinates=tuple(
+                float(coordinate) for coordinate in row.coordinates.split(",")
+            ),
         )
         orders.append(order)
 

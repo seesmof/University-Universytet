@@ -1,3 +1,4 @@
+from typing import Optional
 from nicegui import ui
 import os
 
@@ -23,7 +24,7 @@ class State:
     # Власні вантажівки
     owned_trucks: list[ITruck] = list()
     # Обрана вантажівка
-    selected_truck: ITruck = None
+    selected_truck: Optional[ITruck] = None
     # Взяті кредити
     taken_loans: list[ILoan] = list()
     # Гроші користувача
@@ -127,8 +128,9 @@ def buy_truck(truck: ITruck):
 
 def sell_truck(truck: ITruck):
     # Обнулити обрану вантажівку
-    State.selected_truck = None
-    update_selected_truck()
+    if State.selected_truck == truck:
+        State.selected_truck = None
+        update_selected_truck()
 
     # Прибрати вантажівку з придбаних
     State.owned_trucks.remove(truck)
@@ -171,7 +173,6 @@ def pay_loan(loan: ILoan):
 
     update_money()
     bank_view.refresh()
-    loans_view.refresh()
     # Повідомити користувача про успішне сплачення кредиту
     ui.notify(f"Сплачено кредит на ₴ {loan.amount} від {loan.bank}")
 
@@ -185,6 +186,7 @@ def loans_view():
     if not State.taken_loans:
         # Повідомити про це користувача
         ui.label("Немає взятих кредитів.")
+        return
     with ui.grid(columns=2).classes("w-full"):
         # Для кожного взятого кредиту
         for loan in State.taken_loans:
@@ -209,6 +211,7 @@ def loans_view():
 def owned_trucks_view():
     if not State.owned_trucks:
         ui.label("Немає придбаних вантажівок.")
+        return
     with ui.grid(columns=3).classes("w-full"):
         # Для кожної вантажівки у придбаних
         for truck in State.owned_trucks:
@@ -270,7 +273,7 @@ def store_view():
 def bank_view():
     with ui.grid(columns=2).classes("w-full"):
         # Для кожного кредиту зі всіх кредитів
-        for index, loan in enumerate(State.loans, start=1):
+        for loan in State.loans:
             # Створити картку
             with ui.card().tight():
                 with ui.card_section():
@@ -291,7 +294,11 @@ def bank_view():
 @ui.refreshable
 def orders_view():
     # Зробити віджет мапи
-    map = ui.leaflet(center=State.orders[0].coordinates, zoom=10)
+    try:
+        map = ui.leaflet(center=State.orders[0].coordinates, zoom=10)
+    except IndexError:
+        map = ui.leaflet(center=(47.839790847405894, 35.13965215348557), zoom=10)
+
     with ui.grid(columns=3).classes("w-full"):
         # Для кожного замовлення у всіх замовленнях
         for order in State.orders:
