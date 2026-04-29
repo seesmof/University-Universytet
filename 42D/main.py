@@ -102,6 +102,7 @@ def select_truck(truck: ITruck):
     # Встановити обрану вантажівку у надану
     State.selected_truck = truck
     update_selected_truck()
+    owned_trucks_view.refresh()
 
 
 def buy_truck(truck: ITruck):
@@ -172,7 +173,7 @@ def pay_loan(loan: ILoan):
     State.taken_loans.remove(loan)
 
     update_money()
-    bank_view.refresh()
+    loans_view.refresh()
     # Повідомити користувача про успішне сплачення кредиту
     ui.notify(f"Сплачено кредит на ₴ {loan.amount} від {loan.bank}")
 
@@ -230,10 +231,13 @@ def owned_trucks_view():
                     ui.label(truck.category)
                     with ui.row().classes("flex flex-row gap-2 mt-4"):
                         # Обрати вантажівку
-                        ui.button(
-                            "Обрати",
-                            on_click=lambda this_truck=truck: select_truck(this_truck),
-                        )
+                        if not State.selected_truck == truck:
+                            ui.button(
+                                "Обрати",
+                                on_click=lambda this_truck=truck: select_truck(
+                                    this_truck
+                                ),
+                            )
                         # Продати вантажівку
                         ui.button(
                             "Продати",
