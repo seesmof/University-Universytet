@@ -9,7 +9,7 @@ export default function Home() {
   const [output, setOutput] = useState<string>("");
 
   return (
-    <div className="flex flex-col p-3 md:flex-row gap-3 min-h-screen">
+    <div className="flex flex-col p-3 gap-3 min-h-screen">
       <textarea
         className="resize-none textarea w-full flex-1 font-mono"
         name="input"
@@ -26,9 +26,6 @@ export default function Home() {
         value={output}
       />
       <section className="flex flex-row gap-3 w-full">
-        <button className="flex-1 btn">Lexical</button>
-        <button className="flex-1 btn">Syntactic</button>
-        <button className="flex-1 btn">Semantic</button>
         <button className="flex-1 btn">Run</button>
       </section>
     </div>
