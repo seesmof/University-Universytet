@@ -13,8 +13,9 @@ export default function Home() {
   const [result, setResult] = useState<string>("");
 
   const calculateResult = () => {
-    const givenResult = parse(value);
-    setResult(eval(value));
+    // const givenResult = parse(value);
+    const givenResult = eval(value);
+    setResult(givenResult);
   };
 
   return (
