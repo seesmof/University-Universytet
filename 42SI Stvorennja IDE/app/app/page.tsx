@@ -1,12 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const parse = (value: string) => {
+  const tokens = value.split(" ");
+  console.log(tokens);
+  return tokens.toString();
+};
 
 export default function Home() {
-  const [value, setValue] = useState<string>(
-    "fn main() {\n  let y: i32 = 30;\n}",
-  );
-  const [output, setOutput] = useState<string>("");
+  const [value, setValue] = useState<string>("32 + 12 - 11");
+  const [result, setResult] = useState<string>("");
+
+  const calculateResult = () => {
+    const givenResult = parse(value);
+    setResult(eval(value));
+  };
 
   return (
     <div className="flex flex-col p-3 gap-3 min-h-screen">
@@ -23,11 +32,11 @@ export default function Home() {
         id="outputArea"
         readOnly
         rows={7}
-        value={output}
+        value={result}
       />
-      <section className="flex flex-row gap-3 w-full">
-        <button className="flex-1 btn">Run</button>
-      </section>
+      <button className="btn" onClick={calculateResult}>
+        Run
+      </button>
     </div>
   );
 }
