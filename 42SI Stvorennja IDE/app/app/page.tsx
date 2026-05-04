@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const parse = (value: string) => {
-  const tokens = value.split(" ");
-  console.log(tokens);
-  return tokens.toString();
+  const cleanInput = value.replace(/[a-z=]/gi, "");
+  const calculatedInput = eval(cleanInput);
+  return calculatedInput;
 };
 
 export default function Home() {
@@ -13,8 +13,7 @@ export default function Home() {
   const [result, setResult] = useState<string>("");
 
   const calculateResult = () => {
-    // const givenResult = parse(value);
-    const givenResult = eval(value);
+    const givenResult = parse(value);
     setResult(givenResult);
   };
 
@@ -34,6 +33,7 @@ export default function Home() {
         readOnly
         rows={7}
         value={result}
+        onClick={() => navigator.clipboard.writeText(result)}
       />
       <button className="btn" onClick={calculateResult}>
         Run

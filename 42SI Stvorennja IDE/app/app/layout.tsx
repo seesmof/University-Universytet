@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rust IDE",
-  description: "This is a simple ANTLR Rust IDE.",
+  description: "This is a simple Rust IDE.",
 };
 
 export default function RootLayout({
