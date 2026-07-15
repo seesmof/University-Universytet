@@ -1,0 +1,4 @@
+- How to handle forms JS - https://www.javascriptroom.com/react-tutorial/how-to-handle-forms-in-react-a-practical-tutorial/
+- What is useRef - https://react.dev/reference/react/useRef, https://react.dev/learn/referencing-values-with-refs
+- Choosing between opinionated and non-opinionated frameworks - https://dev.to/codefalconx/opinionated-frameworks-vs-non-opinionated-frameworks-nn3
+- ASP.NET Core materials - https://dev.to/vaib/mastering-aspnet-core-backend-18-essential-resources-for-c-developers-50e3
