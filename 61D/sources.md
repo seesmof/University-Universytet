@@ -1,6 +1,7 @@
 - How to handle forms JS - https://www.javascriptroom.com/react-tutorial/how-to-handle-forms-in-react-a-practical-tutorial/
 - What is useRef - https://react.dev/reference/react/useRef, https://react.dev/learn/referencing-values-with-refs
 - Choosing between opinionated and non-opinionated frameworks - https://dev.to/codefalconx/opinionated-frameworks-vs-non-opinionated-frameworks-nn3
-- ASP.NET Core materials - https://dev.to/vaib/mastering-aspnet-core-backend-18-essential-resources-for-c-developers-50e3
-- Creating API routes in Next.js - https://www.geeksforgeeks.org/reactjs/how-to-use-next-js-api-routes/, https://stackoverflow.com/questions/75418329/how-do-you-put-api-routes-in-the-new-app-folder-of-next-js
+- Creating API routes in Next.js - https://www.geeksforgeeks.org/reactjs/how-to-use-next-js-api-routes/, https://stackoverflow.com/questions/75418329/how-do-you-put-api-routes-in-the-new-app-folder-of-next-js, https://nextjs.org/blog/building-apis-with-nextjs
 - What error to throw on failed fetch - https://generalistprogrammer.com/errors/failed-to-fetch
+- Rich text editors - https://dev.to/joodi/10-top-rich-text-editors-for-react-developers-in-2025-5a2m
+- Email client template - https://dribbble.com/shots/22911691-Egg-head-Inbox-Mail-Feature
