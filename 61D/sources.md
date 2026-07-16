@@ -2,3 +2,4 @@
 - What is useRef - https://react.dev/reference/react/useRef, https://react.dev/learn/referencing-values-with-refs
 - Choosing between opinionated and non-opinionated frameworks - https://dev.to/codefalconx/opinionated-frameworks-vs-non-opinionated-frameworks-nn3
 - ASP.NET Core materials - https://dev.to/vaib/mastering-aspnet-core-backend-18-essential-resources-for-c-developers-50e3
+- Creating API routes in Next.js - https://www.geeksforgeeks.org/reactjs/how-to-use-next-js-api-routes/
