@@ -5,3 +5,5 @@
 - What error to throw on failed fetch - https://generalistprogrammer.com/errors/failed-to-fetch
 - Rich text editors - https://dev.to/joodi/10-top-rich-text-editors-for-react-developers-in-2025-5a2m
 - Email client template - https://dribbble.com/shots/22911691-Egg-head-Inbox-Mail-Feature
+- How to fetch a file in NextJS - https://stackoverflow.com/questions/78461551/what-is-the-correct-way-to-use-json-files-stored-server-side-in-next-js, https://vercel.com/kb/guide/loading-static-file-nextjs-api-route
+- Batteries included backend frameworks - https://blog.probirsarkar.com/top-5-battery-included-rest-api-frameworks-46551427f2b4, https://www.mickythompson.com/batteries-included-web-frameworks/
