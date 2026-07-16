@@ -12,7 +12,9 @@ export default function IndexPage() {
       setIsLoading(true);
 
       const response = await fetch("/api/users");
-      console.log(response);
+
+      if (!response.ok) throw new Error("Failed to fetch users.");
+
       const data = await response.json();
       setData(data);
 
@@ -30,7 +32,7 @@ export default function IndexPage() {
 
   if (!isLoading && data)
     return (
-      <div className="p-3 grid grid-cols-3 gap-3">
+      <div className="p-3 grid grid-cols-1 md:grid-cols-3 gap-3">
         {data.map((user, index) => (
           <div
             className="rounded-md border p-3 gap-1 flex flex-col"
