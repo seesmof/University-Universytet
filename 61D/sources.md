@@ -7,3 +7,5 @@
 - Email client template - https://dribbble.com/shots/22911691-Egg-head-Inbox-Mail-Feature
 - How to fetch a file in NextJS - https://stackoverflow.com/questions/78461551/what-is-the-correct-way-to-use-json-files-stored-server-side-in-next-js, https://vercel.com/kb/guide/loading-static-file-nextjs-api-route, https://blog.howtoclicks.com/blog/nextjs-reading-and-display-data-from-a-local-json-file/
 - Batteries included backend frameworks - https://blog.probirsarkar.com/top-5-battery-included-rest-api-frameworks-46551427f2b4, https://www.mickythompson.com/batteries-included-web-frameworks/
+- React how to set global key down event listeners - https://stackoverflow.com/questions/53033625/global-keyboards-events-on-react
+- React key names - https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
