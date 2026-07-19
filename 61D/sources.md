@@ -11,3 +11,4 @@
 - React keybaord key names - https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
 - Form validation with zod - https://medium.com/@lamichhaneprabuddha/advanced-form-validation-in-next-js-with-zod-fc92d784a2c8
 - What is a local database - https://blog.greencloudvps.com/what-is-a-local-database.php
+- Why its bad to store a password as plaintext in a database - https://www.evolvenorth.com/why-storing-passwords-in-plain-text-is-a-bad-idea/

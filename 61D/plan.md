@@ -7,3 +7,4 @@
 
 - [x] There needs to be a login and a signup page.
 - [ ] Then we need to have users table in the database to authenticate users.
+- [ ] Try form validation with react hook form
