@@ -12,3 +12,6 @@
 - Form validation with zod - https://medium.com/@lamichhaneprabuddha/advanced-form-validation-in-next-js-with-zod-fc92d784a2c8
 - What is a local database - https://blog.greencloudvps.com/what-is-a-local-database.php
 - Why its bad to store a password as plaintext in a database - https://www.evolvenorth.com/why-storing-passwords-in-plain-text-is-a-bad-idea/
+- React state management libraries - https://www.devacetech.com/insights/react-state-management-libraries, https://dev.to/ashsajal/top-10-state-management-libraries-for-reactjs-1p5n
+- Zustand - https://zustand.docs.pmnd.rs/learn/getting-started/introduction
+- What is middleware - https://www.geeksforgeeks.org/operating-systems/what-is-middleware/
