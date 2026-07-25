@@ -15,3 +15,5 @@
 - React state management libraries - https://www.devacetech.com/insights/react-state-management-libraries, https://dev.to/ashsajal/top-10-state-management-libraries-for-reactjs-1p5n
 - Zustand - https://zustand.docs.pmnd.rs/learn/getting-started/introduction
 - What is middleware - https://www.geeksforgeeks.org/operating-systems/what-is-middleware/
+- What are cookies - https://www.geeksforgeeks.org/websites-apps/understanding-cookies-in-web-browsers/
+- What is polyfill - https://www.geeksforgeeks.org/javascript/what-is-a-polyfill/
