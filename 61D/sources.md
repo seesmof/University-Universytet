@@ -17,3 +17,5 @@
 - What is middleware - https://www.geeksforgeeks.org/operating-systems/what-is-middleware/
 - What are cookies - https://www.geeksforgeeks.org/websites-apps/understanding-cookies-in-web-browsers/
 - What is polyfill - https://www.geeksforgeeks.org/javascript/what-is-a-polyfill/
+- What is CSRF - https://www.geeksforgeeks.org/computer-networks/what-is-cross-site-request-forgery-csrf/
+- How to connect django to react - https://www.geeksforgeeks.org/reactjs/how-to-connect-django-with-reactjs/
