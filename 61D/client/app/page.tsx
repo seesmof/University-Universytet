@@ -7,10 +7,11 @@ export default function IndexPage() {
 
   return (
     <div className="min-h-screen bg-sky-50 flex gap-3 p-3">
+      {/* Chats Window */}
       <div className="bg-white w-60 rounded-lg flex flex-col overflow-hidden">
-        {/* Messages */}
+        {/* Chats go here */}
         <div
-          id="chat0"
+          id="chat-0"
           className={`w-full p-3 hover:bg-sky-100 cursor-pointer ${selectedChat === 0 ? "bg-sky-100" : ""}`}
           onClick={() => setSelectedChat(0)}
         >
@@ -18,7 +19,7 @@ export default function IndexPage() {
           <p className="text-sm">Last message is this...</p>
         </div>
         <div
-          id="chat1"
+          id="chat-1"
           className={`w-full p-3 hover:bg-sky-100 cursor-pointer ${selectedChat === 1 ? "bg-sky-100" : ""}`}
           onClick={() => setSelectedChat(1)}
         >
@@ -26,7 +27,7 @@ export default function IndexPage() {
           <p className="text-sm">Last message is different...</p>
         </div>
         <div
-          id="chat2"
+          id="chat-2"
           className={`w-full p-3 hover:bg-sky-100 cursor-pointer ${selectedChat === 2 ? "bg-sky-100" : ""}`}
           onClick={() => setSelectedChat(2)}
         >
@@ -34,7 +35,19 @@ export default function IndexPage() {
           <p className="text-sm">Texting brother Marvin here...</p>
         </div>
       </div>
-      <div className="bg-white flex-1 w-60 rounded-lg"></div>
+
+      {/* Messages Window */}
+      <div className="bg-white flex-1 rounded-lg">
+        <nav className="p-3">
+          <h3 className="font-bold">
+            {selectedChat === 0
+              ? "Oleh"
+              : selectedChat === 1
+                ? "Seesm"
+                : "Marvin"}
+          </h3>
+        </nav>
+      </div>
     </div>
   );
 }
