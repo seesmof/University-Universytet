@@ -19,3 +19,5 @@
 - What is polyfill - https://www.geeksforgeeks.org/javascript/what-is-a-polyfill/
 - What is CSRF - https://www.geeksforgeeks.org/computer-networks/what-is-cross-site-request-forgery-csrf/
 - How to connect django to react - https://www.geeksforgeeks.org/reactjs/how-to-connect-django-with-reactjs/
+- History of JavaScript - https://dev.to/saartwito/the-evolution-of-javascript-from-inception-to-modern-day-282k, https://www.geeksforgeeks.org/javascript/history-of-javascript/
+- Comparison of authentication libraries - https://blog.logrocket.com/best-auth-library-nextjs-2026/
