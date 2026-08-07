@@ -37,16 +37,35 @@ export default function IndexPage() {
       </div>
 
       {/* Messages Window */}
-      <div className="bg-white flex-1 rounded-lg">
-        <nav className="p-3">
-          <h3 className="font-bold">
-            {selectedChat === 0
-              ? "Oleh"
-              : selectedChat === 1
-                ? "Seesm"
-                : "Marvin"}
-          </h3>
-        </nav>
+      <div className="bg-white flex-1 rounded-lg overflow-clip flex flex-col justify-between">
+        <h3 className="font-bold p-3">
+          {selectedChat === 0
+            ? "Oleh"
+            : selectedChat === 1
+              ? "Seesm"
+              : "Marvin"}
+        </h3>
+        <div className="flex flex-col p-3 flex-1">
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-r-lg rounded-t-lg">
+            <p>Hey there!</p>
+            <span className="text-sm mt-1 text-sky-100">Read</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-l-lg rounded-t-lg self-end">
+            <p>Hello, praise King Jesus!</p>
+            <span className="text-sm mt-1 text-sky-100">Sent</span>
+          </div>
+        </div>
+
+        <div className="flex gap-3 p-3">
+          <input
+            type="text"
+            className="outline w-full rounded-lg outline-sky-600 px-4 py-2"
+            placeholder="Your message here..."
+          />
+          <button className="bg-sky-600 cursor-pointer hover:bg-sky-700 text-white px-4 rounded-lg">
+            Send
+          </button>
+        </div>
       </div>
     </div>
   );
