@@ -45,7 +45,9 @@ export default function IndexPage() {
               ? "Seesm"
               : "Marvin"}
         </h3>
-        <div className="flex flex-col p-3 flex-1">
+
+        {/* Messages Container */}
+        <div className="flex flex-col gap-3 p-3 flex-1">
           <div className="bg-sky-600 p-3 w-fit text-white rounded-r-lg rounded-t-lg">
             <p>Hey there!</p>
             <span className="text-sm mt-1 text-sky-100">Read</span>
