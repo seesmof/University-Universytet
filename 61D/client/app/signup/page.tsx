@@ -1,54 +1,58 @@
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Link from "next/link";
 
-export default function LoginPage() {
+export default function SignUpPage() {
   return (
-    <div className="rounded-md border p-3 mx-auto max-w-md w-full my-auto">
-      <form className="flex flex-col gap-3">
-        <div className="flex flex-col gap-1">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            className="border p-1 rounded-md"
-            placeholder="Your email address..."
-          />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            className="border p-1 rounded-md"
-            placeholder="Your password..."
-          />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor="confirm">Confirm Password</label>
-          <input
-            type="password"
-            id="confirm"
-            className="border p-1 rounded-md"
-            placeholder="Confirm your password..."
-          />
-        </div>
-
-        <div className="flex gap-1">
-          <button
-            type="button"
-            className="text-white bg-slate-600 hover:bg-slate-500 cursor-pointer rounded-md p-1 px-4"
-          >
-            <Link href={"/login/"}>Log In</Link>
-          </button>
-          <button
-            type="submit"
-            className="bg-sky-600 text-white rounded-md hover:bg-sky-500 cursor-pointer p-1 flex-1"
-          >
-            Sign Up
-          </button>
-        </div>
-      </form>
+    <div className="bg-sky-50 min-h-screen flex items-center justify-center px-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl font-bold">
+            Створіть обліковий запис
+          </CardTitle>
+          <CardDescription>
+            Введіть свої дані нижче аби створити обліковку
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Повне ім&apos;я</Label>
+              <Input id="name" placeholder="Онищенко Петро" required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Електронна пошта</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="mail@gmail.com"
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Пароль</Label>
+              <Input id="password" type="password" required />
+            </div>
+            <Button type="submit" className="w-full">
+              Зареєструватися
+            </Button>
+          </form>
+          <div className="mt-4 text-center text-sm">
+            Вже маєте обліковий запис?{" "}
+            <Link href="/login" className="underline underline-offset-4">
+              Увійдіть
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
