@@ -6,9 +6,9 @@ export default function IndexPage() {
   const [selectedChat, setSelectedChat] = useState<number>(0);
 
   return (
-    <div className="min-h-screen bg-sky-50 flex gap-3 p-3">
+    <div className="min-h-screen overflow-hidden flex">
       {/* Chats Window */}
-      <div className="bg-white w-60 rounded-lg flex flex-col overflow-hidden">
+      <aside className="w-64 flex flex-col border-r-2 h-screen fixed">
         {/* Chats go here */}
         <div
           id="chat-0"
@@ -34,20 +34,62 @@ export default function IndexPage() {
           <h2 className="font-bold">Marvin</h2>
           <p className="text-sm">Texting brother Marvin here...</p>
         </div>
-      </div>
+      </aside>
 
       {/* Messages Window */}
-      <div className="bg-white flex-1 rounded-lg overflow-clip flex flex-col justify-between">
-        <h3 className="font-bold p-3">
-          {selectedChat === 0
-            ? "Oleh"
-            : selectedChat === 1
-              ? "Seesm"
-              : "Marvin"}
-        </h3>
+      <main className="flex-1 overflow-y-auto ml-64 flex flex-col">
+        <div className="bg-white w-full fixed">
+          <h3 className="font-bold p-3">
+            {selectedChat === 0
+              ? "Oleh"
+              : selectedChat === 1
+                ? "Seesm"
+                : "Marvin"}
+          </h3>
+        </div>
 
         {/* Messages Container */}
-        <div className="flex flex-col gap-3 p-3 flex-1">
+        <div className="flex flex-col gap-3 p-3 pt-12">
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-r-lg rounded-t-lg">
+            <p>Hey there!</p>
+            <span className="text-sm mt-1 text-sky-100">Read</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-l-lg rounded-t-lg self-end">
+            <p>Hello, praise King Jesus!</p>
+            <span className="text-sm mt-1 text-sky-100">Sent</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-r-lg rounded-t-lg">
+            <p>Hey there!</p>
+            <span className="text-sm mt-1 text-sky-100">Read</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-l-lg rounded-t-lg self-end">
+            <p>Hello, praise King Jesus!</p>
+            <span className="text-sm mt-1 text-sky-100">Sent</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-r-lg rounded-t-lg">
+            <p>Hey there!</p>
+            <span className="text-sm mt-1 text-sky-100">Read</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-l-lg rounded-t-lg self-end">
+            <p>Hello, praise King Jesus!</p>
+            <span className="text-sm mt-1 text-sky-100">Sent</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-r-lg rounded-t-lg">
+            <p>Hey there!</p>
+            <span className="text-sm mt-1 text-sky-100">Read</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-l-lg rounded-t-lg self-end">
+            <p>Hello, praise King Jesus!</p>
+            <span className="text-sm mt-1 text-sky-100">Sent</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-r-lg rounded-t-lg">
+            <p>Hey there!</p>
+            <span className="text-sm mt-1 text-sky-100">Read</span>
+          </div>
+          <div className="bg-sky-600 p-3 w-fit text-white rounded-l-lg rounded-t-lg self-end">
+            <p>Hello, praise King Jesus!</p>
+            <span className="text-sm mt-1 text-sky-100">Sent</span>
+          </div>
           <div className="bg-sky-600 p-3 w-fit text-white rounded-r-lg rounded-t-lg">
             <p>Hey there!</p>
             <span className="text-sm mt-1 text-sky-100">Read</span>
@@ -58,7 +100,7 @@ export default function IndexPage() {
           </div>
         </div>
 
-        <div className="flex gap-3 p-3">
+        <div className="flex gap-3 p-3 bg-white">
           <input
             type="text"
             className="outline w-full rounded-lg outline-sky-600 px-4 py-2"
@@ -68,7 +110,7 @@ export default function IndexPage() {
             Send
           </button>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
