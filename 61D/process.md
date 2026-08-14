@@ -15,3 +15,7 @@ To do CRUD (Create Read Update Delete) we can have such datapoints:
 - DELETE /posts/:id → delete a post
 
 Another idea showed up: to make an e-commerce store with an admin panel for adding and updating the products. The domain would be an e-store of pizzas.
+
+Started making a Django app. To make a uv directory you run `uv init DirName` and then `uv add PackageName` to add a package. (`uv add django` to add Django, for example).
+
+Made a Django app, but it's really not good. It is much better to have one framework that is best at frontend and another that is best for backend. React (Next.js) and Node.js (Express.js) are my pics for now.
