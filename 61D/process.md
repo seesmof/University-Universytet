@@ -19,3 +19,7 @@ Another idea showed up: to make an e-commerce store with an admin panel for addi
 Started making a Django app. To make a uv directory you run `uv init DirName` and then `uv add PackageName` to add a package. (`uv add django` to add Django, for example).
 
 Made a Django app, but it's really not good. It is much better to have one framework that is best at frontend and another that is best for backend. React (Next.js) and Node.js (Express.js) are my pics for now.
+
+Now i wanna choose a good backend. Supabase is a Backend as a Service. Wanna have some TS backend, Jesus please help. The options are: Express.js (NestJS), ASP.NET Core. For TS: Hono, Fastify, Koa, Express.js. I would stick with Express.js because of its easy syntax and great community support.
+
+A bit earlier i heard that you can build anything with Python, wanna try that now please Jesus help. Or maybe i can use React Native to build mobile apps. Jesus please help. Or maybe i can use React to build desktop apps. Web doesn't look good to me, i dont understand how the database is hosted.

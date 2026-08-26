@@ -22,3 +22,9 @@
 - History of JavaScript - https://dev.to/saartwito/the-evolution-of-javascript-from-inception-to-modern-day-282k, https://www.geeksforgeeks.org/javascript/history-of-javascript/
 - Comparison of authentication libraries - https://blog.logrocket.com/best-auth-library-nextjs-2026/
 - How to build a CRUD app - https://crudly.ai/crud-app/
+- Does global state persist after page reload - https://github.com/vercel/next.js/discussions/17615
+- Best backend as a service - https://www.guideflow.com/blog/backend-as-a-service
+- What is bun - https://bun.com/docs
+- Best python ORM - https://plainenglish.io/python/7-best-python-orm-libraries-you-should-know
+- Whats an in-memory SQLite database - https://sqlite.org/inmemorydb.html
+- How to build an API with Pyton - https://pytutorial.com/python-api-development-guide-for-beginners/
