@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>{{ title }}</title>
+    <title>{% block title %}{% endblock title %}</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <h1>{{ heading }}</h1>
-    <p></p>
+    {% block body %}{% endblock body %}
   </body>
 </html>
