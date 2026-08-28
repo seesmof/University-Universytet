@@ -1,12 +1,11 @@
 from django.shortcuts import render
 
+from .models import Measurement
+
 
 # Create your views here.
 def measurements_list(req):
-    context = {
-        "measurements": [
-            {"value": "Oleh", "description": "Hi this is Bible"},
-            {"value": "Mykyta", "description": "This is Bible too"},
-        ]
-    }
+    measurements = Measurement.objects.all()
+
+    context = {"measurements": measurements}
     return render(req, "measurements/list.html", context)
