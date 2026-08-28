@@ -9,4 +9,4 @@ def measurements_list(req):
             {"name": "Mykyta"},
         ]
     }
-    return render(req, "measurements_list.html", context)
+    return render(req, "measurements/list.html", context)
