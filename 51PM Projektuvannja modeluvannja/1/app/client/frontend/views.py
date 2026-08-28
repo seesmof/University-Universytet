@@ -2,6 +2,11 @@ from django.shortcuts import render
 
 
 # Create your views here.
-def index(request):
-    context: dict = {"title": "Church", "heading": "Welcome to our holy church."}
-    return render(request, "index.html", context)
+def measurements_list(req):
+    context = {
+        "measurements": [
+            {"name": "Oleh"},
+            {"name": "Mykyta"},
+        ]
+    }
+    return render(req, "measurements_list.html", context)

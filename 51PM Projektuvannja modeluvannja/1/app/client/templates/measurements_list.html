@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block title %}Measurements List{% endblock title %}
+
+{% block content %}
+<h1>Listed Measurements</h1>
+{% for measurement in measurements %}
+<p>{{ measurement.name }}</p>
+{% endfor %}
+{% endblock content %}
