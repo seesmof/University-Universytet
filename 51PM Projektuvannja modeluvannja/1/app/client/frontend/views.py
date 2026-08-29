@@ -16,6 +16,10 @@ def create_measurement(req: HttpRequest):
         form = MeasurementForm(req.POST)
         if form.is_valid():
             print(form.cleaned_data)
+            measurement = Measurement()
+            measurement.value = form.cleaned_data["value"]
+            measurement.description = form.cleaned_data["description"]
+            measurement.save()
             return redirect("list")
     else:
         form = MeasurementForm()
