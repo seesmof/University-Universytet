@@ -1,8 +1,7 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
-from app.client.frontend.forms import MeasurementForm
-
+from .forms import MeasurementForm
 from .models import Measurement
 
 
