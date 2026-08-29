@@ -1,22 +1,22 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import MeasurementForm
 from .models import Measurement
 
 
-# Create your views here.
 def measurements_list(req: HttpRequest):
     measurements = Measurement.objects.all()
-    context = {"measurements": measurements}
-    return render(req, "measurements/list.html", context)
+
+    return render(req, "measurements/list.html", {"measurements": measurements})
 
 
 def create_measurement(req: HttpRequest):
     if req.method == "POST":
         form = MeasurementForm(req.POST)
         if form.is_valid():
-            return HttpResponse("Form success.")
+            print(form.cleaned_data)
+            return redirect("list")
     else:
         form = MeasurementForm()
 
