@@ -1,5 +1,7 @@
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+
+from app.client.frontend.forms import MeasurementForm
 
 from .models import Measurement
 
@@ -13,4 +15,10 @@ def measurements_list(req: HttpRequest):
 
 def create_measurement(req: HttpRequest):
     if req.method == "POST":
-        ...
+        form = MeasurementForm(req.POST)
+        if form.is_valid():
+            return HttpResponse("Form success.")
+    else:
+        form = MeasurementForm()
+
+    return render(req, "measurements/create.html", {"form": form})
