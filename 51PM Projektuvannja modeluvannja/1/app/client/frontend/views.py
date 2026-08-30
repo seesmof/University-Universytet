@@ -17,7 +17,7 @@ def measurements_list(req: HttpRequest):
 
 
 def measurement_details(req: HttpRequest, id: int):
-    measurement = get_object_or_404(Measurement, pk=id)
+    measurement = Measurement.objects.get(pk=id)
 
     return render(req, "measurements/details.html", {"measurement": measurement})
 
@@ -29,4 +29,8 @@ class CreateMeasurement(generic.CreateView):
 
 
 class ListMeasurements(generic.ListView):
+    model = Measurement
+
+
+class MeasurementDetails(generic.DetailView):
     model = Measurement

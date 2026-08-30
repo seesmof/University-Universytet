@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block title %}{{ object|title }} details{% endblock title %}
+
+{% block content %}
+  <h1 class="font-bold text-3xl pt-4">Measurement called {{ object.value }}</h1>
+  <p class="py-4">{{ object.description }}</p>
+
+  <a class="cursor-pointer text-stone-300" href="{% url 'list' %}">Show all measurements</a>
+{% endblock content %}
