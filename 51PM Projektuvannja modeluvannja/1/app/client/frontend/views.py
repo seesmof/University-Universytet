@@ -39,3 +39,9 @@ class MeasurementDetails(generic.DetailView):
 class MeasurementDelete(generic.DeleteView):
     model = Measurement
     success_url = "/list"
+
+
+class MeasurementUpdate(generic.UpdateView):
+    model = Measurement
+    fields = "__all__"
+    success_url = "/list"

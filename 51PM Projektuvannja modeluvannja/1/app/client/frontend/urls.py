@@ -10,4 +10,5 @@ urlpatterns = [
     # path("create", views.create_measurement, name="create"),
     path("create", views.CreateMeasurement.as_view(), name="create"),
     path("<pk>/delete/", views.MeasurementDelete.as_view(), name="delete"),
+    path("<pk>/update/", views.MeasurementUpdate.as_view(), name="update"),
 ]
