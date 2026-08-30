@@ -6,4 +6,4 @@ from .models import Measurement
 class MeasurementForm(ModelForm):
     class Meta:
         model = Measurement
-        fields = ["value", "description"]
+        fields = "__all__"
