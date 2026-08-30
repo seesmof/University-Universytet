@@ -2,7 +2,7 @@ import os
 from typing import Any
 
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 
 from django.conf import settings
@@ -35,21 +35,7 @@ def index_view(req: HttpRequest):
     return redirect("list")
 
 
-class MeasurementList(generic.ListView):
-    model = Measurement
-    context_object_name = "measurements"
-    template_name = "measurements/list.html"
+def measurement_details(req: HttpRequest, id: int):
+    measurement = get_object_or_404(Measurement, pk=id)
 
-    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
-        try:
-            file_path: str = os.path.join(settings.BASE_DIR, "test_data.txt")
-            with open(file_path, encoding="utf-8", mode="r") as f:
-                lines = f.readlines()
-            for value in lines:
-                print(value)
-                Measurement.objects.get_or_create(value=value)
-        except IOError:
-            print("ERROR: Couldn't read the file.")
-            pass
-
-        return super(MeasurementList, self).get(request, *args, **kwargs)
+    return render(req, "measurements/details.html", {"measurement": measurement})
