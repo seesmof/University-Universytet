@@ -18,7 +18,11 @@
         <tr>
           <td>{{ m.value }}</td>
           <td>{{ m.description }}</td>
-          <td><a href="{% url 'details' m.id %}">See details</a></td>
+          <td>
+            <a href="{% url 'details' m.id %}">See details</a>
+            |
+            <a href="{% url 'delete' m.id %}">Delete</a>
+          </td>
         </tr>
       {% endfor %}
     </tbody>

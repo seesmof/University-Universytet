@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block title %}{{ object|title }} details{% endblock title %}
+
+{% block content %}
+  <h1 class="font-bold text-3xl pt-4">Deleting {{ object }}</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{ object }}?</p>
+    <button type="submit">Confirm</button>
+{% endblock content %}

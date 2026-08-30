@@ -34,3 +34,8 @@ class ListMeasurements(generic.ListView):
 
 class MeasurementDetails(generic.DetailView):
     model = Measurement
+
+
+class MeasurementDelete(generic.DeleteView):
+    model = Measurement
+    success_url = "/list"
