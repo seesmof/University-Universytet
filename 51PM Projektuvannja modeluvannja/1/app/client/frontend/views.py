@@ -26,3 +26,7 @@ class CreateMeasurement(generic.CreateView):
     model = Measurement
     fields = "__all__"
     success_url = "/list"
+
+
+class ListMeasurements(generic.ListView):
+    model = Measurement
