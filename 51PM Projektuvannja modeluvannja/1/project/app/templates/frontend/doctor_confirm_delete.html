@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block title %}Fire a doctor called {{ object|title }}{% endblock title %}
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to fire {{ object|title }}?</p>
+    <button type="submit">Fire</button>
+  </form>
+{% endblock content %}
