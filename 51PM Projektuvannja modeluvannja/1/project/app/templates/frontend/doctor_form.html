@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block title %}Hire a new doctor{% endblock title %}
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button>Hire</button>
+  </form>
+{% endblock content %}
