@@ -11,3 +11,6 @@ def validate_full_name(value: str):
 
 class Doctor(models.Model):
     full_name = models.CharField(max_length=250, validators=[validate_full_name])
+
+    def __str__(self) -> str:
+        return self.full_name.title()

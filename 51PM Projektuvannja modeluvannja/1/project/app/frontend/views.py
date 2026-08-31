@@ -8,3 +8,7 @@ class DoctorCreate(generic.CreateView):
     model = Doctor
     fields = "__all__"
     success_url = "list"
+
+
+class DoctorList(generic.ListView):
+    model = Doctor
