@@ -10,11 +10,19 @@ import seaborn as sns
 import tensorflow as tf
 
 x = np.array([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
-y = np.array([26, 14, 83, 89, 10, 41, 20, 46, 24, 39, 83])
+y = np.array([50, 79, 30, 99, 34, 96, 59, 51, 92, 6, 88])
+
+top_right_mask = (x > 50) & (y > 50)
+others_mask = ~top_right_mask
+
+plt.scatter(x[others_mask], y[others_mask], color="tab:blue", label="Regular Dots")
+plt.scatter(
+    x[top_right_mask], y[top_right_mask], color="tab:red", label="Top Right Corner"
+)
 
 plt.axhline(y=50, color="#4a00b3")
 plt.axvline(x=50, color="#4a00b3")
-plt.scatter(x, y)
+
 plt.title("Dots")
 plt.grid()
 plt.legend()
