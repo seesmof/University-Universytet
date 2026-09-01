@@ -1,3 +1,7 @@
+"""
+Page 25 in a методичка
+"""
+
 import os
 import datetime
 import IPython
