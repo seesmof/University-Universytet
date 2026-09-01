@@ -1,7 +1,24 @@
+import os
+import datetime
+import IPython
+import IPython.display
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+import seaborn as sns
+import tensorflow as tf
 
-actual = np.array([10, 20, 30, 40, 50])
-predicted = np.array([12, 18, 32, 38, 48])
+data = {
+    "Name": ["Harriett", "Olga", "Wayne"],
+    "Age": [35, 33, 55],
+    "Gender": ["Male", "Female", "Male"],
+    "Salary": [4391, 3954, 4648],
+}
+df = pd.DataFrame(data=data)
+df = df.set_index("Age")
+print(df.head(10))
 
-result = sum((actual - predicted) ** 2) / len(actual)
-print(result)
+data = [55, 44, 37, 48, 47]
+labels = ["a", "b", "c", "d", "e"]
+s = pd.Series(data, index=labels)
