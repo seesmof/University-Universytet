@@ -16,9 +16,10 @@ data = {
     "Salary": [4391, 3954, 4648],
 }
 df = pd.DataFrame(data=data)
-df = df.set_index("Age")
 print(df.head(10))
+print(df.iloc[1])
 
-data = [55, 44, 37, 48, 47]
-labels = ["a", "b", "c", "d", "e"]
-s = pd.Series(data, index=labels)
+print(os.path.dirname(os.path.abspath(__file__)))
+
+print(df.columns)
+print(df["Age"].std)
