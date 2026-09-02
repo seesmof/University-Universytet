@@ -1,28 +1,17 @@
-import os
-from matplotlib import pyplot as plt
-import seaborn as sns
-import pandas as pd
+data = [10, 30, 20, 40, 50]
+predicted = [8, 28, 20, 39, 48]
 
-current_dir = os.path.dirname(os.path.abspath(__file__))
 
-file_name: str = "power.csv"
-file_path: str = os.path.join(current_dir, file_name)
+def mae(original_data: list, predicted_values: list):
+    if len(original_data) != len(predicted_values):
+        raise ValueError("The lengths of the two given arrays are not equal.")
 
-df = pd.read_csv(file_path)
-print(df.head())
+    differences = sum(
+        abs(original - predicted)
+        for original, predicted in zip(original_data, predicted_values)
+    )
+    return differences / len(original_data)
 
-df["DATE"] = pd.to_datetime(df["DATE"])
-df = df.set_index("DATE")
-print(df.head())
 
-rolling_mean = df.rolling(window=12).mean()
-rolling_std = df.rolling(window=12).std()
-plt.plot(df, color="tab:blue", label="Original Data")
-plt.plot(rolling_mean, color="tab:red", label="Rolling Mean")
-plt.plot(rolling_std, color="tab:green", label="Rolling Std")
-plt.xlabel("Date", size=12)
-plt.ylabel("Power Consumption")
-plt.legend()
-plt.title("Rolling Statistics", size=14)
-plt.grid()
-plt.show()
+result = mae(data, predicted)
+print(result)
