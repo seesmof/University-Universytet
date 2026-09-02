@@ -140,15 +140,15 @@ class WindowGenerator:
         self.labels_slice = slice(self.label_start, None)
         self.label_indices = np.arange(self.total_window_size)[self.labels_slice]
 
-        def __repr__(self):
-            return "\n".join(
-                [
-                    f"Total window sie: {self.total_window_size}",
-                    f"Input indices: {self.input_indices}",
-                    f"Label indices: {self.label_indices}",
-                    f"Label column names: {self.label_columns}",
-                ]
-            )
+    def __repr__(self):
+        return "\n".join(
+            [
+                f"Total window sie: {self.total_window_size}",
+                f"Input indices: {self.input_indices}",
+                f"Label indices: {self.label_indices}",
+                f"Label column names: {self.label_columns}",
+            ]
+        )
 
     def split_window(self, features):
         inputs = features[:, self.input_slice, :]
@@ -272,3 +272,8 @@ val_performance = {}
 performance = {}
 val_performance["Baseline"] = baseline.evaluate(single_step_window.val)
 performance["Baseline"] = baseline.evaluate(single_step_window.test, verbose=0)
+
+wide_window = WindowGenerator(
+    input_width=24, label_width=24, shift=1, label_columns=["T (degC)"]
+)
+print(wide_window)
