@@ -325,3 +325,42 @@ dense = tf.keras.Sequential(
 history = compile_and_fit(dense, single_step_window)
 val_performance["Dense"] = dense.evaluate(single_step_window.val)
 performance["Dense"] = dense.evaluate(single_step_window.test, verbose=0)
+
+CONV_WIDTH = 3
+conv_window = WindowGenerator(
+    input_width=CONV_WIDTH, label_width=1, shift=1, label_columns=["T (degC)"]
+)
+
+multi_step_dense = tf.keras.Sequential(
+    [
+        # Shape: (time, features) => (time * features)
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(units=32, activation="relu"),
+        tf.keras.layers.Dense(units=32, activation="relu"),
+        tf.keras.layers.Dense(units=1),
+        # Add back the time dimenstion.
+        # Shape: (outputs) => (1, outputs)
+        tf.keras.layers.Reshape([1, -1]),
+    ]
+)
+history = compile_and_fit(multi_step_dense, conv_window)
+val_performance["Multi step dense"] = multi_step_dense.evaluate(conv_window.val)
+performance["Multi step dense"] = multi_step_dense.evaluate(conv_window.test, verbose=0)
+
+conv_model = tf.keras.Sequential(
+    [
+        tf.keras.layers.Conv1D(filters=32, kernel_size=(CONV_WIDTH), acitvation="relu"),
+        tf.keras.layers.Dense(units=32, activation="relu"),
+        tf.keras.layers.Dense(units=1),
+    ]
+)
+LABEL_WIDTH = 24
+INPUT_WIDTH = LABEL_WIDTH + (CONV_WIDTH - 1)
+wide_conv_window = WindowGenerator(
+    input_width=INPUT_WIDTH,
+    label_width=LABEL_WIDTH,
+    shift=1,
+    label_columns=["T (degC)"],
+)
+print(wide_conv_window)
+wide_conv_window.plot(conv_model)
