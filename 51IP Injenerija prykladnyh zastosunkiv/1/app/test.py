@@ -9,7 +9,7 @@ import pandas as pd
 import seaborn as sns
 import tensorflow as tf
 
-x = np.array([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+x = np.array(range(0, 101, 10))
 y = np.array([50, 79, 30, 99, 34, 96, 59, 51, 92, 6, 88])
 
 top_right_mask = (x > 50) & (y > 50)

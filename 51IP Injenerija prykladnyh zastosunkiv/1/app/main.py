@@ -23,7 +23,8 @@ zip_path = tf.keras.utils.get_file(
 # 2. Формуємо шлях БЕЗ дублювання (беремо базову директорію від zip_path)
 base_keras_dir = os.path.dirname(zip_path)  # це буде '/root/.keras/datasets'
 csv_path = os.path.join(
-    base_keras_dir, "jena_climate_2009_2016_extracted", "jena_climate_2009_2016.csv"
+    "/root/.keras/datasets/jena_climate_2009_2016_extracted",
+    "jena_climate_2009_2016.csv",
 )
 
 # 3. Читаємо CSV
@@ -244,3 +245,30 @@ class WindowGenerator:
                 plt.legend()
         plt.xlabel("Time [h]")
         plt.show()
+
+
+single_step_window = WindowGenerator(
+    input_width=1, label_width=1, shift=1, label_columns=["T (degC)"]
+)
+
+
+class Baseline(tf.keras.Model):
+    def __init__(self, label_index=None):
+        super().__init__()
+        self.label_index = label_index
+
+    def call(self, inputs):
+        if self.label_index is None:
+            return inputs
+        result = inputs[:, :, self.label_index]
+        return result[:, :, tf.newaxis]
+
+
+baseline = Baseline(label_index=column_indices["T (degC)"])
+baseline.compile(
+    loss=tf.losses.MeanSquaredError(), metrics=[tf.metrics.MeanAbsoluteError()]
+)
+val_performance = {}
+performance = {}
+val_performance["Baseline"] = baseline.evaluate(single_step_window.val)
+performance["Baseline"] = baseline.evaluate(single_step_window.test, verbose=0)
