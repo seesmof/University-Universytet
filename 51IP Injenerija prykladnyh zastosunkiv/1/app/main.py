@@ -291,4 +291,37 @@ def compile_and_fit(model, window, patience=2):
     early_stopping = tf.keras.callbacks.EarlyStopping(
         monitor="val_loss", patience=patience, mode="min"
     )
-    model.compile(loss=tf.losses.MeanSquaredError(), optimizer=tf.optimizers.Adam())
+    model.compile(
+        loss=tf.losses.MeanSquaredError(),
+        optimizer=tf.optimizers.Adam(),
+        metrics=[tf.metrics.MeanAbsoluteError()],
+    )
+    history = model.fit(
+        window.train,
+        epochs=MAX_EPOCHS,
+        validation_data=window.val,
+        callbacks=[early_stopping],
+    )
+    return history
+
+
+history = compile_and_fit(linear, single_step_window)
+val_performance["Linear"] = linear.evaluate(single_step_window.val)
+performance["Linear"] = linear.evaluate(single_step_window.test, verbose=0)
+
+print(f"Input shape: {wide_window.example[0].shape}")
+print(f"Output shape: {baseline(wide_window.example[0]).shape}")
+
+wide_window.plot(linear)
+
+dense = tf.keras.Sequential(
+    [
+        tf.keras.layers.Dense(units=64, activation="relu"),
+        tf.keras.layers.Dense(units=64, activation="relu"),
+        tf.keras.layers.Dense(units=1),
+    ]
+)
+
+history = compile_and_fit(dense, single_step_window)
+val_performance["Dense"] = dense.evaluate(single_step_window.val)
+performance["Dense"] = dense.evaluate(single_step_window.test, verbose=0)
