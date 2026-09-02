@@ -10,8 +10,23 @@ def mae(original_data: list, predicted_values: list):
         abs(original - predicted)
         for original, predicted in zip(original_data, predicted_values)
     )
+
     return differences / len(original_data)
 
 
-result = mae(data, predicted)
-print(result)
+def mse(original_data: list, predicted_values: list):
+    if len(original_data) != len(predicted_values):
+        raise ValueError("The lengths of the two given arrays are not equal.")
+
+    differences = sum(
+        abs(original - predicted) ** 2
+        for original, predicted in zip(original_data, predicted_values)
+    )
+
+    return differences / len(original_data)
+
+
+mae_result = mae(data, predicted)
+print(f"{mae_result = }")
+mse_result = mse(data, predicted)
+print(f"{mse_result = }")
