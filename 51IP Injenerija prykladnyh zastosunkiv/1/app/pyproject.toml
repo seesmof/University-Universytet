@@ -11,4 +11,5 @@ dependencies = [
     "plotly>=7.0.0",
     "seaborn>=0.13.2",
     "tensorflow>=2.21.0",
+    "ucimlrepo>=0.0.7",
 ]

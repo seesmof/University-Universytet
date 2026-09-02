@@ -1,18 +1,15 @@
 import os
-import datetime
-import IPython
-import IPython.display
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
+from matplotlib import pyplot as plt
 import seaborn as sns
-import tensorflow as tf
+import pandas as pd
 
-data = {
-    "Name": ["Keith", "Margaret", "Bryan"],
-    "Age": [52, 48, 48],
-    "Salary": [1139, 2603, 5559],
-}
-df = pd.DataFrame(data)
-print(df.head())
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+file_name: str = "power.csv"
+file_path: str = os.path.join(current_dir, file_name)
+
+data = pd.read_csv(file_path)
+print(data.head())
+
+data.plot()
+plt.show()
