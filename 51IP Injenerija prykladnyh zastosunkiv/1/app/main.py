@@ -277,3 +277,18 @@ wide_window = WindowGenerator(
     input_width=24, label_width=24, shift=1, label_columns=["T (degC)"]
 )
 print(wide_window)
+
+print(f"Input shape: {wide_window.example[0].shape}")
+print(f"Output shape: {baseline(wide_window.example[0]).shape}")
+wide_window.plot(baseline)
+
+linear = tf.keras.Sequential([tf.keras.layers.Dense(units=1)])
+
+MAX_EPOCHS = 20
+
+
+def compile_and_fit(model, window, patience=2):
+    early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor="val_loss", patience=patience, mode="min"
+    )
+    model.compile(loss=tf.losses.MeanSquaredError(), optimizer=tf.optimizers.Adam())
