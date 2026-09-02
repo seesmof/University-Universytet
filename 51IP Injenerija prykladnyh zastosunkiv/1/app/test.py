@@ -1,32 +1,20 @@
-data = [10, 30, 20, 40, 50]
-predicted = [8, 28, 20, 39, 48]
+"""
+This is my own attempt to plot a time series.
+"""
 
+import os
+from matplotlib import pyplot as plt
+import seaborn as sns
+import pandas as pd
 
-def mae(original_data: list, predicted_values: list):
-    if len(original_data) != len(predicted_values):
-        raise ValueError("The lengths of the two given arrays are not equal.")
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
-    differences = sum(
-        abs(original - predicted)
-        for original, predicted in zip(original_data, predicted_values)
-    )
+file_name: str = "power.csv"
+file_path: str = os.path.join(current_dir, file_name)
 
-    return differences / len(original_data)
+df = pd.read_csv(file_path)
+print(df.head())
 
-
-def mse(original_data: list, predicted_values: list):
-    if len(original_data) != len(predicted_values):
-        raise ValueError("The lengths of the two given arrays are not equal.")
-
-    differences = sum(
-        abs(original - predicted) ** 2
-        for original, predicted in zip(original_data, predicted_values)
-    )
-
-    return differences / len(original_data)
-
-
-mae_result = mae(data, predicted)
-print(f"{mae_result = }")
-mse_result = mse(data, predicted)
-print(f"{mse_result = }")
+df["DATE"] = pd.to_datetime(df["DATE"])
+df = df.set_index("DATE")
+print(df.head())

@@ -1,6 +1,5 @@
 """
-Page 25 in a методичка
-This is all the code from metodychka
+This is all the code from metodychka.
 """
 
 import os
