@@ -1,11 +1,22 @@
+import os
+from matplotlib import pyplot as plt
 import pandas as pd
-import statsmodels.api as sm
-import matplotlib.pyplot as plt
+from nicegui import ui
 
-data = [i + (i % 7) for i in range(1, 100)]
-index = pd.date_range(start="2023-01-01", periods=99, freq="D")
-ts = pd.Series(data, index=index)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_name: str = "power.csv"
+file_path: str = os.path.join(current_dir, file_name)
 
-result = sm.tsa.seasonal_decompose(ts, model="additive")
-result.plot()
-plt.show()
+df = pd.read_csv(file_path)
+
+df["DATE"] = pd.to_datetime(df["DATE"])
+df = df.set_index("DATE")
+print(df)
+
+with ui.matplotlib(figsize=(12, 2)).figure as f:
+    x = df.index
+    y = df
+    ax = f.gca()
+    ax.plot(x, y, "-")
+
+ui.run(title="IP1", favicon="📊")

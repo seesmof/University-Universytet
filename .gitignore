@@ -1,6 +1,7 @@
 .venv
 __pycache__
 **/~$*.*
+**/.~*.*
 /32KP Konstrujuvannja program/2/second/target/
 /32KP Konstrujuvannja program/2/second_vars/target/
 /32KP Konstrujuvannja program/four/Company/target/
