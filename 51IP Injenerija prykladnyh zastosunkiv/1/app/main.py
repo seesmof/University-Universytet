@@ -40,8 +40,8 @@ decomp.plot()
 plt.show()
 
 # Split data into test and train
-train = df[:-12]
-test = df[-12:]
+train = df[:-24]
+test = df[-24:]
 print(f"{len(train) = }")
 
 # Make an ARIMA model
