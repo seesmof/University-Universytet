@@ -42,6 +42,7 @@ plt.show()
 # Split data into test and train
 train = df[:-12]
 test = df[-12:]
+print(f"{len(train) = }")
 
 # Make an ARIMA model
 model = pm.auto_arima(
