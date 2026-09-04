@@ -9,6 +9,7 @@ import seaborn as sns
 import pandas as pd
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
+from statsmodels.tsa.holtwinters import ExponentialSmoothing
 import pmdarima as pm
 
 # Read the data from a file
@@ -61,7 +62,27 @@ plt.figure(figsize=(12, 6))
 plt.plot(train, label="Training Data")
 plt.plot(test, label="Actual Values", linewidth=2)
 plt.plot(forecast, label="Forecasted Values", linestyle="--")
-plt.title("Forecast vs Actual")
+plt.title("ARIMA Forecast")
+plt.xlabel("Time")
+plt.ylabel("Value")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Make an ETS model
+ets_model = ExponentialSmoothing(
+    train, seasonal="add", trend="add", seasonal_periods=12
+)
+ets_fit = ets_model.fit()
+forecast = ets_fit.forecast(steps=12)
+forecast = pd.Series(forecast, index=test.index)
+
+# Plot the prediction results
+plt.figure(figsize=(12, 6))
+plt.plot(train, label="Training Data")
+plt.plot(test, label="Actual Values", linewidth=2)
+plt.plot(forecast, label="Forecasted Values", linestyle="--")
+plt.title("ETS Forecast")
 plt.xlabel("Time")
 plt.ylabel("Value")
 plt.legend()
