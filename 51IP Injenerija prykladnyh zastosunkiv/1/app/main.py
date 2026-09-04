@@ -8,7 +8,6 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 from statsmodels.tsa.seasonal import seasonal_decompose
-from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 import pmdarima as pm
 
@@ -53,7 +52,7 @@ model = pm.auto_arima(
     error_action="ignore",
     suppress_warnings=True,
 )
-model.summary()
+print(model.summary())
 forecast = model.predict(n_preiods=12)
 forecast = pd.Series(forecast, index=test.index)
 
