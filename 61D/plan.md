@@ -16,3 +16,17 @@ Ideas about the project:
 1. An e-commerce store with an admin dashboard for adding items
 2. A book tracker with ability to read PDF files on the site
 3. A chat app with login and live updates
+
+---
+
+A farm management software.
+
+- logs of money changes - when you buy something you log that change
+- a page with tools that can wear out, pay to upgrade or buy new ones
+  - a drone that can орошувати the ground
+  - a мотика that can till the ground
+  - a combine to do something
+- fields that can be bought and worked on by tools
+- storage management
+- a task management
+- how much stuff was harvested
