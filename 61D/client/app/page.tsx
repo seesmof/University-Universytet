@@ -1,4 +1,4 @@
-import { useState } from "react";
+import data from "@/data/data.json";
 
 export enum SoilType {
   Sandy = "sandy",
@@ -15,13 +15,11 @@ export type Field = {
 };
 
 export default function IndexPage() {
-  const [data, setData] = useState<Field[]>([]);
-
   return (
-    <>
-      <header className="border-b-2 flex justify-between p-3 sticky top-0 z-50">
-        <h1>PizzaStore</h1>
-      </header>
-    </>
+    <div className="min-h-screen bg-sky-50">
+      <div className="container mx-auto p-3 flex items-center justify-center">
+        <div className="bg-white p-3 rounded-md shadow">{data["GEN"][1]}</div>
+      </div>
+    </div>
   );
 }
