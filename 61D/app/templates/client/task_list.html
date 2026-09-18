@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block title %}Задачі{% endblock title %}
+{% block content %}
+<h1>Задачі</h1>
+<table>
+  <thead></thead>
+  <tbody>
+    {% for task in object_list %}
+    <tr>
+      <td>{{ task.name }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
