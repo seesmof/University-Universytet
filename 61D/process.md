@@ -23,3 +23,5 @@ Made a Django app, but it's really not good. It is much better to have one frame
 Now i wanna choose a good backend. Supabase is a Backend as a Service. Wanna have some TS backend, Jesus please help. The options are: Express.js (NestJS), ASP.NET Core. For TS: Hono, Fastify, Koa, Express.js. I would stick with Express.js because of its easy syntax and great community support.
 
 A bit earlier i heard that you can build anything with Python, wanna try that now please Jesus help. Or maybe i can use React Native to build mobile apps. Jesus please help. Or maybe i can use React to build desktop apps. Web doesn't look good to me, i dont understand how the database is hosted.
+
+Going back to Django, gotta try the page-wise updates i think rather than React's dynamic layout, because with React and Next.js i can't really add a database easily, whereas with Python and Django it's integrated.

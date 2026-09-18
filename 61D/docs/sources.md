@@ -28,3 +28,4 @@
 - Best python ORM - https://plainenglish.io/python/7-best-python-orm-libraries-you-should-know
 - Whats an in-memory SQLite database - https://sqlite.org/inmemorydb.html
 - How to build an API with Pyton - https://pytutorial.com/python-api-development-guide-for-beginners/
+- all about farms - https://youtu.be/KJzmM9SL0mA
