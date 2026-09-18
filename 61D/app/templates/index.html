@@ -8,11 +8,5 @@
   <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 </head>
 <body>
-  <nav style="padding: 1rem; margin-top: 2rem; border-radius: .3rem; display: flex; justify-content: space-between; background: gray;">
-    <p>Farmer</p>
-    <div style="display: flex; gap: .5rem;">
-      <a href="{% url "tasks" %}">Задачі</a>
-    </div>
-  </nav>
   {% block content %}{% endblock content %}
 </body>
