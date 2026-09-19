@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block title %}Нова задача{% endblock title %}
+{% block content %}
+<a href="{% url "index" %}">Додому</a>
+<h1>Нова задача</h1>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Додати" />
+</form>
+{% endblock content %}

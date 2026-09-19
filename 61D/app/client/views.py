@@ -1,6 +1,6 @@
 from django.http import HttpRequest
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView
 
 from .models import Task
 
@@ -11,5 +11,11 @@ def index(request: HttpRequest):
     return render(request, "client/index.html", context)
 
 
-class TasksList(ListView):
+class TaskList(ListView):
     model = Task
+
+
+class TaskCreate(CreateView):
+    model = Task
+    fields = "__all__"
+    success_url = "task/"

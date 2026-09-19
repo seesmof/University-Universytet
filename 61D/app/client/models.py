@@ -6,7 +6,7 @@ class Task(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(blank=True)  # optional
     due = models.DateTimeField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.name} due {self.due.strftime("%d/%m/%Y")}"
