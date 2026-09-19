@@ -25,3 +25,5 @@ Now i wanna choose a good backend. Supabase is a Backend as a Service. Wanna hav
 A bit earlier i heard that you can build anything with Python, wanna try that now please Jesus help. Or maybe i can use React Native to build mobile apps. Jesus please help. Or maybe i can use React to build desktop apps. Web doesn't look good to me, i dont understand how the database is hosted.
 
 Going back to Django, gotta try the page-wise updates i think rather than React's dynamic layout, because with React and Next.js i can't really add a database easily, whereas with Python and Django it's integrated.
+
+Django doesn't allow for much customization, which is what i want, so imma try customtkinter.
