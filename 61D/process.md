@@ -26,4 +26,4 @@ A bit earlier i heard that you can build anything with Python, wanna try that no
 
 Going back to Django, gotta try the page-wise updates i think rather than React's dynamic layout, because with React and Next.js i can't really add a database easily, whereas with Python and Django it's integrated.
 
-Django doesn't allow for much customization, which is what i want, so imma try customtkinter.
+Django doesn't allow for much customization, which is what i want, so imma try customtkinter. Customtkinter doesn't give you much built in things. So the search continues i guess.
