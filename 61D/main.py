@@ -1,9 +1,9 @@
-import tkinter as tk
-from customtkinter import *
+import pywinui as ui
 
-root = tk.Tk()
-root.geometry("600x400")
-root.resizable(False, False)
-root.title("Ферменеджер")
 
-root.mainloop()
+class CounterApp(ui.App):
+    def build(self):
+        count = ui.TextBlock("0", font_size=32)
+
+
+CounterApp().run()

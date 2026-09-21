@@ -27,3 +27,11 @@ A bit earlier i heard that you can build anything with Python, wanna try that no
 Going back to Django, gotta try the page-wise updates i think rather than React's dynamic layout, because with React and Next.js i can't really add a database easily, whereas with Python and Django it's integrated.
 
 Django doesn't allow for much customization, which is what i want, so imma try customtkinter. Customtkinter doesn't give you much built in things. So the search continues i guess.
+
+Tried WinUI with Visual Studio. Looks amazing, but it takes a lot of time to build a simple thing. Searched a little and Tauri is another option. But i don't like that it uses Rust as a backend langauge.
+
+Just tried Tauri, it gives errors when trying to run it. I want something mature and solid, maybe i should try Java and its Spring Boot framework, but it's backend only as far as i understand. I need something that just works, Jesus please help.
+
+Okay, so gotta try getting to grips with Supabase and my current stack: Next.js, TailwindCSS, React, TypeScript.
+
+Found an amazing tool called OpenCode, Jesus thank You! This thing coded the whole thing in an evening.
