@@ -1,11 +1,5 @@
-"""
-This is my own attempt to plot a time series.
-"""
-
 import os
 from matplotlib import pyplot as plt
-import numpy as np
-import seaborn as sns
 import pandas as pd
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
