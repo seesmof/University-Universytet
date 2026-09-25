@@ -1,0 +1,1 @@
+okay so i tried copying the metodychka example that uses opencv but it doesnt work so im looking into an article by geeksforkeeks that lists out the available computer vision libraries. for now i have pytorch, simplecv, tensorflow. i wanna look into simplecv or pytorch. the former because they say its easy to get started and the latter because its popular.
