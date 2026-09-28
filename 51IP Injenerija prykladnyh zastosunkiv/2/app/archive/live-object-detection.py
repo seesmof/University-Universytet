@@ -3,7 +3,7 @@
 import cv2
 from ultralytics import YOLO
 
-model = YOLO("yolov8n.pt")
+model = YOLO("yolov8s.pt")
 
 
 def detect_objects(frame):
