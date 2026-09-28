@@ -12,7 +12,6 @@ def detect_objects(frame):
 
     for result in results:
         for box in result.boxes:
-            print(box.cls)
             class_id = int(box.cls[0])
             confidence = box.conf[0].item()
 
@@ -42,6 +41,8 @@ while 1:
 
     frame, detected_objects = detect_objects(frame)
     cv2.imshow("Vision", frame)
+    if detected_objects:
+        print(f"Detected objects: {detected_objects}")
     key = cv2.waitKey(1)
 
 cap.release()
