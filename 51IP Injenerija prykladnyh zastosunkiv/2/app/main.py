@@ -1,7 +1,7 @@
-import os
-import cv2
 from matplotlib import pyplot as plt
 from ultralytics import YOLO
+import cv2
+import os
 
 model = YOLO("yolov8n.pt")
 
