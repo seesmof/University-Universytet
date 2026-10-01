@@ -15,3 +15,5 @@ for line in lines:
         print(f"{question} -- {answer}")
     except:
         print(f"! Could not split the question: {line.strip()}")
+print(f"\nTotal questions: {len(lines)}")
+print(f"Total answered questions: {answers}")
