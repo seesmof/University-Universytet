@@ -20,4 +20,10 @@ for line in lines:
     no_reference_line = re.sub(chapter_verse_pattern, "", no_book_name).strip()
     cleaned_lines.append(no_reference_line)
 corpus = " ".join(cleaned_lines)
+
+sequence_length = 100
+BATCH_SIZE = 128
+EPOCHS = 30
+corpus = corpus.lower()
+corpus = corpus.translate(str.maketrans("", "", punctuation))
 print(corpus)
