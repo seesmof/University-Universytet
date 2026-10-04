@@ -14,7 +14,6 @@ with open(data_file_path, encoding="utf-8", mode="r") as f:
     lines = f.readlines()
 cleaned_lines = list()
 for line in lines:
-    # Remove the verse reference's Book name
     no_book_name = line[4:].strip()
     chapter_verse_pattern = r"\d+\:\d+\s"
     no_reference_line = re.sub(chapter_verse_pattern, "", no_book_name).strip()
@@ -26,4 +25,15 @@ BATCH_SIZE = 128
 EPOCHS = 30
 corpus = corpus.lower()
 corpus = corpus.translate(str.maketrans("", "", punctuation))
-print(corpus)
+
+n_chars = len(corpus)
+vocab = "".join(sorted(set(corpus)))
+print(f"Unique Characters: {vocab}")
+n_unique_characters = len(vocab)
+print(f"Number of Characters: {n_chars}")
+print(f"Number of Unique Characters: {n_unique_characters}")
+
+char_to_int = {c: i for i, c in enumerate(vocab)}
+int_to_char = {i: c for i, c in enumerate(vocab)}
+
+encoded_text = np.array([char_to_int[c] for c in corpus])
