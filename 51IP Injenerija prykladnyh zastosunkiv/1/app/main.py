@@ -82,7 +82,11 @@ plt.grid()
 plt.show()
 
 # Add methods comparison
-arima_score = np.sqrt(mean_squared_error(test, arima_forecast))
-ets_score = np.sqrt(mean_squared_error(test, ets_forecast))
-print(f"{arima_score = }")
-print(f"{ets_score = }")
+history = pd.concat([train["Consumption"], test["Consumption"]])
+naive_forecast = history.shift(12).loc[test.index]
+
+arima_score = np.sqrt(mean_squared_error(test["Consumption"], arima_forecast))
+ets_score = np.sqrt(mean_squared_error(test["Consumption"], ets_forecast))
+naive_rmse = np.sqrt(mean_squared_error(test["Consumption"], naive_forecast))
+print(f"{arima_score = }, {arima_score > naive_rmse}")
+print(f"{ets_score = }, {ets_score > naive_rmse}")
