@@ -12,9 +12,12 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 file_name: str = "power.csv"
 file_path: str = os.path.join(current_dir, file_name)
 df = pd.read_csv(file_path, parse_dates=["DATE"], index_col="DATE")
-df.rename(columns={"IPG2211A2N": "Consumption"}, inplace=True)
+df.rename(columns={"IPG2211A2N": "Production"}, inplace=True)
 print(df)
 average = df.rolling(window=12).mean()
+
+# Analyze the original data
+print(df.describe())
 
 # Plot the original data
 plt.figure(figsize=(12, 6))
@@ -22,7 +25,7 @@ plt.plot(df, color="tab:blue", label="Original Data")
 plt.plot(average, color="tab:red", label="Average Data")
 plt.title("Rolling Statistics", size=14)
 plt.xlabel("Date", size=12)
-plt.ylabel("Power Consumption")
+plt.ylabel("Power Production")
 plt.legend()
 plt.grid()
 plt.show()
@@ -36,7 +39,6 @@ plt.show()
 N = 24
 train = df[:-N]
 test = df[-N:]
-print(f"{len(train) = }")
 
 # Make an ARIMA model
 model = pm.auto_arima(
@@ -82,11 +84,12 @@ plt.grid()
 plt.show()
 
 # Add methods comparison
-history = pd.concat([train["Consumption"], test["Consumption"]])
+history = pd.concat([train["Production"], test["Production"]])
 naive_forecast = history.shift(12).loc[test.index]
 
-arima_score = np.sqrt(mean_squared_error(test["Consumption"], arima_forecast))
-ets_score = np.sqrt(mean_squared_error(test["Consumption"], ets_forecast))
-naive_rmse = np.sqrt(mean_squared_error(test["Consumption"], naive_forecast))
+arima_score = np.sqrt(mean_squared_error(test["Production"], arima_forecast))
+ets_score = np.sqrt(mean_squared_error(test["Production"], ets_forecast))
+naive_rmse = np.sqrt(mean_squared_error(test["Production"], naive_forecast))
+print(f"{naive_rmse = }")
 print(f"{arima_score = }, {arima_score > naive_rmse}")
 print(f"{ets_score = }, {ets_score > naive_rmse}")
