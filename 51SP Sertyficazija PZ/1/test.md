@@ -2,3 +2,6 @@
 що таке корисна новина? така, що надає потрібну інформацію у відповідний момент часу
 що таке веб-сайт компанії? це набір програмних засобів (включно з системою управління контентом), які дозволяють команді публікувати новини в мережі інтернет, а споживачам переглядати ці новини
 що таке система управління контентом? це програмні засоби, які дозволяють відносно легко керуавти вмістом веб-сайту
+що таке процесний підхід? коли
+there was a limpid and there was not opaque and there was something that started with a b, i cant remember. okay, it was pellucid. and then there was crystalline, which means "like crystal". opaque means not transparent.
+why do we nedd a psu?
