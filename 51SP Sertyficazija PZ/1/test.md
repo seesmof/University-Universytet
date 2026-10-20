@@ -4,4 +4,4 @@
 що таке система управління контентом? це програмні засоби, які дозволяють відносно легко керуавти вмістом веб-сайту
 що таке процесний підхід? коли діяльність керується процесами і орієнтується на кінцевого користувача
 there was a limpid and there was not opaque and there was something that started with a b, i cant remember. okay, it was pellucid. and then there was crystalline, which means "like crystal". opaque means not transparent.
-why do we nedd a psu?
+why do we nedd a psu? to convert wall's high volume alternating current to PC's low volume direct current
