@@ -25,7 +25,6 @@ def generate_reply(history: list[dict]) -> str:
     ]
     out = get_pipe()(
         messages,
-        max_new_tokens=256,
         do_sample=True,
         temperature=0.7,
         top_p=0.9,
