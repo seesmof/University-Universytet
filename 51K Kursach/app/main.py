@@ -7,6 +7,7 @@ from models import Message, Role
 
 init_db()
 
+st.set_page_config(page_title="Чат", page_icon="💭")
 st.title("💭 Чат")
 
 with st.spinner("Завантаження моделі (лише у перший раз)..."):
