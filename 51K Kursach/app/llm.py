@@ -18,7 +18,7 @@ def get_pipe():
 def generate_reply(history: list[dict]) -> str:
     messages = [{"role": "system", "content": SYSTEM_PROMPT}] + [
         {
-            "role": "assistant" if h["role"] == "ai" else h["role"],
+            "role": h["role"],
             "content": h["content"],
         }
         for h in history

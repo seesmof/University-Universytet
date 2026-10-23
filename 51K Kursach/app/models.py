@@ -8,7 +8,7 @@ from sqlmodel import Field, SQLModel
 
 class Role(str, Enum):
     user = "user"
-    ai = "ai"
+    ai = "assistant"
 
 
 def _utc_now_naive() -> datetime:
