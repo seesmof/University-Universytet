@@ -1,0 +1,23 @@
+[
+  {
+    "User_ID": 1,
+    "Full_Name": "Маслюк Петро",
+    "Address": {
+      "Street_Name": "Перемоги",
+      "House_Number": 12
+    },
+    "Benefits": [
+      {
+        "Benefit_Type": "пільговий проїзд",
+        "Description": "дозволяє безкоштовний проїхд на громадському транспорті"
+      }
+    ],
+    "Recents_Requests": [
+      {
+        "Request_ID": 1,
+        "Service_Name": "субсидії для житла",
+        "Request_Date": "2026-10-25"
+      }
+    ]
+  }
+]
