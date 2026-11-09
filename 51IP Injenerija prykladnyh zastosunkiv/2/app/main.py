@@ -5,12 +5,32 @@ import streamlit as st
 
 st.set_page_config(layout="centered", page_title="Покращувач зображень", page_icon="🌱")
 
+DEFAULT_VALUE = 1.0
+
 if "new_image" not in st.session_state:
     st.session_state.new_image = None
 
+if "brightness" not in st.session_state:
+    st.session_state.brightness = DEFAULT_VALUE
+
+if "contrast" not in st.session_state:
+    st.session_state.contrast = DEFAULT_VALUE
+
+
+def reset_params():
+    st.session_state.brightness = DEFAULT_VALUE
+    st.session_state.contrast = DEFAULT_VALUE
+
+
 st.sidebar.header("Параметри покращення")
-brightness = st.sidebar.slider("Яскравість", 0.5, 2.0, 1.0, 0.1)
-contrast = st.sidebar.slider("Контрастність", 0.5, 2.0, 1.0, 0.1)
+brightness = st.sidebar.slider("Яскравість", 0.5, 2.0, key="brightness", step=0.1)
+contrast = st.sidebar.slider("Контрастність", 0.5, 2.0, key="contrast", step=0.1)
+st.sidebar.button(
+    "Скинути",
+    on_click=reset_params,
+    use_container_width=True,
+    icon="🔄",
+)
 
 uploaded_image = st.file_uploader(
     "Оберіть зображення",
@@ -22,6 +42,7 @@ left, right = st.columns(2)
 
 if not uploaded_image:
     st.write("Чекаю на зображення...")
+    st.session_state.new_image = None
 else:
     with left:
         st.image(uploaded_image, caption=uploaded_image.name, use_container_width=True)
