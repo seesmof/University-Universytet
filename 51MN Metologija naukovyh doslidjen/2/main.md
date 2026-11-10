@@ -1,4 +1,0 @@
-- задача - Farm management. Agricultural management.
-- механізм - Web Application. Information System.
-- дані - Farm data. Agricultural data.
-- контекст - Farm Enterprise. Precision Agriculture.
