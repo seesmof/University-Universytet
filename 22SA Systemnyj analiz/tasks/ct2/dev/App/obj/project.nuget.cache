@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "x11kHV0jVno=",
+  "dgSpecHash": "DIaFzkszSUs=",
   "success": true,
   "projectFilePath": "C:\\work\\University-Universytet\\22SA Systemnyj analiz\\tasks\\ct2\\dev\\App\\App.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\seesm\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.34\\microsoft.netcore.app.ref.8.0.34.nupkg.sha512",
+    "C:\\Users\\seesm\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.34\\microsoft.windowsdesktop.app.ref.8.0.34.nupkg.sha512",
+    "C:\\Users\\seesm\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.34\\microsoft.aspnetcore.app.ref.8.0.34.nupkg.sha512",
+    "C:\\Users\\seesm\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.34\\microsoft.netcore.app.host.win-x64.8.0.34.nupkg.sha512"
+  ],
   "logs": []
 }
