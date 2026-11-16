@@ -5,9 +5,11 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "gpt4all>=2.8.2",
     "matplotlib>=3.11.2",
     "nltk>=3.10.3",
     "numpy>=2.5.3",
+    "ollama>=0.6.3",
     "pandas>=3.0.6",
     "requests>=2.34.2",
     "scikit-learn>=1.9.1",
