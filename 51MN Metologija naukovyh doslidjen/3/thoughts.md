@@ -25,3 +25,5 @@ Do we need to predict data? We only need to reduce noise on the already measured
 
 Що за невизначеність? Неточність даних від погодних сенсорів
 Напрям покращення це що?
+
+6
